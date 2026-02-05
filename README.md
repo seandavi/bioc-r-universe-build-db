@@ -9,7 +9,9 @@ For most folks coming to this repo, the most valuable feature will be the "data"
 
 ## The data
 
-Currently, data are tracked in the [data branch](https://github.com/seandavi/bioc-r-universe-build-db/tree/data)
+Currently, data are tracked in the [data branch](https://github.com/seandavi/bioc-r-universe-build-db/tree/data).
+
+Each file/build combination is captured as a single file. See the Storage Format section below. 
 
 To get a copy of the data locally, use this cloning command line:
 
@@ -41,6 +43,8 @@ data/
 The run ID is the GitHub Actions workflow run number, which uniquely identifies each build attempt. This allows tracking:
 - Multiple builds of the same version (e.g., retries)
 - Failed builds (stored with `_type: "failure"` in the JSON)
+
+Here is an example build output result file: https://github.com/seandavi/bioc-r-universe-build-db/blob/data/builds/2026/02/BiocPkgTools/BiocPkgTools_21560086190.json
 
 ## GitHub Actions
 
