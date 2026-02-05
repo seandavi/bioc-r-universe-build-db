@@ -1,5 +1,7 @@
 # Bioconductor R-Universe Build Tracker
 
+[![Sync Bioconductor Builds](https://github.com/seandavi/bioc-r-universe-build-db/actions/workflows/sync.yml/badge.svg)](https://github.com/seandavi/bioc-r-universe-build-db/actions/workflows/sync.yml)
+
 Track and store Bioconductor R-Universe package builds over time. This tool consumes the RSS feed and NDJSON API to create a longitudinal database of build results.
 
 ## Installation
