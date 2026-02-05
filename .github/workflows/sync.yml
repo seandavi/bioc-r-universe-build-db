@@ -1,0 +1,95 @@
+name: Sync Bioconductor Builds
+
+on:
+  schedule:
+    # Run every 30 minutes
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      command:
+        description: 'Command to run'
+        required: true
+        default: 'sync'
+        type: choice
+        options:
+          - sync
+          - backfill
+      limit:
+        description: 'Limit for backfill (optional)'
+        required: false
+        type: number
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Checkout data branch
+        id: checkout-data
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+        continue-on-error: true
+
+      - name: Create data branch if it doesn't exist
+        if: steps.checkout-data.outcome == 'failure'
+        run: |
+          mkdir -p data-branch
+          cd data-branch
+          git init
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git checkout -b data
+          # Create initial commit so we can push
+          echo "# Bioconductor Build Data" > README.md
+          git add README.md
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Initialize data branch"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run sync
+        if: github.event.inputs.command != 'backfill'
+        run: uv run bioc-tracker sync --data-dir ./data-branch
+
+      - name: Run backfill
+        if: github.event.inputs.command == 'backfill'
+        run: |
+          LIMIT_ARG=""
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            LIMIT_ARG="--limit ${{ github.event.inputs.limit }}"
+          fi
+          uv run bioc-tracker backfill --data-dir ./data-branch $LIMIT_ARG
+
+      - name: Commit and push changes
+        run: |
+          cd data-branch
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Set remote URL with token for push
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git || true
+
+          # Check if there are any changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Sync Bioconductor builds $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push origin data
+          else
+            echo "No changes to commit"
+          fi
