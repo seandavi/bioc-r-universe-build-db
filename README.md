@@ -2,60 +2,21 @@
 
 [![Sync Bioconductor Builds](https://github.com/seandavi/bioc-r-universe-build-db/actions/workflows/sync.yml/badge.svg)](https://github.com/seandavi/bioc-r-universe-build-db/actions/workflows/sync.yml)
 
-Track and store Bioconductor R-Universe package builds over time. This tool consumes the RSS feed and NDJSON API to create a longitudinal database of build results.
+The [r-universe bioconductor build system](https://bioc.r-universe.dev/builds) tracks the most recent build of each package and makes it available via an [API](https://bioc.r-universe.dev/apis).
+However, historical tracking of build results is not directly available. 
+This package and the automation in the associated github actions workflow builds that historical database. 
+For most folks coming to this repo, the most valuable feature will be the "data" that are captured. 
 
-## Installation
+## The data
 
-Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
+Currently, data are tracked in the [data branch](https://github.com/seandavi/bioc-r-universe-build-db/tree/data)
 
-```bash
-uv sync
-```
-
-## Usage
-
-### Incremental Sync (RSS Feed)
-
-Fetch new builds since the last sync:
+To get a copy of the data locally, use this cloning command line:
 
 ```bash
-uv run bioc-tracker sync
+git clone -b data --single-branch https://github.com/seandavi/bioc-r-universe-build-db
 ```
 
-The sync command:
-- Loads the cursor (last processed timestamp)
-- Fetches the RSS feed
-- Downloads full package JSON for each new item
-- Saves to storage and updates cursor
-
-### Backfill (All Current Packages)
-
-Download all current packages from the NDJSON endpoint:
-
-```bash
-uv run bioc-tracker backfill
-```
-
-Use `--limit N` for testing:
-
-```bash
-uv run bioc-tracker backfill --limit 10
-```
-
-### Check Status
-
-View cursor state and storage statistics:
-
-```bash
-uv run bioc-tracker status
-```
-
-### Options
-
-All commands support:
-- `--data-dir PATH` - Custom data directory (default: `data/`)
-- `--dry-run` - Show what would happen without saving
-- `-v, --verbose` - Enable debug logging
 
 ## Storage Format
 
@@ -112,3 +73,57 @@ The included workflow (`.github/workflows/sync.yml`) runs every 30 minutes to sy
 - `click` - CLI framework
 - `feedparser` - RSS parsing
 - `tenacity` - Retry logic
+
+## Installation
+
+Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
+
+```bash
+uv sync
+```
+
+## Usage
+
+### Incremental Sync (RSS Feed)
+
+Fetch new builds since the last sync:
+
+```bash
+uv run bioc-tracker sync
+```
+
+The sync command:
+- Loads the cursor (last processed timestamp)
+- Fetches the RSS feed
+- Downloads full package JSON for each new item
+- Saves to storage and updates cursor
+
+### Backfill (All Current Packages)
+
+Download all current packages from the NDJSON endpoint:
+
+```bash
+uv run bioc-tracker backfill
+```
+
+Use `--limit N` for testing:
+
+```bash
+uv run bioc-tracker backfill --limit 10
+```
+
+### Check Status
+
+View cursor state and storage statistics:
+
+```bash
+uv run bioc-tracker status
+```
+
+### Options
+
+All commands support:
+- `--data-dir PATH` - Custom data directory (default: `data/`)
+- `--dry-run` - Show what would happen without saving
+- `-v, --verbose` - Enable debug logging
+
