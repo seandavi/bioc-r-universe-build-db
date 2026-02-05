@@ -32,28 +32,35 @@ jobs:
         with:
           ref: main
 
-      - name: Checkout data branch
-        id: checkout-data
+      - name: Check if data branch exists
+        id: check-data-branch
+        run: |
+          if git ls-remote --exit-code --heads origin data; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout existing data branch
+        if: steps.check-data-branch.outputs.exists == 'true'
         uses: actions/checkout@v4
         with:
           ref: data
           path: data-branch
-        continue-on-error: true
 
-      - name: Create data branch if it doesn't exist
-        if: steps.checkout-data.outcome == 'failure'
+      - name: Create new data branch
+        if: steps.check-data-branch.outputs.exists == 'false'
         run: |
-          mkdir -p data-branch
+          git clone --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git data-branch
           cd data-branch
-          git init
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git checkout -b data
-          # Create initial commit so we can push
+          git checkout --orphan data
+          git rm -rf .
           echo "# Bioconductor Build Data" > README.md
           git add README.md
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "Initialize data branch"
+          git push origin data
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
@@ -81,9 +88,6 @@ jobs:
           cd data-branch
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Set remote URL with token for push
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git || true
 
           # Check if there are any changes
           if [ -n "$(git status --porcelain)" ]; then
