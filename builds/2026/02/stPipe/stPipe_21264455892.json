@@ -1,0 +1,958 @@
+{
+  "Package": "stPipe",
+  "Type": "Package",
+  "Title": "Upstream pre-processing for Sequencing-Based Spatial\nTranscriptomics",
+  "Version": "1.1.2",
+  "Authors@R": "c(person(\"Yang\", \"Xu\", role=c(\"aut\", \"cre\"), email=\"xu.ya@wehi.edu.au\", comment=c(ORCID=\"0009-0008-3274-6516\")), \nperson(\"Callum\", \"Sargeant\", role=c(\"aut\"), email=\"sargeant.ca@wehi.edu.au\"),\nperson(\"Shian\", \"Su\", role=c(\"aut\"), email=\"su.s@wehi.edu.au\"),\nperson(\"Luyi\", \"Tian\", role=c(\"aut\"), email=\"tian.l@wehi.edu.au\"),\nperson(\"Yunshun\", \"Chen\", role=c(\"ctb\"), email=\"yuchen@wehi.edu.au\"),\nperson(\"Matthew\", \"Ritchie\", role=c(\"ctb\", \"fnd\"), email=\"mritchie@wehi.edu.au\"))",
+  "biocViews": "ImmunoOncology, Software, Sequencing, RNASeq,\nGeneExpression, SingleCell, Visualization, SequenceMatching,\nPreprocessing, QualityControl, GenomeAnnotation, DataImport,\nSpatial, Transcriptomics, Clustering",
+  "Description": "This package serves as an upstream pipeline for\npre-processing sequencing-based spatial transcriptomics data.\nFunctions includes FASTQ trimming, BAM file reformatting, index\nbuilding, spatial barcode detection, demultiplexing, gene count\nmatrix generation with UMI deduplication, QC, and revelant\nvisualization. Config is an essential input for most of the\nfunctions which aims to improve reproducibility.",
+  "SystemRequirements": "GNU make",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "URL": "https://github.com/mritchielab/stPipe",
+  "BugReports": "https://github.com/mritchielab/stPipe/issues/new",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libglpk-dev make libmagick++-dev gsfonts libbz2-dev\nlibicu-dev liblzma-dev libpng-dev libxml2-dev libssl-dev\npython3 xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-11-20 05:26:43 UTC",
+  "RemoteUrl": "https://github.com/bioc/stPipe",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-01-22 21:07:56 UTC",
+    "User": "root"
+  },
+  "Author": "Yang Xu [aut, cre] (ORCID: <https://orcid.org/0009-0008-3274-6516>),\nCallum Sargeant [aut],\nShian Su [aut],\nLuyi Tian [aut],\nYunshun Chen [ctb],\nMatthew Ritchie [ctb, fnd]",
+  "Maintainer": "Yang Xu <xu.ya@wehi.edu.au>",
+  "MD5sum": "bccec0b09c8320d70a2a7d3b31f904cb",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "stPipe_1.1.2.tar.gz",
+  "_fileid": "b655d4b4a75c515b76ca311d8f7b969eb8a0c1f603f89cdb16f1d367aa6eda34",
+  "_filesize": 6035390,
+  "_sha256": "b655d4b4a75c515b76ca311d8f7b969eb8a0c1f603f89cdb16f1d367aa6eda34",
+  "_created": "2026-01-22T21:07:56.000Z",
+  "_published": "2026-01-22T22:00:48.297Z",
+  "_jobs": [
+    {
+      "job": 61201729219,
+      "time": 291,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225779243"
+    },
+    {
+      "job": 61201729254,
+      "time": 541,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225829604"
+    },
+    {
+      "job": 61201729265,
+      "time": 675,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225854025"
+    },
+    {
+      "job": 61201729240,
+      "time": 473,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225816200"
+    },
+    {
+      "job": 61201729253,
+      "time": 638,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225846966"
+    },
+    {
+      "job": 61201729269,
+      "time": 443,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5226272538"
+    },
+    {
+      "job": 61201729282,
+      "time": 895,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5225896019"
+    },
+    {
+      "job": 61201729249,
+      "time": 603,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5226302527"
+    },
+    {
+      "job": 61201729264,
+      "time": 814,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225879999"
+    },
+    {
+      "job": 61200029180,
+      "time": 1004,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5225719977"
+    },
+    {
+      "job": 61201729300,
+      "time": 276,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 61201729232,
+      "time": 517,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225824481"
+    },
+    {
+      "job": 61201729215,
+      "time": 574,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5225835572"
+    },
+    {
+      "job": 61201729256,
+      "time": 514,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225823944"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/stPipe",
+  "_commit": {
+    "id": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+    "author": "YangXuuu <xuyang1121wws@gmail.com>",
+    "committer": "YangXuuu <xuyang1121wws@gmail.com>",
+    "message": "Fix testthat bug.\n",
+    "time": 1763616403
+  },
+  "_maintainer": {
+    "name": "Yang Xu",
+    "email": "xu.ya@wehi.edu.au"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rhdf5lib",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "testthat",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rhtslib",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "basilisk",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "DropletUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "pbmcapply",
+      "role": "Imports"
+    },
+    {
+      "package": "reticulate",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "Rhtslib",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsubread",
+      "role": "Imports"
+    },
+    {
+      "package": "Rtsne",
+      "role": "Imports"
+    },
+    {
+      "package": "Seurat",
+      "role": "Imports"
+    },
+    {
+      "package": "SeuratObject",
+      "role": "Imports"
+    },
+    {
+      "package": "scPipe",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "umap",
+      "role": "Imports"
+    },
+    {
+      "package": "yaml",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "plotly",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-04",
+      "n": 8
+    },
+    {
+      "week": "2025-05",
+      "n": 5
+    },
+    {
+      "week": "2025-09",
+      "n": 6
+    },
+    {
+      "week": "2025-10",
+      "n": 3
+    },
+    {
+      "week": "2025-13",
+      "n": 9
+    },
+    {
+      "week": "2025-14",
+      "n": 6
+    },
+    {
+      "week": "2025-25",
+      "n": 4
+    },
+    {
+      "week": "2025-27",
+      "n": 7
+    },
+    {
+      "week": "2025-30",
+      "n": 2
+    },
+    {
+      "week": "2025-31",
+      "n": 2
+    },
+    {
+      "week": "2025-36",
+      "n": 1
+    },
+    {
+      "week": "2025-42",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2025-47",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.2",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "software",
+    "sequencing",
+    "rnaseq",
+    "geneexpression",
+    "singlecell",
+    "visualization",
+    "sequencematching",
+    "preprocessing",
+    "qualitycontrol",
+    "genomeannotation",
+    "dataimport",
+    "spatial",
+    "transcriptomics",
+    "clustering",
+    "zlib",
+    "cpp"
+  ],
+  "_stars": 4,
+  "_contributors": [
+    {
+      "user": "yangxuuu",
+      "count": 115,
+      "uuid": 92423698
+    },
+    {
+      "user": "mritchie",
+      "count": 3,
+      "uuid": 965474
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 170,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/stPipe"
+  },
+  "_devurl": "https://github.com/mritchielab/stpipe",
+  "_searchresults": 3,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/stPipe.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/mritchielab/stpipe",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "Run_Clustering",
+    "Run_Create_Obj",
+    "Run_HTML",
+    "Run_Interactive",
+    "Run_Loc_Match",
+    "Run_QC",
+    "Run_ST",
+    "Run_Visualization"
+  ],
+  "_help": [
+    {
+      "page": "Run_Clustering",
+      "title": "Perform Basic Clustering Algorithms",
+      "topics": [
+        "Run_Clustering"
+      ]
+    },
+    {
+      "page": "Run_Create_Obj",
+      "title": "This function creates specified spatial transcriptomics data object for further personalized downstream analysis",
+      "topics": [
+        "Run_Create_Obj"
+      ]
+    },
+    {
+      "page": "Run_HTML",
+      "title": "HTML report generation in RMarkDown format",
+      "topics": [
+        "Run_HTML"
+      ]
+    },
+    {
+      "page": "Run_Interactive",
+      "title": "Interactive Visualization for Spatial Transcriptomics Data and spot plot with save functionality",
+      "topics": [
+        "Run_Interactive"
+      ]
+    },
+    {
+      "page": "Run_Loc_Match",
+      "title": "Match spatial location After Pre-Processing for Sequencing-Based Spatial Transcriptomics",
+      "topics": [
+        "Run_Loc_Match"
+      ]
+    },
+    {
+      "page": "Run_QC",
+      "title": "QC Control After Upstream Pre-Processing for Sequencing-Based Spatial Transcriptomics",
+      "topics": [
+        "Run_QC"
+      ]
+    },
+    {
+      "page": "Run_ST",
+      "title": "Pre-processing function for sequencing-based spatial transcriptomics",
+      "topics": [
+        "Run_ST"
+      ]
+    },
+    {
+      "page": "Run_Visualization",
+      "title": "Visualize pre-processed sST data",
+      "topics": [
+        "Run_Visualization"
+      ]
+    },
+    {
+      "page": "stPipe",
+      "title": "stPipe: A package for pre-processing sequencing-based spatial transcriptomics data.",
+      "topics": [
+        "stPipe-package",
+        "stPipe"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/stPipe/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "assorthead",
+    "base64enc",
+    "basilisk",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "brio",
+    "bslib",
+    "cachem",
+    "callr",
+    "caTools",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "commonmark",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "deldir",
+    "DEoptimR",
+    "desc",
+    "diffobj",
+    "digest",
+    "dir.expiry",
+    "dotCall64",
+    "dplyr",
+    "dqrng",
+    "DropletUtils",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "fastDummies",
+    "fastmap",
+    "filelock",
+    "fitdistrplus",
+    "flexmix",
+    "FNN",
+    "fontawesome",
+    "forcats",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "GGally",
+    "ggplot2",
+    "ggrepel",
+    "ggridges",
+    "ggstats",
+    "globals",
+    "glue",
+    "goftest",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "h5mread",
+    "hash",
+    "HDF5Array",
+    "here",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "ica",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "listenv",
+    "lmtest",
+    "locfit",
+    "magick",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mclust",
+    "memoise",
+    "mime",
+    "miniUI",
+    "modeltools",
+    "MultiAssayExperiment",
+    "nlme",
+    "nnet",
+    "openssl",
+    "org.Hs.eg.db",
+    "org.Mm.eg.db",
+    "otel",
+    "parallelly",
+    "patchwork",
+    "pbapply",
+    "pbmcapply",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "pkgload",
+    "plogr",
+    "plotly",
+    "plyr",
+    "png",
+    "polyclip",
+    "praise",
+    "prettyunits",
+    "processx",
+    "progress",
+    "progressr",
+    "promises",
+    "ps",
+    "purrr",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "RANN",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppHNSW",
+    "RcppProgress",
+    "RcppTOML",
+    "RCurl",
+    "reshape",
+    "reshape2",
+    "restfulr",
+    "reticulate",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "robustbase",
+    "ROCR",
+    "rprojroot",
+    "Rsamtools",
+    "RSpectra",
+    "RSQLite",
+    "Rsubread",
+    "rtracklayer",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scattermore",
+    "scPipe",
+    "sctransform",
+    "scuttle",
+    "Seqinfo",
+    "Seurat",
+    "SeuratObject",
+    "shiny",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "sourcetools",
+    "sp",
+    "spam",
+    "SparseArray",
+    "sparseMatrixStats",
+    "SpatialExperiment",
+    "spatstat.data",
+    "spatstat.explore",
+    "spatstat.geom",
+    "spatstat.random",
+    "spatstat.sparse",
+    "spatstat.univar",
+    "spatstat.utils",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tensor",
+    "testthat",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "umap",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "viridisLite",
+    "waldo",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libz",
+      "package": "zlib1g",
+      "headers": "zlib1g-dev",
+      "source": "zlib",
+      "version": "1:1.3.dfsg-3.1ubuntu2.1",
+      "name": "zlib",
+      "homepage": "http://zlib.net/",
+      "description": "compression library - runtime"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "stPipe-vignette.Rmd",
+      "filename": "stPipe-vignette.html",
+      "title": "stPipe: A flexible and streamlined pipeline for processing sequencing-based spatial transcriptomics data",
+      "author": "Yang Xu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction to stPipe package",
+        "Platform introduction 1: 10X Visium",
+        "Platform introduction 2: Slide-seq / Curio-seeker",
+        "Platform introduction 3: BGI Stereo-seq",
+        "Table Summary for mainstream sST platforms",
+        "figure",
+        "Case Study 1: Preprocessing 10X Visium data",
+        "Getting started",
+        "Organising config file & data for stPipe::Run_ST",
+        "Organising config file for stPipe::Run_Loc_Match",
+        "Organising config file for stPipe::Run_QC",
+        "Organising config file for stPipe::Run_Clustering",
+        "Organising config file for stPipe::Run_Interactive",
+        "Organising config file for stPipe::Run_Visualization",
+        "Summary report and downstream object"
+      ],
+      "created": "2024-09-13 06:26:08",
+      "modified": "2025-07-04 05:53:25",
+      "commits": 9
+    }
+  ],
+  "_score": 5.447158031342219,
+  "_indexed": true,
+  "_nocasepkg": "stpipe",
+  "_universes": [
+    "bioc",
+    "mritchielab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:13:19.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "e3c79e31f6a9cece7b4b6ba86e4d021ca701ba3ee8e07878a6e6e0f829155609",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:14:07.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "e2f609c79ae6d445c20f5896d2d767bbb6480fbd6470b2e5623619b223148ba7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:12:21.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "72f1dc2002486a63cb33823022e0df731237ff4fe6ec9fa28d8366fb45a1cadd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:13:33.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "7e5e5fbe21e68debb3edb225bc3def427248026ee754d8f09792d05c98827801",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:52:48.000Z",
+      "arch": "aarch64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "dc863e9b061ca4d73761041b208109bd15628377327ef59e3ee0c77b7c7b3f21",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:13:32.000Z",
+      "arch": "x86_64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "c8c1e44e3f7ccd5ea48fb8eae5c4248f0fee3f17a2edd600c3bb4a88fbd2d21e",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:53:00.000Z",
+      "arch": "aarch64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "248ec052b4136cff53f835cbaea14769119879e66cd517a23146c28ffec4a81a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:12:08.000Z",
+      "arch": "x86_64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "f5988df23e1cbb513f93c31ab8f42bdc430f12f73cf6b3b13369fef172f7bbbd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:11:07.000Z",
+      "arch": "x86_64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "cc2e833910e430ce26ca784e49274f6440debfab13a895b30c75b64e0b7e94e6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:11:58.000Z",
+      "arch": "x86_64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "bbdada2a5083ee902d328495697415e32ae8d05c219f03fd2424ce0ab60d4956",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.2",
+      "date": "2026-01-22T21:11:03.000Z",
+      "arch": "x86_64",
+      "commit": "4830cb839910fd2912352bd4aad7ca68dbc97275",
+      "fileid": "26d48868425670b8e738bdf542180c6a19ac09054233776ae909ec92f81ecd6f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264455892"
+    }
+  ]
+}

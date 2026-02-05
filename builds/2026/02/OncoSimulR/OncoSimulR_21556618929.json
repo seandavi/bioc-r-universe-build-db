@@ -1,0 +1,1593 @@
+{
+  "Package": "OncoSimulR",
+  "Type": "Package",
+  "Title": "Forward Genetic Simulation of Cancer Progression with Epistasis",
+  "Version": "4.13.1",
+  "Date": "2026-01-31",
+  "Authors@R": "c(\nperson(\"Ramon\", \"Diaz-Uriarte\", role = c(\"aut\", \"cre\"),\nemail = \"rdiaz02@gmail.com\"),\nperson(\"Sergio\", \"Sanchez-Carrillo\", role = \"aut\",\nemail = \"sergiosanchezcarrillo@gmail.com\"),\nperson(\"Juan Antonio\", \"Miguel Gonzalez\", role = \"aut\",\nemail = \"juanantonio.miguel792@gmail.com\"),\nperson(\"Mark\", \"Taylor\", role = \"ctb\",\nemail = \"ningkiling@gmail.com\",\ncomment = \"plot.stream, plot.stacked\"),\nperson(\"Niklas\", \"Endres\", role = \"ctb\",\ncomment = \"vignette examples, freq-dep-fitness time\"),\nperson(\"Javier\", \"Mu~noz Haro\", role = \"aut\",\ncomment = \"interventions\"),\nperson(\"Alberto\", \"Gonzalez Klein\", role = \"aut\",\ncomment = \"user-specified death rates\"),\nperson(\"Javier\", \"Lopez Cano\", role = \"aut\",\ncomment = \"user-defined variables\"),\nperson(\"Arash\", \"Partow\", role = \"ctb\", comment = \"ExprTk\"),\nperson(\"Sophie\", \"Brouillet\", role = \"ctb\", comment = \"MAGELLAN\"),\nperson(\"Sebastian\", \"Matuszewski\", role = \"ctb\",\ncomment = \"MAGELLAN\"),\nperson(\"Harry\", \"Annoni\", role = \"ctb\", comment = \"MAGELLAN\"),\nperson(\"Luca\", \"Ferretti\", role = \"ctb\", comment = \"MAGELLAN\"),\nperson(\"Guillaume\", \"Achaz\", role = \"ctb\", comment = \"MAGELLAN\"),\nperson(\"Wolodzko\", \"Tymoteusz\", role = \"ctb\", comment = \"multivariate hypergeometric\"),\nperson(\"Guillermo\", \"Gorines Cordero\", role = \"ctb\",\ncomment = \"rfitness\"),\nperson(\"Ivan\", \"Lorca Alonso\", role = \"ctb\",\ncomment = \"rfitness\"),\nperson(\"Francisco\", \"Mu~noz Lopez\", role = \"ctb\",\ncomment = \"rfitness\"),\nperson(\"David\", \"Roncero Moro~no\", role = \"ctb\",\ncomment = \"rfitness\"),\nperson(\"Alvaro\" , \"Quevedo\" , role = \"ctb\", comment = \"rfitness\"),\nperson(\"Pablo\" ,\"Perez\" , role = \"ctb\", comment = \"rfitness\"),\nperson(\"Cristina\" ,\"Devesa\" , role = \"ctb\", comment = \"rfitness\"),\nperson(\"Alejandro\", \"Herrador\" , role = \"ctb\",\ncomment = \"rfitness\"),\nperson(\"Holger\", \"Froehlich\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Florian\", \"Markowetz\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Achim\", \"Tresch\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Theresa\", \"Niederberger\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Christian\", \"Bender\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Matthias\", \"Maneck\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Claudio\", \"Lottaz\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Tim\", \"Beissbarth\", role = \"ctb\",\ncomment = \"simOGraph (transitive closure)\"),\nperson(\"Sara\", \"Dorado Alfaro\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Miguel\", \"Hernandez del Valle\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Alvaro\", \"Huertas Garcia\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Diego\", \"Ma~nanes Cayero\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Alejandro\", \"Martin Mu~noz\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Marta\", \"Couce Iglesias\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Silvia\", \"Garcia Cobos\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Carlos\", \"Madariaga Aramendi\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Ana\", \"Rodriguez Ronchel\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Lucia\", \"Sanchez Garcia\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Yolanda\", \"Benitez Quesada\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Asier\", \"Fernandez Pato\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Esperanza\", \"Lopez Lopez\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Alberto Manuel\", \"Parra Perez\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Jorge\", \"Garcia Calleja\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Ana\", \"del Ramo Galian\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Alejandro\", \"de los Reyes Benitez\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Guillermo\", \"Garcia Hoyos\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Rosalia\", \"Palomino Cabrera\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Rafael\", \"Barrero Rodriguez\", role = \"ctb\",\ncomment = \"vignette examples\"),\nperson(\"Silvia\", \"Talavera Marcos\", role = \"ctb\",\ncomment = \"vignette examples\")\n)",
+  "Maintainer": "Ramon Diaz-Uriarte <rdiaz02@gmail.com>",
+  "Description": "Functions for forward population genetic simulation in\nasexual populations, with special focus on cancer progression.\nFitness can be an arbitrary function of genetic interactions\nbetween multiple genes or modules of genes, including\nepistasis, order restrictions in mutation accumulation, and\norder effects. Fitness (including just birth, just death, or\nboth birth and death) can also be a function of the relative\nand absolute frequencies of other genotypes (i.e.,\nfrequency-dependent fitness). Mutation rates can differ between\ngenes, and we can include mutator/antimutator genes (to model\nmutator phenotypes). Simulating multi-species scenarios and\ntherapeutic interventions, including adaptive therapy, is also\npossible. Simulations use continuous-time models and can\ninclude driver and passenger genes and modules. Also included\nare functions for: simulating random DAGs of the type found in\nOncogenetic Trees, Conjunctive Bayesian Networks, and other\ncancer progression models; plotting and sampling from single or\nmultiple realizations of the simulations, including single-cell\nsampling; plotting the parent-child relationships of the\nclones; generating random fitness landscapes (Rough Mount Fuji,\nHouse of Cards, additive, NK, Ising, and Eggbox models) and\nplotting them.",
+  "biocViews": "BiologicalQuestion, SomaticMutation",
+  "License": "GPL (>= 3)",
+  "URL": "https://github.com/rdiaz02/OncoSimul,\nhttps://popmodels.cancercontrol.cancer.gov/gsr/packages/oncosimulr/",
+  "BugReports": "https://github.com/rdiaz02/OncoSimul/issues",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "cmake libglpk-dev make libicu-dev libxml2-dev\nlibssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-31 14:01:26 UTC",
+  "RemoteUrl": "https://github.com/bioc/OncoSimulR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-01 04:35:56 UTC",
+    "User": "root"
+  },
+  "Author": "Ramon Diaz-Uriarte [aut, cre],\nSergio Sanchez-Carrillo [aut],\nJuan Antonio Miguel Gonzalez [aut],\nMark Taylor [ctb] (plot.stream, plot.stacked),\nNiklas Endres [ctb] (vignette examples, freq-dep-fitness time),\nJavier Mu~noz Haro [aut] (interventions),\nAlberto Gonzalez Klein [aut] (user-specified death rates),\nJavier Lopez Cano [aut] (user-defined variables),\nArash Partow [ctb] (ExprTk),\nSophie Brouillet [ctb] (MAGELLAN),\nSebastian Matuszewski [ctb] (MAGELLAN),\nHarry Annoni [ctb] (MAGELLAN),\nLuca Ferretti [ctb] (MAGELLAN),\nGuillaume Achaz [ctb] (MAGELLAN),\nWolodzko Tymoteusz [ctb] (multivariate hypergeometric),\nGuillermo Gorines Cordero [ctb] (rfitness),\nIvan Lorca Alonso [ctb] (rfitness),\nFrancisco Mu~noz Lopez [ctb] (rfitness),\nDavid Roncero Moro~no [ctb] (rfitness),\nAlvaro Quevedo [ctb] (rfitness),\nPablo Perez [ctb] (rfitness),\nCristina Devesa [ctb] (rfitness),\nAlejandro Herrador [ctb] (rfitness),\nHolger Froehlich [ctb] (simOGraph (transitive closure)),\nFlorian Markowetz [ctb] (simOGraph (transitive closure)),\nAchim Tresch [ctb] (simOGraph (transitive closure)),\nTheresa Niederberger [ctb] (simOGraph (transitive closure)),\nChristian Bender [ctb] (simOGraph (transitive closure)),\nMatthias Maneck [ctb] (simOGraph (transitive closure)),\nClaudio Lottaz [ctb] (simOGraph (transitive closure)),\nTim Beissbarth [ctb] (simOGraph (transitive closure)),\nSara Dorado Alfaro [ctb] (vignette examples),\nMiguel Hernandez del Valle [ctb] (vignette examples),\nAlvaro Huertas Garcia [ctb] (vignette examples),\nDiego Ma~nanes Cayero [ctb] (vignette examples),\nAlejandro Martin Mu~noz [ctb] (vignette examples),\nMarta Couce Iglesias [ctb] (vignette examples),\nSilvia Garcia Cobos [ctb] (vignette examples),\nCarlos Madariaga Aramendi [ctb] (vignette examples),\nAna Rodriguez Ronchel [ctb] (vignette examples),\nLucia Sanchez Garcia [ctb] (vignette examples),\nYolanda Benitez Quesada [ctb] (vignette examples),\nAsier Fernandez Pato [ctb] (vignette examples),\nEsperanza Lopez Lopez [ctb] (vignette examples),\nAlberto Manuel Parra Perez [ctb] (vignette examples),\nJorge Garcia Calleja [ctb] (vignette examples),\nAna del Ramo Galian [ctb] (vignette examples),\nAlejandro de los Reyes Benitez [ctb] (vignette examples),\nGuillermo Garcia Hoyos [ctb] (vignette examples),\nRosalia Palomino Cabrera [ctb] (vignette examples),\nRafael Barrero Rodriguez [ctb] (vignette examples),\nSilvia Talavera Marcos [ctb] (vignette examples)",
+  "MD5sum": "56893720149167b0e517d3c72ac8faa6",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "OncoSimulR_4.13.1.tar.gz",
+  "_fileid": "cfa6a79644c366b8abeb28f943511498df3d21c4862c9a39248abf62e1bba026",
+  "_filesize": 16721332,
+  "_sha256": "cfa6a79644c366b8abeb28f943511498df3d21c4862c9a39248abf62e1bba026",
+  "_created": "2026-02-01T04:35:56.000Z",
+  "_published": "2026-02-03T04:01:34.952Z",
+  "_jobs": [
+    {
+      "job": 62295716528,
+      "time": 269,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5352070273"
+    },
+    {
+      "job": 62295716791,
+      "time": 380,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5332116391"
+    },
+    {
+      "job": 62295716726,
+      "time": 433,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5332119860"
+    },
+    {
+      "job": 62295716859,
+      "time": 361,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5332115080"
+    },
+    {
+      "job": 62295716715,
+      "time": 427,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5332119454"
+    },
+    {
+      "job": 62295716633,
+      "time": 165,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62295716760,
+      "time": 561,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5332130262"
+    },
+    {
+      "job": 62295716796,
+      "time": 322,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5332112215"
+    },
+    {
+      "job": 62295716741,
+      "time": 645,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5332136838"
+    },
+    {
+      "job": 62295716628,
+      "time": 482,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5332090893"
+    },
+    {
+      "job": 62295716511,
+      "time": 167,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62295716688,
+      "time": 508,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5332125916"
+    },
+    {
+      "job": 62295716801,
+      "time": 512,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5332126168"
+    },
+    {
+      "job": 62295716711,
+      "time": 631,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5332135912"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 3,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/OncoSimulR",
+  "_commit": {
+    "id": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+    "author": "Ramon @ Triturus <no_specific_email>",
+    "committer": "Ramon @ Triturus <no_specific_email>",
+    "message": "v. 4.13.1: fixed NOTEs from R CMD check --as-cran\n",
+    "time": 1769868086
+  },
+  "_maintainer": {
+    "name": "Ramon Diaz-Uriarte",
+    "email": "rdiaz02@gmail.com",
+    "login": "rdiaz02",
+    "uuid": 1688611
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.4",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "graph",
+      "role": "Imports"
+    },
+    {
+      "package": "Rgraphviz",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "car",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "smatr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "Oncotree",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 1.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "bookdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "pander",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-10",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-24",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-05",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "4.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "4.12.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "biologicalquestion",
+    "somaticmutation",
+    "cpp"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "rdiaz02",
+      "count": 2318,
+      "uuid": 1688611
+    },
+    {
+      "user": "sersancar",
+      "count": 135,
+      "uuid": 18441900
+    },
+    {
+      "user": "albertogk",
+      "count": 34,
+      "uuid": 32075781
+    },
+    {
+      "user": "german00vp",
+      "count": 29,
+      "uuid": 121015636
+    },
+    {
+      "user": "javierlopezc",
+      "count": 22,
+      "uuid": 25841921
+    },
+    {
+      "user": "aqvd",
+      "count": 18,
+      "uuid": 59310626
+    },
+    {
+      "user": "carlosmada22",
+      "count": 9,
+      "uuid": 18532414
+    },
+    {
+      "user": "albertompp",
+      "count": 6,
+      "uuid": 59636474
+    },
+    {
+      "user": "jorgegarciac",
+      "count": 2,
+      "uuid": 29500817
+    },
+    {
+      "user": "arashpartow",
+      "count": 1,
+      "uuid": 513642
+    },
+    {
+      "user": "javiergc08",
+      "count": 1,
+      "uuid": 121015542
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 385,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/OncoSimulR"
+  },
+  "_mentions": 3,
+  "_devurl": "https://github.com/rdiaz02/oncosimul",
+  "_searchresults": 67,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/OncoSimulR.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/rdiaz02/oncosimul",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "allFitnessEffects",
+    "allMutatorEffects",
+    "createInterventions",
+    "createRules",
+    "createUserVars",
+    "diversityLOD",
+    "diversityPOM",
+    "evalAllGenotypes",
+    "evalAllGenotypesFitAndMut",
+    "evalAllGenotypesMut",
+    "evalGenotype",
+    "evalGenotypeFitAndMut",
+    "evalGenotypeMut",
+    "LOD",
+    "Magellan_stats",
+    "oncoSimulIndiv",
+    "oncoSimulPop",
+    "oncoSimulSample",
+    "OncoSimulWide2Long",
+    "plotClonePhylog",
+    "plotFitnessLandscape",
+    "plotPoset",
+    "POM",
+    "rfitness",
+    "sampledGenotypes",
+    "samplePop",
+    "simOGraph",
+    "to_Magellan"
+  ],
+  "_datasets": [
+    {
+      "name": "atex2b",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "atex2b",
+      "file": "atex2b.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "atex4",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "atex4",
+      "file": "atex4.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "atex5",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "atex5",
+      "file": "atex5.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "benchmark_1",
+      "title": "Summary results from some benchmarks reported in the vignette.",
+      "object": "benchmark_1",
+      "file": "benchmark_1.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "NumClones.Min.",
+        "NumClones.1st.Qu.",
+        "NumClones.Median",
+        "NumClones.Mean",
+        "NumClones.3rd.Qu.",
+        "NumClones.Max.",
+        "NumIter.Min.",
+        "NumIter.1st.Qu.",
+        "NumIter.Median",
+        "NumIter.Mean",
+        "NumIter.3rd.Qu.",
+        "NumIter.Max.",
+        "FinalTime.Min.",
+        "FinalTime.1st.Qu.",
+        "FinalTime.Median",
+        "FinalTime.Mean",
+        "FinalTime.3rd.Qu.",
+        "FinalTime.Max.",
+        "TotalPopSize.Min.",
+        "TotalPopSize.1st.Qu.",
+        "TotalPopSize.Median",
+        "TotalPopSize.Mean",
+        "TotalPopSize.3rd.Qu.",
+        "TotalPopSize.Max.",
+        "Attempts.Min.",
+        "Attempts.1st.Qu.",
+        "Attempts.Median",
+        "Attempts.Mean",
+        "Attempts.3rd.Qu.",
+        "Attempts.Max.",
+        "size",
+        "time",
+        "Numindiv",
+        "time_per_simul",
+        "size_mb_per_simul",
+        "keepEvery",
+        "PDBaseline",
+        "n2",
+        "onlyCancer"
+      ],
+      "rows": 16,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "benchmark_1_0.05",
+      "title": "Summary results from some benchmarks reported in the vignette.",
+      "object": "benchmark_1_0.05",
+      "file": "benchmark_1_0.05.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "NumClones.Min.",
+        "NumClones.1st.Qu.",
+        "NumClones.Median",
+        "NumClones.Mean",
+        "NumClones.3rd.Qu.",
+        "NumClones.Max.",
+        "NumIter.Min.",
+        "NumIter.1st.Qu.",
+        "NumIter.Median",
+        "NumIter.Mean",
+        "NumIter.3rd.Qu.",
+        "NumIter.Max.",
+        "FinalTime.Min.",
+        "FinalTime.1st.Qu.",
+        "FinalTime.Median",
+        "FinalTime.Mean",
+        "FinalTime.3rd.Qu.",
+        "FinalTime.Max.",
+        "TotalPopSize.Min.",
+        "TotalPopSize.1st.Qu.",
+        "TotalPopSize.Median",
+        "TotalPopSize.Mean",
+        "TotalPopSize.3rd.Qu.",
+        "TotalPopSize.Max.",
+        "Attempts.Min.",
+        "Attempts.1st.Qu.",
+        "Attempts.Median",
+        "Attempts.Mean",
+        "Attempts.3rd.Qu.",
+        "Attempts.Max.",
+        "size",
+        "time",
+        "Numindiv",
+        "time_per_simul",
+        "size_mb_per_simul",
+        "keepEvery",
+        "PDBaseline",
+        "n2",
+        "onlyCancer"
+      ],
+      "rows": 16,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "benchmark_2",
+      "title": "Summary results from some benchmarks reported in the vignette.",
+      "object": "benchmark_2",
+      "file": "benchmark_2.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "NumClones.Min.",
+        "NumClones.1st.Qu.",
+        "NumClones.Median",
+        "NumClones.Mean",
+        "NumClones.3rd.Qu.",
+        "NumClones.Max.",
+        "NumIter.Min.",
+        "NumIter.1st.Qu.",
+        "NumIter.Median",
+        "NumIter.Mean",
+        "NumIter.3rd.Qu.",
+        "NumIter.Max.",
+        "FinalTime.Min.",
+        "FinalTime.1st.Qu.",
+        "FinalTime.Median",
+        "FinalTime.Mean",
+        "FinalTime.3rd.Qu.",
+        "FinalTime.Max.",
+        "TotalPopSize.Min.",
+        "TotalPopSize.1st.Qu.",
+        "TotalPopSize.Median",
+        "TotalPopSize.Mean",
+        "TotalPopSize.3rd.Qu.",
+        "TotalPopSize.Max.",
+        "Attempts.Min.",
+        "Attempts.1st.Qu.",
+        "Attempts.Median",
+        "Attempts.Mean",
+        "Attempts.3rd.Qu.",
+        "Attempts.Max.",
+        "size",
+        "time",
+        "Numindiv",
+        "time_per_simul",
+        "size_mb_per_simul",
+        "name",
+        "Model",
+        "fitness"
+      ],
+      "rows": 14,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "benchmark_3",
+      "title": "Summary results from some benchmarks reported in the vignette.",
+      "object": "benchmark_3",
+      "file": "benchmark_3.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "NumClones.Min.",
+        "NumClones.1st.Qu.",
+        "NumClones.Median",
+        "NumClones.Mean",
+        "NumClones.3rd.Qu.",
+        "NumClones.Max.",
+        "NumIter.Min.",
+        "NumIter.1st.Qu.",
+        "NumIter.Median",
+        "NumIter.Mean",
+        "NumIter.3rd.Qu.",
+        "NumIter.Max.",
+        "FinalTime.Min.",
+        "FinalTime.1st.Qu.",
+        "FinalTime.Median",
+        "FinalTime.Mean",
+        "FinalTime.3rd.Qu.",
+        "FinalTime.Max.",
+        "TotalPopSize.Min.",
+        "TotalPopSize.1st.Qu.",
+        "TotalPopSize.Median",
+        "TotalPopSize.Mean",
+        "TotalPopSize.3rd.Qu.",
+        "TotalPopSize.Max.",
+        "Attempts.Min.",
+        "Attempts.1st.Qu.",
+        "Attempts.Median",
+        "Attempts.Mean",
+        "Attempts.3rd.Qu.",
+        "Attempts.Max.",
+        "size",
+        "time",
+        "Numindiv",
+        "time_per_simul",
+        "size_mb_per_simul",
+        "name",
+        "Model",
+        "fitness"
+      ],
+      "rows": 14,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "ex_missing_drivers_b11",
+      "title": "An example where there are intermediate missing drivers.",
+      "object": "ex_missing_drivers_b11",
+      "file": "ex_missing_drivers_b11.RData",
+      "class": [
+        "oncosimul"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ex_missing_drivers_b12",
+      "title": "An example where there are intermediate missing drivers.",
+      "object": "ex_missing_drivers_b12",
+      "file": "ex_missing_drivers_b12.RData",
+      "class": [
+        "oncosimul"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "examplePosets",
+      "title": "Example posets",
+      "object": "examplePosets",
+      "file": "examplePosets.RData",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "examplesFitnessEffects",
+      "title": "Examples of fitness effects",
+      "object": "examplesFitnessEffects",
+      "file": "examplesFitnessEffects.RData",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "mcfLs",
+      "title": "mcfLs simulation from the vignette",
+      "object": "mcfLs",
+      "file": "mcfLs.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "osi",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "osi",
+      "file": "osi.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "osi_with_ints",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "osi_with_ints",
+      "file": "osi_with_ints.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "s_3_a",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "s_3_a",
+      "file": "s_3_a.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "s_3_b",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "s_3_b",
+      "file": "s_3_b.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "simT2",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "simT2",
+      "file": "simT2.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "simT3",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "simT3",
+      "file": "simT3.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "simul_period_1",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "simul_period_1",
+      "file": "simul_period_1.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "smyelo3v57",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "smyelo3v57",
+      "file": "smyelo3v57.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "uvex2",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "uvex2",
+      "file": "uvex2.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "uvex3",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "object": "uvex3",
+      "file": "uvex3.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "woAntibS",
+      "title": "Runs from simulations of frequency-dependent examples shown in the vignette.",
+      "object": "woAntibS",
+      "file": "woAntibS.RData",
+      "class": [
+        "oncosimul",
+        "oncosimul2"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "allFitnessEffects",
+      "title": "Create fitness and mutation effects specification from restrictions, epistasis, and order effects.",
+      "topics": [
+        "allFitnessEffects",
+        "allMutatorEffects"
+      ]
+    },
+    {
+      "page": "benchmarks",
+      "title": "Summary results from some benchmarks reported in the vignette.",
+      "topics": [
+        "benchmark_1",
+        "benchmark_1_0.05",
+        "benchmark_2",
+        "benchmark_3"
+      ]
+    },
+    {
+      "page": "createInterventions",
+      "title": "Function that checks and creates an specification for interventions.",
+      "topics": [
+        "adapt_interventions_to_cpp",
+        "check_double_id",
+        "check_what_happens",
+        "createInterventions",
+        "transform_intervention",
+        "verify_interventions"
+      ]
+    },
+    {
+      "page": "createUserVars",
+      "title": "Functions that check and create specifications for user variables and rules.",
+      "topics": [
+        "adapt_rules_to_cpp",
+        "check_acttion",
+        "check_double_rule_id",
+        "check_same_name",
+        "createRules",
+        "createUserVars",
+        "transform_rule",
+        "verify_rules",
+        "verify_user_vars"
+      ]
+    },
+    {
+      "page": "evalAllGenotypes",
+      "title": "Evaluate fitness/mutator effects of one or all possible genotypes.",
+      "topics": [
+        "evalAllGenotypes",
+        "evalAllGenotypesFitAndMut",
+        "evalAllGenotypesMut",
+        "evalGenotype",
+        "evalGenotypeFitAndMut",
+        "evalGenotypeMut"
+      ]
+    },
+    {
+      "page": "example-missing-drivers",
+      "title": "An example where there are intermediate missing drivers.",
+      "topics": [
+        "ex_missing_drivers_b11",
+        "ex_missing_drivers_b12"
+      ]
+    },
+    {
+      "page": "examplePosets",
+      "title": "Example posets",
+      "topics": [
+        "examplePosets"
+      ]
+    },
+    {
+      "page": "examplesFitnessEffects",
+      "title": "Examples of fitness effects",
+      "topics": [
+        "examplesFitnessEffects"
+      ]
+    },
+    {
+      "page": "freq-dep-simul-examples",
+      "title": "Runs from simulations of frequency-dependent examples shown in the vignette.",
+      "topics": [
+        "woAntibS"
+      ]
+    },
+    {
+      "page": "mcfLs",
+      "title": "mcfLs simulation from the vignette",
+      "topics": [
+        "mcfLs"
+      ]
+    },
+    {
+      "page": "oncoSimulIndiv",
+      "title": "Simulate tumor progression for one or more individuals, optionally returning just a sample in time.",
+      "topics": [
+        "oncoSimulIndiv",
+        "oncoSimulPop",
+        "oncoSimulSample",
+        "print.oncosimul",
+        "print.oncosimulpop",
+        "summary.oncosimul",
+        "summary.oncosimulpop"
+      ]
+    },
+    {
+      "page": "OncoSimulWide2Long",
+      "title": "Convert the 'pops.by.time' component of an 'oncosimul' object into \"long\" format.",
+      "topics": [
+        "OncoSimulWide2Long"
+      ]
+    },
+    {
+      "page": "plot.fitnessEffects",
+      "title": "Plot fitnessEffects objects.",
+      "topics": [
+        "plot.fitnessEffects"
+      ]
+    },
+    {
+      "page": "plot.oncosimul",
+      "title": "Plot simulated tumor progression data.",
+      "topics": [
+        "plot.oncosimul",
+        "plot.oncosimulpop"
+      ]
+    },
+    {
+      "page": "plotClonePhylog",
+      "title": "Plot a parent-child relationship of the clones.",
+      "topics": [
+        "plotClonePhylog"
+      ]
+    },
+    {
+      "page": "plotFitnessLandscape",
+      "title": "Plot a fitness landscape.",
+      "topics": [
+        "plot.evalAllGenotypes",
+        "plot.evalAllGenotypesMut",
+        "plot.genotype_fitness_matrix",
+        "plotFitnessLandscape"
+      ]
+    },
+    {
+      "page": "plotPoset",
+      "title": "Plot a poset.",
+      "topics": [
+        "plotPoset"
+      ]
+    },
+    {
+      "page": "POM",
+      "title": "Obtain Lines of Descent and Paths of the Maximum and their diversity from simulations.",
+      "topics": [
+        "diversityLOD",
+        "diversityPOM",
+        "LOD",
+        "LOD.oncosimul2",
+        "LOD.oncosimulpop",
+        "POM",
+        "POM.oncosimul2",
+        "POM.oncosimulpop"
+      ]
+    },
+    {
+      "page": "poset",
+      "title": "Poset",
+      "topics": [
+        "poset"
+      ]
+    },
+    {
+      "page": "rfitness",
+      "title": "Generate random fitness.",
+      "topics": [
+        "rfitness"
+      ]
+    },
+    {
+      "page": "samplePop",
+      "title": "Obtain a sample from a population of simulations.",
+      "topics": [
+        "print.sampledGenotypes",
+        "sampledGenotypes",
+        "samplePop"
+      ]
+    },
+    {
+      "page": "simOGraph",
+      "title": "Simulate oncogenetic/CBN/XMPN DAGs.",
+      "topics": [
+        "simOGraph"
+      ]
+    },
+    {
+      "page": "to_Magellan",
+      "title": "Create output for MAGELLAN and obtain MAGELLAN statistics.",
+      "topics": [
+        "Magellan_stats",
+        "to_Magellan"
+      ]
+    },
+    {
+      "page": "vignette_pre_computed",
+      "title": "Runs from simulations of interventions examples shown in the vignette. Most, but not all, are from intervention examples.",
+      "topics": [
+        "atex2b",
+        "atex4",
+        "atex5",
+        "osi",
+        "osi_with_ints",
+        "simT2",
+        "simT3",
+        "simul_period_1",
+        "smyelo3v57",
+        "s_3_a",
+        "s_3_b",
+        "uvex2",
+        "uvex3"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "backports",
+    "BiocGenerics",
+    "boot",
+    "broom",
+    "car",
+    "carData",
+    "cli",
+    "colorspace",
+    "cowplot",
+    "cpp11",
+    "curl",
+    "data.table",
+    "Deriv",
+    "doBy",
+    "dplyr",
+    "farver",
+    "forecast",
+    "Formula",
+    "fracdiff",
+    "generics",
+    "ggplot2",
+    "ggrepel",
+    "glue",
+    "graph",
+    "gtable",
+    "gtools",
+    "igraph",
+    "isoband",
+    "jsonlite",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixModels",
+    "mgcv",
+    "microbenchmark",
+    "minqa",
+    "modelr",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "pbkrtest",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "R6",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "reformulas",
+    "Rgraphviz",
+    "rlang",
+    "S7",
+    "scales",
+    "smatr",
+    "SparseM",
+    "stringi",
+    "stringr",
+    "survival",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tseries",
+    "TTR",
+    "urca",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xts",
+    "zoo"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "OncoSimulR.Rmd",
+      "filename": "OncoSimulR.html",
+      "title": "OncoSimulR: forward genetic simulation in asexual populations with arbitrary epistatic interactions and a focus on modeling tumor progression.",
+      "author": "Ramon Diaz-Uriarte, Sergio Sanchez-Carrillo, Juan Antonio Miguel-Gonzalez, Javier L\u00f3pez Cano, Alberto Gonz\u00e1lez Klein, Javier Mu\u00f1oz Haro Department of Biochemistry, School of Medicine, Universidad Aut\u00f3noma de Madrid, and Instituto de Investigaciones Biom\u00e9dicas Sols-Morreale (IIBM), CSIC-UAM, Madrid, Spain.\\ r.diaz@uam.es, rdiaz02@gmail.com, https://ligarto.org/rdiaz",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Key features of OncoSimulR",
+        "What kinds of questions is OncoSimulR suited for?",
+        "Examples of questions that can be addressed with OncoSimulR",
+        "Recovering restrictions in the order of accumulation of mutations",
+        "Sign epistasis and probability of crossing fitness valleys",
+        "Predictability of evolution in complex fitness landscapes",
+        "Mutator and antimutator genes",
+        "Epistatic interactions between drivers and passengers in cancer and the consequences of order effects",
+        "Epistatic interactions between drivers and passengers",
+        "Consequences of order effects for cancer initiation",
+        "Simulating evolution with frequency-dependent fitness",
+        "Trade-offs and what is OncoSimulR not well suited for",
+        "Random fitness landscapes, clonal competition, predictability, and the strong selection weak mutation (SSWM) regime",
+        "Steps for using OncoSimulR",
+        "Two quick examples of fitness specifications",
+        "Citing OncoSimulR and other documentation",
+        "HTML and PDF versions of the vignette",
+        "Testing, code coverage, and other examples",
+        "Versions",
+        "Running time and space consumption of OncoSimulR",
+        "Exp and McFL with \"detectionProb\" and pancreas example",
+        "Changing fitness: $s=0.1$ and $s=0.05$",
+        "Several \"common use cases\" runs",
+        "Common use cases, set 1.",
+        "Common use cases, set 2.",
+        "Can we use a large number of genes?",
+        "Exponential model with 10,000 and 50,000 genes",
+        "Exponential, 10,000 genes, example 1",
+        "Exponential, 10,000 genes, example 2",
+        "Exponential,  50,000 genes, example 1",
+        "Exponential, 50,000 genes, example 2",
+        "Exponential,  50,000 genes, example 3",
+        "Interlude: where is that 1 GB coming from?",
+        "McFarland model with 50,000 genes; the effect of keepEvery",
+        "McFarland, 50,000 genes, example 1",
+        "McFarland, 50,000 genes, example 2",
+        "McFarland, 50,000 genes, example 3",
+        "McFarland, 50,000 genes, example 4",
+        "McFarland, 50,000 genes, example 5",
+        "McFarland, 50,000 genes, example 6",
+        "Examples with $s = 0.05$",
+        "The different consequences of keepEvery = NA in the Exp and McFL models",
+        "Are we keeping the complete history (genealogy) of the clones?",
+        "Population sizes $\\geq 10^",
+        "A summary of some determinants of running time and space consumption",
+        "Specifying fitness effects",
+        "Introduction to the specification of fitness effects",
+        "Explicit mapping of genotypes to fitness",
+        "How to specify fitness effects with the lego system",
+        "Numeric values of fitness effects",
+        "McFarland parameterization",
+        "Death rate under the McFarland model",
+        "No viability of clones and types of models",
+        "Genes without interactions",
+        "Using DAGs: Restrictions in the order of mutations as extended posets",
+        "AND, OR, XOR relationships",
+        "Fitness effects",
+        "Extended posets",
+        "DAGs: A first conjunction (AND) example",
+        "DAGs: A second conjunction example",
+        "DAGs: A semimonotone or \"OR\" example",
+        "An \"XMPN\" or \"XOR\" example",
+        "Posets: the three types of relationships",
+        "Modules",
+        "What does a module provide",
+        "Specifying modules",
+        "Modules and posets again: the three types of relationships and modules",
+        "Order effects",
+        "Order effects: three-gene orders",
+        "Order effects and modules with multiple genes",
+        "Order and modules with 325 genotypes",
+        "Order effects and genes without interactions",
+        "Epistasis",
+        "Epistasis: two alternative specifications",
+        "Epistasis with three genes and two alternative specifications",
+        "Why can we specify some effects with a \"-\"?",
+        "Epistasis: modules",
+        "I do not want epistasis, but I want modules!",
+        "Synthetic viability",
+        "A simple synthetic viability example",
+        "Synthetic viability, non-zero fitness, and modules",
+        "Synthetic mortality or synthetic lethality",
+        "Possible issues with Bozic model",
+        "Synthetic viability using Bozic model",
+        "Numerical issues with death rates of 0 in Bozic model",
+        "A longer example: Poset, epistasis, synthetic mortality and viability, order effects and genes without interactions, with some modules",
+        "Homozygosity, heterozygosity, oncogenes, tumor suppressors",
+        "Gene-specific mutation rates",
+        "Mutator genes",
+        "Plotting fitness landscapes",
+        "Specifying fitness effects: some examples from the literature",
+        "Bauer et al., 2014",
+        "Using a DAG",
+        "Specifying fitness of genotypes directly",
+        "Misra et al., 2014",
+        "Example 1.a",
+        "Example 1.b",
+        "Example 1.c",
+        "Ochs and Desai, 2015",
+        "Weissman et al., 2009",
+        "Figure 1.a",
+        "Figure 1.b",
+        "Gerstung et al., 2011, pancreatic cancer poset",
+        "Raphael and Vandin's 2014 modules",
+        "Running and plotting the simulations: starting, ending, and examples",
+        "Starting and ending",
+        "Can I start the simulation from a specific mutant?",
+        "Ending the simulations",
+        "Ending the simulations: conditions",
+        "Stochastic detection mechanism: \"detectionProb\"",
+        "Stochastic detection mechanism and minimum number of drivers",
+        "Fixation of genes/gene combinations",
+        "Fixation of genotypes",
+        "Fixation: tolerance, number of periods, minimal size",
+        "Mixing stopping on gene combinations and genotypes",
+        "Plotting genotype/driver abundance over time; plotting the simulated trajectories",
+        "Several examples of simulations and plotting simulation trajectories",
+        "Bauer's example again",
+        "McFarland model with 5000 passengers and 70 drivers",
+        "McFarland model with 50,000 passengers and 70 drivers: clonal competition",
+        "Simulation with a conjunction example",
+        "Simulation with order effects and McFL model",
+        "Interactive graphics",
+        "Multiple initial mutants: starting the simulation from arbitrary configurations",
+        "Multispecies simulations",
+        "Sampling multiple simulations",
+        "Whole-tumor and single-cell sampling, and do we always want to sample?",
+        "Differences between \"samplePop\" and \"oncoSimulSample\"",
+        "Showing the genealogical relationships of clones",
+        "Parent-child relationships from multiple runs",
+        "Generating random fitness landscapes",
+        "Random fitness landscapes from a Rough Mount Fuji model",
+        "Random fitness landscapes from Kauffman's NK model",
+        "Random fitness landscapes from an additive model",
+        "Random fitness landscapes from Eggbox model",
+        "Random fitness landscapes from Ising model",
+        "Random fitness landscapes from Full models",
+        "Epistasis and fitness landscape statistics",
+        "Frequency-dependent fitness",
+        "A first example with frequency-dependent fitness",
+        "Hurlbut et al., 2018: a four-cell example with angiogenesis and cytotoxicity",
+        "An example with absolute numbers and population collapse",
+        "Predator-prey, commensalism, and consumer-resource models",
+        "Competition",
+        "Competition",
+        "Predator-prey, first example",
+        "Predator-prey, second example",
+        "Commensalism",
+        "Frequency-dependent fitness: can I mix relative and absolute frequencies?",
+        "Frequency-dependent fitness: can I use genes with mutator effects?",
+        "Can we use the BNB algorithm to model frequency-dependent fitness?",
+        "Additional examples of frequency-dependent fitness",
+        "Rock-paper-scissors model in bacterial community",
+        "Introduction",
+        "Case 1",
+        "Case 2",
+        "Case 3",
+        "Hawk and Dove example",
+        "Game Theory with social dilemmas of tumour acidity and vasculature",
+        "Fully glycolytic tumours:",
+        "Fully angiogenic tumours:",
+        "Heterogeneous tumours:",
+        "Prostate cancer tumour\u2013stroma interactions",
+        "Simulations",
+        "First scenario",
+        "Second scenario",
+        "Third scenario",
+        "Fourth scenario",
+        "Evolutionary Dynamics of Tumor-Stroma Interactions in Multiple Myeloma",
+        "Scenario 1",
+        "Scenario 2",
+        "An example of modellization in Parkinson disease related cell community",
+        "Evolutionary Game between Commensal and Pathogenic Microbes in Intestinal Microbiota",
+        "Antibiotic absence situation",
+        "Antibiotic presence situation",
+        "Modeling of breast cancer through evolutionary game theory.",
+        "Cancer kept under control",
+        "Development of a non-metastatic cancer",
+        "Development of a metastatic cancer",
+        "Improving the previous example. Modeling of breast cancer with the presence chemotherapy and resistance.",
+        "Absence of chemotherapy",
+        "Chemotherapy with low R mutation rate",
+        "Chemotherapy with considerable R mutation rate",
+        "Death and Birth specification",
+        "Changes in nomenclature",
+        "Explicit mapping of genotypes to death rates",
+        "Simulating with constant total population size",
+        "Simulating therapeutic interventions and adaptive therapy, and using user-defined variables",
+        "Interventions",
+        "A first example with interventions",
+        "Intervening over the total population",
+        "Differences between intervening on the total population or over specific genotypes: when do each occur?",
+        "Intervening in Rock-Paper-Scissors model in bacterial comunity",
+        "User variables",
+        "Basic example with user variables",
+        "User Variables Example 2",
+        "Adaptive therapy. Interventions using user variables",
+        "Another example of adaptive therapy",
+        "Adaptive therapy: a  canonical example",
+        "Interventions: how to specify WT",
+        "Simulating therapeutic interventions that depend on time",
+        "Adaptive control of competitive release and chemotherapeutic resistance",
+        "Scenario without chemotherapy",
+        "Scenario with continuous chemotherapy: fixed dose",
+        "Scenario with switching doses of chemotherapy",
+        "Growth factors as chemotherapy target",
+        "Scenario without chemotherapy",
+        "Scenario with GF as target for chemotherapy",
+        "Examples using time dependent frequency definition",
+        "Increasing fitness at a certain timepoint",
+        "Intervention at a certain point to stop subpopulation growth",
+        "Intervention to slow down collapsing populations",
+        "Measures of evolutionary predictability and genotype diversity",
+        "Generating random DAGs for restrictions",
+        "FAQ, odds and ends",
+        "What we mean by \"clone\"; and \"I want clones disregarding passengers\"",
+        "Does OncoSimulR keep track of individuals or of clones? And how can it keep track of such large populations?",
+        "sampleEvery, keepPhylog, and pruning",
+        "Dealing with errors in \"oncoSimulPop\"",
+        "Whole tumor sampling, genotypes, and allele counts: what  gives? And what about order?",
+        "Doesn't the BNB algorithm require small mutation rates for it to be advantageous?",
+        "Can we use the BNB algorithm with state-dependent birth or death rates?",
+        "Sometimes I get exceptions when running with mutator genes",
+        "What are good values of sampleEvery?",
+        "mutationPropGrowth and is mutation associated to division?",
+        "Messages about 'Using old version of fitnessEffects' and 'v2 functionality detected. Adapting to v3 functionality.'",
+        "Session info and packages used",
+        "Time it takes to build the vignette and most time consuming chunks",
+        "Funding",
+        "References"
+      ],
+      "created": "2016-08-19 00:11:54",
+      "modified": "2026-01-31 14:01:26",
+      "commits": 43
+    }
+  ],
+  "_score": 6.847264101770765,
+  "_indexed": true,
+  "_nocasepkg": "oncosimulr",
+  "_universes": [
+    "bioc",
+    "rdiaz02"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:40:07.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "494c092fe47824d876d383a851e0183374ecff592980e6714327537c04ce8c47",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:40:56.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "0c5294b4744686a27ccbd4d74f57d84538ff176f7d6d133dc02c605530a6d223",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:39:49.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "c15f68439a1474c4c2d0d8688df5a6f466d77fd93ed4e09839753913666317fb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:40:59.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "62630aeb6b082c55c91c2e329fe8643ba3f546289829d10ae2f63bb82239c19a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:40:29.000Z",
+      "arch": "x86_64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "648e27db3413736b690749ba5fe6fe09d97567f65a84eada0ef58d179d7061df",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:39:16.000Z",
+      "arch": "aarch64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "63f22c5413b23e9299b17ce3ffaeaa6f7524d732f161a5c49cc21d0c7f5ff982",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:41:12.000Z",
+      "arch": "x86_64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "72a72ec760b786822533ff52004c1b5621cbaf7e7603c05410dbec4bcb09b984",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:38:46.000Z",
+      "arch": "x86_64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "bc3c9fce07cdfbda270a0bec9de9d40725f385915d514b7bcf21dd86acf52910",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:39:00.000Z",
+      "arch": "x86_64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "2e79dfbc60fc69847f1607b0504daaba797cc46f718e984f30926af2bb1f7574",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "4.13.1",
+      "date": "2026-02-01T04:40:46.000Z",
+      "arch": "x86_64",
+      "commit": "10bf41e6db8a8af90e36613194298efdc238f5ec",
+      "fileid": "f52841ffc7036856c03addafd6398e01560e685517e4a96e97392cf8d28f1e64",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21556618929"
+    }
+  ]
+}

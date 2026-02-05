@@ -1,0 +1,688 @@
+{
+  "Package": "PMScanR",
+  "Title": "Protein motifs analysis and visualisation",
+  "Version": "1.1.0",
+  "Authors@R": "c(\nperson(given = \"Jan Pawel\",\nfamily = \"Jastrzebski\",\nrole = c(\"aut\", \"cre\"),\nemail = \"bioinformatyka@gmail.com\",\ncomment = c(ORCID = \"0000-0001-8699-7742\")),\nperson(given = \"Monika\",\nfamily = \"Gawronska\",\nrole = c(\"ctb\"),\nemail = \"gawronska572@gmail.com\",\ncomment = c(ORCID = \"0009-0001-2677-6371\")),\nperson(given = \"Wiktor\",\nfamily = \"Babis\",\nrole = c(\"ctb\"),\nemail = \"wiktorbabis@gmail.com\",\ncomment = c(ORCID = \"0009-0006-3648-3413\")),\nperson(given = \"Miriana\",\nfamily = \"Quaranta\",\nrole = c(\"ctb\"),\nemail = \"miriana.quaranta@uniroma1.it\",\ncomment = c(ORCID = \"0009-0003-0855-485X\")),\nperson(given = \"Damian\",\nfamily = \"Czopek\",\nrole = c(\"ctb\", \"aut\"),\nemail = \"dcwmpl@gmail.com\",\ncomment = c(ORCID = \"0009-0005-3471-4866\")))",
+  "Description": "Provides tools for large-scale protein motif analysis and\nvisualization in R. PMScanR facilitates the identification of\nmotifs using external tools like PROSITE's ps_scan (handling\nnecessary file downloads and execution) and enables downstream\nanalysis of results. Key features include parsing scan outputs,\nconverting formats (e.g., to GFF-like structures), generating\nmotif occurrence matrices, and creating informative\nvisualizations such as heatmaps, sequence logos (via\nseqLogo/ggseqlogo). The package also offers an optional\nShiny-based graphical user interface for interactive analysis,\naiming to streamline the process of exploring motif patterns\nacross multiple protein sequences.",
+  "URL": "https://github.com/prodakt/PMScanR",
+  "BugReports": "https://github.com/prodakt/PMScanR/issues",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "biocViews": "MotifDiscovery, Visualization",
+  "SystemRequirements": "Perl",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libxml2-dev\nlibssl-dev perl xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:38:20 UTC",
+  "RemoteUrl": "https://github.com/bioc/PMScanR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "1e526c3374058e086345d93aa11a30cec4cec55c",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-22 20:50:45 UTC",
+    "User": "root"
+  },
+  "Author": "Jan Pawel Jastrzebski [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-8699-7742>),\nMonika Gawronska [ctb] (ORCID: <https://orcid.org/0009-0001-2677-6371>),\nWiktor Babis [ctb] (ORCID: <https://orcid.org/0009-0006-3648-3413>),\nMiriana Quaranta [ctb] (ORCID: <https://orcid.org/0009-0003-0855-485X>),\nDamian Czopek [ctb, aut] (ORCID:\n<https://orcid.org/0009-0005-3471-4866>)",
+  "Maintainer": "Jan Pawel Jastrzebski <bioinformatyka@gmail.com>",
+  "MD5sum": "20501ae2107fffe9e829427248e0130f",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "PMScanR_1.1.0.tar.gz",
+  "_fileid": "3b61449c15d091d28a851972c136a9540eb9f09f89586b64f41314691dc69076",
+  "_filesize": 625593,
+  "_sha256": "3b61449c15d091d28a851972c136a9540eb9f09f89586b64f41314691dc69076",
+  "_created": "2026-01-22T20:50:45.000Z",
+  "_published": "2026-01-22T21:49:16.865Z",
+  "_jobs": [
+    {
+      "job": 61199982477,
+      "time": 241,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225570276"
+    },
+    {
+      "job": 61199982481,
+      "time": 379,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5225596707"
+    },
+    {
+      "job": 61199982506,
+      "time": 413,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5225603066"
+    },
+    {
+      "job": 61199982504,
+      "time": 294,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5226175255"
+    },
+    {
+      "job": 61199982498,
+      "time": 240,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5226165347"
+    },
+    {
+      "job": 61199529158,
+      "time": 279,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5225524188"
+    },
+    {
+      "job": 61199982463,
+      "time": 180,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5225558938"
+    },
+    {
+      "job": 61199982490,
+      "time": 295,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5225580678"
+    },
+    {
+      "job": 61199982476,
+      "time": 278,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5225577513"
+    },
+    {
+      "job": 61199982512,
+      "time": 295,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5225580521"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 4
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/PMScanR",
+  "_commit": {
+    "id": "1e526c3374058e086345d93aa11a30cec4cec55c",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752300
+  },
+  "_maintainer": {
+    "name": "Jan Pawel Jastrzebski",
+    "email": "bioinformatyka@gmail.com",
+    "login": "prodakt",
+    "orcid": "0000-0001-8699-7742",
+    "uuid": 22542689
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "dplyr",
+      "version": ">= 1.1.0",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "bslib",
+      "role": "Imports"
+    },
+    {
+      "package": "shinyFiles",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggseqlogo",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "seqinr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "seqLogo",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-11",
+      "n": 1
+    },
+    {
+      "week": "2025-12",
+      "n": 9
+    },
+    {
+      "week": "2025-13",
+      "n": 48
+    },
+    {
+      "week": "2025-14",
+      "n": 2
+    },
+    {
+      "week": "2025-15",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 9
+    },
+    {
+      "week": "2025-19",
+      "n": 4
+    },
+    {
+      "week": "2025-21",
+      "n": 2
+    },
+    {
+      "week": "2025-23",
+      "n": 5
+    },
+    {
+      "week": "2025-36",
+      "n": 4
+    },
+    {
+      "week": "2025-39",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "motifdiscovery",
+    "visualization"
+  ],
+  "_stars": 3,
+  "_contributors": [
+    {
+      "user": "dragon96pl",
+      "count": 53,
+      "uuid": 36973370
+    },
+    {
+      "user": "prodakt",
+      "count": 31,
+      "uuid": 22542689
+    },
+    {
+      "user": "felciaa",
+      "count": 11,
+      "uuid": 164355284
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 181,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/PMScanR"
+  },
+  "_devurl": "https://github.com/prodakt/pmscanr",
+  "_searchresults": 4,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/PMScanR.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/prodakt/pmscanr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "extractProteinMotifs",
+    "extractSegments",
+    "freqPie",
+    "gff2matrix",
+    "matrix2hm",
+    "matrixToSquareHeatmap",
+    "readProsite",
+    "readPsa",
+    "runPMScanRShiny",
+    "runPsScan"
+  ],
+  "_help": [
+    {
+      "page": "extractProteinMotifs",
+      "title": "Extract protein motifs form a file in PSA format",
+      "topics": [
+        "extractProteinMotifs"
+      ]
+    },
+    {
+      "page": "extractSegments",
+      "title": "Extract sequence fragments from a list of sequences",
+      "topics": [
+        "extractSegments"
+      ]
+    },
+    {
+      "page": "freqPie",
+      "title": "Create a pie chart showing protein motif distribution",
+      "topics": [
+        "freqPie"
+      ]
+    },
+    {
+      "page": "gff2matrix",
+      "title": "Convert GFF to a binary occurrence matrix",
+      "topics": [
+        "gff2matrix"
+      ]
+    },
+    {
+      "page": "matrix2hm",
+      "title": "Generate a heatmap from a matrix",
+      "topics": [
+        "matrix2hm"
+      ]
+    },
+    {
+      "page": "matrixToSquareHeatmap",
+      "title": "Generate a square heatmap from a matrix",
+      "topics": [
+        "matrixToSquareHeatmap"
+      ]
+    },
+    {
+      "page": "readProsite",
+      "title": "Convert PROSITE format to a GFF-like Data Frame",
+      "topics": [
+        "readProsite"
+      ]
+    },
+    {
+      "page": "readPsa",
+      "title": "Parse a PSA (PROSITE Scan ASCII) File",
+      "topics": [
+        "readPsa"
+      ]
+    },
+    {
+      "page": "runPMScanRShiny",
+      "title": "Launch the PMScanR Shiny Application",
+      "topics": [
+        "runPMScanRShiny"
+      ]
+    },
+    {
+      "page": "runPsScan",
+      "title": "Run PS-Scan with Caching and Improved Execution",
+      "topics": [
+        "runPsScan"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/PMScanR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bslib",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "commonmark",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "ggseqlogo",
+    "glue",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nlme",
+    "openssl",
+    "otel",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "plogr",
+    "plotly",
+    "plyr",
+    "promises",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "segmented",
+    "Seqinfo",
+    "seqinr",
+    "shiny",
+    "shinyFiles",
+    "snow",
+    "sourcetools",
+    "sp",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "PMScanR.Rmd",
+      "filename": "PMScanR.html",
+      "title": "PMScanR: An R Package for the large-scale identification, analysis, and visualization of protein motifs",
+      "author": "Jan Pawel Jastrzebski, Damian Czopek, Monika Gawronska, Wiktor Babis, Miriana Quaranta",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "1 Introduction",
+        "1.1 Instalation and loading",
+        "2 Data manipulation and overall usage",
+        "2.1 GUI",
+        "2.2 Command Line",
+        "2.2.1 List of functions and their description",
+        "runPsScan()",
+        "readPsa() and readProsite()",
+        "gff2matrix()",
+        "matrix2hm() and matrixToSquareHeatmap()",
+        "extractSegments() and extractProteinMotifs()",
+        "extractProteinMotifs()",
+        "freqPie()",
+        "References",
+        "Session Information"
+      ],
+      "created": "2025-04-11 13:49:35",
+      "modified": "2025-09-26 07:34:16",
+      "commits": 6
+    }
+  ],
+  "_score": 5.556302500767288,
+  "_indexed": true,
+  "_nocasepkg": "pmscanr",
+  "_universes": [
+    "bioc",
+    "prodakt"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-01-22T20:54:54.000Z",
+      "distro": "noble",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "3bb21111c2dca95f3be3b9ef7e362de8ff36931be30ef1ef134eec3a0a940be7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-01-22T20:55:12.000Z",
+      "distro": "noble",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "94c107704fca008959fc02cf20a1f25cefb79333de1bbfc80c24ce4eddcfefc3",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-01-22T21:45:38.000Z",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "e4b90ef9cc286b42038fbfbab7507c3bff815e5a2eceb5a5a0f9d8ba9b3feb1d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-01-22T21:45:37.000Z",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "11517bc5a5254cd942c7a6ffa042bb0ad4bc77b506a72e849502b0a0d3e7e3b4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.1.0",
+      "date": "2026-01-22T20:54:27.000Z",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "4029c1216e0f6a7c347fa5f70506d832fdc59a660b087ac5988d1a7694507dbf",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-01-22T20:53:08.000Z",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "b31f20b931f96c4ea8110f2e8f69e1baa7031207dcf5a912aeadd40cde0e0b7f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-01-22T20:52:59.000Z",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "55a7794e0a5ec1c639e92448f93de040808e83bfecde0f85c53db34aa5b41437",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-01-22T20:53:07.000Z",
+      "commit": "1e526c3374058e086345d93aa11a30cec4cec55c",
+      "fileid": "68a3e6e20eea509f625a27fa22624ee136851a65b4acb4b0e90ff3675b9049af",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264315672"
+    }
+  ]
+}

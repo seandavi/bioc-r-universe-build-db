@@ -1,0 +1,731 @@
+{
+  "Package": "erccdashboard",
+  "Type": "Package",
+  "Title": "Assess Differential Gene Expression Experiments with ERCC\nControls",
+  "Version": "1.45.0",
+  "Author": "Sarah Munro, Steve Lund",
+  "Maintainer": "Sarah Munro <sarah.munro@gmail.com>",
+  "Description": "Technical performance metrics for differential gene\nexpression experiments using External RNA Controls Consortium\n(ERCC) spike-in ratio mixtures.",
+  "License": "GPL (>=2)",
+  "Collate": "runDashboard.R initDat.R dashboardFile.R plotAdjust.R\nloadERCCInfo.R loadExpMeas.R getDesignMat.R normalizeDat.R\nprepERCCDat.R est_r_m.R dynRangePlot.R geneExprTest.R\ntestDECount.R testDEArray.R erccROC.R estLODR.R printLODRres.R\nsaveERCCPlots.R maSignal.R annotLODR.R",
+  "biocViews": "ImmunoOncology, GeneExpression, Transcription,\nAlternativeSplicing, DifferentialExpression,\nDifferentialSplicing, Genetics, Microarray, mRNAMicroarray,\nRNASeq, BatchEffect, MultipleComparison, QualityControl",
+  "LazyData": "yes",
+  "VignetteBuilder": "knitr",
+  "Packaged": {
+    "Date": "2026-01-26 08:13:53 UTC",
+    "User": "root"
+  },
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "Config/pak/sysreqs": "libicu-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:21:01 UTC",
+  "RemoteUrl": "https://github.com/bioc/erccdashboard",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "44713e88a6436730127574c86786f53d44c3abbe",
+  "NeedsCompilation": "no",
+  "MD5sum": "af5c7064faeeac8f8d774314293a7b30",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "erccdashboard_1.45.0.tar.gz",
+  "_fileid": "4de56d21ce0fd93b8c7fab035e7f9a3dd0c90d3a75451e7a5891ef9f5e7d6b44",
+  "_filesize": 1938714,
+  "_sha256": "4de56d21ce0fd93b8c7fab035e7f9a3dd0c90d3a75451e7a5891ef9f5e7d6b44",
+  "_created": "2026-01-26T08:13:53.000Z",
+  "_published": "2026-01-26T08:17:52.263Z",
+  "_jobs": [
+    {
+      "job": 61446427397,
+      "time": 158,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5253931574"
+    },
+    {
+      "job": 61446427419,
+      "time": 177,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5253934360"
+    },
+    {
+      "job": 61446427404,
+      "time": 205,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5253938294"
+    },
+    {
+      "job": 61446427432,
+      "time": 97,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5253922855"
+    },
+    {
+      "job": 61446427409,
+      "time": 132,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5253927780"
+    },
+    {
+      "job": 61446148446,
+      "time": 213,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5253907706"
+    },
+    {
+      "job": 61446427395,
+      "time": 123,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5253926484"
+    },
+    {
+      "job": 61446427428,
+      "time": 101,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5253923367"
+    },
+    {
+      "job": 61446427415,
+      "time": 111,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5253924747"
+    },
+    {
+      "job": 61446427425,
+      "time": 116,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5253925607"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 3,
+    "note": 16
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/erccdashboard",
+  "_commit": {
+    "id": "44713e88a6436730127574c86786f53d44c3abbe",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761747661
+  },
+  "_maintainer": {
+    "name": "Sarah Munro",
+    "email": "sarah.munro@gmail.com",
+    "login": "munrosa",
+    "uuid": 4389536
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 2.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "gridExtra",
+      "version": ">= 2.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "gplots",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "locfit",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "qvalue",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "ROCR",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.45.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.44.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "geneexpression",
+    "transcription",
+    "alternativesplicing",
+    "differentialexpression",
+    "differentialsplicing",
+    "genetics",
+    "microarray",
+    "mrnamicroarray",
+    "rnaseq",
+    "batcheffect",
+    "multiplecomparison",
+    "qualitycontrol"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 376,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/erccdashboard"
+  },
+  "_mentions": 3,
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/erccdashboard.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/munrosa/erccdashboard",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotLODR",
+    "dynRangePlot",
+    "erccROC",
+    "est_r_m",
+    "estLODR",
+    "geneExprTest",
+    "initDat",
+    "maSignal",
+    "runDashboard",
+    "saveERCCPlots"
+  ],
+  "_datasets": [
+    {
+      "name": "ERCCDef",
+      "title": "ERCCDef dataframe",
+      "object": "ERCC",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Feature",
+        "Length",
+        "GC"
+      ],
+      "rows": 96,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "ERCCMix1and2",
+      "title": "ERCCMix1and2 dataframe",
+      "object": "ERCC",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "ERCC.AMB.Expected",
+        "Subpool",
+        "Mix1Conc.Attomoles_ul",
+        "Mix2Conc.Attomoles_ul"
+      ],
+      "rows": 96,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "MET.CTL.countDat",
+      "title": "Rat toxicogenomics count data",
+      "object": "SEQC.Example",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Feature",
+        "MET_1",
+        "MET_2",
+        "MET_3",
+        "CTL_1",
+        "CTL_2",
+        "CTL_3"
+      ],
+      "rows": 16590,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "MET.CTL.totalReads",
+      "title": "Rat toxicogenomics total read data",
+      "object": "SEQC.Example",
+      "class": [
+        "integer"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "UHRR.HBRR.arrayDat",
+      "title": "UHRR and HBRR Illumina BeadArray data",
+      "object": "SEQC.Example",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Feature",
+        "UHRR_3",
+        "UHRR_2",
+        "UHRR_1",
+        "HBRR_3",
+        "HBRR_2",
+        "HBRR_1"
+      ],
+      "rows": 17627,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "UHRR.HBRR.countDat",
+      "title": "UHRR and HBRR RNA-Seq Illumina count data",
+      "object": "SEQC.Example",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Feature",
+        "UHRR_1",
+        "UHRR_2",
+        "UHRR_3",
+        "UHRR_4",
+        "HBRR_1",
+        "HBRR_2",
+        "HBRR_3",
+        "HBRR_4"
+      ],
+      "rows": 43919,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "UHRR.HBRR.totalReads",
+      "title": "UHRR and HBRR sample total read data",
+      "object": "SEQC.Example",
+      "class": [
+        "integer"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "annotLODR",
+      "title": "Annotate signal-abundance and ratio-abundance plots with LODR",
+      "topics": [
+        "annotLODR"
+      ]
+    },
+    {
+      "page": "dynRangePlot",
+      "title": "Produce signal-abundance plot to evaluate dynamic range",
+      "topics": [
+        "dynRangePlot"
+      ]
+    },
+    {
+      "page": "ERCC",
+      "title": "ERCC data",
+      "topics": [
+        "ERCC"
+      ]
+    },
+    {
+      "page": "ERCCDef",
+      "title": "ERCCDef dataframe",
+      "topics": [
+        "ERCCDef"
+      ]
+    },
+    {
+      "page": "ERCCMix1and2",
+      "title": "ERCCMix1and2 dataframe",
+      "topics": [
+        "ERCCMix1and2"
+      ]
+    },
+    {
+      "page": "erccROC",
+      "title": "Produce Receiver Operator Characteristic (ROC) Curves and AUC statistics",
+      "topics": [
+        "erccROC"
+      ]
+    },
+    {
+      "page": "est_r_m",
+      "title": "Estimate the mRNA fraction differences for the pair of samples using replicate data",
+      "topics": [
+        "est_r_m"
+      ]
+    },
+    {
+      "page": "estLODR",
+      "title": "Estimate Limit of Detection of Ratios (LODR)",
+      "topics": [
+        "estLODR"
+      ]
+    },
+    {
+      "page": "geneExprTest",
+      "title": "Prepare differential expression testing results for spike-in analysis",
+      "topics": [
+        "geneExprTest"
+      ]
+    },
+    {
+      "page": "initDat",
+      "title": "Initialize the exDat list",
+      "topics": [
+        "initDat"
+      ]
+    },
+    {
+      "page": "maSignal",
+      "title": "Generate MA plots with or without annotation using LODR estimates",
+      "topics": [
+        "maSignal"
+      ]
+    },
+    {
+      "page": "MET.CTL.countDat",
+      "title": "Rat toxicogenomics count data",
+      "topics": [
+        "MET.CTL.countDat"
+      ]
+    },
+    {
+      "page": "MET.CTL.totalReads",
+      "title": "Rat toxicogenomics total read data",
+      "topics": [
+        "MET.CTL.totalReads"
+      ]
+    },
+    {
+      "page": "runDashboard",
+      "title": "Run default erccdashboard analysis of ERCC control ratio mixtures",
+      "topics": [
+        "runDashboard"
+      ]
+    },
+    {
+      "page": "saveERCCPlots",
+      "title": "Save erccdashboard plots to a pdf file",
+      "topics": [
+        "saveERCCPlots"
+      ]
+    },
+    {
+      "page": "SEQC.Example",
+      "title": "Example data from SEQC project for erccdashboard analysis",
+      "topics": [
+        "SEQC.Example"
+      ]
+    },
+    {
+      "page": "UHRR.HBRR.arrayDat",
+      "title": "UHRR and HBRR Illumina BeadArray data",
+      "topics": [
+        "UHRR.HBRR.arrayDat"
+      ]
+    },
+    {
+      "page": "UHRR.HBRR.countDat",
+      "title": "UHRR and HBRR RNA-Seq Illumina count data",
+      "topics": [
+        "UHRR.HBRR.countDat"
+      ]
+    },
+    {
+      "page": "UHRR.HBRR.totalReads",
+      "title": "UHRR and HBRR sample total read data",
+      "topics": [
+        "UHRR.HBRR.totalReads"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "bitops",
+    "caTools",
+    "cli",
+    "cpp11",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "ggplot2",
+    "glue",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "highr",
+    "isoband",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "plyr",
+    "qvalue",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "reshape2",
+    "rlang",
+    "ROCR",
+    "S7",
+    "scales",
+    "statmod",
+    "stringi",
+    "stringr",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "erccdashboard.Rmd",
+      "filename": "erccdashboard.html",
+      "title": "Assessing Differential Gene Expression Experiments with the erccdashboard",
+      "author": "Sarah Munro, Steve Lund",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Example: Rat Toxicogenomics",
+        "Load Example Data",
+        "Define Input Parameters",
+        "Run Example and View Output",
+        "Comparison of Performance Between Experiments",
+        "UHRR vs. HBRR Microarray Experiment",
+        "UHRR vs. HBRR RNA-Seq Experiment",
+        "Analysis Details and Options",
+        "Flexibility in Differential Expression Testing",
+        "LODR Estimation Options",
+        "Printing Plots to File",
+        "Analysis of Alternative Spike-in Designs",
+        "R version and sessionInfo() output"
+      ],
+      "created": "2024-10-26 01:09:25",
+      "modified": "2024-10-26 01:09:25",
+      "commits": 1
+    }
+  ],
+  "_score": 3.778151250383644,
+  "_indexed": true,
+  "_nocasepkg": "erccdashboard",
+  "_universes": [
+    "bioc",
+    "munrosa"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:16:26.000Z",
+      "distro": "noble",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "74f228c44e6b1fdf2529bcbe30d856dd0c39b351386f67ed11b9896fc39b5d59",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:16:56.000Z",
+      "distro": "noble",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "9afaaca3530a7257be6c100a02050bdee5e7172749864af32c6b84461e9263a2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:15:19.000Z",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "cd19c7093c03f9b2b30e06c7c5204953f415a34bb8eb1432aee3771ef57078cf",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:15:42.000Z",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "75750191f47de431aa2029b8153e92ecfc2c5e305265bfe1f6125032e831d1e6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:16:11.000Z",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "6b3070f2451cc3b499316c72964263c27f3b3388d180852d6e3679bf77418d1b",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:15:00.000Z",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "4ad179cc46210c24b6e7cc8faefb5555cb21414b7e1efba57a031da1731f2c5f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:15:07.000Z",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "4fd86349cbd1829a769d357465722d4439f7fad2ecec9795f36c9cddee96ec2b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-01-26T08:15:18.000Z",
+      "commit": "44713e88a6436730127574c86786f53d44c3abbe",
+      "fileid": "357abc0c1afadac0b9357ce2e3d4f1a46298fb3d478812c7f8d49d2f4547f9e5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21350555517"
+    }
+  ]
+}

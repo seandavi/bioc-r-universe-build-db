@@ -1,0 +1,826 @@
+{
+  "Package": "cypress",
+  "Type": "Package",
+  "Title": "Cell-Type-Specific Power Assessment",
+  "Version": "1.7.0",
+  "Date": "2024-05-27",
+  "Authors@R": "c( person(\"Shilin\", \"Yu\", role=c(\"aut\", \"cre\"),email=\n\"sy597@georgetown.edu\",comment=c(ORCID=\"0000-0002-5494-1960\")),\nperson(\"Guanqun\", \"Meng\", role=\"aut\",email=\"gxm324@case.edu\"),\nperson(\"Wen\", \"Tang\", role=\"aut\",email=\"wxt175@case.edu\"))",
+  "License": "GPL-2 | GPL-3",
+  "Collate": "AllClasses.R AllGenerics.R CIBERSORT.R csRNA_seq_sim.R\ncypress_design.R cypress_wrapper.R cypressEmbedded.R metrics.R\ncypress-methods.R PlotTDR.R DE_arg.R TOAST_implement.R user.R\nutil_datasim.R util_EST.R PlotFDC.R PlotPower.R",
+  "biocViews": "Software, GeneExpression, DataImport, RNASeq, Sequencing",
+  "Description": "CYPRESS is a cell-type-specific power tool. This package\naims to perform power analysis for the cell-type-specific data.\nIt calculates FDR, FDC, and power, under various study design\nparameters, including but not limited to sample size, and\neffect size. It takes the input of a SummarizeExperimental(SE)\nobject with observed mixture data (feature by sample matrix),\nand the cell-type mixture proportions (sample by cell-type\nmatrix). It can solve the cell-type mixture proportions from\nthe reference free panel from TOAST and conduct tests to\nidentify cell-type-specific differential expression (csDE)\ngenes.",
+  "Encoding": "UTF-8",
+  "LazyData": "FALSE",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/renlyly/cypress",
+  "BugReports": "https://github.com/renlyly/cypress/issues",
+  "Config/pak/sysreqs": "cmake libicu-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:29:05 UTC",
+  "RemoteUrl": "https://github.com/bioc/cypress",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-24 07:42:48 UTC",
+    "User": "root"
+  },
+  "Author": "Shilin Yu [aut, cre] (ORCID: <https://orcid.org/0000-0002-5494-1960>),\nGuanqun Meng [aut],\nWen Tang [aut]",
+  "Maintainer": "Shilin Yu <sy597@georgetown.edu>",
+  "MD5sum": "7ccaad0cedf5474a3178e4648f15971a",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "cypress_1.7.0.tar.gz",
+  "_fileid": "ed148dea593a9a500641ec46334469b6e585f519e419df7a2d52f719c671460c",
+  "_filesize": 2619476,
+  "_sha256": "ed148dea593a9a500641ec46334469b6e585f519e419df7a2d52f719c671460c",
+  "_created": "2026-01-24T07:42:48.000Z",
+  "_published": "2026-01-24T07:54:42.881Z",
+  "_jobs": [
+    {
+      "job": 61348784775,
+      "time": 185,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5242934832"
+    },
+    {
+      "job": 61348784773,
+      "time": 658,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5242955539"
+    },
+    {
+      "job": 61348784774,
+      "time": 561,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5242951519"
+    },
+    {
+      "job": 61348784776,
+      "time": 494,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5242949388"
+    },
+    {
+      "job": 61348784784,
+      "time": 395,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5242944913"
+    },
+    {
+      "job": 61348552998,
+      "time": 494,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5242926196"
+    },
+    {
+      "job": 61348784765,
+      "time": 133,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5242932336"
+    },
+    {
+      "job": 61348784779,
+      "time": 628,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5242954391"
+    },
+    {
+      "job": 61348784783,
+      "time": 636,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5242954621"
+    },
+    {
+      "job": 61348784778,
+      "time": 655,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5242955424"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/cypress",
+  "_commit": {
+    "id": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751745
+  },
+  "_maintainer": {
+    "name": "Shilin Yu",
+    "email": "sy597@georgetown.edu",
+    "login": "renlyly",
+    "orcid": "0000-0002-5494-1960",
+    "uuid": 100635888
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "abind",
+      "role": "Imports"
+    },
+    {
+      "package": "sirt",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "TOAST",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "preprocessCore",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "TCA",
+      "role": "Imports"
+    },
+    {
+      "package": "PROPER",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "checkmate",
+      "role": "Imports"
+    },
+    {
+      "package": "mvtnorm",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "e1071",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "htmltools",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biobase",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "geneexpression",
+    "dataimport",
+    "rnaseq",
+    "sequencing"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "renlyly",
+      "count": 47,
+      "uuid": 100635888
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 230,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/cypress"
+  },
+  "_devurl": "https://github.com/renlyly/cypress",
+  "_searchresults": 2,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/cypress.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/renlyly/cypress",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "getcypress",
+    "plotFDC",
+    "plotPower",
+    "plotTDR",
+    "quickPower",
+    "setcypress",
+    "show",
+    "simFromData",
+    "simFromParam"
+  ],
+  "_datasets": [
+    {
+      "name": "ASD_prop",
+      "title": "SimFromData example raw input data",
+      "object": "ASD_prop_se",
+      "file": "ASD_prop_se.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "GSE60424Power",
+      "title": "Power calculation results from immune-related disease (IAD) study (GSE60424)",
+      "object": "quickPowerGSE60424",
+      "file": "quickPowerGSE60424.rda",
+      "class": [
+        "cypress_out"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "GSE60424_param",
+      "title": "Simulation parameters estimated from immune-related disease (IAD) study (GSE60424)",
+      "object": "quickParaGSE60424",
+      "file": "quickParaGSE60424.rda",
+      "class": [
+        "est_out"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "asd_nopropPower",
+      "title": "Power calculation results From ASD data",
+      "object": "quickPowerASD",
+      "file": "quickPowerASD.rda",
+      "class": [
+        "cypress_out"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "asd_noprop_param",
+      "title": "Simulation parameters estimated from ASD study",
+      "object": "quickParaASD",
+      "file": "quickParaASD.rda",
+      "class": [
+        "est_out"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ibd_propPower",
+      "title": "Power calculation results from pediatric inflammatory bowel disease (IBD) study (GSE57945)",
+      "object": "quickPowerIBD",
+      "file": "quickPowerIBD.rda",
+      "class": [
+        "cypress_out"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ibd_prop_param",
+      "title": "Simulation parameters estimated from pediatric inflammatory bowel disease (IBD) study (GSE57945)",
+      "object": "quickParaIBD",
+      "file": "quickParaIBD.rda",
+      "class": [
+        "est_out"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "cypress-package",
+      "title": "cypress: cell-type-specific power assessment",
+      "topics": [
+        "cypress-package",
+        "cypress"
+      ]
+    },
+    {
+      "page": "asd_param",
+      "title": "Simulation parameters estimated from ASD study",
+      "topics": [
+        "asd_noprop_param",
+        "asd_param",
+        "quickParaASD"
+      ]
+    },
+    {
+      "page": "asdPower",
+      "title": "Power calculation results From ASD data",
+      "topics": [
+        "asdPower",
+        "asd_nopropPower",
+        "quickPowerASD"
+      ]
+    },
+    {
+      "page": "ASD_prop",
+      "title": "SimFromData example raw input data",
+      "topics": [
+        "ASD_prop",
+        "ASD_prop_se"
+      ]
+    },
+    {
+      "page": "cypress-class",
+      "title": "Classes for cypress Package",
+      "topics": [
+        "AllClasses",
+        "cypress-class",
+        "cypress_out-class",
+        "est_out-class"
+      ]
+    },
+    {
+      "page": "cypress-methods",
+      "title": "Get a slot from cypress output",
+      "topics": [
+        "cypress-methods",
+        "getcypress",
+        "getcypress,cypress_out-method",
+        "getcypress,design_in-method",
+        "getcypress,est_out-method",
+        "setcypress",
+        "setcypress,cypress_out-method",
+        "setcypress,design_in-method",
+        "setcypress,est_out-method",
+        "show,cypress_out-method",
+        "show,est_out-method"
+      ]
+    },
+    {
+      "page": "GSE60424_param",
+      "title": "Simulation parameters estimated from immune-related disease (IAD) study (GSE60424)",
+      "topics": [
+        "GSE60424_param",
+        "quickParaGSE60424"
+      ]
+    },
+    {
+      "page": "GSE60424Power",
+      "title": "Power calculation results from immune-related disease (IAD) study (GSE60424)",
+      "topics": [
+        "GSE60424Power",
+        "iad_param",
+        "quickPowerGSE60424"
+      ]
+    },
+    {
+      "page": "ibd_param",
+      "title": "Simulation parameters estimated from pediatric inflammatory bowel disease (IBD) study (GSE57945)",
+      "topics": [
+        "ibd_param",
+        "ibd_prop_param",
+        "quickParaIBD"
+      ]
+    },
+    {
+      "page": "ibdPower",
+      "title": "Power calculation results from pediatric inflammatory bowel disease (IBD) study (GSE57945)",
+      "topics": [
+        "ibdPower",
+        "ibd_propPower",
+        "quickPowerIBD"
+      ]
+    },
+    {
+      "page": "plotFDC",
+      "title": "plotFDC: Generate FDC results figure",
+      "topics": [
+        "plotFDC"
+      ]
+    },
+    {
+      "page": "plotPower",
+      "title": "plotPower: Generate statistical power results figure",
+      "topics": [
+        "plotPower"
+      ]
+    },
+    {
+      "page": "plotTDR",
+      "title": "plotTDR: Generate TDR results figure",
+      "topics": [
+        "plotTDR"
+      ]
+    },
+    {
+      "page": "quickPower",
+      "title": "Obtain pre-calculated results from three available datasets",
+      "topics": [
+        "quickPower"
+      ]
+    },
+    {
+      "page": "simFromData",
+      "title": "Power calculation results on input data",
+      "topics": [
+        "simFromData"
+      ]
+    },
+    {
+      "page": "simFromParam",
+      "title": "Power calculation results on pre-calculated parameters",
+      "topics": [
+        "simFromParam"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/cypress/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "admisc",
+    "backports",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "CDM",
+    "checkmate",
+    "class",
+    "cli",
+    "codetools",
+    "config",
+    "corpcor",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "DelayedArray",
+    "DESeq2",
+    "doParallel",
+    "dplyr",
+    "e1071",
+    "edgeR",
+    "EpiDISH",
+    "farver",
+    "forcats",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "gdata",
+    "generics",
+    "GenomicRanges",
+    "GGally",
+    "ggplot2",
+    "ggstats",
+    "glue",
+    "gmodels",
+    "gtable",
+    "gtools",
+    "hms",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfdr",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "matrixcalc",
+    "MatrixGenerics",
+    "matrixStats",
+    "mvtnorm",
+    "nloptr",
+    "nnls",
+    "patchwork",
+    "pbapply",
+    "pbv",
+    "pillar",
+    "pkgconfig",
+    "polycor",
+    "pracma",
+    "preprocessCore",
+    "prettyunits",
+    "progress",
+    "PROPER",
+    "proxy",
+    "purrr",
+    "quadprog",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "rlang",
+    "rsvd",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "sirt",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "TAM",
+    "TCA",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "TOAST",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "cypress.Rmd",
+      "filename": "cypress.html",
+      "title": "cypress Package User's Guide",
+      "author": "Shilin Yu, Guanqun Meng, Wen Tang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Background",
+        "Installation",
+        "Quickstart",
+        "Input data",
+        "Simulation & Evaluation",
+        "Power evaluation with simFromData()",
+        "Power evaluation with simFromParam()",
+        "Power evaluation with quickPower()",
+        "Results",
+        "Visualization",
+        "Statistical power figure",
+        "True discovery rate (TDR) figure",
+        "False discovery cost (FDC) figure",
+        "Session info"
+      ],
+      "created": "2023-12-24 08:13:39",
+      "modified": "2024-05-27 15:51:47",
+      "commits": 18
+    }
+  ],
+  "_score": 4,
+  "_indexed": true,
+  "_nocasepkg": "cypress",
+  "_universes": [
+    "bioc",
+    "renlyly"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:47:05.000Z",
+      "distro": "noble",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "25f2465548df2bd80e03b9349219215790be35e144f0e3484422221620847f93",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:46:13.000Z",
+      "distro": "noble",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "7aa691c8e5d99f6c60d3bd167379ed6a7d1495b57f55d92657ecbc8564e92bbc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:45:22.000Z",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "e373944aab0766b3e4282387980df9904d7623f81f309fbaecfd14f76eb86b0f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:44:59.000Z",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "4580166feec379a65f13dc169ba48b1f1a185275aa4fedf562a01e0d70cfc7ab",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:45:37.000Z",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "963488438fa90aaae9a505a2a0fb660d0700c4e52acee5feb7a88f07572cd6ba",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:44:36.000Z",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "51a23fcfebeddc8162fc6cd2a1fde31c7a80ba2f843575c50d6ae6eb909a00b4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:45:15.000Z",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "87f243eb25054b14b8962897e244bd8e6448df6d2adae3e221a5934afe0b9f0b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-01-24T07:44:53.000Z",
+      "commit": "40f21f4c715de3dbf4dbc743092d17a2b549ec59",
+      "fileid": "2e34960e3701fa3338d85364af8d663dcff2920db66b8623881ce80f5e5d4fc1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311563529"
+    }
+  ]
+}

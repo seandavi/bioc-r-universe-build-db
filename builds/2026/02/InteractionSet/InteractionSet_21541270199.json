@@ -1,0 +1,921 @@
+{
+  "Package": "InteractionSet",
+  "Version": "1.39.0",
+  "Date": "2025-07-15",
+  "Title": "Base Classes for Storing Genomic Interaction Data",
+  "Authors@R": "c(person(\"Aaron\", \"Lun\", role = c(\"aut\", \"cre\"), email = \"infinite.monkeys.with.keyboards@gmail.com\"),\nperson(\"Malcolm\", \"Perry\", role = \"aut\", email = \"mgperry32@gmail.com\"),\nperson(\"Elizabeth\", \"Ing-Simmons\", role = \"aut\"))",
+  "biocViews": "Infrastructure, DataRepresentation, Software, HiC",
+  "Description": "Provides the GInteractions, InteractionSet and\nContactMatrix objects and associated methods for storing and\nmanipulating genomic interaction data from Hi-C and ChIA-PET\nexperiments.",
+  "License": "GPL-3",
+  "NeedsCompilation": "yes",
+  "SystemRequirements": "C++11",
+  "VignetteBuilder": "knitr",
+  "Collate": "AllGenerics.R AllClasses.R ContactMatrix-methods.R\nGInteractions-methods.R InteractionSet-methods.R\nGRanges-methods.R getset.R swapAnchors.R pairs.R conversion.R\nlinearize.R boundingBox.R distances.R overlaps.R linkOverlaps.R\nmatching.R updateObject.R",
+  "RoxygenNote": "7.1.1",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:31:52 UTC",
+  "RemoteUrl": "https://github.com/bioc/InteractionSet",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "3862179b986220f56e5a1ca21758f92661650c51",
+  "Packaged": {
+    "Date": "2026-01-31 07:56:51 UTC",
+    "User": "root"
+  },
+  "Author": "Aaron Lun [aut, cre],\nMalcolm Perry [aut],\nElizabeth Ing-Simmons [aut]",
+  "Maintainer": "Aaron Lun <infinite.monkeys.with.keyboards@gmail.com>",
+  "MD5sum": "89f948c6d2516198fae05f7c3dc2acba",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "InteractionSet_1.39.0.tar.gz",
+  "_fileid": "b6d2176f32214080666319c3f1729763d7aa00132f3ec2b08b5b06452ddb13ce",
+  "_filesize": 356300,
+  "_sha256": "b6d2176f32214080666319c3f1729763d7aa00132f3ec2b08b5b06452ddb13ce",
+  "_created": "2026-01-31T07:56:51.000Z",
+  "_published": "2026-01-31T08:05:01.996Z",
+  "_jobs": [
+    {
+      "job": 62076164379,
+      "time": 151,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327825710"
+    },
+    {
+      "job": 62076164392,
+      "time": 293,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327832648"
+    },
+    {
+      "job": 62076164398,
+      "time": 330,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327834356"
+    },
+    {
+      "job": 62076164387,
+      "time": 282,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327832068"
+    },
+    {
+      "job": 62076164388,
+      "time": 302,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327832873"
+    },
+    {
+      "job": 62076164427,
+      "time": 170,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327826605"
+    },
+    {
+      "job": 62076164413,
+      "time": 422,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327838904"
+    },
+    {
+      "job": 62076164414,
+      "time": 165,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327826402"
+    },
+    {
+      "job": 62076164405,
+      "time": 371,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327836332"
+    },
+    {
+      "job": 62076041278,
+      "time": 276,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5327818716"
+    },
+    {
+      "job": 62076164377,
+      "time": 126,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5327824586"
+    },
+    {
+      "job": 62076164385,
+      "time": 326,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327834164"
+    },
+    {
+      "job": 62076164391,
+      "time": 275,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5327831753"
+    },
+    {
+      "job": 62076164395,
+      "time": 260,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327830998"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/InteractionSet",
+  "_commit": {
+    "id": "3862179b986220f56e5a1ca21758f92661650c51",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748312
+  },
+  "_maintainer": {
+    "name": "Aaron Lun",
+    "email": "infinite.monkeys.with.keyboards@gmail.com",
+    "login": "ltla",
+    "twitter": "@realAaronLun",
+    "uuid": 8166669
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.27.12",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 42,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-29",
+      "n": 4
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.39.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.38.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "datarepresentation",
+    "software",
+    "hic",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 2904,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/InteractionSet"
+  },
+  "_mentions": 6,
+  "_searchresults": 404,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/InteractionSet.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "anchorIds",
+    "anchorIds<-",
+    "anchors",
+    "appendRegions<-",
+    "as.matrix<-",
+    "boundingBox",
+    "ContactMatrix",
+    "countOverlaps",
+    "deflate",
+    "findOverlaps",
+    "GInteractions",
+    "inflate",
+    "interactions",
+    "interactions<-",
+    "InteractionSet",
+    "intrachr",
+    "linearize",
+    "linkOverlaps",
+    "makeGInteractionsFromGRangesPairs",
+    "overlapsAny",
+    "pairdist",
+    "pairs",
+    "reduceRegions",
+    "regions",
+    "regions<-",
+    "replaceRegions<-",
+    "seqinfo",
+    "seqinfo<-",
+    "swapAnchors",
+    "updateObject"
+  ],
+  "_help": [
+    {
+      "page": "boundingBox",
+      "title": "Get the bounding box",
+      "topics": [
+        "boundingBox",
+        "boundingBox,GInteractions-method",
+        "boundingBox,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "ContactMatrix-accessors",
+      "title": "ContactMatrix accessors",
+      "topics": [
+        "anchorIds,ContactMatrix-method",
+        "anchorIds<-,ContactMatrix-method",
+        "anchors,ContactMatrix-method",
+        "anchors<-,ContactMatrix-method",
+        "appendRegions<-,ContactMatrix-method",
+        "as.matrix,ContactMatrix-method",
+        "as.matrix<-",
+        "as.matrix<-,ContactMatrix-method",
+        "ContactMatrix-access",
+        "dim,ContactMatrix-method",
+        "dimnames,ContactMatrix-method",
+        "dimnames<-,ContactMatrix,ANY-method",
+        "dimnames<-,ContactMatrix-method",
+        "length,ContactMatrix-method",
+        "reduceRegions,ContactMatrix-method",
+        "regions,ContactMatrix-method",
+        "regions<-,ContactMatrix-method",
+        "replaceRegions<-,ContactMatrix-method",
+        "seqinfo,ContactMatrix-method",
+        "seqinfo<-,ContactMatrix-method",
+        "show,ContactMatrix-method",
+        "t,ContactMatrix-method"
+      ]
+    },
+    {
+      "page": "ContactMatrix-class",
+      "title": "ContactMatrix class and constructors",
+      "topics": [
+        "ContactMatrix",
+        "ContactMatrix,ANY,GRanges,GRanges,GenomicRanges_OR_missing-method",
+        "ContactMatrix,ANY,numeric,numeric,GRanges-method",
+        "ContactMatrix,missing,missing,missing,GenomicRanges_OR_missing-method",
+        "ContactMatrix-class"
+      ]
+    },
+    {
+      "page": "ContactMatrix-distances",
+      "title": "Compute linear distances from ContactMatrix objects",
+      "topics": [
+        "ContactMatrix-dist",
+        "intrachr,ContactMatrix-method",
+        "pairdist,ContactMatrix-method"
+      ]
+    },
+    {
+      "page": "ContactMatrix-overlaps",
+      "title": "Find overlaps between GRanges and a ContactMatrix",
+      "topics": [
+        "overlapsAny,ContactMatrix,GInteractions-method",
+        "overlapsAny,ContactMatrix,InteractionSet-method",
+        "overlapsAny,ContactMatrix,Vector-method"
+      ]
+    },
+    {
+      "page": "ContactMatrix-sorting",
+      "title": "ContactMatrix sorting and ordering",
+      "topics": [
+        "ContactMatrix-sort",
+        "duplicated,ContactMatrix-method",
+        "order,ContactMatrix-method",
+        "sort,ContactMatrix-method",
+        "unique,ContactMatrix-method"
+      ]
+    },
+    {
+      "page": "ContactMatrix-subset",
+      "title": "ContactMatrix subsetting and combining",
+      "topics": [
+        "cbind,ContactMatrix-method",
+        "ContactMatrix-subset",
+        "rbind,ContactMatrix-method",
+        "subset,ContactMatrix-method",
+        "[,ContactMatrix,ANY,ANY,ANY-method",
+        "[,ContactMatrix,ANY,ANY-method",
+        "[,ContactMatrix,ANY-method",
+        "[<-,ContactMatrix,ANY,ANY,ContactMatrix-method"
+      ]
+    },
+    {
+      "page": "conversion",
+      "title": "Convert between classes",
+      "topics": [
+        "deflate",
+        "deflate,ContactMatrix-method",
+        "inflate",
+        "inflate,GInteractions-method",
+        "inflate,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "GInteractions-class",
+      "title": "GInteractions class and constructors",
+      "topics": [
+        "GInteractions",
+        "GInteractions,GRanges,GRanges,GenomicRanges_OR_missing-method",
+        "GInteractions,missing,missing,GenomicRanges_OR_missing-method",
+        "GInteractions,numeric,numeric,GRanges-method",
+        "GInteractions-class",
+        "ReverseStrictGInteractions-class",
+        "StrictGInteractions-class"
+      ]
+    },
+    {
+      "page": "granges-methods",
+      "title": "Equivalents of GRanges methods",
+      "topics": [
+        "flank,ContactMatrix-method",
+        "flank,GInteractions-method",
+        "flank,InteractionSet-method",
+        "narrow,ContactMatrix-method",
+        "narrow,GInteractions-method",
+        "narrow,InteractionSet-method",
+        "resize,ContactMatrix-method",
+        "resize,GInteractions-method",
+        "resize,InteractionSet-method",
+        "shift,ContactMatrix-method",
+        "shift,GInteractions-method",
+        "shift,InteractionSet-method",
+        "trim,ContactMatrix-method",
+        "trim,GInteractions-method",
+        "trim,InteractionSet-method",
+        "width,ContactMatrix-method",
+        "width,GInteractions-method",
+        "width,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "interaction-accessors",
+      "title": "Interaction accessors",
+      "topics": [
+        "$,GInteractions-method",
+        "$<-,GInteractions-method",
+        "anchorIds",
+        "anchorIds,GInteractions-method",
+        "anchorIds,InteractionSet-method",
+        "anchorIds<-",
+        "anchorIds<-,GInteractions-method",
+        "anchorIds<-,InteractionSet-method",
+        "anchorIds<-,ReverseStrictGInteractions-method",
+        "anchorIds<-,StrictGInteractions-method",
+        "anchors",
+        "anchors,GInteractions-method",
+        "anchors,InteractionSet-method",
+        "anchors<-",
+        "anchors<-,GInteractions-method",
+        "anchors<-,InteractionSet-method",
+        "anchors<-,ReverseStrictGInteractions-method",
+        "anchors<-,StrictGInteractions-method",
+        "appendRegions<-",
+        "appendRegions<-,GInteractions-method",
+        "appendRegions<-,InteractionSet-method",
+        "as.data.frame,GInteractions-method",
+        "first",
+        "first,GInteractions-method",
+        "first,InteractionSet-method",
+        "interaction-access",
+        "interactions",
+        "interactions,InteractionSet-method",
+        "interactions<-",
+        "interactions<-,InteractionSet-method",
+        "length,GInteractions-method",
+        "mcols,InteractionSet-method",
+        "mcols<-,InteractionSet-method",
+        "names,GInteractions-method",
+        "names,InteractionSet-method",
+        "names<-,GInteractions-method",
+        "names<-,InteractionSet-method",
+        "reduceRegions",
+        "reduceRegions,GInteractions-method",
+        "reduceRegions,InteractionSet-method",
+        "regions",
+        "regions,GInteractions-method",
+        "regions,InteractionSet-method",
+        "regions<-",
+        "regions<-,GInteractions-method",
+        "regions<-,InteractionSet-method",
+        "replaceRegions<-",
+        "replaceRegions<-,GInteractions-method",
+        "replaceRegions<-,InteractionSet-method",
+        "second",
+        "second,GInteractions-method",
+        "second,InteractionSet-method",
+        "seqinfo,GInteractions-method",
+        "seqinfo,InteractionSet-method",
+        "seqinfo<-,GInteractions-method",
+        "seqinfo<-,InteractionSet-method",
+        "show,GInteractions-method",
+        "show,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "interaction-bind",
+      "title": "Interaction combining",
+      "topics": [
+        "c,GInteractions-method",
+        "cbind,InteractionSet-method",
+        "interaction-bind",
+        "rbind,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "interaction-compare",
+      "title": "Interaction comparisons",
+      "topics": [
+        "duplicated,GInteractions-method",
+        "duplicated,InteractionSet-method",
+        "interaction-compare",
+        "match,GInteractions,GInteractions-method",
+        "match,GInteractions,InteractionSet-method",
+        "match,InteractionSet,GInteractions-method",
+        "match,InteractionSet,InteractionSet-method",
+        "order,GInteractions-method",
+        "order,InteractionSet-method",
+        "pcompare,GInteractions,GInteractions-method",
+        "sort,GInteractions-method",
+        "sort,InteractionSet-method",
+        "swapAnchors",
+        "swapAnchors,GInteractions-method",
+        "swapAnchors,InteractionSet-method",
+        "unique,GInteractions-method",
+        "unique,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "distances",
+      "title": "Get the linear distance for each interaction",
+      "topics": [
+        "intrachr",
+        "intrachr,GInteractions-method",
+        "intrachr,InteractionSet-method",
+        "pairdist",
+        "pairdist,GInteractions-method",
+        "pairdist,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "overlaps",
+      "title": "Find overlaps between interactions in one or two dimensions",
+      "topics": [
+        "countOverlaps",
+        "countOverlaps,GInteractions,GInteractions-method",
+        "countOverlaps,GInteractions,InteractionSet-method",
+        "countOverlaps,GInteractions,missing-method",
+        "countOverlaps,GInteractions,Vector-method",
+        "countOverlaps,InteractionSet,GInteractions-method",
+        "countOverlaps,InteractionSet,InteractionSet-method",
+        "countOverlaps,InteractionSet,missing-method",
+        "countOverlaps,InteractionSet,Vector-method",
+        "countOverlaps,Vector,GInteractions-method",
+        "countOverlaps,Vector,InteractionSet-method",
+        "findOverlaps",
+        "findOverlaps,GInteractions,GInteractions-method",
+        "findOverlaps,GInteractions,InteractionSet-method",
+        "findOverlaps,GInteractions,missing-method",
+        "findOverlaps,GInteractions,Vector-method",
+        "findOverlaps,InteractionSet,GInteractions-method",
+        "findOverlaps,InteractionSet,InteractionSet-method",
+        "findOverlaps,InteractionSet,missing-method",
+        "findOverlaps,InteractionSet,Vector-method",
+        "findOverlaps,Vector,GInteractions-method",
+        "findOverlaps,Vector,InteractionSet-method",
+        "Interaction-overlaps",
+        "overlapsAny",
+        "overlapsAny,GInteractions,GInteractions-method",
+        "overlapsAny,GInteractions,InteractionSet-method",
+        "overlapsAny,GInteractions,missing-method",
+        "overlapsAny,GInteractions,Vector-method",
+        "overlapsAny,InteractionSet,GInteractions-method",
+        "overlapsAny,InteractionSet,InteractionSet-method",
+        "overlapsAny,InteractionSet,missing-method",
+        "overlapsAny,InteractionSet,Vector-method",
+        "overlapsAny,Vector,GInteractions-method",
+        "overlapsAny,Vector,InteractionSet-method",
+        "subsetByOverlaps",
+        "subsetByOverlaps,GInteractions,GInteractions-method",
+        "subsetByOverlaps,GInteractions,InteractionSet-method",
+        "subsetByOverlaps,GInteractions,Vector-method",
+        "subsetByOverlaps,InteractionSet,GInteractions-method",
+        "subsetByOverlaps,InteractionSet,InteractionSet-method",
+        "subsetByOverlaps,InteractionSet,Vector-method",
+        "subsetByOverlaps,Vector,GInteractions-method",
+        "subsetByOverlaps,Vector,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "interaction-subset",
+      "title": "Interaction subsetting and combining",
+      "topics": [
+        "interaction-subset",
+        "subset,InteractionSet-method",
+        "[,InteractionSet,ANY,ANY,ANY-method",
+        "[,InteractionSet,ANY,ANY-method",
+        "[,InteractionSet,ANY-method",
+        "[<-,GInteractions,ANY,GInteractions-method",
+        "[<-,InteractionSet,ANY,ANY,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "InteractionSet-class",
+      "title": "InteractionSet class and constructors",
+      "topics": [
+        "InteractionSet",
+        "InteractionSet,ANY,GInteractions-method",
+        "InteractionSet,missing,missing-method",
+        "InteractionSet-class"
+      ]
+    },
+    {
+      "page": "linearize",
+      "title": "Linearize 2D interactions into 1D ranges",
+      "topics": [
+        "linearize",
+        "linearize,GInteractions,GRanges-method",
+        "linearize,GInteractions,numeric-method",
+        "linearize,InteractionSet,GRanges-method",
+        "linearize,InteractionSet,numeric-method"
+      ]
+    },
+    {
+      "page": "linkOverlaps",
+      "title": "Link overlapping regions",
+      "topics": [
+        "linkOverlaps",
+        "linkOverlaps,GInteractions,Hits,Hits-method",
+        "linkOverlaps,GInteractions,Hits,missing-method",
+        "linkOverlaps,GInteractions,Vector,missing-method",
+        "linkOverlaps,GInteractions,Vector,Vector-method",
+        "linkOverlaps,InteractionSet,Hits,Hits-method",
+        "linkOverlaps,InteractionSet,Hits,missing-method",
+        "linkOverlaps,InteractionSet,Vector,missing-method",
+        "linkOverlaps,InteractionSet,Vector,Vector-method"
+      ]
+    },
+    {
+      "page": "pairs",
+      "title": "Extract paired ranges",
+      "topics": [
+        "makeGInteractionsFromGRangesPairs",
+        "pairs",
+        "pairs,GInteractions-method",
+        "pairs,InteractionSet-method"
+      ]
+    },
+    {
+      "page": "updateObject",
+      "title": "Update a GInteractions object",
+      "topics": [
+        "updateObject",
+        "updateObject,GInteractions-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/InteractionSet/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocGenerics",
+    "DelayedArray",
+    "generics",
+    "GenomicRanges",
+    "IRanges",
+    "lattice",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "Rcpp",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "SparseArray",
+    "SummarizedExperiment",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "interactions.Rmd",
+      "filename": "interactions.html",
+      "title": "Classes for genomic interaction data",
+      "author": "Aaron Lun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Description of the GInteractions class",
+        "Construction",
+        "Getters",
+        "Setters",
+        "Subsetting and combining",
+        "Sorting, duplication and matching",
+        "Distance calculations",
+        "Overlap methods",
+        "Linking sets of regions",
+        "Finding the bounding box",
+        "Enforcing anchor ordering in StrictGInteractions",
+        "Description of the InteractionSet class",
+        "Other methods",
+        "Description of the ContactMatrix class",
+        "Sorting and duplication",
+        "Distance calculation",
+        "Converting between classes",
+        "Inflating a GInteractions into a ContactMatrix",
+        "Deflating a ContactMatrix into an InteractionSet",
+        "Linearizing an InteractionSet into a RangedSummarizedExperiment",
+        "Summary"
+      ],
+      "created": "2016-04-06 16:10:37",
+      "modified": "2021-04-16 07:34:39",
+      "commits": 4
+    }
+  ],
+  "_score": 9.12399103169555,
+  "_indexed": true,
+  "_nocasepkg": "interactionset",
+  "_universes": [
+    "bioc",
+    "ltla"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:59:55.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "65ec238be4f367a79c1b52b34dfe7817a60166abee25d7bb55975f8eab4fd458",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-01-31T08:00:07.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "25340a87ecf7adc739febc9f396b4ce07730f95bc0da2f33bf132f88748d21b1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:59:39.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "1509dfad1cb80b0d53921b0e992f273f7caff916c4daafb6354bc208b68ff60d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:59:47.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "53168f449e0e1b4fa76fd76e40836f7fafd72aedaeddbc82cd1bb3610d79be22",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:58:41.000Z",
+      "arch": "aarch64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "5ccf9c89c410b1c9c84e0b98fddcc186cfcdbec839b54424db6bd65f3ae62236",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-01-31T08:00:14.000Z",
+      "arch": "x86_64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "c64d24bfb7d8cbad0718d655960659183c19ae5f55ad22215c17c8e9b98c7366",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:58:43.000Z",
+      "arch": "aarch64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "410e6d870a9fe26d41b77840d8bce47bdf1f5c9a1b07e2ed685002a6ebe0aba9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-01-31T08:00:00.000Z",
+      "arch": "x86_64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "f72e774bebcc8606f70f8ee2d6d3eceb62f65d11fb281f9fdedbac792be93e01",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:59:31.000Z",
+      "arch": "emscripten",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "bc747f182641539439ae410fe310034966ef446f890e146a80dc9dc7797e108b",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:59:17.000Z",
+      "arch": "x86_64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "81704731a014612e9ebce34485c41a352ca93e13d5dc4c1d27056ad237416c50",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:58:44.000Z",
+      "arch": "x86_64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "f0f5346391c05ec57612bb1dbdc174a7e719e23b8025661da61542d6c0504b3d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-01-31T07:58:33.000Z",
+      "arch": "x86_64",
+      "commit": "3862179b986220f56e5a1ca21758f92661650c51",
+      "fileid": "0bce80efe46804e56f118a99c80e7eea546b8f921b7886430455eb3aad3a6b27",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541270199"
+    }
+  ]
+}

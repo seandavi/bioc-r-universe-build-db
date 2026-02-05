@@ -1,0 +1,744 @@
+{
+  "Package": "DifferentialRegulation",
+  "Type": "Package",
+  "Title": "Differentially regulated genes from scRNA-seq data",
+  "Version": "2.9.0",
+  "Description": "DifferentialRegulation is a method for detecting\ndifferentially regulated genes between two groups of samples\n(e.g., healthy vs. disease, or treated vs. untreated samples),\nby targeting differences in the balance of spliced and\nunspliced mRNA abundances, obtained from single-cell\nRNA-sequencing (scRNA-seq) data. From a mathematical point of\nview, DifferentialRegulation accounts for the sample-to-sample\nvariability, and embeds multiple samples in a Bayesian\nhierarchical model. Furthermore, our method also deals with two\nmajor sources of mapping uncertainty: i) 'ambiguous' reads,\ncompatible with both spliced and unspliced versions of a gene,\nand ii) reads mapping to multiple genes. In particular,\nambiguous reads are treated separately from spliced and\nunsplced reads, while reads that are compatible with multiple\ngenes are allocated to the gene of origin. Parameters are\ninferred via Markov chain Monte Carlo (MCMC) techniques\n(Metropolis-within-Gibbs).",
+  "Authors@R": "c(person(given = \"Simone\",\nfamily = \"Tiberi\",\nrole = c(\"aut\", \"cre\"),\nemail = \"simone.tiberi@unibo.it\",\ncomment = c(ORCID = \"0000-0002-3054-9964\")),\nperson(given = \"Charlotte\", family = \"Soneson\",\nrole = c(\"aut\"),\nemail = \"charlottesoneson@gmail.com\",\ncomment = c(ORCID = \"0000-0003-3833-2169\")))",
+  "biocViews": "DifferentialSplicing, Bayesian, Genetics, RNASeq,\nSequencing, DifferentialExpression, GeneExpression,\nMultipleComparison, Software, Transcription, StatisticalMethod,\nVisualization, SingleCell, GeneTarget",
+  "License": "GPL-3",
+  "SystemRequirements": "C++17",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.2",
+  "ByteCompile": "true",
+  "Encoding": "UTF-8",
+  "URL": "https://github.com/SimoneTiberi/DifferentialRegulation",
+  "BugReports": "https://github.com/SimoneTiberi/DifferentialRegulation/issues",
+  "Config/pak/sysreqs": "libicu-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:16:49 UTC",
+  "RemoteUrl": "https://github.com/bioc/DifferentialRegulation",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-01-16 22:01:21 UTC",
+    "User": "root"
+  },
+  "Author": "Simone Tiberi [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-3054-9964>),\nCharlotte Soneson [aut] (ORCID:\n<https://orcid.org/0000-0003-3833-2169>)",
+  "Maintainer": "Simone Tiberi <simone.tiberi@unibo.it>",
+  "MD5sum": "4a6dc4414a358de80e83d3966c4c5cb8",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "DifferentialRegulation_2.9.0.tar.gz",
+  "_fileid": "caa7904fc880d087ba44cc55328162755d5e39768803b8581f078695b2cdb7da",
+  "_filesize": 3178681,
+  "_sha256": "caa7904fc880d087ba44cc55328162755d5e39768803b8581f078695b2cdb7da",
+  "_created": "2026-01-16T22:01:21.000Z",
+  "_published": "2026-01-16T22:13:17.355Z",
+  "_jobs": [
+    {
+      "job": 60638323948,
+      "time": 197,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5160291379"
+    },
+    {
+      "job": 60638323961,
+      "time": 372,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5160317320"
+    },
+    {
+      "job": 60638323977,
+      "time": 413,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5160322748"
+    },
+    {
+      "job": 60638323992,
+      "time": 364,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5160316283"
+    },
+    {
+      "job": 60638323972,
+      "time": 429,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5160325107"
+    },
+    {
+      "job": 60638323973,
+      "time": 382,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5160327094"
+    },
+    {
+      "job": 60638323989,
+      "time": 572,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5160356044"
+    },
+    {
+      "job": 60638324024,
+      "time": 230,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5160306797"
+    },
+    {
+      "job": 60638323996,
+      "time": 485,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5160343574"
+    },
+    {
+      "job": 60637872395,
+      "time": 364,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5160261227"
+    },
+    {
+      "job": 60638323958,
+      "time": 156,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5160285526"
+    },
+    {
+      "job": 60638323983,
+      "time": 468,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5160331619"
+    },
+    {
+      "job": 60638323969,
+      "time": 411,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5160322571"
+    },
+    {
+      "job": 60638323960,
+      "time": 415,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5160323064"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/DifferentialRegulation",
+  "_commit": {
+    "id": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751009
+  },
+  "_maintainer": {
+    "name": "Simone Tiberi",
+    "email": "simone.tiberi@unibo.it",
+    "login": "simonetiberi",
+    "twitter": "@tiberi_simone",
+    "uuid": 24696388,
+    "orcid": "0000-0002-3054-9964"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "doRNG",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "BANDITS",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "tximport",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.9.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.8.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "differentialsplicing",
+    "bayesian",
+    "genetics",
+    "rnaseq",
+    "sequencing",
+    "differentialexpression",
+    "geneexpression",
+    "multiplecomparison",
+    "software",
+    "transcription",
+    "statisticalmethod",
+    "visualization",
+    "singlecell",
+    "genetarget",
+    "openblas",
+    "cpp"
+  ],
+  "_stars": 11,
+  "_contributors": [
+    {
+      "user": "nturaga",
+      "count": 2,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 320,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/DifferentialRegulation"
+  },
+  "_devurl": "https://github.com/simonetiberi/differentialregulation",
+  "_searchresults": 4,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/DifferentialRegulation.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/simonetiberi/differentialregulation",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "compute_PB_counts",
+    "DifferentialRegulation",
+    "DifferentialRegulation_bulk",
+    "load_bulk_EC",
+    "load_bulk_US",
+    "load_EC",
+    "load_USA",
+    "plot_bulk_pi",
+    "plot_bulk_traceplot",
+    "plot_pi",
+    "plot_traceplot"
+  ],
+  "_help": [
+    {
+      "page": "DifferentialRegulation-package",
+      "title": "Differentially regulated genes from scRNA-seq data",
+      "topics": [
+        "DifferentialRegulation-package"
+      ]
+    },
+    {
+      "page": "compute_PB_counts",
+      "title": "Discover differentially regulated genes",
+      "topics": [
+        "compute_PB_counts"
+      ]
+    },
+    {
+      "page": "DifferentialRegulation",
+      "title": "Discover differentially regulated genes from single-cell RNA-seq data",
+      "topics": [
+        "DifferentialRegulation"
+      ]
+    },
+    {
+      "page": "DifferentialRegulation_bulk",
+      "title": "Discover differentially regulated genes from bulk RNA-seq data",
+      "topics": [
+        "DifferentialRegulation_bulk"
+      ]
+    },
+    {
+      "page": "load_bulk_EC",
+      "title": "Create a list containing the equivalence classes objects for the bulk RNA-seq data",
+      "topics": [
+        "load_bulk_EC"
+      ]
+    },
+    {
+      "page": "load_bulk_US",
+      "title": "Creates a SummarizedExperiment containing the estimated US counts for the bulk RNA-seq data",
+      "topics": [
+        "load_bulk_US"
+      ]
+    },
+    {
+      "page": "load_EC",
+      "title": "Create a list containing the equivalence classes objects for the single-cell RNA-seq data",
+      "topics": [
+        "load_EC"
+      ]
+    },
+    {
+      "page": "load_USA",
+      "title": "Creates a SingleCellExperiment containing the estimated USA counts for the single-cell RNA-seq data",
+      "topics": [
+        "load_USA"
+      ]
+    },
+    {
+      "page": "plot_bulk_pi",
+      "title": "Plot the estimated proportions of US counts in each group - bulk RNA-seq data",
+      "topics": [
+        "plot_bulk_pi"
+      ]
+    },
+    {
+      "page": "plot_bulk_traceplot",
+      "title": "Traceplot of the posterior chain of the proportion (i.e., pi) of unspliced (U) counts in each group - bulk RNA-seq data",
+      "topics": [
+        "plot_bulk_traceplot"
+      ]
+    },
+    {
+      "page": "plot_pi",
+      "title": "Plot the estimated proportions of US or USA counts in each group - single-cell RNA-seq data",
+      "topics": [
+        "plot_pi"
+      ]
+    },
+    {
+      "page": "plot_traceplot",
+      "title": "Traceplot of the posterior chain of the proportion (i.e., pi) of unspliced (U) counts in each group - single-cell RNA-seq data",
+      "topics": [
+        "plot_traceplot"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/DifferentialRegulation/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "BANDITS",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "cli",
+    "codetools",
+    "cpp11",
+    "data.table",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "doRNG",
+    "DRIMSeq",
+    "edgeR",
+    "farver",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "plyr",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "reshape2",
+    "rlang",
+    "rngtools",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tximport",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "liblapack",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libblas",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "DifferentialRegulation.Rmd",
+      "filename": "DifferentialRegulation.html",
+      "title": "DifferentialRegulation: a method to identify genes displaying differential regulation between groups of samples",
+      "author": "Simone Tiberi, Charlotte Soneson",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Conceptual idea",
+        "Mathematical details",
+        "Bioconductor installation",
+        "Questions, issues and citation",
+        "Single-cell RNA-seq pipeline",
+        "Input data: alignment and quantification with alevin-fry",
+        "Load the package",
+        "Load the data",
+        "Load USA counts",
+        "Load equivalence classes (EC)",
+        "QC and filtering",
+        "Differential testing",
+        "Visualizing results",
+        "Bulk RNA-seq pipeline",
+        "Input data: alignment and quantification with salmon or kallisto",
+        "Load US counts",
+        "Session info",
+        "References"
+      ],
+      "created": "2022-04-01 12:40:54",
+      "modified": "2024-01-22 15:36:50",
+      "commits": 12
+    }
+  ],
+  "_score": 5.041392685158225,
+  "_indexed": true,
+  "_nocasepkg": "differentialregulation",
+  "_universes": [
+    "bioc",
+    "simonetiberi"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:04:37.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "22fd70716751ec08716f71474168dea736879fddde413e39abdf635474ab7890",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:05:02.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "423a319ee2598a6b1474c268aa5baff6672f116b016561f930e5c173ed867d85",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:04:40.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "bfe49300db7e49fc64ee616e08f362892fae7990c3345c4d65dc20bf7b9c0469",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:05:30.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "4e745240be19bf426ed3667f8167243fdc4593d50f1125a7cf6bfb82f6d1f111",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:04:53.000Z",
+      "arch": "aarch64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "a412f464004b5661865df069a07a0e3f3cc6603fc10995116833d9b9ed0427d7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:05:50.000Z",
+      "arch": "x86_64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "2d24257bb378feb07d79a267c0cbb77310a49bad2ca27ac5c1005d1a65df18cd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:04:43.000Z",
+      "arch": "aarch64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "756fbcd7e8098b2b01c1dc6d979f1f8bcfc6c1fd44d7dbc5957e1a87a5d5a841",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:06:03.000Z",
+      "arch": "x86_64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "3f823d697dbba5642c5aa3796e6098e0d42599e3dc243eea79578ca98dc0d8ef",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:04:32.000Z",
+      "arch": "emscripten",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "1a6950ba4d4e7e2d838e7f6326267ce958e31dd61588a22a11b3b2e5d605c386",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:04:17.000Z",
+      "arch": "x86_64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "dcb63b734a327961f05cfb0925e683b5cb739c9aee5378c52588508e6ff7038d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:03:49.000Z",
+      "arch": "x86_64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "e70a341a63f3438beb676c78890cdef7389c80dd19da06de53284a2e41eb6457",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.9.0",
+      "date": "2026-01-16T22:03:53.000Z",
+      "arch": "x86_64",
+      "commit": "e4187ce3de0c49dfee9413d38dcad7b1c4c12f58",
+      "fileid": "6243d8a25dea00cb9dbb7cdd95a3b1f86f910cac3f947b1ad773771c95d1eac6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21082091686"
+    }
+  ]
+}

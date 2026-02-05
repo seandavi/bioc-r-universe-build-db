@@ -1,0 +1,817 @@
+{
+  "Package": "CytoMDS",
+  "Title": "Low Dimensions projection of cytometry samples",
+  "Version": "1.7.2",
+  "Authors@R": "c(person(given = \"Philippe\",\nfamily = \"Hauchamps\",\nrole = c(\"aut\", \"cre\"),\nemail = \"philippe.hauchamps@uclouvain.be\",\ncomment = c(ORCID = \"0000-0003-2865-1852\")),\nperson(given = \"Laurent\", family = \"Gatto\",\nemail = \"laurent.gatto@uclouvain.be\",\nrole = \"aut\",\ncomment = c(ORCID = \"0000-0002-1520-2268\")),\nperson(given = \"Dan\",\nfamily = \"Lin\",\nrole = \"ctb\",\nemail = \"dan.8.lin@gsk.com\"))",
+  "Description": "This package implements a low dimensional visualization of\na set of cytometry samples, in order to visually assess the\n'distances' between them. This, in turn, can greatly help the\nuser to identify quality issues like batch effects or outlier\nsamples, and/or check the presence of potential sample clusters\nthat might align with the exeprimental design. The CytoMDS\nalgorithm combines, on the one hand, the concept of Earth\nMover's Distance (EMD), a.k.a. Wasserstein metric and, on the\nother hand, the Multi Dimensional Scaling (MDS) algorithm for\nthe low dimensional projection. Also, the package provides some\ndiagnostic tools for both checking the quality of the MDS\nprojection, as well as tools to help with the interpretation of\nthe axes of the projection.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "BugReports": "https://github.com/UCLouvain-CBIO/CytoMDS/issues",
+  "URL": "https://uclouvain-cbio.github.io/CytoMDS",
+  "biocViews": "FlowCytometry, QualityControl, DimensionReduction,\nMultidimensionalScaling, Software, Visualization",
+  "Collate": "'CytoMDS-package.R' 'stats.R' 'ggplots.R' 'MDS-class.R'\n'DistSum-class.R'",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "cmake libfontconfig1-dev libfreetype6-dev make\nlibicu-dev libpng-dev libxml2-dev libssl-dev perl libx11-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-18 19:48:18 UTC",
+  "RemoteUrl": "https://github.com/bioc/CytoMDS",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "0b893cc8907e598619516cbd554b70947a917274",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-19 03:57:28 UTC",
+    "User": "root"
+  },
+  "Author": "Philippe Hauchamps [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-2865-1852>),\nLaurent Gatto [aut] (ORCID: <https://orcid.org/0000-0002-1520-2268>),\nDan Lin [ctb]",
+  "Maintainer": "Philippe Hauchamps <philippe.hauchamps@uclouvain.be>",
+  "MD5sum": "a8b0f247504cf6715b9595cc5db305b1",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "CytoMDS_1.7.2.tar.gz",
+  "_fileid": "e77b6b2f1bdd1c2dc656065bbad8d167996285889404bde9e6a69f7ebc9a404b",
+  "_filesize": 4866022,
+  "_sha256": "e77b6b2f1bdd1c2dc656065bbad8d167996285889404bde9e6a69f7ebc9a404b",
+  "_created": "2026-01-19T03:57:28.000Z",
+  "_published": "2026-01-19T04:07:12.612Z",
+  "_jobs": [
+    {
+      "job": 60743864641,
+      "time": 219,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5172286182"
+    },
+    {
+      "job": 60743864675,
+      "time": 538,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5172315398"
+    },
+    {
+      "job": 60743864690,
+      "time": 489,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5172310597"
+    },
+    {
+      "job": 60743864737,
+      "time": 399,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5172302577"
+    },
+    {
+      "job": 60743864659,
+      "time": 408,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5172303236"
+    },
+    {
+      "job": 60743522317,
+      "time": 392,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5172264319"
+    },
+    {
+      "job": 60743864633,
+      "time": 207,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5172284915"
+    },
+    {
+      "job": 60743864799,
+      "time": 409,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5172303638"
+    },
+    {
+      "job": 60743864795,
+      "time": 440,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5172306284"
+    },
+    {
+      "job": 60743864794,
+      "time": 441,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5172306382"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/CytoMDS",
+  "_commit": {
+    "id": "0b893cc8907e598619516cbd554b70947a917274",
+    "author": "phauchamps <philippehauchamps@hotmail.com>",
+    "committer": "phauchamps <philippehauchamps@hotmail.com>",
+    "message": "temporarily deactivated one unit test with vdiffr (doppelganger)\n",
+    "time": 1768765698
+  },
+  "_maintainer": {
+    "name": "Philippe Hauchamps",
+    "email": "philippe.hauchamps@uclouvain.be",
+    "orcid": "0000-0003-2865-1852"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "pracma",
+      "role": "Imports"
+    },
+    {
+      "package": "withr",
+      "role": "Imports"
+    },
+    {
+      "package": "flowCore",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "ggforce",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "transport",
+      "role": "Imports"
+    },
+    {
+      "package": "smacof",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "CytoPipeline",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "vdiffr",
+      "role": "Suggests"
+    },
+    {
+      "package": "diffviewer",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "HDCytoData",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-04",
+      "n": 1
+    },
+    {
+      "week": "2025-09",
+      "n": 1
+    },
+    {
+      "week": "2025-15",
+      "n": 2
+    },
+    {
+      "week": "2025-20",
+      "n": 2
+    },
+    {
+      "week": "2025-34",
+      "n": 1
+    },
+    {
+      "week": "2025-48",
+      "n": 5
+    },
+    {
+      "week": "2026-03",
+      "n": 5
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "flowcytometry",
+    "qualitycontrol",
+    "dimensionreduction",
+    "multidimensionalscaling",
+    "software",
+    "visualization"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "phauchamps",
+      "count": 138,
+      "uuid": 50106065
+    },
+    {
+      "user": "jwokaty",
+      "count": 8,
+      "uuid": 1744257
+    },
+    {
+      "user": "lgatto",
+      "count": 3,
+      "uuid": 384198
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 222,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/CytoMDS"
+  },
+  "_devurl": "https://github.com/uclouvain-cbio/cytomds",
+  "_pkgdown": "https://uclouvain-cbio.github.io/CytoMDS",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/CytoMDS.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/uclouvain-cbio/cytomds",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "as.matrix",
+    "channelSummaryStats",
+    "computeMetricMDS",
+    "distByFeature",
+    "DistSum",
+    "eigenVals",
+    "EMDDist",
+    "featureNames",
+    "featureNames<-",
+    "ggplotDistFeatureImportance",
+    "ggplotMarginalDensities",
+    "ggplotSampleMDS",
+    "ggplotSampleMDSShepard",
+    "ggplotSampleMDSWrapBiplots",
+    "ggplotVolcano",
+    "GoF",
+    "nDim",
+    "nFeatures",
+    "nPoints",
+    "pairwiseEMDDist",
+    "pctvar",
+    "projDist",
+    "projections",
+    "pwDist",
+    "RSq",
+    "RSqVec",
+    "smacofRes",
+    "spp",
+    "stress"
+  ],
+  "_help": [
+    {
+      "page": "channelSummaryStats",
+      "title": "Summary statistics per channel computation",
+      "topics": [
+        "channelSummaryStats"
+      ]
+    },
+    {
+      "page": "computeMetricMDS",
+      "title": "metric MDS projection of sample",
+      "topics": [
+        "computeMetricMDS"
+      ]
+    },
+    {
+      "page": "DistSum-class",
+      "title": "DistSum class",
+      "topics": [
+        "as.matrix,DistSum-method",
+        "colnames,DistSum-method",
+        "colnames<-,DistSum-method",
+        "dim,DistSum-method",
+        "dimnames,DistSum-method",
+        "dimnames<-,DistSum,ANY-method",
+        "dimnames<-,DistSum,list-method",
+        "distByFeature",
+        "DistSum",
+        "DistSum,list-method",
+        "DistSum,matrix-method",
+        "DistSum-class",
+        "featureNames,DistSum-method",
+        "featureNames<-,DistSum-method",
+        "ncol,DistSum-method",
+        "nFeatures",
+        "nrow,DistSum-method",
+        "rownames,DistSum-method",
+        "rownames<-,DistSum-method",
+        "show,DistSum-method",
+        "[,DistSum,ANY,ANY,ANY-method",
+        "[,DistSum,ANY,ANY,missing-method",
+        "[,DistSum,ANY,missing,ANY-method",
+        "[,DistSum,ANY,missing,missing-method"
+      ]
+    },
+    {
+      "page": "EMDDist",
+      "title": "Calculate Earth Mover's distance between two samples",
+      "topics": [
+        "EMDDist"
+      ]
+    },
+    {
+      "page": "ggplotDistFeatureImportance",
+      "title": "Plot of feature relative importance in distance",
+      "topics": [
+        "ggplotDistFeatureImportance"
+      ]
+    },
+    {
+      "page": "ggplotMarginalDensities",
+      "title": "Plot of channel intensity marginal densities",
+      "topics": [
+        "ggplotMarginalDensities"
+      ]
+    },
+    {
+      "page": "ggplotSampleMDS",
+      "title": "Plot of Metric MDS object",
+      "topics": [
+        "ggplotSampleMDS"
+      ]
+    },
+    {
+      "page": "ggplotSampleMDSShepard",
+      "title": "Plot of Metric MDS object - Shepard diagram",
+      "topics": [
+        "ggplotSampleMDSShepard"
+      ]
+    },
+    {
+      "page": "ggplotSampleMDSWrapBiplots",
+      "title": "SampleMDS biplot wrapping",
+      "topics": [
+        "ggplotSampleMDSWrapBiplots"
+      ]
+    },
+    {
+      "page": "ggplotVolcano",
+      "title": "standard volcano plot",
+      "topics": [
+        "ggplotVolcano"
+      ]
+    },
+    {
+      "page": "MDS",
+      "title": "MDS class",
+      "topics": [
+        "eigenVals",
+        "GoF",
+        "MDS-class",
+        "nDim",
+        "nPoints",
+        "pctvar",
+        "projDist",
+        "projections",
+        "pwDist",
+        "RSq",
+        "RSqVec",
+        "show,MDS-method",
+        "smacofRes",
+        "spp",
+        "stress"
+      ]
+    },
+    {
+      "page": "pairwiseEMDDist",
+      "title": "Pairwise Earth Mover's Distance calculation",
+      "topics": [
+        "pairwiseEMDDist"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/CytoMDS/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "blob",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "changepoint",
+    "checkmate",
+    "circlize",
+    "class",
+    "cli",
+    "clipr",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "curl",
+    "cytolib",
+    "CytoPipeline",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "diagram",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "e1071",
+    "ellipse",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "flowAI",
+    "flowCore",
+    "flowWorkspace",
+    "fontawesome",
+    "forcats",
+    "foreach",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdata",
+    "generics",
+    "GetoptLong",
+    "ggcyto",
+    "ggforce",
+    "ggplot2",
+    "ggrepel",
+    "glmnet",
+    "GlobalOptions",
+    "glue",
+    "graph",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "haven",
+    "hexbin",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jomo",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mice",
+    "mime",
+    "minqa",
+    "mitml",
+    "ncdfFlow",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "nnls",
+    "numDeriv",
+    "openssl",
+    "ordinal",
+    "pan",
+    "patchwork",
+    "PeacoQC",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plotrix",
+    "plyr",
+    "png",
+    "polyclip",
+    "polynom",
+    "pracma",
+    "prettyunits",
+    "progress",
+    "proxy",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RBGL",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "Rdpack",
+    "readr",
+    "reformulas",
+    "reshape2",
+    "Rgraphviz",
+    "Rhdf5lib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "RProtoBufLib",
+    "RSQLite",
+    "rstudioapi",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "shape",
+    "smacof",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "survival",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "transport",
+    "tweenr",
+    "tzdb",
+    "ucminf",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "weights",
+    "withr",
+    "wordcloud",
+    "xfun",
+    "XML",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "CytoMDS.Rmd",
+      "filename": "CytoMDS.html",
+      "title": "Low Dimensional Projection of Cytometry Samples",
+      "author": "Philippe Hauchamps, Laurent Gatto",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation and loading dependencies",
+        "Introduction",
+        "Illustrative dataset",
+        "Pairwise sample Earth Mover's Distances",
+        "Calculating distances between samples",
+        "Individual marker contribution in the distance matrix",
+        "Metric Multidimensional scaling",
+        "Calculating the MDS projection",
+        "Plotting the MDS projection",
+        "Quality of projection - diagnostic tools",
+        "Additional options for the MDS projection",
+        "Aid to interpreting projection axes",
+        "Bi-plots",
+        "Bi-plot wrapping",
+        "Handling large datasets",
+        "Loading flow frames dynamically during distance matrix computation",
+        "Using BiocParallel to parallelize distance matrix computation",
+        "Expression matrices as input instead of flowFrames",
+        "Session information",
+        "References"
+      ],
+      "created": "2023-09-11 13:47:18",
+      "modified": "2024-12-09 10:45:08",
+      "commits": 11
+    }
+  ],
+  "_score": 4.845098040014257,
+  "_indexed": true,
+  "_nocasepkg": "cytomds",
+  "_universes": [
+    "bioc",
+    "uclouvain-cbio"
+  ],
+  "_previous": "1.7.1",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.7.2",
+      "date": "2026-01-19T04:02:19.000Z",
+      "distro": "noble",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "55d85ef558fb434dd1ba25e96befa403e5dc46ab2e9d0c228b9b5a2abad84882",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.7.2",
+      "date": "2026-01-19T04:01:39.000Z",
+      "distro": "noble",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "45194f9e0be3bf5ec990028d3f6e5095cc0514d3d366a109d4c2d9ce74c2f839",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.7.2",
+      "date": "2026-01-19T04:00:07.000Z",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "596067cd1c5dc26b3f251f126cb457d5ea95aab8346bc3dafc42f8d9df39c25b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.7.2",
+      "date": "2026-01-19T04:00:32.000Z",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "614b5dfd94a19728a162251cc8f58d47d1f5fe9a36596e3a14f4fa16f562454e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.7.2",
+      "date": "2026-01-19T04:01:19.000Z",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "d52fab4fecd46264c472f121fba65d7e86e8e6c974b6e81609912fbd8c692d12",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.7.2",
+      "date": "2026-01-19T03:59:50.000Z",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "182a03ebf0d59639f51270dcddddfa5b6bc73b79cea106fceeef4449afcd4290",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.7.2",
+      "date": "2026-01-19T04:00:08.000Z",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "8be1180b27108c6ca59da443bf881a63ba49787a2cb2eb6a7199ae03b6d4c6fc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.7.2",
+      "date": "2026-01-19T04:00:31.000Z",
+      "commit": "0b893cc8907e598619516cbd554b70947a917274",
+      "fileid": "edc85a9c60dd127989acc3723ce8ecc57edb3125768e0309a36f04582d5cdeca",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21124678572"
+    }
+  ]
+}

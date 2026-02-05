@@ -1,0 +1,979 @@
+{
+  "Package": "igblastr",
+  "Title": "User-friendly R Wrapper to IgBLAST",
+  "Description": "The igblastr package provides functions to conveniently\ninstall and use a local IgBLAST installation from within R.\nIgBLAST is described at\n<https://pubmed.ncbi.nlm.nih.gov/23671333/>. IgBLAST web\ninterface: <https://www.ncbi.nlm.nih.gov/igblast/>.",
+  "biocViews": "Immunology, Immunogenetics, ImmunoOncology, CellBiology",
+  "URL": "https://bioconductor.org/packages/igblastr",
+  "BugReports": "https://github.com/HyrienLab/igblastr/issues",
+  "Version": "1.1.11",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(\nperson(\"Herv\u00e9\", \"Pag\u00e8s\", role=c(\"aut\", \"cre\"),\nemail=\"hpages.on.github@gmail.com\",\ncomment=c(ORCID=\"0009-0002-8272-4522\")),\nperson(\"Ollivier\", \"Hyrien\", role=c(\"aut\", \"fnd\"),\ncomment=c(ORCID=\"0000-0003-1909-2542\")),\nperson(\"Kellie\", \"MacPhee\", role=\"ctb\",\ncomment=c(ORCID=\"0009-0008-0993-4009\")),\nperson(\"Michael\", \"Duff\", role=\"ctb\",\ncomment=c(ORCID=\"0009-0008-4279-0756\")),\nperson(\"Jason\", \"Taylor\", role=\"ctb\"))",
+  "VignetteBuilder": "knitr",
+  "Collate": "utils.R long_to_wide_airr.R translate_codons.R allele2gene.R\ncompute_intdata.R compute_auxdata.R makeogrannote.R\nfile-utils.R loci-utils.R db-utils.R LATIN_NAMES.R IMGT-utils.R\nIMGT-c_region-utils.R AIRR-utils.R precompiled-igblast-utils.R\ncache-utils.R get_igblast_root.R edit_imgt_file.R\nigblast_info.R update_live_igdata.R intdata-utils.R\nauxdata-utils.R install_igblast.R make_blastdbs.R\ncreate_region_db.R create_germline_db.R create_c_region_db.R\nbuiltin_db-utils.R list_germline_dbs.R list_c_region_dbs.R\ninstall_IMGT_germline_db.R install_AIRR_germline_db.R\naugment_germline_db.R igblastn-args-utils.R\nread_igblastn_fmt7_output.R read_igblastn_AIRR_output.R\nigblastn.R igbrowser.R summarizeMismatches.R OAS-utils.R zzz.R",
+  "Config/pak/sysreqs": "libicu-dev libxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-23 05:39:44 UTC",
+  "RemoteUrl": "https://github.com/bioc/igblastr",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "dcf875906dbda65e83825763cfcdee264650d60f",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-24 03:37:53 UTC",
+    "User": "root"
+  },
+  "Author": "Herv\u00e9 Pag\u00e8s [aut, cre] (ORCID: <https://orcid.org/0009-0002-8272-4522>),\nOllivier Hyrien [aut, fnd] (ORCID:\n<https://orcid.org/0000-0003-1909-2542>),\nKellie MacPhee [ctb] (ORCID: <https://orcid.org/0009-0008-0993-4009>),\nMichael Duff [ctb] (ORCID: <https://orcid.org/0009-0008-4279-0756>),\nJason Taylor [ctb]",
+  "Maintainer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+  "MD5sum": "3de27fd7fda6c036db4252075d8208ec",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "igblastr_1.1.11.tar.gz",
+  "_fileid": "7037f702471bf052a5e74e358079abdc4b8ecd7954c80688dd8e7a1a8ba3819b",
+  "_filesize": 4644033,
+  "_sha256": "7037f702471bf052a5e74e358079abdc4b8ecd7954c80688dd8e7a1a8ba3819b",
+  "_created": "2026-01-24T03:37:53.000Z",
+  "_published": "2026-01-25T03:46:52.586Z",
+  "_jobs": [
+    {
+      "job": 61383662911,
+      "time": 183,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5246824982"
+    },
+    {
+      "job": 61383662960,
+      "time": 367,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5242088208"
+    },
+    {
+      "job": 61383662992,
+      "time": 375,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5242088892"
+    },
+    {
+      "job": 61383662964,
+      "time": 288,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5242105349"
+    },
+    {
+      "job": 61383662921,
+      "time": 356,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5246878047"
+    },
+    {
+      "job": 61383662906,
+      "time": 527,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5242055513"
+    },
+    {
+      "job": 61383662957,
+      "time": 164,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5242070690"
+    },
+    {
+      "job": 61383662970,
+      "time": 402,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5242091244"
+    },
+    {
+      "job": 61383662995,
+      "time": 453,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5242095465"
+    },
+    {
+      "job": 61383662969,
+      "time": 396,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5242090754"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 3,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/igblastr",
+  "_commit": {
+    "id": "dcf875906dbda65e83825763cfcdee264650d60f",
+    "author": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+    "committer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+    "message": "fix unit tests\n",
+    "time": 1769146784
+  },
+  "_maintainer": {
+    "name": "Herv\u00e9 Pag\u00e8s",
+    "email": "hpages.on.github@gmail.com",
+    "login": "hpages",
+    "linkedin": "in/herv\u00e9-pag\u00e8s-5038527",
+    "uuid": 8810451
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "tibble",
+      "role": "Depends"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "R.utils",
+      "role": "Imports"
+    },
+    {
+      "package": "curl",
+      "role": "Imports"
+    },
+    {
+      "package": "httr",
+      "role": "Imports"
+    },
+    {
+      "package": "xml2",
+      "role": "Imports"
+    },
+    {
+      "package": "rvest",
+      "role": "Imports"
+    },
+    {
+      "package": "xtable",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "version": ">= 1.47.2",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Suggests"
+    },
+    {
+      "package": "parallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "scales",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggseqlogo",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-05",
+      "n": 2
+    },
+    {
+      "week": "2025-07",
+      "n": 2
+    },
+    {
+      "week": "2025-09",
+      "n": 4
+    },
+    {
+      "week": "2025-13",
+      "n": 3
+    },
+    {
+      "week": "2025-14",
+      "n": 2
+    },
+    {
+      "week": "2025-15",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 21
+    },
+    {
+      "week": "2025-17",
+      "n": 8
+    },
+    {
+      "week": "2025-18",
+      "n": 5
+    },
+    {
+      "week": "2025-20",
+      "n": 1
+    },
+    {
+      "week": "2025-21",
+      "n": 1
+    },
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-23",
+      "n": 1
+    },
+    {
+      "week": "2025-24",
+      "n": 4
+    },
+    {
+      "week": "2025-25",
+      "n": 6
+    },
+    {
+      "week": "2025-32",
+      "n": 2
+    },
+    {
+      "week": "2025-33",
+      "n": 1
+    },
+    {
+      "week": "2025-34",
+      "n": 2
+    },
+    {
+      "week": "2025-35",
+      "n": 2
+    },
+    {
+      "week": "2025-36",
+      "n": 4
+    },
+    {
+      "week": "2025-37",
+      "n": 4
+    },
+    {
+      "week": "2025-41",
+      "n": 4
+    },
+    {
+      "week": "2025-43",
+      "n": 4
+    },
+    {
+      "week": "2025-44",
+      "n": 3
+    },
+    {
+      "week": "2025-46",
+      "n": 4
+    },
+    {
+      "week": "2025-47",
+      "n": 3
+    },
+    {
+      "week": "2025-48",
+      "n": 1
+    },
+    {
+      "week": "2025-49",
+      "n": 2
+    },
+    {
+      "week": "2025-50",
+      "n": 5
+    },
+    {
+      "week": "2025-51",
+      "n": 1
+    },
+    {
+      "week": "2026-01",
+      "n": 1
+    },
+    {
+      "week": "2026-02",
+      "n": 5
+    },
+    {
+      "week": "2026-03",
+      "n": 2
+    },
+    {
+      "week": "2026-04",
+      "n": 7
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.10",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.9",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunology",
+    "immunogenetics",
+    "immunooncology",
+    "cellbiology",
+    "bioconductor-package"
+  ],
+  "_stars": 3,
+  "_contributors": [
+    {
+      "user": "hpages",
+      "count": 196,
+      "uuid": 8810451
+    },
+    {
+      "user": "ohyrien",
+      "count": 9,
+      "uuid": 28492020
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "kelliemac",
+      "count": 1,
+      "uuid": 25042566
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 194,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/igblastr"
+  },
+  "_devurl": "https://github.com/hyrienlab/igblastr",
+  "_searchresults": 14,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/igblastr.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/hyrienlab/igblastr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "allele2gene",
+    "annotate_heavy_V_alleles",
+    "annotate_light_V_alleles",
+    "augment_germline_db_D",
+    "augment_germline_db_J",
+    "augment_germline_db_V",
+    "bcr_browser",
+    "check_V_ndm_data",
+    "compute_auxdata",
+    "compute_intdata",
+    "download_paired_OAS_units",
+    "extract_codons",
+    "extract_metadata_from_OAS_units",
+    "extract_sequences_from_paired_OAS_df",
+    "extract_sequences_from_paired_OAS_units",
+    "get_auxdata_path",
+    "get_igblast_auxiliary_data",
+    "get_igblast_root",
+    "get_intdata_path",
+    "has_igblast",
+    "igblast_build",
+    "igblast_info",
+    "igblastn",
+    "igblastn_help",
+    "igblastn_version",
+    "igbrowser",
+    "igdata_info",
+    "IMGT_is_up",
+    "install_igblast",
+    "install_IMGT_c_region_db",
+    "install_IMGT_germline_db",
+    "J_allele_has_stop_codon",
+    "list_c_region_dbs",
+    "list_germline_dbs",
+    "list_igblast_organisms",
+    "list_IMGT_organisms",
+    "list_IMGT_releases",
+    "list_outfmt7_specifiers",
+    "list_paired_OAS_studies",
+    "list_paired_OAS_units",
+    "load_auxdata",
+    "load_c_region_db",
+    "load_germline_db",
+    "load_igblast_auxiliary_data",
+    "load_intdata",
+    "makeblastdb_version",
+    "makeogrannote",
+    "parse_outfmt7",
+    "print.alignment_summary",
+    "print.auxdata_md5sum_df",
+    "print.c_region_dbs_df",
+    "print.fmt7footer",
+    "print.fmt7record",
+    "print.germline_dbs_df",
+    "print.hit_table",
+    "print.igblast_info",
+    "print.igblastn_raw_output",
+    "print.igdata_info",
+    "print.outfmt7_specifiers",
+    "print.query_details",
+    "print.subregion_sequence_details",
+    "print.VDJ_junction_details",
+    "print.VDJ_rearrangement_summary",
+    "qseqid",
+    "qseqid.fmt7record",
+    "qseqid.query_details",
+    "read_igblastn_AIRR_output",
+    "read_igblastn_fmt7_output",
+    "read_OAS_csv",
+    "read_OAS_csv_metadata",
+    "read_V_ndm_data",
+    "reset_live_igdata",
+    "rm_c_region_db",
+    "rm_germline_db",
+    "set_igblast_root",
+    "summary.query_details",
+    "tabulate_deletions",
+    "tabulate_insertions",
+    "tabulate_mismatches",
+    "time_since_live_igdata_last_checked",
+    "translate_codons",
+    "translate_fwr4",
+    "translate_J_alleles",
+    "translate_V_alleles",
+    "update_live_igdata",
+    "use_c_region_db",
+    "use_germline_db",
+    "V_allele_has_stop_codon",
+    "V_genes_with_varying_fwrcdr_boundaries",
+    "write_V_ndm_data"
+  ],
+  "_help": [
+    {
+      "page": "allele2gene",
+      "title": "Go from germline gene allele names to germline gene names",
+      "topics": [
+        "allele2gene"
+      ]
+    },
+    {
+      "page": "augment_germline_db",
+      "title": "Add novel gene alleles to a germline db",
+      "topics": [
+        "augment_germline_db",
+        "augment_germline_db_D",
+        "augment_germline_db_J",
+        "augment_germline_db_V"
+      ]
+    },
+    {
+      "page": "auxdata-utils",
+      "title": "Access, manipulate, and generate IgBLAST auxiliary data",
+      "topics": [
+        "auxdata",
+        "auxdata-utils",
+        "auxdata_utils",
+        "get_auxdata_path",
+        "get_igblast_auxiliary_data",
+        "J_allele_has_stop_codon",
+        "load_auxdata",
+        "load_igblast_auxiliary_data",
+        "translate_fwr4",
+        "translate_J_alleles"
+      ]
+    },
+    {
+      "page": "compute_auxdata",
+      "title": "Compute IgBLAST auxiliary data",
+      "topics": [
+        "compute_auxdata"
+      ]
+    },
+    {
+      "page": "compute_intdata",
+      "title": "Compute IgBLAST internal data",
+      "topics": [
+        "compute_intdata"
+      ]
+    },
+    {
+      "page": "get_igblast_root",
+      "title": "Control IgBLAST installation to use",
+      "topics": [
+        "get_igblast_root",
+        "set_igblast_root"
+      ]
+    },
+    {
+      "page": "igblast_info",
+      "title": "Check IgBLAST used by igblastr",
+      "topics": [
+        "has_igblast",
+        "igblastn_version",
+        "igblast_build",
+        "igblast_info",
+        "list_igblast_organisms",
+        "makeblastdb_version",
+        "print.igblast_info"
+      ]
+    },
+    {
+      "page": "IGBLAST_ROOT",
+      "title": "Use an external IgBLAST installation",
+      "topics": [
+        "IGBLAST_ROOT"
+      ]
+    },
+    {
+      "page": "igblastn",
+      "title": "BLAST for BCR/Ig and TCR sequences",
+      "topics": [
+        "igblastn",
+        "igblastn_help",
+        "print.igblastn_raw_output"
+      ]
+    },
+    {
+      "page": "igblastr_usage_report",
+      "title": "Turn \"Usage Reporting\" on or off",
+      "topics": [
+        "BLAST_USAGE_REPORT",
+        "igblastr_usage_report",
+        "Usage_report",
+        "usage_report",
+        "Usage_reporting",
+        "usage_reporting"
+      ]
+    },
+    {
+      "page": "igbrowser",
+      "title": "Display annotated BCR sequences in a browser",
+      "topics": [
+        "bcr_browser",
+        "igbrowser"
+      ]
+    },
+    {
+      "page": "install_igblast",
+      "title": "Install IgBLAST",
+      "topics": [
+        "install_igblast"
+      ]
+    },
+    {
+      "page": "install_IMGT_germline_db",
+      "title": "Install a germline db from IMGT",
+      "topics": [
+        "IMGT_is_up",
+        "install_IMGT_c_region_db",
+        "install_IMGT_germline_db",
+        "list_IMGT_organisms",
+        "list_IMGT_releases"
+      ]
+    },
+    {
+      "page": "intdata-utils",
+      "title": "Access and manipulate IgBLAST internal data",
+      "topics": [
+        "annotate_heavy_V_alleles",
+        "annotate_light_V_alleles",
+        "get_intdata_path",
+        "intdata",
+        "intdata-utils",
+        "intdata_utils",
+        "load_intdata",
+        "translate_V_alleles",
+        "V_allele_has_stop_codon",
+        "V_genes_with_varying_fwrcdr_boundaries"
+      ]
+    },
+    {
+      "page": "list_c_region_dbs",
+      "title": "List cached C-region dbs and select one to use with igblastn()",
+      "topics": [
+        "list_c_region_dbs",
+        "load_c_region_db",
+        "print.c_region_dbs_df",
+        "rm_c_region_db",
+        "use_c_region_db"
+      ]
+    },
+    {
+      "page": "list_germline_dbs",
+      "title": "List cached germline dbs and select one to use with igblastn()",
+      "topics": [
+        "list_germline_dbs",
+        "load_germline_db",
+        "print.germline_dbs_df",
+        "rm_germline_db",
+        "use_germline_db"
+      ]
+    },
+    {
+      "page": "makeogrannote",
+      "title": "Extract V gene FWR/CDR annotation from OGRDB JSON file",
+      "topics": [
+        "check_V_ndm_data",
+        "makeogrannote",
+        "read_V_ndm_data",
+        "write_V_ndm_data"
+      ]
+    },
+    {
+      "page": "OAS-utils",
+      "title": "Download and manipulate OAS data",
+      "topics": [
+        "download_paired_OAS_units",
+        "extract_metadata_from_OAS_units",
+        "extract_sequences_from_paired_OAS_df",
+        "extract_sequences_from_paired_OAS_units",
+        "list_paired_OAS_studies",
+        "list_paired_OAS_units",
+        "OAS-utils",
+        "OAS_utils",
+        "read_OAS_csv",
+        "read_OAS_csv_metadata"
+      ]
+    },
+    {
+      "page": "read_igblastn_AIRR_output",
+      "title": "igblastn output format 19 (AIRR format)",
+      "topics": [
+        "read_igblastn_AIRR_output"
+      ]
+    },
+    {
+      "page": "read_igblastn_fmt7_output",
+      "title": "igblastn output format 7",
+      "topics": [
+        "fmt7-utils",
+        "fmt7_utils",
+        "list_outfmt7_specifiers",
+        "outfmt7-utils",
+        "outfmt7_utils",
+        "parse_outfmt7",
+        "print.alignment_summary",
+        "print.fmt7footer",
+        "print.fmt7record",
+        "print.hit_table",
+        "print.outfmt7_specifiers",
+        "print.query_details",
+        "print.subregion_sequence_details",
+        "print.VDJ_junction_details",
+        "print.VDJ_rearrangement_summary",
+        "qseqid",
+        "qseqid.fmt7record",
+        "qseqid.query_details",
+        "read_igblastn_fmt7_output",
+        "summary.query_details"
+      ]
+    },
+    {
+      "page": "summarizeMismatches",
+      "title": "Summarize mismatches and indels between query and germline sequences",
+      "topics": [
+        "summarizeMismatches",
+        "tabulate_deletions",
+        "tabulate_insertions",
+        "tabulate_mismatches"
+      ]
+    },
+    {
+      "page": "translate_codons",
+      "title": "Extract and translate codons from a set of DNA sequences",
+      "topics": [
+        "extract_codons",
+        "translate_codons"
+      ]
+    },
+    {
+      "page": "update_live_igdata",
+      "title": "Update and manage IgBLAST auxiliary and internal data",
+      "topics": [
+        "igdata_info",
+        "print.auxdata_md5sum_df",
+        "print.igdata_info",
+        "reset_live_igdata",
+        "time_since_live_igdata_last_checked",
+        "update_live_igdata"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/igblastr/raw/HEAD/README.md",
+  "_rundeps": [
+    "askpass",
+    "BiocGenerics",
+    "Biostrings",
+    "cli",
+    "crayon",
+    "curl",
+    "generics",
+    "GenomeInfoDb",
+    "glue",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "lifecycle",
+    "magrittr",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rlang",
+    "rvest",
+    "S4Vectors",
+    "selectr",
+    "Seqinfo",
+    "stringi",
+    "stringr",
+    "sys",
+    "tibble",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "xml2",
+    "xtable",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "igblastr_overview.Rmd",
+      "filename": "igblastr_overview.html",
+      "title": "igblastr overview",
+      "author": "Herv\u00e9 Pag\u00e8s, Kellie MacPhee, Ollivier Hyrien",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Install and load the package",
+        "Install IgBLAST",
+        "Install and select a germline database",
+        "Built-in germline databases",
+        "Install additional germline databases",
+        "Display the full list of cached germline dbs",
+        "Select a constant region database (optional)",
+        "Use igblastn()",
+        "Downstream analysis examples",
+        "Advanced usage",
+        "Passing additional arguments to igblastn()",
+        "Restrict the search to a subset of user-supplied gene alleles",
+        "Add novel gene alleles to the search",
+        "A TCR analysis example",
+        "Future developments",
+        "Session information"
+      ],
+      "created": "2025-03-26 19:33:24",
+      "modified": "2026-01-20 23:25:20",
+      "commits": 32
+    }
+  ],
+  "_score": 6.330819466495837,
+  "_indexed": true,
+  "_nocasepkg": "igblastr",
+  "_universes": [
+    "bioc",
+    "hpages",
+    "hyrienlab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.11",
+      "date": "2026-01-24T03:41:42.000Z",
+      "distro": "noble",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "00d4a0781f7756f7608781965bd131c26360464bdb5c0eefdb9082e698945021",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.11",
+      "date": "2026-01-24T03:41:39.000Z",
+      "distro": "noble",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "70f0e6e45a452d88822ab1ad28481642fd2b042e68323a38fa6e130872acec86",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.11",
+      "date": "2026-01-24T03:44:45.000Z",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "abb9d6193f7c5a27328de97d75375cf454f4994cc8c60033a6f324965a640b3b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.11",
+      "date": "2026-01-25T03:42:35.000Z",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "2541284748cb9dd824d44fb56bb262468e2bfe154650978c78e43bf92fa80ece",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.1.11",
+      "date": "2026-01-24T03:41:02.000Z",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "9e95a17a87365d3e581c8fd8616c3ce1e16e4ad6ba66276dfd37aed5112f4268",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.11",
+      "date": "2026-01-24T03:40:15.000Z",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "c22f076220935b5d138175361ce07fcfc3b17ff1e880054e2bf608025f21b685",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.11",
+      "date": "2026-01-24T03:40:50.000Z",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "b95aee942d5e7c94591596f0a242b8d6ce0420b482aef443146a9a82d06d96ba",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.11",
+      "date": "2026-01-24T03:40:16.000Z",
+      "commit": "dcf875906dbda65e83825763cfcdee264650d60f",
+      "fileid": "5c62c6cffb237379e8efb427b7b81e1efa34aa5a2b144846668b6c77b6c9c7c8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21308428755"
+    }
+  ]
+}

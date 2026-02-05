@@ -1,0 +1,690 @@
+{
+  "Package": "spacexr",
+  "Type": "Package",
+  "Title": "SpatialeXpressionR: Cell Type Identification in Spatial\nTranscriptomics",
+  "Version": "1.3.0",
+  "Authors@R": "c(\nperson(\"Dylan\", \"Cable\", email = \"dmcable@umich.edu\", role = \"aut\"),\nperson(\n\"Rafael\", \"Irizarry\", email=\"rafael_irizarry@dfci.harvard.edu\",\nrole=\"aut\", comment=c(ORCID=\"0000-0002-3944-4309\")\n),\nperson(\n\"Gabriel\", \"Grajeda\", email = \"gabriel.grajeda@gmail.com\", role = \"cre\",\ncomment=c(ORCID=\"0009-0003-7242-7476\")\n),\nperson(\"Fannie and John Hertz Foundation\", role = \"fnd\")\n)",
+  "Description": "Spatial-eXpression-R (spacexr) is a package for analyzing\ncell types in spatial transcriptomics data. This implementation\nis a fork of the spacexr GitHub repo\n(https://github.com/dmcable/spacexr), adapted to work with\nBioconductor objects. The original package implements two\nstatistical methods: RCTD for learning cell types and CSIDE for\ninferring cell type-specific differential expression.\nCurrently, this fork only implements RCTD, which learns cell\ntype profiles from annotated RNA sequencing (RNA-seq) reference\ndata and uses these profiles to identify cell types in spatial\ntranscriptomic pixels while accounting for platform-specific\neffects. Future releases will include an implementation of\nCSIDE.",
+  "URL": "https://github.com/ggrajeda/spacexr",
+  "BugReports": "https://github.com/ggrajeda/spacexr/issues",
+  "License": "GPL (>= 3)",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "biocViews": "GeneExpression, DifferentialExpression, SingleCell, RNASeq,\nSoftware, Spatial, Transcriptomics",
+  "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev make\nlibmagick++-dev gsfonts libicu-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:35:40 UTC",
+  "RemoteUrl": "https://github.com/bioc/spacexr",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-26 08:57:09 UTC",
+    "User": "root"
+  },
+  "Author": "Dylan Cable [aut],\nRafael Irizarry [aut] (ORCID: <https://orcid.org/0000-0002-3944-4309>),\nGabriel Grajeda [cre] (ORCID: <https://orcid.org/0009-0003-7242-7476>),\nFannie and John Hertz Foundation [fnd]",
+  "Maintainer": "Gabriel Grajeda <gabriel.grajeda@gmail.com>",
+  "MD5sum": "7da669693b7d027b6b0b75afe8634917",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "spacexr_1.3.0.tar.gz",
+  "_fileid": "fa5cdac4ece62125f68fffb2d0e383c251921cbb22b74e08222df390e8e863c8",
+  "_filesize": 345567,
+  "_sha256": "fa5cdac4ece62125f68fffb2d0e383c251921cbb22b74e08222df390e8e863c8",
+  "_created": "2026-01-26T08:57:09.000Z",
+  "_published": "2026-01-26T09:07:59.571Z",
+  "_jobs": [
+    {
+      "job": 61449923177,
+      "time": 188,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5254329721"
+    },
+    {
+      "job": 61449923182,
+      "time": 436,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5254368458"
+    },
+    {
+      "job": 61449923152,
+      "time": 464,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5254372876"
+    },
+    {
+      "job": 61449923176,
+      "time": 310,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5254377219"
+    },
+    {
+      "job": 61449923185,
+      "time": 377,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5254393867"
+    },
+    {
+      "job": 61449475236,
+      "time": 297,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5254300286"
+    },
+    {
+      "job": 61449923151,
+      "time": 165,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5254326182"
+    },
+    {
+      "job": 61449923196,
+      "time": 554,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5254388368"
+    },
+    {
+      "job": 61449923194,
+      "time": 597,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5254395468"
+    },
+    {
+      "job": 61449923181,
+      "time": 552,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5254388263"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 4
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/spacexr",
+  "_commit": {
+    "id": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752140
+  },
+  "_maintainer": {
+    "name": "Gabriel Grajeda",
+    "email": "gabriel.grajeda@gmail.com",
+    "login": "ggrajeda",
+    "uuid": 8708211
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "quadprog",
+      "role": "Imports"
+    },
+    {
+      "package": "httr",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "memoise",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "scatterpie",
+      "role": "Imports"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-05",
+      "n": 12
+    },
+    {
+      "week": "2025-06",
+      "n": 2
+    },
+    {
+      "week": "2025-07",
+      "n": 12
+    },
+    {
+      "week": "2025-08",
+      "n": 8
+    },
+    {
+      "week": "2025-09",
+      "n": 10
+    },
+    {
+      "week": "2025-11",
+      "n": 19
+    },
+    {
+      "week": "2025-13",
+      "n": 2
+    },
+    {
+      "week": "2025-14",
+      "n": 1
+    },
+    {
+      "week": "2025-15",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-18",
+      "n": 1
+    },
+    {
+      "week": "2025-20",
+      "n": 2
+    },
+    {
+      "week": "2025-21",
+      "n": 8
+    },
+    {
+      "week": "2025-22",
+      "n": 2
+    },
+    {
+      "week": "2025-25",
+      "n": 3
+    },
+    {
+      "week": "2025-27",
+      "n": 1
+    },
+    {
+      "week": "2025-28",
+      "n": 2
+    },
+    {
+      "week": "2025-41",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "geneexpression",
+    "differentialexpression",
+    "singlecell",
+    "rnaseq",
+    "software",
+    "spatial",
+    "transcriptomics"
+  ],
+  "_stars": 3,
+  "_contributors": [
+    {
+      "user": "dmcable",
+      "count": 314,
+      "uuid": 40443769
+    },
+    {
+      "user": "ggrajeda",
+      "count": 126,
+      "uuid": 8708211
+    },
+    {
+      "user": "rdshear",
+      "count": 74,
+      "uuid": 4246796
+    },
+    {
+      "user": "lulizou",
+      "count": 7,
+      "uuid": 17187068
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "scottgigante-immunai",
+      "count": 2,
+      "uuid": 84813314
+    },
+    {
+      "user": "stephenwilliams22",
+      "count": 2,
+      "uuid": 24922527
+    },
+    {
+      "user": "alexzli",
+      "count": 1,
+      "uuid": 90730282
+    },
+    {
+      "user": "simoncmo",
+      "count": 1,
+      "uuid": 54045654
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 602,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/spacexr"
+  },
+  "_devurl": "https://github.com/ggrajeda/spacexr",
+  "_searchresults": 656,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/spacexr.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ggrajeda/spacexr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "chooseSigmaC",
+    "createRctd",
+    "createRctdConfig",
+    "createReference",
+    "createSpatialRNA",
+    "fitBulk",
+    "fitPixels",
+    "plotAllWeights",
+    "plotCellTypeWeight",
+    "runRctd",
+    "show"
+  ],
+  "_datasets": [
+    {
+      "name": "rctdSim",
+      "title": "Simulated spatial transcriptomics dataset",
+      "object": "rctdSim",
+      "file": "rctdSim.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "spacexr-package",
+      "title": "spacexr: Cell Type Identification in Spatial Transcriptomics",
+      "topics": [
+        "spacexr-package",
+        "spacexr"
+      ]
+    },
+    {
+      "page": "createRCTD",
+      "title": "Preprocess data before RCTD",
+      "topics": [
+        "createRctd"
+      ]
+    },
+    {
+      "page": "plotAllWeights",
+      "title": "Plot pie charts of cell type proportions across pixels",
+      "topics": [
+        "plotAllWeights"
+      ]
+    },
+    {
+      "page": "plotCellTypeWeight",
+      "title": "Plot pixel proportions for a specific cell type",
+      "topics": [
+        "plotCellTypeWeight"
+      ]
+    },
+    {
+      "page": "rctdSim",
+      "title": "Simulated spatial transcriptomics dataset",
+      "topics": [
+        "rctdSim"
+      ]
+    },
+    {
+      "page": "runRCTD",
+      "title": "Run RCTD algorithm to decompose cell type mixtures",
+      "topics": [
+        "runRctd"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/spacexr/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "codetools",
+    "cpp11",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggforce",
+    "ggfun",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "httr",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magick",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "polyclip",
+    "purrr",
+    "quadprog",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "rjson",
+    "rlang",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "scatterpie",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SpatialExperiment",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tweenr",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "rctd-tutorial.Rmd",
+      "filename": "rctd-tutorial.html",
+      "title": "RCTD Tutorial",
+      "author": "Dylan Cable and Gabriel Grajeda",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Introduction",
+        "Setup",
+        "Data Preprocessing",
+        "Reference",
+        "Spatial Transcriptomics Data",
+        "Visualizing Ground Truth",
+        "Running RCTD",
+        "Step 1: Preprocess Data",
+        "Step 2: Run RCTD",
+        "RCTD Results",
+        "Cell Type Weights",
+        "Classifications",
+        "Visualization",
+        "All Cell Types",
+        "Single Cell Type",
+        "Session Information"
+      ],
+      "created": "2025-02-19 00:36:26",
+      "modified": "2025-03-28 08:01:28",
+      "commits": 10
+    }
+  ],
+  "_score": 8.174838686376114,
+  "_indexed": true,
+  "_nocasepkg": "spacexr",
+  "_universes": [
+    "bioc",
+    "ggrajeda"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-01-26T09:00:39.000Z",
+      "distro": "noble",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "da032a8deb39a7a6dd5468cee847e24ad972d5490cf05835beb091b26ea4641b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-01-26T09:00:49.000Z",
+      "distro": "noble",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "7749c6eacb817b8dfb7143204b5bf1572bde1baf1e509e2dffc5b791e385ee7c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-01-26T09:02:05.000Z",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "cfda8808036081e8802fc7f8a1d75aece998357b0b4897452dfa8e6bd20b7d75",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-01-26T09:02:52.000Z",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "b7ffa792d0247f7b0b4b14227908b9bb9f60d872e9ad0945411307f46f7308aa",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.3.0",
+      "date": "2026-01-26T09:00:28.000Z",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "1927ea203329f3bfdf1d83440734c46f32b6123d95c5696b1e71065d3a7c963b",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-01-26T08:59:09.000Z",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "3a820b4f3390d38f85bf36da04aac41d0c4ffda076e9052ffeaed7677d066add",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-01-26T08:59:21.000Z",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "3d991769573ccb8ebd89417f6e593e632319339bb60510d8cc703915abae1623",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-01-26T08:59:16.000Z",
+      "commit": "ea2a49327174d64472d2cdaf9a615d8ed9c76465",
+      "fileid": "39c6ac84dd79311fbcf7acac05393dc1c562836a641bbcd26b45eed233e05416",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21351636165"
+    }
+  ]
+}

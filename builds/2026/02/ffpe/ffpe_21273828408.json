@@ -1,0 +1,556 @@
+{
+  "Package": "ffpe",
+  "Type": "Package",
+  "Title": "Quality assessment and control for FFPE microarray expression\ndata",
+  "Version": "1.55.0",
+  "Author": "Levi Waldron",
+  "Maintainer": "Levi Waldron <lwaldron.research@gmail.com>",
+  "Description": "Identify low-quality data using metrics developed for\nexpression data derived from Formalin-Fixed, Paraffin-Embedded\n(FFPE) data.  Also a function for making Concordance at the Top\nplots (CAT-plots).",
+  "Collate": "sampleQC.R sortedIqrPlot.R CATplot.R",
+  "License": "GPL (>2)",
+  "LazyLoad": "yes",
+  "Packaged": {
+    "Date": "2026-01-23 03:53:52 UTC",
+    "User": "root"
+  },
+  "biocViews": "Microarray, GeneExpression, QualityControl",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev libx11-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:10:29 UTC",
+  "RemoteUrl": "https://github.com/bioc/ffpe",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+  "NeedsCompilation": "no",
+  "MD5sum": "90c8db499d973a65de4d3f334ca46c8e",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "ffpe_1.55.0.tar.gz",
+  "_fileid": "84cc2fa7762606ea259742be082a5b1624bf3404fb4887ce8d006a3f7c91526b",
+  "_filesize": 279064,
+  "_sha256": "84cc2fa7762606ea259742be082a5b1624bf3404fb4887ce8d006a3f7c91526b",
+  "_created": "2026-01-23T03:53:52.000Z",
+  "_published": "2026-01-23T04:05:42.771Z",
+  "_jobs": [
+    {
+      "job": 61229931827,
+      "time": 321,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5229108790"
+    },
+    {
+      "job": 61229931822,
+      "time": 515,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5229128075"
+    },
+    {
+      "job": 61229931816,
+      "time": 555,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5229132130"
+    },
+    {
+      "job": 61229931818,
+      "time": 464,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5229140570"
+    },
+    {
+      "job": 61229931880,
+      "time": 368,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5229113464"
+    },
+    {
+      "job": 61229358452,
+      "time": 464,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5229075653"
+    },
+    {
+      "job": 61229931824,
+      "time": 272,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5229103782"
+    },
+    {
+      "job": 61229931878,
+      "time": 445,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5229121541"
+    },
+    {
+      "job": 61229931887,
+      "time": 436,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5229120820"
+    },
+    {
+      "job": 61229931879,
+      "time": 485,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5229126014"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ffpe",
+  "_commit": {
+    "id": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761747029
+  },
+  "_maintainer": {
+    "name": "Levi Waldron",
+    "email": "lwaldron.research@gmail.com",
+    "login": "lwaldron",
+    "twitter": "@LeviWaldron1",
+    "uuid": 639942
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 2.10.0",
+      "role": "Depends"
+    },
+    {
+      "package": "TTR",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "affy",
+      "role": "Imports"
+    },
+    {
+      "package": "lumi",
+      "role": "Imports"
+    },
+    {
+      "package": "methylumi",
+      "role": "Imports"
+    },
+    {
+      "package": "sfsmisc",
+      "role": "Imports"
+    },
+    {
+      "package": "genefilter",
+      "role": "Suggests"
+    },
+    {
+      "package": "ffpeExampleData",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.55.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.54.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "microarray",
+    "geneexpression",
+    "qualitycontrol"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 380,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ffpe"
+  },
+  "_mentions": 2,
+  "_searchresults": 27,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/ffpe.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "CATplot",
+    "sampleQC",
+    "sortedIqrPlot"
+  ],
+  "_help": [
+    {
+      "page": "ffpe-package",
+      "title": "Quality assessment and control for FFPE microarray expression data",
+      "topics": [
+        "ffpe-package",
+        "ffpe"
+      ]
+    },
+    {
+      "page": "CATplot",
+      "title": "Make a Concordance at the Top plot.",
+      "topics": [
+        "CATplot"
+      ]
+    },
+    {
+      "page": "sampleQC",
+      "title": "Sample quality control for FFPE expression data",
+      "topics": [
+        "sampleQC",
+        "sampleQC,AffyBatch-method",
+        "sampleQC,LumiBatch-method",
+        "sampleQC,matrix-method",
+        "sampleQC-method"
+      ]
+    },
+    {
+      "page": "sortedIqrPlot",
+      "title": "Minimal box plot of samples, which get ordered optionally by batch, then by IQR.",
+      "topics": [
+        "sortedIqrPlot",
+        "sortedIqrPlot,AffyBatch-method",
+        "sortedIqrPlot,LumiBatch-method",
+        "sortedIqrPlot,matrix-method"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "affy",
+    "affyio",
+    "annotate",
+    "AnnotationDbi",
+    "askpass",
+    "base64",
+    "beanplot",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bumphunter",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "clipr",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "digest",
+    "doRNG",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "FDb.InfiniumMethylation.hg19",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "genefilter",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GEOquery",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "h5mread",
+    "HDF5Array",
+    "hms",
+    "httr",
+    "httr2",
+    "illuminaio",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "lumi",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mclust",
+    "memoise",
+    "methylumi",
+    "mgcv",
+    "mime",
+    "minfi",
+    "multtest",
+    "nleqslv",
+    "nlme",
+    "nor1mix",
+    "openssl",
+    "org.Hs.eg.db",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plyr",
+    "png",
+    "preprocessCore",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "quadprog",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "readr",
+    "rentrez",
+    "reshape",
+    "reshape2",
+    "restfulr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rngtools",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "rvest",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "scrime",
+    "selectr",
+    "Seqinfo",
+    "sfsmisc",
+    "siggenes",
+    "snow",
+    "SparseArray",
+    "sparseMatrixStats",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "TTR",
+    "TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "tzdb",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "XML",
+    "xml2",
+    "xtable",
+    "xts",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "ffpe.Rnw",
+      "filename": "ffpe.pdf",
+      "title": "ffpe package user guide",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2013-11-01 20:24:05",
+      "modified": "2013-11-01 20:24:05",
+      "commits": 1
+    }
+  ],
+  "_score": 4.033423755486949,
+  "_indexed": true,
+  "_nocasepkg": "ffpe",
+  "_universes": [
+    "bioc",
+    "lwaldron"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.55.0",
+      "date": "2026-01-23T03:59:23.000Z",
+      "distro": "noble",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "10f056648da40c85cd64150e313969f414f3b3edaa6a33fa341d8d39a11e0f97",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.55.0",
+      "date": "2026-01-23T03:59:57.000Z",
+      "distro": "noble",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "02f808ea183e19782499e67b15cd9877dd36114885f2bc8d52040e7757f2286e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.55.0",
+      "date": "2026-01-23T04:00:53.000Z",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "8ef714c7e35da03d59d81977ab20557718aef8b397098af3f45a4c4062179280",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.55.0",
+      "date": "2026-01-23T03:57:32.000Z",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "94cdf83562d4413d4dddd7909d297af4861d643b40aeffee3d9c7201761313df",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.55.0",
+      "date": "2026-01-23T03:59:10.000Z",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "a54f2b709c91ed5f296ca6f62042e3a6a682c31d1a2da4caeabe0c4eb654d062",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.55.0",
+      "date": "2026-01-23T03:57:34.000Z",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "125e4b1aeb016792f38759473cd561eb6a2d959bdaf2758d4af3cf3bc4ac423a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.55.0",
+      "date": "2026-01-23T03:57:50.000Z",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "49f67d98e01062667c91d0047e84a6e915d776af032c8660b807bb7bb6bb5891",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.55.0",
+      "date": "2026-01-23T03:58:39.000Z",
+      "commit": "a3c8d6b2ce8cd956f36c7d8bd89c679032cf1335",
+      "fileid": "423bd2790d16df59fd54222f5a61356eb1a4f2dea1acc1b910a52403ef9c7fd9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21273828408"
+    }
+  ]
+}

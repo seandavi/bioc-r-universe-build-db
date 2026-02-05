@@ -1,0 +1,1095 @@
+{
+  "Package": "linkSet",
+  "Title": "Base Classes for Storing Genomic Link Data",
+  "Version": "1.1.0",
+  "Authors@R": "c(person(\"Gilbert\", \"Han\", , \"GilbertHan1011@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0009-0000-0293-2467\")))",
+  "Description": "Provides a comprehensive framework for representing,\nanalyzing, and visualizing genomic interactions, particularly\nfocusing on gene-enhancer relationships. The package extends\nthe GenomicRanges infrastructure to handle paired genomic\nregions with specialized methods for chromatin interaction data\nfrom Hi-C, Promoter Capture Hi-C (PCHi-C), and single-cell\nATAC-seq experiments. Key features include conversion from\ncommon interaction formats, annotation of promoters and\nenhancers, distance-based analyses, interaction strength\nmetrics, statistical modeling using CHiCANE methodology, and\ntailored visualization tools. The package aims to standardize\nthe representation of genomic interaction data while providing\ndomain-specific functions not available in general genomic\ninteraction packages.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "Collate": "class.R AllGenerics.R getset.R methods.R annotate.R distance.R\nformatConverter.R linkSet-package.R GRange_method.R\ntest_helper.R visualization.R count.R statical.R data.R",
+  "biocViews": "Software, HiC, DataRepresentation, Sequencing, SingleCell,\nCoverage",
+  "URL": "https://github.com/GilbertHan1011/linkSet,\nhttps://gilberthan1011.github.io/linkSet",
+  "BugReports": "https://github.com/GilbertHan1011/linkSet/issues/new",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:37:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/linkSet",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-09 21:45:45 UTC",
+    "User": "root"
+  },
+  "Author": "Gilbert Han [aut, cre] (ORCID: <https://orcid.org/0009-0000-0293-2467>)",
+  "Maintainer": "Gilbert Han <GilbertHan1011@gmail.com>",
+  "MD5sum": "9b79d6b12649952543cc7f1f6926d2e4",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "linkSet_1.1.0.tar.gz",
+  "_fileid": "dde1ca870199174c60ae7fff79ceb5b8e268c06c232d21624ef72757a4ad203f",
+  "_filesize": 3871066,
+  "_sha256": "dde1ca870199174c60ae7fff79ceb5b8e268c06c232d21624ef72757a4ad203f",
+  "_created": "2026-01-09T21:45:45.000Z",
+  "_published": "2026-01-09T23:07:15.336Z",
+  "_jobs": [
+    {
+      "job": 59958827954,
+      "time": 302,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5081479415"
+    },
+    {
+      "job": 59958827993,
+      "time": 567,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081515228"
+    },
+    {
+      "job": 59958828027,
+      "time": 568,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081515819"
+    },
+    {
+      "job": 59958827950,
+      "time": 475,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5082063029"
+    },
+    {
+      "job": 59958827966,
+      "time": 417,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5082056056"
+    },
+    {
+      "job": 59958078062,
+      "time": 551,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081427001"
+    },
+    {
+      "job": 59958827945,
+      "time": 304,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5081479817"
+    },
+    {
+      "job": 59958827983,
+      "time": 567,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081515710"
+    },
+    {
+      "job": 59958827984,
+      "time": 514,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5081508892"
+    },
+    {
+      "job": 59958827979,
+      "time": 484,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081503968"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/linkSet",
+  "_commit": {
+    "id": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752232
+  },
+  "_maintainer": {
+    "name": "Gilbert Han",
+    "email": "gilberthan1011@gmail.com",
+    "login": "gilberthan1011",
+    "uuid": 39906045
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "Organism.dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "InteractionSet",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "iterators",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm10.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg38.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Mm.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicInteractions",
+      "role": "Suggests"
+    },
+    {
+      "package": "gamlss",
+      "role": "Suggests"
+    },
+    {
+      "package": "gamlss.tr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-11",
+      "n": 1
+    },
+    {
+      "week": "2025-12",
+      "n": 1
+    },
+    {
+      "week": "2025-14",
+      "n": 6
+    },
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-24",
+      "n": 3
+    },
+    {
+      "week": "2025-25",
+      "n": 5
+    },
+    {
+      "week": "2025-30",
+      "n": 10
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "hic",
+    "datarepresentation",
+    "sequencing",
+    "singlecell",
+    "coverage"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "gilberthan1011",
+      "count": 46,
+      "uuid": 39906045
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 118,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/linkSet"
+  },
+  "_devurl": "https://github.com/gilberthan1011/linkset",
+  "_pkgdown": "https://gilberthan1011.github.io/linkSet",
+  "_searchresults": 8,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/linkSet.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/gilberthan1011/linkset",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "anchor1",
+    "anchor1<-",
+    "anchor2",
+    "anchor2<-",
+    "anchorIds",
+    "anchors",
+    "annotateInter",
+    "annotatePromoter",
+    "as.GInteractions",
+    "bait",
+    "bait<-",
+    "baitGInteractions",
+    "clean_unused_regions",
+    "cleanUnusedRegions",
+    "Convert",
+    "countInteractibility",
+    "countInteractions",
+    "crossGeneEnhancer",
+    "diagnoseLinkSet",
+    "exportInterBed",
+    "exportWashU",
+    "filterLinks",
+    "flank",
+    "flankRegions",
+    "geom_linkset",
+    "linkSet",
+    "narrow",
+    "narrowRegions",
+    "oe",
+    "oe<-",
+    "orderLinks",
+    "pairdist",
+    "plot_genomic_ranges",
+    "plotBaits",
+    "plotGenomicRanges",
+    "promoterRegions",
+    "promoters",
+    "readvalidPairs",
+    "reduce",
+    "reduceRegions",
+    "regions",
+    "regions<-",
+    "regionsBait",
+    "regionsBait<-",
+    "resize",
+    "resizeRegions",
+    "run_chicane",
+    "seqinfo",
+    "shiftRegions",
+    "show",
+    "showLinkSet",
+    "subsetBait",
+    "subsetBaitRegion",
+    "subsetOE",
+    "themeLinkset",
+    "themeRange",
+    "trim",
+    "unchecked_regions<-",
+    "width",
+    "withTxDb"
+  ],
+  "_datasets": [
+    {
+      "name": "linkExample",
+      "title": "Example linkSet Object",
+      "object": "linkExample",
+      "file": "linkExample.rda",
+      "class": [
+        "linkSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "annotateInter-linkSet-method",
+      "title": "Annotate linkSet with inter/intra chromosome interactions",
+      "topics": [
+        "annotateInter",
+        "annotateInter,linkSet-method"
+      ]
+    },
+    {
+      "page": "annotatePromoter-linkSet-method",
+      "title": "Annotate the link set with txDb. Give a gene list, and return a",
+      "topics": [
+        "annotatePromoter",
+        "annotatePromoter,linkSet-method"
+      ]
+    },
+    {
+      "page": "as.data.frame-linkSet-method",
+      "title": "coerce linkSet to DataFrame",
+      "topics": [
+        "as.data.frame,linkSet-method"
+      ]
+    },
+    {
+      "page": "as.GInteractions",
+      "title": "Convert to GInteractions",
+      "topics": [
+        "as.GInteractions",
+        "as.GInteractions,linkSet-method"
+      ]
+    },
+    {
+      "page": "linkSet-accessors",
+      "title": "linkSet-accessors",
+      "topics": [
+        "$",
+        "$,linkSet-method",
+        "$<-,linkSet-method",
+        "anchor1",
+        "anchor1,linkSet-method",
+        "anchor1<-",
+        "anchor2",
+        "anchor2,linkSet-method",
+        "anchor2<-",
+        "anchorIds",
+        "anchorIds,linkSet-method",
+        "anchors",
+        "anchors,linkSet-method",
+        "bait",
+        "bait,linkSet-method",
+        "bait<-",
+        "bait<-,linkSet-method",
+        "first",
+        "first,linkSet-method",
+        "names",
+        "names,linkSet-method",
+        "names<-",
+        "names<-,linkSet-method",
+        "oe",
+        "oe,linkSet-method",
+        "oe<-,linkSet-method",
+        "regions",
+        "regions,linkSet-method",
+        "regions<-",
+        "regions<-,linkSet-method",
+        "regionsBait",
+        "regionsBait,linkSet-method",
+        "regionsBait<-,linkSet-method",
+        "second",
+        "second,linkSet-method",
+        "seqinfo",
+        "seqinfo,linkSet-method",
+        "unchecked_anchor1",
+        "unchecked_anchor1<-,linkSet-method",
+        "unchecked_anchor2",
+        "unchecked_anchor2<-,linkSet-method",
+        "unchecked_regions",
+        "unchecked_regions<-",
+        "unchecked_regions<-,linkSet-method"
+      ]
+    },
+    {
+      "page": "baitGInteractions",
+      "title": "Convert GInteractions to linkSet with bait annotations",
+      "topics": [
+        "baitGInteractions",
+        "baitGInteractions,GInteractions,GRanges,GRanges-method"
+      ]
+    },
+    {
+      "page": "character_Or_missing-class",
+      "title": "Character or Missing Class Union",
+      "topics": [
+        "character_Or_missing-class"
+      ]
+    },
+    {
+      "page": "cleanUnusedRegions",
+      "title": "Clean Unused Regions",
+      "topics": [
+        "cleanUnusedRegions",
+        "cleanUnusedRegions,linkSet-method",
+        "clean_unused_regions",
+        "clean_unused_regions,linkSet-method"
+      ]
+    },
+    {
+      "page": "Convert",
+      "title": "Convert GInteractions to linkSet",
+      "topics": [
+        "Convert",
+        "Convert,ANY-method",
+        "Convert,data.frame-method",
+        "Convert,GInteractions-method",
+        "Convert,Pairs-method",
+        "readvalidPairs"
+      ]
+    },
+    {
+      "page": "countInteractibility",
+      "title": "Count bait and oe interactibility",
+      "topics": [
+        "countInteractibility",
+        "countInteractibility,linkSet-method"
+      ]
+    },
+    {
+      "page": "countInteractions",
+      "title": "Count Bait and Other End Interactions",
+      "topics": [
+        "countBaitOe",
+        "countInteractions",
+        "countInteractions,linkSet-method"
+      ]
+    },
+    {
+      "page": "crossGeneEnhancer-linkSet-method",
+      "title": "Cross gene enhancer",
+      "topics": [
+        "crossGeneEnhancer",
+        "crossGeneEnhancer,linkSet-method"
+      ]
+    },
+    {
+      "page": "diagnoseLinkSet-linkSet-method",
+      "title": "Diagnose the linkSet object, return barplot of inter/intra interaction and distance distribution",
+      "topics": [
+        "diagnoseLinkSet",
+        "diagnoseLinkSet,linkSet-method"
+      ]
+    },
+    {
+      "page": "Embryo_body",
+      "title": "Embryo Body BED File",
+      "topics": [
+        "Embryo_body"
+      ]
+    },
+    {
+      "page": "exportInterBed",
+      "title": "Export linkSet to interBed format",
+      "topics": [
+        "exportInterBed",
+        "exportInterBed,linkSet-method"
+      ]
+    },
+    {
+      "page": "exportWashU",
+      "title": "Export linkSet to WashU browser format",
+      "topics": [
+        "exportWashU",
+        "exportWashU,linkSet-method"
+      ]
+    },
+    {
+      "page": "filterLinks-linkSet-method",
+      "title": "Filter links for further analysis",
+      "topics": [
+        "filterLinks",
+        "filterLinks,linkSet-method"
+      ]
+    },
+    {
+      "page": "geom_linkset",
+      "title": "Add Genome Links to Coverage Plot",
+      "topics": [
+        "geom_linkset",
+        "geom_linkset,linkSet-method"
+      ]
+    },
+    {
+      "page": "linkExample",
+      "title": "Example linkSet Object",
+      "topics": [
+        "linkExample"
+      ]
+    },
+    {
+      "page": "linkSet",
+      "title": "linkSet: Base Classes for Storing Genomic Link Data",
+      "topics": [
+        "linkSet"
+      ]
+    },
+    {
+      "page": "linkSet-class",
+      "title": "LinkSet object",
+      "topics": [
+        "LinkSet",
+        "linkSet-class"
+      ]
+    },
+    {
+      "page": "linkSet-character-GRanges-character_Or_missing-method",
+      "title": "Create a linkSet object from input data",
+      "topics": [
+        "linkSet,character,GRanges,character_Or_missing-method"
+      ]
+    },
+    {
+      "page": "linkSet-GRanges-GRanges-character_Or_missing-method",
+      "title": "Create a linkSet object from input data",
+      "topics": [
+        "linkSet,GRanges,GRanges,character_Or_missing-method"
+      ]
+    },
+    {
+      "page": "oe-set",
+      "title": "Set Other End (OE) Anchors",
+      "topics": [
+        "oe<-"
+      ]
+    },
+    {
+      "page": "orderLinks-linkSet-method",
+      "title": "Order linkSet by mcols",
+      "topics": [
+        "orderLinks",
+        "orderLinks,linkSet-method"
+      ]
+    },
+    {
+      "page": "pairdist-linkSet-method",
+      "title": "Calculate the distance between bait and the other end",
+      "topics": [
+        "pairdist",
+        "pairdist,linkSet-method"
+      ]
+    },
+    {
+      "page": "plotBaits",
+      "title": "Plot Baits",
+      "topics": [
+        "plotBaits"
+      ]
+    },
+    {
+      "page": "plotGenomicRanges",
+      "title": "Plot Genomic Ranges",
+      "topics": [
+        "plotGenomicRanges",
+        "plot_genomic_ranges",
+        "plot_genomic_ranges,linkSet-method"
+      ]
+    },
+    {
+      "page": "plotGenomicRanges-linkSet-method",
+      "title": "Plot genomic ranges for linkSet objects",
+      "topics": [
+        "plotGenomicRanges,linkSet-method"
+      ]
+    },
+    {
+      "page": "reduceRegions",
+      "title": "Reduce Regions in a linkSet Object",
+      "topics": [
+        "reduceRegions",
+        "reduceRegions,linkSet-method"
+      ]
+    },
+    {
+      "page": "regionsBait-set",
+      "title": "Set Bait Regions",
+      "topics": [
+        "regionsBait<-"
+      ]
+    },
+    {
+      "page": "run_chicane",
+      "title": "Run ChICANE Analysis",
+      "topics": [
+        "run_chicane",
+        "run_chicane,linkSet-method"
+      ]
+    },
+    {
+      "page": "show",
+      "title": "Display detailed information about a linkSet object",
+      "topics": [
+        "show,linkSet-method"
+      ]
+    },
+    {
+      "page": "showLinkSet",
+      "title": "Show linkSet Object Details",
+      "topics": [
+        "showLinkSet",
+        "showLinkSet,linkSet-method"
+      ]
+    },
+    {
+      "page": "linkSet-subset-methods",
+      "title": "Subset linkSet object based on bait names",
+      "topics": [
+        "subsetBait",
+        "subsetBait,linkSet-method",
+        "subsetBaitRegion",
+        "subsetBaitRegion,linkSet-method",
+        "subsetOE",
+        "subsetOE,linkSet-method"
+      ]
+    },
+    {
+      "page": "themeLinkset",
+      "title": "Theme for linkSet plots",
+      "topics": [
+        "themeLinkset"
+      ]
+    },
+    {
+      "page": "themeRange",
+      "title": "Theme for genomic range plots",
+      "topics": [
+        "themeRange"
+      ]
+    },
+    {
+      "page": "linkSet-GRange-Methods",
+      "title": "linkSet-GRange-Methods",
+      "topics": [
+        "flank",
+        "flank,linkSet-method",
+        "flankRegions",
+        "flankRegions,linkSet-method",
+        "narrow",
+        "narrow,linkSet-method",
+        "narrowRegions",
+        "narrowRegions,linkSet-method",
+        "promoterRegions",
+        "promoterRegions,linkSet-method",
+        "promoters",
+        "promoters,linkSet-method",
+        "reduce",
+        "reduce,linkSet-method",
+        "resize",
+        "resize,linkSet-method",
+        "resizeRegions",
+        "resizeRegions,linkSet-method",
+        "shift",
+        "shift,linkSet-method",
+        "shiftRegions",
+        "shiftRegions,linkSet-method",
+        "trim",
+        "trim,linkSet-method",
+        "width",
+        "width,linkSet-method"
+      ]
+    },
+    {
+      "page": "withTxDb",
+      "title": "Database Operation with Connection Management",
+      "topics": [
+        "withTxDb",
+        "withTxDb,character,function-method"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/linkSet/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/linkSet/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "doParallel",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "filelock",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "httr",
+    "httr2",
+    "InteractionSet",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "Organism.dplyr",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "hic_workthrough.Rmd",
+      "filename": "hic_workthrough.html",
+      "title": "Hi-C Workflow with linkSet",
+      "author": "Gilbert Han",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Setup",
+        "Diagnose and filter links",
+        "Cross gene links and visualization",
+        "Session Information"
+      ],
+      "created": "2024-09-16 14:13:51",
+      "modified": "2025-07-22 16:05:18",
+      "commits": 16
+    },
+    {
+      "source": "linkSet.Rmd",
+      "filename": "linkSet.html",
+      "title": "linkSet: Base Classes for Storing Genomic Link Data",
+      "author": "Gilbert Han",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Motivation and Context",
+        "Comparison with Existing Bioconductor Packages",
+        "Application Scenarios",
+        "The linkSet Class",
+        "Construction",
+        "Construction from GRanges objects",
+        "Construction from GInteractions",
+        "Other construction methods",
+        "Accessors",
+        "Getters",
+        "Setters",
+        "Subsetting and concatenation",
+        "GRanges method",
+        "Diagnose",
+        "Annotations",
+        "Statistical analysis",
+        "Visualization",
+        "Session Information"
+      ],
+      "created": "2024-09-09 14:20:00",
+      "modified": "2025-07-23 10:41:31",
+      "commits": 17
+    }
+  ],
+  "_score": 4.903089986991944,
+  "_indexed": true,
+  "_nocasepkg": "linkset",
+  "_universes": [
+    "bioc",
+    "gilberthan1011"
+  ],
+  "_previous": "0.99.19",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-01-09T21:52:28.000Z",
+      "distro": "noble",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "28b1dfbb74cf2651dd94e0c6b4d5653065497a2d9865ed2c03d7dd7caf6cf9ff",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-01-09T21:52:30.000Z",
+      "distro": "noble",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "53292d684e1d1d35b59c7a85ce1721d55be25562a7c5edbef942e43450e5f604",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-01-09T23:01:40.000Z",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "9772284692176b7b43f9fc9c8e88e5966fa7f2442951c15b0548156bf1f9510f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-01-09T23:01:47.000Z",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "9a2deb61d351f4fa1e1714a11d7611ce77c1bd4fb418effba503933e33895d78",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.1.0",
+      "date": "2026-01-09T21:52:37.000Z",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "78fe0bb96e486f59183aaed5340b45dbf07e6e9e4bcd79b0a4c31df48bae17d0",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-01-09T21:52:03.000Z",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "f2797aebc941a41982c3f4d85a802d924b8d8e535360d3c2b4fe4c0765d862df",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-01-09T21:51:15.000Z",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "cb2aa8013a9baac4fcd419a87525574af77c3b3c6f2b2d4e51ed3dd8993b5ded",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-01-09T21:50:45.000Z",
+      "commit": "bdadbdd362b9f200e14b5a7e144a7d13dd6a1881",
+      "fileid": "4a19bd702f30a657714d9863ca441b9eb3ea54b970b0ed0845771f48165489aa",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20866226381"
+    }
+  ]
+}

@@ -1,0 +1,957 @@
+{
+  "Package": "profileplyr",
+  "Type": "Package",
+  "Title": "Visualization and annotation of read signal over genomic ranges\nwith profileplyr",
+  "Version": "1.27.0",
+  "Date": "2025-07-22",
+  "Author": "Tom Carroll and Doug Barrows",
+  "Maintainer": "Tom Carroll <tc.infomatics@gmail.com>, Doug Barrows\n<doug.barrows@gmail.com>",
+  "Description": "Quick and straightforward visualization of read signal\nover genomic intervals is key for generating hypotheses from\nsequencing data sets (e.g. ChIP-seq, ATAC-seq,\nbisulfite/methyl-seq). Many tools both inside and outside of R\nand Bioconductor are available to explore these types of data,\nand they typically start with a bigWig or BAM file and end with\nsome representation of the signal (e.g. heatmap). profileplyr\nleverages many Bioconductor tools to allow for both flexibility\nand additional functionality in workflows that end with\nvisualization of the read signal.",
+  "License": "GPL (>= 3)",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "ChIPSeq, DataImport, Sequencing, ChipOnChip, Coverage",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibglpk-dev make libbz2-dev libicu-dev libjpeg-dev liblzma-dev\nlibpng-dev libtiff-dev libxml2-dev libssl-dev perl xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:51:25 UTC",
+  "RemoteUrl": "https://github.com/bioc/profileplyr",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2025-10-30 08:42:09 UTC",
+    "User": "root"
+  },
+  "MD5sum": "dfbec69ee38a82f1d1e58441024cb35c",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "profileplyr_1.27.0.tar.gz",
+  "_fileid": "5033af80cdcea6b479e867c57e77c8edd1648ee64bc11d4b644b50af3b94d1e6",
+  "_filesize": 2572323,
+  "_sha256": "5033af80cdcea6b479e867c57e77c8edd1648ee64bc11d4b644b50af3b94d1e6",
+  "_created": "2025-10-30T08:42:09.000Z",
+  "_distro": "noble",
+  "_jobs": [
+    {
+      "job": 54059038194,
+      "time": 655,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "4415219942"
+    },
+    {
+      "job": 54059038229,
+      "time": 646,
+      "config": "linux-release-x86_64",
+      "r": "4.5.1",
+      "check": "NOTE",
+      "artifact": "4415218788"
+    },
+    {
+      "job": 54059038235,
+      "time": 422,
+      "config": "macos-oldrel-arm64",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "4415296224"
+    },
+    {
+      "job": 54059038263,
+      "time": 351,
+      "config": "macos-release-arm64",
+      "r": "4.5.1",
+      "check": "NOTE",
+      "artifact": "4415284892"
+    },
+    {
+      "job": 54058221373,
+      "time": 645,
+      "config": "source",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "4415122483"
+    },
+    {
+      "job": 54059038184,
+      "time": 356,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "4415174559"
+    },
+    {
+      "job": 54059038257,
+      "time": 564,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "4415207421"
+    },
+    {
+      "job": 54059038275,
+      "time": 601,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "4415212673"
+    },
+    {
+      "job": 54059038261,
+      "time": 725,
+      "config": "windows-release",
+      "r": "4.5.1",
+      "check": "NOTE",
+      "artifact": "4415231075"
+    }
+  ],
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/profileplyr",
+  "_commit": {
+    "id": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749485
+  },
+  "_maintainer": {
+    "name": "Tom Carroll",
+    "email": "doug.barrows@gmail.com",
+    "login": "thomascarroll",
+    "uuid": 5750801
+  },
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "soGGi",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "R.utils",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "rjson",
+      "role": "Imports"
+    },
+    {
+      "package": "ChIPseeker",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Imports"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg38.knownGene",
+      "role": "Imports"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm10.knownGene",
+      "role": "Imports"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm9.knownGene",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Mm.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "rGREAT",
+      "role": "Imports"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "EnrichedHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "tiff",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "png",
+      "role": "Suggests"
+    },
+    {
+      "package": "Cairo",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2024-44",
+      "n": 2
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.25.1",
+      "bioc": "3.22"
+    },
+    {
+      "branch": "release",
+      "version": "1.24.1",
+      "bioc": "3.21"
+    }
+  ],
+  "_topics": [
+    "chipseq",
+    "dataimport",
+    "sequencing",
+    "chiponchip",
+    "coverage"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 558,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/profileplyr"
+  },
+  "_searchresults": 70,
+  "_rbuild": "4.5.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/profileplyr.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotateRanges",
+    "annotateRanges_great",
+    "as_profileplyr",
+    "BamBigwig_to_chipProfile",
+    "clusterRanges",
+    "convertToEnrichedHeatmapMat",
+    "export_deepToolsMat",
+    "generateEnrichedHeatmap",
+    "generateProfilePlot",
+    "groupBy",
+    "import_deepToolsMat",
+    "orderBy",
+    "params",
+    "sampleData",
+    "sampleData<-",
+    "summarize"
+  ],
+  "_datasets": [
+    {
+      "name": "K27ac_GRlist_hind_liver_top5000",
+      "title": "GRangesList of the top 5000 H3K27ac peaks from hindbrain and liver downloaded from ENCODE",
+      "object": "K27ac_GRlist_hind_liver_top5000",
+      "file": "K27ac_GRlist_hind_liver_top5000.rda",
+      "class": [
+        "CompressedGRangesList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "gene_list_character",
+      "title": "Character vector of the top differentially expressed genes from hindbrain versus liver as measured by RNA-seq",
+      "object": "gene_list_character",
+      "file": "gene_list_character.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "gene_list_dataframe",
+      "title": "Dataframe of top differentially expressed genes from hindbrain versus liver as measured by RNA-seq",
+      "object": "gene_list_dataframe",
+      "file": "gene_list_dataframe.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "annotateRanges",
+      "title": "Annotate profileplyr ranges to genes using ChIPseeker",
+      "topics": [
+        "annotateRanges",
+        "annotateRanges,profileplyr-method"
+      ]
+    },
+    {
+      "page": "annotateRanges_great",
+      "title": "Annotate profileplyr ranges to genes using rGREAT",
+      "topics": [
+        "annotateRanges_great",
+        "annotateRanges_great,profileplyr-method"
+      ]
+    },
+    {
+      "page": "as_profileplyr",
+      "title": "Import ChIPprofile object to profileplyr",
+      "topics": [
+        "as_profileplyr"
+      ]
+    },
+    {
+      "page": "BamBigwig_to_chipProfile",
+      "title": "BamBigwig_to_chipProfile",
+      "topics": [
+        "BamBigwig_to_chipProfile"
+      ]
+    },
+    {
+      "page": "clusterRanges",
+      "title": "Cluster Ranges",
+      "topics": [
+        "clusterRanges",
+        "clusterRanges,profileplyr-method"
+      ]
+    },
+    {
+      "page": "convertToEnrichedHeatmapMat",
+      "title": "export a profileplyr object to a list of matrices that can be used as an input for EnrichedHeatmap",
+      "topics": [
+        "convertToEnrichedHeatmapMat",
+        "convertToEnrichedHeatmapMat,profileplyr-method"
+      ]
+    },
+    {
+      "page": "export_deepToolsMat",
+      "title": "Export and import profileplyr from/to deeptools",
+      "topics": [
+        "export_deepToolsMat",
+        "export_deepToolsMat,profileplyr-method",
+        "import_deepToolsMat"
+      ]
+    },
+    {
+      "page": "gene_list_character",
+      "title": "Character vector of the top differentially expressed genes from hindbrain versus liver as measured by RNA-seq",
+      "topics": [
+        "gene_list_character"
+      ]
+    },
+    {
+      "page": "gene_list_dataframe",
+      "title": "Dataframe of top differentially expressed genes from hindbrain versus liver as measured by RNA-seq",
+      "topics": [
+        "gene_list_dataframe"
+      ]
+    },
+    {
+      "page": "generateEnrichedHeatmap",
+      "title": "generateEnrichedHeatmap",
+      "topics": [
+        "generateEnrichedHeatmap"
+      ]
+    },
+    {
+      "page": "generateProfilePlot",
+      "title": "Import ChIPprofile object to profileplyr",
+      "topics": [
+        "generateProfilePlot"
+      ]
+    },
+    {
+      "page": "groupBy",
+      "title": "group the rows and ranges of the profileplyr object",
+      "topics": [
+        "groupBy",
+        "groupBy,profileplyr-method"
+      ]
+    },
+    {
+      "page": "inherit_group_function",
+      "title": "Redundant code for inheriting grouping wrapped into subsetbyRangeOverlap() or subsetbyGeneListOverlap() functions",
+      "topics": [
+        "inherit_group_function"
+      ]
+    },
+    {
+      "page": "K27ac_GRlist_hind_liver_top5000",
+      "title": "GRangesList of the top 5000 H3K27ac peaks from hindbrain and liver downloaded from ENCODE",
+      "topics": [
+        "K27ac_GRlist_hind_liver_top5000"
+      ]
+    },
+    {
+      "page": "orderBy",
+      "title": "choose the column by which to order the ranges by within each group",
+      "topics": [
+        "orderBy",
+        "orderBy,profileplyr-method"
+      ]
+    },
+    {
+      "page": "params",
+      "title": "Retrieve and set parameters in profileplyr object",
+      "topics": [
+        "params"
+      ]
+    },
+    {
+      "page": "profileplyr",
+      "title": "Join, subset and manipulate ChIPprofile objects",
+      "topics": [
+        "c,profileplyr-method",
+        "profileplyr-class",
+        "[,profileplyr,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "sampleData",
+      "title": "Retrieve and set sample data in profileplyr object",
+      "topics": [
+        "sampleData",
+        "sampleData,profileplyr-method",
+        "sampleData<-",
+        "sampleData<-,profileplyr,DataFrame-method"
+      ]
+    },
+    {
+      "page": "subset_GR_GL_common_top",
+      "title": "Redundant code wrapped into subsetbyRangeOverlap() or subsetbyGeneListOverlap() functions",
+      "topics": [
+        "subset_GR_GL_common_top"
+      ]
+    },
+    {
+      "page": "subsetbyGeneListOverlap",
+      "title": "Subset ranges based on overlap with lists of Gene sets",
+      "topics": [
+        "subsetbyGeneListOverlap"
+      ]
+    },
+    {
+      "page": "subsetbyRangeOverlap",
+      "title": "Subset ranges based on overlap with a GRanges object",
+      "topics": [
+        "subsetbyRangeOverlap"
+      ]
+    },
+    {
+      "page": "summarize",
+      "title": "summarize the rows of a deepTools matrix",
+      "topics": [
+        "summarize",
+        "summarize,profileplyr-method"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "ape",
+    "aplot",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "bslib",
+    "cachem",
+    "caTools",
+    "ChIPseeker",
+    "chipseq",
+    "cigarillo",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "commonmark",
+    "ComplexHeatmap",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "deldir",
+    "digest",
+    "doParallel",
+    "DOSE",
+    "dplyr",
+    "DT",
+    "EnrichedHeatmap",
+    "enrichplot",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fastmatch",
+    "fgsea",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdtools",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggrepel",
+    "ggtangle",
+    "ggtree",
+    "GlobalOptions",
+    "glue",
+    "GO.db",
+    "GOSemSim",
+    "gplots",
+    "gridGraphics",
+    "gtable",
+    "gtools",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "hwriter",
+    "igraph",
+    "interp",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nlme",
+    "openssl",
+    "org.Hs.eg.db",
+    "org.Mm.eg.db",
+    "otel",
+    "patchwork",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plotrix",
+    "plyr",
+    "png",
+    "polyclip",
+    "preprocessCore",
+    "prettyunits",
+    "progress",
+    "promises",
+    "purrr",
+    "pwalign",
+    "qvalue",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "rGREAT",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scatterpie",
+    "Seqinfo",
+    "shape",
+    "shiny",
+    "ShortRead",
+    "snow",
+    "soGGi",
+    "sourcetools",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tiff",
+    "tinytex",
+    "treeio",
+    "tweenr",
+    "TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "TxDb.Hsapiens.UCSC.hg38.knownGene",
+    "TxDb.Mmusculus.UCSC.mm10.knownGene",
+    "TxDb.Mmusculus.UCSC.mm9.knownGene",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xtable",
+    "XVector",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "profileplyr.Rmd",
+      "filename": "profileplyr.html",
+      "title": "Visualization and annotation of read signal over genomic ranges with profileplyr",
+      "author": "Doug Barrows and Tom Carroll",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Import signal quantification from deepTools or soGGi",
+        "Starting with output from deepTools 'computeMatrix'",
+        "Starting with output from soGGi",
+        "The profileplyr object",
+        "Key components of the object",
+        "Subsetting the profileplyr object",
+        "Changing sample names",
+        "Connecting profileplyr functions using the pipe (%>%) operator",
+        "Export/Conversion of profileplyr object for heatmap visualization of ranges",
+        "Export to a deepTools matrix",
+        "Directly generate a customized EnrichedHeatmap with annotated ranges",
+        "Convert to an EnrichedHeatmap matrix",
+        "Summarize signal for ggplot or heatmap visualization",
+        "Matrix output for heatmaps",
+        "Long output for ggplot",
+        "profileplyr object output with summarized matrix",
+        "Annotating of genomic ranges with clusters, genomic regions, and genes",
+        "K-means and hierarchical clustering of the genomic ranges",
+        "Output matrix with cluster information to deepTools",
+        "Generate group-annotated heatmap in R directly with generateEnrichedHeatmap()",
+        "Visualize mean range signal for each cluster with ggplot",
+        "Gene annotation of ranges",
+        "Annotation of ranges with genes and genomic regions using ChIPseeker",
+        "Adding metadata information beyond the grouping column to the EnrichedHeatmap",
+        "Annotation of ranges with genes using GREAT",
+        "Grouping ranges by range metadata, gene list, or additional GRanges",
+        "Switch output grouping columns within existing range metadata",
+        "Group by user-supplied GRanges",
+        "Group by user-supplied gene list",
+        "Gene set list contains a character data",
+        "Gene set list with data frames for heatmap annotation (using pipe - %>%)",
+        "Combining multiple profileplyr functions for heatmap annotation",
+        "Acknowledgements",
+        "Session info"
+      ],
+      "created": "2019-04-10 05:02:34",
+      "modified": "2022-10-10 19:35:00",
+      "commits": 15
+    }
+  ],
+  "_score": 4.447158031342219,
+  "_indexed": true,
+  "_nocasepkg": "profileplyr",
+  "_universes": [
+    "bioc",
+    "thomascarroll"
+  ],
+  "_previous": "1.25.1",
+  "_failure": {
+    "version": "1.27.1",
+    "commit": {
+      "id": "4e14aef249c9092674719ad246c5c4ae6a8295c7",
+      "author": "Douglas Barrows <dbarrows@rockefeller.edu>",
+      "committer": "Douglas Barrows <dbarrows@rockefeller.edu>",
+      "message": "version bump to 1.27.1\n",
+      "time": 1763576814
+    },
+    "buildurl": "https://github.com/r-universe/bioc/actions/runs/20693790336",
+    "date": "2026-01-07T03:22:52.851Z",
+    "job": {
+      "job": 59642191068,
+      "time": 449,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5044839728"
+    }
+  },
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.27.0",
+      "date": "2025-10-30T08:48:38.000Z",
+      "distro": "noble",
+      "commit": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+      "fileid": "0cf170c1d23543f8483817366fd0daa25b684fa606ff378508e34cea274c8bd4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277"
+    },
+    {
+      "r": "4.5.1",
+      "os": "linux",
+      "version": "1.27.0",
+      "date": "2025-10-30T08:48:43.000Z",
+      "distro": "noble",
+      "commit": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+      "fileid": "d4bb49681fd017961f4a34d3de88bb5040e356741b4088e52adc10069f1fea6f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277"
+    },
+    {
+      "r": "4.5.1",
+      "os": "mac",
+      "version": "1.27.0",
+      "date": "2025-10-30T08:58:11.000Z",
+      "commit": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+      "fileid": "ff11c6651154db3f9e8c0908a59537f4e2bc4b06372f2d11c5f67c5e6763be54",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.27.0",
+      "date": "2025-10-30T08:49:02.000Z",
+      "commit": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+      "fileid": "9e5b92e54e27253161019721d8def9fb2d6ab292fc5ba1a58e6d8371d8316076",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.27.0",
+      "date": "2025-10-30T08:46:46.000Z",
+      "commit": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+      "fileid": "40e9c7eaff79c424ab10674d4afbc999d6e7c2c4d1f3bdfbabe61cd4417be7a9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.27.0",
+      "date": "2025-10-30T08:47:21.000Z",
+      "commit": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+      "fileid": "21f3bc5e00a4a17e253827fde6e6ad5c8678a49266a1ce17ebe3c612e645278a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277"
+    },
+    {
+      "r": "4.5.1",
+      "os": "win",
+      "version": "1.27.0",
+      "date": "2025-10-30T08:48:52.000Z",
+      "commit": "c441d3c195102caeeec5cc3b3b17671338004ac5",
+      "fileid": "135fa1d8ce577f8737c4ffcb037e612c6ab12aba1a6ba4dfec73d950faa9e544",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/18934571277"
+    }
+  ]
+}

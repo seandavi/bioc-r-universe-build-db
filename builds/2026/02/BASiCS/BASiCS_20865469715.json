@@ -1,0 +1,1359 @@
+{
+  "Package": "BASiCS",
+  "Type": "Package",
+  "Title": "Bayesian Analysis of Single-Cell Sequencing data",
+  "Version": "2.23.0",
+  "Date": "2025-09-17",
+  "Authors@R": "c(person(\"Catalina\", \"Vallejos\", role=c(\"aut\", \"cre\"),\nemail=\"catalina.vallejos@igmm.ed.ac.uk\",\ncomment=c(ORCID = \"0000-0003-3638-1960\")),\nperson(\"Nils\", \"Eling\", role=c(\"aut\")),\nperson(\"Alan\", \"O'Callaghan\", role = c(\"aut\")),\nperson(\"Sylvia\", \"Richardson\", role = c(\"ctb\")),\nperson(\"John\", \"Marioni\", role=c(\"ctb\")))",
+  "Description": "Single-cell mRNA sequencing can uncover novel cell-to-cell\nheterogeneity in gene expression levels in seemingly\nhomogeneous populations of cells. However, these experiments\nare prone to high levels of technical noise, creating new\nchallenges for identifying genes that show genuine\nheterogeneous expression within the population of cells under\nstudy. BASiCS (Bayesian Analysis of Single-Cell Sequencing\ndata) is an integrated Bayesian hierarchical model to perform\nstatistical analyses of single-cell RNA sequencing datasets in\nthe context of supervised experiments (where the groups of\ncells of interest are known a priori, e.g. experimental\nconditions or cell types). BASiCS performs built-in data\nnormalisation (global scaling) and technical noise\nquantification (based on spike-in genes). BASiCS provides an\nintuitive detection criterion for highly (or lowly) variable\ngenes within a single group of cells. Additionally, BASiCS can\ncompare gene expression patterns between two or more\npre-specified groups of cells. Unlike traditional differential\nexpression tools, BASiCS quantifies changes in expression that\nlie beyond comparisons of means, also allowing the study of\nchanges in cell-to-cell heterogeneity. The latter can be\nquantified via a biological over-dispersion parameter that\nmeasures the excess of variability that is observed with\nrespect to Poisson sampling noise, after normalisation and\ntechnical noise removal. Due to the strong mean/over-dispersion\nconfounding that is typically observed for scRNA-seq datasets,\nBASiCS also tests for changes in residual over-dispersion,\ndefined by residual values with respect to a global\nmean/over-dispersion trend.",
+  "License": "GPL-3",
+  "VignetteBuilder": "knitr",
+  "biocViews": "ImmunoOncology, Normalization, Sequencing, RNASeq, Software,\nGeneExpression, Transcriptomics, SingleCell,\nDifferentialExpression, Bayesian, CellBiology, ImmunoOncology",
+  "NeedsCompilation": "yes",
+  "URL": "https://github.com/catavallejos/BASiCS",
+  "BugReports": "https://github.com/catavallejos/BASiCS/issues",
+  "RoxygenNote": "7.3.3",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "Config/testthat/edition": "3",
+  "Collate": "'AllClasses.R' 'AllGenerics.R' 'BASiCS_CalculateERCC.R'\n'BASiCS_CorrectOffset.R' 'BASiCS_DenoisedCounts.R'\n'BASiCS_DenoisedRates.R' 'BASiCS_DetectHVG_LVG.R'\n'BASiCS_DiagHist.R' 'BASiCS_DiagPlot.R'\n'BASiCS_DivideAndConquer.R' 'BASiCS_Draw.R'\n'BASiCS_EffectiveSize.R' 'BASiCS_Filter.R' 'BASiCS_LoadChain.R'\n'BASiCS_MCMC.R' 'BASiCS_MockSCE.R' 'BASiCS_Package.R'\n'BASiCS_PlotDE.R' 'BASiCS_PlotOffset.R' 'BASiCS_PlotVG.R'\n'BASiCS_PlotVarianceDecomp.R' 'BASiCS_PriorParam.R'\n'BASiCS_ShowFit.R' 'BASiCS_Sim.R' 'BASiCS_TestDE.R'\n'BASiCS_VarThresholdSearchHVG_LVG.R' 'BASiCS_VarianceDecomp.R'\n'HiddenBASiCS_Sim.R' 'HiddenHeaderBASiCS_Sim.R'\n'HiddenHeaderTest_DE.R' 'HiddenVarDecomp.R' 'utils_Misc.R'\n'Methods.R' 'RcppExports.R' 'data.R' 'makeExampleBASiCS_Data.R'\n'newBASiCS_Chain.R' 'newBASiCS_Data.R' 'utils_Data.R'\n'utils_DivideAndConquer.R' 'utils_MCMC.R' 'utils_Store.R'\n'utils_Tests.R' 'utils_VG.R' 'welcome.R'",
+  "Config/pak/sysreqs": "libglpk-dev make libicu-dev libxml2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:41:03 UTC",
+  "RemoteUrl": "https://github.com/bioc/BASiCS",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+  "Packaged": {
+    "Date": "2026-01-09 21:08:16 UTC",
+    "User": "root"
+  },
+  "Author": "Catalina Vallejos [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-3638-1960>),\nNils Eling [aut],\nAlan O'Callaghan [aut],\nSylvia Richardson [ctb],\nJohn Marioni [ctb]",
+  "Maintainer": "Catalina Vallejos <catalina.vallejos@igmm.ed.ac.uk>",
+  "MD5sum": "8db7089432a7a1c5f50fa2534a32c73f",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "BASiCS_2.23.0.tar.gz",
+  "_fileid": "0b09b77cd0e58ebb67b481a2338faf275bc8ca634a4956d5218b7af4b4f948d6",
+  "_filesize": 3478605,
+  "_sha256": "0b09b77cd0e58ebb67b481a2338faf275bc8ca634a4956d5218b7af4b4f948d6",
+  "_created": "2026-01-09T21:08:16.000Z",
+  "_published": "2026-01-09T21:25:58.036Z",
+  "_jobs": [
+    {
+      "job": 59955962891,
+      "time": 294,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081130387"
+    },
+    {
+      "job": 59955962931,
+      "time": 562,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081172072"
+    },
+    {
+      "job": 59955962926,
+      "time": 619,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081180524"
+    },
+    {
+      "job": 59955962953,
+      "time": 517,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081165585"
+    },
+    {
+      "job": 59955962983,
+      "time": 615,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081179802"
+    },
+    {
+      "job": 59955962929,
+      "time": 447,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081154897"
+    },
+    {
+      "job": 59955962906,
+      "time": 751,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081203987"
+    },
+    {
+      "job": 59955963006,
+      "time": 732,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081199779"
+    },
+    {
+      "job": 59955962907,
+      "time": 740,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081202428"
+    },
+    {
+      "job": 59955436179,
+      "time": 378,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081082128"
+    },
+    {
+      "job": 59955962890,
+      "time": 227,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5081119954"
+    },
+    {
+      "job": 59955962894,
+      "time": 760,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081202854"
+    },
+    {
+      "job": 59955962911,
+      "time": 624,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5081181566"
+    },
+    {
+      "job": 59955962908,
+      "time": 620,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081180665"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 11
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/BASiCS",
+  "_commit": {
+    "id": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748863
+  },
+  "_maintainer": {
+    "name": "Catalina Vallejos",
+    "email": "catalina.vallejos@igmm.ed.ac.uk",
+    "login": "catavallejos",
+    "orcid": "0000-0003-3638-1960",
+    "uuid": 7511093
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "coda",
+      "role": "Imports"
+    },
+    {
+      "package": "cowplot",
+      "role": "Imports"
+    },
+    {
+      "package": "ggExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.11.3",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "scran",
+      "role": "Imports"
+    },
+    {
+      "package": "scuttle",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "stats4",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "version": ">= 1.5.0",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "assertthat",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "posterior",
+      "role": "Imports"
+    },
+    {
+      "package": "hexbin",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "scRNAseq",
+      "role": "Suggests"
+    },
+    {
+      "package": "magick",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-37",
+      "n": 1
+    },
+    {
+      "week": "2025-38",
+      "n": 5
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.23.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.22.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "normalization",
+    "sequencing",
+    "rnaseq",
+    "software",
+    "geneexpression",
+    "transcriptomics",
+    "singlecell",
+    "differentialexpression",
+    "bayesian",
+    "cellbiology",
+    "bioconductor-package",
+    "gene-expression",
+    "rcpp",
+    "rcpparmadillo",
+    "scrna-seq",
+    "single-cell",
+    "openblas",
+    "cpp",
+    "openmp"
+  ],
+  "_stars": 85,
+  "_contributors": [
+    {
+      "user": "catavallejos",
+      "count": 520,
+      "uuid": 7511093
+    },
+    {
+      "user": "alanocallaghan",
+      "count": 275,
+      "uuid": 10779688
+    },
+    {
+      "user": "nilseling",
+      "count": 154,
+      "uuid": 11314064
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "horta",
+      "count": 5,
+      "uuid": 514522
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "kayla-morrell",
+      "count": 1,
+      "uuid": 32339524
+    },
+    {
+      "user": "kevinrue",
+      "count": 1,
+      "uuid": 5769108
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 570,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/BASiCS"
+  },
+  "_mentions": 21,
+  "_devurl": "https://github.com/catavallejos/basics",
+  "_searchresults": 372,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/BASiCS.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/catavallejos/basics",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ".reorder_params",
+    "as.data.frame",
+    "BASiCS_CalculateERCC",
+    "BASiCS_CorrectOffset",
+    "BASiCS_DenoisedCounts",
+    "BASiCS_DenoisedRates",
+    "BASiCS_DetectHVG",
+    "BASiCS_DetectLVG",
+    "BASiCS_DetectVG",
+    "BASiCS_diagHist",
+    "BASiCS_DiagHist",
+    "BASiCS_diagPlot",
+    "BASiCS_DiagPlot",
+    "BASiCS_DivideAndConquer",
+    "BASiCS_Draw",
+    "BASiCS_effectiveSize",
+    "BASiCS_EffectiveSize",
+    "BASiCS_Filter",
+    "BASiCS_LoadChain",
+    "BASiCS_MCMC",
+    "BASiCS_MockSCE",
+    "BASiCS_PlotDE",
+    "BASiCS_PlotOffset",
+    "BASiCS_PlotVG",
+    "BASiCS_PriorParam",
+    "BASiCS_showFit",
+    "BASiCS_ShowFit",
+    "BASiCS_Sim",
+    "BASiCS_TestDE",
+    "BASiCS_VarianceDecomp",
+    "BASiCS_VarThresholdSearchHVG",
+    "BASiCS_VarThresholdSearchLVG",
+    "BASiCS_VarThresholdSearchVG",
+    "displayChainBASiCS",
+    "displaySummaryBASiCS",
+    "format",
+    "makeExampleBASiCS_Data",
+    "newBASiCS_Chain",
+    "newBASiCS_Data",
+    "plot",
+    "rowData",
+    "rowData<-",
+    "show",
+    "subset",
+    "Summary",
+    "updateObject"
+  ],
+  "_datasets": [
+    {
+      "name": "ChainRNA",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: pool-and-split samples",
+      "object": "ChainRNA",
+      "file": "ChainRNA.rda",
+      "class": [
+        "BASiCS_Chain"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ChainRNAReg",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: pool-and-split samples (regression model)",
+      "object": "ChainRNAReg",
+      "file": "ChainRNAReg.rda",
+      "class": [
+        "BASiCS_Chain"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ChainSC",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: single-cell samples",
+      "object": "ChainSC",
+      "file": "ChainSC.rda",
+      "class": [
+        "BASiCS_Chain"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ChainSCReg",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: single-cell samples (regression model)",
+      "object": "ChainSCReg",
+      "file": "ChainSCReg.rda",
+      "class": [
+        "BASiCS_Chain"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "dot-generateSubsets",
+      "title": "Generate balanced subsets for divide and conquer BASiCS",
+      "topics": [
+        ".generateSubsets"
+      ]
+    },
+    {
+      "page": "subset-methods",
+      "title": "Methods for subsetting BASiCS_Result and BASiCS_ResultsDE objects.",
+      "topics": [
+        "[,BASiCS_Result,ANY,ANY,ANY-method",
+        "[,BASiCS_ResultsDE,ANY,ANY,ANY-method",
+        "[[,BASiCS_ResultsDE,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "as.data.frame-methods",
+      "title": "Converting BASiCS results objects to data.frames",
+      "topics": [
+        "as.data.frame,BASiCS_ResultDE-method",
+        "as.data.frame,BASiCS_ResultsDE-method",
+        "as.data.frame,BASiCS_ResultVG-method"
+      ]
+    },
+    {
+      "page": "BASiCS_CalculateERCC",
+      "title": "Convert concentration in moles per microlitre to molecule counts",
+      "topics": [
+        "BASiCS_CalculateERCC"
+      ]
+    },
+    {
+      "page": "BASiCS_Chain",
+      "title": "The BASiCS_Chain class",
+      "topics": [
+        "BASiCS_Chain",
+        "BASiCS_Chain-class"
+      ]
+    },
+    {
+      "page": "BASiCS_Chain-methods",
+      "title": "'show' method for BASiCS_Chain objects",
+      "topics": [
+        "BASiCS_Chain-methods",
+        "show,BASiCS_Chain-method",
+        "updateObject,BASiCS_Chain-method"
+      ]
+    },
+    {
+      "page": "BASiCS_CorrectOffset",
+      "title": "Remove global mean expression offset",
+      "topics": [
+        "BASiCS_CorrectOffset"
+      ]
+    },
+    {
+      "page": "BASiCS_DenoisedCounts",
+      "title": "Calculates denoised expression expression counts",
+      "topics": [
+        "BASiCS_DenoisedCounts"
+      ]
+    },
+    {
+      "page": "BASiCS_DenoisedRates",
+      "title": "Calculates denoised expression rates",
+      "topics": [
+        "BASiCS_DenoisedRates"
+      ]
+    },
+    {
+      "page": "BASiCS_DetectVG",
+      "title": "Detection method for highly (HVG) and lowly (LVG) variable genes",
+      "topics": [
+        "BASiCS_DetectHVG",
+        "BASiCS_DetectHVGLVG",
+        "BASiCS_DetectHVG_LVG",
+        "BASiCS_DetectLVG",
+        "BASiCS_DetectVG"
+      ]
+    },
+    {
+      "page": "BASiCS_DiagHist",
+      "title": "Create diagnostic plots of MCMC parameters",
+      "topics": [
+        "BASiCS_DiagHist",
+        "BASiCS_diagHist"
+      ]
+    },
+    {
+      "page": "BASiCS_DiagPlot",
+      "title": "Create diagnostic plots of MCMC parameters",
+      "topics": [
+        "BASiCS_DiagPlot",
+        "BASiCS_diagPlot"
+      ]
+    },
+    {
+      "page": "BASiCS_DivideAndConquer",
+      "title": "Run divide and conquer MCMC with BASiCS",
+      "topics": [
+        "BASiCS_DivideAndConquer"
+      ]
+    },
+    {
+      "page": "BASiCS_Draw",
+      "title": "Generate a draw from the posterior of BASiCS using the generative model.",
+      "topics": [
+        "BASiCS_Draw"
+      ]
+    },
+    {
+      "page": "BASiCS_EffectiveSize",
+      "title": "Calculate effective sample size for BASiCS_Chain parameters",
+      "topics": [
+        "BASiCS_EffectiveSize",
+        "BASiCS_effectiveSize"
+      ]
+    },
+    {
+      "page": "BASiCS_Filter",
+      "title": "Filter for input datasets",
+      "topics": [
+        "BASiCS_Filter"
+      ]
+    },
+    {
+      "page": "BASiCS_LoadChain",
+      "title": "Loads pre-computed MCMC chains generated by the 'BASiCS_MCMC' function",
+      "topics": [
+        "BASiCS_LoadChain"
+      ]
+    },
+    {
+      "page": "BASiCS_MCMC",
+      "title": "BASiCS MCMC sampler",
+      "topics": [
+        "BASiCS_MCMC"
+      ]
+    },
+    {
+      "page": "BASiCS_MockSCE",
+      "title": "Create a mock SingleCellExperiment-class object.",
+      "topics": [
+        "BASiCS_MockSCE"
+      ]
+    },
+    {
+      "page": "BASiCS_PlotDE",
+      "title": "Produce plots assessing differential expression results",
+      "topics": [
+        "BASiCS_PlotDE",
+        "BASiCS_PlotDE,BASiCS_ResultDE-method",
+        "BASiCS_PlotDE,BASiCS_ResultsDE-method",
+        "BASiCS_PlotDE,missing-method"
+      ]
+    },
+    {
+      "page": "BASiCS_PlotOffset",
+      "title": "Visualise global offset in mean expression between two chains.",
+      "topics": [
+        "BASiCS_PlotOffset"
+      ]
+    },
+    {
+      "page": "BASiCS_PlotVarianceDecomp",
+      "title": "Plot variance decomposition results.",
+      "topics": [
+        "BASiCS_PlotVarianceDecomp"
+      ]
+    },
+    {
+      "page": "BASiCS_PlotVG",
+      "title": "Plots of HVG/LVG search.",
+      "topics": [
+        "BASiCS_PlotVG"
+      ]
+    },
+    {
+      "page": "BASiCS_PriorParam",
+      "title": "Prior parameters for BASiCS_MCMC",
+      "topics": [
+        "BASiCS_PriorParam"
+      ]
+    },
+    {
+      "page": "BASiCS_Result",
+      "title": "The BASiCS_Result class",
+      "topics": [
+        "BASiCS_Result",
+        "BASiCS_Result-class"
+      ]
+    },
+    {
+      "page": "BASiCS_ResultDE",
+      "title": "The BASiCS_ResultDE class",
+      "topics": [
+        "BASiCS_ResultDE",
+        "BASiCS_ResultDE-class"
+      ]
+    },
+    {
+      "page": "BASiCS_ResultsDE",
+      "title": "The BASiCS_ResultsDE class",
+      "topics": [
+        "BASiCS_ResultsDE",
+        "BASiCS_ResultsDE-class"
+      ]
+    },
+    {
+      "page": "BASiCS_ResultVG",
+      "title": "The BASiCS_ResultVG class",
+      "topics": [
+        "BASiCS_ResultVG",
+        "BASiCS_ResultVG-class"
+      ]
+    },
+    {
+      "page": "BASiCS_ShowFit",
+      "title": "Plotting the trend after Bayesian regression",
+      "topics": [
+        "BASiCS_ShowFit",
+        "BASiCS_showFit"
+      ]
+    },
+    {
+      "page": "BASiCS_Sim",
+      "title": "Generates synthetic data according to the model implemented in BASiCS",
+      "topics": [
+        "BASiCS_Sim"
+      ]
+    },
+    {
+      "page": "BASiCS_Summary",
+      "title": "The BASiCS_Summary class",
+      "topics": [
+        "BASiCS_Summary",
+        "BASiCS_Summary-class"
+      ]
+    },
+    {
+      "page": "BASiCS_Summary-methods",
+      "title": "'show' method for BASiCS_Summary objects",
+      "topics": [
+        "BASiCS_Summary-methods",
+        "show,BASiCS_Summary-method"
+      ]
+    },
+    {
+      "page": "BASiCS_TestDE",
+      "title": "Detection of genes with changes in expression",
+      "topics": [
+        "BASiCS_TestDE"
+      ]
+    },
+    {
+      "page": "BASiCS_VarianceDecomp",
+      "title": "Decomposition of gene expression variability according to BASiCS",
+      "topics": [
+        "BASiCS_VarianceDecomp"
+      ]
+    },
+    {
+      "page": "BASiCS_VarThresholdSearchHVG_LVG",
+      "title": "Detection method for highly and lowly variable genes using a grid of variance contribution thresholds",
+      "topics": [
+        "BASiCS_VarThresholdSearchHVG",
+        "BASiCS_VarThresholdSearchHVG_LVG",
+        "BASiCS_VarThresholdSearchLVG",
+        "BASiCS_VarThresholdSearchVG"
+      ]
+    },
+    {
+      "page": "BASiCS-defunct",
+      "title": "Defunct functions in package 'BASiCS'",
+      "topics": [
+        "BASiCS-defunct",
+        "BASiCS_D_TestDE"
+      ]
+    },
+    {
+      "page": "ChainRNA",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: pool-and-split samples",
+      "topics": [
+        "ChainRNA"
+      ]
+    },
+    {
+      "page": "ChainRNAReg",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: pool-and-split samples (regression model)",
+      "topics": [
+        "ChainRNAReg"
+      ]
+    },
+    {
+      "page": "ChainSC",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: single-cell samples",
+      "topics": [
+        "ChainSC"
+      ]
+    },
+    {
+      "page": "ChainSCReg",
+      "title": "Extract from the chain obtained for the Grun et al (2014) data: single-cell samples (regression model)",
+      "topics": [
+        "ChainSCReg"
+      ]
+    },
+    {
+      "page": "dim-BASiCS_Chain-method",
+      "title": "'dim' method for BASiCS_Chain objects",
+      "topics": [
+        "dim",
+        "dim,BASiCS_Chain-method"
+      ]
+    },
+    {
+      "page": "dimnames-BASiCS_Chain-method",
+      "title": "'dimnames' method for BASiCS_Chain objects",
+      "topics": [
+        "dimnames",
+        "dimnames,BASiCS_Chain-method"
+      ]
+    },
+    {
+      "page": "displayChainBASiCS-BASiCS_Chain-method",
+      "title": "Accessors for the slots of a BASiCS_Chain object",
+      "topics": [
+        "displayChainBASiCS",
+        "displayChainBASiCS,BASiCS_Chain-method",
+        "displayChainBASiCS-BASiCS_Chain-method"
+      ]
+    },
+    {
+      "page": "displaySummaryBASiCS-BASiCS_Summary-method",
+      "title": "Accessors for the slots of a 'BASiCS_Summary' object",
+      "topics": [
+        "displaySummaryBASiCS",
+        "displaySummaryBASiCS,BASiCS_Summary-method",
+        "displaySummaryBASiCS-BASiCS_Summary-method"
+      ]
+    },
+    {
+      "page": "format-methods",
+      "title": "Methods for formatting BASiCS_Result and BASiCS_ResultsDE objects.",
+      "topics": [
+        "format,BASiCS_ResultDE-method",
+        "format,BASiCS_ResultsDE-method",
+        "format,BASiCS_ResultVG-method"
+      ]
+    },
+    {
+      "page": "makeExampleBASiCS_Data",
+      "title": "Create a synthetic SingleCellExperiment example object with the format required for BASiCS",
+      "topics": [
+        "makeExampleBASiCS_Data"
+      ]
+    },
+    {
+      "page": "newBASiCS_Chain",
+      "title": "Creates a BASiCS_Chain object from pre-computed MCMC chains",
+      "topics": [
+        "newBASiCS_Chain"
+      ]
+    },
+    {
+      "page": "newBASiCS_Data",
+      "title": "Creates a SingleCellExperiment object from a matrix of expression counts and experimental information about spike-in genes",
+      "topics": [
+        "newBASiCS_Data"
+      ]
+    },
+    {
+      "page": "plot-BASiCS_Chain-method",
+      "title": "'plot' method for BASiCS_Chain objects",
+      "topics": [
+        "plot,BASiCS_Chain,ANY-method",
+        "plot,BASiCS_Chain-method",
+        "plot-BASiCS_Chain-method"
+      ]
+    },
+    {
+      "page": "plot-BASiCS_Summary-method",
+      "title": "'plot' method for BASiCS_Summary objects",
+      "topics": [
+        "plot,BASiCS_Summary,ANY-method",
+        "plot,BASiCS_Summary-method,",
+        "plot-BASiCS_Summary-method"
+      ]
+    },
+    {
+      "page": "rowData",
+      "title": "rowData getter and setter for BASiCS_ResultsDE and BASiCS_ResultVG objects.",
+      "topics": [
+        "rowData,BASiCS_ResultsDE-method",
+        "rowData,BASiCS_ResultVG-method",
+        "rowData<-,BASiCS_ResultsDE-method",
+        "rowData<-,BASiCS_ResultVG-method"
+      ]
+    },
+    {
+      "page": "show-BASiCS_ResultDE-method",
+      "title": "Accessors for the slots of a 'BASiCS_ResultDE' object",
+      "topics": [
+        "show,BASiCS_ResultDE-method"
+      ]
+    },
+    {
+      "page": "show-BASiCS_ResultsDE-method",
+      "title": "Accessors for the slots of a 'BASiCS_ResultsDE' object",
+      "topics": [
+        "show,BASiCS_ResultsDE-method"
+      ]
+    },
+    {
+      "page": "show-BASiCS_ResultVG-method",
+      "title": "Accessors for the slots of a 'BASiCS_ResultVG' object",
+      "topics": [
+        "show,BASiCS_ResultVG-method"
+      ]
+    },
+    {
+      "page": "subset-BASiCS_Chain-method",
+      "title": "A 'subset' method for `BASiCS_Chain`` objects",
+      "topics": [
+        "subset",
+        "subset,BASiCS_Chain-method"
+      ]
+    },
+    {
+      "page": "Summary-BASiCS_Chain-method",
+      "title": "'Summary' method for BASiCS_Chain objects",
+      "topics": [
+        "Summary",
+        "Summary,BASiCS_Chain-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/BASiCS/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "assertthat",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "bluster",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cli",
+    "cluster",
+    "coda",
+    "codetools",
+    "colourpicker",
+    "commonmark",
+    "cowplot",
+    "cpp11",
+    "DelayedArray",
+    "digest",
+    "distributional",
+    "dqrng",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggExtra",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "hexbin",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "metapod",
+    "mime",
+    "miniUI",
+    "numDeriv",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "posterior",
+    "promises",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "rsvd",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scran",
+    "scuttle",
+    "Seqinfo",
+    "shiny",
+    "shinyjs",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "sourcetools",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tensorA",
+    "tibble",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "liblapack",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libblas",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    },
+    {
+      "shlib": "libgomp",
+      "package": "libgomp1",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "openmp",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GCC OpenMP (GOMP) support library"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "BASiCS.Rmd",
+      "filename": "BASiCS.html",
+      "title": "Introduction to BASiCS",
+      "author": "Catalina Vallejos, Nils Eling",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Quick start",
+        "Complete workflow",
+        "The input dataset",
+        "With spike-in genes",
+        "Without spike-in genes",
+        "Analysis for a single group of cells",
+        "Analysis for two groups of cells",
+        "Alternative implementation modes",
+        "If WithSpikes = FALSE",
+        "If Regression = TRUE",
+        "Additional details",
+        "Storing and loading MCMC chains",
+        "Convergence assessment",
+        "Summarising the posterior distribution",
+        "Normalisation and removal of technical variation",
+        "Methodology",
+        "Acknowledgements",
+        "BASiCS hall of fame",
+        "Session information",
+        "References"
+      ],
+      "created": "2015-04-13 17:13:46",
+      "modified": "2021-08-11 20:09:45",
+      "commits": 33
+    }
+  ],
+  "_score": 10.153174379371535,
+  "_indexed": true,
+  "_nocasepkg": "basics",
+  "_universes": [
+    "bioc",
+    "catavallejos"
+  ],
+  "_previous": "2.21.1",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:12:38.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "44b5abdd39ac1f9a8402693691892716222d701a3e8ede3485178ff9b20ae793",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:12:51.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "ca3a51cf0e815ff6b242a21d08762603f32f85f9a4faa1218daedb93a21053df",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:12:26.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "a59cbe541d7d1c9335a00cfe897e0854bd4deaa2ece49b88f15b817f0d92affb",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:12:49.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "bc4f59e56d572ff38116f9f2bd7001c8b99d4ad2328e89b6a7aed6f91db1362d",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:11:38.000Z",
+      "arch": "aarch64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "66e6c72738f4f34e8629b6ffb33a38b7ee196192f4faa98ae7e0ede38615f4b6",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:14:32.000Z",
+      "arch": "x86_64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "168f315a61cfee75f97b5fcb09f0a9636ce2403e97857cffc0cdfe3798ca4d20",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:12:40.000Z",
+      "arch": "aarch64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "55cd58dbb2194a18094e6fdb727bc71da1c6d268fcb0f2ee7cfffbb8af386a36",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:13:27.000Z",
+      "arch": "x86_64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "bc0a7db06ee942d3e14542e0024002df08b12505916ae87df8b0d6345d3290d3",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:12:52.000Z",
+      "arch": "emscripten",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "12cf917c204a0320dac85b0dfeae2963719f1b967930080cd9ba5c5831857bd0",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:12:57.000Z",
+      "arch": "x86_64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "e101ed502114c5ed67b42a95d5dbf759c5fb02f23c303fb3339708b25301228d",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:11:48.000Z",
+      "arch": "x86_64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "d8b5d286563945aba2b499ac834148a1c15f96ff7c16e23cf736cd974494ca55",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.23.0",
+      "date": "2026-01-09T21:11:28.000Z",
+      "arch": "x86_64",
+      "commit": "c192abaa818a860db7d36d5fc2e6daa9ab34921e",
+      "fileid": "20c2c5d73d48c534190908650200c20203592a8ae37ecb8e792b5a978dfd9059",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865469715"
+    }
+  ]
+}

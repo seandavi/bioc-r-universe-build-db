@@ -1,0 +1,961 @@
+{
+  "Package": "cn.mops",
+  "Authors@R": "c(person(given = \"Guenter\", family = \"Klambauer\", role = \"aut\"), person(given = \"Gundula\", family = \"Povysil\", role = \"cre\", email = \"povysil@bioinf.jku.at\"))",
+  "License": "LGPL (>= 2.0)",
+  "Type": "Package",
+  "Title": "cn.mops - Mixture of Poissons for CNV detection in NGS data",
+  "Description": "cn.mops (Copy Number estimation by a Mixture Of PoissonS)\nis a data processing pipeline for copy number variations and\naberrations (CNVs and CNAs) from next generation sequencing\n(NGS) data. The package supplies functions to convert BAM files\ninto read count matrices or genomic ranges objects, which are\nthe input objects for cn.mops. cn.mops models the depths of\ncoverage across samples at each genomic position. Therefore, it\ndoes not suffer from read count biases along chromosomes. Using\na Bayesian approach, cn.mops decomposes read variations across\nsamples into integer copy numbers and noise by its mixture\ncomponents and Poisson distributions, respectively. cn.mops\nguarantees a low FDR because wrong detections are indicated by\nhigh noise and filtered out. cn.mops is very fast and written\nin C++.",
+  "Version": "1.57.0",
+  "Date": "2025-07-22",
+  "URL": "http://www.bioinf.jku.at/software/cnmops/cnmops.html",
+  "LazyLoad": "yes",
+  "biocViews": "Sequencing, CopyNumberVariation, Homo_sapiens, CellBiology,\nHapMap, Genetics",
+  "RoxygenNote": "7.1.1",
+  "Config/pak/sysreqs": "libbz2-dev liblzma-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:09:41 UTC",
+  "RemoteUrl": "https://github.com/bioc/cn.mops",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "79a09010036e154c940fecfc4810426ececf182a",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-01-22 19:05:39 UTC",
+    "User": "root"
+  },
+  "Author": "Guenter Klambauer [aut],\nGundula Povysil [cre]",
+  "Maintainer": "Gundula Povysil <povysil@bioinf.jku.at>",
+  "MD5sum": "d76ce3000b320052d657b3319d5b8737",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "cn.mops_1.57.0.tar.gz",
+  "_fileid": "d2df979b335e8c94ee32b52785dc8682516827640dc55150d5c0a6b341f1e24a",
+  "_filesize": 1192643,
+  "_sha256": "d2df979b335e8c94ee32b52785dc8682516827640dc55150d5c0a6b341f1e24a",
+  "_created": "2026-01-22T19:05:39.000Z",
+  "_published": "2026-01-22T19:25:02.238Z",
+  "_jobs": [
+    {
+      "job": 61189308246,
+      "time": 177,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5224304132"
+    },
+    {
+      "job": 61189308408,
+      "time": 266,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224323038"
+    },
+    {
+      "job": 61189308323,
+      "time": 287,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224327112"
+    },
+    {
+      "job": 61189308340,
+      "time": 257,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224321312"
+    },
+    {
+      "job": 61189308286,
+      "time": 297,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224329006"
+    },
+    {
+      "job": 61189308257,
+      "time": 257,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224497944"
+    },
+    {
+      "job": 61189308275,
+      "time": 306,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224423267"
+    },
+    {
+      "job": 61189308256,
+      "time": 210,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224488373"
+    },
+    {
+      "job": 61189308288,
+      "time": 440,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224448832"
+    },
+    {
+      "job": 61188971642,
+      "time": 185,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224266891"
+    },
+    {
+      "job": 61189308218,
+      "time": 132,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5224294789"
+    },
+    {
+      "job": 61189308265,
+      "time": 242,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224317160"
+    },
+    {
+      "job": 61189308255,
+      "time": 267,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5224323001"
+    },
+    {
+      "job": 61189308302,
+      "time": 283,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224326228"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 5,
+    "note": 16
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/cn.mops",
+  "_commit": {
+    "id": "79a09010036e154c940fecfc4810426ececf182a",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761746981
+  },
+  "_maintainer": {
+    "name": "Gundula Povysil",
+    "email": "povysil@bioinf.jku.at"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "utils",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Depends"
+    },
+    {
+      "package": "graphics",
+      "role": "Depends"
+    },
+    {
+      "package": "parallel",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "DNAcopy",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 4,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.57.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.56.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "sequencing",
+    "copynumbervariation",
+    "homo_sapiens",
+    "cellbiology",
+    "hapmap",
+    "genetics",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 580,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/cn.mops"
+  },
+  "_searchresults": 109,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/cn.mops.html",
+    "extra/contents.json",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "calcFractionalCopyNumbers",
+    "calcIntegerCopyNumbers",
+    "cn.mops",
+    "cnvr",
+    "cnvs",
+    "exomecn.mops",
+    "getReadCountsFromBAM",
+    "getSegmentReadCountsFromBAM",
+    "gr",
+    "haplocn.mops",
+    "individualCall",
+    "iniCall",
+    "integerCopyNumber",
+    "localAssessments",
+    "makeRobustCNVR",
+    "normalizeChromosomes",
+    "normalizedData",
+    "normalizeGenome",
+    "params",
+    "posteriorProbs",
+    "referencecn.mops",
+    "sampleNames",
+    "segment",
+    "segmentation",
+    "segplot",
+    "show",
+    "singlecn.mops"
+  ],
+  "_datasets": [
+    {
+      "name": "CNVRanges",
+      "title": "Genomic locations and indices of the simulated CNVs.",
+      "object": "cn.mops",
+      "file": "cn.mops.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "X",
+      "title": "A simulated data set for CNV detection from NGS data.",
+      "object": "cn.mops",
+      "file": "cn.mops.RData",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "S_1",
+        "S_2",
+        "S_3",
+        "S_4",
+        "S_5",
+        "S_6",
+        "S_7",
+        "S_8",
+        "S_9",
+        "S_10",
+        "S_11",
+        "S_12",
+        "S_13",
+        "S_14",
+        "S_15",
+        "S_16",
+        "S_17",
+        "S_18",
+        "S_19",
+        "S_20",
+        "S_21",
+        "S_22",
+        "S_23",
+        "S_24",
+        "S_25",
+        "S_26",
+        "S_27",
+        "S_28",
+        "S_29",
+        "S_30",
+        "S_31",
+        "S_32",
+        "S_33",
+        "S_34",
+        "S_35",
+        "S_36",
+        "S_37",
+        "S_38",
+        "S_39",
+        "S_40"
+      ],
+      "rows": 5000,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "XRanges",
+      "title": "A simulated data set for CNV detection from NGS data.",
+      "object": "cn.mops",
+      "file": "cn.mops.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "exomeCounts",
+      "title": "Read counts from exome sequencing for CNV detection",
+      "object": "cn.mops",
+      "file": "cn.mops.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "calcFractionalCopyNumbers",
+      "title": "Calculation of fractional copy numbers for the CNVs and CNV regions.",
+      "topics": [
+        "calcFractionalCopyNumbers"
+      ]
+    },
+    {
+      "page": "calcFractionalCopyNumbers-CNVDetectionResult-method",
+      "title": "Calculation of fractional copy numbers for the CNVs and CNV regions.",
+      "topics": [
+        "calcFractionalCopyNumbers,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "calcIntegerCopyNumbers",
+      "title": "Calculation of integer copy numbers for the CNVs and CNV regions.",
+      "topics": [
+        "calcIntegerCopyNumbers"
+      ]
+    },
+    {
+      "page": "calcIntegerCopyNumbers-CNVDetectionResult-method",
+      "title": "Calculation of integer copy numbers for the CNVs and CNV regions.",
+      "topics": [
+        "calcIntegerCopyNumbers,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "cn.mops",
+      "title": "Copy number detection in NGS data.",
+      "topics": [
+        "cn.mops"
+      ]
+    },
+    {
+      "page": "CNVDetectionResult",
+      "title": "Class \"CNVDetectionResult\"",
+      "topics": [
+        "CNVDetectionResult",
+        "CnvDetectionResult",
+        "cnvdetectionresult",
+        "CNVDetectionResult-class"
+      ]
+    },
+    {
+      "page": "cnvr",
+      "title": "This generic function returns CNV regions of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "cnvr"
+      ]
+    },
+    {
+      "page": "cnvr-CNVDetectionResult-method",
+      "title": "This generic function returns CNV regions of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "cnvr,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "CNVRanges",
+      "title": "Genomic locations and indices of the simulated CNVs.",
+      "topics": [
+        "CNVRanges"
+      ]
+    },
+    {
+      "page": "cnvs",
+      "title": "This generic function returns CNVs of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "cnvs"
+      ]
+    },
+    {
+      "page": "cnvs-CNVDetectionResult-method",
+      "title": "This generic function returns CNVs of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "cnvs,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "exomecn.mops",
+      "title": "Copy number detection in exome sequencing data.",
+      "topics": [
+        "exomecn.mops"
+      ]
+    },
+    {
+      "page": "exomeCounts",
+      "title": "Read counts from exome sequencing for CNV detection",
+      "topics": [
+        "exomeCounts"
+      ]
+    },
+    {
+      "page": "getReadCountsFromBAM",
+      "title": "Calculation of read counts from BAM files.",
+      "topics": [
+        "getReadCountsFromBAM"
+      ]
+    },
+    {
+      "page": "getSegmentReadCountsFromBAM",
+      "title": "Calculation of read counts from BAM files for predefined segments.",
+      "topics": [
+        "getSegmentReadCountsFromBAM"
+      ]
+    },
+    {
+      "page": "gr",
+      "title": "This generic function returns the genomic ranges of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "gr"
+      ]
+    },
+    {
+      "page": "gr-CNVDetectionResult-method",
+      "title": "This generic function returns the genomic ranges of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "gr,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "haplocn.mops",
+      "title": "Copy number detection in NGS data of haploid samples.",
+      "topics": [
+        "haplocn.mops"
+      ]
+    },
+    {
+      "page": "individualCall",
+      "title": "This generic function returns the individual calls of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "individualCall"
+      ]
+    },
+    {
+      "page": "individualCall-CNVDetectionResult-method",
+      "title": "This generic function returns the individual calls of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "individualCall,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "iniCall",
+      "title": "This generic function returns the informative/non-informative call of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.  The I/NI call is a measure for a genomic segment across all samples, whether this segment is a CNV region (informative) or a normal genomic region (non-informative).",
+      "topics": [
+        "iniCall"
+      ]
+    },
+    {
+      "page": "iniCall-CNVDetectionResult-method",
+      "title": "This generic function returns the informative/non-informative call of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.  The I/NI call is a measure for a genomic segment across all samples, whether this segment is a CNV region (informative) or a normal genomic region (non-informative).",
+      "topics": [
+        "iniCall,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "integerCopyNumber",
+      "title": "This generic function returns the integer copy numbers of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "integerCopyNumber"
+      ]
+    },
+    {
+      "page": "integerCopyNumber-CNVDetectionResult-method",
+      "title": "This generic function returns the integer copy numbers of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "integerCopyNumber,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "localAssessments",
+      "title": "This generic function returns the local assessments, i.e. signed individual informative/non-informative calls, of a CNV detection method stored in an instance of 'CNVDetectionResult-class'. For other CNV detection methods this can be (log-) ratios or z-scores.",
+      "topics": [
+        "localAssessments"
+      ]
+    },
+    {
+      "page": "localAssessments-CNVDetectionResult-method",
+      "title": "This generic function returns the local assessments, i.e.  signed individual informative/non-informative calls, of a CNV detection method stored in an instance of 'CNVDetectionResult-class'. For other CNV detection methods this can be (log-) ratios or z-scores.",
+      "topics": [
+        "localAssessments,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "makeRobustCNVR",
+      "title": "Calculates robust CNV regions.",
+      "topics": [
+        "makeRobustCNVR",
+        "makeRobustCNVR,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "normalizeChromosomes",
+      "title": "Normalization of NGS data.",
+      "topics": [
+        "normalizeChromosomes"
+      ]
+    },
+    {
+      "page": "normalizedData",
+      "title": "This generic function returns the normalized data of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "normalizedData"
+      ]
+    },
+    {
+      "page": "normalizedData-CNVDetectionResult-method",
+      "title": "This generic function returns the normalized data of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "normalizedData,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "normalizeGenome",
+      "title": "Normalization of NGS data",
+      "topics": [
+        "normalizeGenome"
+      ]
+    },
+    {
+      "page": "params",
+      "title": "This generic function returns the parameters of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "params"
+      ]
+    },
+    {
+      "page": "params-CNVDetectionResult-method",
+      "title": "This generic function returns the parameters of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "params,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "plot",
+      "title": "Plots a CNVDetectionResult",
+      "topics": [
+        "plot,CNVDetectionResult,missing-method",
+        "plot-methods"
+      ]
+    },
+    {
+      "page": "posteriorProbs",
+      "title": "This generic function returns the posterior probabilities of a CNV detection method stored in an instance of 'CNVDetectionResult-class'. The posterior probabilities are represented as a three dimensional array, where the three dimensions are segment, copy number and individual.",
+      "topics": [
+        "posteriorProbs"
+      ]
+    },
+    {
+      "page": "posteriorProbs-CNVDetectionResult-method",
+      "title": "This generic function returns the posterior probabilities of a CNV detection method stored in an instance of 'CNVDetectionResult-class'. The posterior probabilities are represented as a three dimensional array, where the three dimensions are segment, copy number and individual.",
+      "topics": [
+        "posteriorProbs,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "referencecn.mops",
+      "title": "Copy number detection in NGS data with in a control versus cases setting.",
+      "topics": [
+        "referencecn.mops"
+      ]
+    },
+    {
+      "page": "sampleNames",
+      "title": "This generic function returns the sample names of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "sampleNames"
+      ]
+    },
+    {
+      "page": "sampleNames-CNVDetectionResult-method",
+      "title": "This generic function returns the sample names of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "sampleNames,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "segment",
+      "title": "Fast segmentation of CNV calls.",
+      "topics": [
+        "segment"
+      ]
+    },
+    {
+      "page": "segmentation",
+      "title": "This generic function returns segmentation of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "segmentation"
+      ]
+    },
+    {
+      "page": "segmentation-CNVDetectionResult-method",
+      "title": "This generic function returns segmentation of a CNV detection method stored in an instance of 'CNVDetectionResult-class'.",
+      "topics": [
+        "segmentation,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "segplot",
+      "title": "Visualization of a CNV detection result.",
+      "topics": [
+        "segplot"
+      ]
+    },
+    {
+      "page": "segplot-CNVDetectionResult-method",
+      "title": "Visualization of a CNV detection result.",
+      "topics": [
+        "segplot,CNVDetectionResult-method"
+      ]
+    },
+    {
+      "page": "show",
+      "title": "Displays the result object of a copy number detection method.",
+      "topics": [
+        "show,CNVDetectionResult-method",
+        "show-methods"
+      ]
+    },
+    {
+      "page": "singlecn.mops",
+      "title": "Copy number detection in NGS data with in a setting in which only one sample is available",
+      "topics": [
+        "singlecn.mops"
+      ]
+    },
+    {
+      "page": "X",
+      "title": "A simulated data set for CNV detection from NGS data.",
+      "topics": [
+        "X"
+      ]
+    },
+    {
+      "page": "XRanges",
+      "title": "A simulated data set for CNV detection from NGS data.",
+      "topics": [
+        "XRanges"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "IRanges",
+    "lambda.r",
+    "Rhtslib",
+    "Rsamtools",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "cn.mops.Rnw",
+      "filename": "cn.mops.pdf",
+      "title": "cn.mops: Manual for the R package",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2012-10-16 11:31:06",
+      "modified": "2025-07-23 02:34:45",
+      "commits": 13
+    }
+  ],
+  "_score": 5.5937289987079115,
+  "_indexed": true,
+  "_nocasepkg": "cn.mops",
+  "_universes": [
+    "bioc"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:08:35.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "29485a6627498caa67111676522b06e9692e4b656957f56e08cf6dccc3370321",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:08:52.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "a4b67628583cec6cd4a39d8153d3f33f77a9aa2f5c9139c010f86a14702f9551",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:08:23.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "691a50d8524a53a3a9ddddbcc8474b44616e06bba394ca22e4974a3b4914775b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:09:05.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "a736550fbe72b05a02f58d2a03101f3a74b18779bf16404062f04dea7aa090c7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:21:54.000Z",
+      "arch": "aarch64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "218798511eb6f25aabb31a1087565265db25be81e3d908c7620277e0ca8c44d2",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:15:54.000Z",
+      "arch": "x86_64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "bc7f5aee8bc0ce2b9319952ff8bd8094972efa0437a2f21b5e192adf06ec115f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:21:52.000Z",
+      "arch": "aarch64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "edbe43dd63e970b357df4970f79df796112ee62e510c81afa4e5c06e76fbe146",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:16:35.000Z",
+      "arch": "x86_64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "df456d81f1df81490977ebf68b2c6030768476a476b38451541dd6e45bdaab12",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:08:17.000Z",
+      "arch": "emscripten",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "bf360bf035e019913031a4a1511ae10a94ddfcc13f1778e9572c468e468cde2e",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:07:18.000Z",
+      "arch": "x86_64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "77390e133d7ac8dd56a2c2a59532f4774ddbbada8d394871e2bf8abe8da337ce",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:07:26.000Z",
+      "arch": "x86_64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "4aadb32cedefe942928ad06d255cc21a74a2cb346787a73cbd8fde0d0c0b5a0d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.57.0",
+      "date": "2026-01-22T19:07:36.000Z",
+      "arch": "x86_64",
+      "commit": "79a09010036e154c940fecfc4810426ececf182a",
+      "fileid": "ff8107c39392ad7e77630d39304ec9c5c9053dc49396766a86c11c9036cd07cb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261220547"
+    }
+  ]
+}

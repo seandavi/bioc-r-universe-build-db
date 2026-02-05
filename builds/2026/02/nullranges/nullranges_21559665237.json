@@ -1,0 +1,965 @@
+{
+  "Package": "nullranges",
+  "Title": "Generation of null ranges via bootstrapping or covariate\nmatching",
+  "Version": "1.17.3",
+  "Authors@R": "c(\nperson(\"Michael\", \"Love\", role = c(\"aut\", \"cre\"),\nemail = \"michaelisaiahlove@gmail.com\",\ncomment = c(ORCID = \"0000-0001-8401-0545\")),\nperson(\"Wancen\", \"Mu\", role = c(\"aut\"),\ncomment = c(ORCID = \"0000-0002-5061-7581\")),\nperson(\"Eric\", \"Davis\", role = c(\"aut\"),\ncomment = c(ORCID = \"0000-0003-4051-3217\")),\nperson(\"Douglas\", \"Phanstiel\", role = c(\"aut\"),\ncomment = c(ORCID = \"0000-0003-2123-0051\")),\nperson(\"Stuart\", \"Lee\", role = c(\"aut\"),\ncomment = c(ORCID = \"0000-0003-1179-8436\")),\nperson(\"Mikhail\", \"Dozmorov\", role = c(\"ctb\")),\nperson(\"Tim\", \"Triche\", role = c(\"ctb\")),\nperson(\"CZI\", role = c(\"fnd\"))\n)",
+  "Description": "Modular package for generation of sets of ranges\nrepresenting the null hypothesis. These can take the form of\nbootstrap samples of ranges (using the block bootstrap\nframework of Bickel et al 2010), or sets of control ranges that\nare matched across one or more covariates. nullranges is\ndesigned to be inter-operable with other packages for analysis\nof genomic overlap enrichment, including the plyranges\nBioconductor package.",
+  "biocViews": "Visualization, GeneSetEnrichment, FunctionalGenomics,\nEpigenetics, GeneRegulation, GeneTarget, GenomeAnnotation,\nAnnotation, GenomeWideAssociation, HistoneModification,\nChIPSeq, ATACSeq, DNaseSeq, RNASeq, HiddenMarkovModel",
+  "URL": "https://nullranges.github.io/nullranges,\nhttps://github.com/nullranges/nullranges",
+  "BugReports": "https://support.bioconductor.org/tag/nullranges/",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-11-20 18:19:43 UTC",
+  "RemoteUrl": "https://github.com/bioc/nullranges",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-01 08:35:53 UTC",
+    "User": "root"
+  },
+  "Author": "Michael Love [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-8401-0545>),\nWancen Mu [aut] (ORCID: <https://orcid.org/0000-0002-5061-7581>),\nEric Davis [aut] (ORCID: <https://orcid.org/0000-0003-4051-3217>),\nDouglas Phanstiel [aut] (ORCID:\n<https://orcid.org/0000-0003-2123-0051>),\nStuart Lee [aut] (ORCID: <https://orcid.org/0000-0003-1179-8436>),\nMikhail Dozmorov [ctb],\nTim Triche [ctb],\nCZI [fnd]",
+  "Maintainer": "Michael Love <michaelisaiahlove@gmail.com>",
+  "MD5sum": "ab486c39963cc41645d9daae8c3d6c75",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "nullranges_1.17.3.tar.gz",
+  "_fileid": "a01ad714699858195c7ce2ac2ba6f88b36a1377008038456e423bfdfba055108",
+  "_filesize": 3313861,
+  "_sha256": "a01ad714699858195c7ce2ac2ba6f88b36a1377008038456e423bfdfba055108",
+  "_created": "2026-02-01T08:35:53.000Z",
+  "_published": "2026-02-01T08:45:46.307Z",
+  "_jobs": [
+    {
+      "job": 62121858387,
+      "time": 344,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5332984246"
+    },
+    {
+      "job": 62121858406,
+      "time": 529,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5332995285"
+    },
+    {
+      "job": 62121858393,
+      "time": 531,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5332995353"
+    },
+    {
+      "job": 62121858405,
+      "time": 310,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5332982250"
+    },
+    {
+      "job": 62121858417,
+      "time": 361,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5332985125"
+    },
+    {
+      "job": 62121617081,
+      "time": 456,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5332963676"
+    },
+    {
+      "job": 62121858403,
+      "time": 281,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5332980501"
+    },
+    {
+      "job": 62121858413,
+      "time": 373,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5332985997"
+    },
+    {
+      "job": 62121858407,
+      "time": 396,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5332987395"
+    },
+    {
+      "job": 62121858410,
+      "time": 383,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5332986548"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/nullranges",
+  "_commit": {
+    "id": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+    "author": "Mike Love <mikelove@users.noreply.github.com>",
+    "committer": "Mike Love <mikelove@users.noreply.github.com>",
+    "message": "version bump\n",
+    "time": 1763662783
+  },
+  "_maintainer": {
+    "name": "Michael Love",
+    "email": "michaelisaiahlove@gmail.com",
+    "login": "mikelove",
+    "mastodon": "@mikelove@genomic.social",
+    "orcid": "0000-0001-8401-0545",
+    "uuid": 69203
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "InteractionSet",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "plyranges",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "progress",
+      "role": "Imports"
+    },
+    {
+      "package": "ggridges",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "ks",
+      "role": "Suggests"
+    },
+    {
+      "package": "DNAcopy",
+      "role": "Suggests"
+    },
+    {
+      "package": "RcppHMM",
+      "role": "Suggests"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Suggests"
+    },
+    {
+      "package": "nullrangesData",
+      "role": "Suggests"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Suggests"
+    },
+    {
+      "package": "EnsDb.Hsapiens.v86",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "patchwork",
+      "role": "Suggests"
+    },
+    {
+      "package": "plotgardener",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "magrittr",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "cobalt",
+      "role": "Suggests"
+    },
+    {
+      "package": "DiagrammeR",
+      "role": "Suggests"
+    },
+    {
+      "package": "MatchIt",
+      "role": "Suggests"
+    },
+    {
+      "package": "mariner",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-14",
+      "n": 6
+    },
+    {
+      "week": "2025-47",
+      "n": 11
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.17.3",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.16.3",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "visualization",
+    "genesetenrichment",
+    "functionalgenomics",
+    "epigenetics",
+    "generegulation",
+    "genetarget",
+    "genomeannotation",
+    "annotation",
+    "genomewideassociation",
+    "histonemodification",
+    "chipseq",
+    "atacseq",
+    "dnaseseq",
+    "rnaseq",
+    "hiddenmarkovmodel",
+    "bioconductor",
+    "bootstrap",
+    "genomics",
+    "matching",
+    "statistics"
+  ],
+  "_stars": 27,
+  "_contributors": [
+    {
+      "user": "mikelove",
+      "count": 287,
+      "uuid": 69203
+    },
+    {
+      "user": "ericsdavis",
+      "count": 127,
+      "uuid": 31807001
+    },
+    {
+      "user": "wancen",
+      "count": 45,
+      "uuid": 42752661
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "mdozmorov",
+      "count": 5,
+      "uuid": 864945
+    },
+    {
+      "user": "nturaga",
+      "count": 4,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "ttriche",
+      "count": 1,
+      "uuid": 4386
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 555,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/nullranges"
+  },
+  "_devurl": "https://github.com/nullranges/nullranges",
+  "_pkgdown": "https://nullranges.github.io/nullranges",
+  "_searchresults": 67,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/nullranges.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/nullranges/nullranges",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "bootRanges",
+    "BootRanges",
+    "combnCov",
+    "covariates",
+    "focal",
+    "indices",
+    "makeExampleMatchedDataSet",
+    "matched",
+    "Matched",
+    "matchedData",
+    "MatchedDataFrame",
+    "MatchedGInteractions",
+    "MatchedGRanges",
+    "matchitToMatched",
+    "matchRanges",
+    "method",
+    "oneRegionSegment",
+    "overview",
+    "plotCovariate",
+    "plotPropensity",
+    "plotSegment",
+    "pool",
+    "reduceSegment",
+    "segmentDensity",
+    "show",
+    "unmatched",
+    "withReplacement"
+  ],
+  "_help": [
+    {
+      "page": "bootRanges",
+      "title": "Block bootstrap for genomic ranges",
+      "topics": [
+        "bootRanges"
+      ]
+    },
+    {
+      "page": "BootRanges-class",
+      "title": "BootRanges object",
+      "topics": [
+        "BootRanges",
+        "BootRanges-class"
+      ]
+    },
+    {
+      "page": "combnCov",
+      "title": "Function for creating combinations of covariates",
+      "topics": [
+        "combnCov",
+        "combnCov,character-method"
+      ]
+    },
+    {
+      "page": "covariates",
+      "title": "Get covariates from a Matched object",
+      "topics": [
+        "covariates",
+        "covariates,Matched-method"
+      ]
+    },
+    {
+      "page": "focal",
+      "title": "Get focal set from a Matched object",
+      "topics": [
+        "focal",
+        "focal,MDF_OR_MGR_OR_MGI-method"
+      ]
+    },
+    {
+      "page": "indices",
+      "title": "Get indices of matched set",
+      "topics": [
+        "indices",
+        "indices,Matched-method"
+      ]
+    },
+    {
+      "page": "makeExampleMatchedDataSet",
+      "title": "Function for generating an example matchRanges or Matched dataset",
+      "topics": [
+        "makeExampleMatchedDataSet",
+        "makeExampleMatchedDataSet,character_OR_missing,logical_OR_missing,character_OR_missing,logical_OR_missing-method"
+      ]
+    },
+    {
+      "page": "matched",
+      "title": "Get matched set from a Matched object",
+      "topics": [
+        "matched",
+        "matched,MDF_OR_MGR_OR_MGI-method"
+      ]
+    },
+    {
+      "page": "matchedClass",
+      "title": "Matched objects",
+      "topics": [
+        "Matched",
+        "Matched-class"
+      ]
+    },
+    {
+      "page": "matchedData",
+      "title": "Get matched data from a Matched object",
+      "topics": [
+        "matchedData",
+        "matchedData,Matched-method"
+      ]
+    },
+    {
+      "page": "MatchedDataFrame",
+      "title": "MatchedDataFrame objects",
+      "topics": [
+        "MatchedDataFrame",
+        "MatchedDataFrame-class"
+      ]
+    },
+    {
+      "page": "MatchedGInteractions",
+      "title": "MatchedGInteractions objects",
+      "topics": [
+        "MatchedGInteractions",
+        "MatchedGInteractions-class"
+      ]
+    },
+    {
+      "page": "MatchedGRanges",
+      "title": "MatchedGRanges objects",
+      "topics": [
+        "MatchedGRanges",
+        "MatchedGRanges-class"
+      ]
+    },
+    {
+      "page": "matchitToMatched",
+      "title": "Coerce 'matchit' to 'Matched' object",
+      "topics": [
+        "matchitToMatched",
+        "matchitToMatched,matchit-method"
+      ]
+    },
+    {
+      "page": "matchRanges",
+      "title": "Generate a covariate-matched control set of ranges",
+      "topics": [
+        "matchRanges",
+        "matchRanges,DF_OR_df_OR_dt,DF_OR_df_OR_dt,formula,character_OR_missing,logical_OR_missing-method",
+        "matchRanges,GInteractions,GInteractions,formula,character_OR_missing,logical_OR_missing-method",
+        "matchRanges,GRanges,GRanges,formula,character_OR_missing,logical_OR_missing-method"
+      ]
+    },
+    {
+      "page": "method",
+      "title": "Get matching method used for Matched object",
+      "topics": [
+        "method",
+        "method,Matched-method"
+      ]
+    },
+    {
+      "page": "oneRegionSegment",
+      "title": "Segmentation based on one region",
+      "topics": [
+        "oneRegionSegment"
+      ]
+    },
+    {
+      "page": "overview",
+      "title": "Overview of matching quality",
+      "topics": [
+        "overview",
+        "overview,Matched,numeric_OR_missing-method"
+      ]
+    },
+    {
+      "page": "plotCovariate",
+      "title": "Covariate plotting for Matched objects",
+      "topics": [
+        "plotCovariate",
+        "plotCovariate,Matched,character_OR_missing,character_OR_missing,character_OR_missing,character_OR_missing-method"
+      ]
+    },
+    {
+      "page": "plotPropensity",
+      "title": "Propensity score plotting for Matched objects",
+      "topics": [
+        "plotPropensity",
+        "plotPropensity,Matched,character_OR_missing,character_OR_missing,character_OR_missing-method"
+      ]
+    },
+    {
+      "page": "plotSegment",
+      "title": "Plot genome segmentation",
+      "topics": [
+        "plotSegment"
+      ]
+    },
+    {
+      "page": "pool",
+      "title": "Get pool set from a Matched object",
+      "topics": [
+        "pool",
+        "pool,MDF_OR_MGR_OR_MGI-method"
+      ]
+    },
+    {
+      "page": "reduceSegment",
+      "title": "Combine nearby regions with same state",
+      "topics": [
+        "reduceSegment"
+      ]
+    },
+    {
+      "page": "segmentDensity",
+      "title": "Genome segmentation based on feature density",
+      "topics": [
+        "segmentDensity"
+      ]
+    },
+    {
+      "page": "unmatched",
+      "title": "Get unmatched set from a Matched object",
+      "topics": [
+        "unmatched",
+        "unmatched,MDF_OR_MGR_OR_MGI-method"
+      ]
+    },
+    {
+      "page": "withReplacement",
+      "title": "Get replace method",
+      "topics": [
+        "withReplacement",
+        "withReplacement,Matched-method"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/nullranges/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/nullranges/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "dplyr",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "ggridges",
+    "glue",
+    "gtable",
+    "hms",
+    "httr",
+    "InteractionSet",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plyranges",
+    "prettyunits",
+    "progress",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "nullranges.Rmd",
+      "filename": "nullranges.html",
+      "title": "Introduction to nullranges",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Choice of methods",
+        "Related work",
+        "Further description of matching and bootstrapping",
+        "In other words",
+        "Options and features",
+        "Consideration of excluded regions",
+        "References"
+      ],
+      "created": "2020-12-22 12:56:46",
+      "modified": "2022-12-30 11:31:06",
+      "commits": 20
+    },
+    {
+      "source": "bootRanges.Rmd",
+      "filename": "bootRanges.html",
+      "title": "Introduction to bootRanges",
+      "author": "Wancen Mu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Quick start",
+        "Method overview",
+        "Steps before bootstrapping",
+        "Import excluded regions",
+        "Genome segmentation",
+        "Bootstrapping ranges",
+        "Assessing properties of bootstrap samples",
+        "Bootstrapping and plyranges",
+        "Counting the total number of overlaps",
+        "Computing the sum of signal value for nearby peaks",
+        "Block bootstrapping one region",
+        "Visualizing bootstrap types",
+        "Session information",
+        "References"
+      ],
+      "created": "2023-01-03 23:15:31",
+      "modified": "2025-11-18 14:45:37",
+      "commits": 25
+    },
+    {
+      "source": "matchRanges.Rmd",
+      "filename": "matchRanges.html",
+      "title": "Introduction to matchRanges",
+      "author": "Eric S. Davis",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Terminology",
+        "Methodology",
+        "Using matchRanges()",
+        "Assessing quality of matching",
+        "Accessing matched data",
+        "Using cobalt to assess balancing <a id=\"using_cobalt\" />",
+        "Choosing the method parameter <a id=\"choosing_method\" />",
+        "Nearest-neighbor matching",
+        "Rejection sampling",
+        "Stratified sampling",
+        "Class structure",
+        "Implementation details",
+        "Session information",
+        "References"
+      ],
+      "created": "2023-01-13 21:06:14",
+      "modified": "2023-06-23 14:18:52",
+      "commits": 4
+    },
+    {
+      "source": "matching_granges.Rmd",
+      "filename": "matching_granges.html",
+      "title": "Matching case study I: CTCF occupancy",
+      "author": "Eric S. Davis",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Background",
+        "Matching with matchRanges()",
+        "Assessing quality of matching",
+        "Visualizing matching results",
+        "Compare CTCF sites",
+        "Session information"
+      ],
+      "created": "2021-06-01 04:49:03",
+      "modified": "2023-08-02 21:07:10",
+      "commits": 18
+    },
+    {
+      "source": "matching_ginteractions.Rmd",
+      "filename": "matching_ginteractions.html",
+      "title": "Matching case study II: CTCF orientation",
+      "author": "Eric S. Davis",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Background",
+        "Matching with matchRanges()",
+        "Assessing quality of matching",
+        "Visualizing matching results",
+        "Compare CTCF site orientation",
+        "Session information"
+      ],
+      "created": "2021-06-01 04:49:03",
+      "modified": "2023-08-02 21:07:10",
+      "commits": 21
+    },
+    {
+      "source": "matching_pool_set.Rmd",
+      "filename": "matching_pool_set.html",
+      "title": "Creating a pool set for matchRanges",
+      "author": "Eric S. Davis",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Obtaining example data",
+        "Creating the focal and pool sets",
+        "Obtaining the matched set with matchRanges()",
+        "Assessing covariate balance"
+      ],
+      "created": "2022-12-28 10:30:25",
+      "modified": "2023-01-13 21:06:14",
+      "commits": 2
+    }
+  ],
+  "_score": 7.880687857257715,
+  "_indexed": true,
+  "_nocasepkg": "nullranges",
+  "_universes": [
+    "bioc",
+    "mikelove",
+    "nullranges"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:41:57.000Z",
+      "distro": "noble",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "bbbea46cfebc4cfe116b15d8710f234b2b59144de7d91ae96b2115869559fb85",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:42:01.000Z",
+      "distro": "noble",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "bdb29b4bc83ac29cc3bb6720dbf063171d8f8a6c3304407b401282314f555f20",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:39:29.000Z",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "c1ed9147451f3234c72f40c7504d8567406911abc55a04cf27cb4b9d1ace5c78",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:39:33.000Z",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "7d6bc2038770331d76ede5b5a8c80d0e5cb3515a77c38a0661db20b7c3eeeea4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:41:14.000Z",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "d00a27531029a66a8ff775d46e197a3fd875a6161a8019e21dab8766a5782ba2",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:39:28.000Z",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "e2a62f254f213c203aa71415dee080d4a30e05f26cfffb4d163dce70efe9a4b0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:39:33.000Z",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "eef147f4b32e10b8141d0ca22d766fe0da2d3e9e3e0532acb217d69427ae665a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.17.3",
+      "date": "2026-02-01T08:39:24.000Z",
+      "commit": "ffc311bfd0a76329e7059a9ffa82f5aa56ff3dc0",
+      "fileid": "971738436bffab3a7fde269040974c7df65a6112f95d6584b064b3a489c2ba43",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21559665237"
+    }
+  ]
+}

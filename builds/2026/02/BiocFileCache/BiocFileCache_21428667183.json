@@ -1,0 +1,707 @@
+{
+  "Package": "BiocFileCache",
+  "Title": "Manage Files Across Sessions",
+  "Version": "3.1.0",
+  "Authors@R": "c(person(\"Lori\", \"Shepherd\",\nemail = \"lori.shepherd@roswellpark.org\",\nrole = c(\"aut\", \"cre\")),\nperson(\"Martin\", \"Morgan\",\nemail = \"martin.morgan@roswellpark.org\",\nrole = \"aut\"))",
+  "Description": "This package creates a persistent on-disk cache of files\nthat the user can add, update, and retrieve. It is useful for\nmanaging resources (such as custom Txdb objects) that are\ncostly or difficult to create, web resources, and data files\nused across sessions.",
+  "BugReports": "https://github.com/Bioconductor/BiocFileCache/issues",
+  "DevelopmentURL": "https://github.com/Bioconductor/BiocFileCache",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "DataImport",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "libicu-dev libssl-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:37:29 UTC",
+  "RemoteUrl": "https://github.com/bioc/BiocFileCache",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-28 07:12:02 UTC",
+    "User": "root"
+  },
+  "Author": "Lori Shepherd [aut, cre],\nMartin Morgan [aut]",
+  "Maintainer": "Lori Shepherd <lori.shepherd@roswellpark.org>",
+  "MD5sum": "2beea6bd9ed6ab7ef7138093fdfbea2c",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "BiocFileCache_3.1.0.tar.gz",
+  "_fileid": "7432f16819660961c05d34c48d49f64a075c4d2bd13c507e51c179a7a1ca92c9",
+  "_filesize": 231991,
+  "_sha256": "7432f16819660961c05d34c48d49f64a075c4d2bd13c507e51c179a7a1ca92c9",
+  "_created": "2026-01-28T07:12:02.000Z",
+  "_published": "2026-01-28T07:16:19.812Z",
+  "_jobs": [
+    {
+      "job": 61703239889,
+      "time": 142,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5283939511"
+    },
+    {
+      "job": 61703239895,
+      "time": 223,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5283952881"
+    },
+    {
+      "job": 61703239890,
+      "time": 226,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5283953250"
+    },
+    {
+      "job": 61703239894,
+      "time": 137,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5283938733"
+    },
+    {
+      "job": 61703239978,
+      "time": 110,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5283948531"
+    },
+    {
+      "job": 61702932156,
+      "time": 226,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5283917707"
+    },
+    {
+      "job": 61703239897,
+      "time": 145,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5283940148"
+    },
+    {
+      "job": 61703239920,
+      "time": 184,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5283947339"
+    },
+    {
+      "job": 61703239869,
+      "time": 162,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5283942762"
+    },
+    {
+      "job": 61703239927,
+      "time": 144,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5283939957"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/BiocFileCache",
+  "_commit": {
+    "id": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748649
+  },
+  "_maintainer": {
+    "name": "Lori Shepherd",
+    "email": "lori.shepherd@roswellpark.org",
+    "login": "lshep",
+    "uuid": 18724380
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "dbplyr",
+      "version": ">= 1.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "filelock",
+      "role": "Imports"
+    },
+    {
+      "package": "curl",
+      "role": "Imports"
+    },
+    {
+      "package": "httr2",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 448,
+  "_updates": [
+    {
+      "week": "2025-17",
+      "n": 3
+    },
+    {
+      "week": "2025-19",
+      "n": 1
+    },
+    {
+      "week": "2025-20",
+      "n": 3
+    },
+    {
+      "week": "2025-29",
+      "n": 1
+    },
+    {
+      "week": "2025-35",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "3.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "3.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dataimport",
+    "core-package",
+    "u24ca289073"
+  ],
+  "_stars": 13,
+  "_contributors": [
+    {
+      "user": "lshep",
+      "count": 301,
+      "uuid": 18724380
+    },
+    {
+      "user": "mtmorgan",
+      "count": 72,
+      "uuid": 118552
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "ltla",
+      "count": 6,
+      "uuid": 8166669
+    },
+    {
+      "user": "hpages",
+      "count": 4,
+      "uuid": 8810451
+    },
+    {
+      "user": "link-ny",
+      "count": 3,
+      "uuid": 4392950
+    },
+    {
+      "user": "shians",
+      "count": 2,
+      "uuid": 6036662
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "federicomarini",
+      "count": 1,
+      "uuid": 7447478
+    },
+    {
+      "user": "mgirlich",
+      "count": 1,
+      "uuid": 18258854
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 46414,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/BiocFileCache"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/bioconductor/biocfilecache",
+  "_searchresults": 520,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/BiocFileCache.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioconductor/biocfilecache",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "bfcadd",
+    "bfccache",
+    "bfccount",
+    "bfcdownload",
+    "bfcinfo",
+    "bfcmeta",
+    "bfcmeta<-",
+    "bfcmetalist",
+    "bfcmetaremove",
+    "bfcneedsupdate",
+    "bfcnew",
+    "bfcpath",
+    "bfcquery",
+    "bfcquerycols",
+    "bfcremove",
+    "bfcrid",
+    "bfcrpath",
+    "bfcsync",
+    "bfcupdate",
+    "BiocFileCache",
+    "cleanbfc",
+    "exportbfc",
+    "getBFCOption",
+    "importbfc",
+    "makeBiocFileCacheFromDataFrame",
+    "makeCachedActiveBinding",
+    "removebfc",
+    "setBFCOption",
+    "show"
+  ],
+  "_help": [
+    {
+      "page": "BFCOption",
+      "title": "BFCOption These functions help get and set an R variable CACHE that controls the default caching location.",
+      "topics": [
+        "BFCOption",
+        "getBFCOption",
+        "setBFCOption"
+      ]
+    },
+    {
+      "page": "BiocFileCache-class",
+      "title": "BiocFileCache class",
+      "topics": [
+        "bfcadd",
+        "bfcadd,BiocFileCache-method",
+        "bfcadd,missing-method",
+        "bfccache",
+        "bfccache,BiocFileCacheBase-method",
+        "bfccache,missing-method",
+        "bfccount",
+        "bfccount,BiocFileCacheBase-method",
+        "bfccount,missing-method",
+        "bfccount,tbl_bfc-method",
+        "bfcdownload",
+        "bfcdownload,BiocFileCache-method",
+        "bfcdownload,missing-method",
+        "bfcinfo",
+        "bfcinfo,BiocFileCacheBase-method",
+        "bfcinfo,missing-method",
+        "bfcmeta",
+        "bfcmeta,BiocFileCacheBase-method",
+        "bfcmeta,missing-method",
+        "bfcmeta<-",
+        "bfcmeta<-,BiocFileCacheBase-method",
+        "bfcmetalist",
+        "bfcmetalist,BiocFileCacheBase-method",
+        "bfcmetalist,missing-method",
+        "bfcmetaremove",
+        "bfcmetaremove,BiocFileCacheBase-method",
+        "bfcmetaremove,missing-method",
+        "bfcneedsupdate",
+        "bfcneedsupdate,BiocFileCacheBase-method",
+        "bfcneedsupdate,missing-method",
+        "bfcnew",
+        "bfcnew,BiocFileCache-method",
+        "bfcnew,missing-method",
+        "bfcpath",
+        "bfcpath,BiocFileCacheBase-method",
+        "bfcpath,missing-method",
+        "bfcquery",
+        "bfcquery,BiocFileCacheBase-method",
+        "bfcquery,missing-method",
+        "bfcquerycols",
+        "bfcquerycols,BiocFileCacheBase-method",
+        "bfcquerycols,missing-method",
+        "bfcremove",
+        "bfcremove,BiocFileCache-method",
+        "bfcremove,missing-method",
+        "bfcrid",
+        "bfcrid,BiocFileCache-method",
+        "bfcrid,BiocFileCacheReadOnly-method",
+        "bfcrid,missing-method",
+        "bfcrid,tbl_bfc-method",
+        "bfcrpath",
+        "bfcrpath,BiocFileCacheBase-method",
+        "bfcrpath,missing-method",
+        "bfcsync",
+        "bfcsync,BiocFileCache-method",
+        "bfcsync,missing-method",
+        "bfcupdate",
+        "bfcupdate,BiocFileCache-method",
+        "bfcupdate,missing-method",
+        "BiocFileCache",
+        "BiocFileCache-class",
+        "cleanbfc",
+        "cleanbfc,BiocFileCache-method",
+        "cleanbfc,missing-method",
+        "exportbfc",
+        "exportbfc,BiocFileCacheBase-method",
+        "exportbfc,missing-method",
+        "importbfc",
+        "importbfc,character-method",
+        "length,BiocFileCacheBase-method",
+        "removebfc",
+        "removebfc,BiocFileCache-method",
+        "removebfc,missing-method",
+        "show,BiocFileCacheBase-method",
+        "[,BiocFileCache,character,missing-method",
+        "[,BiocFileCache,missing,missing-method",
+        "[,BiocFileCacheReadOnly,character,missing-method",
+        "[,BiocFileCacheReadOnly,missing,missing-method",
+        "[[,BiocFileCacheBase,character,missing-method",
+        "[[<-,BiocFileCache,character,missing,character-method"
+      ]
+    },
+    {
+      "page": "makeBiocFileCacheFromDataFrame",
+      "title": "Make BiocFileCache objects from an existing data.frame",
+      "topics": [
+        "makeBiocFileCacheFromDataFrame",
+        "makeBiocFileCacheFromDataFrame,ANY-method"
+      ]
+    },
+    {
+      "page": "makeCachedActiveBinding",
+      "title": "makeCachedActiveBinding",
+      "topics": [
+        "makeCachedActiveBinding"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "askpass",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "cpp11",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "dplyr",
+    "fastmap",
+    "filelock",
+    "generics",
+    "glue",
+    "httr2",
+    "lifecycle",
+    "magrittr",
+    "memoise",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "rlang",
+    "RSQLite",
+    "stringi",
+    "stringr",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "withr"
+  ],
+  "_vignettes": [
+    {
+      "source": "BiocFileCache.Rmd",
+      "filename": "BiocFileCache.html",
+      "title": "BiocFileCache: Managing File Resources Across Sessions",
+      "author": "Lori Shepherd",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Installation and Loading",
+        "Creating / Loading the Cache",
+        "Adding / Tracking Resources",
+        "Caveat",
+        "Investigating / Accessing Resources",
+        "Updating Resource Entries or Local Copy of Remote Data",
+        "Adding MetaData",
+        "Removing Resources",
+        "Exporting and Importing Cache",
+        "Creating a Cache from Existing Data",
+        "Create a BiocFileCache from an Existing data.frame",
+        "Cleaning or Removing Cache",
+        "Access Behind a Proxy",
+        "Other configuration options for resource downloading",
+        "Group Cache Access",
+        "Summary",
+        "SessionInfo"
+      ],
+      "created": "2017-02-08 18:54:13",
+      "modified": "2025-08-28 15:38:51",
+      "commits": 64
+    },
+    {
+      "source": "BiocFileCache_UseCases.Rmd",
+      "filename": "BiocFileCache_UseCases.html",
+      "title": "BiocFileCache Use Cases",
+      "author": "Lori Shepherd",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Installation and Loading",
+        "Creating / Loading the Cache",
+        "Use Cases",
+        "Local cache of an internet resource",
+        "Cache of experimental computations",
+        "Cache to manage package data",
+        "Processing web resources before caching",
+        "Access Behind a Proxy",
+        "Other configuration options for resource downloading",
+        "Group Cache Access",
+        "Summary",
+        "SessionInfo"
+      ],
+      "created": "2024-10-02 20:16:05",
+      "modified": "2025-05-15 13:35:08",
+      "commits": 7
+    },
+    {
+      "source": "BiocFileCache_Troubleshooting.Rmd",
+      "filename": "BiocFileCache_Troubleshooting.html",
+      "title": "BiocFileCache Troubleshooting",
+      "author": "Lori Shepherd",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Installation and Loading",
+        "Creating / Loading the Cache",
+        "Access Behind a Proxy",
+        "Other configuration options for resource downloading",
+        "Group Cache Access",
+        "Lock file Troubleshooting",
+        "Permissions",
+        "Cannot lock file / no lock available",
+        "Default Caching Location Update",
+        "Option 1: Moving Files",
+        "Option 2: Specify a Cache Location Explicitly",
+        "Option 3: Delete the old cache",
+        "SessionInfo"
+      ],
+      "created": "2024-10-02 20:16:05",
+      "modified": "2025-05-15 13:35:08",
+      "commits": 5
+    }
+  ],
+  "_score": 13.181297463345215,
+  "_indexed": true,
+  "_nocasepkg": "biocfilecache",
+  "_universes": [
+    "bioc",
+    "lshep",
+    "bioconductor"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:15:08.000Z",
+      "distro": "noble",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "d0c871e4c589c17537e95dff50bbaca7fc0c0489b2a7d3d0100af00e1e4fe69c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:15:20.000Z",
+      "distro": "noble",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "13d18d300e5a6ad6ef4043f323a5f97def2164b1e00bd1ea76ad380893be22b4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:13:48.000Z",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "a2421098060f410741bf0e35476832bde68eb612129c0329b9f82fcecbce047e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:14:59.000Z",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "addd00f940d1d7667dec3d2d1faf193e36f0f1d8ecd333b0ef826cf6ce0307f1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:14:44.000Z",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "dd093d0cfa4710aebf3522e9d33f186d0603fe3cabd985cd9eb53486c2b14add",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:14:07.000Z",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "012c9883429e24f8dd3a82302814b5398b59f0f773d582d0e09e6b2fb18a4b42",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:13:58.000Z",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "b4c01a6a3fd9c36322875f2aea275080b390172afa8498d15da5bcd1da329b8c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "3.1.0",
+      "date": "2026-01-28T07:13:40.000Z",
+      "commit": "c4f8ba6e0a6b63f7a23dbfaa3629cc1eaafee6ad",
+      "fileid": "a4ad3615c1687e49cc39e71a5f74c61c49eed80a68408a4c672f902262e2ab38",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21428667183"
+    }
+  ]
+}

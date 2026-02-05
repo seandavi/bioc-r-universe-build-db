@@ -1,0 +1,932 @@
+{
+  "Package": "flowcatchR",
+  "Type": "Package",
+  "Title": "Tools to analyze in vivo microscopy imaging data focused on\ntracking flowing blood cells",
+  "Version": "1.45.0",
+  "Date": "2024-12-20",
+  "Authors@R": "c(person(\"Federico\", \"Marini\", role = c(\"aut\", \"cre\"), \nemail =\"marinif@uni-mainz.de\",\ncomment = c(ORCID = '0000-0003-3252-7758')))",
+  "Description": "flowcatchR is a set of tools to analyze in vivo microscopy\nimaging data, focused on tracking flowing blood cells. It\nguides the steps from segmentation to calculation of features,\nfiltering out particles not of interest, providing also a set\nof utilities to help checking the quality of the performed\noperations (e.g. how good the segmentation was). It allows\ninvestigating the issue of tracking flowing cells such as in\nblood vessels, to categorize the particles in flowing, rolling\nand adherent. This classification is applied in the study of\nphenomena such as hemostasis and study of thrombosis\ndevelopment. Moreover, flowcatchR presents an integrated\nworkflow solution, based on the integration with a Shiny App\nand Jupyter notebooks, which is delivered alongside the\npackage, and can enable fully reproducible bioimage analysis in\nthe R environment.",
+  "License": "BSD_3_clause + file LICENSE",
+  "VignetteBuilder": "knitr",
+  "SystemRequirements": "ImageMagick",
+  "LazyData": "true",
+  "URL": "https://github.com/federicomarini/flowcatchR,\nhttps://federicomarini.github.io/flowcatchR/",
+  "BugReports": "https://github.com/federicomarini/flowcatchR/issues",
+  "biocViews": "Software, Visualization, CellBiology, Classification,\nInfrastructure, GUI, ShinyApps",
+  "RoxygenNote": "7.3.2",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "Config/pak/sysreqs": "libfftw3-dev make libmagick++-dev gsfonts\nlibicu-dev libjpeg-dev libpng-dev libtiff-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-12-01 16:39:10 UTC",
+  "RemoteUrl": "https://github.com/bioc/flowcatchR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-31 07:57:42 UTC",
+    "User": "root"
+  },
+  "Author": "Federico Marini [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-3252-7758>)",
+  "Maintainer": "Federico Marini <marinif@uni-mainz.de>",
+  "MD5sum": "4264d7a3262e7eaa10930f9095a0d55c",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "flowcatchR_1.45.0.tar.gz",
+  "_fileid": "cd8f5b71f8a5f58b25b7f22139ad295816ce0c73d4ed295df3c8e48204cfd825",
+  "_filesize": 5961402,
+  "_sha256": "cd8f5b71f8a5f58b25b7f22139ad295816ce0c73d4ed295df3c8e48204cfd825",
+  "_created": "2026-01-31T07:57:42.000Z",
+  "_published": "2026-01-31T08:02:30.315Z",
+  "_jobs": [
+    {
+      "job": 62076175893,
+      "time": 150,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5327826849"
+    },
+    {
+      "job": 62076175895,
+      "time": 243,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327831303"
+    },
+    {
+      "job": 62076175894,
+      "time": 240,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327831224"
+    },
+    {
+      "job": 62076175903,
+      "time": 108,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327824932"
+    },
+    {
+      "job": 62076175904,
+      "time": 209,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327829493"
+    },
+    {
+      "job": 62076068732,
+      "time": 243,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5327819872"
+    },
+    {
+      "job": 62076175897,
+      "time": 165,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5327827545"
+    },
+    {
+      "job": 62076175907,
+      "time": 177,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5327828165"
+    },
+    {
+      "job": 62076175898,
+      "time": 140,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5327826372"
+    },
+    {
+      "job": 62076175906,
+      "time": 134,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5327826150"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/flowcatchR",
+  "_commit": {
+    "id": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+    "author": "Federico Marini <marinif@uni-mainz.de>",
+    "committer": "Federico Marini <marinif@uni-mainz.de>",
+    "message": "Merge remote-tracking branch 'upstream/devel' into devel\n",
+    "time": 1764607150
+  },
+  "_maintainer": {
+    "name": "Federico Marini",
+    "email": "marinif@uni-mainz.de",
+    "login": "federicomarini",
+    "bluesky": "@federicomarini.bsky.social",
+    "linkedin": "in/federico-marini",
+    "orcid": "0000-0003-3252-7758",
+    "twitter": "@FedeBioinfo",
+    "uuid": 7447478
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 2.10",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "EBImage",
+      "role": "Depends"
+    },
+    {
+      "package": "colorRamps",
+      "role": "Imports"
+    },
+    {
+      "package": "abind",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-10",
+      "n": 1
+    },
+    {
+      "week": "2025-18",
+      "n": 1
+    },
+    {
+      "week": "2025-49",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.45.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.44.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "visualization",
+    "cellbiology",
+    "classification",
+    "infrastructure",
+    "gui",
+    "shinyapps",
+    "bioconductor",
+    "fluorescence",
+    "microscopy",
+    "particles",
+    "tracking"
+  ],
+  "_stars": 4,
+  "_contributors": [
+    {
+      "user": "federicomarini",
+      "count": 336,
+      "uuid": 7447478
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "dtenenba",
+      "count": 10,
+      "uuid": 2286826
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    },
+    {
+      "user": "jimhester",
+      "count": 1,
+      "uuid": 205275
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 349,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/flowcatchR"
+  },
+  "_mentions": 1,
+  "_devurl": "https://github.com/federicomarini/flowcatchr",
+  "_pkgdown": "https://federicomarini.github.io/flowcatchR/",
+  "_searchresults": 0,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/flowcatchR.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/federicomarini/flowcatchr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "add.contours",
+    "channel.Frames",
+    "crop.Frames",
+    "export.Frames",
+    "export.particles",
+    "Frames",
+    "inspect.Frames",
+    "kinematics",
+    "link.particles",
+    "matchTrajToParticles",
+    "normalizeFrames",
+    "particles",
+    "penaltyFunctionGenerator",
+    "plot2D.TrajectorySet",
+    "preprocess.Frames",
+    "read.Frames",
+    "read.particles",
+    "rotate.Frames",
+    "select.Frames",
+    "select.particles",
+    "shinyFlow",
+    "show",
+    "snap",
+    "trajectories"
+  ],
+  "_datasets": [
+    {
+      "name": "MesenteriumSubset",
+      "title": "A sample 'Frames' object",
+      "object": "MesenteriumSubset",
+      "class": [
+        "Frames"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "candidate.platelets",
+      "title": "A sample 'ParticleSet' object",
+      "object": "candidate.platelets",
+      "class": [
+        "ParticleSet"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "add.contours",
+      "title": "Add object contours to a 'Frames' object Creates a 'Frames' object containing raw information, combined with the segmented images and the relative trajectory under analysis",
+      "topics": [
+        "add.contours"
+      ]
+    },
+    {
+      "page": "addParticles",
+      "title": "Combines the information from a raw 'Frames' object and the corresponding preprocessed one",
+      "topics": [
+        "addParticles"
+      ]
+    },
+    {
+      "page": "axesInfo",
+      "title": "Info on the dimensions of the FOV",
+      "topics": [
+        "axesInfo"
+      ]
+    },
+    {
+      "page": "candidate.platelets",
+      "title": "A sample 'ParticleSet' object",
+      "topics": [
+        "candidate.platelets"
+      ]
+    },
+    {
+      "page": "channel.Frames",
+      "title": "Channel extraction for 'objects'",
+      "topics": [
+        "channel.Frames"
+      ]
+    },
+    {
+      "page": "computeMSD",
+      "title": "Calculates the Mean Squared Displacement for a trajectory",
+      "topics": [
+        "computeMSD"
+      ]
+    },
+    {
+      "page": "crop.Frames",
+      "title": "Cut borders of a 'Frames' object",
+      "topics": [
+        "crop.Frames"
+      ]
+    },
+    {
+      "page": "export.Frames",
+      "title": "Exports a 'Frames' object",
+      "topics": [
+        "export.Frames"
+      ]
+    },
+    {
+      "page": "export.particles",
+      "title": "Exports a 'ParticleSet' object",
+      "topics": [
+        "export.particles"
+      ]
+    },
+    {
+      "page": "extractKinematics.traj",
+      "title": "Calculate a set of kinematics parameters from a single trajectory",
+      "topics": [
+        "extractKinematics.traj"
+      ]
+    },
+    {
+      "page": "Frames",
+      "title": "Constructor for a 'Frames' object",
+      "topics": [
+        "Frames"
+      ]
+    },
+    {
+      "page": "Frames-class",
+      "title": "Frames class",
+      "topics": [
+        "Frames-class"
+      ]
+    },
+    {
+      "page": "initialize.LinkedParticleSet",
+      "title": "Initialize a 'ParticleSet' object for subsequent linking/tracking",
+      "topics": [
+        "initialize.LinkedParticleSet"
+      ]
+    },
+    {
+      "page": "inspect.Frames",
+      "title": "Explore the frames of a 'Frames'",
+      "topics": [
+        "inspect.Frames"
+      ]
+    },
+    {
+      "page": "kinematics",
+      "title": "Calculate a set of kinematics parameter from a 'TrajectorySet' object, or a single parameter, or from a single trajectory (all possible combinations)",
+      "topics": [
+        "kinematics"
+      ]
+    },
+    {
+      "page": "KinematicsFeatures-class",
+      "title": "KinematicsFeatures class",
+      "topics": [
+        "KinematicsFeatures-class"
+      ]
+    },
+    {
+      "page": "KinematicsFeaturesSet-class",
+      "title": "KinematicsFeaturesSet class",
+      "topics": [
+        "KinematicsFeaturesSet-class"
+      ]
+    },
+    {
+      "page": "length.Frames",
+      "title": "Compute the length of render frames in a 'Frames' object",
+      "topics": [
+        "length.Frames"
+      ]
+    },
+    {
+      "page": "link.particles",
+      "title": "Links a 'ParticleSet' object",
+      "topics": [
+        "link.particles"
+      ]
+    },
+    {
+      "page": "LinkedParticleSet-class",
+      "title": "LinkedParticleSet class",
+      "topics": [
+        "LinkedParticleSet-class"
+      ]
+    },
+    {
+      "page": "matchTrajToParticles",
+      "title": "Match trajectories to related particles.",
+      "topics": [
+        "matchTrajToParticles"
+      ]
+    },
+    {
+      "page": "MesenteriumSubset",
+      "title": "A sample 'Frames' object",
+      "topics": [
+        "MesenteriumSubset"
+      ]
+    },
+    {
+      "page": "normalizeFrames",
+      "title": "Normalize the values of a 'Frames' object",
+      "topics": [
+        "normalizeFrames"
+      ]
+    },
+    {
+      "page": "particles",
+      "title": "Extracts particles from the images of a 'Frames' object.",
+      "topics": [
+        "particles"
+      ]
+    },
+    {
+      "page": "ParticleSet-class",
+      "title": "ParticleSet class",
+      "topics": [
+        "ParticleSet-class"
+      ]
+    },
+    {
+      "page": "penaltyFunctionGenerator",
+      "title": "Generate a penalty function",
+      "topics": [
+        "penaltyFunctionGenerator"
+      ]
+    },
+    {
+      "page": "plot.TrajectorySet",
+      "title": "3D representation of a 'TrajectorySet' object",
+      "topics": [
+        "plot.TrajectorySet"
+      ]
+    },
+    {
+      "page": "plot2D.TrajectorySet",
+      "title": "2D projection of a 'TrajectorySet' object",
+      "topics": [
+        "plot2D.TrajectorySet"
+      ]
+    },
+    {
+      "page": "preprocess.Frames",
+      "title": "Preprocessing function for 'Frames' objects",
+      "topics": [
+        "preprocess.Frames"
+      ]
+    },
+    {
+      "page": "read.Frames",
+      "title": "Constructor for a 'Frames' object",
+      "topics": [
+        "read.Frames"
+      ]
+    },
+    {
+      "page": "read.particles",
+      "title": "Constructor for a 'ParticleSet' object",
+      "topics": [
+        "read.particles"
+      ]
+    },
+    {
+      "page": "repmat",
+      "title": "Function equivalent for MATLAB's repmat - Replicate and tile arrays",
+      "topics": [
+        "repmat"
+      ]
+    },
+    {
+      "page": "rotate.Frames",
+      "title": "Rotates all images in a 'Frames' object",
+      "topics": [
+        "rotate.Frames"
+      ]
+    },
+    {
+      "page": "select.Frames",
+      "title": "Extracts subsets of frames from a 'Frames' object",
+      "topics": [
+        "select.Frames"
+      ]
+    },
+    {
+      "page": "select.particles",
+      "title": "Performs filtering on a 'ParticleSet' object",
+      "topics": [
+        "select.particles"
+      ]
+    },
+    {
+      "page": "shinyFlow",
+      "title": "Shiny application for exploring the features and parameters provided by 'flowcatchR'",
+      "topics": [
+        "shinyFlow"
+      ]
+    },
+    {
+      "page": "show-Frames-method",
+      "title": "Display conveniently a 'Frames' object",
+      "topics": [
+        "show,Frames-method"
+      ]
+    },
+    {
+      "page": "show-KinematicsFeatures-method",
+      "title": "Displaying conveniently a 'KinematicsFeatures' object",
+      "topics": [
+        "show,KinematicsFeatures-method"
+      ]
+    },
+    {
+      "page": "show-KinematicsFeaturesSet-method",
+      "title": "Display conveniently a 'KinematicsFeatureSet' object",
+      "topics": [
+        "show,KinematicsFeaturesSet-method"
+      ]
+    },
+    {
+      "page": "show-LinkedParticleSet-method",
+      "title": "Display conveniently a 'LinkedParticleSet' object",
+      "topics": [
+        "show,LinkedParticleSet-method"
+      ]
+    },
+    {
+      "page": "show-ParticleSet-method",
+      "title": "Display conveniently a 'ParticleSet' object",
+      "topics": [
+        "show,ParticleSet-method"
+      ]
+    },
+    {
+      "page": "show-TrajectorySet-method",
+      "title": "Display conveniently a 'TrajectorySet' object",
+      "topics": [
+        "show,TrajectorySet-method"
+      ]
+    },
+    {
+      "page": "snap",
+      "title": "Snap the features of the closest particle identified",
+      "topics": [
+        "snap"
+      ]
+    },
+    {
+      "page": "toCartesianCoords",
+      "title": "Converts polar coordinates to cartesian coordinates",
+      "topics": [
+        "toCartesianCoords"
+      ]
+    },
+    {
+      "page": "toPolarCoords",
+      "title": "Converts cartesian coordinates to polar coordinates",
+      "topics": [
+        "toPolarCoords"
+      ]
+    },
+    {
+      "page": "trajectories",
+      "title": "Generate trajectories",
+      "topics": [
+        "trajectories"
+      ]
+    },
+    {
+      "page": "TrajectorySet-class",
+      "title": "TrajectorySet class",
+      "topics": [
+        "TrajectorySet-class"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/flowcatchR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "BH",
+    "BiocGenerics",
+    "BiocParallel",
+    "bitops",
+    "bslib",
+    "cachem",
+    "cli",
+    "codetools",
+    "colorRamps",
+    "commonmark",
+    "cpp11",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "digest",
+    "dplyr",
+    "EBImage",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fftwtools",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "locfit",
+    "magrittr",
+    "memoise",
+    "mime",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "png",
+    "promises",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "rlang",
+    "rmarkdown",
+    "S7",
+    "sass",
+    "scales",
+    "shiny",
+    "snow",
+    "sourcetools",
+    "stringi",
+    "stringr",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tiff",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xtable",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "flowcatchr_vignette.Rmd",
+      "filename": "flowcatchr_vignette.html",
+      "title": "r Biocpkg(\"flowcatchR\"): A framework for tracking and analyzing flowing blood cells in time lapse microscopy images",
+      "author": "Federico Marini, Johanna Mazur, Harald Binder",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Why r Biocpkg(\"flowcatchR\")?",
+        "Purpose of this document",
+        "Getting started",
+        "Installation",
+        "Getting help",
+        "Citing r Biocpkg(\"flowcatchR\")",
+        "Processing overview",
+        "Image acquisition",
+        "Particle tracking",
+        "Trajectory analysis",
+        "Interactive tools for a user-friendly workflow solution",
+        "The shinyFlow Shiny Application",
+        "r Biocpkg(\"flowcatchR\") in Jupyter notebooks",
+        "r Biocpkg(\"flowcatchR\") in Docker containers",
+        "Supplementary information",
+        "Acknowledgements",
+        "Session info",
+        "References"
+      ],
+      "created": "2018-02-27 22:30:22",
+      "modified": "2018-09-03 13:46:17",
+      "commits": 2
+    }
+  ],
+  "_score": 5.623249290397901,
+  "_indexed": true,
+  "_nocasepkg": "flowcatchr",
+  "_universes": [
+    "bioc",
+    "federicomarini"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-01-31T08:01:14.000Z",
+      "distro": "noble",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "8a2af3a68d535cf2603baea861e40611d608ff801fd2a054aff5e42d52cba84d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-01-31T08:01:16.000Z",
+      "distro": "noble",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "d278a073275b0e048206b09df295873d828b6c654fc700b3743237416cee4428",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-01-31T07:59:18.000Z",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "0fb89fbb5cd3ab8e8fd0a69f7bb6c7bf18cefcfecd8471701d88d3714abc7f9b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-01-31T08:00:19.000Z",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "89c89a5cc4c6119021cdff9dd649e8e521e91438bfb08a581adb19f36d0fa744",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.45.0",
+      "date": "2026-01-31T08:00:45.000Z",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "fd500e52463efe696c33f7035d86c9f221d349be5e7c642939dc04dab8071851",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-01-31T07:59:59.000Z",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "d62c6ca2a38c29b291c425f98a0dc8ed6a9f36e1bbfc188392f3318787902756",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-01-31T07:59:30.000Z",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "b064554e6243ed9f7a809faee561bf0ae3421e1f1cadfa1c6a6ceebbe0b9814b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-01-31T07:59:22.000Z",
+      "commit": "03614bd89cdc38b8d659c1c3038ccb24922d1943",
+      "fileid": "e395a5651cc50c38dc15a79ad0cc4c05a19297fe3235d38012dbf91663266a30",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541281290"
+    }
+  ]
+}

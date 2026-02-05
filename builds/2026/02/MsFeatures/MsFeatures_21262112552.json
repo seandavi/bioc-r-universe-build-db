@@ -1,0 +1,545 @@
+{
+  "Package": "MsFeatures",
+  "Title": "Functionality for Mass Spectrometry Features",
+  "Version": "1.19.0",
+  "Description": "The MsFeature package defines functionality for Mass\nSpectrometry features. This includes functions to group (LC-MS)\nfeatures based on some of their properties, such as retention\ntime (coeluting features), or correlation of signals across\nsamples. This packge hence allows to group features, and its\nresults can be used as an input for the `QFeatures` package\nwhich allows to aggregate abundance levels of features within\neach group. This package defines concepts and functions for\nbase and common data types, implementations for more specific\ndata types are expected to be implemented in the respective\npackages (such as e.g. `xcms`). All functionality of this\npackage is implemented in a modular way which allows\ncombination of different grouping approaches and enables its\nre-use in other R packages.",
+  "Authors@R": "c(person(given = \"Johannes\", family = \"Rainer\",\nemail = \"Johannes.Rainer@eurac.edu\",\ncomment = c(ORCID = \"0000-0002-6977-7147\"),\nrole = c(\"aut\", \"cre\")),\nperson(given = \"Johan\", family = \"Lassen\",\nemail = \"johan.lassen@forens.au.dk\",\nrole = c(\"ctb\"),\ncomment = c(ORCID = \"0000-0002-0452-566X\")))",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "LazyData": "no",
+  "BugReports": "https://github.com/RforMassSpectrometry/MsFeatures/issues",
+  "URL": "https://github.com/RforMassSpectrometry/MsFeatures",
+  "biocViews": "Infrastructure, MassSpectrometry, Metabolomics",
+  "RoxygenNote": "7.3.2",
+  "Roxygen": "list(markdown=TRUE)",
+  "VignetteBuilder": "knitr",
+  "Collate": "'corRows.R' 'grouping-functions.R' 'hidden_aliases.R'\n'AllGenerics.R' 'AbundanceSimilarityParam.R'\n'SimilarRtimeParam.R' 'featureGroups.R' 'se.R'",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:06:00 UTC",
+  "RemoteUrl": "https://github.com/bioc/MsFeatures",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "e8548f333b1b09978f0c28548c3520645fa8b655",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-22 19:34:35 UTC",
+    "User": "root"
+  },
+  "Author": "Johannes Rainer [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-6977-7147>),\nJohan Lassen [ctb] (ORCID: <https://orcid.org/0000-0002-0452-566X>)",
+  "Maintainer": "Johannes Rainer <Johannes.Rainer@eurac.edu>",
+  "MD5sum": "5a1ac050baa3cadac7a8a4dc7b18ee9d",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "MsFeatures_1.19.0.tar.gz",
+  "_fileid": "1a2dc3d0674153b9eb7900bc53b3e42ce3fa757a83588102550257a6aad7fb34",
+  "_filesize": 1377809,
+  "_sha256": "1a2dc3d0674153b9eb7900bc53b3e42ce3fa757a83588102550257a6aad7fb34",
+  "_created": "2026-01-22T19:34:35.000Z",
+  "_published": "2026-01-22T19:59:11.391Z",
+  "_jobs": [
+    {
+      "job": 61192355633,
+      "time": 171,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5224658563"
+    },
+    {
+      "job": 61192355628,
+      "time": 327,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224690661"
+    },
+    {
+      "job": 61192355637,
+      "time": 252,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224674761"
+    },
+    {
+      "job": 61192355619,
+      "time": 238,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224900897"
+    },
+    {
+      "job": 61192355631,
+      "time": 205,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224893760"
+    },
+    {
+      "job": 61191982758,
+      "time": 215,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224623625"
+    },
+    {
+      "job": 61192355614,
+      "time": 133,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5224650604"
+    },
+    {
+      "job": 61192355634,
+      "time": 177,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5224659897"
+    },
+    {
+      "job": 61192355659,
+      "time": 190,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5224662360"
+    },
+    {
+      "job": 61192355649,
+      "time": 201,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224664546"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 5
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/MsFeatures",
+  "_commit": {
+    "id": "e8548f333b1b09978f0c28548c3520645fa8b655",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750360
+  },
+  "_maintainer": {
+    "name": "Johannes Rainer",
+    "email": "johannes.rainer@eurac.edu",
+    "login": "jorainer",
+    "mastodon": "@jorainer@fediscience.org",
+    "bluesky": "@jorainer.bsky.social",
+    "linkedin": "in/jorainer",
+    "orcid": "0000-0002-6977-7147",
+    "uuid": 5506112
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "ProtGenerics",
+      "version": ">= 1.23.5",
+      "role": "Imports"
+    },
+    {
+      "package": "MsCoreUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 12,
+  "_updates": [
+    {
+      "week": "2025-20",
+      "n": 3
+    },
+    {
+      "week": "2025-22",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.19.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.18.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "massspectrometry",
+    "metabolomics"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "jorainer",
+      "count": 82,
+      "uuid": 5506112
+    },
+    {
+      "user": "johanlassen",
+      "count": 15,
+      "uuid": 47172434
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 6,
+      "uuid": 2746443
+    },
+    {
+      "user": "lgatto",
+      "count": 1,
+      "uuid": 384198
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 1975,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MsFeatures"
+  },
+  "_devurl": "https://github.com/rformassspectrometry/msfeatures",
+  "_searchresults": 46,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/MsFeatures.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/rformassspectrometry/msfeatures",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "AbundanceSimilarityParam",
+    "corRows",
+    "featureGroups",
+    "featureGroups<-",
+    "groupClosest",
+    "groupConsecutive",
+    "groupFeatures",
+    "groupSimilarityMatrix",
+    "SimilarRtimeParam"
+  ],
+  "_datasets": [
+    {
+      "name": "se",
+      "title": "Quantified LC-MS preprocessing result test data",
+      "object": "se",
+      "file": "se.RData",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "corRows",
+      "title": "Correlate rows of a numeric matrix",
+      "topics": [
+        "corRows"
+      ]
+    },
+    {
+      "page": "featureGroups",
+      "title": "Get or set feature group definitions from an object",
+      "topics": [
+        "featureGroups",
+        "featureGroups,SummarizedExperiment-method",
+        "featureGroups<-",
+        "featureGroups<-,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "groupClosest",
+      "title": "Group values with differences below threshold",
+      "topics": [
+        "groupClosest"
+      ]
+    },
+    {
+      "page": "groupConsecutive",
+      "title": "Grouping of sorted values into sets with smallest differences",
+      "topics": [
+        "groupConsecutive"
+      ]
+    },
+    {
+      "page": "groupFeatures",
+      "title": "General Feature Grouping Concept",
+      "topics": [
+        "groupFeatures"
+      ]
+    },
+    {
+      "page": "groupFeatures-similar-abundance",
+      "title": "Group features based on abundance similarities across samples",
+      "topics": [
+        "AbundanceSimilarityParam",
+        "groupFeatures,matrix,AbundanceSimilarityParam-method",
+        "groupFeatures,SummarizedExperiment,AbundanceSimilarityParam-method",
+        "groupFeatures-similar-abundance"
+      ]
+    },
+    {
+      "page": "groupFeatures-similar-rtime",
+      "title": "Group features based on approximate retention times",
+      "topics": [
+        "groupFeatures,numeric,SimilarRtimeParam-method",
+        "groupFeatures,SummarizedExperiment,SimilarRtimeParam-method",
+        "groupFeatures-similar-rtime",
+        "SimilarRtimeParam"
+      ]
+    },
+    {
+      "page": "groupSimilarityMatrix",
+      "title": "Group rows of a diagonal matrix using a threshold",
+      "topics": [
+        "groupSimilarityMatrix"
+      ]
+    },
+    {
+      "page": "groupSimilarityMatrixTree",
+      "title": "Identifies groups with intragroup pairwise distances less than maxDiff",
+      "topics": [
+        "groupSimilarityMatrixTree"
+      ]
+    },
+    {
+      "page": "se",
+      "title": "Quantified LC-MS preprocessing result test data",
+      "topics": [
+        "se"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/MsFeatures/raw/HEAD/logo.png",
+  "_readme": "https://github.com/bioc/MsFeatures/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocGenerics",
+    "clue",
+    "cluster",
+    "DelayedArray",
+    "generics",
+    "GenomicRanges",
+    "IRanges",
+    "lattice",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "MsCoreUtils",
+    "ProtGenerics",
+    "Rcpp",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "SparseArray",
+    "SummarizedExperiment",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "MsFeatures.Rmd",
+      "filename": "MsFeatures.html",
+      "title": "Grouping Mass Spectrometry Features",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Mass Spectrometry Feature Grouping",
+        "Grouping of features by similar retention time",
+        "Grouping of features by abundance correlation across samples",
+        "Performing feature grouping on a subset of features",
+        "Session information"
+      ],
+      "created": "2021-01-25 08:30:11",
+      "modified": "2021-01-25 15:07:22",
+      "commits": 3
+    }
+  ],
+  "_score": 8.13787672280924,
+  "_indexed": true,
+  "_nocasepkg": "msfeatures",
+  "_universes": [
+    "bioc",
+    "jorainer",
+    "rformassspectrometry"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:38:34.000Z",
+      "distro": "noble",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "0977e3791ea6325648c536b12ea6496dfc3557ea20164e10189d4e74d275e3ff",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:37:27.000Z",
+      "distro": "noble",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "c8c9ef3e38ba69136240bd8fa533be49055191394bdd445186986caaab9bf1c9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:56:53.000Z",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "84c6f9bfef52672ec512aa4f5536f1931c9252ac1cc54db2c68f1cf572ee57b6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:56:22.000Z",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "de652574271770331c7381cb76e4c49e6a854d561c401d3a15553010a5333d88",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:37:16.000Z",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "6379a5536c17a277242efd08f78fb5ea16283d80dcc3f9a3b419589447c01aa7",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:36:07.000Z",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "d0e191cb63dd0fd784e297d719f1d31da4c3839635c9b882e4123bffebd6b2b1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:36:21.000Z",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "417ebfbf267c32c59146ea7c6e94d01cc3f771c03a30aa814350f4455cc3fd7c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-01-22T19:36:29.000Z",
+      "commit": "e8548f333b1b09978f0c28548c3520645fa8b655",
+      "fileid": "d59b39e86aecffbf5b1a9a076c8ffbd961962ed41e10852e65cc76de0c1606c8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262112552"
+    }
+  ]
+}

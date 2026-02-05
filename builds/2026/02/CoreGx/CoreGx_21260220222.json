@@ -1,0 +1,1756 @@
+{
+  "Package": "CoreGx",
+  "Type": "Package",
+  "Title": "Classes and Functions to Serve as the Basis for Other 'Gx'\nPackages",
+  "Version": "2.15.0",
+  "Date": "2024-03-11",
+  "Authors@R": "c(\nperson(given=\"Jermiah\", family=\"Joseph\", email=\"jermiah.joseph@uhn.ca\",\nrole=c(\"aut\")),\nperson(given=\"Petr\", family=\"Smirnov\", email = \"petr.smirnov@uhnresearch.ca\",\nrole = c(\"aut\")),\nperson(given=\"Ian\", family=\"Smith\", email = \"ianc.smith@mail.utoronto.ca\",\nrole = c(\"aut\")),\nperson(given=\"Christopher\", family=\"Eeles\", email = \"christopher.eeles@uhnresearch.ca\",\nrole = c(\"aut\")),\nperson(given=\"Feifei\", family=\"Li\", email=\"ff.li@mail.utoronto.ca\",\nrole=c(\"aut\")),\nperson(\"Benjamin\", \"Haibe-Kains\",\nemail = \"benjamin.haibe.kains@utoronto.ca\", role = c(\"aut\", \"cre\"))\n)",
+  "Description": "A collection of functions and classes which serve as the\nfoundation for our lab's suite of R packages, such as\n'PharmacoGx' and 'RadioGx'. This package was created to\nabstract shared functionality from other lab package releases\nto increase ease of maintainability and reduce code repetition\nin current and future 'Gx' suite programs. Major features\ninclude a 'CoreSet' class, from which 'RadioSet' and\n'PharmacoSet' are derived, along with get and set methods for\neach respective slot. Additional functions related to fitting\nand plotting dose response curves, quantifying statistical\ncorrelation and calculating area under the curve (AUC) or\nsurvival fraction (SF) are included. For more details please\nsee the included documentation, as well as: Smirnov, P.,\nSafikhani, Z., El-Hachem, N., Wang, D., She, A., Olsen, C.,\nFreeman, M., Selby, H., Gendoo, D., Grossman, P., Beck, A.,\nAerts, H., Lupien, M., Goldenberg, A. (2015)\n<doi:10.1093/bioinformatics/btv723>. Manem, V., Labie, M.,\nSmirnov, P., Kofia, V., Freeman, M., Koritzinksy, M., Abazeed,\nM., Haibe-Kains, B., Bratman, S. (2018) <doi:10.1101/449793>.",
+  "VignetteBuilder": "knitr",
+  "VignetteEngine": "knitr::rmarkdown",
+  "biocViews": "Software, Pharmacogenomics, Classification, Survival",
+  "Encoding": "UTF-8",
+  "LazyData": "TRUE",
+  "License": "GPL (>= 3)",
+  "Config/testthat/edition": "3",
+  "Roxygen": "list(markdown=TRUE, r6=FALSE)",
+  "RoxygenNote": "7.3.1",
+  "RCollate": "'allGenerics.R' 'immutable-class.R' 'LongTable-class.R'\n'CoreSet-class.R' 'CoreSet-accessors.R' 'CoreSet-utils.R'\n'DataMapper-class.R' 'LongTable-accessors.R'\n'LongTable-utils.R' 'LongTableDataMapper-class.R'\n'LongTableDataMapper-accessors.R'\n'TreatmentResponseExperiment-class.R' 'TREDataMapper-class.R'\n'adaptiveMatthewCor.R' 'aggregate-methods.R'\n'callingWaterfall.R' 'connectivityScore.R' 'cosinePerm.R'\n'datasets.R' 'deprecated.R' 'endoaggregate-methods.R'\n'globals.R' 'gwc.R' 'matthewCor.R' 'mergeAssays-method.R'\n'methods-coerce.R' 'methods-dim.R' 'methods-dimnames.R'\n'methods-drugSensitivitySig.R' 'methods-guessMapping.R'\n'methods-metaConstruct.R' 'methods-subsetTo.R'\n'optimizeCoreGx.R' 'updateObject-methods.R' 'utilities.R'\n'utils-iteration.R' 'utils-messages.R' 'utils-optimization.R'\n'utils-testing.R' 'utils-updateS4.R'",
+  "Collate": "'allGenerics.R' 'immutable-class.R' 'LongTable-class.R'\n'CoreSet-class.R' 'CoreSet-accessors.R' 'CoreSet-utils.R'\n'DataMapper-class.R' 'LongTable-accessors.R'\n'LongTable-utils.R' 'LongTableDataMapper-class.R'\n'LongTableDataMapper-accessors.R'\n'TreatmentResponseExperiment-class.R' 'TREDataMapper-class.R'\n'adaptiveMatthewCor.R' 'aggregate-methods.R'\n'callingWaterfall.R' 'connectivityScore.R' 'cosinePerm.R'\n'datasets.R' 'deprecated.R' 'endoaggregate-methods.R'\n'globals.R' 'gwc.R' 'matthewCor.R' 'mergeAssays-method.R'\n'methods-coerce.R' 'methods-dim.R' 'methods-dimnames.R'\n'methods-drugSensitivitySig.R' 'methods-guessMapping.R'\n'methods-metaConstruct.R' 'methods-subsetTo.R'\n'optimizeCoreGx.R' 'updateObject-methods.R' 'utilities.R'\n'utils-iteration.R' 'utils-messages.R' 'utils-optimization.R'\n'utils-testing.R' 'utils-updateS4.R'",
+  "Config/pak/sysreqs": "libglpk-dev make libicu-dev libxml2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:59:21 UTC",
+  "RemoteUrl": "https://github.com/bioc/CoreGx",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-22 18:34:50 UTC",
+    "User": "root"
+  },
+  "Author": "Jermiah Joseph [aut],\nPetr Smirnov [aut],\nIan Smith [aut],\nChristopher Eeles [aut],\nFeifei Li [aut],\nBenjamin Haibe-Kains [aut, cre]",
+  "Maintainer": "Benjamin Haibe-Kains <benjamin.haibe.kains@utoronto.ca>",
+  "MD5sum": "011f76bca383af6f2efb27b24b149837",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "CoreGx_2.15.0.tar.gz",
+  "_fileid": "9c8ce7ac15d2ea9970198b97cf828c2e4faedbd3a2987391a441f0c94ef25054",
+  "_filesize": 1555217,
+  "_sha256": "9c8ce7ac15d2ea9970198b97cf828c2e4faedbd3a2987391a441f0c94ef25054",
+  "_created": "2026-01-22T18:34:50.000Z",
+  "_published": "2026-01-22T18:43:47.417Z",
+  "_jobs": [
+    {
+      "job": 61186127015,
+      "time": 207,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5223936191"
+    },
+    {
+      "job": 61186127048,
+      "time": 377,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5223969980"
+    },
+    {
+      "job": 61186126988,
+      "time": 455,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5223986058"
+    },
+    {
+      "job": 61186127035,
+      "time": 329,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5223973325"
+    },
+    {
+      "job": 61186127044,
+      "time": 372,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5223983278"
+    },
+    {
+      "job": 61185590004,
+      "time": 298,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5223893916"
+    },
+    {
+      "job": 61186127094,
+      "time": 171,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5223928927"
+    },
+    {
+      "job": 61186127066,
+      "time": 464,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5223988207"
+    },
+    {
+      "job": 61186127045,
+      "time": 422,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5223979591"
+    },
+    {
+      "job": 61186127038,
+      "time": 405,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5223976001"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 19
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/CoreGx",
+  "_commit": {
+    "id": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749961
+  },
+  "_maintainer": {
+    "name": "Benjamin Haibe-Kains",
+    "email": "benjamin.haibe.kains@utoronto.ca",
+    "login": "bhaibeka",
+    "uuid": 594954
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "piano",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BumpyMatrix",
+      "role": "Imports"
+    },
+    {
+      "package": "checkmate",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "lsa",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "crayon",
+      "role": "Imports"
+    },
+    {
+      "package": "glue",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "bench",
+      "role": "Imports"
+    },
+    {
+      "package": "pander",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "formatR",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 7,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "pharmacogenomics",
+    "classification",
+    "survival"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 770,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/CoreGx"
+  },
+  "_searchresults": 68,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/CoreGx.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_releases": [
+    {
+      "version": "0.1.0",
+      "date": "2019-06-14"
+    },
+    {
+      "version": "0.1.1",
+      "date": "2019-12-20"
+    }
+  ],
+  "_exports": [
+    ".",
+    ".all_equals",
+    ".collapse",
+    ".distancePointLine",
+    ".distancePointSegment",
+    ".dmedncauchys",
+    ".dmednnormals",
+    ".edmedncauchys",
+    ".edmednnormals",
+    ".error",
+    ".errorMsg",
+    ".examineGOF",
+    ".fitCurve",
+    ".fitCurve2",
+    ".formatMessage",
+    ".funContext",
+    ".getSupportVec",
+    ".intersectList",
+    ".length_unique",
+    ".linInd",
+    ".list_unique",
+    ".magnitude",
+    ".matInd",
+    ".meshEval",
+    ".meshEval2",
+    ".message",
+    ".multinom",
+    ".parseToRoxygen",
+    ".patternSearch",
+    ".patternSearch2",
+    ".pmedncauchys",
+    ".pmednnormals",
+    ".reformatData",
+    ".residual",
+    ".rmedncauchys",
+    ".rmednnormals",
+    ".S4MethodContext",
+    ".sanitizeInput",
+    ".stripWhiteSpace",
+    ".summarizeMolecularNumbers",
+    ".symSetDiffList",
+    ".unionList",
+    ".warning",
+    ".warnMsg",
+    "aggregate",
+    "aggregate2",
+    "amcc",
+    "annotation",
+    "annotation<-",
+    "as",
+    "as.long.table",
+    "assay",
+    "assay<-",
+    "assayCols",
+    "assayIndex",
+    "assayKeys",
+    "assayMap",
+    "assayMap<-",
+    "assayNames",
+    "assays",
+    "assays<-",
+    "buildComboProfiles",
+    "buildLongTable",
+    "callingWaterfall",
+    "cardinality",
+    "cellInfo",
+    "cellInfo<-",
+    "cellNames",
+    "cellNames<-",
+    "checkColumnCardinality",
+    "checkCsetStructure",
+    "colData",
+    "colData<-",
+    "colDataMap",
+    "colDataMap<-",
+    "colIDs",
+    "collect_fn_params",
+    "colMeta",
+    "colnames<-.immutable",
+    "connectivityScore",
+    "CoreSet",
+    "CoreSet2",
+    "cosinePerm",
+    "curation",
+    "curation<-",
+    "datasetType",
+    "datasetType<-",
+    "dateCreated",
+    "dateCreated<-",
+    "drop_fn_params",
+    "drugSensitivitySig",
+    "endoaggregate",
+    "featureInfo",
+    "featureInfo<-",
+    "fNames",
+    "fNames<-",
+    "getIntern",
+    "guessMapping",
+    "gwc",
+    "idCols",
+    "immutable",
+    "is_optim_compatible",
+    "is.immutable",
+    "is.items",
+    "lapply",
+    "LongTable",
+    "LongTableDataMapper",
+    "make_optim_function",
+    "mcc",
+    "mDataNames",
+    "mDataNames<-",
+    "mergeAssays",
+    "metaConstruct",
+    "metadata",
+    "metadata<-",
+    "metadataMap",
+    "metadataMap<-",
+    "molecularProfiles",
+    "molecularProfiles<-",
+    "molecularProfilesSlot",
+    "molecularProfilesSlot<-",
+    "mutable",
+    "name",
+    "name<-",
+    "optimizeCoreGx",
+    "pertNumber",
+    "pertNumber<-",
+    "phenoInfo",
+    "phenoInfo<-",
+    "rawdata",
+    "rawdata<-",
+    "reindex",
+    "rowData",
+    "rowData<-",
+    "rowDataMap",
+    "rowDataMap<-",
+    "rowIDs",
+    "rowMeta",
+    "rownames<-.immutable",
+    "sampleInfo",
+    "sampleInfo<-",
+    "sampleNames",
+    "sampleNames<-",
+    "sensitivityInfo",
+    "sensitivityInfo<-",
+    "sensitivityMeasures",
+    "sensitivityMeasures<-",
+    "sensitivityProfiles",
+    "sensitivityProfiles<-",
+    "sensitivityRaw",
+    "sensitivityRaw<-",
+    "sensitivitySlot",
+    "sensitivitySlot<-",
+    "sensitivitySlotToLongTable",
+    "sensNumber",
+    "sensNumber<-",
+    "show",
+    "show.immutable",
+    "showSigAnnot",
+    "subset",
+    "subset.immutable",
+    "subset<-.immutable",
+    "subsetByFeature",
+    "subsetBySample",
+    "subsetByTreatment",
+    "subsetTo",
+    "summarizeMolecularProfiles",
+    "summarizeSensitivityProfiles",
+    "treatmentInfo",
+    "treatmentInfo<-",
+    "treatmentNames",
+    "treatmentNames<-",
+    "treatmentResponse",
+    "treatmentResponse<-",
+    "TreatmentResponseExperiment",
+    "TREDataMapper",
+    "updateObject",
+    "updateSampleId",
+    "updateTreatmentId"
+  ],
+  "_datasets": [
+    {
+      "name": "clevelandSmall_cSet",
+      "title": "Cleaveland_mut RadioSet subsetted and cast as CoreSet",
+      "object": "clevelandSmall_cSet",
+      "class": [
+        "CoreSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "exampleDataMapper",
+      "title": "Example LongTableDataMapper",
+      "object": "exampleDataMapper",
+      "class": [
+        "LongTableDataMapper"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "merckLongTable",
+      "title": "Merck Drug Combination Data LongTable",
+      "object": "merckLongTable",
+      "class": [
+        "LongTable"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "nci_TRE_small",
+      "title": "NCI-ALMANAC Drug Combination Data TreatmentResponseExperiment Subset",
+      "object": "nci_TRE_small",
+      "class": [
+        "TreatmentResponseExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "dot-",
+      "title": "Convenience function for converting R code to a call",
+      "topics": [
+        "."
+      ]
+    },
+    {
+      "page": "dot-assayToBumpyMatrix",
+      "title": "Convert a LongTable assay into a BumpyMatrix object",
+      "topics": [
+        ".assayToBumpyMatrix"
+      ]
+    },
+    {
+      "page": "dot-fitCurve2",
+      "title": "Curve fitting via 'stats::optim' L-BFGS-B with fall-back grid/pattern search if convergence is not achieved.",
+      "topics": [
+        ".fitCurve2"
+      ]
+    },
+    {
+      "page": "dot-longTableToSummarizedExperiment",
+      "title": "Convert LongTable to gDR Style SummarizedExperiment",
+      "topics": [
+        ".longTableToSummarizedExperiment"
+      ]
+    },
+    {
+      "page": "sub-LongTable-ANY-ANY-ANY-method",
+      "title": "[ LongTable Method",
+      "topics": [
+        "[,LongTable,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "sub-subset-LongTable-ANY-ANY-method",
+      "title": "[[<- Method for LongTable Class",
+      "topics": [
+        "[[<-,LongTable,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "cash-LongTable-method",
+      "title": "Select an assay from a LongTable object",
+      "topics": [
+        "$,LongTable-method"
+      ]
+    },
+    {
+      "page": "cash-set-LongTable-method",
+      "title": "Update an assay from a LongTable object",
+      "topics": [
+        "$<-,LongTable-method"
+      ]
+    },
+    {
+      "page": "aggregate-data.table-method",
+      "title": "Functional S4 API for aggregation over a 'data.table' object.",
+      "topics": [
+        "aggregate,data.table-method"
+      ]
+    },
+    {
+      "page": "aggregate-LongTable-method",
+      "title": "Functional API for aggregation over a 'LongTable' or inheriting class",
+      "topics": [
+        "aggregate,LongTable-method"
+      ]
+    },
+    {
+      "page": "aggregate2",
+      "title": "Functional API for data.table aggregation which allows capture of associated aggregate calls so they can be recomputed later.",
+      "topics": [
+        "aggregate2"
+      ]
+    },
+    {
+      "page": "amcc",
+      "title": "Calculate an Adaptive Matthews Correlation Coefficient",
+      "topics": [
+        "amcc"
+      ]
+    },
+    {
+      "page": "as",
+      "title": "Coerce a 'LongTable' to a 'TreatmentResponseExperiment'",
+      "topics": [
+        "as"
+      ]
+    },
+    {
+      "page": "as.long.table",
+      "title": "Coerce from data.table to LongTable",
+      "topics": [
+        "as.long.table"
+      ]
+    },
+    {
+      "page": "assayCols",
+      "title": "Generic to access the assay columns of a rectangular object.",
+      "topics": [
+        "assayCols"
+      ]
+    },
+    {
+      "page": "assayIndex",
+      "title": "Retrieve and assayIndex",
+      "topics": [
+        "assayIndex"
+      ]
+    },
+    {
+      "page": "assayKeys",
+      "title": "Retrieve a set of assayKeys",
+      "topics": [
+        "assayKeys"
+      ]
+    },
+    {
+      "page": "assignment-immutable",
+      "title": "Intercept assignment operations for \"immutable\" S3 objects.",
+      "topics": [
+        "$<-",
+        "$<-.immubtale,",
+        "$<-.immutable",
+        "assignment-immutable",
+        "colnames<-",
+        "colnames<-.immutable",
+        "colnames<-.immutable,",
+        "dimnames<-",
+        "dimnames<-.immutable",
+        "dimnames<-.immutable,",
+        "names<-",
+        "names<-.immutable",
+        "rownames<-",
+        "rownames<-.immutable",
+        "rownames<-.immutable,",
+        "subset<-.immutable",
+        "subset<-.immutable,",
+        "[<-",
+        "[<-.immutable",
+        "[<-.immutable,",
+        "[[<-",
+        "[[<-.immutable",
+        "[[<-.immutable,"
+      ]
+    },
+    {
+      "page": "buildComboProfiles",
+      "title": "Build an assay table with an 'S4' object.",
+      "topics": [
+        "buildComboProfiles"
+      ]
+    },
+    {
+      "page": "buildComboProfiles-LongTable-method",
+      "title": "Build an assay table with selected assay profiles for drug combinations",
+      "topics": [
+        "buildComboProfiles,LongTable-method"
+      ]
+    },
+    {
+      "page": "buildLongTable",
+      "title": "Build a LongTable object",
+      "topics": [
+        "buildLongTable"
+      ]
+    },
+    {
+      "page": "buildLongTable-character-method",
+      "title": "LongTable build method from character",
+      "topics": [
+        "buildLongTable,character-method"
+      ]
+    },
+    {
+      "page": "buildLongTable-data.frame-method",
+      "title": "LongTable build method",
+      "topics": [
+        "buildLongTable,data.frame-method"
+      ]
+    },
+    {
+      "page": "buildLongTable-list-method",
+      "title": "LongTable build method from list",
+      "topics": [
+        "buildLongTable,list-method"
+      ]
+    },
+    {
+      "page": "c.immutable",
+      "title": "Intercept concatenation for \"immutable\" class objects to return another \"immutable\" class object.",
+      "topics": [
+        "c.immutable"
+      ]
+    },
+    {
+      "page": "checkColumnCardinality",
+      "title": "Search a data.frame for 1:'cardinality' relationships between a group of columns (your identifiers) and all other columns.",
+      "topics": [
+        "cardinality",
+        "checkColumnCardinality"
+      ]
+    },
+    {
+      "page": "checkCsetStructure",
+      "title": "A function to verify the structure of a CoreSet",
+      "topics": [
+        "checkCsetStructure"
+      ]
+    },
+    {
+      "page": "clevelandSmall_cSet",
+      "title": "Cleaveland_mut RadioSet subsetted and cast as CoreSet",
+      "topics": [
+        "clevelandSmall_cSet"
+      ]
+    },
+    {
+      "page": "colData-LongTableDataMapper-method",
+      "title": "Convenience method to subset the 'colData' out of the 'rawdata' slot using the assigned 'colDataMap' metadata.",
+      "topics": [
+        "colData,LongTableDataMapper-method"
+      ]
+    },
+    {
+      "page": "colData-TREDataMapper-method",
+      "title": "Convenience method to subset the 'colData' out of the 'rawdata' slot using the assigned 'colDataMap' metadata.",
+      "topics": [
+        "colData,TREDataMapper-method"
+      ]
+    },
+    {
+      "page": "colIDs",
+      "title": "Generic to access the row identifiers for an object.",
+      "topics": [
+        "colIDs"
+      ]
+    },
+    {
+      "page": "collect_fn_params",
+      "title": "Collects all function arguments other than the first into a single list parameter.",
+      "topics": [
+        "collect_fn_params"
+      ]
+    },
+    {
+      "page": "colMeta",
+      "title": "Generic to access the column identifiers for a rectangular object.",
+      "topics": [
+        "colMeta"
+      ]
+    },
+    {
+      "page": "connectivityScore",
+      "title": "Function computing connectivity scores between two signatures",
+      "topics": [
+        "connectivityScore"
+      ]
+    },
+    {
+      "page": "CoreGx-deprecated",
+      "title": "List of 'deprecated' or 'defunct' methods in the 'CoreGx' R package.",
+      "topics": [
+        "CoreGx-defunct",
+        "CoreGx-deprecated"
+      ]
+    },
+    {
+      "page": "CoreSet",
+      "title": "CoreSet constructor",
+      "topics": [
+        "CoreSet"
+      ]
+    },
+    {
+      "page": "CoreSet-accessors",
+      "title": "Accessing and modifying information in a 'CoreSet'",
+      "topics": [
+        "annotation",
+        "annotation,CoreSet-method",
+        "annotation<-",
+        "annotation<-,CoreSet,list-method",
+        "cellInfo",
+        "cellInfo,CoreSet-method",
+        "cellInfo<-",
+        "cellInfo<-,CoreSet,data.frame-method",
+        "cellName,CoreSet-method",
+        "cellNames",
+        "cellNames<-",
+        "cellNames<-,CoreSet,list-method",
+        "CoreSet-accessors",
+        "curation",
+        "curation,CoreSet-method",
+        "curation<-",
+        "curation<-,CoreSet,list-method",
+        "datasetType",
+        "datasetType,CoreSet-method",
+        "datasetType<-",
+        "datasetType<-,CoreSet,character-method",
+        "dateCreated",
+        "dateCreated,CoreSet-method",
+        "dateCreated<-",
+        "dateCreated<-,CoreSet,character-method",
+        "dateCreated<-,CoreSet-method",
+        "featureInfo",
+        "featureInfo,CoreSet-method",
+        "featureInfo<-",
+        "featureInfo<-,CoreSet,character,data.frame-method",
+        "featureInfo<-,CoreSet,character,DataFrame-method",
+        "fNames",
+        "fNames,CoreSet,character-method",
+        "fNames<-",
+        "fNames<-,CoreSet,character,character-method",
+        "mDataNames",
+        "mDataNames,CoreSet-method",
+        "mDataNames<-",
+        "mDataNames<-,CoreSet,ANY-method",
+        "mDataNames<-,CoreSet-method",
+        "molecularProfiles",
+        "molecularProfiles,CoreSet-method",
+        "molecularProfiles<-",
+        "molecularProfiles<-,CoreSet,character,character,matrix-method",
+        "molecularProfiles<-,CoreSet,character,missing,matrix-method",
+        "molecularProfiles<-,CoreSet,missing,missing,list-method",
+        "molecularProfiles<-,CoreSet,missing,missing,list_OR_MAE-method",
+        "molecularProfiles<-,CoreSet,missing,missing,MutliAssayExperiment-method",
+        "molecularProfilesSlot",
+        "molecularProfilesSlot,CoreSet-method",
+        "molecularProfilesSlot<-",
+        "molecularProfilesSlot<-,CoreSet,list-method",
+        "molecularProfilesSlot<-,CoreSet,list_OR_MAE-method",
+        "molecularProfilesSlot<-CoreSet,MultiAssayExperiment-method",
+        "moleculerProfilesSlot,CoreSet-method",
+        "name",
+        "name,CoreSet-method",
+        "name<-",
+        "name<-,CoreSet,character-method",
+        "name<-,CoreSet-method",
+        "pertNumber",
+        "pertNumber,CoreSet-method",
+        "pertNumber<-",
+        "pertNumber<-,CoreSet,array-method",
+        "phenoInfo",
+        "phenoInfo,CoreSet,character-method",
+        "phenoInfo<-",
+        "phenoInfo<-,CoreSet,character,data.frame-method",
+        "phenoInfo<-,CoreSet,character,DataFrame-method",
+        "sampleInfo",
+        "sampleInfo,CoreSet-method",
+        "sampleInfo<-",
+        "sampleInfo<-,CoreSet,data.frame-method",
+        "sampleName,CoreSet-method",
+        "sampleNames",
+        "sampleNames,CoreSet-method",
+        "sampleNames<-",
+        "sampleNames<-,CoreSet,character-method",
+        "sampleNames<-,CoreSet,list-method",
+        "sensitivityInfo,CoreSet,character-method",
+        "sensitivityInfo,CoreSet,missing-method",
+        "sensitivityInfo,CoreSet-method",
+        "sensitivityInfo<-,CoreSet,data.frame-method",
+        "sensitivityInfo<-,CoreSet,missing,data.frame-method",
+        "sensitivityMeasures,CoreSet-method",
+        "sensitivityMeasures<-,CoreSet,character-method",
+        "sensitivityProfiles,CoreSet-method",
+        "sensitivityProfiles<-,CoreSet,data.frame-method",
+        "sensitivityRaw,CoreSet-method",
+        "sensitivityRaw<-,CoreSet,array-method",
+        "sensitivitySlot",
+        "sensitivitySlot<-",
+        "sensitvityInfo<-,CoreSet,character,data.frame-method",
+        "sensNumber",
+        "sensNumber,CoreSet-method",
+        "sensNumber<-",
+        "sensNumber<-,CoreSet,matrix-method",
+        "treamentResponse<-,CoreSet,list-method",
+        "treatmentInfo",
+        "treatmentInfo,CoreSet-method",
+        "treatmentInfo<-",
+        "treatmentInfo<-,CoreSet,data.frame-method",
+        "treatmentNames",
+        "treatmentNames,CoreSet-method",
+        "treatmentNames<-",
+        "treatmentNames<-,CoreSet,character-method",
+        "treatmentResponse",
+        "treatmentResponse,CoreSet-method",
+        "treatmentResponse<-",
+        "treatmentResponse<-,CoreSet,list_OR_LongTable-method",
+        "treatmentResponse<-,CoreSet,LongTable-method"
+      ]
+    },
+    {
+      "page": "CoreSet-class",
+      "title": "CoreSet - A generic data container for molecular profiles and treatment response data",
+      "topics": [
+        ".CoreSet",
+        "CoreSet-class"
+      ]
+    },
+    {
+      "page": "CoreSet-utils",
+      "title": "Utility methods for a 'CoreSet' object.",
+      "topics": [
+        "CoreSet-utils",
+        "subsetByFeature",
+        "subsetByFeature,CoreSet-method",
+        "subsetBySample",
+        "subsetBySample,CoreSet-method",
+        "subsetByTreatment",
+        "subsetByTreatment,CoreSet-method"
+      ]
+    },
+    {
+      "page": "CoreSet2",
+      "title": "Make a CoreSet with the updated class structure",
+      "topics": [
+        "CoreSet2"
+      ]
+    },
+    {
+      "page": "cosinePerm",
+      "title": "Cosine Permutations",
+      "topics": [
+        "cosinePerm"
+      ]
+    },
+    {
+      "page": "DataMapper-accessors",
+      "title": "Accessing and modifying data in a 'DataMapper' object.",
+      "topics": [
+        "DataMapper-accessors",
+        "rawdata",
+        "rawdata,DataMapper-method",
+        "rawdata<-",
+        "rawdata<-,DataMapper,ANY-method"
+      ]
+    },
+    {
+      "page": "DataMapper-class",
+      "title": "An S4 Class For Mapping from Raw Experimental Data to a Specific S4 Object",
+      "topics": [
+        ".DataMapper",
+        "DataMapper-class"
+      ]
+    },
+    {
+      "page": "drop_fn_params",
+      "title": "Drop parameters from a function and replace them with constants inside the function body.",
+      "topics": [
+        "drop_fn_params"
+      ]
+    },
+    {
+      "page": "endoaggregate",
+      "title": "Perform aggregation over an S4 object, but return an object of the same class.",
+      "topics": [
+        "endoaggregate"
+      ]
+    },
+    {
+      "page": "endoaggregate-LongTable-method",
+      "title": "Functional API for endomorphic aggregation over a 'LongTable' or inheriting class",
+      "topics": [
+        "endoaggregate,LongTable-method"
+      ]
+    },
+    {
+      "page": "exampleDataMapper",
+      "title": "Example LongTableDataMapper",
+      "topics": [
+        "exampleDataMapper"
+      ]
+    },
+    {
+      "page": "getIntern",
+      "title": "Retrieve the specified item from object internal metadata.",
+      "topics": [
+        "getIntern"
+      ]
+    },
+    {
+      "page": "guessMapping",
+      "title": "Generic for Guessing the Mapping Between Some Raw Data and an S4 Object",
+      "topics": [
+        "guessMapping"
+      ]
+    },
+    {
+      "page": "guessMapping-LongTableDataMapper-method",
+      "title": "Guess which columns in raw experiment data map to which dimensions.",
+      "topics": [
+        "guessMapping,LongTableDataMapper-method"
+      ]
+    },
+    {
+      "page": "gwc",
+      "title": "GWC Score",
+      "topics": [
+        "gwc"
+      ]
+    },
+    {
+      "page": "idCols",
+      "title": "Generic to access the unique id columns in an S4 object used to",
+      "topics": [
+        "idCols"
+      ]
+    },
+    {
+      "page": "immutable",
+      "title": "Constructor for \"immutable\" S3-class property",
+      "topics": [
+        "immutable",
+        "immutable_list-class",
+        "is.immutable",
+        "print.immutable",
+        "show.immutable"
+      ]
+    },
+    {
+      "page": "is_optim_compatible",
+      "title": "Check whether a function signature is amenable to optimization via 'stats::optim'.",
+      "topics": [
+        "is_optim_compatible"
+      ]
+    },
+    {
+      "page": "is.items",
+      "title": "Get the types of all items in a list",
+      "topics": [
+        "is.items"
+      ]
+    },
+    {
+      "page": "lapply-MultiAssayExperiment-method",
+      "title": "lapply lapply method for 'MultiAssayExperiment'",
+      "topics": [
+        "lapply,MultiAssayExperiment-method"
+      ]
+    },
+    {
+      "page": "list_OR_LongTable-class",
+      "title": "A class union to allow multiple types in a CoreSet slot",
+      "topics": [
+        "list_OR_LongTable-class"
+      ]
+    },
+    {
+      "page": "LongTable",
+      "title": "LongTable constructor method",
+      "topics": [
+        "LongTable"
+      ]
+    },
+    {
+      "page": "LongTable-accessors",
+      "title": "Accessing and modifying information in a 'LongTable'",
+      "topics": [
+        "LongTable-accessors"
+      ]
+    },
+    {
+      "page": "LongTableDataMapper",
+      "title": "Constructor for the 'LongTableDataMapper' class, which maps from one or more raw experimental data files to the slots of a 'LongTable' object.",
+      "topics": [
+        "LongTableDataMapper"
+      ]
+    },
+    {
+      "page": "LongTableDataMapper-accessors",
+      "title": "Accessing and modifying data in a 'LongTableDataMapper' object.",
+      "topics": [
+        "assayMap,LongTableDataMapper,List-method",
+        "assayMap,LongTableDataMapper,list-method",
+        "assayMap,LongTableDataMapper-method",
+        "assayMap<-,LongTableDataMapper,List-methhod",
+        "assayMap<-,LongTableDataMapper,list-method",
+        "assayMap<-,LongTableDataMapper,list_OR_List-method",
+        "colDataMap,LongTableDataMapper-method",
+        "colDataMap<-,LongTableDataMapper,list_OR_List-method",
+        "colDataMap<-LongTableDataMapper,List-method",
+        "LongTableDataMapper-accessors",
+        "metadataMap,LongTableDataMapper-method",
+        "metadataMap<-,LongTableDataMapper,list_OR_List-method",
+        "metadataMap<-,LongTableDataMapper-method",
+        "rawdata,LongTableDataMapper-method",
+        "rawdata<-,LongTableDataMapper,list-method",
+        "rowDataMap,LongTableDataMapper-method",
+        "rowDataMap<-,LongTableDataMapper,list-method",
+        "rowDataMap<-,LongTableDataMapper,list_OR_List-method",
+        "rowDataMap<-LongTableDataMapper,List-method"
+      ]
+    },
+    {
+      "page": "LongTableDataMapper-class",
+      "title": "A Class for Mapping Between Raw Data and an 'LongTable' Object",
+      "topics": [
+        ".LongTableDataMapper",
+        "LongTableDataMapper-class",
+        "show,LongTableDataMapper-method"
+      ]
+    },
+    {
+      "page": "make_optim_function",
+      "title": "Takes a non-primitive R function and refactors it to be compatible with optimization via 'stats::optim'.",
+      "topics": [
+        "make_optim_function"
+      ]
+    },
+    {
+      "page": "mcc",
+      "title": "Compute a Mathews Correlation Coefficient",
+      "topics": [
+        "mcc"
+      ]
+    },
+    {
+      "page": "merckLongTable",
+      "title": "Merck Drug Combination Data LongTable",
+      "topics": [
+        "merckLongTable"
+      ]
+    },
+    {
+      "page": "mergeAssays",
+      "title": "Merge assays with an 'S4' object.",
+      "topics": [
+        "mergeAssays"
+      ]
+    },
+    {
+      "page": "mergeAssays-LongTable-method",
+      "title": "Endomorphically merge assays within a 'LongTable' or inheriting class",
+      "topics": [
+        "mergeAssays,LongTable-method"
+      ]
+    },
+    {
+      "page": "metaConstruct",
+      "title": "Generic for preprocessing complex data before being used in the constructor of an 'S4' container object.",
+      "topics": [
+        "metaConstruct",
+        "metaConstruct,LongTableDataMapper-method",
+        "metaConstruct,TREDataMapper-method"
+      ]
+    },
+    {
+      "page": "metadata-LongTable-method",
+      "title": "Getter method for the metadata slot of a 'LongTable' object",
+      "topics": [
+        "metadata,LongTable-method"
+      ]
+    },
+    {
+      "page": "metadata-set-LongTable-method",
+      "title": "Setter method for the metadata slot of a 'LongTable' object",
+      "topics": [
+        "metadata<-,LongTable-method"
+      ]
+    },
+    {
+      "page": "mutable",
+      "title": "Remove the \"immutable\" S3-class from an R object, allowing it to be modified normally again.",
+      "topics": [
+        "mutable"
+      ]
+    },
+    {
+      "page": "nci_TRE_small",
+      "title": "NCI-ALMANAC Drug Combination Data TreatmentResponseExperiment Subset",
+      "topics": [
+        "nci_TRE_small"
+      ]
+    },
+    {
+      "page": "optimizeCoreGx",
+      "title": "A helper method to find the best multithreading configuration for your computer",
+      "topics": [
+        "optimizeCoreGx"
+      ]
+    },
+    {
+      "page": "reindex",
+      "title": "Generic method for resetting indexing in an S4 object",
+      "topics": [
+        "reindex"
+      ]
+    },
+    {
+      "page": "reindex-LongTable-method",
+      "title": "Redo indexing for a LongTable object to remove any gaps in integer indexes",
+      "topics": [
+        "reindex,LongTable-method"
+      ]
+    },
+    {
+      "page": "rowData-LongTableDataMapper-method",
+      "title": "Convenience method to subset the 'rowData' out of the 'rawdata' slot using the assigned 'rowDataMap' metadata.",
+      "topics": [
+        "rowData,LongTableDataMapper-method"
+      ]
+    },
+    {
+      "page": "rowData-TREDataMapper-method",
+      "title": "Convenience method to subset the 'rowData' out of the 'rawdata' slot using the assigned 'rowDataMap' metadata.",
+      "topics": [
+        "rowData,TREDataMapper-method"
+      ]
+    },
+    {
+      "page": "rowIDs",
+      "title": "Generic to access the row identifiers from",
+      "topics": [
+        "rowIDs"
+      ]
+    },
+    {
+      "page": "rowMeta",
+      "title": "Generic to access the row identifiers from",
+      "topics": [
+        "rowMeta"
+      ]
+    },
+    {
+      "page": "sensitivityInfo",
+      "title": "Generic function to get the annotations for a treatment response experiment from an S4 class",
+      "topics": [
+        "sensitivityInfo"
+      ]
+    },
+    {
+      "page": "sensitivityInfo-set",
+      "title": "sensitivityInfo<- Generic Method",
+      "topics": [
+        "sensitivityInfo<-"
+      ]
+    },
+    {
+      "page": "sensitivityMeasures",
+      "title": "sensitivityMeasures Generic",
+      "topics": [
+        "sensitivityMeasures"
+      ]
+    },
+    {
+      "page": "sensitivityMeasures-set",
+      "title": "sensitivityMeasures<- Generic",
+      "topics": [
+        "sensitivityMeasures<-"
+      ]
+    },
+    {
+      "page": "sensitivityProfiles",
+      "title": "sensitivityProfiles Generic",
+      "topics": [
+        "sensitivityProfiles"
+      ]
+    },
+    {
+      "page": "sensitivityProfiles-set",
+      "title": "sensitivityProfiles<- Generic",
+      "topics": [
+        "sensitivityProfiles<-"
+      ]
+    },
+    {
+      "page": "sensitivityRaw",
+      "title": "sensitivityRaw Generic Method",
+      "topics": [
+        "sensitivityRaw"
+      ]
+    },
+    {
+      "page": "sensitivityRaw-set",
+      "title": "sensitivityRaw<- Generic",
+      "topics": [
+        "sensitivityRaw<-"
+      ]
+    },
+    {
+      "page": "sensitivitySlotToLongTable",
+      "title": "sensitivitySlotToLongTable Generic",
+      "topics": [
+        "sensitivitySlotToLongTable"
+      ]
+    },
+    {
+      "page": "setOps-immutable",
+      "title": "Subset an immutable object, returning another immutable object.",
+      "topics": [
+        "$",
+        "$.immutable",
+        "setOps-immutable",
+        "subset,",
+        "subset.immutable",
+        "[",
+        "[.immutable",
+        "[.immutable,",
+        "[[",
+        "[[.immutable",
+        "[[.immutable,"
+      ]
+    },
+    {
+      "page": "show-CoreSet-method",
+      "title": "Show a CoreSet",
+      "topics": [
+        "show,CoreSet-method"
+      ]
+    },
+    {
+      "page": "show-LongTable-method",
+      "title": "Show method for the LongTable class",
+      "topics": [
+        "show,LongTable-method"
+      ]
+    },
+    {
+      "page": "showSigAnnot",
+      "title": "Get the annotations for a 'Signature' class object, as returned by 'drugSensitivitysig' or 'radSensitivtySig' functions available in 'PharmacoGx' and 'RadioGx', respectively.",
+      "topics": [
+        "showSigAnnot"
+      ]
+    },
+    {
+      "page": "subset-LongTable-method",
+      "title": "Subset method for a LongTable object.",
+      "topics": [
+        "subset,LongTable-method"
+      ]
+    },
+    {
+      "page": "summarizeMolecularProfiles",
+      "title": "Summarize molecular profile data such that there is a single entry for each sample line/treatment combination",
+      "topics": [
+        "summarizeMolecularProfiles"
+      ]
+    },
+    {
+      "page": "summarizeSensitivityProfiles",
+      "title": "Summarize across replicates for a sensitivity dose-response experiment",
+      "topics": [
+        "summarizeSensitivityProfiles"
+      ]
+    },
+    {
+      "page": "TreatmentResponseExperiment",
+      "title": "TreatmentResponseExperiment constructor method",
+      "topics": [
+        "TreatmentResponseExperiment"
+      ]
+    },
+    {
+      "page": "TREDataMapper",
+      "title": "Constructor for the 'TREDataMapper' class, which maps from one or more raw experimental data files to the slots of a 'LongTable' object.",
+      "topics": [
+        "TREDataMapper"
+      ]
+    },
+    {
+      "page": "TREDataMapper-accessors",
+      "title": "Accessing and modifying data in a 'TREDataMapper' object.",
+      "topics": [
+        "assayMap",
+        "assayMap,TREDataMapper,List-method",
+        "assayMap,TREDataMapper,list-method",
+        "assayMap,TREDataMapper-method",
+        "assayMap<-",
+        "assayMap<-,TREDataMapper,List-methhod",
+        "assayMap<-,TREDataMapper,list-method",
+        "assayMap<-,TREDataMapper,list_OR_List-method",
+        "colDataMap",
+        "colDataMap,TREDataMapper-method",
+        "colDataMap<-",
+        "colDataMap<-,TREDataMapper,list_OR_List-method",
+        "colDataMap<-TREDataMapper,List-method",
+        "metadataMap",
+        "metadataMap,TREDataMapper-method",
+        "metadataMap<-",
+        "metadataMap<-,TREDataMapper,list_OR_List-method",
+        "metadataMap<-,TREDataMapper-method",
+        "rawdata,TREDataMapper-method",
+        "rawdata<-,TREDataMapper,list-method",
+        "rowDataMap",
+        "rowDataMap,TREDataMapper-method",
+        "rowDataMap<-",
+        "rowDataMap<-,TREDataMapper,list-method",
+        "rowDataMap<-,TREDataMapper,list_OR_List-method",
+        "rowDataMap<-TREDataMapper,List-method",
+        "TREDataMapper-accessors"
+      ]
+    },
+    {
+      "page": "TREDataMapper-class",
+      "title": "A Class for Mapping Between Raw Data and an 'TreatmentResponseExperiment' Object",
+      "topics": [
+        ".TREDataMapper",
+        "TREDataMapper-class"
+      ]
+    },
+    {
+      "page": "updateObject-CoreSet-method",
+      "title": "Update the 'CoreSet' class after changes in it struture or API",
+      "topics": [
+        "updateObject,CoreSet-method"
+      ]
+    },
+    {
+      "page": "updateObject-LongTable-method",
+      "title": "Update the 'LongTable' class after changes in it struture or API",
+      "topics": [
+        "updateObject,LongTable-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/CoreGx/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "backports",
+    "base64enc",
+    "bench",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocParallel",
+    "bitops",
+    "bslib",
+    "BumpyMatrix",
+    "cachem",
+    "caTools",
+    "checkmate",
+    "cli",
+    "cluster",
+    "codetools",
+    "commonmark",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "data.table",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "DT",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fastmatch",
+    "fgsea",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gplots",
+    "gtable",
+    "gtools",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "lsa",
+    "magrittr",
+    "marray",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "MultiAssayExperiment",
+    "otel",
+    "piano",
+    "pillar",
+    "pkgconfig",
+    "profmem",
+    "promises",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "relations",
+    "rlang",
+    "rmarkdown",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "sets",
+    "shiny",
+    "shinydashboard",
+    "shinyjs",
+    "slam",
+    "snow",
+    "SnowballC",
+    "sourcetools",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "visNetwork",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "coreGx.Rmd",
+      "filename": "coreGx.html",
+      "title": "CoreGx: Class and Function Abstractions for PharmacoGx, RadioGx and ToxicoGx",
+      "author": "Petr Smirnov, Ian Smith, Christopher Eeles, Benjamin Haibe-Kains",
+      "engine": "knitr::knitr",
+      "headings": [
+        "CoreGx",
+        "Importing and Using CoreGx",
+        "The CoreSet Class",
+        "Extending the CoreSet Class",
+        "sessionInfo"
+      ],
+      "created": "2021-05-20 16:37:31",
+      "modified": "2022-06-23 00:36:53",
+      "commits": 4
+    },
+    {
+      "source": "TreatmentResponseExperiment.Rmd",
+      "filename": "TreatmentResponseExperiment.html",
+      "title": "The TreatmentResponseExperiment Class",
+      "author": "Petr Smirnov, Christopher Eeles",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Why Do We Need A New Class?",
+        "Design Philosophy",
+        "Anatomy of a TreatmentResponseExperiment",
+        "Class Diagram",
+        "Object Structure and Cardinality",
+        "Constructing a TreatmentResponseExperiment",
+        "The DataMapper Class",
+        "The TREDataMapper Class",
+        "metaConstruct Method",
+        "TreatmentResponseExperiment Object",
+        "Row and Column Names",
+        "data.frame Subsetting",
+        "Regex Queries",
+        "data.table Subsetting",
+        "Accessor Methods",
+        "rowData",
+        "colData",
+        "assays",
+        "assay",
+        "References",
+        "sessionInfo"
+      ],
+      "created": "2022-06-23 00:36:53",
+      "modified": "2022-06-23 00:36:53",
+      "commits": 1
+    }
+  ],
+  "_score": 6.455758203104137,
+  "_indexed": true,
+  "_nocasepkg": "coregx",
+  "_universes": [
+    "bioc",
+    "bhaibeka"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:38:04.000Z",
+      "distro": "noble",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "bceeb3c42eabd0772ac3a30f28942fbe291674074b6e083c3c5e80fa8efa630d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:39:04.000Z",
+      "distro": "noble",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "b55f4e1ca477014b9150248f1b64661d2f0ea120567dce4bccbaa4b1a866e74c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:38:31.000Z",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "c57ef46d0733be46db33cd230b017e862a887442386156f68e9eaeda252b4c07",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:38:47.000Z",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "6c85eb4452dd2f00b3beacdebf1afe8b87328d4a95316dd8c2bd3226151ffc34",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:38:25.000Z",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "48c53bd416280edf3186b5688d271ee4a0481033a001970aa30a623da9fcfae3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:37:39.000Z",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "159153114d70a8c4decedb4f3f4da0529fff56727328cec799eb3c667c4b33ba",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:37:22.000Z",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "611a06c1b5978ee45bd3e1ac31c91c1aefe39e6aeeedec465bef910e4e6b7fc1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.15.0",
+      "date": "2026-01-22T18:37:03.000Z",
+      "commit": "e18fa8365cb231500ea25d15c0ede92685446aa3",
+      "fileid": "f6c227e9138c49b3b5456857957cac3ffa028dfb97fb6d4166d77dca1c7c38e6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21260220222"
+    }
+  ]
+}

@@ -1,0 +1,635 @@
+{
+  "Package": "rqubic",
+  "Type": "Package",
+  "Title": "Qualitative biclustering algorithm for expression data analysis\nin R",
+  "Version": "1.57.0",
+  "Date": "2020-05-23",
+  "Authors@R": "c(person(given = \"Jitao David\",\nfamily = \"Zhang\",\nrole = c(\"aut\", \"cre\", \"ctb\"),\nemail = \"jitao_david.zhang@roche.com\",\ncomment = c(ORCID=\"0000-0002-3085-0909\")))",
+  "Description": "This package implements the QUBIC algorithm introduced by\nLi et al. for the qualitative biclustering with gene expression\ndata.",
+  "Collates": "onload.R AllClasses.R AllMethods.R c_output_parser.R\nr_qubic_implementation.R rqubic_to_c_funcs.R combineBiclust.R",
+  "biocViews": "Clustering",
+  "License": "GPL-2",
+  "LazyLoad": "yes",
+  "RoxygenNote": "7.1.0",
+  "Config/pak/sysreqs": "libicu-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:08:30 UTC",
+  "RemoteUrl": "https://github.com/bioc/rqubic",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2025-12-23 07:28:33 UTC",
+    "User": "root"
+  },
+  "Author": "Jitao David Zhang [aut, cre, ctb] (ORCID:\n<https://orcid.org/0000-0002-3085-0909>)",
+  "Maintainer": "Jitao David Zhang <jitao_david.zhang@roche.com>",
+  "MD5sum": "79f3f7b8019a0f0e58d3e423aaa6de7f",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "rqubic_1.57.0.tar.gz",
+  "_fileid": "baf2adaa65cb70d2205da4c402e24af8783d74a8b46c45671615b8388e2e9840",
+  "_filesize": 365485,
+  "_sha256": "baf2adaa65cb70d2205da4c402e24af8783d74a8b46c45671615b8388e2e9840",
+  "_created": "2025-12-23T07:28:33.000Z",
+  "_jobs": [
+    {
+      "job": 59452685461,
+      "time": 144,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5022784575"
+    },
+    {
+      "job": 59452685663,
+      "time": 175,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "4950765833"
+    },
+    {
+      "job": 59452685617,
+      "time": 155,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "4950763376"
+    },
+    {
+      "job": 59452685826,
+      "time": 158,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "4950764020"
+    },
+    {
+      "job": 59452685765,
+      "time": 158,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "4950763706"
+    },
+    {
+      "job": 59452685478,
+      "time": 111,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 59452685482,
+      "time": 148,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 59452685474,
+      "time": 112,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 59452685475,
+      "time": 168,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 59452685437,
+      "time": 179,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "4950747382"
+    },
+    {
+      "job": 59452685698,
+      "time": 109,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "4950759094"
+    },
+    {
+      "job": 59452685469,
+      "time": 46,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 59452685489,
+      "time": 54,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 59452685510,
+      "time": 55,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "FAIL",
+      "artifact": ""
+    }
+  ],
+  "_bioccheck": {
+    "error": 2,
+    "warning": 2,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20454375677",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/rqubic",
+  "_commit": {
+    "id": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761746910
+  },
+  "_maintainer": {
+    "name": "Jitao David Zhang",
+    "email": "jitao_david.zhang@roche.com",
+    "login": "accio",
+    "uuid": 1397024,
+    "orcid": "0000-0002-3085-0909"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "biclust",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.57.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.56.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "clustering"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 348,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/rqubic"
+  },
+  "_searchresults": 4,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/rqubic.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "BCconditionCount",
+    "BCconditions",
+    "BCcount",
+    "BCfeatureCount",
+    "BCfeatures",
+    "combineBiclusts",
+    "conditionCount",
+    "conditions",
+    "eSetDimName",
+    "fcFilter",
+    "featureCount",
+    "featureNames",
+    "features",
+    "generateSeeds",
+    "info",
+    "NumberxCol",
+    "parameter",
+    "parseQubicBlocks",
+    "parseQubicChars",
+    "parseQubicRules",
+    "quantileDiscretize",
+    "quBicluster",
+    "readBiclusterResults",
+    "RowxNumber",
+    "sampleNames",
+    "Svalue",
+    "writeQubicInputFile"
+  ],
+  "_help": [
+    {
+      "page": "rqubic-package",
+      "title": "Qualitative biclustering algorithm for expression data analysis",
+      "topics": [
+        "rqubic-package",
+        "rqubic"
+      ]
+    },
+    {
+      "page": "combineBiclusts-methods",
+      "title": "Combine two or more Biclust objects into one",
+      "topics": [
+        "combineBiclusts",
+        "combineBiclusts,Biclust,Biclust-method",
+        "combineBiclusts,list,missing-method",
+        "combineBiclusts,QUBICBiclusterSet,QUBICBiclusterSet-method",
+        "combineBiclusts-methods"
+      ]
+    },
+    {
+      "page": "eSetDimName",
+      "title": "Get dimname from an eSet object",
+      "topics": [
+        "eSetDimName"
+      ]
+    },
+    {
+      "page": "fcFilter",
+      "title": "Feature-Condition Filter",
+      "topics": [
+        "fcFilter",
+        "fcFilter,Biclust-method"
+      ]
+    },
+    {
+      "page": "fcFilter-methods",
+      "title": "Feature-Condition Filter",
+      "topics": [
+        "fcFilter-methods"
+      ]
+    },
+    {
+      "page": "features-methods",
+      "title": "Extract features and conditions",
+      "topics": [
+        "BCconditionCount",
+        "BCconditionCount,Biclust,ANY-method",
+        "BCconditionCount,Biclust,missing-method",
+        "BCconditions",
+        "BCconditions,Biclust,ANY-method",
+        "BCconditions,Biclust,missing-method",
+        "BCfeatureCount",
+        "BCfeatureCount,Biclust,ANY-method",
+        "BCfeatureCount,Biclust,missing-method",
+        "BCfeatures",
+        "BCfeatures,Biclust,ANY-method",
+        "BCfeatures,Biclust,missing-method",
+        "conditionCount",
+        "conditionCount,Biclust-method",
+        "conditionCount-methods",
+        "conditions",
+        "conditions,Biclust-method",
+        "conditions-methods",
+        "featureCount",
+        "featureCount,Biclust-method",
+        "featureCount-methods",
+        "featureNames,Biclust-method",
+        "features",
+        "features,Biclust-method",
+        "features-methods",
+        "sampleNames,Biclust-method"
+      ]
+    },
+    {
+      "page": "generateSeeds-methods",
+      "title": "Generate seeds for biclustering",
+      "topics": [
+        "generateSeeds",
+        "generateSeeds,eSet-method",
+        "generateSeeds,matrix-method",
+        "generateSeeds-methods"
+      ]
+    },
+    {
+      "page": "parseQubicBlocks",
+      "title": "Parse QUBIC Command Line Tool Output Files",
+      "topics": [
+        "parseQubicBlocks",
+        "parseQubicChars",
+        "parseQubicRules"
+      ]
+    },
+    {
+      "page": "discretize",
+      "title": "Discretize expression matrix for qualitative biclustering",
+      "topics": [
+        "quantileDiscretize",
+        "quantileDiscretize,eSet-method",
+        "quantileDiscretize,matrix-method",
+        "quantileDiscretize-methods"
+      ]
+    },
+    {
+      "page": "QUBICBiclusterSet-class",
+      "title": "Class \"QUBICBiclusterSet\"",
+      "topics": [
+        "BCcount",
+        "BCcount,Biclust-method",
+        "info",
+        "info,Biclust,ANY-method",
+        "info,Biclust,missing-method",
+        "NumberxCol",
+        "NumberxCol,Biclust-method",
+        "parameter",
+        "parameter,Biclust,character-method",
+        "parameter,Biclust,missing-method",
+        "QUBICBiclusterSet-class",
+        "RowxNumber",
+        "RowxNumber,Biclust-method",
+        "show,QUBICBiclusterSet-method",
+        "Svalue",
+        "Svalue,eSet,missing-method",
+        "Svalue,matrix,missing-method",
+        "Svalue,QUBICBiclusterSet,ANY-method",
+        "Svalue,QUBICBiclusterSet,missing-method",
+        "[,Biclust,ANY,missing,missing-method"
+      ]
+    },
+    {
+      "page": "quBicluster",
+      "title": "Qualitative Biclustering",
+      "topics": [
+        "quBicluster"
+      ]
+    },
+    {
+      "page": "readBiclusterResults",
+      "title": "Import bicluster results from plain text files",
+      "topics": [
+        "readBiclusterResults"
+      ]
+    },
+    {
+      "page": "writeQubicInputFile",
+      "title": "Write an ExpressionSet object into the file format required by the QUBIC command line tool",
+      "topics": [
+        "writeQubicInputFile"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "additivityTests",
+    "biclust",
+    "Biobase",
+    "BiocGenerics",
+    "class",
+    "cli",
+    "colorspace",
+    "cpp11",
+    "dplyr",
+    "farver",
+    "flexclust",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "isoband",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "modeltools",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "R6",
+    "RColorBrewer",
+    "rlang",
+    "S7",
+    "scales",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr"
+  ],
+  "_vignettes": [
+    {
+      "source": "rqubic.Rnw",
+      "filename": "rqubic.pdf",
+      "title": "Qualitative Biclustering with Bioconductor Package rqubic",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2013-11-01 20:20:20",
+      "modified": "2015-04-09 08:58:15",
+      "commits": 2
+    }
+  ],
+  "_score": 3.778151250383644,
+  "_indexed": true,
+  "_nocasepkg": "rqubic",
+  "_universes": [
+    "bioc",
+    "accio"
+  ],
+  "_failure": {
+    "version": "1.57.0",
+    "commit": {
+      "id": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+      "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+      "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+      "time": 1761746910
+    },
+    "buildurl": "https://github.com/r-universe/bioc/actions/runs/21264519893",
+    "date": "2026-01-25T03:31:11.678Z",
+    "job": {
+      "job": 61383640406,
+      "time": 145,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5246820482"
+    }
+  },
+  "_binaries": [
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.57.0",
+      "date": "2025-11-23T11:19:18.000Z",
+      "arch": "aarch64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "f104d0020a979fbf3f1c336dd7855647a8b8c9d9ded12358cecb4cab18ff4997",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/19610225517"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.57.0",
+      "date": "2025-11-23T11:20:45.000Z",
+      "arch": "x86_64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "35abb0c359f4548fd6bfedd3ac850cb9f663b3557d37d1fa1e567af3438ef1d4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/19610225517"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.57.0",
+      "date": "2025-11-23T11:12:27.000Z",
+      "arch": "x86_64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "00f7e8d1950f8ba4c263945375da9993b0c07dc4c9a23cffa1d4984ffd814d12",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/19610225517"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.57.0",
+      "date": "2025-11-23T11:12:34.000Z",
+      "arch": "x86_64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "98b3cc5cbbb78690ce81226e88213e7d082472b912dff64d908655de24081001",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/19610225517"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.57.0",
+      "date": "2025-11-23T11:13:05.000Z",
+      "arch": "x86_64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "26e732d3242f850c72edc9fa2f2240e4470fdde383be435fe0033ed73a9b94db",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/19610225517"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2025-12-23T07:31:16.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "c2bad70a4397456c35b466a8b0390a4d231243b132f0f449876c9cd5cab26f6a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20454375677"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2025-12-23T07:30:44.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "9b0ac0fe195df50e3461408580ba519766a96c6843c92cb075dac01939a85438",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20454375677"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2025-12-23T07:30:56.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "83afc3e1cdc1b486922cce103c9e9583718e6ae5b6e8cacee43d046f80e3c2e6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20454375677"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.57.0",
+      "date": "2025-12-23T07:30:47.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "41aca26727546126dbe43da5d4ad5e82a3b0440b566d06c2b5606a632c54acac",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20454375677"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.57.0",
+      "date": "2025-12-23T07:30:45.000Z",
+      "arch": "emscripten",
+      "commit": "06f9692eb46dd4c9cd8f2400a8e3b1f1065f4864",
+      "fileid": "3348e436757102881303ae3dba139b753d10035d30a86f4e16459e379abf341f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20454375677"
+    }
+  ]
+}

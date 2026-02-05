@@ -1,0 +1,771 @@
+{
+  "Package": "RUCova",
+  "Title": "Removes unwanted covariance from mass cytometry data",
+  "Version": "1.3.0",
+  "Authors@R": "person(\"Rosario\", \"Astaburuaga-Garc\u00eda\", email = \"rosario.astaburuaga@charite.de\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-1179-4080\"))",
+  "Description": "Mass cytometry enables the simultaneous measurement of\ndozens of protein markers at the single-cell level, producing\nhigh dimensional datasets that provide deep insights into\ncellular heterogeneity and function. However, these datasets\noften contain unwanted covariance introduced by technical\nvariations, such as differences in cell size, staining\nefficiency, and instrument-specific artifacts, which can\nobscure biological signals and complicate downstream analysis.\nThis package addresses this challenge by implementing a robust\nframework of linear models designed to identify and remove\nthese sources of unwanted covariance. By systematically\nmodeling and correcting for technical noise, the package\nenhances the quality and interpretability of mass cytometry\ndata, enabling researchers to focus on biologically relevant\nsignals.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "biocViews": "Software, SingleCell",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "SystemRequirements": "GNU make",
+  "BugReports": "https://github.com/molsysbio/RUCova/issues",
+  "URL": "https://github.com/molsysbio/RUCova",
+  "LazyData": "true",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev libfribidi-dev\nmake libharfbuzz-dev libicu-dev libjpeg-dev libpng-dev\nlibtiff-dev libwebp-dev libxml2-dev libssl-dev perl libx11-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:35:49 UTC",
+  "RemoteUrl": "https://github.com/bioc/RUCova",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-12 08:51:29 UTC",
+    "User": "root"
+  },
+  "Author": "Rosario Astaburuaga-Garc\u00eda [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-1179-4080>)",
+  "Maintainer": "Rosario Astaburuaga-Garc\u00eda <rosario.astaburuaga@charite.de>",
+  "MD5sum": "e976cb0c4725a3ac092d5cff09451d3e",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "RUCova_1.3.0.tar.gz",
+  "_fileid": "c3183b8a1bff823f071c2b537ab53023ca07fbc52442b67ca8fcdf7964089eb4",
+  "_filesize": 5622856,
+  "_sha256": "c3183b8a1bff823f071c2b537ab53023ca07fbc52442b67ca8fcdf7964089eb4",
+  "_created": "2026-01-12T08:51:29.000Z",
+  "_published": "2026-01-12T08:57:34.006Z",
+  "_jobs": [
+    {
+      "job": 60080546095,
+      "time": 190,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5095261900"
+    },
+    {
+      "job": 60080546166,
+      "time": 303,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5095279356"
+    },
+    {
+      "job": 60080546115,
+      "time": 299,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5095278682"
+    },
+    {
+      "job": 60080546131,
+      "time": 224,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5095267192"
+    },
+    {
+      "job": 60080546113,
+      "time": 269,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5095273804"
+    },
+    {
+      "job": 60080106533,
+      "time": 317,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5095232740"
+    },
+    {
+      "job": 60080546137,
+      "time": 196,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5095262665"
+    },
+    {
+      "job": 60080546148,
+      "time": 239,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5095269439"
+    },
+    {
+      "job": 60080546140,
+      "time": 300,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5095278904"
+    },
+    {
+      "job": 60080546152,
+      "time": 267,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5095273763"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/RUCova",
+  "_commit": {
+    "id": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752149
+  },
+  "_maintainer": {
+    "name": "Rosario Astaburuaga-Garc\u00eda",
+    "email": "rosario.astaburuaga@charite.de",
+    "login": "astaburuaga-garcia",
+    "uuid": 80699120,
+    "orcid": "0000-0003-1179-4080"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "fastDummies",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "remotes",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggcorrplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggh4x",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-02",
+      "n": 7
+    },
+    {
+      "week": "2025-10",
+      "n": 1
+    },
+    {
+      "week": "2025-11",
+      "n": 15
+    },
+    {
+      "week": "2025-12",
+      "n": 1
+    },
+    {
+      "week": "2025-14",
+      "n": 2
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "singlecell",
+    "cytof"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "astaburuaga-garcia",
+      "count": 163,
+      "uuid": 80699120
+    },
+    {
+      "user": "funkoverload",
+      "count": 4,
+      "uuid": 14138208
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 221,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/RUCova"
+  },
+  "_devurl": "https://github.com/molsysbio/rucova",
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/RUCova.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/molsysbio/rucova",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "calc_mean_BC",
+    "calc_mean_DNA",
+    "compare_corr",
+    "heatmap_compare_corr",
+    "rucova"
+  ],
+  "_datasets": [
+    {
+      "name": "HNSCC_data",
+      "title": "HNSCC data set",
+      "object": "HNSCC_data",
+      "class": [
+        "tbl_df",
+        "tbl",
+        "data.frame"
+      ],
+      "fields": [
+        "bc",
+        "Time",
+        "Event_length",
+        "Pd102Di",
+        "Pd104Di",
+        "Pd105Di",
+        "Pd106Di",
+        "Pd108Di",
+        "Pd110Di",
+        "IdU",
+        "Ce140Di",
+        "pChk2",
+        "cCasp3",
+        "cPARP",
+        "pan_Akt",
+        "pH3",
+        "Cyclin_D1",
+        "pH2A.X",
+        "pSmad1.8",
+        "YAP",
+        "pMEK1.2",
+        "pAkt",
+        "pSmad2.3",
+        "pStat1",
+        "pNFkB",
+        "p.p38",
+        "pStat3",
+        "pCDC25c",
+        "Cyclin_B1",
+        "Ki.67",
+        "pRb",
+        "IkBa",
+        "CXCL1",
+        "pAkt_T308",
+        "GDF15",
+        "p4e.BP1",
+        "pERK1.2",
+        "p.p53",
+        "NICD",
+        "total_ERK",
+        "pS6",
+        "Lamin_B1",
+        "DNA_191Ir",
+        "DNA_193Ir",
+        "Dead_cells_194Pt",
+        "Dead_cells_195Pt",
+        "Dead_cells_196Pt",
+        "Dead_cells_198Pt",
+        "line",
+        "irradiated",
+        "replicate",
+        "Pt194Di_norm",
+        "beadsOut",
+        "singlets",
+        "lowPt",
+        "dose"
+      ],
+      "rows": 8000,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "sce",
+      "title": "SingleCellExperiment Object with HNSCC Data Set",
+      "object": "sce",
+      "class": [
+        "SingleCellExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "calc_mean_BC",
+      "title": "Calculated mean of normalised highest BC per cell",
+      "topics": [
+        "calc_mean_BC"
+      ]
+    },
+    {
+      "page": "calc_mean_DNA",
+      "title": "Calculated mean of normalised Iridium isotopes",
+      "topics": [
+        "calc_mean_DNA"
+      ]
+    },
+    {
+      "page": "compare_corr",
+      "title": "Get pearson correlation coefficients between markers on a double triangular matrix for comparison (lower triangle: before RUCova, upper triangle: after RUCova). If RUCova has not been applied, the output is a symmetric matrix",
+      "topics": [
+        "compare_corr"
+      ]
+    },
+    {
+      "page": "heatmap_compare_corr",
+      "title": "Plot pearson correlation coefficients between markers on a double triangular heatmap (lower triangle: before RUCova, upper triangle: after RUCova). If RUCova has not been applied, the output is a symmetric heatmap.",
+      "topics": [
+        "heatmap_compare_corr"
+      ]
+    },
+    {
+      "page": "HNSCC_data",
+      "title": "HNSCC data set",
+      "topics": [
+        "HNSCC_data"
+      ]
+    },
+    {
+      "page": "rucova",
+      "title": "Remove unwanted covariance",
+      "topics": [
+        "rucova"
+      ]
+    },
+    {
+      "page": "sce",
+      "title": "SingleCellExperiment Object with HNSCC Data Set",
+      "topics": [
+        "sce"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/RUCova/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "backports",
+    "base64enc",
+    "Biobase",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "blob",
+    "broom",
+    "bslib",
+    "cachem",
+    "callr",
+    "cellranger",
+    "circlize",
+    "cli",
+    "clipr",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "conflicted",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "dtplyr",
+    "evaluate",
+    "farver",
+    "fastDummies",
+    "fastmap",
+    "fontawesome",
+    "forcats",
+    "foreach",
+    "fs",
+    "gargle",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggplot2",
+    "GlobalOptions",
+    "glue",
+    "googledrive",
+    "googlesheets4",
+    "gtable",
+    "haven",
+    "highr",
+    "hms",
+    "htmltools",
+    "httr",
+    "ids",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "lubridate",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "modelr",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "prettyunits",
+    "processx",
+    "progress",
+    "ps",
+    "purrr",
+    "R6",
+    "ragg",
+    "rappdirs",
+    "RColorBrewer",
+    "readr",
+    "readxl",
+    "rematch",
+    "rematch2",
+    "reprex",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rstudioapi",
+    "rvest",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "selectr",
+    "Seqinfo",
+    "shape",
+    "SingleCellExperiment",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidyverse",
+    "timechange",
+    "tinytex",
+    "tzdb",
+    "utf8",
+    "uuid",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "RUCova.Rmd",
+      "filename": "RUCova.html",
+      "title": "Removing Unwanted Covariance in mass cytometry data with RUCova",
+      "author": "Rosario Astaburuaga-Garc\u00eda",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Citation",
+        "Installation",
+        "Input data",
+        "sce",
+        "name_assay_before",
+        "markers",
+        "SUCs",
+        "Mean DNA: Mean value of normalised iridium channels",
+        "Mean BC: Mean value of the highest (used) barcoding isotopes per cell:",
+        "pan Akt and total ERK",
+        "PCA",
+        "name_reduced_dim",
+        "apply_asinh_SUCs",
+        "model",
+        "M1: Simple",
+        "M2: Offset",
+        "M3: Interaction",
+        "col_name_sample",
+        "center_SUCs",
+        "across samples",
+        "per sample",
+        "keep_offset",
+        "name_assay_after",
+        "Zero values",
+        "Output data",
+        "Examples",
+        "M1: Simple model",
+        "Remove correlations",
+        "with all surrogates",
+        "maintaing the logFC between treated and control",
+        "changing logFC between samples accordingly",
+        "with PC1 only",
+        "Adjusted R-squared",
+        "Standardised slopes",
+        "M2: Offset model",
+        "M3: Interaction model",
+        "Session information"
+      ],
+      "created": "2024-10-21 07:40:03",
+      "modified": "2025-04-01 12:55:51",
+      "commits": 24
+    }
+  ],
+  "_score": 4.845098040014257,
+  "_indexed": true,
+  "_nocasepkg": "rucova",
+  "_universes": [
+    "bioc",
+    "astaburuaga-garcia",
+    "molsysbio"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:54:45.000Z",
+      "distro": "noble",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "7ff33a975a49a7f9b13e29dacfb9c34db054f1feca3857dee082fe9514e7c531",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:54:42.000Z",
+      "distro": "noble",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "0bf0e7ce527aa4ec9710f825c27bcf75459e8e6136407292c9bca1b4055d5bde",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:53:59.000Z",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "99391e42c7f6e847b592e59b416c9ca49e6d5ffe27d76ce911c01f58cecf63b9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:53:59.000Z",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "bfe304a4965a484abc8f849fefd96ef2386b3e6f9a4a6396db25e1f46410d111",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:55:21.000Z",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "d0d61b9e3f8225a61a0bef3a9e16284a46cd6799f0fbfb3c58c65a43dff77435",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:53:31.000Z",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "4ae988ccccb7672f98b20ce655067ece1579f0802ad581098ec43996b3331ba0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:54:33.000Z",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "df7c85d45edf7d5ee5a7bf7ec6c15cf282e849190f08fa6a2a540038c543d3a5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-01-12T08:54:01.000Z",
+      "commit": "cdd0481eedaa8f6c1f044434f9ed8b43f7881bf2",
+      "fileid": "59dbe9a1aaf54efa057deb463853cc64c18a9e5685cb0f0b796b43a1fd42f72e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20913107112"
+    }
+  ]
+}

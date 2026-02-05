@@ -1,0 +1,994 @@
+{
+  "Package": "gdsfmt",
+  "Type": "Package",
+  "Title": "R Interface to CoreArray Genomic Data Structure (GDS) Files",
+  "Version": "1.47.0",
+  "Date": "2025-09-09",
+  "Author": "Xiuwen Zheng [aut, cre]\n(<https://orcid.org/0000-0002-1390-0708>), Stephanie Gogarten\n[ctb], Jean-loup Gailly and Mark Adler [ctb] (for the included\nzlib sources), Yann Collet [ctb] (for the included LZ4\nsources), xz contributors [ctb] (for the included liblzma\nsources)",
+  "Maintainer": "Xiuwen Zheng <zhengx@u.washington.edu>",
+  "Description": "Provides a high-level R interface to CoreArray Genomic\nData Structure (GDS) data files. GDS is portable across\nplatforms with hierarchical structure to store multiple\nscalable array-oriented data sets with metadata information. It\nis suited for large-scale datasets, especially for data which\nare much larger than the available random-access memory. The\ngdsfmt package offers the efficient operations specifically\ndesigned for integers of less than 8 bits, since a diploid\ngenotype, like single-nucleotide polymorphism (SNP), usually\noccupies fewer bits than a byte. Data compression and\ndecompression are available with relatively efficient random\naccess. It is also allowed to read a GDS file in parallel with\nmultiple R processes supported by the package parallel.",
+  "License": "LGPL-3",
+  "Copyright": "This package includes the sources of CoreArray C++ library\nwritten by Xiuwen Zheng (LGPL-3), zlib written by Jean-loup\nGailly and Mark Adler (zlib license), LZ4 written by Yann\nCollet (simplified BSD), and liblzma written by Lasse Collin\nand other xz contributors (public domain).",
+  "VignetteBuilder": "knitr",
+  "ByteCompile": "TRUE",
+  "BugReports": "https://github.com/zhengxwen/gdsfmt/issues",
+  "URL": "https://github.com/zhengxwen/gdsfmt",
+  "biocViews": "Infrastructure, DataImport",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:23:33 UTC",
+  "RemoteUrl": "https://github.com/bioc/gdsfmt",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-01-28 08:16:17 UTC",
+    "User": "root"
+  },
+  "MD5sum": "936415b0e08e0f3ca9e4aca1a2623696",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "gdsfmt_1.47.0.tar.gz",
+  "_fileid": "c13fbac9724b0a8b7aedd99c5aef057de140c6dbb8becaf81bfff53dd378d44e",
+  "_filesize": 2890878,
+  "_sha256": "c13fbac9724b0a8b7aedd99c5aef057de140c6dbb8becaf81bfff53dd378d44e",
+  "_created": "2026-01-28T08:16:17.000Z",
+  "_published": "2026-01-28T08:26:04.167Z",
+  "_jobs": [
+    {
+      "job": 61708576333,
+      "time": 258,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5284568262"
+    },
+    {
+      "job": 61708576403,
+      "time": 273,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5284571322"
+    },
+    {
+      "job": 61708576376,
+      "time": 315,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5284577740"
+    },
+    {
+      "job": 61708576394,
+      "time": 279,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5284572442"
+    },
+    {
+      "job": 61708576392,
+      "time": 311,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5284577256"
+    },
+    {
+      "job": 61708576481,
+      "time": 279,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5284571625"
+    },
+    {
+      "job": 61708576413,
+      "time": 423,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5284596492"
+    },
+    {
+      "job": 61708576395,
+      "time": 283,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5284572246"
+    },
+    {
+      "job": 61708576349,
+      "time": 413,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5284594865"
+    },
+    {
+      "job": 61707995524,
+      "time": 369,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5284522711"
+    },
+    {
+      "job": 61708576356,
+      "time": 147,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 61708576473,
+      "time": 381,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5284589482"
+    },
+    {
+      "job": 61708576463,
+      "time": 388,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5284590915"
+    },
+    {
+      "job": 61708576343,
+      "time": 428,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5284598925"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/gdsfmt",
+  "_commit": {
+    "id": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761747813
+  },
+  "_maintainer": {
+    "name": "Xiuwen Zheng",
+    "email": "zhengx@u.washington.edu"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 2.15.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "parallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "digest",
+      "role": "Suggests"
+    },
+    {
+      "package": "Matrix",
+      "role": "Suggests"
+    },
+    {
+      "package": "crayon",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 30,
+  "_updates": [
+    {
+      "week": "2025-08",
+      "n": 1
+    },
+    {
+      "week": "2025-11",
+      "n": 1
+    },
+    {
+      "week": "2025-15",
+      "n": 2
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-27",
+      "n": 1
+    },
+    {
+      "week": "2025-41",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.47.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.46.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "dataimport",
+    "bioinformatics",
+    "gds-format",
+    "genomics",
+    "cpp"
+  ],
+  "_stars": 20,
+  "_contributors": [
+    {
+      "user": "zhengxwen",
+      "count": 483,
+      "uuid": 6189013
+    },
+    {
+      "user": "nathanweeks",
+      "count": 2,
+      "uuid": 1800812
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 3956,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/gdsfmt"
+  },
+  "_mentions": 23,
+  "_devurl": "https://github.com/zhengxwen/gdsfmt",
+  "_searchresults": 1088,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/gdsfmt.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/zhengxwen/gdsfmt",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_releases": [
+    {
+      "version": "0.9",
+      "date": "2011-01-04"
+    },
+    {
+      "version": "0.9.1",
+      "date": "2011-01-09"
+    },
+    {
+      "version": "0.9.2",
+      "date": "2011-04-24"
+    },
+    {
+      "version": "0.9.3",
+      "date": "2011-05-03"
+    },
+    {
+      "version": "0.9.4",
+      "date": "2011-06-21"
+    },
+    {
+      "version": "0.9.5",
+      "date": "2011-08-10"
+    },
+    {
+      "version": "0.9.6",
+      "date": "2012-03-05"
+    },
+    {
+      "version": "0.9.7",
+      "date": "2012-03-17"
+    },
+    {
+      "version": "0.9.8",
+      "date": "2012-04-16"
+    },
+    {
+      "version": "0.9.9",
+      "date": "2012-05-18"
+    },
+    {
+      "version": "0.9.10",
+      "date": "2012-08-25"
+    },
+    {
+      "version": "0.9.11",
+      "date": "2013-01-26"
+    },
+    {
+      "version": "0.9.12",
+      "date": "2013-02-19"
+    },
+    {
+      "version": "0.9.13",
+      "date": "2013-05-20"
+    },
+    {
+      "version": "0.9.14",
+      "date": "2013-05-28"
+    },
+    {
+      "version": "0.9.15",
+      "date": "2013-08-24"
+    },
+    {
+      "version": "1.0.0",
+      "date": "2013-09-21"
+    },
+    {
+      "version": "1.0.1",
+      "date": "2014-01-07"
+    },
+    {
+      "version": "1.0.2",
+      "date": "2014-01-24"
+    },
+    {
+      "version": "1.0.3",
+      "date": "2014-03-19"
+    },
+    {
+      "version": "1.0.4",
+      "date": "2014-04-15"
+    },
+    {
+      "version": "1.1.0",
+      "date": "2014-09-11"
+    },
+    {
+      "version": "1.1.0.1",
+      "date": "2014-09-19"
+    }
+  ],
+  "_exports": [
+    "add.gdsn",
+    "addfile.gdsn",
+    "addfolder.gdsn",
+    "append.gdsn",
+    "apply.gdsn",
+    "assign.gdsn",
+    "cache.gdsn",
+    "cleanup.gds",
+    "closefn.gds",
+    "clusterApply.gdsn",
+    "cnt.gdsn",
+    "compression.gdsn",
+    "copyto.gdsn",
+    "createfn.gds",
+    "delete.attr.gdsn",
+    "delete.gdsn",
+    "diagnosis.gds",
+    "digest.gdsn",
+    "exist.gdsn",
+    "get.attr.gdsn",
+    "getfile.gdsn",
+    "getfolder.gdsn",
+    "index.gdsn",
+    "is.element.gdsn",
+    "is.sparse.gdsn",
+    "lasterr.gds",
+    "ls.gdsn",
+    "moveto.gdsn",
+    "name.gdsn",
+    "objdesp.gdsn",
+    "openfn.gds",
+    "permdim.gdsn",
+    "print.gds.class",
+    "print.gdsn.class",
+    "put.attr.gdsn",
+    "read.gdsn",
+    "readex.gdsn",
+    "readmode.gdsn",
+    "rename.gdsn",
+    "setdim.gdsn",
+    "show",
+    "showfile.gds",
+    "summarize.gdsn",
+    "sync.gds",
+    "system.gds",
+    "unload.gdsn",
+    "write.gdsn"
+  ],
+  "_help": [
+    {
+      "page": "gdsfmt-package",
+      "title": "R Interface to CoreArray Genomic Data Structure (GDS) files",
+      "topics": [
+        "gdsfmt-package",
+        "gdsfmt"
+      ]
+    },
+    {
+      "page": "add.gdsn",
+      "title": "Add a new GDS node",
+      "topics": [
+        "add.gdsn"
+      ]
+    },
+    {
+      "page": "addfile.gdsn",
+      "title": "Add a GDS node with a file",
+      "topics": [
+        "addfile.gdsn"
+      ]
+    },
+    {
+      "page": "addfolder.gdsn",
+      "title": "Add a folder to the GDS node",
+      "topics": [
+        "addfolder.gdsn"
+      ]
+    },
+    {
+      "page": "append.gdsn",
+      "title": "Append data to a specified variable",
+      "topics": [
+        "append.gdsn"
+      ]
+    },
+    {
+      "page": "apply.gdsn",
+      "title": "Apply functions over margins",
+      "topics": [
+        "apply.gdsn"
+      ]
+    },
+    {
+      "page": "assign.gdsn",
+      "title": "Assign/append data to a GDS node",
+      "topics": [
+        "assign.gdsn"
+      ]
+    },
+    {
+      "page": "cache.gdsn",
+      "title": "Caching variable data",
+      "topics": [
+        "cache.gdsn"
+      ]
+    },
+    {
+      "page": "cleanup.gds",
+      "title": "Clean up fragments",
+      "topics": [
+        "cleanup.gds"
+      ]
+    },
+    {
+      "page": "closefn.gds",
+      "title": "Close a GDS file",
+      "topics": [
+        "closefn.gds"
+      ]
+    },
+    {
+      "page": "clusterApply.gdsn",
+      "title": "Apply functions over matrix margins in parallel",
+      "topics": [
+        "clusterApply.gdsn"
+      ]
+    },
+    {
+      "page": "cnt.gdsn",
+      "title": "Return the number of child nodes",
+      "topics": [
+        "cnt.gdsn"
+      ]
+    },
+    {
+      "page": "compression.gdsn",
+      "title": "Modify compression mode",
+      "topics": [
+        "compression.gdsn"
+      ]
+    },
+    {
+      "page": "copyto.gdsn",
+      "title": "Copy GDS nodes",
+      "topics": [
+        "copyto.gdsn"
+      ]
+    },
+    {
+      "page": "createfn.gds",
+      "title": "Create a GDS file",
+      "topics": [
+        "createfn.gds"
+      ]
+    },
+    {
+      "page": "delete.attr.gdsn",
+      "title": "Delete attribute(s)",
+      "topics": [
+        "delete.attr.gdsn"
+      ]
+    },
+    {
+      "page": "delete.gdsn",
+      "title": "Delete a GDS node",
+      "topics": [
+        "delete.gdsn"
+      ]
+    },
+    {
+      "page": "diagnosis.gds",
+      "title": "Diagnose the GDS file",
+      "topics": [
+        "diagnosis.gds"
+      ]
+    },
+    {
+      "page": "digest.gdsn",
+      "title": "create hash function digests",
+      "topics": [
+        "digest.gdsn"
+      ]
+    },
+    {
+      "page": "exist.gdsn",
+      "title": "Return whether the path exists or not",
+      "topics": [
+        "exist.gdsn"
+      ]
+    },
+    {
+      "page": "gds.class",
+      "title": "the class of GDS file",
+      "topics": [
+        "gds.class"
+      ]
+    },
+    {
+      "page": "gdsn.class",
+      "title": "the class of variable node in the GDS file",
+      "topics": [
+        "gdsn.class"
+      ]
+    },
+    {
+      "page": "get.attr.gdsn",
+      "title": "Get attributes",
+      "topics": [
+        "get.attr.gdsn"
+      ]
+    },
+    {
+      "page": "getfile.gdsn",
+      "title": "Output a file from a stream container",
+      "topics": [
+        "getfile.gdsn"
+      ]
+    },
+    {
+      "page": "getfolder.gdsn",
+      "title": "Get the folder",
+      "topics": [
+        "getfolder.gdsn"
+      ]
+    },
+    {
+      "page": "index.gdsn",
+      "title": "Get the specified node",
+      "topics": [
+        "index.gdsn"
+      ]
+    },
+    {
+      "page": "is.element.gdsn",
+      "title": "whether the elements are in a set",
+      "topics": [
+        "is.element.gdsn"
+      ]
+    },
+    {
+      "page": "is.sparse.gdsn",
+      "title": "whether a sparse array or not",
+      "topics": [
+        "is.sparse.gdsn"
+      ]
+    },
+    {
+      "page": "lasterr.gds",
+      "title": "Return the last error message",
+      "topics": [
+        "lasterr.gds"
+      ]
+    },
+    {
+      "page": "ls.gdsn",
+      "title": "Return the names of child nodes",
+      "topics": [
+        "ls.gdsn"
+      ]
+    },
+    {
+      "page": "moveto.gdsn",
+      "title": "Relocate a GDS node",
+      "topics": [
+        "moveto.gdsn"
+      ]
+    },
+    {
+      "page": "name.gdsn",
+      "title": "Return the variable name of a node",
+      "topics": [
+        "name.gdsn"
+      ]
+    },
+    {
+      "page": "objdesp.gdsn",
+      "title": "Variable description",
+      "topics": [
+        "objdesp.gdsn"
+      ]
+    },
+    {
+      "page": "openfn.gds",
+      "title": "Open a GDS file",
+      "topics": [
+        "openfn.gds"
+      ]
+    },
+    {
+      "page": "permdim.gdsn",
+      "title": "Array Transposition",
+      "topics": [
+        "permdim.gdsn"
+      ]
+    },
+    {
+      "page": "print.gds.class",
+      "title": "Show the information of class \"gds.class\" and \"gdsn.class\"",
+      "topics": [
+        "print.gds.class",
+        "print.gdsn.class",
+        "show,gdsn.class-method"
+      ]
+    },
+    {
+      "page": "put.attr.gdsn",
+      "title": "Add an attribute into a GDS node",
+      "topics": [
+        "put.attr.gdsn"
+      ]
+    },
+    {
+      "page": "read.gdsn",
+      "title": "Read data field of a GDS node",
+      "topics": [
+        "read.gdsn"
+      ]
+    },
+    {
+      "page": "readex.gdsn",
+      "title": "Read data field of a GDS node with a selection",
+      "topics": [
+        "readex.gdsn"
+      ]
+    },
+    {
+      "page": "readmode.gdsn",
+      "title": "Switch to read mode in the compression settings",
+      "topics": [
+        "readmode.gdsn"
+      ]
+    },
+    {
+      "page": "rename.gdsn",
+      "title": "Rename a GDS node",
+      "topics": [
+        "rename.gdsn"
+      ]
+    },
+    {
+      "page": "setdim.gdsn",
+      "title": "Set the dimension of data field",
+      "topics": [
+        "setdim.gdsn"
+      ]
+    },
+    {
+      "page": "showfile.gds",
+      "title": "Enumerate opened GDS files",
+      "topics": [
+        "showfile.gds"
+      ]
+    },
+    {
+      "page": "summarize.gdsn",
+      "title": "GDS object Summaries",
+      "topics": [
+        "summarize.gdsn"
+      ]
+    },
+    {
+      "page": "sync.gds",
+      "title": "Synchronize a GDS file",
+      "topics": [
+        "sync.gds"
+      ]
+    },
+    {
+      "page": "system.gds",
+      "title": "Get the parameters in the GDS system",
+      "topics": [
+        "system.gds"
+      ]
+    },
+    {
+      "page": "unload.gdsn",
+      "title": "Unload a GDS node",
+      "topics": [
+        "unload.gdsn"
+      ]
+    },
+    {
+      "page": "write.gdsn",
+      "title": "Write data to a GDS node",
+      "topics": [
+        "write.gdsn"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/gdsfmt/raw/HEAD/README.md",
+  "_rundeps": [],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "gdsfmt.Rmd",
+      "filename": "gdsfmt.html",
+      "title": "R Interface to CoreArray Genomic Data Structure (GDS) Files",
+      "author": "Dr. Xiuwen Zheng",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation of the package gdsfmt",
+        "High-level R functions",
+        "Creating a GDS file and variable hierarchy",
+        "Writing Data",
+        "R function add.gdsn",
+        "R function write.gdsn",
+        "R function append.gdsn",
+        "R function assign.gdsn",
+        "Create a large-scale data set",
+        "Reading Data",
+        "Subset reading read.gdsn and readex.gdsn",
+        "Apply a user-defined function marginally",
+        "Examples",
+        "Output to a text file",
+        "Transpose a matrix",
+        "Floating-point number vs. packed real number",
+        "Limited random-access of compressed data",
+        "Sparse Matrix",
+        "Checksum for Data Integrity",
+        "Stylish Terminal Output in R",
+        "Session Information"
+      ],
+      "created": "2019-10-14 19:04:19",
+      "modified": "2022-07-15 22:34:14",
+      "commits": 5
+    }
+  ],
+  "_score": 11.433225727740886,
+  "_indexed": true,
+  "_nocasepkg": "gdsfmt",
+  "_universes": [
+    "bioc",
+    "zhengxwen"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:20:06.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "c893249bbdc24d717914a1cb4130cfbb5f03313c5f2e32ea2655205986dedc8e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:20:35.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "b2451a4dd977f92090209002098ac6481acc60d2e55473ba498c62dce8b2dd58",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:20:05.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "cfc19c5c2ad1cb26361ddaa08ce1e7bfb944b21f003b506f2e80d3ab633731d5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:20:24.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "43a586cce240ce3cba6a01c6b6979063d06026f67384966ede0ff620ed235600",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:19:44.000Z",
+      "arch": "aarch64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "03137cf6493ed4fefb3cf019152f7c54530d4b1d7070ed84e4883b0121369cf4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:20:36.000Z",
+      "arch": "x86_64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "c24feec5657b24b0d5b915e93c2a74025e98a09cbaedba0cf977f4723990b889",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:19:50.000Z",
+      "arch": "aarch64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "daaa667dbb88681818fa1e9588a1e3a7cafc5ec4a27b803a9d88ab322f05e695",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:20:43.000Z",
+      "arch": "x86_64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "b6203b9325f899fde4e765ff6a8165258a5bea7ebf787ba637c2dc9aa6aa8bd4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:19:26.000Z",
+      "arch": "x86_64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "99d3cf071ece1a3cd47260afdeb776ab5807f3749de9263ce2eea88939298597",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:19:42.000Z",
+      "arch": "x86_64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "a6e80973d701e5d6f2b4855d2990d73f2bbc20d2666e32a302c978770623b2eb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.47.0",
+      "date": "2026-01-28T08:19:56.000Z",
+      "arch": "x86_64",
+      "commit": "650aa25b78fa8958b5bb6e40d13b1789204b3cae",
+      "fileid": "398d533d2684b2e4a248de5c950f94e877c430a907273bcbe077042b18cc16f6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21430329955"
+    }
+  ]
+}

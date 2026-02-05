@@ -1,0 +1,848 @@
+{
+  "Package": "MetaboAnnotation",
+  "Title": "Utilities for Annotation of Metabolomics Data",
+  "Version": "1.15.0",
+  "Description": "High level functions to assist in annotation of\n(metabolomics) data sets. These include functions to perform\nsimple tentative annotations based on mass matching but also\nfunctions to consider m/z and retention times for annotation of\nLC-MS features given that respective reference values are\navailable. In addition, the function provides high-level\nfunctions to simplify matching of LC-MS/MS spectra against\nspectral libraries and objects and functionality to represent\nand manage such matched data.",
+  "Authors@R": "c(person(given = \"Michael\", family = \"Witting\",\nrole = c(\"aut\"),\nemail = \"michael.witting@helmholtz-muenchen.de\",\ncomment = c(ORCID = \"0000-0002-1462-4426\")),\nperson(given = \"Johannes\", family = \"Rainer\",\nemail = \"Johannes.Rainer@eurac.edu\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-6977-7147\")),\nperson(given = \"Andrea\", family = \"Vicini\",\nemail = \"andrea.vicini@eurac.edu\",\nrole = c(\"aut\"),\ncomment = c(ORCID = \"0000-0001-9438-6909\")),\nperson(given = \"Carolin\", family = \"Huber\",\nemail = \"carolin-elisabeth.huber@ufz.de\",\nrole = c(\"aut\"),\ncomment = c(ORCID = \"0000-0002-9355-8948\")),\nperson(given = \"Philippine\", family = \"Louail\",\nemail = \"philippine.louail@eurac.edu\",\nrole = c(\"aut\"),\ncomment = c(ORCID = \"0009-0007-5429-6846\")),\nperson(given = \"Nir\", family = \"Shachaf\",\nemail = \"nir.shachaf@weizmann.ac.il\",\nrole = \"ctb\"))",
+  "License": "Artistic-2.0",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/RforMassSpectrometry/MetaboAnnotation/issues",
+  "URL": "https://github.com/RforMassSpectrometry/MetaboAnnotation",
+  "biocViews": "Infrastructure, Metabolomics, MassSpectrometry",
+  "Roxygen": "list(markdown=TRUE)",
+  "RoxygenNote": "7.3.3",
+  "Encoding": "UTF-8",
+  "Collate": "'AllClassUnions.R' 'AllGenerics.R' 'CompAnnotationSource.R'\n'CompDbSource.R' 'Matched.R' 'MatchedSpectra.R'\n'group_standards.R' 'hidden-aliases.R' 'matchFormula.R'\n'matchSpectra.R' 'matchValues.R' 'validateMatchedSpectra.R'",
+  "Config/pak/sysreqs": "libglpk-dev make libicu-dev libpng-dev librsvg2-dev\nlibxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:14:44 UTC",
+  "RemoteUrl": "https://github.com/bioc/MetaboAnnotation",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 09:55:17 UTC",
+    "User": "root"
+  },
+  "Author": "Michael Witting [aut] (ORCID: <https://orcid.org/0000-0002-1462-4426>),\nJohannes Rainer [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-6977-7147>),\nAndrea Vicini [aut] (ORCID: <https://orcid.org/0000-0001-9438-6909>),\nCarolin Huber [aut] (ORCID: <https://orcid.org/0000-0002-9355-8948>),\nPhilippine Louail [aut] (ORCID:\n<https://orcid.org/0009-0007-5429-6846>),\nNir Shachaf [ctb]",
+  "Maintainer": "Johannes Rainer <Johannes.Rainer@eurac.edu>",
+  "MD5sum": "8edb2d55aab3785d1feb86f25589a430",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "MetaboAnnotation_1.15.0.tar.gz",
+  "_fileid": "9b32c25bb6f5e03f057573654db2164d4b079bcb707729e85caba5c5b6cdd0c2",
+  "_filesize": 1240587,
+  "_sha256": "9b32c25bb6f5e03f057573654db2164d4b079bcb707729e85caba5c5b6cdd0c2",
+  "_created": "2026-02-03T09:55:17.000Z",
+  "_published": "2026-02-03T10:40:40.308Z",
+  "_jobs": [
+    {
+      "job": 62324662161,
+      "time": 223,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5355388686"
+    },
+    {
+      "job": 62324662139,
+      "time": 484,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5355443644"
+    },
+    {
+      "job": 62324662121,
+      "time": 451,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355436585"
+    },
+    {
+      "job": 62324662150,
+      "time": 418,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5355913100"
+    },
+    {
+      "job": 62324662148,
+      "time": 270,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355891560"
+    },
+    {
+      "job": 62323876579,
+      "time": 431,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355338827"
+    },
+    {
+      "job": 62324662166,
+      "time": 206,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5355384900"
+    },
+    {
+      "job": 62324662163,
+      "time": 389,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5355423198"
+    },
+    {
+      "job": 62324662191,
+      "time": 413,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5355428389"
+    },
+    {
+      "job": 62324662251,
+      "time": 388,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355423227"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/MetaboAnnotation",
+  "_commit": {
+    "id": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750884
+  },
+  "_maintainer": {
+    "name": "Johannes Rainer",
+    "email": "johannes.rainer@eurac.edu",
+    "login": "jorainer",
+    "mastodon": "@jorainer@fediscience.org",
+    "bluesky": "@jorainer.bsky.social",
+    "linkedin": "in/jorainer",
+    "orcid": "0000-0002-6977-7147",
+    "uuid": 5506112
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "MsCoreUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "MetaboCoreUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "ProtGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "Spectra",
+      "version": ">= 1.17.6",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "QFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "CompoundDb",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "msdata",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "plotly",
+      "role": "Suggests"
+    },
+    {
+      "package": "shiny",
+      "role": "Suggests"
+    },
+    {
+      "package": "shinyjs",
+      "role": "Suggests"
+    },
+    {
+      "package": "msentropy",
+      "role": "Suggests"
+    },
+    {
+      "package": "DT",
+      "role": "Suggests"
+    },
+    {
+      "package": "microbenchmark",
+      "role": "Suggests"
+    },
+    {
+      "package": "mzR",
+      "role": "Suggests"
+    },
+    {
+      "package": "RMariaDB",
+      "role": "Enhances"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Enhances"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-42",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "metabolomics",
+    "massspectrometry",
+    "annotation",
+    "mass-spectromtry"
+  ],
+  "_stars": 18,
+  "_contributors": [
+    {
+      "user": "jorainer",
+      "count": 227,
+      "uuid": 5506112
+    },
+    {
+      "user": "andreavicini",
+      "count": 60,
+      "uuid": 36991461
+    },
+    {
+      "user": "michaelwitting",
+      "count": 30,
+      "uuid": 2734706
+    },
+    {
+      "user": "philouail",
+      "count": 24,
+      "uuid": 127301965
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "remydeb",
+      "count": 5,
+      "uuid": 116943597
+    },
+    {
+      "user": "nturaga",
+      "count": 2,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 460,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MetaboAnnotation"
+  },
+  "_devurl": "https://github.com/rformassspectrometry/metaboannotation",
+  "_searchresults": 55,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/MetaboAnnotation.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/rformassspectrometry/metaboannotation",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "addMatches",
+    "addProcessing",
+    "colnames",
+    "CompareSpectraParam",
+    "CompDbSource",
+    "createStandardMixes",
+    "endoapply",
+    "filterMatches",
+    "lapply",
+    "Mass2MzParam",
+    "Mass2MzRtParam",
+    "MassBankSource",
+    "Matched",
+    "matchedData",
+    "MatchedSpectra",
+    "matches",
+    "matchFormula",
+    "MatchForwardReverseParam",
+    "matchMz",
+    "matchSpectra",
+    "matchValues",
+    "metadata",
+    "Mz2MassParam",
+    "Mz2MassRtParam",
+    "MzParam",
+    "MzRtParam",
+    "plotSpectraMirror",
+    "pruneTarget",
+    "query",
+    "queryIndex",
+    "queryVariables",
+    "ScoreThresholdParam",
+    "scoreVariables",
+    "SelectMatchesParam",
+    "setBackend",
+    "show",
+    "SingleMatchParam",
+    "spectraVariables",
+    "target",
+    "targetIndex",
+    "targetVariables",
+    "TopRankedMatchesParam",
+    "validateMatchedSpectra",
+    "ValueParam",
+    "whichQuery",
+    "whichTarget"
+  ],
+  "_help": [
+    {
+      "page": "Matched",
+      "title": "Representation of generic objects matches",
+      "topics": [
+        "$,Matched-method",
+        "addMatches",
+        "addMatches,Matched-method",
+        "colnames,Matched-method",
+        "endoapply",
+        "endoapply,ANY-method",
+        "endoapply,Matched-method",
+        "filterMatches",
+        "filterMatches,Matched,missing-method",
+        "filterMatches,Matched,ScoreThresholdParam-method",
+        "filterMatches,Matched,SelectMatchesParam-method",
+        "filterMatches,Matched,SingleMatchParam-method",
+        "filterMatches,Matched,TopRankedMatchesParam-method",
+        "lapply,Matched-method",
+        "length,Matched-method",
+        "Matched",
+        "Matched-class",
+        "matchedData",
+        "matchedData,Matched-method",
+        "matches",
+        "pruneTarget",
+        "query,Matched-method",
+        "queryIndex",
+        "queryVariables",
+        "queryVariables,Matched-method",
+        "ScoreThresholdParam",
+        "scoreVariables",
+        "SelectMatchesParam",
+        "show,Matched-method",
+        "SingleMatchParam",
+        "target",
+        "targetIndex",
+        "targetVariables",
+        "targetVariables,Matched-method",
+        "TopRankedMatchesParam",
+        "whichQuery",
+        "whichTarget",
+        "[,Matched,ANY,ANY,ANY-method",
+        "[,Matched-method"
+      ]
+    },
+    {
+      "page": "CompAnnotationSource",
+      "title": "Compound Annotation Sources",
+      "topics": [
+        "CompAnnotationSource",
+        "CompAnnotationSource-class",
+        "matchSpectra,Spectra,CompAnnotationSource,Param-method",
+        "metadata,CompAnnotationSource-method",
+        "show,CompAnnotationSource-method"
+      ]
+    },
+    {
+      "page": "CompDbSource",
+      "title": "Compound Annotation Sources for 'CompDb' databases",
+      "topics": [
+        "CompDbSource",
+        "CompDbSource-class",
+        "MassBankSource",
+        "metadata,CompDbSource-method",
+        "show,CompDbSource-method"
+      ]
+    },
+    {
+      "page": "createStandardMixes",
+      "title": "Create Standard Mixes from a Matrix of Standard Compounds",
+      "topics": [
+        "createStandardMixes"
+      ]
+    },
+    {
+      "page": "MatchedSpectra",
+      "title": "Representation of Spectra matches",
+      "topics": [
+        "$,MatchedSpectra-method",
+        "addProcessing,MatchedSpectra-method",
+        "colnames,MatchedSpectra-method",
+        "matchedData,MatchedSpectra-method",
+        "MatchedSpectra",
+        "MatchedSpectra-class",
+        "plotSpectraMirror,MatchedSpectra-method",
+        "queryVariables,MatchedSpectra-method",
+        "setBackend,MatchedSpectra,MsBackend-method",
+        "spectraData,MatchedSpectra-method",
+        "spectraVariables,MatchedSpectra-method",
+        "targetVariables,MatchedSpectra-method"
+      ]
+    },
+    {
+      "page": "matchFormula",
+      "title": "Chemical Formula Matching",
+      "topics": [
+        "matchFormula",
+        "matchFormula,character,character-method",
+        "matchFormula,character,data.frameOrSimilar-method",
+        "matchFormula,data.frameOrSimilar,character-method",
+        "matchFormula,data.frameOrSimilar,data.frameOrSimilar-method"
+      ]
+    },
+    {
+      "page": "matchSpectra",
+      "title": "Spectral matching",
+      "topics": [
+        "matchSpectra"
+      ]
+    },
+    {
+      "page": "CompareSpectraParam",
+      "title": "Matching MS Spectra against a reference",
+      "topics": [
+        "CompareSpectraParam",
+        "CompareSpectraParam-class",
+        "MatchForwardReverseParam",
+        "MatchForwardReverseParam-class",
+        "matchSpectra,Spectra,CompDb,Param-method",
+        "matchSpectra,Spectra,CompDbSource,Param-method",
+        "matchSpectra,Spectra,Spectra,CompareSpectraParam-method",
+        "matchSpectra,Spectra,Spectra,MatchForwardReverseParam-method"
+      ]
+    },
+    {
+      "page": "validateMatchedSpectra",
+      "title": "Validating MatchedSpectra",
+      "topics": [
+        "validateMatchedSpectra"
+      ]
+    },
+    {
+      "page": "matchValues",
+      "title": "Matching of numeric values",
+      "topics": [
+        "Mass2MzParam",
+        "Mass2MzRtParam",
+        "matchMz",
+        "matchValues",
+        "matchValues,data.frameOrSimilar,data.frameOrSimilar,Mass2MzParam-method",
+        "matchValues,data.frameOrSimilar,data.frameOrSimilar,Mass2MzRtParam-method",
+        "matchValues,data.frameOrSimilar,data.frameOrSimilar,Mz2MassParam-method",
+        "matchValues,data.frameOrSimilar,data.frameOrSimilar,Mz2MassRtParam-method",
+        "matchValues,data.frameOrSimilar,data.frameOrSimilar,MzParam-method",
+        "matchValues,data.frameOrSimilar,data.frameOrSimilar,MzRtParam-method",
+        "matchValues,data.frameOrSimilar,data.frameOrSimilar,ValueParam-method",
+        "matchValues,data.frameOrSimilar,numeric,Mass2MzParam-method",
+        "matchValues,data.frameOrSimilar,numeric,Mz2MassParam-method",
+        "matchValues,data.frameOrSimilar,numeric,MzParam-method",
+        "matchValues,data.frameOrSimilar,numeric,ValueParam-method",
+        "matchValues,data.frameOrSimilar,Spectra,MzParam-method",
+        "matchValues,data.frameOrSimilar,Spectra,MzRtParam-method",
+        "matchValues,numeric,data.frameOrSimilar,Mass2MzParam-method",
+        "matchValues,numeric,data.frameOrSimilar,Mz2MassParam-method",
+        "matchValues,numeric,data.frameOrSimilar,MzParam-method",
+        "matchValues,numeric,data.frameOrSimilar,ValueParam-method",
+        "matchValues,numeric,numeric,Mass2MzParam-method",
+        "matchValues,numeric,numeric,Mz2MassParam-method",
+        "matchValues,numeric,numeric,ValueParam-method",
+        "matchValues,numeric,Spectra,MzParam-method",
+        "Mz2MassParam",
+        "Mz2MassRtParam",
+        "MzParam",
+        "MzRtParam",
+        "ValueParam"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/MetaboAnnotation/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/MetaboAnnotation/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "AnnotationHub",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocManager",
+    "BiocParallel",
+    "BiocVersion",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bslib",
+    "cachem",
+    "ChemmineR",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "CompoundDb",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "DT",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "MetaboCoreUtils",
+    "mime",
+    "MsCoreUtils",
+    "MultiAssayExperiment",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plotly",
+    "plyr",
+    "png",
+    "promises",
+    "ProtGenerics",
+    "purrr",
+    "QFeatures",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "reshape2",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "rsvg",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "Spectra",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "MetaboAnnotation.Rmd",
+      "filename": "MetaboAnnotation.html",
+      "title": "Annotation of MS-based Metabolomics Data",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "General description",
+        "Example use cases",
+        "Matching of m/z values",
+        "Matching of m/z and retention time values",
+        "Matching of SummarizedExperiment or QFeatures objects",
+        "Matching of MS/MS spectra",
+        "Using alternative spectra similarity functions",
+        "Query against multiple reference databases",
+        "Finding MS2 spectra for selected m/z and retention times",
+        "Performance and parallel processing",
+        "Utility functions",
+        "Creating mixes of standard compounds",
+        "Input format",
+        "Using the function",
+        "Session information",
+        "References"
+      ],
+      "created": "2021-03-24 19:46:52",
+      "modified": "2025-10-16 12:26:18",
+      "commits": 28
+    }
+  ],
+  "_score": 6.949877704036875,
+  "_indexed": true,
+  "_nocasepkg": "metaboannotation",
+  "_universes": [
+    "bioc",
+    "jorainer",
+    "rformassspectrometry"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.15.0",
+      "date": "2026-02-03T09:59:51.000Z",
+      "distro": "noble",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "32440ec80f3b95dbb2d463cdad65e8b049994f8322e22b64df1c370541be22be",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.15.0",
+      "date": "2026-02-03T09:59:56.000Z",
+      "distro": "noble",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "f0655343cb8380b1bf2b788795c463df4ed50fc75007c659ada7912eabc934c0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.15.0",
+      "date": "2026-02-03T10:35:43.000Z",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "49fec239d23d772b62606ccb9efb09d8afbd988b018bf7cae3dfb141ead2f8c8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.15.0",
+      "date": "2026-02-03T10:35:46.000Z",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "7fe702d76a43e83638140c4c9267e3fe9faaadfd5c50994904588076fb880a6c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.15.0",
+      "date": "2026-02-03T09:59:36.000Z",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "147adbb45967e0ef1cdb228eb1c18a168e9b15dd3a51c5be4a10b92338caabd8",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-03T09:58:15.000Z",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "f1909664fdd692f5068209a5c9d92a1226406808d4474afe7a0fae5ac6af0f67",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-03T09:58:27.000Z",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "4114af6f277502e6b544cc4e1c4779050654612aaa4f6bdf18ce36cd8969cead",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-03T09:58:15.000Z",
+      "commit": "023270775cc36070fe14bd3a56e7f3f8fe68b062",
+      "fileid": "976b1f9ac799b0eb74fc73626fa2380d245ee391d1a4cdb1682ff246fe5375d6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625297618"
+    }
+  ]
+}

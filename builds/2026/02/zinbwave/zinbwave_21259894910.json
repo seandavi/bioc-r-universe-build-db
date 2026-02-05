@@ -1,0 +1,1556 @@
+{
+  "Package": "zinbwave",
+  "Type": "Package",
+  "Title": "Zero-Inflated Negative Binomial Model for RNA-Seq Data",
+  "Version": "1.33.0",
+  "Authors@R": "c(person(\"Davide\",\"Risso\", role=c(\"aut\",\"cre\", \"cph\"),\nemail=\"risso.davide@gmail.com\" ),\nperson(\"Svetlana\",\"Gribkova\", role=\"aut\",\nemail=\"svetlana.gribkova@mines-paristech.fr\"),\nperson(\"Fanny\", \"Perraudeau\", role=\"aut\",\nemail=\"fperraudeau@berkeley.edu\"),\nperson(\"Jean-Philippe\", \"Vert\", role=\"aut\",\nemail=\"jean-philippe.vert@mines-paristech.fr\"),\nperson(\"Clara\", \"Bagatin\", role=\"aut\",\nemail=\"clarabagatin@yahoo.it\"))",
+  "Description": "Implements a general and flexible zero-inflated negative\nbinomial model that can be used to provide a low-dimensional\nrepresentations of single-cell RNA-seq data. The model accounts\nfor zero inflation (dropouts), over-dispersion, and the count\nnature of the data. The model also accounts for the difference\nin library sizes and optionally for batch effects and/or other\ncovariates, avoiding the need for pre-normalize the data.",
+  "License": "Artistic-2.0",
+  "VignetteBuilder": "knitr",
+  "LazyData": "TRUE",
+  "RoxygenNote": "7.3.1",
+  "biocViews": "ImmunoOncology, DimensionReduction, GeneExpression, RNASeq,\nSoftware, Transcriptomics, Sequencing, SingleCell",
+  "BugReports": "https://github.com/drisso/zinbwave/issues",
+  "Config/pak/sysreqs": "libpng-dev libxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:39:04 UTC",
+  "RemoteUrl": "https://github.com/bioc/zinbwave",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-22 18:26:49 UTC",
+    "User": "root"
+  },
+  "Author": "Davide Risso [aut, cre, cph],\nSvetlana Gribkova [aut],\nFanny Perraudeau [aut],\nJean-Philippe Vert [aut],\nClara Bagatin [aut]",
+  "Maintainer": "Davide Risso <risso.davide@gmail.com>",
+  "MD5sum": "5aa01133aa8f93452f70fdb844e458bb",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "zinbwave_1.33.0.tar.gz",
+  "_fileid": "c47b3b10c700a36da2243e90b31a867a8b545fd3df09250eee2c7016cd6122da",
+  "_filesize": 543299,
+  "_sha256": "c47b3b10c700a36da2243e90b31a867a8b545fd3df09250eee2c7016cd6122da",
+  "_created": "2026-01-22T18:26:49.000Z",
+  "_published": "2026-01-22T18:36:14.486Z",
+  "_jobs": [
+    {
+      "job": 61185253465,
+      "time": 244,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5223845798"
+    },
+    {
+      "job": 61185253487,
+      "time": 502,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5223897905"
+    },
+    {
+      "job": 61185253623,
+      "time": 461,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5223889901"
+    },
+    {
+      "job": 61185253489,
+      "time": 332,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5223871095"
+    },
+    {
+      "job": 61185253491,
+      "time": 292,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5223865685"
+    },
+    {
+      "job": 61184481236,
+      "time": 422,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5223791298"
+    },
+    {
+      "job": 61185253521,
+      "time": 199,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5223835938"
+    },
+    {
+      "job": 61185253602,
+      "time": 356,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5223869423"
+    },
+    {
+      "job": 61185253601,
+      "time": 378,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5223873911"
+    },
+    {
+      "job": 61185253559,
+      "time": 360,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5223870138"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 3,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/zinbwave",
+  "_commit": {
+    "id": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748744
+  },
+  "_maintainer": {
+    "name": "Davide Risso",
+    "email": "risso.davide@gmail.com",
+    "login": "drisso",
+    "uuid": 8451432
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.4",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "softImpute",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "genefilter",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "magrittr",
+      "role": "Suggests"
+    },
+    {
+      "package": "scRNAseq",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "biomaRt",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "Rtsne",
+      "role": "Suggests"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Suggests"
+    },
+    {
+      "package": "sparseMatrixStats",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 6,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.33.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.32.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "dimensionreduction",
+    "geneexpression",
+    "rnaseq",
+    "software",
+    "transcriptomics",
+    "sequencing",
+    "singlecell"
+  ],
+  "_stars": 45,
+  "_contributors": [
+    {
+      "user": "drisso",
+      "count": 129,
+      "uuid": 8451432
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "szmk",
+      "count": 2,
+      "uuid": 7418389
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "kayla-morrell",
+      "count": 1,
+      "uuid": 32339524
+    },
+    {
+      "user": "leonfodoulian",
+      "count": 1,
+      "uuid": 30617172
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 1510,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/zinbwave"
+  },
+  "_mentions": 12,
+  "_devurl": "https://github.com/drisso/zinbwave",
+  "_searchresults": 224,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/zinbwave.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/drisso/zinbwave",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "computeDevianceResiduals",
+    "computeObservationalWeights",
+    "getAlpha_mu",
+    "getAlpha_pi",
+    "getBeta_mu",
+    "getBeta_pi",
+    "getEpsilon_alpha",
+    "getEpsilon_beta_mu",
+    "getEpsilon_beta_pi",
+    "getEpsilon_gamma_mu",
+    "getEpsilon_gamma_pi",
+    "getEpsilon_W",
+    "getEpsilon_zeta",
+    "getGamma_mu",
+    "getGamma_pi",
+    "getLogitPi",
+    "getLogMu",
+    "getMu",
+    "getPhi",
+    "getPi",
+    "getTheta",
+    "getV_mu",
+    "getV_pi",
+    "getW",
+    "getX_mu",
+    "getX_pi",
+    "getZeta",
+    "glmWeightedF",
+    "imputeZeros",
+    "loglik",
+    "nFactors",
+    "nFeatures",
+    "nParams",
+    "nSamples",
+    "orthogonalizeTraceNorm",
+    "penalty",
+    "show",
+    "solveRidgeRegression",
+    "zinb.loglik",
+    "zinb.loglik.dispersion",
+    "zinb.loglik.dispersion.gradient",
+    "zinb.loglik.regression",
+    "zinb.loglik.regression.gradient",
+    "zinbAIC",
+    "zinbBIC",
+    "zinbFit",
+    "zinbInitialize",
+    "zinbModel",
+    "zinbOptimize",
+    "zinbOptimizeDispersion",
+    "zinbSim",
+    "zinbsurf",
+    "zinbwave"
+  ],
+  "_datasets": [
+    {
+      "name": "toydata",
+      "title": "Toy dataset to check the model",
+      "object": "toydata",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "V8",
+        "V9",
+        "V10",
+        "V11",
+        "V12",
+        "V13",
+        "V14",
+        "V15",
+        "V16",
+        "V17",
+        "V18",
+        "V19",
+        "V20",
+        "V21",
+        "V22",
+        "V23",
+        "V24",
+        "V25",
+        "V26",
+        "V27",
+        "V28",
+        "V29",
+        "V30",
+        "V31",
+        "V32",
+        "V33",
+        "V34",
+        "V35",
+        "V36",
+        "V37",
+        "V38",
+        "V39",
+        "V40",
+        "V41",
+        "V42",
+        "V43",
+        "V44",
+        "V45",
+        "V46",
+        "V47",
+        "V48",
+        "V49",
+        "V50",
+        "V51",
+        "V52",
+        "V53",
+        "V54",
+        "V55",
+        "V56",
+        "V57",
+        "V58",
+        "V59",
+        "V60",
+        "V61",
+        "V62",
+        "V63",
+        "V64",
+        "V65",
+        "V66",
+        "V67",
+        "V68",
+        "V69",
+        "V70",
+        "V71",
+        "V72",
+        "V73",
+        "V74",
+        "V75",
+        "V76",
+        "V77",
+        "V78",
+        "V79",
+        "V80",
+        "V81",
+        "V82",
+        "V83",
+        "V84",
+        "V85",
+        "V86",
+        "V87",
+        "V88",
+        "V89",
+        "V90",
+        "V91",
+        "V92",
+        "V93",
+        "V94",
+        "V95",
+        "V96",
+        "V97",
+        "V98",
+        "V99",
+        "V100",
+        "V101",
+        "V102",
+        "V103",
+        "V104",
+        "V105",
+        "V106",
+        "V107",
+        "V108",
+        "V109",
+        "V110",
+        "V111",
+        "V112",
+        "V113",
+        "V114",
+        "V115",
+        "V116",
+        "V117",
+        "V118",
+        "V119",
+        "V120",
+        "V121",
+        "V122",
+        "V123",
+        "V124",
+        "V125",
+        "V126",
+        "V127",
+        "V128",
+        "V129",
+        "V130",
+        "V131",
+        "V132",
+        "V133",
+        "V134",
+        "V135",
+        "V136",
+        "V137",
+        "V138",
+        "V139",
+        "V140",
+        "V141",
+        "V142",
+        "V143",
+        "V144",
+        "V145",
+        "V146",
+        "V147",
+        "V148",
+        "V149",
+        "V150",
+        "V151",
+        "V152",
+        "V153",
+        "V154",
+        "V155",
+        "V156",
+        "V157",
+        "V158",
+        "V159",
+        "V160",
+        "V161",
+        "V162",
+        "V163",
+        "V164",
+        "V165",
+        "V166",
+        "V167",
+        "V168",
+        "V169",
+        "V170",
+        "V171",
+        "V172",
+        "V173",
+        "V174",
+        "V175",
+        "V176",
+        "V177",
+        "V178",
+        "V179",
+        "V180",
+        "V181",
+        "V182",
+        "V183",
+        "V184",
+        "V185",
+        "V186",
+        "V187",
+        "V188",
+        "V189",
+        "V190",
+        "V191",
+        "V192",
+        "V193",
+        "V194",
+        "V195",
+        "V196",
+        "V197",
+        "V198",
+        "V199",
+        "V200",
+        "V201",
+        "V202",
+        "V203",
+        "V204",
+        "V205",
+        "V206",
+        "V207",
+        "V208",
+        "V209",
+        "V210",
+        "V211",
+        "V212",
+        "V213",
+        "V214",
+        "V215",
+        "V216",
+        "V217",
+        "V218",
+        "V219",
+        "V220",
+        "V221",
+        "V222",
+        "V223",
+        "V224",
+        "V225",
+        "V226",
+        "V227",
+        "V228",
+        "V229",
+        "V230",
+        "V231",
+        "V232",
+        "V233",
+        "V234",
+        "V235",
+        "V236",
+        "V237",
+        "V238",
+        "V239",
+        "V240",
+        "V241",
+        "V242",
+        "V243",
+        "V244",
+        "V245",
+        "V246",
+        "V247",
+        "V248",
+        "V249",
+        "V250",
+        "V251",
+        "V252",
+        "V253",
+        "V254",
+        "V255",
+        "V256",
+        "V257",
+        "V258",
+        "V259",
+        "V260",
+        "V261",
+        "V262",
+        "V263",
+        "V264",
+        "V265",
+        "V266",
+        "V267",
+        "V268",
+        "V269",
+        "V270",
+        "V271",
+        "V272",
+        "V273",
+        "V274",
+        "V275",
+        "V276",
+        "V277",
+        "V278",
+        "V279",
+        "V280",
+        "V281",
+        "V282",
+        "V283",
+        "V284",
+        "V285",
+        "V286",
+        "V287",
+        "V288",
+        "V289",
+        "V290",
+        "V291",
+        "V292",
+        "V293",
+        "V294",
+        "V295",
+        "V296",
+        "V297",
+        "V298",
+        "V299",
+        "V300",
+        "V301",
+        "V302",
+        "V303",
+        "V304",
+        "V305",
+        "V306",
+        "V307",
+        "V308",
+        "V309",
+        "V310",
+        "V311",
+        "V312",
+        "V313",
+        "V314",
+        "V315",
+        "V316",
+        "V317",
+        "V318",
+        "V319",
+        "V320",
+        "V321",
+        "V322",
+        "V323",
+        "V324",
+        "V325",
+        "V326",
+        "V327",
+        "V328",
+        "V329",
+        "V330",
+        "V331",
+        "V332",
+        "V333",
+        "V334",
+        "V335",
+        "V336",
+        "V337",
+        "V338",
+        "V339",
+        "V340",
+        "V341",
+        "V342",
+        "V343",
+        "V344",
+        "V345",
+        "V346",
+        "V347",
+        "V348",
+        "V349",
+        "V350",
+        "V351",
+        "V352",
+        "V353",
+        "V354",
+        "V355",
+        "V356",
+        "V357",
+        "V358",
+        "V359",
+        "V360",
+        "V361",
+        "V362",
+        "V363",
+        "V364",
+        "V365",
+        "V366",
+        "V367",
+        "V368",
+        "V369",
+        "V370",
+        "V371",
+        "V372",
+        "V373",
+        "V374",
+        "V375",
+        "V376",
+        "V377",
+        "V378",
+        "V379",
+        "V380",
+        "V381",
+        "V382",
+        "V383",
+        "V384",
+        "V385",
+        "V386",
+        "V387",
+        "V388",
+        "V389",
+        "V390",
+        "V391",
+        "V392",
+        "V393",
+        "V394",
+        "V395",
+        "V396",
+        "V397",
+        "V398",
+        "V399",
+        "V400",
+        "V401",
+        "V402",
+        "V403",
+        "V404",
+        "V405",
+        "V406",
+        "V407",
+        "V408",
+        "V409",
+        "V410",
+        "V411",
+        "V412",
+        "V413",
+        "V414",
+        "V415",
+        "V416",
+        "V417",
+        "V418",
+        "V419",
+        "V420",
+        "V421",
+        "V422",
+        "V423",
+        "V424",
+        "V425",
+        "V426",
+        "V427",
+        "V428",
+        "V429",
+        "V430",
+        "V431",
+        "V432",
+        "V433",
+        "V434",
+        "V435",
+        "V436",
+        "V437",
+        "V438",
+        "V439",
+        "V440",
+        "V441",
+        "V442",
+        "V443",
+        "V444",
+        "V445",
+        "V446",
+        "V447",
+        "V448",
+        "V449",
+        "V450",
+        "V451",
+        "V452",
+        "V453",
+        "V454",
+        "V455",
+        "V456",
+        "V457",
+        "V458",
+        "V459",
+        "V460",
+        "V461",
+        "V462",
+        "V463",
+        "V464",
+        "V465",
+        "V466",
+        "V467",
+        "V468",
+        "V469",
+        "V470",
+        "V471",
+        "V472",
+        "V473",
+        "V474",
+        "V475",
+        "V476",
+        "V477",
+        "V478",
+        "V479",
+        "V480",
+        "V481",
+        "V482",
+        "V483",
+        "V484",
+        "V485",
+        "V486",
+        "V487",
+        "V488",
+        "V489",
+        "V490",
+        "V491",
+        "V492",
+        "V493",
+        "V494",
+        "V495",
+        "V496",
+        "V497",
+        "V498",
+        "V499",
+        "V500"
+      ],
+      "rows": 96,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "computeDevianceResiduals",
+      "title": "Deviance residuals of the zero-inflated negative binomial model",
+      "topics": [
+        "computeDevianceResiduals"
+      ]
+    },
+    {
+      "page": "computeObservationalWeights",
+      "title": "Observational weights of the zero-inflated negative binomial model for each entry in the matrix of counts",
+      "topics": [
+        "computeObservationalWeights"
+      ]
+    },
+    {
+      "page": "getAlpha_mu",
+      "title": "Returns the matrix of paramters alpha_mu",
+      "topics": [
+        "getAlpha_mu"
+      ]
+    },
+    {
+      "page": "getAlpha_pi",
+      "title": "Returns the matrix of paramters alpha_pi",
+      "topics": [
+        "getAlpha_pi"
+      ]
+    },
+    {
+      "page": "getBeta_mu",
+      "title": "Returns the matrix of paramters beta_mu",
+      "topics": [
+        "getBeta_mu"
+      ]
+    },
+    {
+      "page": "getBeta_pi",
+      "title": "Returns the matrix of paramters beta_pi",
+      "topics": [
+        "getBeta_pi"
+      ]
+    },
+    {
+      "page": "getEpsilon_alpha",
+      "title": "Returns the vector of regularization parameter for alpha",
+      "topics": [
+        "getEpsilon_alpha"
+      ]
+    },
+    {
+      "page": "getEpsilon_beta_mu",
+      "title": "Returns the vector of regularization parameter for beta_mu",
+      "topics": [
+        "getEpsilon_beta_mu"
+      ]
+    },
+    {
+      "page": "getEpsilon_beta_pi",
+      "title": "Returns the vector of regularization parameter for beta_pi",
+      "topics": [
+        "getEpsilon_beta_pi"
+      ]
+    },
+    {
+      "page": "getEpsilon_gamma_mu",
+      "title": "Returns the vector of regularization parameter for gamma_mu",
+      "topics": [
+        "getEpsilon_gamma_mu"
+      ]
+    },
+    {
+      "page": "getEpsilon_gamma_pi",
+      "title": "Returns the vector of regularization parameter for gamma_pi",
+      "topics": [
+        "getEpsilon_gamma_pi"
+      ]
+    },
+    {
+      "page": "getEpsilon_W",
+      "title": "Returns the vector of regularization parameter for W",
+      "topics": [
+        "getEpsilon_W"
+      ]
+    },
+    {
+      "page": "getEpsilon_zeta",
+      "title": "Returns the regularization parameter for the dispersion parameter",
+      "topics": [
+        "getEpsilon_zeta"
+      ]
+    },
+    {
+      "page": "getGamma_mu",
+      "title": "Returns the matrix of paramters gamma_mu",
+      "topics": [
+        "getGamma_mu"
+      ]
+    },
+    {
+      "page": "getGamma_pi",
+      "title": "Returns the matrix of paramters gamma_pi",
+      "topics": [
+        "getGamma_pi"
+      ]
+    },
+    {
+      "page": "getLogitPi",
+      "title": "Returns the matrix of logit of probabilities of zero",
+      "topics": [
+        "getLogitPi"
+      ]
+    },
+    {
+      "page": "getLogMu",
+      "title": "Returns the matrix of logarithm of mean parameters",
+      "topics": [
+        "getLogMu"
+      ]
+    },
+    {
+      "page": "getMu",
+      "title": "Returns the matrix of mean parameters",
+      "topics": [
+        "getMu"
+      ]
+    },
+    {
+      "page": "getPhi",
+      "title": "Returns the vector of dispersion parameters",
+      "topics": [
+        "getPhi"
+      ]
+    },
+    {
+      "page": "getPi",
+      "title": "Returns the matrix of probabilities of zero",
+      "topics": [
+        "getPi"
+      ]
+    },
+    {
+      "page": "getTheta",
+      "title": "Returns the vector of inverse dispersion parameters",
+      "topics": [
+        "getTheta"
+      ]
+    },
+    {
+      "page": "getV_mu",
+      "title": "Returns the gene-level design matrix for mu",
+      "topics": [
+        "getV_mu"
+      ]
+    },
+    {
+      "page": "getV_pi",
+      "title": "Returns the gene-level design matrix for pi",
+      "topics": [
+        "getV_pi"
+      ]
+    },
+    {
+      "page": "getW",
+      "title": "Returns the low-dimensional matrix of inferred sample-level covariates W",
+      "topics": [
+        "getW"
+      ]
+    },
+    {
+      "page": "getX_mu",
+      "title": "Returns the sample-level design matrix for mu",
+      "topics": [
+        "getX_mu"
+      ]
+    },
+    {
+      "page": "getX_pi",
+      "title": "Returns the sample-level design matrix for pi",
+      "topics": [
+        "getX_pi"
+      ]
+    },
+    {
+      "page": "getZeta",
+      "title": "Returns the vector of log of inverse dispersion parameters",
+      "topics": [
+        "getZeta"
+      ]
+    },
+    {
+      "page": "glmWeightedF",
+      "title": "Zero-inflation adjusted statistical tests for assessing differential expression.",
+      "topics": [
+        "glmWeightedF"
+      ]
+    },
+    {
+      "page": "imputeZeros",
+      "title": "Impute the zeros using the estimated parameters from the ZINB model.",
+      "topics": [
+        "imputeZeros"
+      ]
+    },
+    {
+      "page": "independentFiltering",
+      "title": "Perform independent filtering in differential expression analysis.",
+      "topics": [
+        "independentFiltering"
+      ]
+    },
+    {
+      "page": "loglik",
+      "title": "Compute the log-likelihood of a model given some data",
+      "topics": [
+        "loglik",
+        "loglik,ZinbModel,matrix-method"
+      ]
+    },
+    {
+      "page": "nFactors",
+      "title": "Generic function that returns the number of latent factors",
+      "topics": [
+        "nFactors"
+      ]
+    },
+    {
+      "page": "nFeatures",
+      "title": "Generic function that returns the number of features",
+      "topics": [
+        "nFeatures"
+      ]
+    },
+    {
+      "page": "nParams",
+      "title": "Generic function that returns the total number of parameters of the model",
+      "topics": [
+        "nParams",
+        "nParams,ZinbModel-method"
+      ]
+    },
+    {
+      "page": "nSamples",
+      "title": "Generic function that returns the number of samples",
+      "topics": [
+        "nSamples"
+      ]
+    },
+    {
+      "page": "orthogonalizeTraceNorm",
+      "title": "Orthogonalize matrices to minimize trace norm of their product",
+      "topics": [
+        "orthogonalizeTraceNorm"
+      ]
+    },
+    {
+      "page": "penalty",
+      "title": "Compute the penalty of a model",
+      "topics": [
+        "penalty",
+        "penalty,ZinbModel-method"
+      ]
+    },
+    {
+      "page": "pvalueAdjustment",
+      "title": "Perform independent filtering in differential expression analysis.",
+      "topics": [
+        "pvalueAdjustment"
+      ]
+    },
+    {
+      "page": "solveRidgeRegression",
+      "title": "Solve ridge regression or logistic regression problems",
+      "topics": [
+        "solveRidgeRegression"
+      ]
+    },
+    {
+      "page": "toydata",
+      "title": "Toy dataset to check the model",
+      "topics": [
+        "toydata"
+      ]
+    },
+    {
+      "page": "zinb.loglik",
+      "title": "Log-likelihood of the zero-inflated negative binomial model",
+      "topics": [
+        "zinb.loglik"
+      ]
+    },
+    {
+      "page": "zinb.loglik.dispersion",
+      "title": "Log-likelihood of the zero-inflated negative binomial model, for a fixed dispersion parameter",
+      "topics": [
+        "zinb.loglik.dispersion"
+      ]
+    },
+    {
+      "page": "zinb.loglik.dispersion.gradient",
+      "title": "Derivative of the log-likelihood of the zero-inflated negative binomial model with respect to the log of the inverse dispersion parameter",
+      "topics": [
+        "zinb.loglik.dispersion.gradient"
+      ]
+    },
+    {
+      "page": "zinb.loglik.matrix",
+      "title": "Log-likelihood of the zero-inflated negative binomial model for each entry in the matrix of counts",
+      "topics": [
+        "zinb.loglik.matrix"
+      ]
+    },
+    {
+      "page": "zinb.loglik.regression",
+      "title": "Penalized log-likelihood of the ZINB regression model",
+      "topics": [
+        "zinb.loglik.regression"
+      ]
+    },
+    {
+      "page": "zinb.loglik.regression.gradient",
+      "title": "Gradient of the penalized log-likelihood of the ZINB regression model",
+      "topics": [
+        "zinb.loglik.regression.gradient"
+      ]
+    },
+    {
+      "page": "zinb.regression.parseModel",
+      "title": "Parse ZINB regression model",
+      "topics": [
+        "zinb.regression.parseModel"
+      ]
+    },
+    {
+      "page": "zinbAIC",
+      "title": "Compute the AIC or BIC of a model given some data",
+      "topics": [
+        "zinbAIC",
+        "zinbAIC,ZinbModel,matrix-method",
+        "zinbBIC",
+        "zinbBIC,ZinbModel,matrix-method"
+      ]
+    },
+    {
+      "page": "zinbFit",
+      "title": "Fit a ZINB regression model",
+      "topics": [
+        "zinbFit",
+        "zinbFit,dgCMatrix-method",
+        "zinbFit,matrix-method",
+        "zinbFit,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "zinbInitialize",
+      "title": "Initialize the parameters of a ZINB regression model",
+      "topics": [
+        "zinbInitialize"
+      ]
+    },
+    {
+      "page": "zinbModel",
+      "title": "Initialize an object of class ZinbModel",
+      "topics": [
+        "zinbModel"
+      ]
+    },
+    {
+      "page": "ZinbModel-class",
+      "title": "Class ZinbModel",
+      "topics": [
+        "getAlpha_mu,ZinbModel-method",
+        "getAlpha_pi,ZinbModel-method",
+        "getBeta_mu,ZinbModel-method",
+        "getBeta_pi,ZinbModel-method",
+        "getEpsilon_alpha,ZinbModel-method",
+        "getEpsilon_beta_mu,ZinbModel-method",
+        "getEpsilon_beta_pi,ZinbModel-method",
+        "getEpsilon_gamma_mu,ZinbModel-method",
+        "getEpsilon_gamma_pi,ZinbModel-method",
+        "getEpsilon_W,ZinbModel-method",
+        "getEpsilon_zeta,ZinbModel-method",
+        "getGamma_mu,ZinbModel-method",
+        "getGamma_pi,ZinbModel-method",
+        "getLogitPi,ZinbModel-method",
+        "getLogMu,ZinbModel-method",
+        "getMu,ZinbModel-method",
+        "getPhi,ZinbModel-method",
+        "getPi,ZinbModel-method",
+        "getTheta,ZinbModel-method",
+        "getV_mu,ZinbModel-method",
+        "getV_pi,ZinbModel-method",
+        "getW,ZinbModel-method",
+        "getX_mu,ZinbModel-method",
+        "getX_pi,ZinbModel-method",
+        "getZeta,ZinbModel-method",
+        "nFactors,ZinbModel-method",
+        "nFeatures,ZinbModel-method",
+        "nSamples,ZinbModel-method",
+        "show,ZinbModel-method",
+        "ZinbModel",
+        "ZinbModel-class"
+      ]
+    },
+    {
+      "page": "zinbOptimize",
+      "title": "Optimize the parameters of a ZINB regression model",
+      "topics": [
+        "zinbOptimize"
+      ]
+    },
+    {
+      "page": "zinbOptimizeDispersion",
+      "title": "Optimize the dispersion parameters of a ZINB regression model",
+      "topics": [
+        "zinbOptimizeDispersion"
+      ]
+    },
+    {
+      "page": "zinbSim",
+      "title": "Simulate counts from a zero-inflated negative binomial model",
+      "topics": [
+        "zinbSim",
+        "zinbSim,ZinbModel-method"
+      ]
+    },
+    {
+      "page": "zinbsurf",
+      "title": "Perform dimensionality reduction using a ZINB regression model for large datasets.",
+      "topics": [
+        "zinbsurf",
+        "zinbsurf,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "zinbwave",
+      "title": "Perform dimensionality reduction using a ZINB regression model with gene and cell-level covariates.",
+      "topics": [
+        "zinbwave",
+        "zinbwave,SummarizedExperiment-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/zinbwave/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "annotate",
+    "AnnotationDbi",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "edgeR",
+    "fastmap",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "genefilter",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "KEGGREST",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "R6",
+    "rlang",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "softImpute",
+    "SparseArray",
+    "statmod",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "vctrs",
+    "XML",
+    "xtable",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "intro.Rmd",
+      "filename": "intro.html",
+      "title": "An introduction to ZINB-WaVE",
+      "author": "Davide Risso",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Introduction",
+        "The ZINB-WaVE model",
+        "Example dataset",
+        "Gene filtering",
+        "ZINB-WaVE",
+        "Adding covariates",
+        "Sample-level covariates",
+        "Gene-level covariates",
+        "t-SNE representation",
+        "Normalized values and deviance residuals",
+        "The zinbFit function",
+        "Differential Expression",
+        "Differential expression with edgeR",
+        "Differential expression with DESeq2",
+        "Using zinbwave with Seurat",
+        "Working with large datasets",
+        "A note on performance and parallel computing",
+        "Session Info",
+        "References"
+      ],
+      "created": "2017-06-22 19:42:39",
+      "modified": "2024-03-07 23:09:24",
+      "commits": 22
+    }
+  ],
+  "_score": 10.28280802452024,
+  "_indexed": true,
+  "_nocasepkg": "zinbwave",
+  "_universes": [
+    "bioc",
+    "drisso"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:32:30.000Z",
+      "distro": "noble",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "00a6bd417205f7bf1ca9ff6e9b1a2072ae30f8fd0b6e687655bf1f1498f5d8b2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:31:43.000Z",
+      "distro": "noble",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "cd62c6040e9ea7616c3e75a4295fbab835e1a16dda26a2c0ebf4e1bc97667b69",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:30:35.000Z",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "e454bcb5ac7cdcb52a8196b10df8a3c233612e31271f4a948fb3413d83b010c9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:30:31.000Z",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "d8223284a0154abd3a387c41abbde3ca0956fe892236b16bf8bacd1f9cbe3df7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:30:50.000Z",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "e7fa7f6571e83b425e8600646392bcc92d7b22a5c6e2a9a050b4c8d7e873bd0c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:29:39.000Z",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "418b4bdb3bf1a964c23d14658cf039aa3a5d489c410f6cc5f564edabb7e775a0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:29:51.000Z",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "cec0f31514c530f63e2bc5d9aa8a4983642d1cec7ff051eb10ff66fa492217be",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.33.0",
+      "date": "2026-01-22T18:29:42.000Z",
+      "commit": "dee1bb83f852e4492d70d7831df199d1eea3a44a",
+      "fileid": "f98e92381c7c27883b86ffed16d6a85e9f9083046ed219f3b7d002da5b3f376b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21259894910"
+    }
+  ]
+}

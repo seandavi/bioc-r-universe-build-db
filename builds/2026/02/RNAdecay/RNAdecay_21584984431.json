@@ -1,0 +1,828 @@
+{
+  "Package": "RNAdecay",
+  "Date": "2023-10-25",
+  "Title": "Maximum Likelihood Decay Modeling of RNA Degradation Data",
+  "Version": "1.31.0",
+  "Authors@R": "c(person(\"Reed\", \"Sorenson\", email = \"reedssorenson@gmail.com\", role = c(\"aut\", \"cre\"),comment=c(ORCID=\"0000-0001-8650-0601\")), person(\"Katrina\", \"Johnson\", email = \"kjohnson@math.utah.edu\", role = c(\"aut\")),person(\"Frederick\", \"Adler\", email = \"adler@math.utah.edu\", role = c(\"aut\")),person(\"Leslie\", \"Sieburth\", email = \"sieburth@biology.utah.edu\", role = c(\"aut\"),comment=c(ORCID=\"0000-0001-6691-2000\")))",
+  "Description": "RNA degradation is monitored through measurement of RNA\nabundance after inhibiting RNA synthesis. This package has\nfunctions and example scripts to facilitate (1) data\nnormalization, (2) data modeling using constant decay rate or\ntime-dependent decay rate models, (3) the evaluation of\ntreatment or genotype effects, and (4) plotting of the data and\nmodels. Data Normalization: functions and scripts make easy the\nnormalization to the initial (T0) RNA abundance, as well as a\nmethod to correct for artificial inflation of Reads per Million\n(RPM) abundance in global assessments as the total size of the\nRNA pool decreases. Modeling: Normalized data is then modeled\nusing maximum likelihood to fit parameters. For making\ntreatment or genotype comparisons (up to four), the modeling\nstep models all possible treatment effects on each gene by\nrepeating the modeling with constraints on the model parameters\n(i.e., the decay rate of treatments A and B are modeled once\nwith them being equal and again allowing them to both vary\nindependently). Model Selection: The AICc value is calculated\nfor each model, and the model with the lowest AICc is chosen.\nModeling results of selected models are then compiled into a\nsingle data frame. Graphical Plotting: functions are provided\nto easily visualize decay data model, or half-life\ndistributions using ggplot2 package functions.",
+  "biocViews": "ImmunoOncology, Software, GeneExpression, GeneRegulation,\nDifferentialExpression, Transcription, Transcriptomics,\nTimeCourse, Regression, RNASeq, Normalization, WorkflowStep",
+  "License": "GPL-2",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "cmake",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:27:20 UTC",
+  "RemoteUrl": "https://github.com/bioc/RNAdecay",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-02 09:50:40 UTC",
+    "User": "root"
+  },
+  "Author": "Reed Sorenson [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-8650-0601>),\nKatrina Johnson [aut],\nFrederick Adler [aut],\nLeslie Sieburth [aut] (ORCID: <https://orcid.org/0000-0001-6691-2000>)",
+  "Maintainer": "Reed Sorenson <reedssorenson@gmail.com>",
+  "MD5sum": "afa3f88e5d77e46a919c5a6d5de731bb",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "RNAdecay_1.31.0.tar.gz",
+  "_fileid": "c01dada5634a4cbdb9b74f842b80d701fe204fd44d02706363d97af56d838d29",
+  "_filesize": 2971213,
+  "_sha256": "c01dada5634a4cbdb9b74f842b80d701fe204fd44d02706363d97af56d838d29",
+  "_created": "2026-02-02T09:50:40.000Z",
+  "_published": "2026-02-02T10:36:23.839Z",
+  "_jobs": [
+    {
+      "job": 62192018601,
+      "time": 345,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5341039989"
+    },
+    {
+      "job": 62192018608,
+      "time": 336,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5341038879"
+    },
+    {
+      "job": 62192018621,
+      "time": 360,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5341043099"
+    },
+    {
+      "job": 62192018638,
+      "time": 342,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341040062"
+    },
+    {
+      "job": 62192018617,
+      "time": 366,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341044608"
+    },
+    {
+      "job": 62192018640,
+      "time": 279,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5341405561"
+    },
+    {
+      "job": 62192018603,
+      "time": 490,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5341443814"
+    },
+    {
+      "job": 62192018616,
+      "time": 349,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341418819"
+    },
+    {
+      "job": 62192018597,
+      "time": 755,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341497727"
+    },
+    {
+      "job": 62190847595,
+      "time": 669,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340966565"
+    },
+    {
+      "job": 62192018602,
+      "time": 103,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62192018596,
+      "time": 431,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5341059061"
+    },
+    {
+      "job": 62192018666,
+      "time": 478,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5341069165"
+    },
+    {
+      "job": 62192018604,
+      "time": 482,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341070218"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/RNAdecay",
+  "_commit": {
+    "id": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751640
+  },
+  "_maintainer": {
+    "name": "Reed Sorenson",
+    "email": "reedssorenson@gmail.com",
+    "login": "reedssorenson",
+    "uuid": 34588009,
+    "orcid": "0000-0001-8650-0601"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "gplots",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "TMB",
+      "role": "Imports"
+    },
+    {
+      "package": "nloptr",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "reshape2",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-43",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.31.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.30.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "software",
+    "geneexpression",
+    "generegulation",
+    "differentialexpression",
+    "transcription",
+    "transcriptomics",
+    "timecourse",
+    "regression",
+    "rnaseq",
+    "normalization",
+    "workflowstep"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 272,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/RNAdecay"
+  },
+  "_searchresults": 2,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/RNAdecay.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "a_high",
+    "a_low",
+    "aic",
+    "aicc",
+    "b_low",
+    "cols",
+    "comb_cv",
+    "const_decay",
+    "constraint_fun_list_maker",
+    "decay_plot",
+    "decaying_decay",
+    "fit_var",
+    "group_map",
+    "groupings",
+    "hl_plot",
+    "log_lik",
+    "mod_optimization",
+    "n_par",
+    "plain_theme",
+    "sse_null_const_decay",
+    "sse_null_decaying_decay"
+  ],
+  "_datasets": [
+    {
+      "name": "RPMs",
+      "title": "RNA abundance reads per million over RNA decay timecourse",
+      "object": "RPMs",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "WT_00_r1",
+        "WT_07_r1",
+        "WT_15_r1",
+        "WT_30_r1",
+        "WT_60_r1",
+        "WT_120_r1",
+        "WT_240_r1",
+        "WT_480_r1",
+        "sov_00_r1",
+        "sov_07_r1",
+        "sov_15_r1",
+        "sov_30_r1",
+        "sov_60_r1",
+        "sov_120_r1",
+        "sov_240_r1",
+        "sov_480_r1",
+        "vcs_00_r1",
+        "vcs_07_r1",
+        "vcs_15_r1",
+        "vcs_30_r1",
+        "vcs_60_r1",
+        "vcs_120_r1",
+        "vcs_240_r1",
+        "vcs_480_r1",
+        "vs_00_r1",
+        "vs_07_r1",
+        "vs_15_r1",
+        "vs_30_r1",
+        "vs_60_r1",
+        "vs_120_r1",
+        "vs_240_r1",
+        "vs_480_r1",
+        "WT_00_r2",
+        "WT_07_r2",
+        "WT_15_r2",
+        "WT_30_r2",
+        "WT_60_r2",
+        "WT_120_r2",
+        "WT_240_r2",
+        "WT_480_r2",
+        "sov_00_r2",
+        "sov_07_r2",
+        "sov_15_r2",
+        "sov_30_r2",
+        "sov_60_r2",
+        "sov_120_r2",
+        "sov_240_r2",
+        "sov_480_r2",
+        "vcs_00_r2",
+        "vcs_07_r2",
+        "vcs_15_r2",
+        "vcs_30_r2",
+        "vcs_60_r2",
+        "vcs_120_r2",
+        "vcs_240_r2",
+        "vcs_480_r2",
+        "vs_00_r2",
+        "vs_07_r2",
+        "vs_15_r2",
+        "vs_30_r2",
+        "vs_60_r2",
+        "vs_120_r2",
+        "vs_240_r2",
+        "vs_480_r2",
+        "WT_00_r3",
+        "WT_07_r3",
+        "WT_15_r3",
+        "WT_30_r3",
+        "WT_60_r3",
+        "WT_120_r3",
+        "WT_240_r3",
+        "WT_480_r3",
+        "sov_00_r3",
+        "sov_07_r3",
+        "sov_15_r3",
+        "sov_30_r3",
+        "sov_60_r3",
+        "sov_120_r3",
+        "sov_240_r3",
+        "sov_480_r3",
+        "vcs_00_r3",
+        "vcs_07_r3",
+        "vcs_15_r3",
+        "vcs_30_r3",
+        "vcs_60_r3",
+        "vcs_120_r3",
+        "vcs_240_r3",
+        "vcs_480_r3",
+        "vs_00_r3",
+        "vs_07_r3",
+        "vs_15_r3",
+        "vs_30_r3",
+        "vs_60_r3",
+        "vs_120_r3",
+        "vs_240_r3",
+        "vs_480_r3",
+        "WT_00_r4",
+        "WT_07_r4",
+        "WT_15_r4",
+        "WT_30_r4",
+        "WT_60_r4",
+        "WT_120_r4",
+        "WT_240_r4",
+        "WT_480_r4",
+        "sov_00_r4",
+        "sov_07_r4",
+        "sov_15_r4",
+        "sov_30_r4",
+        "sov_60_r4",
+        "sov_120_r4",
+        "sov_240_r4",
+        "sov_480_r4",
+        "vcs_00_r4",
+        "vcs_07_r4",
+        "vcs_15_r4",
+        "vcs_30_r4",
+        "vcs_60_r4",
+        "vcs_120_r4",
+        "vcs_240_r4",
+        "vcs_480_r4",
+        "vs_00_r4",
+        "vs_07_r4",
+        "vs_15_r4",
+        "vs_30_r4",
+        "vs_60_r4",
+        "vs_120_r4",
+        "vs_240_r4",
+        "vs_480_r4"
+      ],
+      "rows": 118,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "decay_data",
+      "title": "Normalized RNA abundance RNA decay timecourse",
+      "object": "decay_data",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "geneID",
+        "treatment",
+        "t.decay",
+        "rep",
+        "value"
+      ],
+      "rows": 15104,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "models",
+      "title": "Example double exponential decay modeling results",
+      "object": "models",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "results",
+      "title": "Example double exponential decay modeling results",
+      "object": "results",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "alpha_WT",
+        "alpha_sov",
+        "alpha_vcs",
+        "alpha_vcs.sov",
+        "beta_WT",
+        "beta_sov",
+        "beta_vcs",
+        "beta_vcs.sov",
+        "sigma2",
+        "mod",
+        "alpha_grp",
+        "beta_grp",
+        "alpha_subgroup",
+        "alphaPattern",
+        "betaPattern",
+        "rA_WT",
+        "rA_sov",
+        "rA_vcs",
+        "rA_vcssov",
+        "nEqMods",
+        "nEqAgp"
+      ],
+      "rows": 118,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "a_high",
+      "title": "calculates bounds for modeled parameters",
+      "topics": [
+        "a_high",
+        "a_low",
+        "b_low"
+      ]
+    },
+    {
+      "page": "cols",
+      "title": "Indexes column names of a data.frame matching multiple patterns (i.e., multigrep)",
+      "topics": [
+        "cols"
+      ]
+    },
+    {
+      "page": "const_decay",
+      "title": "exponential decay functions",
+      "topics": [
+        "const_decay",
+        "decaying_decay"
+      ]
+    },
+    {
+      "page": "decay_data",
+      "title": "Normalized RNA abundance RNA decay timecourse",
+      "topics": [
+        "decay_data"
+      ]
+    },
+    {
+      "page": "decay_plot",
+      "title": "decay_plot() function",
+      "topics": [
+        "decay_plot"
+      ]
+    },
+    {
+      "page": "group_map",
+      "title": "model color map",
+      "topics": [
+        "group_map"
+      ]
+    },
+    {
+      "page": "groupings",
+      "title": "Combinatorial groups matrix generator",
+      "topics": [
+        "groupings"
+      ]
+    },
+    {
+      "page": "hl_plot",
+      "title": "hl_plot() function",
+      "topics": [
+        "hl_plot"
+      ]
+    },
+    {
+      "page": "mod_optimization",
+      "title": "model optimization for fitting exponential decay models to normalized data",
+      "topics": [
+        "mod_optimization"
+      ]
+    },
+    {
+      "page": "models",
+      "title": "Example double exponential decay modeling results",
+      "topics": [
+        "models"
+      ]
+    },
+    {
+      "page": "plain_theme",
+      "title": "a custom ggplot2 theme",
+      "topics": [
+        "plain_theme"
+      ]
+    },
+    {
+      "page": "results",
+      "title": "Example double exponential decay modeling results",
+      "topics": [
+        "results"
+      ]
+    },
+    {
+      "page": "RPMs",
+      "title": "RNA abundance reads per million over RNA decay timecourse",
+      "topics": [
+        "RPMs"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/RNAdecay/raw/HEAD/README.md",
+  "_rundeps": [
+    "bitops",
+    "caTools",
+    "cli",
+    "cpp11",
+    "farver",
+    "ggplot2",
+    "glue",
+    "gplots",
+    "gtable",
+    "gtools",
+    "isoband",
+    "KernSmooth",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "Matrix",
+    "nloptr",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "rlang",
+    "S7",
+    "scales",
+    "TMB",
+    "vctrs",
+    "viridisLite",
+    "withr"
+  ],
+  "_vignettes": [
+    {
+      "source": "RNAdecay_workflow.Rmd",
+      "filename": "RNAdecay_workflow.html",
+      "title": "RNAdecay Vignette: Normalization, Modeling, and Visualization of RNA Decay Data",
+      "author": "Reed Sorenson | reed.sorenson@utah.edu | Department of Biology | University of Utah",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "I. DATA NORMALIZATION AND CORRECTION",
+        "1. T0 NORMALIZATION",
+        "2. DECAY FACTOR CORRECTION",
+        "II. MODELING DECAY RATES",
+        "3. LOAD NORMALIZED AND CORRECTED DATA AND CHECK THE FORMAT",
+        "4. GENERATE MATRICES OF $\\alpha$ AND $\\beta$ EQUIVALENCE CONSTRAINT GROUPS",
+        "5. MODEL OPTIMIZATION",
+        "6. MODEL SELECTION",
+        "III. DATA VISULIZATION",
+        "7. LOAD DECAY DATA AND MODELING RESULTS (AND, OPTIONALLY, GENE DESCRIPTIONS)",
+        "8. PRINT DECAY PLOTS TO PDF",
+        "9. Session Information of Most Recent Update"
+      ],
+      "created": "2018-04-17 20:37:48",
+      "modified": "2025-10-24 22:03:17",
+      "commits": 8
+    }
+  ],
+  "_score": 4,
+  "_indexed": true,
+  "_nocasepkg": "rnadecay",
+  "_universes": [
+    "bioc",
+    "reedssorenson"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-02T09:56:02.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "686248574ad32a8b8e00d5ef5565abc9ae3027f7a2d3e131ace1d36bdcdbcb48",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-02T09:56:05.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "9391603223ae915e6918a42d4810c295c0ee5f1262cdaf29927f3f25f6c88b03",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-02T09:56:04.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "4897a180d161084dafce257720f9295d3e44076f57f66b176d46666955a5d5b6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-02T09:56:41.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "f38c28b6dbbe67548f5cc63bc24c1308795671fdd2285b40eb1283a0dfdbbf8a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-02-02T10:25:02.000Z",
+      "arch": "aarch64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "337e4790469ebec055fb2919048acd227d4495f6a2cd929b6d1341375acfaf17",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-02-02T10:25:52.000Z",
+      "arch": "x86_64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "2c5eba11862cba497c35b2227ad7d8e319323519703ab2c9988e60d03a52f618",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-02-02T10:25:36.000Z",
+      "arch": "aarch64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "ef35f86cbcad497970c9bc4d13f4b09eba212b25b2f984021dda48a0f5edcdc4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-02-02T10:27:03.000Z",
+      "arch": "x86_64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "e55d922cc47dbc972afab3dd4a8245e31329660a4b8a80bae2f5bcf0abcac6c3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-02-02T09:54:53.000Z",
+      "arch": "x86_64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "6e4e99bd08da3c114fbc196a4a18b06c60582bb68abe7a671f2fe4d72f32f6a7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-02-02T09:55:15.000Z",
+      "arch": "x86_64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "2b1abe96bfe2da138e34da12150a790a187163008939b4c82e505cd6a5731864",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-02-02T09:55:20.000Z",
+      "arch": "x86_64",
+      "commit": "5f4a6cda3040f105909489429d219b097e2b8bc6",
+      "fileid": "e840e658728d36ec7aa85bc91197515a4c5f7f16266551b064ac2f94e6440853",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584984431"
+    }
+  ]
+}

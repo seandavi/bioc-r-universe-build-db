@@ -1,0 +1,873 @@
+{
+  "Package": "srnadiff",
+  "Type": "Package",
+  "Title": "Finding differentially expressed unannotated genomic regions\nfrom RNA-seq data",
+  "Version": "1.31.0",
+  "Date": "2025-07-24",
+  "Authors@R": "c(\nperson(\"Zytnicki\", \"Matthias\", email = \"matthias.zytnicki@inra.fr\",\nrole = c(\"aut\", \"cre\")),\nperson(\"Gonzalez\", \"Ignacio\", role = \"aut\"))",
+  "Description": "srnadiff is a package that finds differently expressed\nregions from RNA-seq data at base-resolution level without\nrelying on existing annotation. To do so, the package\nimplements the identify-then-annotate methodology that builds\non the idea of combining two pipelines approachs differential\nexpressed regions detection and differential expression\nquantification. It reads BAM files as input, and outputs a list\ndifferentially regions, together with the adjusted p-values.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "SystemRequirements": "C++11",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "ImmunoOncology, GeneExpression, Coverage, SmallRNA,\nEpigenetics, StatisticalMethod, Preprocessing,\nDifferentialExpression",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev libjpeg-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:43:01 UTC",
+  "RemoteUrl": "https://github.com/bioc/srnadiff",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-03 09:28:27 UTC",
+    "User": "root"
+  },
+  "Author": "Zytnicki Matthias [aut, cre],\nGonzalez Ignacio [aut]",
+  "Maintainer": "Zytnicki Matthias <matthias.zytnicki@inra.fr>",
+  "MD5sum": "6e6152e30ce27e530c4e0621484b9b12",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "srnadiff_1.31.0.tar.gz",
+  "_fileid": "a6791cff75b1ffb36ae89406439050e8f1acde4f1fe578445ad6da1fa9348e9a",
+  "_filesize": 2404467,
+  "_sha256": "a6791cff75b1ffb36ae89406439050e8f1acde4f1fe578445ad6da1fa9348e9a",
+  "_created": "2026-02-03T09:28:27.000Z",
+  "_published": "2026-02-05T03:59:41.129Z",
+  "_jobs": [
+    {
+      "job": 62572648885,
+      "time": 242,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355050871"
+    },
+    {
+      "job": 62572648927,
+      "time": 476,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5355100956"
+    },
+    {
+      "job": 62572649039,
+      "time": 609,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5355128072"
+    },
+    {
+      "job": 62572649086,
+      "time": 460,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5355098056"
+    },
+    {
+      "job": 62572649115,
+      "time": 569,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5355119722"
+    },
+    {
+      "job": 62572649055,
+      "time": 499,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5355494449"
+    },
+    {
+      "job": 62572648796,
+      "time": 190,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62572649109,
+      "time": 432,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5355478222"
+    },
+    {
+      "job": 62572649074,
+      "time": 729,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5355228562"
+    },
+    {
+      "job": 62572648726,
+      "time": 381,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354997753"
+    },
+    {
+      "job": 62572649036,
+      "time": 193,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5355040725"
+    },
+    {
+      "job": 62572649059,
+      "time": 1013,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5355212358"
+    },
+    {
+      "job": 62572649124,
+      "time": 1066,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5355222749"
+    },
+    {
+      "job": 62572649114,
+      "time": 1140,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5355238809"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/srnadiff",
+  "_commit": {
+    "id": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748981
+  },
+  "_maintainer": {
+    "name": "Zytnicki Matthias",
+    "email": "matthias.zytnicki@inra.fr",
+    "login": "mzytnicki",
+    "uuid": 34034101
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.8",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "Gviz",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.31.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.30.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "geneexpression",
+    "coverage",
+    "smallrna",
+    "epigenetics",
+    "statisticalmethod",
+    "preprocessing",
+    "differentialexpression",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 305,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/srnadiff"
+  },
+  "_mentions": 1,
+  "_searchresults": 12,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/srnadiff.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotReg",
+    "annotReg<-",
+    "bamFiles",
+    "chromosomeSizes",
+    "countMatrix",
+    "coverages",
+    "normFactors",
+    "normFactors<-",
+    "parameters",
+    "parameters<-",
+    "plotRegions",
+    "readAnnotation",
+    "regions",
+    "sampleInfo",
+    "show",
+    "srnadiff",
+    "srnadiffDefaultParameters",
+    "srnadiffExample",
+    "srnadiffExp"
+  ],
+  "_help": [
+    {
+      "page": "annotReg",
+      "title": "Accessors for the 'annotReg' slot of an srnadiffExp object",
+      "topics": [
+        "annotReg",
+        "annotReg,srnadiffExp-method",
+        "annotReg<-",
+        "annotReg<-,srnadiffExp-method"
+      ]
+    },
+    {
+      "page": "bamFiles",
+      "title": "Accessors for the 'bamFiles' slot of an srnadiffExp object",
+      "topics": [
+        "bamFiles",
+        "bamFiles,srnadiffExp-method"
+      ]
+    },
+    {
+      "page": "chromosomeSizes",
+      "title": "Accessors for the 'chromosomeSizes' slot of an srnadiffExp object",
+      "topics": [
+        "chromosomeSizes",
+        "chromosomeSizes,srnadiffExp-method"
+      ]
+    },
+    {
+      "page": "countMatrix",
+      "title": "Accessors for the 'countMatrix' slot of an srnadiffExp object",
+      "topics": [
+        "countMatrix",
+        "countMatrix,srnadiffExp-method"
+      ]
+    },
+    {
+      "page": "coverages",
+      "title": "Accessors for the 'coverages' slot of an srnadiffExp object",
+      "topics": [
+        "coverages",
+        "coverages,srnadiffExp-method"
+      ]
+    },
+    {
+      "page": "normFactors",
+      "title": "Accessors for the 'normFactors' slot of an srnadiffExp object",
+      "topics": [
+        "normFactors",
+        "normFactors,srnadiffExp-method",
+        "normFactors<-",
+        "normFactors<-,srnadiffExp,numeric-method"
+      ]
+    },
+    {
+      "page": "parameters",
+      "title": "Accessors for the 'parameters' slot of an srnadiffExp object",
+      "topics": [
+        "parameters",
+        "parameters,srnadiffExp-method",
+        "parameters<-",
+        "parameters<-,srnadiffExp-method",
+        "print.srnadiff_par"
+      ]
+    },
+    {
+      "page": "plotRegions",
+      "title": "Plot the coverage information surrounding genomic regions",
+      "topics": [
+        "plotRegions"
+      ]
+    },
+    {
+      "page": "readAnnotation",
+      "title": "Reads and parses GFF/GTF files",
+      "topics": [
+        "readAnnotation"
+      ]
+    },
+    {
+      "page": "regions",
+      "title": "Extracts differentially expressed regions of an srnadiffExp object",
+      "topics": [
+        "regions",
+        "regions,srnadiffExp-method"
+      ]
+    },
+    {
+      "page": "sampleInfo",
+      "title": "Accessors for the 'sampleInfo' slot of an srnadiffExp object",
+      "topics": [
+        "sampleInfo",
+        "sampleInfo,srnadiffExp-method"
+      ]
+    },
+    {
+      "page": "srnadiff",
+      "title": "Finding differentially expressed unannotated genomic regions from RNA-seq data",
+      "topics": [
+        "srnadiff-package",
+        "srnadiff"
+      ]
+    },
+    {
+      "page": "srnadiffDefaultParameters",
+      "title": "List of srnadiff default parameters.",
+      "topics": [
+        "srnadiffDefaultParameters"
+      ]
+    },
+    {
+      "page": "srnadiffExample",
+      "title": "Example constructor",
+      "topics": [
+        "srnadiffExample"
+      ]
+    },
+    {
+      "page": "srnadiffExp",
+      "title": "Infrastructure for sRNA-Seq experiment and differential expression",
+      "topics": [
+        "show,srnadiffExp-method",
+        "srnadiffExp",
+        "srnadiffExp-class"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocStyle",
+    "biomaRt",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bookdown",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "DESeq2",
+    "dichromat",
+    "digest",
+    "dplyr",
+    "edgeR",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "Gviz",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nnet",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "srnadiff.Rmd",
+      "filename": "srnadiff.html",
+      "title": "\"Finding differentially expressed unannotated genomic regions from RNA-seq data with srnadiff\"",
+      "author": "Matthias Zytnicki, Ignacio Gonz\u00e1lez",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Version info",
+        "Abstract",
+        "Introduction",
+        "Citing r Biocpkg(\"srnadiff\")",
+        "How to get help for r Biocpkg(\"srnadiff\")",
+        "Quick start",
+        "Using r Biocpkg(\"srnadiff\")",
+        "Installation",
+        "Data overview",
+        "Data preparation: the srnadiffExp object",
+        "Content",
+        "Adding an annotation",
+        "Directionality",
+        "The srnaExp object",
+        "Read annotation",
+        "Extraction of putative regions using an GTF annotation file",
+        "Whole genome file annotation",
+        "Extraction of precursor miRNAs using a miRBase-formatted GFF file",
+        "Extraction of mature miRNAs using a miRBase-formatted GFF file",
+        "Other format",
+        "Performing sRNA-diff",
+        "Working with the srnadiffExp object",
+        "Extracting regions",
+        "Data visualization",
+        "Methods behind r Biocpkg(\"srnadiff\")",
+        "Pre-processing data",
+        "Methods to produce differentially expressed regions",
+        "HMM method: hmm",
+        "IR method: IR",
+        "Naive method: naive",
+        "Quantifying DERs",
+        "General parameters",
+        "Combination of strategies",
+        "Choice of the strategies",
+        "Quantification of the features",
+        "Using an other method to compute adjusted p-values",
+        "Misc",
+        "Using several cores",
+        "Troubleshooting",
+        "Session information",
+        "References"
+      ],
+      "created": "2017-02-22 13:51:13",
+      "modified": "2024-12-18 14:47:42",
+      "commits": 22
+    }
+  ],
+  "_score": 3.5563025007672877,
+  "_indexed": true,
+  "_nocasepkg": "srnadiff",
+  "_universes": [
+    "bioc",
+    "mzytnicki"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-01-04T15:32:43.000Z",
+      "arch": "x86_64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "8e871b27dcf5decc9f5c3a51b1ba77c6474f28305fd0b18ac1d17a2d5bc9880e",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20694903569"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:32:21.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "8c02eb5c06754ad78b129fe0cded43b5d4da1f75eddc97a9446368b48be68a24",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:33:23.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "d563a77ea70b08e215d0399ff06b4375b4da800655dcfe2aa46c48b3766b75fb",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:32:10.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "c39c6b9108fd7271d663c272d57983d546af5078d818effc8b95d047f23a0655",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:32:49.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "c0cc88d82036647cf016ee60c70a60fb6f023b18117d0af3152a4f67315bce06",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-02-03T10:01:43.000Z",
+      "arch": "aarch64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "632d6c258909eed4f364c11676956e847b857187bee5228f47ec059a540c0be3",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-02-03T10:01:56.000Z",
+      "arch": "aarch64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "2249b2c024821b8c0b69c51c306685226878ef910ae764826008a120c9804455",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:38:05.000Z",
+      "arch": "x86_64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "c74423161b8a73365cbd2770d2a668e1e1bf005d6e508394aa96c52e017ef41a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:32:26.000Z",
+      "arch": "emscripten",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "9908636ef71c8a861d6fb14dff043a048ae67d464a1efe4411f6e07b3c2bfe61",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:31:18.000Z",
+      "arch": "x86_64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "e033fdec4e055834381aee36392fc98e690bcdf174fa8173a3289815db8dbac0",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:32:00.000Z",
+      "arch": "x86_64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "40704462f940b4b163af90b1fea76dc8c8d8bd4724be513f14c3ba09e95ee49f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-02-03T09:31:40.000Z",
+      "arch": "x86_64",
+      "commit": "680956dd3ec7f96dd5786690bcbf42ec7a90805e",
+      "fileid": "715a7ca41e0f5498574e25f73f6789babae40062b368601fcbb90ca79eab8df3",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624453166"
+    }
+  ]
+}

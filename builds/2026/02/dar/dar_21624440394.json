@@ -1,0 +1,1343 @@
+{
+  "Package": "dar",
+  "Title": "Differential Abundance Analysis by Consensus",
+  "Version": "1.7.0",
+  "Date": "2025-10-14",
+  "Authors@R": "c(person(given = \"Francesc\",\nfamily = \"Catala-Moll\",\nrole = c(\"aut\", \"cre\"),\nemail = \"fcatala@irsicaixa.es\",\ncomment = c(ORCID = \"0000-0002-2354-8648\"))\n)",
+  "Description": "Differential abundance testing in microbiome data\nchallenges both parametric and non-parametric statistical\nmethods, due to its sparsity, high variability and\ncompositional nature. Microbiome-specific statistical methods\noften assume classical distribution models or take into account\ncompositional specifics. These produce results that range\nwithin the specificity vs sensitivity space in such a way that\ntype I and type II error that are difficult to ascertain in\nreal microbiome data when a single method is used. Recently, a\nconsensus approach based on multiple differential abundance\n(DA) methods was recently suggested in order to increase\nrobustness. With dar, you can use dplyr-like pipeable sequences\nof DA methods and then apply different consensus strategies. In\nthis way we can obtain more reliable results in a fast,\nconsistent and reproducible way.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(roclets = c(\"collate\", \"namespace\", \"rd\",\n\"roxytest::testthat_roclet\", \"roxyglobals::global_roclet\"),\nmarkdown = TRUE)",
+  "URL": "https://github.com/MicrobialGenomics-IrsicaixaOrg/dar,\nhttps://microbialgenomics-irsicaixaorg.github.io/dar/",
+  "BugReports": "https://github.com/MicrobialGenomics-IrsicaixaOrg/dar/issues",
+  "biocViews": "Software, Sequencing, Microbiome, Metagenomics,\nMultipleComparison, Normalization",
+  "Config/testthat/edition": "3",
+  "LazyData": "false",
+  "Collate": "'recipe-class.R' 'aldex2.R' 'ancom.R' 'bake.R' 'corncob.R'\n'dar-package.R' 'data.R' 'deseq2.R' 'filter_by_abundance.R'\n'filter_by_prevalence.R' 'filter_by_rarity.R'\n'filter_by_variance.R' 'filter_taxa.R' 'globals.R' 'lefse.R'\n'maaslin2.R' 'metagenomeseq.R' 'misc.R' 'phyloseq_qc.R'\n'pkg_check.R' 'plot_methods.R' 'rarefaction.R' 'read_data.R'\n'steps_and_checks.R' 'subset_taxa.R' 'utils-pipe.R'\n'utils-tidy-eval.R' 'utils.R' 'wilcox.R'",
+  "VignetteBuilder": "knitr",
+  "Config/roxyglobals/filename": "globals.R",
+  "Config/roxyglobals/unique": "TRUE",
+  "Config/testthat/parallel": "true",
+  "RoxygenNote": "7.3.3",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev libglpk-dev make libgsl0-dev libharfbuzz-dev\nlibmagick++-dev gsfonts libicu-dev libjpeg-dev libpng-dev\nlibtiff-dev libwebp-dev libxml2-dev libssl-dev perl libx11-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:27:31 UTC",
+  "RemoteUrl": "https://github.com/bioc/dar",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 09:32:19 UTC",
+    "User": "root"
+  },
+  "Author": "Francesc Catala-Moll [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-2354-8648>)",
+  "Maintainer": "Francesc Catala-Moll <fcatala@irsicaixa.es>",
+  "MD5sum": "0874b7db1a759a33ee4c7aa4abe7ea29",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "dar_1.7.0.tar.gz",
+  "_fileid": "2f326259e05c490b536503a738c5af9e7c89794c56f4a62cefe256b98205eb48",
+  "_filesize": 2320005,
+  "_sha256": "2f326259e05c490b536503a738c5af9e7c89794c56f4a62cefe256b98205eb48",
+  "_created": "2026-02-03T09:32:19.000Z",
+  "_published": "2026-02-03T10:18:07.187Z",
+  "_jobs": [
+    {
+      "job": 62322148170,
+      "time": 284,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355103416"
+    },
+    {
+      "job": 62322148277,
+      "time": 610,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5355170809"
+    },
+    {
+      "job": 62322148151,
+      "time": 620,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355173003"
+    },
+    {
+      "job": 62322148110,
+      "time": 347,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5355567655"
+    },
+    {
+      "job": 62322148140,
+      "time": 655,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355612169"
+    },
+    {
+      "job": 62321009251,
+      "time": 619,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355042034"
+    },
+    {
+      "job": 62322148235,
+      "time": 255,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5355097253"
+    },
+    {
+      "job": 62322148223,
+      "time": 492,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5355147062"
+    },
+    {
+      "job": 62322148156,
+      "time": 568,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5355162806"
+    },
+    {
+      "job": 62322148160,
+      "time": 541,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355157419"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/dar",
+  "_commit": {
+    "id": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751651
+  },
+  "_maintainer": {
+    "name": "Francesc Catala-Moll",
+    "email": "fcatala@irsicaixa.es",
+    "login": "xec-cm",
+    "linkedin": "in/francesc-catal\u00e0-moll-11342485",
+    "twitter": "@fcatalamoll",
+    "uuid": 70643921,
+    "orcid": "0000-0002-2354-8648"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "cli",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "crayon",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "generics",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "glue",
+      "role": "Imports"
+    },
+    {
+      "package": "gplots",
+      "role": "Imports"
+    },
+    {
+      "package": "heatmaply",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "mia",
+      "role": "Imports"
+    },
+    {
+      "package": "phyloseq",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "readr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "version": ">= 0.4.11",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "UpSetR",
+      "role": "Imports"
+    },
+    {
+      "package": "waldo",
+      "role": "Imports"
+    },
+    {
+      "package": "ALDEx2",
+      "role": "Suggests"
+    },
+    {
+      "package": "ANCOMBC",
+      "role": "Suggests"
+    },
+    {
+      "package": "apeglm",
+      "role": "Suggests"
+    },
+    {
+      "package": "ashr",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biobase",
+      "role": "Suggests"
+    },
+    {
+      "package": "corncob",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Suggests"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "furrr",
+      "role": "Suggests"
+    },
+    {
+      "package": "future",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "lefser",
+      "role": "Suggests"
+    },
+    {
+      "package": "limma",
+      "role": "Suggests"
+    },
+    {
+      "package": "Maaslin2",
+      "role": "Suggests"
+    },
+    {
+      "package": "metagenomeSeq",
+      "role": "Suggests"
+    },
+    {
+      "package": "microbiome",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxyglobals",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxytest",
+      "role": "Suggests"
+    },
+    {
+      "package": "rstatix",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "TreeSummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-11",
+      "n": 15
+    },
+    {
+      "week": "2025-42",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 3
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "sequencing",
+    "microbiome",
+    "metagenomics",
+    "multiplecomparison",
+    "normalization",
+    "bioconductor",
+    "biomarker-discovery",
+    "differential-abundance-analysis",
+    "feature-selection",
+    "microbiology",
+    "phyloseq"
+  ],
+  "_stars": 5,
+  "_contributors": [
+    {
+      "user": "xec-cm",
+      "count": 293,
+      "uuid": 70643921
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    },
+    {
+      "user": "juditfarreb",
+      "count": 2,
+      "uuid": 67824215
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 224,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/dar"
+  },
+  "_devurl": "https://github.com/microbialgenomics-irsicaixaorg/dar",
+  "_pkgdown": "https://microbialgenomics-irsicaixaorg.github.io/dar/",
+  "_searchresults": 9,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/dar.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/microbialgenomics-irsicaixaorg/dar",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "abundance_plt",
+    "add_tax",
+    "add_var",
+    "bake",
+    "contains_rarefaction",
+    "cool",
+    "corr_heatmap",
+    "exclusion_plt",
+    "export_steps",
+    "find_intersections",
+    "get_phy",
+    "get_tax",
+    "get_var",
+    "import_steps",
+    "intersection_df",
+    "intersection_plt",
+    "mutual_plt",
+    "otu_table",
+    "overlap_df",
+    "phy_qc",
+    "prep",
+    "rand_id",
+    "read_data",
+    "recipe",
+    "sample_data",
+    "step_aldex",
+    "step_ancom",
+    "step_corncob",
+    "step_deseq",
+    "step_filter_by_abundance",
+    "step_filter_by_prevalence",
+    "step_filter_by_rarity",
+    "step_filter_by_variance",
+    "step_filter_taxa",
+    "step_lefse",
+    "step_maaslin",
+    "step_metagenomeseq",
+    "step_rarefaction",
+    "step_subset_taxa",
+    "step_wilcox",
+    "steps_ids",
+    "tax_table",
+    "zero_otu"
+  ],
+  "_datasets": [
+    {
+      "name": "metaHIV_phy",
+      "title": "Phyloseq object from metaHIV project",
+      "object": "metaHIV_phy",
+      "file": "metaHIV_phy.rda",
+      "class": [
+        "phyloseq"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "test_prep_rec",
+      "title": "PrepRecipe for metaHIV_phy data",
+      "object": "test_prep_rec",
+      "file": "test_prep_rec.rda",
+      "class": [
+        "PrepRecipe"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "test_rec",
+      "title": "Recipe for metaHIV_phy data",
+      "object": "test_rec",
+      "file": "test_rec.rda",
+      "class": [
+        "Recipe"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "abundance_plt",
+      "title": "Abundance boxplot",
+      "topics": [
+        "abundance_plt",
+        "abundance_plt,PrepRecipe-method",
+        "abundance_plt,Recipe-method"
+      ]
+    },
+    {
+      "page": "add_tax",
+      "title": "Adds taxonomic level of interest in the Recipe.",
+      "topics": [
+        "add_tax",
+        "add_tax,PrepRecipe-method",
+        "add_tax,Recipe-method"
+      ]
+    },
+    {
+      "page": "add_var",
+      "title": "Adds variable of interest to the Recipe",
+      "topics": [
+        "add_var",
+        "add_var,PrepRecipe-method",
+        "add_var,Recipe-method"
+      ]
+    },
+    {
+      "page": "bake",
+      "title": "Define consensus strategies from a Recipe",
+      "topics": [
+        "bake",
+        "bake,PrepRecipe-method",
+        "bake,Recipe-method"
+      ]
+    },
+    {
+      "page": "contains_rarefaction",
+      "title": "Checks if Recipe contains a rarefaction step",
+      "topics": [
+        "contains_rarefaction"
+      ]
+    },
+    {
+      "page": "cool",
+      "title": "Extract results from defined bake",
+      "topics": [
+        "cool",
+        "cool,PrepRecipe-method",
+        "cool,Recipe-method"
+      ]
+    },
+    {
+      "page": "corr_heatmap",
+      "title": "Plot otuput of the 'overlap_df' function as a heatmap.",
+      "topics": [
+        "corr_heatmap",
+        "corr_heatmap,PrepRecipe-method",
+        "corr_heatmap,Recipe-method"
+      ]
+    },
+    {
+      "page": "exclusion_plt",
+      "title": "Plot the number of shared DA OTUs between methods.",
+      "topics": [
+        "exclusion_plt",
+        "exclusion_plt,PrepRecipe-method",
+        "exclusion_plt,Recipe-method"
+      ]
+    },
+    {
+      "page": "export_steps",
+      "title": "Export step parameters as json.",
+      "topics": [
+        "export_steps"
+      ]
+    },
+    {
+      "page": "find_intersections",
+      "title": "Finds common OTU between method results",
+      "topics": [
+        "find_intersections"
+      ]
+    },
+    {
+      "page": "get_phy",
+      "title": "Returns phyloseq from Recipe-class object",
+      "topics": [
+        "get_phy",
+        "get_phy,Recipe-method"
+      ]
+    },
+    {
+      "page": "get_tax",
+      "title": "Returns tax_info from Recipe-class object",
+      "topics": [
+        "get_tax",
+        "get_tax,Recipe-method"
+      ]
+    },
+    {
+      "page": "get_var",
+      "title": "Returns var_info from Recipe-class object",
+      "topics": [
+        "get_var",
+        "get_var,Recipe-method"
+      ]
+    },
+    {
+      "page": "import_steps",
+      "title": "Import steps from json file",
+      "topics": [
+        "import_steps"
+      ]
+    },
+    {
+      "page": "intersection_df",
+      "title": "Returns data.frame with OTU intersection between methods",
+      "topics": [
+        "intersection_df",
+        "intersection_df,PrepRecipe-method",
+        "intersection_df,Recipe-method"
+      ]
+    },
+    {
+      "page": "intersection_plt",
+      "title": "Plot results using UpSet plot",
+      "topics": [
+        "intersection_plt",
+        "intersection_plt,PrepRecipe-method",
+        "intersection_plt,Recipe-method"
+      ]
+    },
+    {
+      "page": "metaHIV_phy",
+      "title": "Phyloseq object from metaHIV project",
+      "topics": [
+        "metaHIV_phy"
+      ]
+    },
+    {
+      "page": "mutual_plt",
+      "title": "Mutual finding plot",
+      "topics": [
+        "mutual_plt",
+        "mutual_plt,PrepRecipe-method",
+        "mutual_plt,Recipe-method"
+      ]
+    },
+    {
+      "page": "otu_table",
+      "title": "Extracts otu_table from phyloseq inside a Recipe",
+      "topics": [
+        "otu_table",
+        "otu_table,Recipe-method"
+      ]
+    },
+    {
+      "page": "overlap_df",
+      "title": "Overlap of significant OTUs between tested methods.",
+      "topics": [
+        "overlap_df",
+        "overlap_df,PrepRecipe-method",
+        "overlap_df,Recipe-method"
+      ]
+    },
+    {
+      "page": "phy_qc",
+      "title": "Phyloseq Quality Control Metrics",
+      "topics": [
+        "phy_qc",
+        "phy_qc,Recipe-method"
+      ]
+    },
+    {
+      "page": "Recipe-class",
+      "title": "Recipe-class object",
+      "topics": [
+        "phyloseq_or_null-class",
+        "Recipe-class",
+        "show,PrepRecipe-method",
+        "tibble_or_NULL-class"
+      ]
+    },
+    {
+      "page": "prep",
+      "title": "Performs all the steps defined in a Recipe",
+      "topics": [
+        "prep",
+        "prep,Recipe-method"
+      ]
+    },
+    {
+      "page": "PrepRecipe-class",
+      "title": "PrepRecipe-class object",
+      "topics": [
+        "PrepRecipe-class"
+      ]
+    },
+    {
+      "page": "rand_id",
+      "title": "Make a random identification field for steps",
+      "topics": [
+        "rand_id"
+      ]
+    },
+    {
+      "page": "recipe",
+      "title": "Create a Recipe for preprocessing data",
+      "topics": [
+        "Recipe",
+        "recipe"
+      ]
+    },
+    {
+      "page": "sample_data",
+      "title": "Extracts sample_data from phyloseq inside a Recipe",
+      "topics": [
+        "sample_data",
+        "sample_data,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_aldex",
+      "title": "ALDEx2 analysis",
+      "topics": [
+        "step_aldex",
+        "step_aldex,PrepRecipe-method",
+        "step_aldex,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_corncob",
+      "title": "corncob analysis",
+      "topics": [
+        "step_corncob",
+        "step_corncob,PrepRecipe-method",
+        "step_corncob,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_deseq",
+      "title": "DESeq2 analysis",
+      "topics": [
+        "step_deseq",
+        "step_deseq,PrepRecipe-method",
+        "step_deseq,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_filter_by_abundance",
+      "title": "Filter taxa by abundance",
+      "topics": [
+        "step_filter_by_abundance",
+        "step_filter_by_abundance,PrepRecipe-method",
+        "step_filter_by_abundance,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_filter_by_prevalence",
+      "title": "Filter taxa by prevalence",
+      "topics": [
+        "step_filter_by_prevalence",
+        "step_filter_by_prevalence,PrepRecipe-method",
+        "step_filter_by_prevalence,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_filter_by_rarity",
+      "title": "Filter taxa by rarity",
+      "topics": [
+        "step_filter_by_rarity",
+        "step_filter_by_rarity,PrepRecipe-method",
+        "step_filter_by_rarity,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_filter_by_variance",
+      "title": "Filter taxa by variance",
+      "topics": [
+        "step_filter_by_variance",
+        "step_filter_by_variance,PrepRecipe-method",
+        "step_filter_by_variance,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_filter_taxa",
+      "title": "Filter taxa based on across-sample OTU abundance criteria",
+      "topics": [
+        "step_filter_taxa",
+        "step_filter_taxa,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_lefse",
+      "title": "lefse analysis",
+      "topics": [
+        "step_lefse",
+        "step_lefse,PrepRecipe-method",
+        "step_lefse,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_maaslin",
+      "title": "MaAsLin2 analysis",
+      "topics": [
+        "step_maaslin",
+        "step_maaslin,PrepRecipe-method",
+        "step_maaslin,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_metagenomeseq",
+      "title": "MetagenomeSeq analysis",
+      "topics": [
+        "step_metagenomeseq",
+        "step_metagenomeseq,PrepRecipe-method",
+        "step_metagenomeseq,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_rarefaction",
+      "title": "Resample an OTU table such that all samples have the same library size.",
+      "topics": [
+        "step_rarefaction",
+        "step_rarefaction,PrepRecipe-method",
+        "step_rarefaction,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_subset_taxa",
+      "title": "Subset taxa by taxonomic level",
+      "topics": [
+        "step_subset_taxa",
+        "step_subset_taxa,PrepRecipe-method",
+        "step_subset_taxa,Recipe-method"
+      ]
+    },
+    {
+      "page": "step_wilcox",
+      "title": "Wilcox analysis",
+      "topics": [
+        "step_wilcox",
+        "step_wilcox,PrepRecipe-method",
+        "step_wilcox,Recipe-method"
+      ]
+    },
+    {
+      "page": "steps_ids",
+      "title": "Get step_ids from recipe",
+      "topics": [
+        "steps_ids"
+      ]
+    },
+    {
+      "page": "tax_table",
+      "title": "Extracts tax_table from phyloseq inside a Recipe",
+      "topics": [
+        "tax_table",
+        "tax_table,Recipe-method"
+      ]
+    },
+    {
+      "page": "test_prep_rec",
+      "title": "PrepRecipe for metaHIV_phy data",
+      "topics": [
+        "test_prep_rec"
+      ]
+    },
+    {
+      "page": "test_rec",
+      "title": "Recipe for metaHIV_phy data",
+      "topics": [
+        "test_rec"
+      ]
+    },
+    {
+      "page": "zero_otu",
+      "title": "Extract outs with all 0 values in at least on level of the variable",
+      "topics": [
+        "zero_otu",
+        "zero_otu,phyloseq-method",
+        "zero_otu,Recipe-method"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/dar/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/dar/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "ape",
+    "askpass",
+    "assertthat",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "biomformat",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "bluster",
+    "bslib",
+    "ca",
+    "cachem",
+    "Cairo",
+    "callr",
+    "caTools",
+    "circlize",
+    "cli",
+    "clipr",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "DECIPHER",
+    "decontam",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "dendextend",
+    "diffobj",
+    "digest",
+    "DirichletMultinomial",
+    "doParallel",
+    "dplyr",
+    "dqrng",
+    "ecodive",
+    "egg",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "FNN",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gclus",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggbeeswarm",
+    "ggplot2",
+    "ggrastr",
+    "ggrepel",
+    "GlobalOptions",
+    "glue",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "heatmaply",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mia",
+    "mime",
+    "MultiAssayExperiment",
+    "multtest",
+    "nlme",
+    "openssl",
+    "otel",
+    "permute",
+    "pheatmap",
+    "phyloseq",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "prettyunits",
+    "processx",
+    "progress",
+    "promises",
+    "ps",
+    "purrr",
+    "qap",
+    "R6",
+    "ragg",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "readr",
+    "registry",
+    "reshape2",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RSpectra",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "Seqinfo",
+    "seriation",
+    "shape",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "sp",
+    "SparseArray",
+    "sparseMatrixStats",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tinytex",
+    "treeio",
+    "TreeSummarizedExperiment",
+    "TSP",
+    "tzdb",
+    "UpSetR",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vegan",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "vroom",
+    "waldo",
+    "webshot",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "data_import.Rmd",
+      "filename": "data_import.html",
+      "title": "Converting Common Data Formats to Phyloseq and TreeSummarizedExperiment",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Importing Data from biome Format",
+        "To Phyloseq",
+        "To TreeSummarizedExperiment",
+        "Importing Data from qiime Format",
+        "Importing Data from mothur Format",
+        "Importing Data from metaphlan Format",
+        "Conclusion",
+        "Session info"
+      ],
+      "created": "2022-08-19 15:39:01",
+      "modified": "2024-10-16 18:04:01",
+      "commits": 13
+    },
+    {
+      "source": "filtering_subsetting.Rmd",
+      "filename": "filtering_subsetting.html",
+      "title": "Filtering and Subsetting",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "step_filter_taxa",
+        "Convenience Wrappers",
+        "step_filter_by_abundance",
+        "step_filter_by_prevalence",
+        "step_filter_by_rarity",
+        "step_filter_by_variance",
+        "subset_taxa",
+        "Conclusion",
+        "Session info"
+      ],
+      "created": "2023-11-29 08:15:01",
+      "modified": "2024-01-10 09:23:53",
+      "commits": 3
+    },
+    {
+      "source": "dar.Rmd",
+      "filename": "dar.html",
+      "title": "Introduction to dar",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "An Example",
+        "An Initial Recipe",
+        "Preprocessing Steps",
+        "Differential Analysis",
+        "Prep",
+        "Bake and cool",
+        "Session info"
+      ],
+      "created": "2022-08-19 09:06:08",
+      "modified": "2024-01-10 09:23:53",
+      "commits": 9
+    },
+    {
+      "source": "import_export_recipes.Rmd",
+      "filename": "import_export_recipes.html",
+      "title": "Reproducibility in Microbiome Data Analysis",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Exporting Steps of a Recipe",
+        "Importing Steps from a JSON File",
+        "Limitations and Considerations",
+        "Conclusion",
+        "Session info"
+      ],
+      "created": "2023-09-19 12:37:02",
+      "modified": "2023-11-29 08:15:01",
+      "commits": 5
+    },
+    {
+      "source": "article.Rmd",
+      "filename": "article.html",
+      "title": "Workflow with real data",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Load dar package and data",
+        "Recipe initialization",
+        "Recipe QC and preprocessing steps definition",
+        "Define Differential Analysis (DA) steps",
+        "Prep recipe",
+        "Default results extraction",
+        "Exploration for consensus strategie definition",
+        "Define a consesus strategy using bake",
+        "Extract results",
+        "Session info"
+      ],
+      "created": "2023-01-31 07:32:48",
+      "modified": "2025-03-15 12:52:43",
+      "commits": 11
+    },
+    {
+      "source": "bioinformatics_vignette.Rmd",
+      "filename": "bioinformatics_vignette.html",
+      "title": "dar: Case of Study",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Load dar package and data",
+        "Recipe Initialization",
+        "Recipe QC and Preprocessing Steps Definition",
+        "Define Differential Analysis (DA) steps",
+        "Prep recipe",
+        "Default results extraction",
+        "Exploration for consensus strategie definition",
+        "Define a consesus strategy using bake",
+        "Extract results",
+        "Session Info"
+      ],
+      "created": "2025-03-15 12:52:43",
+      "modified": "2025-03-15 12:52:43",
+      "commits": 2
+    }
+  ],
+  "_score": 6.1303337684950066,
+  "_indexed": true,
+  "_nocasepkg": "dar",
+  "_universes": [
+    "bioc",
+    "xec-cm",
+    "microbialgenomics-irsicaixaorg"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.7.0",
+      "date": "2026-02-03T09:37:16.000Z",
+      "distro": "noble",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "43f5c87720522212915b230203ba50ebbafbb5d926425a8431edf3fe47c4985f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.7.0",
+      "date": "2026-02-03T09:37:41.000Z",
+      "distro": "noble",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "b122e312607de8bde50c1efe0ab454c49665d8415f1cb5162221a73663909c4c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.7.0",
+      "date": "2026-02-03T10:10:03.000Z",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "5a3c8082dedcb71dcb954bcef58839a20147c6a2cd3dbce4d3b2a4a776b77c8a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.7.0",
+      "date": "2026-02-03T10:09:44.000Z",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "38abd7c650ade935dc02fd9e76df593cab013d5c6e24f39b0f6dae88b8b5e4fe",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.7.0",
+      "date": "2026-02-03T09:37:11.000Z",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "c95510e573d2082c4f6c010e2c77767bdc7612e3c0eea340ef7f524adbb32374",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-02-03T09:34:58.000Z",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "44df84bc2e1362de3af04009b26cfe603c505bd327b952acf4fd93dd99962716",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-02-03T09:35:37.000Z",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "b6d1cc3a4c2b83e3590bae453198e103281645d15d0f07f5260fe4909be4bc34",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-02-03T09:35:14.000Z",
+      "commit": "6a934816db001a0f07990c9ebbbc8b08f79569f4",
+      "fileid": "4b052775ff94bf363574dc7dbbb321b46d46344f7c03b8aca76b31dc543de81f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624440394"
+    }
+  ]
+}

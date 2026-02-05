@@ -1,0 +1,689 @@
+{
+  "Package": "demuxSNP",
+  "Title": "scRNAseq demultiplexing using cell hashing and SNPs",
+  "Version": "1.9.0",
+  "Authors@R": "c(\nperson(\"Michael\", \"Lynch\",\nemail = \"michael.lynch@ul.ie\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0001-9535-6461\")),\nperson(\"Aedin\", \"Culhane\",\nemail = \"aedin.culhane@ul.ie\",\nrole = c(\"aut\"),\ncomment = c(ORCID = \"0000-0002-1395-9734\")))",
+  "Description": "This package assists in demultiplexing scRNAseq data using\nboth cell hashing and SNPs data. The SNP profile of each group\nos learned using high confidence assignments from the cell\nhashing data. Cells which cannot be assigned with high\nconfidence from the cell hashing data are assigned to their\nmost similar group based on their SNPs. We also provide some\nhelper function to optimise SNP selection, create training data\nand merge SNP data into the SingleCellExperiment framework.",
+  "URL": "https://github.com/michaelplynch/demuxSNP",
+  "BugReports": "https://github.com/michaelplynch/demuxSNP/issues",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "Classification, SingleCell",
+  "VignetteBuilder": "knitr",
+  "LazyData": "false",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libpng-dev libxml2-dev\nlibssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:23:27 UTC",
+  "RemoteUrl": "https://github.com/bioc/demuxSNP",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-09 21:15:28 UTC",
+    "User": "root"
+  },
+  "Author": "Michael Lynch [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-9535-6461>),\nAedin Culhane [aut] (ORCID: <https://orcid.org/0000-0002-1395-9734>)",
+  "Maintainer": "Michael Lynch <michael.lynch@ul.ie>",
+  "MD5sum": "05885233bbdd6dd1d46de1fc565bb5ec",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "demuxSNP_1.9.0.tar.gz",
+  "_fileid": "585da86b7a661f09a2806c983c3bbd8914a3ede5f3d17c756f7f5798454f17f8",
+  "_filesize": 1894873,
+  "_sha256": "585da86b7a661f09a2806c983c3bbd8914a3ede5f3d17c756f7f5798454f17f8",
+  "_created": "2026-01-09T21:15:28.000Z",
+  "_published": "2026-01-09T21:49:37.347Z",
+  "_jobs": [
+    {
+      "job": 59956526285,
+      "time": 289,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081221851"
+    },
+    {
+      "job": 59956526298,
+      "time": 578,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5081265960"
+    },
+    {
+      "job": 59956526317,
+      "time": 579,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081266111"
+    },
+    {
+      "job": 59956526279,
+      "time": 431,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5081450086"
+    },
+    {
+      "job": 59956526295,
+      "time": 382,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081445367"
+    },
+    {
+      "job": 59955912016,
+      "time": 467,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081151863"
+    },
+    {
+      "job": 59956526307,
+      "time": 239,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5081214666"
+    },
+    {
+      "job": 59956526314,
+      "time": 680,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5081282192"
+    },
+    {
+      "job": 59956526325,
+      "time": 601,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5081269687"
+    },
+    {
+      "job": 59956526322,
+      "time": 601,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081268980"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/demuxSNP",
+  "_commit": {
+    "id": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751407
+  },
+  "_maintainer": {
+    "name": "Michael Lynch",
+    "email": "michael.lynch@ul.ie",
+    "orcid": "0000-0001-9535-6461"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Depends"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Depends"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "class",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "demuxmix",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "KernelKnn",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Suggests"
+    },
+    {
+      "package": "viridisLite",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Suggests"
+    },
+    {
+      "package": "dittoSeq",
+      "role": "Suggests"
+    },
+    {
+      "package": "EnsDb.Hsapiens.v86",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "RefManageR",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seurat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.9.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.8.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "classification",
+    "singlecell"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "michaelplynch",
+      "count": 149,
+      "uuid": 89206184
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 230,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/demuxSNP"
+  },
+  "_devurl": "https://github.com/michaelplynch/demuxsnp",
+  "_searchresults": 22,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/demuxSNP.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/michaelplynch/demuxsnp",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "add_snps",
+    "common_genes",
+    "high_conf_calls",
+    "reassign",
+    "reassign_balanced",
+    "reassign_centroid",
+    "reassign_jaccard",
+    "subset_vcf"
+  ],
+  "_datasets": [
+    {
+      "name": "commonvariants_1kgenomes_subset",
+      "title": "Sample vcf file",
+      "object": "commonvariants_1kgenomes_subset",
+      "file": "commonvariants_1kgenomes_subset.rda",
+      "class": [
+        "CollapsedVCF"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "multiplexed_scrnaseq_sce",
+      "title": "SingleCellExperiment object containing multiplexed RNA and HTO data from six biological smamples",
+      "object": "multiplexed_scrnaseq_sce",
+      "file": "multiplexed_scrnaseq_sce.rda",
+      "class": [
+        "SingleCellExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "vartrix_consensus_snps",
+      "title": "Sample VarTrix output",
+      "object": "vartrix_consensus_snps",
+      "file": "vartrix_consensus_snps.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": {},
+      "rows": 2542,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "add_snps",
+      "title": "Add SNPs to SingleCellExperiment object",
+      "topics": [
+        "add_snps"
+      ]
+    },
+    {
+      "page": "common_genes",
+      "title": "Return a character vector of top n most frequent genes from a SingleCellExperiment object.",
+      "topics": [
+        "common_genes"
+      ]
+    },
+    {
+      "page": "commonvariants_1kgenomes_subset",
+      "title": "Sample vcf file",
+      "topics": [
+        "commonvariants_1kgenomes_subset"
+      ]
+    },
+    {
+      "page": "high_conf_calls",
+      "title": "Run demuxmix to determine high-confidence calls",
+      "topics": [
+        "high_conf_calls"
+      ]
+    },
+    {
+      "page": "multiplexed_scrnaseq_sce",
+      "title": "SingleCellExperiment object containing multiplexed RNA and HTO data from six biological smamples",
+      "topics": [
+        "multiplexed_scrnaseq_sce"
+      ]
+    },
+    {
+      "page": "reassign",
+      "title": "Reassign cells using knn",
+      "topics": [
+        "reassign"
+      ]
+    },
+    {
+      "page": "reassign_balanced",
+      "title": "Reassign cells using balanced knn with jaccard distance",
+      "topics": [
+        "reassign_balanced"
+      ]
+    },
+    {
+      "page": "reassign_centroid",
+      "title": "Reassign cells based on SNPs",
+      "topics": [
+        "reassign_centroid"
+      ]
+    },
+    {
+      "page": "reassign_jaccard",
+      "title": "Reassign cells using knn with jaccard distance",
+      "topics": [
+        "reassign_jaccard"
+      ]
+    },
+    {
+      "page": "subset_vcf",
+      "title": "Subset common variants vcf file to only SNPs seen in 'top_genes'",
+      "topics": [
+        "subset_vcf"
+      ]
+    },
+    {
+      "page": "vartrix_consensus_snps",
+      "title": "Sample VarTrix output",
+      "topics": [
+        "vartrix_consensus_snps"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/demuxSNP/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/demuxSNP/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "cachem",
+    "cigarillo",
+    "class",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "demuxmix",
+    "dplyr",
+    "ensembldb",
+    "farver",
+    "fastmap",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "KernelKnn",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "ProtGenerics",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "supervised_demultiplexing.Rmd",
+      "filename": "supervised_demultiplexing.html",
+      "title": "Supervised Demultiplexing using Cell Hashing and SNPs",
+      "author": "Michael Lynch, Aedin Culhane",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Existing Methods",
+        "Cell Hashing",
+        "SNPs",
+        "demuxSNP Motivation",
+        "Installation",
+        "Quick Usage",
+        "Workflow",
+        "Function Explanation",
+        "Exploratory Analysis",
+        "Preprocessing",
+        "Variant Calling (VarTrix)",
+        "Cell Reassignment, Visualisation and Evaluation",
+        "Performance",
+        "Session Info",
+        "References"
+      ],
+      "created": "2023-03-03 11:26:42",
+      "modified": "2024-10-03 13:31:54",
+      "commits": 11
+    }
+  ],
+  "_score": 5.363611979892145,
+  "_indexed": true,
+  "_nocasepkg": "demuxsnp",
+  "_universes": [
+    "bioc",
+    "michaelplynch"
+  ],
+  "_previous": "1.7.1",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:22:55.000Z",
+      "distro": "noble",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "4f7501022ff12526794613ee1c002e327e53c7aa40da056d4d9f721f7bba1a11",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:22:55.000Z",
+      "distro": "noble",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "ff872a441e41c92927b9511be4e42df148d09111bd399c7b70b4296995a59bcc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:44:21.000Z",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "e287b80882494f46927a72422b4b28a4d320ff528fedde9223c58d29a16c8dbb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:44:17.000Z",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "6c5b065b54e0912ead44ba4b21a82d83e7803d415548c169b66df59932c538e6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:23:10.000Z",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "eeba2e16bf5a6bdf8f26f340e1b4f075b8eef336e7f0bb67367ce257da78f605",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:22:02.000Z",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "8e2600cbbb0a5cd63db36ee6edb50e1914e53c0f211ebe8146516141e9a745bf",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:21:37.000Z",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "76cbbbaeccf29931fb6125a78fd8d10dd54b0b98edc2fde2d4ebd6c0188fb30c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.9.0",
+      "date": "2026-01-09T21:21:30.000Z",
+      "commit": "e59403407a1ac2999cbfcceb02c75abbf3adf044",
+      "fileid": "ad3d69d8930a9c2631b18dcbea909232d54155faee91c86ac38774df12732c2c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865612474"
+    }
+  ]
+}

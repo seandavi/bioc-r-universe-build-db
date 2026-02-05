@@ -1,0 +1,810 @@
+{
+  "Package": "cytofQC",
+  "Type": "Package",
+  "Title": "Labels normalized cells for CyTOF data and assigns probabilities\nfor each label",
+  "Version": "1.99.2",
+  "Authors@R": "c(\nperson(\"Jill\", \"Lundell\", role = c(\"aut\", \"cre\"), email = \"jflundell@gmail.com\", comment = c(ORCID = \"0000-0002-6048-4700\")),\nperson(\"Kelly\", \"Street\", role = \"aut\", email = \"street.kelly@gmail.com\", comment = c(ORCID = \"0000-0001-6379-5013\")))",
+  "Description": "cytofQC is a package for initial cleaning of CyTOF data.\nIt uses a semi-supervised approach for labeling cells with\ntheir most likely data type (bead, doublet, debris, dead) and\nthe probability that they belong to each label type. This\npackage does not remove data from the dataset, but provides\nlabels and information to aid the data user in cleaning their\ndata. Our algorithm is able to distinguish between doublets and\nlarge cells.",
+  "License": "Artistic-2.0",
+  "URL": "https://github.com/jillbo1000/cytofQC",
+  "BugReports": "https://github.com/jillbo1000/cytofQC/issues",
+  "biocViews": "Software, SingleCell, Annotation",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libfribidi-dev libglpk-dev make\nlibharfbuzz-dev libicu-dev libjpeg-dev libpng-dev libtiff-dev\nlibwebp-dev libxml2-dev libssl-dev perl zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-20 05:02:36 UTC",
+  "RemoteUrl": "https://github.com/bioc/cytofQC",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-21 03:42:18 UTC",
+    "User": "root"
+  },
+  "Author": "Jill Lundell [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-6048-4700>),\nKelly Street [aut] (ORCID: <https://orcid.org/0000-0001-6379-5013>)",
+  "Maintainer": "Jill Lundell <jflundell@gmail.com>",
+  "MD5sum": "4f0062251a70c9f7a29034ac4433930c",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "cytofQC_1.99.2.tar.gz",
+  "_fileid": "eab13a767e636fc32f977def614a5a6666a43ef41a46b4333341cd6f076f9231",
+  "_filesize": 1519402,
+  "_sha256": "eab13a767e636fc32f977def614a5a6666a43ef41a46b4333341cd6f076f9231",
+  "_created": "2026-01-21T03:42:18.000Z",
+  "_published": "2026-01-21T03:52:03.776Z",
+  "_jobs": [
+    {
+      "job": 60973129870,
+      "time": 265,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5199183526"
+    },
+    {
+      "job": 60973129866,
+      "time": 498,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5199210776"
+    },
+    {
+      "job": 60973129875,
+      "time": 523,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5199213514"
+    },
+    {
+      "job": 60973129871,
+      "time": 419,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5199201741"
+    },
+    {
+      "job": 60973129879,
+      "time": 246,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5199180897"
+    },
+    {
+      "job": 60972764497,
+      "time": 386,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5199153092"
+    },
+    {
+      "job": 60973129872,
+      "time": 221,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5199178375"
+    },
+    {
+      "job": 60973129886,
+      "time": 436,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5199203916"
+    },
+    {
+      "job": 60973129884,
+      "time": 412,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5199201422"
+    },
+    {
+      "job": 60973129874,
+      "time": 397,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5199199796"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 5
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/cytofQC",
+  "_commit": {
+    "id": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+    "author": "jillbo1000 <jflundell@gmail.com>",
+    "committer": "jillbo1000 <jflundell@gmail.com>",
+    "message": "new check\n",
+    "time": 1768885356
+  },
+  "_maintainer": {
+    "name": "Jill Lundell",
+    "email": "jflundell@gmail.com",
+    "login": "jillbo1000",
+    "uuid": 7329383,
+    "orcid": "0000-0002-6048-4700"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "CATALYST",
+      "role": "Imports"
+    },
+    {
+      "package": "flowCore",
+      "role": "Imports"
+    },
+    {
+      "package": "e1071",
+      "role": "Imports"
+    },
+    {
+      "package": "EZtune",
+      "role": "Imports"
+    },
+    {
+      "package": "gbm",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "randomForest",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "ssc",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "mixtools",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "uwot",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-02",
+      "n": 2
+    },
+    {
+      "week": "2026-04",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.99.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.9.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "singlecell",
+    "annotation"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "jillbo1000",
+      "count": 45,
+      "uuid": 7329383
+    },
+    {
+      "user": "kstreet13",
+      "count": 30,
+      "uuid": 11052277
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 231,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/cytofQC"
+  },
+  "_devurl": "https://github.com/jillbo1000/cytofqc",
+  "_searchresults": 3,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/cytofQC.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/jillbo1000/cytofqc",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "cytofHist",
+    "cytofQCreport",
+    "gbmLabel",
+    "initial",
+    "initialBead",
+    "initialDead",
+    "initialDebris",
+    "initialDoublet",
+    "initialGuess",
+    "label",
+    "labelQC",
+    "modelData",
+    "plotInitialGuess",
+    "probs",
+    "readCytof",
+    "rfLabel",
+    "s3vmLabel",
+    "scores",
+    "svmLabel",
+    "tech"
+  ],
+  "_help": [
+    {
+      "page": "cytofQC-package",
+      "title": "cytofQC: Event labeling for quality control of CyTOF data",
+      "topics": [
+        "cytofQC-package",
+        "cytofQC"
+      ]
+    },
+    {
+      "page": "cytofHist",
+      "title": "Returns histogram for grouped data",
+      "topics": [
+        "cytofHist"
+      ]
+    },
+    {
+      "page": "cytofQCreport",
+      "title": "Generate a cytofQC report",
+      "topics": [
+        "cytofQCreport"
+      ]
+    },
+    {
+      "page": "gbmLabel",
+      "title": "Returns the final label assignments for a parameter using a gradient boosting machine",
+      "topics": [
+        "gbmLabel"
+      ]
+    },
+    {
+      "page": "initialBead",
+      "title": "Preliminary bead classification",
+      "topics": [
+        "initialBead"
+      ]
+    },
+    {
+      "page": "initialDead",
+      "title": "Preliminary viability classification",
+      "topics": [
+        "initialDead"
+      ]
+    },
+    {
+      "page": "initialDebris",
+      "title": "Preliminary debris classification",
+      "topics": [
+        "initialDebris"
+      ]
+    },
+    {
+      "page": "initialDoublet",
+      "title": "Preliminary doublet classification",
+      "topics": [
+        "initialDoublet"
+      ]
+    },
+    {
+      "page": "initialGuess",
+      "title": "General preliminary classification.",
+      "topics": [
+        "initialGuess"
+      ]
+    },
+    {
+      "page": "labelQC",
+      "title": "Returns the final label assignments the specified parameters",
+      "topics": [
+        "labelQC"
+      ]
+    },
+    {
+      "page": "modelData",
+      "title": "Returns indices for data to be used to create the final classification model",
+      "topics": [
+        "modelData"
+      ]
+    },
+    {
+      "page": "plotInitialGuess",
+      "title": "Plot preliminary classification from initialGuess",
+      "topics": [
+        "plotInitialGuess"
+      ]
+    },
+    {
+      "page": "readCytof",
+      "title": "Read in a dataset and prepare it for analysis",
+      "topics": [
+        "readCytof"
+      ]
+    },
+    {
+      "page": "rfLabel",
+      "title": "Returns the final label assignments for a parameter using a random forest",
+      "topics": [
+        "rfLabel"
+      ]
+    },
+    {
+      "page": "s3vmLabel",
+      "title": "Returns the final label assignments for a parameter using a semi-supervised support vector machine",
+      "topics": [
+        "s3vmLabel"
+      ]
+    },
+    {
+      "page": "scores",
+      "title": "Returns a specified object from the cytofQC SingleCellExperiment",
+      "topics": [
+        "initial",
+        "label",
+        "probs",
+        "scores",
+        "tech"
+      ]
+    },
+    {
+      "page": "svmLabel",
+      "title": "Returns the final label assignments for a parameter using a support vector machine",
+      "topics": [
+        "svmLabel"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/cytofQC/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ada",
+    "ALL",
+    "askpass",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocManager",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "BiocStyle",
+    "bitops",
+    "bookdown",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "Cairo",
+    "car",
+    "carData",
+    "CATALYST",
+    "caTools",
+    "circlize",
+    "class",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorRamps",
+    "colorspace",
+    "ComplexHeatmap",
+    "ConsensusClusterPlus",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "cytolib",
+    "data.table",
+    "DelayedArray",
+    "Deriv",
+    "digest",
+    "doBy",
+    "doParallel",
+    "dplyr",
+    "dqrng",
+    "drc",
+    "e1071",
+    "evaluate",
+    "EZtune",
+    "farver",
+    "fastmap",
+    "flowCore",
+    "FlowSOM",
+    "FNN",
+    "fontawesome",
+    "foreach",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "GA",
+    "gbm",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggbeeswarm",
+    "ggforce",
+    "ggnewscale",
+    "ggplot2",
+    "ggpubr",
+    "ggrastr",
+    "ggrepel",
+    "ggridges",
+    "ggsci",
+    "ggsignif",
+    "glmnet",
+    "GlobalOptions",
+    "glue",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "kernlab",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "lme4",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "microbenchmark",
+    "mime",
+    "minqa",
+    "mixtools",
+    "modelr",
+    "multcomp",
+    "mvtnorm",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "nnls",
+    "numDeriv",
+    "openssl",
+    "optimx",
+    "otel",
+    "pbkrtest",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plotrix",
+    "plyr",
+    "png",
+    "polyclip",
+    "polynom",
+    "pracma",
+    "promises",
+    "proxy",
+    "purrr",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "R6",
+    "ragg",
+    "randomForest",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "Rdpack",
+    "reformulas",
+    "reshape2",
+    "Rhdf5lib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "ROCR",
+    "rpart",
+    "RProtoBufLib",
+    "RSpectra",
+    "rstatix",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sandwich",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "segmented",
+    "Seqinfo",
+    "shape",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "ssc",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "TH.data",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tinytex",
+    "tseries",
+    "TTR",
+    "tweenr",
+    "urca",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xts",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "cytofQC.Rmd",
+      "filename": "cytofQC.html",
+      "title": "Complete Guide to cytofQC",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Quick Start",
+        "Read in data and create initial dataset",
+        "Use labelQC to obtain labels for each obsevation",
+        "Individual functions",
+        "Beads",
+        "Debris",
+        "Doublets",
+        "Dead cells",
+        "UMAP for exploration",
+        "SessionInfo"
+      ],
+      "created": "2022-10-07 00:31:29",
+      "modified": "2026-01-11 05:35:06",
+      "commits": 4
+    }
+  ],
+  "_score": 4.301029995663981,
+  "_indexed": true,
+  "_nocasepkg": "cytofqc",
+  "_universes": [
+    "bioc",
+    "jillbo1000"
+  ],
+  "_previous": "1.99.1",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:47:14.000Z",
+      "distro": "noble",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "dbb66e7f5badbee4424c5b430f2d0bd52a046c3ec5e910c694d5904e4203ee5e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:47:48.000Z",
+      "distro": "noble",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "0ce06c01c0f9d57361d9723751545b797fca71268aa1754f81c4a94b5fd2f781",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:44:58.000Z",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "04fd80ea80fbf590e5a1099758c5a0a8925271617f2c36ccb5019ea0017cd12f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:44:22.000Z",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "7e6572fdc5845357aea3a4f67713fe50883af05aa455e4ed87ae41c2ca0498ae",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:46:38.000Z",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "9e7676d4032bec7a577c44495121c83c741e2628532a14cc0c54a49949596f03",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:45:25.000Z",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "ac2969943269fc38ac6a0516ad27545ba3a74cded0e22cceaed0709448211aad",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:45:24.000Z",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "b216c2e89c5315e25c28bea0d857cbc36fe4a453ac55cfe4d202689b234ab393",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.99.2",
+      "date": "2026-01-21T03:45:00.000Z",
+      "commit": "58229696947a0f2fd45c4506f7ed6590d23b1ceb",
+      "fileid": "d81e68468ef3b74004b266fb8f041c741899f4cc08ebe3f2c5d6f8e0bf808a5c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21196282113"
+    }
+  ]
+}

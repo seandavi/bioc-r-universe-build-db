@@ -1,0 +1,650 @@
+{
+  "Package": "TargetDecoy",
+  "Title": "Diagnostic Plots to Evaluate the Target Decoy Approach",
+  "Version": "1.17.0",
+  "Date": "2022-10-21",
+  "Authors@R": "c(\nperson(given = \"Elke\",\nfamily = \"Debrie\",\nrole = c(\"aut\", \"cre\"),\nemail = \"elkedebrie@gmail.com\"),\nperson(given = \"Lieven\",\nfamily = \"Clement\",\nrole = c(\"aut\"),\nemail = \"lieven.clement@ugent.be\",\ncomment = c(ORCID = \"0000-0002-9050-4370\")),\nperson(given = \"Milan\",\nfamily = \"Malfait\",\nrole = \"aut\",\nemail = \"milan.malfait@ugent.be\",\ncomment = c(ORCID = \"0000-0001-9144-3701\"))\n)",
+  "Description": "A first step in the data analysis of Mass Spectrometry\n(MS) based proteomics data is to identify peptides and\nproteins. With this respect the huge number of experimental\nmass spectra typically have to be assigned to theoretical\npeptides derived from a sequence database. Search engines are\nused for this purpose. These tools compare each of the observed\nspectra to all candidate theoretical spectra derived from the\nsequence data base and calculate a score for each comparison.\nThe observed spectrum is then assigned to the theoretical\npeptide with the best score, which is also referred to as the\npeptide to spectrum match (PSM). It is of course crucial for\nthe downstream analysis to evaluate the quality of these\nmatches. Therefore False Discovery Rate (FDR) control is used\nto return a reliable list PSMs. The FDR, however, requires a\ngood characterisation of the score distribution of PSMs that\nare matched to the wrong peptide (bad target hits). In\nproteomics, the target decoy approach (TDA) is typically used\nfor this purpose. The TDA method matches the spectra to a\ndatabase of real (targets) and nonsense peptides (decoys). A\npopular approach to generate these decoys is to reverse the\ntarget database. Hence, all the PSMs that match to a decoy are\nknown to be bad hits and the distribution of their scores are\nused to estimate the distribution of the bad scoring target\nPSMs. A crucial assumption of the TDA is that the decoy PSM\nhits have similar properties as bad target hits so that the\ndecoy PSM scores are a good simulation of the target PSM\nscores. Users, however, typically do not evaluate these\nassumptions. To this end we developed TargetDecoy to generate\ndiagnostic plots to evaluate the quality of the target decoy\nmethod.",
+  "License": "Artistic-2.0",
+  "URL": "https://www.bioconductor.org/packages/TargetDecoy,\nhttps://statomics.github.io/TargetDecoy/,\nhttps://github.com/statOmics/TargetDecoy/",
+  "BugReports": "https://github.com/statOmics/TargetDecoy/issues",
+  "biocViews": "MassSpectrometry, Proteomics, QualityControl, Software,\nVisualization",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.2.1",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "cmake make libicu-dev libxml2-dev libnetcdf-dev\nlibssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:13:35 UTC",
+  "RemoteUrl": "https://github.com/bioc/TargetDecoy",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 09:02:42 UTC",
+    "User": "root"
+  },
+  "Author": "Elke Debrie [aut, cre],\nLieven Clement [aut] (ORCID: <https://orcid.org/0000-0002-9050-4370>),\nMilan Malfait [aut] (ORCID: <https://orcid.org/0000-0001-9144-3701>)",
+  "Maintainer": "Elke Debrie <elkedebrie@gmail.com>",
+  "MD5sum": "4a115e642fe8b9420e327e942c682804",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "TargetDecoy_1.17.0.tar.gz",
+  "_fileid": "c1f3a4169dbb2bc6eb9bc4bff17127eae897a3e2a91836803563bbd8e81f18f5",
+  "_filesize": 4110714,
+  "_sha256": "c1f3a4169dbb2bc6eb9bc4bff17127eae897a3e2a91836803563bbd8e81f18f5",
+  "_created": "2026-02-03T09:02:42.000Z",
+  "_published": "2026-02-03T09:09:04.122Z",
+  "_jobs": [
+    {
+      "job": 62318892120,
+      "time": 188,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354708788"
+    },
+    {
+      "job": 62318892081,
+      "time": 283,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354727530"
+    },
+    {
+      "job": 62318892087,
+      "time": 265,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354724021"
+    },
+    {
+      "job": 62318892163,
+      "time": 155,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354736472"
+    },
+    {
+      "job": 62318892179,
+      "time": 136,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354734486"
+    },
+    {
+      "job": 62318381823,
+      "time": 274,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354670854"
+    },
+    {
+      "job": 62318892063,
+      "time": 166,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5354704306"
+    },
+    {
+      "job": 62318892114,
+      "time": 149,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354701424"
+    },
+    {
+      "job": 62318892123,
+      "time": 156,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5354702701"
+    },
+    {
+      "job": 62318892165,
+      "time": 184,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354711899"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/TargetDecoy",
+  "_commit": {
+    "id": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750815
+  },
+  "_maintainer": {
+    "name": "Elke Debrie",
+    "email": "elkedebrie@gmail.com",
+    "login": "elkedebrie",
+    "uuid": 58975944
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "miniUI",
+      "role": "Imports"
+    },
+    {
+      "package": "mzID",
+      "role": "Imports"
+    },
+    {
+      "package": "mzR",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "msdata",
+      "role": "Suggests"
+    },
+    {
+      "package": "sessioninfo",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.17.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.16.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "massspectrometry",
+    "proteomics",
+    "qualitycontrol",
+    "software",
+    "visualization",
+    "bioconductor",
+    "mass-spectrometry"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "milanmlft",
+      "count": 106,
+      "uuid": 38256462
+    },
+    {
+      "user": "elkedebrie",
+      "count": 12,
+      "uuid": 58975944
+    },
+    {
+      "user": "lievenclement",
+      "count": 6,
+      "uuid": 18614962
+    },
+    {
+      "user": "nturaga",
+      "count": 4,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 284,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/TargetDecoy"
+  },
+  "_devurl": "https://github.com/statomics/targetdecoy",
+  "_pkgdown": "https://statomics.github.io/TargetDecoy/",
+  "_searchresults": 10,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/TargetDecoy.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/statomics/targetdecoy",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "createPPlotObjects",
+    "createPPlotScores",
+    "decoyScoreTable",
+    "evalTargetDecoys",
+    "evalTargetDecoysHist",
+    "evalTargetDecoysPPPlot"
+  ],
+  "_datasets": [
+    {
+      "name": "ModSwiss",
+      "title": "Swiss-Prot MS-GF+ data",
+      "object": "ModSwiss",
+      "file": "ModSwiss.rda",
+      "class": [
+        "mzID"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ModSwissXT",
+      "title": "Swiss-Prot X!Tandem data",
+      "object": "ModSwissXT",
+      "file": "ModSwissXT.rda",
+      "class": [
+        "mzID"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "createPPlotObjects",
+      "title": "Create all the PP plots in one figure for scores from multiple objects",
+      "topics": [
+        "createPPlotObjects"
+      ]
+    },
+    {
+      "page": "createPPlotScores",
+      "title": "Evaluate assumptions of the Target Decoys Approach for multiple search engines",
+      "topics": [
+        "createPPlotScores"
+      ]
+    },
+    {
+      "page": "decoyScoreTable",
+      "title": "Prepare score table for decoys",
+      "topics": [
+        "decoyScoreTable"
+      ]
+    },
+    {
+      "page": "evalTargetDecoys",
+      "title": "Evaluate assumptions of the Target Decoys approach",
+      "topics": [
+        "evalTargetDecoys",
+        "evalTargetDecoysHist",
+        "evalTargetDecoysPPPlot"
+      ]
+    },
+    {
+      "page": "ModSwiss",
+      "title": "Swiss-Prot MS-GF+ data",
+      "topics": [
+        "ModSwiss"
+      ]
+    },
+    {
+      "page": "ModSwissXT",
+      "title": "Swiss-Prot X!Tandem data",
+      "topics": [
+        "ModSwissXT"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/TargetDecoy/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "backports",
+    "base64enc",
+    "Biobase",
+    "BiocGenerics",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "car",
+    "carData",
+    "cli",
+    "codetools",
+    "colorspace",
+    "commonmark",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "curl",
+    "Deriv",
+    "digest",
+    "doBy",
+    "doParallel",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "foreach",
+    "forecast",
+    "Formula",
+    "fracdiff",
+    "fs",
+    "generics",
+    "ggplot2",
+    "ggpubr",
+    "ggrepel",
+    "ggsci",
+    "ggsignif",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "htmltools",
+    "httpuv",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "labeling",
+    "later",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixModels",
+    "memoise",
+    "mgcv",
+    "microbenchmark",
+    "mime",
+    "miniUI",
+    "minqa",
+    "modelr",
+    "mzID",
+    "mzR",
+    "ncdf4",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "otel",
+    "pbkrtest",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "polynom",
+    "promises",
+    "ProtGenerics",
+    "purrr",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "reformulas",
+    "Rhdf5lib",
+    "rlang",
+    "rstatix",
+    "S7",
+    "sass",
+    "scales",
+    "shiny",
+    "sourcetools",
+    "SparseM",
+    "stringi",
+    "stringr",
+    "survival",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tseries",
+    "TTR",
+    "urca",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "xtable",
+    "xts",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "TargetDecoy.Rmd",
+      "filename": "TargetDecoy.html",
+      "title": "Introduction to TargetDecoy",
+      "author": "Elke Debrie, Adriaan Sticker, Milan Malfait, Lieven Clement",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Basics",
+        "Installing TargetDecoy",
+        "Citing TargetDecoy",
+        "Introduction",
+        "Concepts",
+        "Basic Statistical Concepts",
+        "Target Decoy Approach",
+        "Diagnostic plots",
+        "Histogram",
+        "PPplot",
+        "Supported data formats",
+        "Examples",
+        "The data",
+        "Example 1: One file and one search engine",
+        "Example 1.1: MSGF+ search engine",
+        "Interpretation",
+        "Example 1.2: X!Tandem search engine",
+        "Example 2: One file and search performed by an engine that combines different search engines",
+        "Interpretation of the plots",
+        "Example 3: Check the assumptions for multiple searches/runs",
+        "Provide a list with all objects",
+        "Example 3.1: Two data sets with the same search engine",
+        "Example 3.2: Two objects with different search engines",
+        "Shiny gadget",
+        "Reproducibility"
+      ],
+      "created": "2021-08-18 14:32:05",
+      "modified": "2022-10-21 14:38:06",
+      "commits": 9
+    }
+  ],
+  "_score": 4.6020599913279625,
+  "_indexed": true,
+  "_nocasepkg": "targetdecoy",
+  "_universes": [
+    "bioc",
+    "elkedebrie",
+    "statomics"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:06:57.000Z",
+      "distro": "noble",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "c5aa0e4c39fac107f70ee2876c342093c7beca9ed3c204b0734eee17e5cc2e41",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:06:39.000Z",
+      "distro": "noble",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "e7f71aacc4d2e4364111790b2cbe1078c2ec29c59a4620f6e4bdfd7ca71d5f46",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:07:57.000Z",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "343f9591e66164550e20dce01726a73c2fb452331cc595e0bbe1ec8db55c5132",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:07:51.000Z",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "87ddcf35fef3fde66507163f9aa6709065714634bfefa8881bd45c8a6b77e33a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:05:53.000Z",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "dc573254f07ed51cd057f08d633cd83ead422013d31970a47120a633dc929961",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:04:36.000Z",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "a59bc1212fa832efae883a828d4a6a35a8e2e8de5b062ea741efe454c50596d3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:04:40.000Z",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "67154decf747f891278e76401a6b49f9486d596e7ecabf9bd23178d69a598cb8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-02-03T09:05:23.000Z",
+      "commit": "ab5d4fd6d3ad610b0bc2ef183e08afb7161e6b58",
+      "fileid": "33330c9f95bcd73aaa37d366a9efb82ccab7c9538bfa4c6028a8706956eece70",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21623671904"
+    }
+  ]
+}

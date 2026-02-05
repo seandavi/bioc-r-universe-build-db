@@ -1,0 +1,917 @@
+{
+  "Package": "msPurity",
+  "Type": "Package",
+  "Title": "Automated Evaluation of Precursor Ion Purity for Mass\nSpectrometry Based Fragmentation in Metabolomics",
+  "Version": "1.37.0",
+  "Date": "2024-05-09",
+  "Authors@R": "c(\nperson(given = \"Thomas N.\", family = \"Lawson\",\nemail = \"thomas.nigel.lawson@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-5915-7980\")),\nperson(given = \"Ralf\", family = \"Weber\", role = \"ctb\"),\nperson(given = \"Martin\", family = \"Jones\", role = \"ctb\"),\nperson(given = \"Julien\", family = \"Saint-Vanne\", role = \"ctb\"),\nperson(given = \"Andris\", family = \"Jankevics\", role = \"ctb\"),\nperson(given = \"Mark\", family = \"Viant\", role = \"ths\"),\nperson(given = \"Warwick\", family = \"Dunn\", role = \"ths\"))",
+  "URL": "https://github.com/computational-metabolomics/msPurity/",
+  "Description": "msPurity R package was developed to: 1) Assess the\nspectral quality of fragmentation spectra by evaluating the\n\"precursor ion purity\". 2) Process fragmentation spectra. 3)\nPerform spectral matching. What is precursor ion purity? -What\nwe call \"Precursor ion purity\" is a measure of the contribution\nof a selected precursor peak in an isolation window used for\nfragmentation. The simple calculation involves dividing the\nintensity of the selected precursor peak by the total intensity\nof the isolation window. When assessing MS/MS spectra this\ncalculation is done before and after the MS/MS scan of interest\nand the purity is interpolated at the recorded time of the\nMS/MS acquisition. Additionally, isotopic peaks can be removed,\nlow abundance peaks are removed that are thought to have\nlimited contribution to the resulting MS/MS spectra and the\nisolation efficiency of the mass spectrometer can be used to\nnormalise the intensities used for the calculation.",
+  "Encoding": "UTF-8",
+  "License": "GPL-3 + file LICENSE",
+  "BugReports": "https://github.com/computational-metabolomics/msPurity/issues/new",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.1",
+  "Roxygen": "list(markdown = TRUE)",
+  "biocViews": "MassSpectrometry, Metabolomics, Software",
+  "Collate": "'all-generics.R' 'averaging.R' 'combineAnnotations.R'\n'create-database.R' 'createDatabase.R' 'flag-filter-remove.R'\n'iw-norm.R' 'matching-algs.R' 'meta_extract.R' 'msPurity.R'\n'pcalc.R' 'purityA-0-class.R' 'purityA-av-spectra.R'\n'purityA-constructor.R' 'purityA-create-msp.R'\n'purityA-filter-frag-spectra.R' 'purityA-frag4feature.R'\n'purityA-validate.R' 'purityD-class.R' 'purityD-constructor.R'\n'purityD-av-spectra.R' 'purityD-dims-purity.R'\n'purityD-fileList.R' 'purityD-filterp.R' 'purityD-subtract.R'\n'purityD-writeOut.R' 'purityX-class.R' 'purityX-constructor.R'\n'spectral-matching.R' 'spectralMatching.R' 'splinepurity.R'",
+  "Config/pak/sysreqs": "libicu-dev libnetcdf-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:32:24 UTC",
+  "RemoteUrl": "https://github.com/bioc/msPurity",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "dc13d895eb1d2142eab16178733865c441898c38",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-23 08:08:01 UTC",
+    "User": "root"
+  },
+  "Author": "Thomas N. Lawson [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-5915-7980>),\nRalf Weber [ctb],\nMartin Jones [ctb],\nJulien Saint-Vanne [ctb],\nAndris Jankevics [ctb],\nMark Viant [ths],\nWarwick Dunn [ths]",
+  "Maintainer": "Thomas N. Lawson <thomas.nigel.lawson@gmail.com>",
+  "MD5sum": "d5a51334aa6d1cf862be810d50bcf617",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "msPurity_1.37.0.tar.gz",
+  "_fileid": "0fcce0715c4217723c6c120924927b14924bd2b86c27e4c23269a42c250bd6f9",
+  "_filesize": 11422814,
+  "_sha256": "0fcce0715c4217723c6c120924927b14924bd2b86c27e4c23269a42c250bd6f9",
+  "_created": "2026-01-23T08:08:01.000Z",
+  "_published": "2026-01-23T08:23:23.173Z",
+  "_jobs": [
+    {
+      "job": 61244869008,
+      "time": 213,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5230821514"
+    },
+    {
+      "job": 61244869019,
+      "time": 716,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5230897805"
+    },
+    {
+      "job": 61244869025,
+      "time": 785,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5230908736"
+    },
+    {
+      "job": 61244869023,
+      "time": 742,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5230919850"
+    },
+    {
+      "job": 61244869028,
+      "time": 671,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5230915641"
+    },
+    {
+      "job": 61243911587,
+      "time": 791,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5230787800"
+    },
+    {
+      "job": 61244869056,
+      "time": 204,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5230819726"
+    },
+    {
+      "job": 61244869024,
+      "time": 814,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5230913088"
+    },
+    {
+      "job": 61244869009,
+      "time": 790,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5230909529"
+    },
+    {
+      "job": 61244869020,
+      "time": 784,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5230908421"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/msPurity",
+  "_commit": {
+    "id": "dc13d895eb1d2142eab16178733865c441898c38",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748344
+  },
+  "_maintainer": {
+    "name": "Thomas N. Lawson",
+    "email": "thomas.nigel.lawson@gmail.com",
+    "login": "tomnl",
+    "orcid": "0000-0002-5915-7980",
+    "uuid": 5541632
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "Rcpp",
+      "role": "Depends"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "dbplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "doSNOW",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "mzR",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "fastcluster",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Imports"
+    },
+    {
+      "package": "MSnbase",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "xcms",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "msPurityData",
+      "role": "Suggests"
+    },
+    {
+      "package": "CAMERA",
+      "role": "Suggests"
+    },
+    {
+      "package": "RPostgres",
+      "role": "Suggests"
+    },
+    {
+      "package": "RMySQL",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.37.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.36.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "massspectrometry",
+    "metabolomics",
+    "software",
+    "bioconductor-package",
+    "dims",
+    "fragmentation",
+    "lc-ms",
+    "lc-msms",
+    "mass-spectrometry",
+    "precursor-ion-purity"
+  ],
+  "_stars": 16,
+  "_contributors": [
+    {
+      "user": "tomnl",
+      "count": 345,
+      "uuid": 5541632
+    },
+    {
+      "user": "nturaga",
+      "count": 12,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "m-r-jones",
+      "count": 2,
+      "uuid": 6332174
+    },
+    {
+      "user": "rjmw",
+      "count": 2,
+      "uuid": 7114586
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "andzajan",
+      "count": 1,
+      "uuid": 10488638
+    },
+    {
+      "user": "jsaintvanne",
+      "count": 1,
+      "uuid": 35449860
+    },
+    {
+      "user": "kayla-morrell",
+      "count": 1,
+      "uuid": 32339524
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 412,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/msPurity"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/computational-metabolomics/mspurity",
+  "_searchresults": 44,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/msPurity.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/computational-metabolomics/mspurity",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "assessPuritySingle",
+    "averageAllFragSpectra",
+    "averageInterFragSpectra",
+    "averageIntraFragSpectra",
+    "averageSpectra",
+    "averageSpectraSingle",
+    "combineAnnotations",
+    "create_database",
+    "createDatabase",
+    "createMSP",
+    "dimsPredictPurity",
+    "dimsPredictPuritySingle",
+    "filterFragSpectra",
+    "filterp",
+    "flag_remove",
+    "frag4feature",
+    "get_additional_mzml_meta",
+    "Getfiles",
+    "getP",
+    "groupPeaks",
+    "groupPeaksEx",
+    "iwNormGauss",
+    "iwNormQE.5",
+    "iwNormRcosine",
+    "pcalc",
+    "purityA",
+    "purityD",
+    "purityX",
+    "show",
+    "spectral_matching",
+    "spectralMatching",
+    "subtract",
+    "subtractMZ",
+    "validate",
+    "writeOut"
+  ],
+  "_help": [
+    {
+      "page": "assessPuritySingle",
+      "title": "Assess the purity of a single LC-MS/MS or DI-MS/MS file",
+      "topics": [
+        "assessPuritySingle"
+      ]
+    },
+    {
+      "page": "averageAllFragSpectra-purityA-method",
+      "title": "Using a purityA object, average and filter MS/MS spectra for each XCMS feature within and across MS data files (ignoring intra and inter relationships)",
+      "topics": [
+        "averageAllFragSpectra",
+        "averageAllFragSpectra,purityA-method"
+      ]
+    },
+    {
+      "page": "averageInterFragSpectra-purityA-method",
+      "title": "Using a purityA object, average and filter fragmentation spectra for each XCMS feature across multiple MS data files",
+      "topics": [
+        "averageInterFragSpectra",
+        "averageInterFragSpectra,purityA-method"
+      ]
+    },
+    {
+      "page": "averageIntraFragSpectra-purityA-method",
+      "title": "Using a purityA object, average and filter fragmentation spectra for each XCMS feature within a MS data file",
+      "topics": [
+        "averageIntraFragSpectra",
+        "averageIntraFragSpectra,purityA-method"
+      ]
+    },
+    {
+      "page": "averageSpectra-purityD-method",
+      "title": "Using purityD object, calculates to average mz, intensity and signal-to-noise of multiple scans from multiple MS datafiles (mzML or .csv)",
+      "topics": [
+        "averageSpectra",
+        "averageSpectra,purityD-method"
+      ]
+    },
+    {
+      "page": "averageSpectraSingle",
+      "title": "Calculates to average mz, intensity and signal-to-noise of multiple scans from 1 MS datafile (mzML or .csv)",
+      "topics": [
+        "averageSpectraSingle"
+      ]
+    },
+    {
+      "page": "combineAnnotations",
+      "title": "Combine Annotations",
+      "topics": [
+        "combineAnnotations"
+      ]
+    },
+    {
+      "page": "create_database",
+      "title": "Create database deprecated",
+      "topics": [
+        "create_database"
+      ]
+    },
+    {
+      "page": "createDatabase",
+      "title": "Create database",
+      "topics": [
+        "createDatabase"
+      ]
+    },
+    {
+      "page": "createMSP-purityA-method",
+      "title": "Using a purityA object, create an MSP file of fragmentation spectra",
+      "topics": [
+        "createMSP",
+        "createMSP,purityA-method"
+      ]
+    },
+    {
+      "page": "dimsPredictPurity-purityD-method",
+      "title": "Using purityD object, assess anticipated purity from a DI-MS run",
+      "topics": [
+        "dimsPredictPurity",
+        "dimsPredictPurity,purityD-method"
+      ]
+    },
+    {
+      "page": "dimsPredictPuritySingle",
+      "title": "Predict the precursor purity from a DI-MS dataset",
+      "topics": [
+        "dimsPredictPuritySingle"
+      ]
+    },
+    {
+      "page": "filterFragSpectra-purityA-method",
+      "title": "Filter fragmentation spectra associated with an XCMS feature",
+      "topics": [
+        "filterFragSpectra",
+        "filterFragSpectra,purityA-method"
+      ]
+    },
+    {
+      "page": "filterp-purityD-method",
+      "title": "Filter out peaks based on intensity and RSD criteria",
+      "topics": [
+        "filterp",
+        "filterp,purityD-method"
+      ]
+    },
+    {
+      "page": "flag_remove",
+      "title": "Flag and remove unwanted peaks",
+      "topics": [
+        "flag_remove"
+      ]
+    },
+    {
+      "page": "frag4feature-purityA-method",
+      "title": "Using a purityA object, link MS/MS data to XCMS features",
+      "topics": [
+        "frag4feature",
+        "frag4feature,purityA-method"
+      ]
+    },
+    {
+      "page": "get_additional_mzml_meta",
+      "title": "Get additional mzML meta",
+      "topics": [
+        "get_additional_mzml_meta"
+      ]
+    },
+    {
+      "page": "Getfiles",
+      "title": "Get files for DI-MS processing",
+      "topics": [
+        "Getfiles"
+      ]
+    },
+    {
+      "page": "getP-purityD-method",
+      "title": "Get peaklist for a purityD object",
+      "topics": [
+        "getP",
+        "getP,purityD-method"
+      ]
+    },
+    {
+      "page": "groupPeaks-purityD-method",
+      "title": "Using purityD object, group multiple peaklists by similar mz values (mzML or .csv)",
+      "topics": [
+        "groupPeaks",
+        "groupPeaks,purityD-method"
+      ]
+    },
+    {
+      "page": "groupPeaksEx",
+      "title": "Group peaklists from a list of dataframes",
+      "topics": [
+        "groupPeaksEx"
+      ]
+    },
+    {
+      "page": "initialize-purityD-method",
+      "title": "Constructor for S4 class to represent a DI-MS purityD",
+      "topics": [
+        "initialize,purityD-method"
+      ]
+    },
+    {
+      "page": "iwNormGauss",
+      "title": "Gaussian normalisation for isolation window efficiency",
+      "topics": [
+        "iwNormGauss"
+      ]
+    },
+    {
+      "page": "iwNormQE.5",
+      "title": "Q-Exactive +/- 0.5 range, normalisation for isolation window efficiency",
+      "topics": [
+        "iwNormQE.5"
+      ]
+    },
+    {
+      "page": "iwNormRcosine",
+      "title": "Raised cosine normalisation for isolation window efficiency",
+      "topics": [
+        "iwNormRcosine"
+      ]
+    },
+    {
+      "page": "msPurity",
+      "title": "'msPurity' package",
+      "topics": [
+        "msPurity-package",
+        "msPurity"
+      ]
+    },
+    {
+      "page": "pcalc",
+      "title": "Perform purity calculation on a peak matrix",
+      "topics": [
+        "pcalc"
+      ]
+    },
+    {
+      "page": "purityA",
+      "title": "Assess the acquired precursor ion purity of MS/MS spectra (constructor)",
+      "topics": [
+        "purityA"
+      ]
+    },
+    {
+      "page": "purityD-class",
+      "title": "An S4 class to represent a DI-MS purityD",
+      "topics": [
+        "purityD",
+        "purityD-class"
+      ]
+    },
+    {
+      "page": "purityX",
+      "title": "Assessing anticipated purity of XCMS features from an LC-MS run",
+      "topics": [
+        "purityX"
+      ]
+    },
+    {
+      "page": "show-purityA-method",
+      "title": "Show method for purityA class",
+      "topics": [
+        "show,purityA-method"
+      ]
+    },
+    {
+      "page": "show-purityD-method",
+      "title": "Show method for purityD",
+      "topics": [
+        "show,purityD-method"
+      ]
+    },
+    {
+      "page": "show-purityX-method",
+      "title": "Show method for purityX",
+      "topics": [
+        "show,purityX-method"
+      ]
+    },
+    {
+      "page": "spectral_matching",
+      "title": "Spectral matching deprecated",
+      "topics": [
+        "spectral_matching"
+      ]
+    },
+    {
+      "page": "spectralMatching",
+      "title": "Spectral matching for LC-MS/MS datasets",
+      "topics": [
+        "spectralMatching"
+      ]
+    },
+    {
+      "page": "subtract-purityD-method",
+      "title": "Using Subtract MZ values based on ppm tolerance and noise ratio",
+      "topics": [
+        "subtract",
+        "subtract,purityD-method"
+      ]
+    },
+    {
+      "page": "subtractMZ",
+      "title": "Subtract MZ values based on ppm tolerance and noise ratio",
+      "topics": [
+        "subtractMZ"
+      ]
+    },
+    {
+      "page": "validate-purityA-method",
+      "title": "Validate precursor purity predictions using LC-MS and LC-MS/MS dataset",
+      "topics": [
+        "validate",
+        "validate,purityA-method"
+      ]
+    },
+    {
+      "page": "writeOut-purityD-method",
+      "title": "Using purityD object, save peaks as text files",
+      "topics": [
+        "writeOut",
+        "writeOut,purityD-method"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "Biobase",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "codetools",
+    "cpp11",
+    "DBI",
+    "dbplyr",
+    "doSNOW",
+    "dplyr",
+    "farver",
+    "fastcluster",
+    "fastmap",
+    "foreach",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "isoband",
+    "iterators",
+    "labeling",
+    "lifecycle",
+    "magrittr",
+    "memoise",
+    "mzR",
+    "ncdf4",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plyr",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "reshape2",
+    "Rhdf5lib",
+    "rlang",
+    "RSQLite",
+    "S7",
+    "scales",
+    "snow",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr"
+  ],
+  "_vignettes": [
+    {
+      "source": "msPurity-vignette.Rmd",
+      "filename": "msPurity-vignette.html",
+      "title": "Using msPurity for Precursor Ion Purity Assessments, Data Processing and Metabolite Annotation of Mass Spectrometry Fragmentation Data",
+      "author": "Thomas N. Lawson",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "purityA",
+        "Assessing precursor purity of previously acquired MS/MS spectra",
+        "Isolation efficiency",
+        "frag4feature - mapping XCMS features to fragmentation spectra",
+        "filterFragSpectra - filter the fragmentation spectra",
+        "averageAllFragSpectra - average all fragmentation spectra",
+        "averageIntraFragSpectra - average all fragmentation spectra",
+        "averageInterFragSpectra - average all fragmentation spectra",
+        "createMSP - create an MSP file of the fragmentation spectra",
+        "createDatabase - create a spectral database",
+        "spectralMatching - perfroming spectral matching to a spectral library",
+        "purityX",
+        "Assessing anticipated purity of XCMS features from an LC-MS run",
+        "purityD",
+        "Assessing anticipated purity from a DIMS run",
+        "Calculating the anticipated (predicted) purity from a known m/z target list for DIMS",
+        "References"
+      ],
+      "created": "2016-05-20 08:54:13",
+      "modified": "2021-10-05 12:32:34",
+      "commits": 9
+    },
+    {
+      "source": "msPurity-spectral-database-vignette.Rmd",
+      "filename": "msPurity-spectral-database-vignette.html",
+      "title": "msPurity spectral database schema",
+      "author": "Thomas N. Lawson",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Spectral database schema"
+      ],
+      "created": "2019-04-24 20:28:22",
+      "modified": "2019-09-13 11:55:50",
+      "commits": 2
+    },
+    {
+      "source": "msPurity-lcmsms-data-processing-and-spectral-matching-vignette.Rmd",
+      "filename": "msPurity-lcmsms-data-processing-and-spectral-matching-vignette.html",
+      "title": "LC-MS/MS data processing and spectral matching workflow using msPurity and XCMS",
+      "author": "Thomas N. Lawson",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "LC-MS/MS data processing and spectral matching workflow",
+        "Overview",
+        "XCMS (versions < 3)  processing workflow",
+        "XCMS (versions 3+) processing workflow",
+        "Purity assesments and linking fragmentation to XCMS features",
+        "Filtering and averaging",
+        "Creating a spectral-database",
+        "Spectral matching",
+        "References"
+      ],
+      "created": "2019-04-24 20:28:22",
+      "modified": "2023-08-30 14:26:01",
+      "commits": 7
+    }
+  ],
+  "_score": 6.880996414629062,
+  "_indexed": true,
+  "_nocasepkg": "mspurity",
+  "_universes": [
+    "bioc",
+    "tomnl",
+    "computational-metabolomics"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:12:39.000Z",
+      "distro": "noble",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "a0c41a69768d76d27b621743d320b09c83f506dfc3315464bba7690333b36fe7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:13:10.000Z",
+      "distro": "noble",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "2d4f195e32baf0b5c9b85b450d4b0a51fe985c01bcca4ded2a1c9b751c09d1f5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:12:30.000Z",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "53c1d87f54d5c8feeec7ec143967f1d4a90c4eb2e6bce19e3558bcbe958cca08",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:13:28.000Z",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "5f04b7f750cdc2b15d71e10b214cdd61136a34a70add1082e058ae75cb01d721",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:11:47.000Z",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "e0e60a2f8bc8ec8da651e70a05f644f9ec58f77d152d4c1b6f0edb67e5e98c89",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:10:54.000Z",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "dac9d293d85f068de44662367ce50741ac2ca1ef0db081fd1fc3079936ec8673",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:10:56.000Z",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "39efe9366dcc32dec00ad97369474b7a35f7d7fa1bade5a047d17c4a9dd6cd32",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-23T08:10:35.000Z",
+      "commit": "dc13d895eb1d2142eab16178733865c441898c38",
+      "fileid": "a5655f2c47679fe501d97c13309beecce39700bfc9d9c148a3e656cabbfc5292",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21278852127"
+    }
+  ]
+}

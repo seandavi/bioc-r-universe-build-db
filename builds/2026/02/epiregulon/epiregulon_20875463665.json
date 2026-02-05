@@ -1,0 +1,884 @@
+{
+  "Package": "epiregulon",
+  "Title": "Gene regulatory network inference from single cell epigenomic\ndata",
+  "Version": "2.1.3",
+  "Date": "2025-12-08",
+  "Authors@R": "c(person(given = \"Xiaosai\", family = \"Yao\", role = c(\"aut\", \"cre\"), email = \"xiaosai.yao@gmail.com\", comment = c(ORCID = \"0000-0001-9729-0726\")),\nperson(given = \"Tomasz\", family = \"W\u0142odarczyk\", role = c(\"aut\"), email = \"tomwlo@gmail.com\", comment = c(ORCID = \"0000-0003-1554-9699\")),\nperson(given = \"Aaron\", family = \"Lun\", role=c(\"aut\"), email=\"infinite.monkeys.with.keyboards@gmail.com\"),\nperson(given = \"Shang-Yang\", family = \"Chen\", role = \"aut\", email = \"sychen9584@gmail.com\"))",
+  "Description": "Gene regulatory networks model the underlying gene\nregulation hierarchies that drive gene expression and observed\nphenotypes. Epiregulon infers TF activity in single cells by\nconstructing a gene regulatory network (regulons). This is\nachieved through integration of scATAC-seq and scRNA-seq data\nand incorporation of public bulk TF ChIP-seq data. Links\nbetween regulatory elements and their target genes are\nestablished by computing correlations between chromatin\naccessibility and gene expressions.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/xiaosaiyao/epiregulon/",
+  "biocViews": "SingleCell, GeneRegulation,NetworkInference,Network,\nGeneExpression, Transcription, GeneTarget",
+  "Config/testthat/edition": "3",
+  "BugReports": "https://github.com/xiaosaiyao/epiregulon/issues",
+  "Config/pak/sysreqs": "libglpk-dev make libgsl0-dev libbz2-dev libicu-dev\nliblzma-dev libpng-dev libxml2-dev libssl-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-12-08 11:19:44 UTC",
+  "RemoteUrl": "https://github.com/bioc/epiregulon",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-01-10 08:29:07 UTC",
+    "User": "root"
+  },
+  "Author": "Xiaosai Yao [aut, cre] (ORCID: <https://orcid.org/0000-0001-9729-0726>),\nTomasz W\u0142odarczyk [aut] (ORCID:\n<https://orcid.org/0000-0003-1554-9699>),\nAaron Lun [aut],\nShang-Yang Chen [aut]",
+  "Maintainer": "Xiaosai Yao <xiaosai.yao@gmail.com>",
+  "MD5sum": "de0623d5cb68d5f6ef4722417aea64ab",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "epiregulon_2.1.3.tar.gz",
+  "_fileid": "127d4fa54829335c8ab28928dca0a215660de224251fd676949ad20490dbfa35",
+  "_filesize": 1153257,
+  "_sha256": "127d4fa54829335c8ab28928dca0a215660de224251fd676949ad20490dbfa35",
+  "_created": "2026-01-10T08:29:07.000Z",
+  "_published": "2026-01-10T08:48:59.408Z",
+  "_jobs": [
+    {
+      "job": 59984403218,
+      "time": 406,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5084355520"
+    },
+    {
+      "job": 59984403231,
+      "time": 857,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5084376666"
+    },
+    {
+      "job": 59984403239,
+      "time": 815,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5084374376"
+    },
+    {
+      "job": 59984403226,
+      "time": 831,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5084375249"
+    },
+    {
+      "job": 59984403240,
+      "time": 761,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5084371689"
+    },
+    {
+      "job": 59984403233,
+      "time": 814,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5084374334"
+    },
+    {
+      "job": 59984403227,
+      "time": 1129,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5084389075"
+    },
+    {
+      "job": 59984403244,
+      "time": 461,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084357883"
+    },
+    {
+      "job": 59984403229,
+      "time": 942,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084380560"
+    },
+    {
+      "job": 59984036467,
+      "time": 833,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5084337283"
+    },
+    {
+      "job": 59984403220,
+      "time": 390,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5084354864"
+    },
+    {
+      "job": 59984403224,
+      "time": 890,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5084378149"
+    },
+    {
+      "job": 59984403230,
+      "time": 865,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5084376931"
+    },
+    {
+      "job": 59984403245,
+      "time": 806,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084374051"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/epiregulon",
+  "_commit": {
+    "id": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+    "author": "TomVuod <tomasz.wlodarczyk@contractors.roche.com>",
+    "committer": "TomVuod <tomasz.wlodarczyk@contractors.roche.com>",
+    "message": "v2.1.3\n",
+    "time": 1765192784
+  },
+  "_maintainer": {
+    "name": "Xiaosai Yao",
+    "email": "xiaosai.yao@gmail.com",
+    "login": "xiaosaiyao",
+    "uuid": 70164860,
+    "orcid": "0000-0001-9729-0726"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "checkmate",
+      "role": "Imports"
+    },
+    {
+      "package": "entropy",
+      "role": "Imports"
+    },
+    {
+      "package": "lifecycle",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "scran",
+      "role": "Imports"
+    },
+    {
+      "package": "scuttle",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm10",
+      "role": "Imports"
+    },
+    {
+      "package": "motifmatchr",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "scrapper",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "parallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "coin",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "scMultiome",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-03",
+      "n": 8
+    },
+    {
+      "week": "2025-05",
+      "n": 2
+    },
+    {
+      "week": "2025-10",
+      "n": 3
+    },
+    {
+      "week": "2025-11",
+      "n": 3
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-18",
+      "n": 2
+    },
+    {
+      "week": "2025-35",
+      "n": 5
+    },
+    {
+      "week": "2025-36",
+      "n": 2
+    },
+    {
+      "week": "2025-41",
+      "n": 12
+    },
+    {
+      "week": "2025-42",
+      "n": 26
+    },
+    {
+      "week": "2025-43",
+      "n": 13
+    },
+    {
+      "week": "2025-44",
+      "n": 5
+    },
+    {
+      "week": "2025-45",
+      "n": 11
+    },
+    {
+      "week": "2025-46",
+      "n": 2
+    },
+    {
+      "week": "2025-50",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.1.3",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.0.2",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "singlecell",
+    "generegulation",
+    "networkinference",
+    "network",
+    "geneexpression",
+    "transcription",
+    "genetarget",
+    "cpp"
+  ],
+  "_stars": 21,
+  "_contributors": [
+    {
+      "user": "tomvuod",
+      "count": 445,
+      "uuid": 103045852
+    },
+    {
+      "user": "xiaosaiyao",
+      "count": 325,
+      "uuid": 70164860
+    },
+    {
+      "user": "jwokaty",
+      "count": 11,
+      "uuid": 1744257
+    },
+    {
+      "user": "ltla",
+      "count": 3,
+      "uuid": 8166669
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 242,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/epiregulon"
+  },
+  "_devurl": "https://github.com/xiaosaiyao/epiregulon",
+  "_searchresults": 28,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/epiregulon.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/xiaosaiyao/epiregulon",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "addLogFC",
+    "addMotifScore",
+    "addTFMotifInfo",
+    "addWeights",
+    "aggregateAcrossCellsFast",
+    "calculateActivity",
+    "calculateP2G",
+    "getRegulon",
+    "getTFMotifInfo",
+    "optimizeMetacellNumber",
+    "pruneRegulon"
+  ],
+  "_help": [
+    {
+      "page": "addLogFC",
+      "title": "Add log fold changes of gene expression to regulons",
+      "topics": [
+        "addLogFC"
+      ]
+    },
+    {
+      "page": "addMotifScore",
+      "title": "Add Motif Scores",
+      "topics": [
+        "addMotifScore"
+      ]
+    },
+    {
+      "page": "addTFMotifInfo",
+      "title": "Add TF binding motif occupancy information to the peak2gene object",
+      "topics": [
+        "addTFMotifInfo"
+      ]
+    },
+    {
+      "page": "addWeights",
+      "title": "Calculate weights for the regulons by computing co-association between TF and target gene expression",
+      "topics": [
+        "addWeights"
+      ]
+    },
+    {
+      "page": "aggregateAcrossCellsFast",
+      "title": "Aggregate cells in SingleCellExperiment",
+      "topics": [
+        "aggregateAcrossCellsFast"
+      ]
+    },
+    {
+      "page": "calculateActivity",
+      "title": "Calculate the per cell activity of master regulators based on a regulon",
+      "topics": [
+        "calculateActivity"
+      ]
+    },
+    {
+      "page": "calculateP2G",
+      "title": "Establish peak to gene links based on correlations between ATAC-seq peaks and RNA-seq genes",
+      "topics": [
+        "calculateP2G"
+      ]
+    },
+    {
+      "page": "getRegulon",
+      "title": "Combine the TF binding info and peak to gene correlations to generate regulons",
+      "topics": [
+        "getRegulon"
+      ]
+    },
+    {
+      "page": "getTFMotifInfo",
+      "title": "Retrieve TF binding sites or motif positions",
+      "topics": [
+        "getTFMotifInfo"
+      ]
+    },
+    {
+      "page": "optimizeMetacellNumber",
+      "title": "Determine the optimal number of metacells to be used by 'calculateP2G' function",
+      "topics": [
+        "optimizeMetacellNumber"
+      ]
+    },
+    {
+      "page": "pruneRegulon",
+      "title": "Prune regulons for true transcription factor - regulatory elements - target genes relationships",
+      "topics": [
+        "pruneRegulon"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/epiregulon/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationHub",
+    "askpass",
+    "assorthead",
+    "backports",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "biocmake",
+    "BiocManager",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "BiocVersion",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bluster",
+    "BSgenome",
+    "BSgenome.Hsapiens.UCSC.hg19",
+    "BSgenome.Hsapiens.UCSC.hg38",
+    "BSgenome.Mmusculus.UCSC.mm10",
+    "cachem",
+    "caTools",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dir.expiry",
+    "DirichletMultinomial",
+    "dplyr",
+    "dqrng",
+    "edgeR",
+    "entropy",
+    "ExperimentHub",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "glue",
+    "gtools",
+    "httr",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "jsonlite",
+    "KEGGREST",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "metapod",
+    "mime",
+    "motifmatchr",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "purrr",
+    "pwalign",
+    "R6",
+    "rappdirs",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "Rigraphlib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rsvd",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "ScaledMatrix",
+    "scran",
+    "scrapper",
+    "scuttle",
+    "Seqinfo",
+    "seqLogo",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "TFBSTools",
+    "TFMPvalue",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "multiome.mae.Rmd",
+      "filename": "multiome.mae.html",
+      "title": "Epiregulon tutorial with MultiAssayExperiment",
+      "author": "Xiaosai Yao, Tomasz W\u0142odarczyk",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Data preparation",
+        "Quick start",
+        "Retrieve bulk TF ChIP-seq binding sites",
+        "Link ATAC-seq peaks to target genes",
+        "Optimize the number of metacells (Optional)",
+        "Calculate Peak to Gene Links",
+        "Add TF motif binding to peaks",
+        "Generate regulons",
+        "Network pruning (highly recommended)",
+        "Add Weights",
+        "Annotate with TF motifs (Optional)",
+        "Annotate with log fold changes (Optional)",
+        "Calculate TF activity",
+        "Session Info"
+      ],
+      "created": "2022-09-12 01:55:01",
+      "modified": "2025-10-20 05:25:06",
+      "commits": 38
+    }
+  ],
+  "_score": 7.121559844187502,
+  "_indexed": true,
+  "_nocasepkg": "epiregulon",
+  "_universes": [
+    "bioc",
+    "xiaosaiyao"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:35:39.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "63c8fcb828e480d53d47d7a971b28de29d5e2acd36c652aa3911361012e3ef22",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:35:22.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "9ff47627f2686f9e03cd777f23e77cd06f5ce95da99960cfbc8f61fa4ff95a40",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:35:15.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "10d1a76d295feb1f6568b95b59350637f454178e2090a2eec1fda4ad5fc85604",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:34:48.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "8444a827b0c02c9dcf24b34d7acf3ef594f95812e9e8aebfbdb519d1452f22f3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:34:22.000Z",
+      "arch": "aarch64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "7e9790ededdc867ec2999a666cb05213f16b8fd835db68473f3e6b5b41872965",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:37:48.000Z",
+      "arch": "x86_64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "22567d5054090cd80e2a31ad93896d8e48359385422a6849469ec3c8ca2cb6e1",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:32:44.000Z",
+      "arch": "aarch64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "ce1596af14c6063e859eb29d7ac32e821efde3a7e3023a3553d48be520188ecf",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:35:48.000Z",
+      "arch": "x86_64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "458cccd596f331e6fd7d8a473ba94b99ee952331beec2ce670d2694a6f0b5610",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:36:04.000Z",
+      "arch": "emscripten",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "7bcc7e85193c099f48dbd34fb8c94d5d429afcaa61969a2d5853c83a3343b8fa",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:35:28.000Z",
+      "arch": "x86_64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "002b0aa4680b6dd3fb2880e089cc235d838027e554e7f5676da9020e65ff5c44",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:35:09.000Z",
+      "arch": "x86_64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "92ce6866afe27f860b1899403c6038a10420da089d9ac7e20d163347e9f43a29",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.1.3",
+      "date": "2026-01-10T08:34:05.000Z",
+      "arch": "x86_64",
+      "commit": "3a105e95fa4040a1127b4f6f315e2c2bcaa8cefe",
+      "fileid": "29270b88c444495c4b643ebcdab2651acc1776f86f30a13794d638fc4e6d6c32",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875463665"
+    }
+  ]
+}

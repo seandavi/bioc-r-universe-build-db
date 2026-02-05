@@ -1,0 +1,783 @@
+{
+  "Package": "RegEnrich",
+  "Type": "Package",
+  "Title": "Gene regulator enrichment analysis",
+  "Version": "1.21.0",
+  "Authors@R": "c(\nperson(\"Weiyang\", \"Tao\", email = \"weiyangtao1513@gmail.com\",\nrole = c(\"cre\", \"aut\")),\nperson(\"Aridaman\", \"Pandit\", email = \"A.Pandit@umcutrecht.nl\",\nrole = \"aut\"))",
+  "Description": "This package is a pipeline to identify the key gene\nregulators in a biological process, for example in cell\ndifferentiation and in cell development after stimulation.\nThere are four major steps in this pipeline: (1) differential\nexpression analysis; (2) regulator-target network inference;\n(3) enrichment analysis; and (4) regulators scoring and\nranking.",
+  "License": "GPL (>= 2)",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.1",
+  "Collate": "'COEN.R' 'globals.R' 'DEA.R' 'GRN.R' 'data.R'\n'regenrichClasses.R' 'genericMethods.R' 'localUtils.R'\n'plots.R' 'regFET.R' 'regSEA.R' 'regenrich_diffExpr.R'\n'regenrich_enrich.R' 'regenrich_network.R'\n'regenrich_rankScore.R' 'results.R' 'show.R' 'topNet.R'",
+  "biocViews": "GeneExpression, Transcriptomics, RNASeq, TwoChannel,\nTranscription, GeneTarget, NetworkEnrichment,\nDifferentialExpression, Network, NetworkInference,\nGeneSetEnrichment, FunctionalPrediction",
+  "Config/pak/sysreqs": "make libicu-dev libpng-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:00:04 UTC",
+  "RemoteUrl": "https://github.com/bioc/RegEnrich",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-10 08:21:38 UTC",
+    "User": "root"
+  },
+  "Author": "Weiyang Tao [cre, aut],\nAridaman Pandit [aut]",
+  "Maintainer": "Weiyang Tao <weiyangtao1513@gmail.com>",
+  "MD5sum": "643448c237631ecb0f8579800a6fbe23",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "RegEnrich_1.21.0.tar.gz",
+  "_fileid": "ce3ba0dbb4af6ba78999ad0ae73fca3fa42ac16b14c519d4c25fd2e84027b3c6",
+  "_filesize": 1157566,
+  "_sha256": "ce3ba0dbb4af6ba78999ad0ae73fca3fa42ac16b14c519d4c25fd2e84027b3c6",
+  "_created": "2026-01-10T08:21:38.000Z",
+  "_published": "2026-01-10T08:29:13.133Z",
+  "_jobs": [
+    {
+      "job": 59984208495,
+      "time": 251,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084328391"
+    },
+    {
+      "job": 59984208512,
+      "time": 385,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5084334645"
+    },
+    {
+      "job": 59984208513,
+      "time": 390,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084334852"
+    },
+    {
+      "job": 59984208511,
+      "time": 292,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5084330293"
+    },
+    {
+      "job": 59984208522,
+      "time": 298,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084330558"
+    },
+    {
+      "job": 59984047173,
+      "time": 365,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084316350"
+    },
+    {
+      "job": 59984208494,
+      "time": 208,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5084326335"
+    },
+    {
+      "job": 59984208508,
+      "time": 310,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5084331239"
+    },
+    {
+      "job": 59984208510,
+      "time": 349,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5084332943"
+    },
+    {
+      "job": 59984208502,
+      "time": 315,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5084331423"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 0,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/RegEnrich",
+  "_commit": {
+    "id": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750004
+  },
+  "_maintainer": {
+    "name": "Weiyang Tao",
+    "email": "weiyangtao1513@gmail.com",
+    "login": "paodan",
+    "uuid": 29211054
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Depends"
+    },
+    {
+      "package": "dplyr",
+      "role": "Depends"
+    },
+    {
+      "package": "tibble",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocSet",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "randomForest",
+      "role": "Imports"
+    },
+    {
+      "package": "fgsea",
+      "role": "Imports"
+    },
+    {
+      "package": "DOSE",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "WGCNA",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 2.2.0",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Imports"
+    },
+    {
+      "package": "GEOquery",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "geneexpression",
+    "transcriptomics",
+    "rnaseq",
+    "twochannel",
+    "transcription",
+    "genetarget",
+    "networkenrichment",
+    "differentialexpression",
+    "network",
+    "networkinference",
+    "genesetenrichment",
+    "functionalprediction"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 362,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/RegEnrich"
+  },
+  "_mentions": 1,
+  "_searchresults": 28,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/RegEnrich.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "%>%",
+    "getResultsNames",
+    "head",
+    "newDeaSet",
+    "newScore",
+    "newTopNetwork",
+    "plot_Enrich",
+    "plotOrders",
+    "plotRegTarExpr",
+    "plotSoftPower",
+    "regenrich_diffExpr",
+    "regenrich_enrich",
+    "regenrich_network",
+    "regenrich_network<-",
+    "regenrich_rankScore",
+    "RegenrichSet",
+    "results_DEA",
+    "results_enrich",
+    "results_expr",
+    "results_score",
+    "results_topNet",
+    "show",
+    "tail"
+  ],
+  "_datasets": [
+    {
+      "name": "Lyme_GSE63085",
+      "title": "Example RNAseq dataset [Human]",
+      "object": "Lyme_GSE63085",
+      "file": "Lyme_GSE63085.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "TFs",
+      "title": "Human gene regulators",
+      "object": "TFs",
+      "file": "TFs.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "TF",
+        "TF_name"
+      ],
+      "rows": 1712,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "DeaSet-class",
+      "title": "DeaSet class",
+      "topics": [
+        "DeaSet-class"
+      ]
+    },
+    {
+      "page": "dim-TopNetwork-method",
+      "title": "dimention of `TopNetwork` object",
+      "topics": [
+        "dim,TopNetwork-method"
+      ]
+    },
+    {
+      "page": "Enrich-class",
+      "title": "Enrich class",
+      "topics": [
+        "Enrich-class"
+      ]
+    },
+    {
+      "page": "getResultsNames",
+      "title": "Inference the name of results of DESeq analysis by a formula (or model matrix) and sample information",
+      "topics": [
+        "getResultsNames"
+      ]
+    },
+    {
+      "page": "headTailScore",
+      "title": "head or tail of Score object",
+      "topics": [
+        "head,Score-method",
+        "tail,Score-method"
+      ]
+    },
+    {
+      "page": "Lyme_GSE63085",
+      "title": "Example RNAseq dataset [Human]",
+      "topics": [
+        "Lyme_GSE63085"
+      ]
+    },
+    {
+      "page": "newDeaSet",
+      "title": "DeaSet object creator",
+      "topics": [
+        "newDeaSet"
+      ]
+    },
+    {
+      "page": "newTopNetwork",
+      "title": "TopNetwork object creator",
+      "topics": [
+        "newTopNetwork"
+      ]
+    },
+    {
+      "page": "plot_Enrich",
+      "title": "Plot results of FET/GSEA enrichment analysis",
+      "topics": [
+        "plot_Enrich",
+        "plot_Enrich,RegenrichSet-method"
+      ]
+    },
+    {
+      "page": "plotOrders",
+      "title": "Compare the orders of two vectors",
+      "topics": [
+        "plotOrders"
+      ]
+    },
+    {
+      "page": "plotRegTarExpr",
+      "title": "Plot regulator and its targets expression",
+      "topics": [
+        "plotRegTarExpr"
+      ]
+    },
+    {
+      "page": "plotSoftPower",
+      "title": "Plot soft power for WGCNA analysis",
+      "topics": [
+        "plotSoftPower"
+      ]
+    },
+    {
+      "page": "print.Score",
+      "title": "Print Score object",
+      "topics": [
+        "print.Score"
+      ]
+    },
+    {
+      "page": "regenrich_diffExpr",
+      "title": "Differential expression analysis step",
+      "topics": [
+        "regenrich_diffExpr",
+        "regenrich_diffExpr,RegenrichSet-method"
+      ]
+    },
+    {
+      "page": "regenrich_enrich",
+      "title": "Enrichment analysis step",
+      "topics": [
+        "regenrich_enrich",
+        "regenrich_enrich,RegenrichSet-method"
+      ]
+    },
+    {
+      "page": "regenrich_network",
+      "title": "Regulator-target network inference step",
+      "topics": [
+        "regenrich_network",
+        "regenrich_network,RegenrichSet-method",
+        "regenrich_network<-",
+        "regenrich_network<-,RegenrichSet,data.frame-method",
+        "regenrich_network<-,RegenrichSet,TopNetwork-method"
+      ]
+    },
+    {
+      "page": "regenrich_rankScore",
+      "title": "Regulator scoring and ranking",
+      "topics": [
+        "regenrich_rankScore",
+        "regenrich_rankScore,RegenrichSet-method"
+      ]
+    },
+    {
+      "page": "RegenrichSet",
+      "title": "RegenrichSet object creator",
+      "topics": [
+        "RegenrichSet"
+      ]
+    },
+    {
+      "page": "RegenrichSet-class",
+      "title": "RegenrichSet class",
+      "topics": [
+        "RegenrichSet-class"
+      ]
+    },
+    {
+      "page": "results_expr",
+      "title": "Result accessor functions",
+      "topics": [
+        "results_DEA",
+        "results_enrich",
+        "results_expr",
+        "results_score",
+        "results_topNet"
+      ]
+    },
+    {
+      "page": "Score",
+      "title": "Score class",
+      "topics": [
+        "newScore",
+        "Score-class"
+      ]
+    },
+    {
+      "page": "methodsOfShow",
+      "title": "methods of generic function \"show\"",
+      "topics": [
+        "show,DeaSet-method",
+        "show,Enrich-method",
+        "show,RegenrichSet-method",
+        "show,Score-method",
+        "show,TopNetwork-method"
+      ]
+    },
+    {
+      "page": "TFs",
+      "title": "Human gene regulators",
+      "topics": [
+        "TFs"
+      ]
+    },
+    {
+      "page": "TopNetwork-class",
+      "title": "TopNetwork class",
+      "topics": [
+        "TopNetwork-class"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocSet",
+    "BiocStyle",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "bookdown",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "DESeq2",
+    "digest",
+    "doParallel",
+    "DOSE",
+    "dplyr",
+    "dynamicTreeCut",
+    "enrichit",
+    "evaluate",
+    "farver",
+    "fastcluster",
+    "fastmap",
+    "fastmatch",
+    "fgsea",
+    "fontawesome",
+    "foreach",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "GO.db",
+    "GOSemSim",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "Hmisc",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "impute",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nnet",
+    "ontologyIndex",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plyr",
+    "png",
+    "preprocessCore",
+    "purrr",
+    "R6",
+    "randomForest",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "RSQLite",
+    "rstudioapi",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "WGCNA",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_score": 2.7481880270062007,
+  "_indexed": true,
+  "_nocasepkg": "regenrich",
+  "_universes": [
+    "bioc",
+    "paodan"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:25:20.000Z",
+      "distro": "noble",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "dbc72b1554b5f73b38a4ef961826ffbeb3f7a8c3211b574ecc3fc555643b9645",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:25:35.000Z",
+      "distro": "noble",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "722f941114e059bbc59a719068a1ddb25f14d7c5b20503c88866dd192a910aff",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:24:20.000Z",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "6e07b40e4f2b92a4ca0362b2327948c12fdd9833c8ebb5ff4350a8654b81070d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:24:16.000Z",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "d4952d5614cb0d1baf8610ed5b719406012ee05c754ebc515b0c38a836555d0c",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:25:45.000Z",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "e467223754822508c7eb958f4b6e81f53afb060f8a24dc6907a64289d52c23f6",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:24:06.000Z",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "0af372eb58e1281f55339870b1972ed7d60d11e0913e5a9876c5197adf47e65a",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:24:36.000Z",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "3c97329b59adbff7301fb743d528a1d9323292ae56177327f5182470376a9c9e",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-01-10T08:24:09.000Z",
+      "commit": "73e20096ff7d7d1e574ddd9d2a3de5ab4d5b5fac",
+      "fileid": "06489f7a5fc2ad7974528fdd964452166466720f7537d630fcbfc824f8ce5d5c",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20875467161"
+    }
+  ]
+}

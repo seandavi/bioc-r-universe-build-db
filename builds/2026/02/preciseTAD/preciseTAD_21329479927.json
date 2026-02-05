@@ -1,0 +1,769 @@
+{
+  "Package": "preciseTAD",
+  "Type": "Package",
+  "Title": "preciseTAD: A machine learning framework for precise TAD\nboundary prediction",
+  "Version": "1.21.0",
+  "Authors@R": "c(\nperson(\"Spiro\", \"Stilianoudakis\",\nemail = \"stilianoudasc@vcu.edu\",\nrole = c(\"aut\")),\nperson(\"Mikhail\", \"Dozmorov\",\nemail = \"mikhail.dozmorov@gmail.com\",\nrole = c(\"aut\", \"cre\")))",
+  "Description": "preciseTAD provides functions to predict the location of\nboundaries of topologically associated domains (TADs) and\nchromatin loops at base-level resolution. As an input, it takes\nBED-formatted genomic coordinates of domain boundaries detected\nfrom low-resolution Hi-C data, and coordinates of\nhigh-resolution genomic annotations from ENCODE or other\nconsortia. preciseTAD employs several feature engineering\nstrategies and resampling techniques to address class\nimbalance, and trains an optimized random forest model for\npredicting low-resolution domain boundaries. Translated on a\nbase-level, preciseTAD predicts the probability for each base\nto be a boundary. Density-based clustering and scalable\npartitioning techniques are used to detect precise boundary\nregions and summit points. Compared with low-resolution\nboundaries, preciseTAD boundaries are highly enriched for CTCF,\nRAD21, SMC3, and ZNF143 signal and more conserved across cell\nlines. The pre-trained model can accurately predict boundaries\nin another cell line using CTCF, RAD21, SMC3, and ZNF143\nannotation data for this cell line.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "RoxygenNote": "7.1.1",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, HiC, Sequencing, Clustering, Classification,\nFunctionalGenomics, FeatureExtraction",
+  "BugReports": "https://github.com/dozmorovlab/preciseTAD/issues",
+  "URL": "https://github.com/dozmorovlab/preciseTAD",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:02:20 UTC",
+  "RemoteUrl": "https://github.com/bioc/preciseTAD",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-25 08:21:22 UTC",
+    "User": "root"
+  },
+  "Author": "Spiro Stilianoudakis [aut],\nMikhail Dozmorov [aut, cre]",
+  "Maintainer": "Mikhail Dozmorov <mikhail.dozmorov@gmail.com>",
+  "MD5sum": "a51532ab26d4e584b39c357113f8ae2d",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "preciseTAD_1.21.0.tar.gz",
+  "_fileid": "4551a746635ec9750223c921d2858bc5b40612115e1ab4c0cfccf11980563a42",
+  "_filesize": 4234923,
+  "_sha256": "4551a746635ec9750223c921d2858bc5b40612115e1ab4c0cfccf11980563a42",
+  "_created": "2026-01-25T08:21:22.000Z",
+  "_published": "2026-01-25T08:35:08.654Z",
+  "_jobs": [
+    {
+      "job": 61392205367,
+      "time": 323,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5247806541"
+    },
+    {
+      "job": 61392205379,
+      "time": 752,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5247830643"
+    },
+    {
+      "job": 61392205376,
+      "time": 733,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5247829666"
+    },
+    {
+      "job": 61392205374,
+      "time": 546,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5247818502"
+    },
+    {
+      "job": 61392205380,
+      "time": 447,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5247812854"
+    },
+    {
+      "job": 61391960204,
+      "time": 502,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5247789509"
+    },
+    {
+      "job": 61392205383,
+      "time": 277,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5247803975"
+    },
+    {
+      "job": 61392205390,
+      "time": 606,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5247822021"
+    },
+    {
+      "job": 61392205384,
+      "time": 651,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5247824968"
+    },
+    {
+      "job": 61392205391,
+      "time": 630,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5247823688"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 11
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/preciseTAD",
+  "_commit": {
+    "id": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750140
+  },
+  "_maintainer": {
+    "name": "Mikhail Dozmorov",
+    "email": "mikhail.dozmorov@gmail.com",
+    "login": "mdozmorov",
+    "twitter": "@mikhaildozmorov",
+    "uuid": 864945
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "randomForest",
+      "role": "Imports"
+    },
+    {
+      "package": "ModelMetrics",
+      "role": "Imports"
+    },
+    {
+      "package": "e1071",
+      "role": "Imports"
+    },
+    {
+      "package": "PRROC",
+      "role": "Imports"
+    },
+    {
+      "package": "pROC",
+      "role": "Imports"
+    },
+    {
+      "package": "caret",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "dbscan",
+      "role": "Imports"
+    },
+    {
+      "package": "doSNOW",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "pbapply",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "rCGH",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocCheck",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "hic",
+    "sequencing",
+    "clustering",
+    "classification",
+    "functionalgenomics",
+    "featureextraction"
+  ],
+  "_stars": 8,
+  "_contributors": [
+    {
+      "user": "stilianoudakis",
+      "count": 83,
+      "uuid": 31807065
+    },
+    {
+      "user": "mdozmorov",
+      "count": 71,
+      "uuid": 864945
+    },
+    {
+      "user": "nturaga",
+      "count": 6,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 349,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/preciseTAD"
+  },
+  "_devurl": "https://github.com/dozmorovlab/precisetad",
+  "_searchresults": 14,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/preciseTAD.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/dozmorovlab/precisetad",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "bedToGRangesList",
+    "createTADdata",
+    "extractBoundaries",
+    "juicer_func",
+    "preciseTAD",
+    "TADrandomForest",
+    "TADrfe"
+  ],
+  "_datasets": [
+    {
+      "name": "arrowhead_gm12878_5kb",
+      "title": "Domain data from ARROWHEAD TAD-caller for GM12878 at 5 kb",
+      "object": "arrowhead_gm12878_5kb",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 8409,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "tfbsList",
+      "title": "A list of the chromosomal coordinates for 26 transcription factor binding sites from the Gm12878 cell line",
+      "object": "tfbsList",
+      "class": [
+        "CompressedGRangesList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "arrowhead_gm12878_5kb",
+      "title": "Domain data from ARROWHEAD TAD-caller for GM12878 at 5 kb",
+      "topics": [
+        "arrowhead_gm12878_5kb"
+      ]
+    },
+    {
+      "page": "bedToGRangesList",
+      "title": "Function to create a GRangesList object from functional genomic annotation data in the form of BED files",
+      "topics": [
+        "bedToGRangesList"
+      ]
+    },
+    {
+      "page": "binary_func",
+      "title": "Helper function used to create binary overlap type feature space",
+      "topics": [
+        "binary_func"
+      ]
+    },
+    {
+      "page": "count_func",
+      "title": "Helper function used to create count overlap type feature space",
+      "topics": [
+        "count_func"
+      ]
+    },
+    {
+      "page": "createTADdata",
+      "title": "Function to create a data matrix used for building a predictive model to classify boundary regions from functional genomic elements",
+      "topics": [
+        "createTADdata"
+      ]
+    },
+    {
+      "page": "distance_func",
+      "title": "Helper function used to create (log2) distance type feature space",
+      "topics": [
+        "distance_func"
+      ]
+    },
+    {
+      "page": "extractBoundaries",
+      "title": "Function to extract boundaries from domain data.",
+      "topics": [
+        "extractBoundaries"
+      ]
+    },
+    {
+      "page": "juicer_func",
+      "title": "Helper function for transforming a GRanges object into matrix form to be saved as .txt or .BED file and imported into juicer",
+      "topics": [
+        "juicer_func"
+      ]
+    },
+    {
+      "page": "percent_func",
+      "title": "Helper function used to create percent overlap type feature space",
+      "topics": [
+        "percent_func"
+      ]
+    },
+    {
+      "page": "preciseTAD",
+      "title": "Precise TAD boundary prediction at base-level resolution using density-based spatial clustering and partitioning techniques",
+      "topics": [
+        "preciseTAD"
+      ]
+    },
+    {
+      "page": "signal_func",
+      "title": "Helper function used to create signal type feature space",
+      "topics": [
+        "signal_func"
+      ]
+    },
+    {
+      "page": "TADrandomForest",
+      "title": "A wrapper function passed to 'caret::train' to apply a random forest classification algorithm built and tested on user-defined binned domain data from 'createTADdata'.",
+      "topics": [
+        "TADrandomForest"
+      ]
+    },
+    {
+      "page": "TADrfe",
+      "title": "A wrapper function passed to 'caret::rfe' to apply recursive feature elimination (RFE) on binned domain data as a feature reduction technique for random forests. Backward elimination is performed from p down to 2, by powers of 2, where p is the number of features in the data.",
+      "topics": [
+        "TADrfe"
+      ]
+    },
+    {
+      "page": "tfbsList",
+      "title": "A list of the chromosomal coordinates for 26 transcription factor binding sites from the Gm12878 cell line",
+      "topics": [
+        "tfbsList"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/preciseTAD/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "aCGH",
+    "affy",
+    "affyio",
+    "AnnotationDbi",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bslib",
+    "cachem",
+    "caret",
+    "cigarillo",
+    "class",
+    "cli",
+    "clock",
+    "cluster",
+    "codetools",
+    "commonmark",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbscan",
+    "DelayedArray",
+    "diagram",
+    "digest",
+    "DNAcopy",
+    "doSNOW",
+    "dplyr",
+    "e1071",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "globals",
+    "glue",
+    "gower",
+    "gtable",
+    "gtools",
+    "hardhat",
+    "htmltools",
+    "httpuv",
+    "httr",
+    "ipred",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lava",
+    "lifecycle",
+    "limma",
+    "listenv",
+    "lubridate",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mclust",
+    "memoise",
+    "mime",
+    "ModelMetrics",
+    "multtest",
+    "nlme",
+    "nnet",
+    "numDeriv",
+    "openssl",
+    "org.Hs.eg.db",
+    "otel",
+    "parallelly",
+    "pbapply",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plyr",
+    "png",
+    "preprocessCore",
+    "pROC",
+    "prodlim",
+    "progressr",
+    "promises",
+    "proxy",
+    "PRROC",
+    "purrr",
+    "R6",
+    "randomForest",
+    "rappdirs",
+    "rCGH",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "recipes",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "shape",
+    "shiny",
+    "snow",
+    "sourcetools",
+    "SparseArray",
+    "sparsevctrs",
+    "SQUAREM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timechange",
+    "timeDate",
+    "TxDb.Hsapiens.UCSC.hg18.knownGene",
+    "TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "TxDb.Hsapiens.UCSC.hg38.knownGene",
+    "tzdb",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "preciseTAD.Rmd",
+      "filename": "preciseTAD.html",
+      "title": "preciseTAD Vignette",
+      "author": "Spiro Stilianoudakis, Mikhail Dozmorov",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Input data",
+        "preciseTAD functionality and output",
+        "Getting Started",
+        "Installation",
+        "Implementation",
+        "Model building",
+        "Construction of the data matrix",
+        "Feature selection using recursive feature elimination",
+        "Implementing a random forest for boundary prediction",
+        "Precise boundary prediction",
+        "Running preciseTAD",
+        "Using preciseTAD with Juicebox",
+        "Cross-cell-type prediction",
+        "References"
+      ],
+      "created": "2020-06-19 15:59:09",
+      "modified": "2021-09-28 16:52:33",
+      "commits": 45
+    }
+  ],
+  "_score": 5.350248018334163,
+  "_indexed": true,
+  "_nocasepkg": "precisetad",
+  "_universes": [
+    "bioc",
+    "mdozmorov",
+    "dozmorovlab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:27:30.000Z",
+      "distro": "noble",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "16f691f7df0094e5c2ea6769aaa65794717560c4c401a2b905cc06922037054a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:27:26.000Z",
+      "distro": "noble",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "a1780aecc6fc4490dae2cd644097b741cdeeaff4baa51b0721de24c0fedc05e2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:24:29.000Z",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "533e00c83e4be90c69bdf17b2d98b48738108b61df69238eb2644dcb3fd0c9a5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:24:16.000Z",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "d33bb0c78cc0a657ef6b4d3507a2bbb1f16913673be8885298428b915811edaa",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:26:42.000Z",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "c83b77d2fff80e00868e3b7d4bd0037c9fd1710a97e23bd5d104251f3eb43da6",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:24:31.000Z",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "8c07d99461a0133a5d7c0d0c436578b3784e91b611466388a3f0fa4d850a7459",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:25:04.000Z",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "a9984e155fdfc3bfded256d4d2f98f555cf1f784a6f762a729ebc6a207674593",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-01-25T08:24:44.000Z",
+      "commit": "301ea2e424c54510dc5e9e8dc13e905417e81bfb",
+      "fileid": "57c42f24c82ffb365192f4f56d1011ab132ba089fb6e002277206c6769a2bc15",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21329479927"
+    }
+  ]
+}

@@ -1,0 +1,974 @@
+{
+  "Package": "sangeranalyseR",
+  "Type": "Package",
+  "Title": "sangeranalyseR: a suite of functions for the analysis of Sanger\nsequence data in R",
+  "Version": "1.21.1",
+  "Date": "2024-04-24",
+  "Author": "Rob Lanfear <rob.lanfear@gmail.com>, Kuan-Hao Chao\n<ntueeb05howard@gmail.com>",
+  "Maintainer": "Kuan-Hao Chao <ntueeb05howard@gmail.com>",
+  "biocViews": "Genetics, Alignment, Sequencing, SangerSeq, Preprocessing,\nQualityControl, Visualization, GUI",
+  "Description": "This package builds on sangerseqR to allow users to create\ncontigs from collections of Sanger sequencing reads. It\nprovides a wide range of options for a number of\ncommonly-performed actions including read trimming, detecting\nsecondary peaks, and detecting indels using a reference\nsequence. All parameters can be adjusted interactively either\nin R or in the associated Shiny applications. There is\nextensive online documentation, and the package can outputs\ndetailed HTML reports, including chromatograms.",
+  "License": "GPL-2",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "Collate": "'AllGenerics.R' 'ClassChromatogramParam.R'\n'ClassObjectResults.R' 'ClassQualityReport.R'\n'ClassSangerRead.R' 'ClassSangerAlignment.R'\n'ClassSangerContig.R' 'Constructors.R' 'LoadMessage.R'\n'MethodSangerAlignment.R' 'MethodSangerContig.R'\n'MethodSangerRead.R' 'MethodShared.R' 'MethodsQualityReport.R'\n'ShinySangerAlignmentServer.R' 'ShinySangerAlignmentUI.R'\n'ShinySangerContigServer.R' 'ShinySangerContigUI.R'\n'ShinyServerModule.R' 'UtilitiesFunc.R'\n'UtilitiesFuncInputChecker.R' 'data.R'\n'sangeranalyseR_package.R' 'sangeranalyseR_show_method.R'",
+  "Config/pak/sysreqs": "make libicu-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-11-18 06:44:07 UTC",
+  "RemoteUrl": "https://github.com/bioc/sangeranalyseR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-24 08:08:51 UTC",
+    "User": "root"
+  },
+  "MD5sum": "058bde773804989e2c773d56a2634b40",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "sangeranalyseR_1.21.1.tar.gz",
+  "_fileid": "7c67d19118d0b22af9eaed63c23cef4e5a843edb32f787b962f362aff9a7a858",
+  "_filesize": 39926017,
+  "_sha256": "7c67d19118d0b22af9eaed63c23cef4e5a843edb32f787b962f362aff9a7a858",
+  "_created": "2026-01-24T08:08:51.000Z",
+  "_published": "2026-01-24T08:15:35.827Z",
+  "_jobs": [
+    {
+      "job": 61349520956,
+      "time": 190,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5243013486"
+    },
+    {
+      "job": 61349520964,
+      "time": 346,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5243022092"
+    },
+    {
+      "job": 61349520983,
+      "time": 306,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5243019988"
+    },
+    {
+      "job": 61349520952,
+      "time": 244,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5243016528"
+    },
+    {
+      "job": 61349520969,
+      "time": 181,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5243012977"
+    },
+    {
+      "job": 61349371439,
+      "time": 269,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5243001928"
+    },
+    {
+      "job": 61349520960,
+      "time": 142,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5243010716"
+    },
+    {
+      "job": 61349520985,
+      "time": 245,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5243016827"
+    },
+    {
+      "job": 61349520977,
+      "time": 272,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5243018298"
+    },
+    {
+      "job": 61349520987,
+      "time": 251,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5243017146"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 3,
+    "note": 16
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/sangeranalyseR",
+  "_commit": {
+    "id": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+    "author": "Kuan-Hao Chao <kuanhao.chao@gmail.com>",
+    "committer": "Kuan-Hao Chao <kuanhao.chao@gmail.com>",
+    "message": "Port DECIPHER Treeline fix to devel; bump version to 1.21.1\n",
+    "time": 1763448247
+  },
+  "_maintainer": {
+    "name": "Kuan-Hao Chao",
+    "email": "ntueeb05howard@gmail.com",
+    "login": "kuanhao-chao",
+    "bluesky": "@kuanhaochao.bsky.social",
+    "orcid": "0000-0003-0099-0692",
+    "twitter": "@KuanHaoChao",
+    "uuid": 26069376
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "stringr",
+      "role": "Depends"
+    },
+    {
+      "package": "ape",
+      "role": "Depends"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Depends"
+    },
+    {
+      "package": "pwalign",
+      "role": "Depends"
+    },
+    {
+      "package": "DECIPHER",
+      "role": "Depends"
+    },
+    {
+      "package": "parallel",
+      "role": "Depends"
+    },
+    {
+      "package": "reshape2",
+      "role": "Depends"
+    },
+    {
+      "package": "sangerseqR",
+      "role": "Depends"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Depends"
+    },
+    {
+      "package": "shiny",
+      "role": "Depends"
+    },
+    {
+      "package": "shinydashboard",
+      "role": "Depends"
+    },
+    {
+      "package": "shinyjs",
+      "role": "Depends"
+    },
+    {
+      "package": "data.table",
+      "role": "Depends"
+    },
+    {
+      "package": "plotly",
+      "role": "Depends"
+    },
+    {
+      "package": "DT",
+      "role": "Depends"
+    },
+    {
+      "package": "zeallot",
+      "role": "Depends"
+    },
+    {
+      "package": "excelR",
+      "role": "Depends"
+    },
+    {
+      "package": "shinycssloaders",
+      "role": "Depends"
+    },
+    {
+      "package": "ggdendro",
+      "role": "Depends"
+    },
+    {
+      "package": "shinyWidgets",
+      "role": "Depends"
+    },
+    {
+      "package": "openxlsx",
+      "role": "Depends"
+    },
+    {
+      "package": "tools",
+      "role": "Depends"
+    },
+    {
+      "package": "rmarkdown",
+      "version": ">= 2.9",
+      "role": "Depends"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.33",
+      "role": "Depends"
+    },
+    {
+      "package": "seqinr",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Depends"
+    },
+    {
+      "package": "logger",
+      "role": "Depends"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 2.1.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-10",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2025-47",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "genetics",
+    "alignment",
+    "sequencing",
+    "sangerseq",
+    "preprocessing",
+    "qualitycontrol",
+    "visualization",
+    "gui"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 514,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/sangeranalyseR"
+  },
+  "_mentions": 5,
+  "_searchresults": 52,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/sangeranalyseR.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "chromatogram_overwrite",
+    "generateReport",
+    "generateReportSA",
+    "generateReportSC",
+    "generateReportSR",
+    "launchApp",
+    "launchAppSA",
+    "launchAppSC",
+    "MakeBaseCalls",
+    "qualityBasePlot",
+    "readTable",
+    "SangerAlignment",
+    "SangerContig",
+    "SangerRead",
+    "updateQualityParam",
+    "writeFasta",
+    "writeFastaSA",
+    "writeFastaSC",
+    "writeFastaSR"
+  ],
+  "_datasets": [
+    {
+      "name": "qualityReportData",
+      "title": "QualityReport instance",
+      "object": "qualityReportData",
+      "file": "qualityReportData.RData",
+      "class": [
+        "QualityReport"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "sangerAlignmentData",
+      "title": "SangerAlignment instance",
+      "object": "sangerAlignmentData",
+      "file": "sangerAlignmentData.RData",
+      "class": [
+        "SangerAlignment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "sangerContigData",
+      "title": "SangerContig instance",
+      "object": "sangerContigData",
+      "file": "sangerContigData.RData",
+      "class": [
+        "SangerContig"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "sangerReadFData",
+      "title": "SangerRead instance",
+      "object": "sangerReadFData",
+      "file": "sangerReadFData.RData",
+      "class": [
+        "SangerRead"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "ChromatogramParam-class",
+      "title": "ChromatogramParam",
+      "topics": [
+        "ChromatogramParam-class"
+      ]
+    },
+    {
+      "page": "generateReport",
+      "title": "Method generateReport",
+      "topics": [
+        "generateReport"
+      ]
+    },
+    {
+      "page": "generateReportSA-methods",
+      "title": "Method generateReportSA",
+      "topics": [
+        "generateReportSA"
+      ]
+    },
+    {
+      "page": "generateReportSC-methods",
+      "title": "Method generateReportSC",
+      "topics": [
+        "generateReportSC"
+      ]
+    },
+    {
+      "page": "generateReportSR-methods",
+      "title": "Method generateReportSR",
+      "topics": [
+        "generateReportSR"
+      ]
+    },
+    {
+      "page": "launchApp",
+      "title": "Method launchApp",
+      "topics": [
+        "launchApp"
+      ]
+    },
+    {
+      "page": "launchAppSA-methods",
+      "title": "Method launchAppSA",
+      "topics": [
+        "launchAppSA"
+      ]
+    },
+    {
+      "page": "launchAppSC-methods",
+      "title": "Method launchAppSC",
+      "topics": [
+        "launchAppSC"
+      ]
+    },
+    {
+      "page": "MakeBaseCalls-methods",
+      "title": "Method MakeBaseCalls",
+      "topics": [
+        "MakeBaseCalls"
+      ]
+    },
+    {
+      "page": "ObjectResults-class",
+      "title": "ObjectResults",
+      "topics": [
+        "ObjectResults-class"
+      ]
+    },
+    {
+      "page": "qualityBasePlot-methods",
+      "title": "Method qualityBasePlot",
+      "topics": [
+        "qualityBasePlot"
+      ]
+    },
+    {
+      "page": "QualityReport-class",
+      "title": "QualityReport",
+      "topics": [
+        "QualityReport-class"
+      ]
+    },
+    {
+      "page": "QualityReport-class-qualityBasePlot",
+      "title": "qualityBasePlot",
+      "topics": [
+        "qualityBasePlot,QualityReport-method",
+        "QualityReport-class-qualityBasePlot"
+      ]
+    },
+    {
+      "page": "QualityReport-class-updateQualityParam",
+      "title": "updateQualityParam",
+      "topics": [
+        "QualityReport-class-updateQualityParam",
+        "updateQualityParam,QualityReport-method"
+      ]
+    },
+    {
+      "page": "qualityReportData",
+      "title": "QualityReport instance",
+      "topics": [
+        "qualityReportData"
+      ]
+    },
+    {
+      "page": "readTable-methods",
+      "title": "Method readTable",
+      "topics": [
+        "readTable"
+      ]
+    },
+    {
+      "page": "SangerAlignment",
+      "title": "SangerAlignment",
+      "topics": [
+        "SangerAlignment"
+      ]
+    },
+    {
+      "page": "SangerAlignment-class",
+      "title": "SangerAlignment",
+      "topics": [
+        "SangerAlignment-class"
+      ]
+    },
+    {
+      "page": "SangerAlignment-class-generateReportSA",
+      "title": "generateReportSA",
+      "topics": [
+        "generateReportSA,SangerAlignment-method",
+        "SangerAlignment-class-generateReportSA"
+      ]
+    },
+    {
+      "page": "SangerAlignment-class-launchAppSA",
+      "title": "launchAppSA",
+      "topics": [
+        "launchAppSA,SangerAlignment-method",
+        "SangerAlignment-class-launchAppSA"
+      ]
+    },
+    {
+      "page": "SangerAlignment-class-updateQualityParam",
+      "title": "updateQualityParam",
+      "topics": [
+        "SangerAlignment-class-updateQualityParam",
+        "updateQualityParam,SangerAlignment-method"
+      ]
+    },
+    {
+      "page": "SangerAlignment-class-writeFastaSA",
+      "title": "writeFastaSA",
+      "topics": [
+        "SangerAlignment-class-writeFastaSA",
+        "writeFastaSA,SangerAlignment-method"
+      ]
+    },
+    {
+      "page": "sangerAlignmentData",
+      "title": "SangerAlignment instance",
+      "topics": [
+        "sangerAlignmentData"
+      ]
+    },
+    {
+      "page": "sangeranalyseR",
+      "title": "sangeranalyseR-package",
+      "topics": [
+        "sangeranalyseR"
+      ]
+    },
+    {
+      "page": "SangerContig",
+      "title": "SangerContig",
+      "topics": [
+        "SangerContig"
+      ]
+    },
+    {
+      "page": "SangerContig-class",
+      "title": "SangerContig",
+      "topics": [
+        "SangerContig-class"
+      ]
+    },
+    {
+      "page": "SangerContig-class-generateReportSC",
+      "title": "generateReportSC",
+      "topics": [
+        "generateReportSC,SangerContig-method",
+        "SangerContig-class-generateReportSC"
+      ]
+    },
+    {
+      "page": "SangerContig-class-launchAppSC",
+      "title": "launchAppSC",
+      "topics": [
+        "launchAppSC,SangerContig-method",
+        "SangerContig-class-launchAppSC"
+      ]
+    },
+    {
+      "page": "SangerContig-class-readTable",
+      "title": "readTable",
+      "topics": [
+        "readTable,SangerContig-method",
+        "SangerContig-class-readTable"
+      ]
+    },
+    {
+      "page": "SangerContig-class-updateQualityParam",
+      "title": "updateQualityParam",
+      "topics": [
+        "SangerContig-class-updateQualityParam",
+        "updateQualityParam,SangerContig-method"
+      ]
+    },
+    {
+      "page": "SangerContig-class-writeFastaSC",
+      "title": "writeFastaSC",
+      "topics": [
+        "SangerContig-class-writeFastaSC",
+        "writeFastaSC,SangerContig-method"
+      ]
+    },
+    {
+      "page": "sangerContigData",
+      "title": "SangerContig instance",
+      "topics": [
+        "sangerContigData"
+      ]
+    },
+    {
+      "page": "SangerRead",
+      "title": "SangerRead",
+      "topics": [
+        "SangerRead"
+      ]
+    },
+    {
+      "page": "SangerRead-class",
+      "title": "SangerRead",
+      "topics": [
+        "SangerRead-class"
+      ]
+    },
+    {
+      "page": "SangerRead-class-generateReportSR",
+      "title": "generateReportSR",
+      "topics": [
+        "generateReportSR,SangerRead-method",
+        "SangerRead-class-generateReportSR"
+      ]
+    },
+    {
+      "page": "SangerRead-class-MakeBaseCalls",
+      "title": "MakeBaseCalls",
+      "topics": [
+        "MakeBaseCalls,SangerRead-method",
+        "SangerRead-class-MakeBaseCalls"
+      ]
+    },
+    {
+      "page": "SangerRead-class-qualityBasePlot",
+      "title": "qualityBasePlot",
+      "topics": [
+        "qualityBasePlot,SangerRead-method",
+        "SangerRead-class-qualityBasePlot"
+      ]
+    },
+    {
+      "page": "SangerRead-class-readTable",
+      "title": "readTable",
+      "topics": [
+        "readTable,SangerRead-method",
+        "SangerRead-class-readTable"
+      ]
+    },
+    {
+      "page": "SangerRead-class-updateQualityParam",
+      "title": "updateQualityParam",
+      "topics": [
+        "SangerRead-class-updateQualityParam",
+        "updateQualityParam,SangerRead-method"
+      ]
+    },
+    {
+      "page": "SangerRead-class-writeFastaSR",
+      "title": "writeFastaSR",
+      "topics": [
+        "SangerRead-class-writeFastaSR",
+        "writeFastaSR,SangerRead-method"
+      ]
+    },
+    {
+      "page": "sangerReadFData",
+      "title": "SangerRead instance",
+      "topics": [
+        "sangerReadFData"
+      ]
+    },
+    {
+      "page": "updateQualityParam-methods",
+      "title": "Method updateQualityParam",
+      "topics": [
+        "updateQualityParam"
+      ]
+    },
+    {
+      "page": "writeFasta",
+      "title": "Method writeFasta",
+      "topics": [
+        "writeFasta"
+      ]
+    },
+    {
+      "page": "writeFastaSA-methods",
+      "title": "Method writeFastaSA",
+      "topics": [
+        "writeFastaSA"
+      ]
+    },
+    {
+      "page": "writeFastaSC-methods",
+      "title": "Method writeFastaSC",
+      "topics": [
+        "writeFastaSC"
+      ]
+    },
+    {
+      "page": "writeFastaSR-methods",
+      "title": "Method writeFastaSR",
+      "topics": [
+        "writeFastaSR"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/sangeranalyseR/raw/HEAD/readme.md",
+  "_rundeps": [
+    "ade4",
+    "ape",
+    "askpass",
+    "base64enc",
+    "BiocGenerics",
+    "BiocManager",
+    "BiocStyle",
+    "Biostrings",
+    "bookdown",
+    "bslib",
+    "cachem",
+    "cli",
+    "commonmark",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "DECIPHER",
+    "digest",
+    "dplyr",
+    "DT",
+    "evaluate",
+    "excelR",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fs",
+    "generics",
+    "ggdendro",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "logger",
+    "magrittr",
+    "MASS",
+    "memoise",
+    "mime",
+    "nlme",
+    "openssl",
+    "openxlsx",
+    "otel",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "promises",
+    "purrr",
+    "pwalign",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "S4Vectors",
+    "S7",
+    "sangerseqR",
+    "sass",
+    "scales",
+    "segmented",
+    "Seqinfo",
+    "seqinr",
+    "shiny",
+    "shinycssloaders",
+    "shinydashboard",
+    "shinyjs",
+    "shinyWidgets",
+    "sourcetools",
+    "sp",
+    "stringi",
+    "stringr",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml",
+    "zeallot",
+    "zip"
+  ],
+  "_vignettes": [
+    {
+      "source": "sangeranalyseR.Rmd",
+      "filename": "sangeranalyseR.html",
+      "title": "An Introduction to sangeranalyseR",
+      "author": "Author: Kuan-Hao Chao (u7022787@anu.edu.au)",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction"
+      ],
+      "created": "2019-12-03 16:24:21",
+      "modified": "2021-10-18 07:05:22",
+      "commits": 22
+    }
+  ],
+  "_score": 5.7160033436347994,
+  "_indexed": true,
+  "_nocasepkg": "sangeranalyser",
+  "_universes": [
+    "bioc",
+    "kuanhao-chao"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:12:37.000Z",
+      "distro": "noble",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "a46955eaf33c8f6dd9d37f62c4dbda3d6c27c7589aaa6dfef1860235ff719782",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:12:04.000Z",
+      "distro": "noble",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "307d1c2a2c2fdc47d2955725fc9bbdc6ccab22a7ea5a6ac59cb60a95cf23d876",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:11:02.000Z",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "4419f438424d69bda798e4f21f658a21367654e16427aa7d9ef1a6ad21624ef2",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:10:53.000Z",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "1fe192623cbc5cf28ca5eb2c4a9511ed8ebcd0991fb5ce2c457e72989fc47d43",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:11:48.000Z",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "dfa23b11ad658fe48c5d21b542f6d706a97179f2a492a674801acfa224ece24d",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:10:39.000Z",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "96a603c471ad9b4b2a4f9525d1f3c44ef7750a35627e232f5fd22807d6ed4d88",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:11:02.000Z",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "8f53440e6f8521432a5a32fa4b409f8ad52bafd9ac28dfa184f0a7270bd58e27",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.21.1",
+      "date": "2026-01-24T08:10:43.000Z",
+      "commit": "a8787bd3d888e6d8fb0162ec25a21a194463db60",
+      "fileid": "dbdcb7e3dffc6bd27eac9c56bdcae7001e9a5e102f0b681ae403e2a099647215",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21311912944"
+    }
+  ]
+}

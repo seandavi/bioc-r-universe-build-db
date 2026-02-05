@@ -1,0 +1,824 @@
+{
+  "Package": "deconvR",
+  "Title": "Simulation and Deconvolution of Omic Profiles",
+  "Version": "1.17.0",
+  "Date": "2025-07-28",
+  "Authors@R": "c(person(given = \"Irem B.\",\nfamily = \"G\u00fcnd\u00fcz\",\nrole = c(\"aut\", \"cre\"),\nemail = \"irembgunduz@gmail.com\",\ncomment = c(ORCID = \"0000-0003-2641-0916\")),\nperson(given = \"Veronika\",\nfamily = \"Ebenal\",\nrole = c(\"aut\"),\nemail = \"veronikaebenal@gmail.com\",\ncomment = c(ORCID = \"0000-0001-7976-3964\")),\nperson(given = \"Altuna\",\nfamily = \"Akalin\",\nrole = c(\"aut\"),\nemail = \"aakalin@gmail.com\",\ncomment = c(ORCID = \"0000-0002-0468-0117\")))",
+  "Description": "This package provides a collection of functions designed\nfor analyzing deconvolution of the bulk sample(s) using an\natlas of reference omic signature profiles and a user-selected\nmodel. Users are given the option to create or extend a\nreference atlas and,also simulate the desired size of the bulk\nsignature profile of the reference cell types.The package\nincludes the cell-type-specific methylation atlas and, Illumina\nEpic B5 probe ids that can be used in deconvolution.\nAdditionally,we included BSmeth2Probe, to make mapping WGBS\ndata to their probe IDs easier.",
+  "License": "Artistic-2.0",
+  "URL": "https://github.com/BIMSBbioinfo/deconvR",
+  "BugReports": "https://support.bioconductor.org/t/deconvR",
+  "biocViews": "DNAMethylation, Regression, GeneExpression, RNASeq,\nSingleCell, StatisticalMethod, Transcriptomics",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.2.1",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "cmake make libbz2-dev libicu-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev libx11-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:13:19 UTC",
+  "RemoteUrl": "https://github.com/bioc/deconvR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-09 21:14:31 UTC",
+    "User": "root"
+  },
+  "Author": "Irem B. G\u00fcnd\u00fcz [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-2641-0916>),\nVeronika Ebenal [aut] (ORCID: <https://orcid.org/0000-0001-7976-3964>),\nAltuna Akalin [aut] (ORCID: <https://orcid.org/0000-0002-0468-0117>)",
+  "Maintainer": "Irem B. G\u00fcnd\u00fcz <irembgunduz@gmail.com>",
+  "MD5sum": "5dfaae0dc4e18bd1e8e85d8d43042dd3",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "deconvR_1.17.0.tar.gz",
+  "_fileid": "f9935252faa373194edca05c057ef4d338ac2e202d6072f79d655e948b281820",
+  "_filesize": 3800963,
+  "_sha256": "f9935252faa373194edca05c057ef4d338ac2e202d6072f79d655e948b281820",
+  "_created": "2026-01-09T21:14:31.000Z",
+  "_published": "2026-01-09T21:57:04.276Z",
+  "_jobs": [
+    {
+      "job": 59956450582,
+      "time": 247,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5081200484"
+    },
+    {
+      "job": 59956450572,
+      "time": 897,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5081300020"
+    },
+    {
+      "job": 59956450604,
+      "time": 890,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081300215"
+    },
+    {
+      "job": 59956450579,
+      "time": 1268,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5081510699"
+    },
+    {
+      "job": 59956450599,
+      "time": 852,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081454159"
+    },
+    {
+      "job": 59955885594,
+      "time": 428,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081142013"
+    },
+    {
+      "job": 59956450569,
+      "time": 225,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5081196935"
+    },
+    {
+      "job": 59956450602,
+      "time": 740,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5081275972"
+    },
+    {
+      "job": 59956450581,
+      "time": 789,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5081284723"
+    },
+    {
+      "job": 59956450612,
+      "time": 840,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081291662"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/deconvR",
+  "_commit": {
+    "id": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750799
+  },
+  "_maintainer": {
+    "name": "Irem B. G\u00fcnd\u00fcz",
+    "email": "irembgunduz@gmail.com",
+    "login": "igunduz",
+    "orcid": "0000-0003-2641-0916",
+    "twitter": "@_igunduz",
+    "uuid": 53946382
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "data.table",
+      "version": ">= 1.14.0",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.30.0",
+      "role": "Imports"
+    },
+    {
+      "package": "methylKit",
+      "version": ">= 1.18.0",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "version": ">= 2.26.0",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "version": ">= 1.44.0",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "version": ">= 0.38.0",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "version": ">= 1.5.1",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "version": ">= 2.0.1",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "version": ">= 0.61.0",
+      "role": "Imports"
+    },
+    {
+      "package": "e1071",
+      "version": ">= 1.7.9",
+      "role": "Imports"
+    },
+    {
+      "package": "quadprog",
+      "version": ">= 1.5.8",
+      "role": "Imports"
+    },
+    {
+      "package": "nnls",
+      "version": ">= 1.4",
+      "role": "Imports"
+    },
+    {
+      "package": "rsq",
+      "version": ">= 2.2",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "version": ">= 1.0.7",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "version": ">= 1.1.3",
+      "role": "Imports"
+    },
+    {
+      "package": "assertthat",
+      "role": "Imports"
+    },
+    {
+      "package": "minfi",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "version": ">= 7.1.2",
+      "role": "Suggests"
+    },
+    {
+      "package": "doParallel",
+      "version": ">= 1.0.16",
+      "role": "Suggests"
+    },
+    {
+      "package": "parallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.34",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "version": ">= 2.20.2",
+      "role": "Suggests"
+    },
+    {
+      "package": "reshape2",
+      "version": ">= 1.4.4",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 3.3.5",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "devtools",
+      "version": ">= 2.4.2",
+      "role": "Suggests"
+    },
+    {
+      "package": "sessioninfo",
+      "version": ">= 1.1.1",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "granulator",
+      "role": "Suggests"
+    },
+    {
+      "package": "RefManageR",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-31",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.17.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.16.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dnamethylation",
+    "regression",
+    "geneexpression",
+    "rnaseq",
+    "singlecell",
+    "statisticalmethod",
+    "transcriptomics",
+    "bioconductor-package",
+    "deconvolution",
+    "dna-methylation",
+    "omics"
+  ],
+  "_stars": 10,
+  "_contributors": [
+    {
+      "user": "igunduz",
+      "count": 229,
+      "uuid": 53946382
+    },
+    {
+      "user": "sevene7",
+      "count": 47,
+      "uuid": 14900977
+    },
+    {
+      "user": "jwokaty",
+      "count": 11,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 4,
+      "uuid": 2746443
+    },
+    {
+      "user": "jonasfreimuth",
+      "count": 1,
+      "uuid": 68993915
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 386,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/deconvR"
+  },
+  "_devurl": "https://github.com/bimsbbioinfo/deconvr",
+  "_searchresults": 20,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/deconvR.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bimsbbioinfo/deconvr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "BSmeth2Probe",
+    "deconvolute",
+    "findSignatures",
+    "simulateCellMix"
+  ],
+  "_datasets": [
+    {
+      "name": "HumanCellTypeMethAtlas",
+      "title": "The comprehensive human methylome reference atlas",
+      "object": "HumanCellTypeMethAtlas",
+      "file": "HumanCellTypeMethAtlas.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "IDs",
+        "Monocytes_EPIC",
+        "B.cells_EPIC",
+        "CD4T.cells_EPIC",
+        "NK.cells_EPIC",
+        "CD8T.cells_EPIC",
+        "Neutrophils_EPIC",
+        "Erythrocyte_progenitors",
+        "Adipocytes",
+        "Cortical_neurons",
+        "Hepatocytes",
+        "Lung_cells",
+        "Pancreatic_beta_cells",
+        "Pancreatic_acinar_cells",
+        "Pancreatic_duct_cells",
+        "Vascular_endothelial_cells",
+        "Colon_epithelial_cells",
+        "Left_atrium",
+        "Bladder",
+        "Breast",
+        "Head_and_neck_larynx",
+        "Kidney",
+        "Prostate",
+        "Thyroid",
+        "Upper_GI",
+        "Uterus_cervix"
+      ],
+      "rows": 6105,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "IlluminaMethEpicB5ProbeIDs",
+      "title": "A dataset Illumina probe IDs of 400000 genomic loci (identified using the \u201cseqnames\u201d, \u201cranges\u201d, and \u201cstrand\u201d values).",
+      "object": "IlluminaMethEpicB5ProbeIDs",
+      "file": "IlluminaMethEpicB5ProbeIDs.rda",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "BSmeth2Probe",
+      "title": "A function to map WGBS methylation data to Illumina Probe IDs",
+      "topics": [
+        "BSmeth2Probe"
+      ]
+    },
+    {
+      "page": "deconvolute",
+      "title": "A function to deconvolute of bulk samples to their origin proportions using data from reference atlas (e.g. methylation signatures) Results of model are returned in dataframe \"results\". Summary of partial R-squared values of model (min, median, mean, max) are printed upon completion.",
+      "topics": [
+        "deconvolute"
+      ]
+    },
+    {
+      "page": "findSignatures",
+      "title": "A function to construct a signature matrix",
+      "topics": [
+        "findSignatures"
+      ]
+    },
+    {
+      "page": "HumanCellTypeMethAtlas",
+      "title": "The comprehensive human methylome reference atlas",
+      "topics": [
+        "HumanCellTypeMethAtlas"
+      ]
+    },
+    {
+      "page": "IlluminaMethEpicB5ProbeIDs",
+      "title": "A dataset Illumina probe IDs of 400000 genomic loci (identified using the \u201cseqnames\u201d, \u201cranges\u201d, and \u201cstrand\u201d values).",
+      "topics": [
+        "IlluminaMethEpicB5ProbeIDs"
+      ]
+    },
+    {
+      "page": "simulateCellMix",
+      "title": "A function to generate a dataframe of mixed cell-type origin simulated samples using given reference atlas.",
+      "topics": [
+        "simulateCellMix"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/deconvR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "annotate",
+    "AnnotationDbi",
+    "askpass",
+    "assertthat",
+    "base64",
+    "bbmle",
+    "bdsmatrix",
+    "beanplot",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "bumphunter",
+    "cachem",
+    "cigarillo",
+    "class",
+    "cli",
+    "clipr",
+    "coda",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "deming",
+    "Deriv",
+    "digest",
+    "doRNG",
+    "dplyr",
+    "e1071",
+    "emdbook",
+    "farver",
+    "fastmap",
+    "fastseg",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "genefilter",
+    "generics",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GEOquery",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "gtools",
+    "h5mread",
+    "HDF5Array",
+    "hms",
+    "httr",
+    "httr2",
+    "illuminaio",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "lme4",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mclust",
+    "mcr",
+    "memoise",
+    "methylKit",
+    "mgcv",
+    "mime",
+    "minfi",
+    "minqa",
+    "multtest",
+    "mvtnorm",
+    "nlme",
+    "nloptr",
+    "nnls",
+    "nor1mix",
+    "numDeriv",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plyr",
+    "png",
+    "preprocessCore",
+    "prettyunits",
+    "progress",
+    "proxy",
+    "purrr",
+    "quadprog",
+    "qvalue",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RCurl",
+    "Rdpack",
+    "readr",
+    "reformulas",
+    "rentrez",
+    "reshape",
+    "reshape2",
+    "restfulr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rngtools",
+    "robslopes",
+    "Rsamtools",
+    "rsq",
+    "RSQLite",
+    "rtracklayer",
+    "rvest",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "scrime",
+    "selectr",
+    "Seqinfo",
+    "siggenes",
+    "snow",
+    "SparseArray",
+    "sparseMatrixStats",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tzdb",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "deconvRVignette.Rmd",
+      "filename": "deconvRVignette.html",
+      "title": "deconvR : Simulation and Deconvolution of Omic Profiles",
+      "author": "Irem B. Gunduz, Veronika Ebenal, Altuna Akalin",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Data",
+        "Comprehensive Human Methylome Reference Atlas",
+        "Illumina Infinium MethylationEPIC v1.0 B5 Manifest Probes (hg38)",
+        "Example Workflow For Whole Genome Bisulfate Sequencing Data",
+        "Expanding Reference Atlas",
+        "Constructing tissue specific CpG signature matrix",
+        "Constructing tissue specific DMPs",
+        "Example Workflow For RNA Sequencing Data",
+        "sessionInfo"
+      ],
+      "created": "2021-10-11 10:55:49",
+      "modified": "2022-12-03 15:09:32",
+      "commits": 8
+    }
+  ],
+  "_score": 6.079181246047625,
+  "_indexed": true,
+  "_nocasepkg": "deconvr",
+  "_universes": [
+    "bioc",
+    "igunduz",
+    "bimsbbioinfo"
+  ],
+  "_previous": "1.15.1",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:21:03.000Z",
+      "distro": "noble",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "b1aea6842db43c358733edecae62cb3cd33b50c248e903d2ba47d408c5afbc47",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:21:00.000Z",
+      "distro": "noble",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "8ff94ec3dfcab89644988d6debf0d6a678b925157e9c9c15584b7d5c34420317",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:38:33.000Z",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "068540682e29e0c8d37f0c261ed8281e1fa4ce5db3afe961b2ca23f9b42f1530",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:37:44.000Z",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "c53ea2a27046bd8b725b0fb619610b34ee81cefea8fe9463f2451ac1237c0386",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:21:12.000Z",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "2099eb62b24274f6a13c67cb2fd79237097971c1de430076db6590881d1d41a8",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:19:24.000Z",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "2b9c08a29690f5eca6299cdabdbae26e02cbb2e1c3e4566380cd15db445cdc89",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:20:03.000Z",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "0516405db261434b856e3941f5a464b544d395b0ce89fb5e77b868144791a3d6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-01-09T21:20:28.000Z",
+      "commit": "25b6419d458a5357a5d35d115a1c0a9cda4f9aed",
+      "fileid": "597c3aac577015ba98a5aaceb600901de28d8c7f0b104b35e18d1011b2aedacd",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865602243"
+    }
+  ]
+}

@@ -1,0 +1,869 @@
+{
+  "Package": "plyxp",
+  "Title": "Data masks for SummarizedExperiment enabling dplyr-like\nmanipulation",
+  "Version": "1.5.0",
+  "Authors@R": "c(\nperson(\"Justin\", \"Landis\", email = \"jtlandis314@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0001-5501-4934\")),\nperson(\"Michael\", \"Love\", email = \"michaelisaiahlove@gmail.com\", role = \"aut\",\ncomment = c(ORCID = \"0000-0001-8401-0545\")))",
+  "Description": "The package provides `rlang` data masks for the\nSummarizedExperiment class. The enables the evaluation of\nunquoted expression in different contexts of the\nSummarizedExperiment object with optional access to other\ncontexts. The goal for `plyxp` is for evaluation to feel like a\ndata.frame object without ever needing to unwind to a\nrectangular data.frame.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "LazyData": "true",
+  "URL": "https://github.com/jtlandis/plyxp,\nhttps://jtlandis.github.io/plyxp",
+  "BugReports": "https://www.github.com/jtlandis/plyxp/issues",
+  "biocViews": "Annotation, GenomeAnnotation, Transcriptomics",
+  "Config/testthat/edition": "3",
+  "Collate": "'as.data.frame.R' 'connect_masks.R' 'context-utils.R' 'data.R'\n'dplyr-across.R' 'dplyr-arrange.R' 'dplyr-filter.R'\n'dplyr-group_by.R' 'dplyr-mutate.R' 'dplyr-pull.R'\n'dplyr-select.R' 'dplyr-slice.R' 'dplyr-summarise.R'\n'group_utils.R' 'grouped_list.R' 'vctrs-S4-.R' 'vctrs-S4-rep.R'\n'vctrs-S4-unchop.R' 'vctrs-S4-chop.R' 'mask_env_top.R'\n'plyxp-R6-manager.R' 'plyxp-R6.R' 'plyxp-class.R'\n'plyxp-package.R' 'plyxp-quos.R' 'plyxp.R' 'plyxp_cannot.R'\n'print.R' 'reexports-SummarizedExperiment.R'\n'reexports-dplyr.R' 'utils.R' 'vctrs-S4-group.R'\n'vctrs-S4-recycle.R' 'vctrs-S4-slice.R' 'zzz-globals.R' 'zzz.R'",
+  "Config/pak/sysreqs": "libicu-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:32:44 UTC",
+  "RemoteUrl": "https://github.com/bioc/plyxp",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-20 07:50:54 UTC",
+    "User": "root"
+  },
+  "Author": "Justin Landis [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-5501-4934>),\nMichael Love [aut] (ORCID: <https://orcid.org/0000-0001-8401-0545>)",
+  "Maintainer": "Justin Landis <jtlandis314@gmail.com>",
+  "MD5sum": "e3e5fe307d4663af9efb0e3516dd5d0a",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "plyxp_1.5.0.tar.gz",
+  "_fileid": "c3e9fa89cb42088df0a43148ee5ffed17b45c433b9e69516f922b3d27375cf84",
+  "_filesize": 1193331,
+  "_sha256": "c3e9fa89cb42088df0a43148ee5ffed17b45c433b9e69516f922b3d27375cf84",
+  "_created": "2026-01-20T07:50:54.000Z",
+  "_published": "2026-01-20T07:57:11.681Z",
+  "_jobs": [
+    {
+      "job": 60863065264,
+      "time": 188,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5186159782"
+    },
+    {
+      "job": 60863065249,
+      "time": 303,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5186175918"
+    },
+    {
+      "job": 60863065250,
+      "time": 327,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5186179357"
+    },
+    {
+      "job": 60863065252,
+      "time": 190,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5186160070"
+    },
+    {
+      "job": 60863065274,
+      "time": 242,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5186166600"
+    },
+    {
+      "job": 60862771462,
+      "time": 248,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5186133444"
+    },
+    {
+      "job": 60863065225,
+      "time": 143,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5186153435"
+    },
+    {
+      "job": 60863065271,
+      "time": 226,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5186164779"
+    },
+    {
+      "job": 60863065296,
+      "time": 244,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5186167308"
+    },
+    {
+      "job": 60863065336,
+      "time": 228,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5186165116"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/plyxp",
+  "_commit": {
+    "id": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751964
+  },
+  "_maintainer": {
+    "name": "Justin Landis",
+    "email": "jtlandis314@gmail.com",
+    "login": "jtlandis",
+    "uuid": 30324172,
+    "orcid": "0000-0001-5501-4934"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "vctrs",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "pillar",
+      "role": "Imports"
+    },
+    {
+      "package": "cli",
+      "role": "Imports"
+    },
+    {
+      "package": "glue",
+      "role": "Imports"
+    },
+    {
+      "package": "S7",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "airway",
+      "role": "Suggests"
+    },
+    {
+      "package": "IRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "here",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 2,
+  "_updates": [
+    {
+      "week": "2025-24",
+      "n": 1
+    },
+    {
+      "week": "2025-31",
+      "n": 10
+    },
+    {
+      "week": "2025-32",
+      "n": 18
+    },
+    {
+      "week": "2025-35",
+      "n": 21
+    },
+    {
+      "week": "2025-39",
+      "n": 25
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-41",
+      "n": 7
+    },
+    {
+      "week": "2025-43",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.5.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.4.3",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "annotation",
+    "genomeannotation",
+    "transcriptomics"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "jtlandis",
+      "count": 482,
+      "uuid": 30324172
+    },
+    {
+      "user": "mikelove",
+      "count": 22,
+      "uuid": 69203
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 249,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/plyxp"
+  },
+  "_devurl": "https://github.com/jtlandis/plyxp",
+  "_pkgdown": "https://jtlandis.github.io/plyxp",
+  "_searchresults": 12,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/plyxp.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/jtlandis/plyxp",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ".assays",
+    ".assays_asis",
+    ".cols",
+    ".cols_asis",
+    ".rows",
+    ".rows_asis",
+    "arrange",
+    "assay",
+    "assay_ctx",
+    "assay<-",
+    "assays",
+    "assays<-",
+    "class_DF",
+    "class_s4_vctrs",
+    "class_vctrs",
+    "col_ctx",
+    "colData",
+    "colData<-",
+    "colnames",
+    "cols",
+    "filter",
+    "group_by",
+    "group_data",
+    "group_split",
+    "group_vars",
+    "list_unchop",
+    "metadata",
+    "metadata<-",
+    "mutate",
+    "ncol",
+    "new_plyxp",
+    "nrow",
+    "PlySummarizedExperiment",
+    "plyxp",
+    "plyxp_on",
+    "plyxp_pillar_format",
+    "pull",
+    "row_ctx",
+    "rowData",
+    "rowData<-",
+    "rownames",
+    "rows",
+    "se",
+    "se<-",
+    "select",
+    "show_tidy",
+    "slice",
+    "summarise",
+    "summarize",
+    "SummarizedExperiment",
+    "ungroup",
+    "use_show_default",
+    "use_show_tidy",
+    "vec_chop",
+    "vec_group_id",
+    "vec_group_loc",
+    "vec_phantom",
+    "vec_ptype_common",
+    "vec_ptype2",
+    "vec_recycle",
+    "vec_rep",
+    "vec_rep_each",
+    "vec_slice"
+  ],
+  "_datasets": [
+    {
+      "name": "se_simple",
+      "title": "Plyxp Simple Example Summarized Experiment",
+      "object": "se_simple",
+      "class": [
+        "PlySummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "arrange",
+      "title": "arrange rows or columns of PlySummarizedExperiment",
+      "topics": [
+        "arrange",
+        "arrange.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "as.data.frame",
+      "title": "create data.frame",
+      "topics": [
+        "as.data.frame",
+        "as.data.frame.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "dot-pronouns",
+      "title": "contextual plyxp pronouns",
+      "topics": [
+        ".assays",
+        ".assays_asis",
+        ".cols",
+        ".cols_asis",
+        ".rows",
+        ".rows_asis",
+        "dot-pronouns"
+      ]
+    },
+    {
+      "page": "filter",
+      "title": "filter PlySummarizedExperiment",
+      "topics": [
+        "filter",
+        "filter.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "group_by",
+      "title": "apply groups to PlySummarizedExperiment",
+      "topics": [
+        "group_by",
+        "group_by.PlySummarizedExperiment",
+        "ungroup.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "group_data",
+      "title": "get grouping data",
+      "topics": [
+        "group_data",
+        "group_data.PlySummarizedExperiment",
+        "ungroup"
+      ]
+    },
+    {
+      "page": "group_split",
+      "title": "Split a PlySummarizedExperiment based on groups",
+      "topics": [
+        "group_split",
+        "group_split.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "group_vars",
+      "title": "get PlySummarizedExperiment grouping Variables",
+      "topics": [
+        "group_vars",
+        "group_vars.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "list_unchop",
+      "title": "unchop a list of objects",
+      "topics": [
+        "list_unchop"
+      ]
+    },
+    {
+      "page": "mutate",
+      "title": "Mutate a PlySummarizedExperiment object",
+      "topics": [
+        "mutate",
+        "mutate.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "new_plyxp",
+      "title": "SummarizedExperiment Shell Object",
+      "topics": [
+        "new_plyxp",
+        "PlySummarizedExperiment",
+        "PlySummarizedExperiment-class"
+      ]
+    },
+    {
+      "page": "plyxp",
+      "title": "Modify SummarizedExperiment Object",
+      "topics": [
+        "plyxp",
+        "plyxp_on"
+      ]
+    },
+    {
+      "page": "plyxp-context",
+      "title": "plyxp contexts",
+      "topics": [
+        "assay_ctx",
+        "cols",
+        "col_ctx",
+        "plyxp-context",
+        "rows",
+        "row_ctx"
+      ]
+    },
+    {
+      "page": "pull",
+      "title": "extract data from object",
+      "topics": [
+        "pull",
+        "pull.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "PlySummarizedExperiment-methods",
+      "title": "PlySummarizedExperiment Methods",
+      "topics": [
+        "assay,PlySummarizedExperiment,character-method",
+        "assay,PlySummarizedExperiment,missing-method",
+        "assay,PlySummarizedExperiment,numeric-method",
+        "assay<-,PlySummarizedExperiment,character-method",
+        "assay<-,PlySummarizedExperiment,missing-method",
+        "assay<-,PlySummarizedExperiment,numeric-method",
+        "assays,PlySummarizedExperiment-method",
+        "assays<-,PlySummarizedExperiment,list-method",
+        "assays<-,PlySummarizedExperiment,SimpleList-method",
+        "colData,PlySummarizedExperiment-method",
+        "colData<-,PlySummarizedExperiment,DataFrame-method",
+        "colData<-,PlySummarizedExperiment,NULL-method",
+        "colnames,PlySummarizedExperiment-method",
+        "dimnames,PlySummarizedExperiment-method",
+        "dimnames<-,PlySummarizedExperiment,list-method",
+        "dimnames<-,PlySummarizedExperiment,NULL-method",
+        "metadata,PlySummarizedExperiment-method",
+        "metadata<-,PlySummarizedExperiment-method",
+        "ncol,PlySummarizedExperiment-method",
+        "nrow,PlySummarizedExperiment-method",
+        "PlySummarizedExperiment-methods",
+        "rowData,PlySummarizedExperiment-method",
+        "rowData<-,PlySummarizedExperiment-method",
+        "rownames,PlySummarizedExperiment-method",
+        "se",
+        "se,PlySummarizedExperiment-method",
+        "se,SummarizedExperiment-method",
+        "se<-",
+        "se<-,PlySummarizedExperiment-method",
+        "se<-,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "se_simple",
+      "title": "Plyxp Simple Example Summarized Experiment",
+      "topics": [
+        "se_simple"
+      ]
+    },
+    {
+      "page": "select",
+      "title": "select assays, rowData, and colData names",
+      "topics": [
+        "select",
+        "select.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "slice",
+      "title": "Slice a PlySummarizedExperiment",
+      "topics": [
+        "slice",
+        "slice.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "summarize",
+      "title": "Summarize PlySummarizedExperiment",
+      "topics": [
+        "summarise",
+        "summarise.PlySummarizedExperiment",
+        "summarize",
+        "summarize.PlySummarizedExperiment"
+      ]
+    },
+    {
+      "page": "vctrs_slice",
+      "title": "Get observations of a vector",
+      "topics": [
+        "vctrs_slice",
+        "vec_slice"
+      ]
+    },
+    {
+      "page": "vctrs-vec_chop",
+      "title": "chop a vector",
+      "topics": [
+        "vctrs-vec_chop",
+        "vec_chop"
+      ]
+    },
+    {
+      "page": "vctrs-vec_recycle",
+      "title": "Recycle a vector",
+      "topics": [
+        "vctrs-vec_recycle",
+        "vec_recycle"
+      ]
+    },
+    {
+      "page": "vctrs-vec_rep",
+      "title": "replicate a vector",
+      "topics": [
+        "vctrs-vec_rep",
+        "vec_rep",
+        "vec_rep_each"
+      ]
+    },
+    {
+      "page": "vec_group_id",
+      "title": "Create Group Indices",
+      "topics": [
+        "vec_group_id",
+        "vec_group_loc"
+      ]
+    },
+    {
+      "page": "plyxp-printing",
+      "title": "Printing within tibble with S4 objects",
+      "topics": [
+        "plyxp-printing",
+        "plyxp_pillar_format",
+        "show_tidy",
+        "use_show_default",
+        "use_show_tidy",
+        "vec_phantom"
+      ]
+    },
+    {
+      "page": "vec_ptype_common",
+      "title": "find the common ptype",
+      "topics": [
+        "vec_ptype_common"
+      ]
+    },
+    {
+      "page": "vec_ptype2",
+      "title": "Create a common prototype of two vectors",
+      "topics": [
+        "vec_ptype2"
+      ]
+    },
+    {
+      "page": "vectors",
+      "title": "S7 classes for vctrs and S4 Vectors",
+      "topics": [
+        "class_DF",
+        "class_s4_vctrs",
+        "class_vctrs",
+        "vectors"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/plyxp/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocGenerics",
+    "cli",
+    "cpp11",
+    "DelayedArray",
+    "dplyr",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "IRanges",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "R6",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "Seqinfo",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "plyxp.Rmd",
+      "filename": "plyxp.html",
+      "title": "plyxp Usage Guide",
+      "author": "Justin Landis, Michael Love",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Enabling dplyr verbs",
+        "Typical use case",
+        "Related work",
+        "A Note on tidySummarizedExperiment",
+        "plyxp grammar",
+        "assay context",
+        "rows context",
+        "cols context",
+        "Multiple expressions enabled via plyxp",
+        "Advanced features",
+        "Object integrity",
+        "group_by()",
+        "Printing",
+        "renaming rows or columns",
+        "Troubleshooting and best practices",
+        "Community and support",
+        "Session info",
+        "References"
+      ],
+      "created": "2024-10-16 19:30:18",
+      "modified": "2025-10-09 20:08:31",
+      "commits": 6
+    }
+  ],
+  "_score": 6.65667304588485,
+  "_indexed": true,
+  "_nocasepkg": "plyxp",
+  "_universes": [
+    "bioc",
+    "jtlandis"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:54:16.000Z",
+      "distro": "noble",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "cb7a9d854371aca088628d436a249fb5b9adaf57661186a0c12c780529d094b5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:54:41.000Z",
+      "distro": "noble",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "9788d508f31cfe179a23ed1b329345cd5d2a5f76bf82f2aedc9f026d6f9432e5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:53:06.000Z",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "86d8efe4584eaa7a84c755db8db8be35fc85ee9575a7395217e2cf3d72ee482c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:53:38.000Z",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "84c99103a9be809a950ff0413529e02ede26e8244cbc01ba6622f6e98c1d07f1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:53:49.000Z",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "e424efc4d46eb1d45e60df993a4eb64cf1896aba841cdde8c5e8a5affd847309",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:52:46.000Z",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "c1751f6117ebfbab157df905c7b33365aa351f17617e9a4ee3c9ffe1c5817d1f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:52:57.000Z",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "5a7da6de2c50fecabf9bbb91c9875f83fa6cf6154132ce7e7230b86d8e77d77b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.5.0",
+      "date": "2026-01-20T07:52:49.000Z",
+      "commit": "b0d04f2d5a56e20ed5dab7bf5911f24b955976d8",
+      "fileid": "033bb8aae5952ce574f3ba6a539fc4d73065bc4bdf4bbc15918f01ad7cca00f0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21163496406"
+    }
+  ]
+}

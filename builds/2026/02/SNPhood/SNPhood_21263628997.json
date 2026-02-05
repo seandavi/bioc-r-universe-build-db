@@ -1,0 +1,971 @@
+{
+  "Package": "SNPhood",
+  "Title": "SNPhood: Investigate, quantify and visualise the epigenomic\nneighbourhood of SNPs using NGS data",
+  "Version": "1.41.0",
+  "Authors@R": "c(person(\"Christian\", \"Arnold\", email =\n\"christian.arnold@embl.de\", role = c(\"cre\",\"aut\")),\nperson(\"Pooja\", \"Bhat\", email = \"pooja.bhat@embl.de\", role =\n\"aut\"), person(\"Judith\", \"Zaugg\", email =\n\"judith.zaugg@embl.de\", role = \"aut\"))",
+  "Author": "Christian Arnold [aut, cre], Pooja Bhat [aut], Judith Zaugg\n[aut]",
+  "Maintainer": "Christian Arnold <christian.arnold@embl.de>",
+  "Description": "To date, thousands of single nucleotide polymorphisms\n(SNPs) have been found to be associated with complex traits and\ndiseases. However, the vast majority of these\ndisease-associated SNPs lie in the non-coding part of the\ngenome, and are likely to affect regulatory elements, such as\nenhancers and promoters, rather than function of a protein.\nThus, to understand the molecular mechanisms underlying genetic\ntraits and diseases, it becomes increasingly important to study\nthe effect of a SNP on nearby molecular traits such as\nchromatin environment or transcription factor (TF) binding.\nTowards this aim, we developed SNPhood, a user-friendly\n*Bioconductor* R package to investigate and visualize the local\nneighborhood of a set of SNPs of interest for NGS data such as\nchromatin marks or transcription factor binding sites from\nChIP-Seq or RNA- Seq experiments. SNPhood comprises a set of\neasy-to-use functions to extract, normalize and summarize reads\nfor a genomic region, perform various data quality checks,\nnormalize read counts using additional input files, and to\ncluster and visualize the regions according to the binding\npattern. The regions around each SNP can be binned in a\nuser-defined fashion to allow for analysis of very broad\npatterns as well as a detailed investigation of specific\nbinding shapes. Furthermore, SNPhood supports the integration\nwith genotype information to investigate and visualize\ngenotype-specific binding patterns. Finally, SNPhood can be\nemployed for determining, investigating, and visualizing\nallele-specific binding patterns around the SNPs of interest.",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software",
+  "License": "LGPL (>= 3)",
+  "LazyData": "true",
+  "URL": "https://bioconductor.org/packages/SNPhood",
+  "BugReports": "mailto:<christian.arnold@embl.de>",
+  "RoxygenNote": "5.0.1",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:28:24 UTC",
+  "RemoteUrl": "https://github.com/bioc/SNPhood",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-22 20:29:22 UTC",
+    "User": "root"
+  },
+  "MD5sum": "fcd37c7d0d3ee7b13b1967f47149bcf6",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "SNPhood_1.41.0.tar.gz",
+  "_fileid": "0134c3113c188c4512fdc9d4924d2f01cbb6b5eb2a1d0b1ef0feb1f128c26c95",
+  "_filesize": 6865113,
+  "_sha256": "0134c3113c188c4512fdc9d4924d2f01cbb6b5eb2a1d0b1ef0feb1f128c26c95",
+  "_created": "2026-01-22T20:29:22.000Z",
+  "_published": "2026-01-22T21:26:44.512Z",
+  "_jobs": [
+    {
+      "job": 61197931362,
+      "time": 260,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5225330354"
+    },
+    {
+      "job": 61197931357,
+      "time": 813,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225438286"
+    },
+    {
+      "job": 61197931354,
+      "time": 664,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225409288"
+    },
+    {
+      "job": 61197931377,
+      "time": 466,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225916841"
+    },
+    {
+      "job": 61197931461,
+      "time": 517,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225926918"
+    },
+    {
+      "job": 61197200787,
+      "time": 450,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5225280736"
+    },
+    {
+      "job": 61197931346,
+      "time": 205,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5225319511"
+    },
+    {
+      "job": 61197931365,
+      "time": 503,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225377431"
+    },
+    {
+      "job": 61197931366,
+      "time": 507,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5225378034"
+    },
+    {
+      "job": 61197931367,
+      "time": 513,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225379659"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 1,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/SNPhood",
+  "_commit": {
+    "id": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748104
+  },
+  "_maintainer": {
+    "name": "Christian Arnold",
+    "email": "christian.arnold@embl.de"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Depends"
+    },
+    {
+      "package": "data.table",
+      "role": "Depends"
+    },
+    {
+      "package": "checkmate",
+      "role": "Depends"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "lattice",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "version": ">= 1.34.8",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "pryr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "SNPhoodData",
+      "role": "Suggests"
+    },
+    {
+      "package": "corrplot",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.41.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.40.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 315,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/SNPhood"
+  },
+  "_mentions": 2,
+  "_searchresults": 1,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/SNPhood.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "analyzeSNPhood",
+    "annotation",
+    "annotationBins",
+    "annotationBins2",
+    "annotationDatasets",
+    "annotationReadGroups",
+    "annotationRegions",
+    "associateGenotypes",
+    "changeObjectIntegrityChecking",
+    "collectFiles",
+    "convertToAllelicFractions",
+    "counts",
+    "deleteDatasets",
+    "deleteReadGroups",
+    "deleteRegions",
+    "enrichment",
+    "getDefaultParameterList",
+    "mergeReadGroups",
+    "nBins",
+    "nDatasets",
+    "nReadGroups",
+    "nRegions",
+    "parameters",
+    "plotAllelicBiasResults",
+    "plotAllelicBiasResultsOverview",
+    "plotAndCalculateCorrelationDatasets",
+    "plotAndCalculateWeakAndStrongGenotype",
+    "plotAndClusterMatrix",
+    "plotAndSummarizeAllelicBiasTest",
+    "plotBinCounts",
+    "plotClusterAverage",
+    "plotFDRResults",
+    "plotGenotypesPerCluster",
+    "plotGenotypesPerSNP",
+    "plotRegionCounts",
+    "renameBins",
+    "renameDatasets",
+    "renameReadGroups",
+    "renameRegions",
+    "results",
+    "testForAllelicBiases"
+  ],
+  "_datasets": [
+    {
+      "name": "SNPhood.o",
+      "title": "SNPhood example data",
+      "object": "SNPhood.o",
+      "class": [
+        "SNPhood"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "analyzeSNPhood",
+      "title": "Main function of _SNPhood_",
+      "topics": [
+        "analyzeSNPhood"
+      ]
+    },
+    {
+      "page": "annotation-methods",
+      "title": "Retrieve the annotation of a 'SNPhood' object.",
+      "topics": [
+        "annotation",
+        "annotation,SNPhood-method"
+      ]
+    },
+    {
+      "page": "annotationBins",
+      "title": "Get the annotation(names) of the bins in a _SNPhood_ object.",
+      "topics": [
+        "annotationBins"
+      ]
+    },
+    {
+      "page": "annotationBins2",
+      "title": "Get the annotation(names) of bins in a _SNPhood_ object.",
+      "topics": [
+        "annotationBins2"
+      ]
+    },
+    {
+      "page": "annotationDatasets",
+      "title": "Get the annotation(names) of the datasets in a _SNPhood_ object.",
+      "topics": [
+        "annotationDatasets"
+      ]
+    },
+    {
+      "page": "annotationReadGroups",
+      "title": "Get the annotation(names) of the read groups in a _SNPhood_ object.",
+      "topics": [
+        "annotationReadGroups"
+      ]
+    },
+    {
+      "page": "annotationRegions",
+      "title": "Get the annotation of SNP regions for a _SNPhood_ object.",
+      "topics": [
+        "annotationRegions"
+      ]
+    },
+    {
+      "page": "associateGenotypes",
+      "title": "Associate genotypes with user regions from a _SNPhood_ object.",
+      "topics": [
+        "associateGenotypes"
+      ]
+    },
+    {
+      "page": "changeObjectIntegrityChecking",
+      "title": "Disable object integrity checking for a _SNPhood_ object.",
+      "topics": [
+        "changeObjectIntegrityChecking"
+      ]
+    },
+    {
+      "page": "collectFiles",
+      "title": "Helper function to generate a data frame that can be used as input for the function _analyzeSNPhood_",
+      "topics": [
+        "collectFiles"
+      ]
+    },
+    {
+      "page": "convertToAllelicFractions",
+      "title": "Convert read counts across read groups to relative fractions from a _SNPhood_ object.",
+      "topics": [
+        "convertToAllelicFractions"
+      ]
+    },
+    {
+      "page": "counts-method",
+      "title": "Extract count data from a 'SNPhood' object.",
+      "topics": [
+        "counts",
+        "counts,SNPhood-method"
+      ]
+    },
+    {
+      "page": "deleteDatasets",
+      "title": "Delete a particular set of datasets from a _SNPhood_ object.",
+      "topics": [
+        "deleteDatasets"
+      ]
+    },
+    {
+      "page": "deleteReadGroups",
+      "title": "Delete a particular set of read groups.",
+      "topics": [
+        "deleteReadGroups"
+      ]
+    },
+    {
+      "page": "deleteRegions",
+      "title": "Delete a set of user regions from a _SNPhood_ object.",
+      "topics": [
+        "deleteRegions"
+      ]
+    },
+    {
+      "page": "enrichment-methods",
+      "title": "Extract enrichment data from an object.",
+      "topics": [
+        "enrichment",
+        "enrichment,SNPhood-method"
+      ]
+    },
+    {
+      "page": "getDefaultParameterList",
+      "title": "Helper function to generate a default parameter list as input for the function _analyzeSNPhood_",
+      "topics": [
+        "getDefaultParameterList"
+      ]
+    },
+    {
+      "page": "mergeReadGroups",
+      "title": "Merges the counts of all read groups for a _SNPhood_ object",
+      "topics": [
+        "mergeReadGroups"
+      ]
+    },
+    {
+      "page": "bins-methods",
+      "title": "Get the number of bins for a _SNPhood_ object.",
+      "topics": [
+        "bins",
+        "nBins"
+      ]
+    },
+    {
+      "page": "datasets-methods",
+      "title": "Get the number of datasets for a _SNPhood_ object.",
+      "topics": [
+        "datasets",
+        "nDatasets"
+      ]
+    },
+    {
+      "page": "readGroups-methods",
+      "title": "Get the number of read groups for a _SNPhood_ object.",
+      "topics": [
+        "nReadGroups",
+        "readGroups"
+      ]
+    },
+    {
+      "page": "regions-methods",
+      "title": "Get the number of SNP regions for a _SNPhood_ object.",
+      "topics": [
+        "nRegions",
+        "regions"
+      ]
+    },
+    {
+      "page": "parameters-methods",
+      "title": "Retrieve the parameters of an object.",
+      "topics": [
+        "parameters",
+        "parameters,SNPhood-method"
+      ]
+    },
+    {
+      "page": "plotAllelicBiasResults",
+      "title": "Graphically summarize the results of the allelic bias analysis for a specific dataset and region.",
+      "topics": [
+        "plotAllelicBiasResults"
+      ]
+    },
+    {
+      "page": "plotAllelicBiasResultsOverview",
+      "title": "Visualize the results of the allelic bias analysis across regions or a user-defined genomic range",
+      "topics": [
+        "plotAllelicBiasResultsOverview"
+      ]
+    },
+    {
+      "page": "plotAndCalculateCorrelationDatasets",
+      "title": "Calculate and plot correlation of region read counts among pairs of input files.",
+      "topics": [
+        "plotAndCalculateCorrelationDatasets"
+      ]
+    },
+    {
+      "page": "plotAndCalculateWeakAndStrongGenotype",
+      "title": "Visualizes and calculates strong and weak genotypes.",
+      "topics": [
+        "plotAndCalculateWeakAndStrongGenotype"
+      ]
+    },
+    {
+      "page": "plotAndClusterMatrix",
+      "title": "Clustering of read counts or enrichmens across bins for a specific dataset and read group",
+      "topics": [
+        "plotAndClusterMatrix"
+      ]
+    },
+    {
+      "page": "plotAndSummarizeAllelicBiasTest",
+      "title": "Summarize the allelic bias analysis across SNP regions and bins and visualize some of the results.",
+      "topics": [
+        "plotAndSummarizeAllelicBiasTest"
+      ]
+    },
+    {
+      "page": "plotBinCounts",
+      "title": "Visualize counts or enrichment for a particular region across bins, datasets, and read groups.",
+      "topics": [
+        "plotBinCounts"
+      ]
+    },
+    {
+      "page": "plotClusterAverage",
+      "title": "Visualize average enrichment per cluster",
+      "topics": [
+        "plotClusterAverage"
+      ]
+    },
+    {
+      "page": "plotFDRResults",
+      "title": "Graphically summarize the results of the allelic bias analysis for a specific dataset and region.",
+      "topics": [
+        "plotFDRResults"
+      ]
+    },
+    {
+      "page": "plotGenotypesPerCluster",
+      "title": "Visualize average counts/enrichment based on strong and weak genotypes.",
+      "topics": [
+        "plotGenotypesPerCluster"
+      ]
+    },
+    {
+      "page": "plotGenotypesPerSNP",
+      "title": "Plot genotype frequencies of regions across datasets.",
+      "topics": [
+        "plotGenotypesPerSNP"
+      ]
+    },
+    {
+      "page": "plotRegionCounts",
+      "title": "Visualize the raw read counts across regions or a user-defined genomic range",
+      "topics": [
+        "plotRegionCounts"
+      ]
+    },
+    {
+      "page": "renameBins",
+      "title": "Rename bins.",
+      "topics": [
+        "renameBins"
+      ]
+    },
+    {
+      "page": "renameDatasets",
+      "title": "Rename datasets.",
+      "topics": [
+        "renameDatasets"
+      ]
+    },
+    {
+      "page": "renameReadGroups",
+      "title": "Rename read groups.",
+      "topics": [
+        "renameReadGroups"
+      ]
+    },
+    {
+      "page": "renameRegions",
+      "title": "Rename regions.",
+      "topics": [
+        "renameRegions"
+      ]
+    },
+    {
+      "page": "results",
+      "title": "Get results of various analyses performed with a 'SNPhood' object.",
+      "topics": [
+        "results"
+      ]
+    },
+    {
+      "page": "SNPhood",
+      "title": "SNPhood: Investigate, quantify and visualise the epigenomic neighbourhood of SNPs using NGS data",
+      "topics": [
+        "SNPhood-package",
+        "SNPhood"
+      ]
+    },
+    {
+      "page": "SNPhood-class",
+      "title": "A class to represent, investigate, quantify and visualise the epigenomic neighbourhood of SNPs using NGS data",
+      "topics": [
+        "SNPhood-class"
+      ]
+    },
+    {
+      "page": "SNPhood.o",
+      "title": "SNPhood example data",
+      "topics": [
+        "SNPhood-data",
+        "SNPhood.o"
+      ]
+    },
+    {
+      "page": "testForAllelicBiases",
+      "title": "Perform an allelic bias tests for each user region and bin.",
+      "topics": [
+        "testForAllelicBiases"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "backports",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "DESeq2",
+    "farver",
+    "fastmap",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "locfit",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pkgconfig",
+    "plogr",
+    "plyr",
+    "png",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "UCSC.utils",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "IntroductionToSNPhood.Rmd",
+      "filename": "IntroductionToSNPhood.html",
+      "title": "Introduction and Methodological Details",
+      "author": "Christian Arnold, Pooja Bhat, Judith Zaugg",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Important note regarding the SNPhood version",
+        "Motivation, Necessity, Package Scope and Limitations",
+        "Motivation and Necessity",
+        "Package scope and limitations",
+        "Basic Mode of Action",
+        "Input",
+        "Output",
+        "Further Methodological Details",
+        "SNPhood object and object validity",
+        "Plots",
+        "Parameters",
+        "Input files",
+        "Quality control (QC)",
+        "Extending user regions and binning",
+        "Read extraction",
+        "Determination of SNP genotypes",
+        "Normalization of reads counts and enrichment calculation",
+        "Normalizing using negative controls (e.g. input DNA):",
+        "Normalizing by library size only",
+        "Normalization when pooling datasets",
+        "Allelic bias tests",
+        "Genotype integration",
+        "Clustering",
+        "Memory footprint and execution time, feasibility with large datasets",
+        "CPU time",
+        "Memory footprint",
+        "Summary and rules of thumb",
+        "Performance options",
+        "Normalization",
+        "Read retrieval options",
+        "User regions options",
+        "Example Workflow",
+        "Bug Reports, Feature Requests and Contact Information",
+        "References"
+      ],
+      "created": "2015-10-07 21:42:50",
+      "modified": "2016-03-10 16:36:33",
+      "commits": 5
+    },
+    {
+      "source": "workflow.Rmd",
+      "filename": "workflow.html",
+      "title": "Workflow example",
+      "author": "Christian Arnold, Pooja Bhat, Judith Zaugg",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Example Workflow",
+        "Data check and collection",
+        "Setting up SNPhood",
+        "Quality control",
+        "Executing the main function",
+        "Working with a SNPhood object: Extracting and manipulating information and metadata",
+        "Visualizing counts and enrichment",
+        "Testing for and visualizing allelic biases",
+        "Cluster analyses",
+        "Genotype analyses",
+        "Combined cluster and genotype analyses",
+        "How to continue?",
+        "Bug Reports, Feature Requests and Contact Information",
+        "References"
+      ],
+      "created": "2015-10-07 21:42:50",
+      "modified": "2017-08-11 14:50:26",
+      "commits": 6
+    }
+  ],
+  "_score": 3.9030899869919438,
+  "_indexed": true,
+  "_nocasepkg": "snphood",
+  "_universes": [
+    "bioc"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.41.0",
+      "date": "2026-01-22T20:36:41.000Z",
+      "distro": "noble",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "dfe26f1e04b08bafbd7598041a47d2b2b7abeccaa79cdd08ae826b8cde7666c9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.41.0",
+      "date": "2026-01-22T20:34:05.000Z",
+      "distro": "noble",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "0b44b87b929e33b987ffc43c6a9ec3474cd28ca65dd9e60db05273453056386c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.41.0",
+      "date": "2026-01-22T21:19:35.000Z",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "79b8d1174869773ccac6446e8f4a89178114a077692ab14fbae64e082adff90f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.41.0",
+      "date": "2026-01-22T21:19:24.000Z",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "5934f980543f6911a3bdcc39450ebcbdf3f95a886f4c56d06d788581149bfc68",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.41.0",
+      "date": "2026-01-22T20:33:28.000Z",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "f892cb291fe7236ecfe5aa6e461f01562642244d2c8b1662cf5c28c03a1804b0",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.41.0",
+      "date": "2026-01-22T20:32:16.000Z",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "ec8f0bb700f0c6261725aba4f7483c3cb08068a9174f06572fd13dbe8134c2cc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.41.0",
+      "date": "2026-01-22T20:32:08.000Z",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "3715499e8e2bb689a07b1bc9f4d5e46f2325878afeae92605d86256223e3e561",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.41.0",
+      "date": "2026-01-22T20:32:19.000Z",
+      "commit": "4de7497f50a6f251b7ee1d40ff5e1e859aab8031",
+      "fileid": "1a4225ac6282226bf8da6df5637084d3f058728cbeed3bbb2fee5053ba8c1a1f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21263628997"
+    }
+  ]
+}

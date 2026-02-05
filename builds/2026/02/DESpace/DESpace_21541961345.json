@@ -1,0 +1,776 @@
+{
+  "Package": "DESpace",
+  "Type": "Package",
+  "Title": "DESpace: a framework to discover spatially variable genes and\ndifferential spatial patterns across conditions",
+  "Version": "2.3.2",
+  "Description": "Intuitive framework for identifying spatially variable\ngenes (SVGs) and differential spatial variable pattern (DSP)\nbetween conditions via edgeR, a popular method for performing\ndifferential expression analyses. Based on pre-annotated\nspatial clusters as summarized spatial information, DESpace\nmodels gene expression using a negative binomial (NB), via\nedgeR, with spatial clusters as covariates. SVGs are then\nidentified by testing the significance of spatial clusters. For\nmulti-sample, multi-condition datasets, we again fit a NB model\nvia edgeR, incorporating spatial clusters, conditions and their\ninteractions as covariates. DSP genes-representing differences\nin spatial gene expression patterns across experimental\nconditions-are identified by testing the interaction between\nspatial clusters and conditions.",
+  "Authors@R": "c(\nperson(given = \"Peiying\",\nfamily = \"Cai\",\nrole = c(\"aut\", \"cre\"),\nemail = \"peiying.cai@uzh.ch\",\ncomment = c(ORCID = \"0009-0001-9229-2244\")),\nperson(given = \"Simone\",\nfamily = \"Tiberi\",\nrole = c(\"aut\"),\nemail = \"simone.tiberi@unibo.it\",\ncomment = c(ORCID = \"0000-0002-3054-9964\")))",
+  "biocViews": "Spatial, SingleCell, RNASeq, Transcriptomics,\nGeneExpression, Sequencing,\nDifferentialExpression,StatisticalMethod, Visualization",
+  "License": "GPL-3",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.3",
+  "ByteCompile": "true",
+  "Encoding": "UTF-8",
+  "URL": "https://github.com/peicai/DESpace,\nhttps://peicai.github.io/DESpace/",
+  "BugReports": "https://github.com/peicai/DESpace/issues",
+  "Config/pak/sysreqs": "libabsl-dev cmake libfontconfig1-dev\nlibfreetype6-dev libgdal-dev gdal-bin libgeos-dev\nlibmagick++-dev gsfonts libicu-dev libssl-dev libproj-dev\nlibsqlite3-dev libudunits2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-11-28 13:30:27 UTC",
+  "RemoteUrl": "https://github.com/bioc/DESpace",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-31 09:04:41 UTC",
+    "User": "root"
+  },
+  "Author": "Peiying Cai [aut, cre] (ORCID: <https://orcid.org/0009-0001-9229-2244>),\nSimone Tiberi [aut] (ORCID: <https://orcid.org/0000-0002-3054-9964>)",
+  "Maintainer": "Peiying Cai <peiying.cai@uzh.ch>",
+  "MD5sum": "6d3baae7e52888d2220a7acf1e1446f9",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "DESpace_2.3.2.tar.gz",
+  "_fileid": "82e827af771a0258a07b8d34541664ad39c197be01a5cbe7a06712570181bf57",
+  "_filesize": 6431048,
+  "_sha256": "82e827af771a0258a07b8d34541664ad39c197be01a5cbe7a06712570181bf57",
+  "_created": "2026-01-31T09:04:41.000Z",
+  "_published": "2026-01-31T09:15:46.610Z",
+  "_jobs": [
+    {
+      "job": 62078210816,
+      "time": 305,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5328057000"
+    },
+    {
+      "job": 62078210847,
+      "time": 591,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5328074692"
+    },
+    {
+      "job": 62078210842,
+      "time": 558,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5328072719"
+    },
+    {
+      "job": 62078210812,
+      "time": 341,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5328059271"
+    },
+    {
+      "job": 62078210822,
+      "time": 297,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5328056512"
+    },
+    {
+      "job": 62077779220,
+      "time": 856,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5328039011"
+    },
+    {
+      "job": 62078210838,
+      "time": 267,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5328054563"
+    },
+    {
+      "job": 62078210831,
+      "time": 457,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5328066639"
+    },
+    {
+      "job": 62078210820,
+      "time": 461,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5328066976"
+    },
+    {
+      "job": 62078210834,
+      "time": 593,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5328074817"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/DESpace",
+  "_commit": {
+    "id": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+    "author": "peicai <peiying.cai@gmail.com>",
+    "committer": "peicai <peiying.cai@gmail.com>",
+    "message": "Add the QLF test\n",
+    "time": 1764336627
+  },
+  "_maintainer": {
+    "name": "Peiying Cai",
+    "email": "peiying.cai@uzh.ch",
+    "login": "peicai",
+    "uuid": 55488976
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "assertthat",
+      "role": "Imports"
+    },
+    {
+      "package": "terra",
+      "role": "Imports"
+    },
+    {
+      "package": "sf",
+      "role": "Imports"
+    },
+    {
+      "package": "spatstat.explore",
+      "role": "Imports"
+    },
+    {
+      "package": "spatstat.geom",
+      "role": "Imports"
+    },
+    {
+      "package": "ggforce",
+      "role": "Imports"
+    },
+    {
+      "package": "ggnewscale",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "scuttle",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "muSpaData",
+      "role": "Suggests"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "spatialLIBD",
+      "role": "Suggests"
+    },
+    {
+      "package": "purrr",
+      "role": "Suggests"
+    },
+    {
+      "package": "reshape2",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Suggests"
+    },
+    {
+      "package": "concaveman",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-12",
+      "n": 3
+    },
+    {
+      "week": "2025-13",
+      "n": 6
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 3
+    },
+    {
+      "week": "2025-48",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.3.2",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.2.2",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "spatial",
+    "singlecell",
+    "rnaseq",
+    "transcriptomics",
+    "geneexpression",
+    "sequencing",
+    "differentialexpression",
+    "statisticalmethod",
+    "visualization"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "peicai",
+      "count": 18,
+      "uuid": 55488976
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "simonetiberi",
+      "count": 10,
+      "uuid": 24696388
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 310,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/DESpace"
+  },
+  "_devurl": "https://github.com/peicai/despace",
+  "_pkgdown": "https://peicai.github.io/DESpace/",
+  "_searchresults": 49,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/DESpace.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/peicai/despace",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "dsp_test",
+    "FeaturePlot",
+    "individual_dsp",
+    "individual_svg",
+    "svg_test",
+    "top_results"
+  ],
+  "_datasets": [
+    {
+      "name": "LIBD_subset",
+      "title": "Subset from the human DLPFC 10x Genomics Visium dataset of the 'spatialLIBD' package",
+      "object": "LIBD_subset",
+      "file": "LIBD_subset.RData",
+      "class": [
+        "SpatialExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "results_individual_svg",
+      "title": "Results from 'individual_svg' function",
+      "object": "results_individual_svg",
+      "file": "results_individual_svg.RData",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "results_svg_test",
+      "title": "Results from 'svg_test' function",
+      "object": "results_svg_test",
+      "file": "results_svg_test.RData",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "dsp_test",
+      "title": "dsp_test",
+      "topics": [
+        "dsp_test"
+      ]
+    },
+    {
+      "page": "FeaturePlot",
+      "title": "FeaturePlot",
+      "topics": [
+        "FeaturePlot"
+      ]
+    },
+    {
+      "page": "individual_dsp",
+      "title": "individual_dsp",
+      "topics": [
+        "individual_dsp"
+      ]
+    },
+    {
+      "page": "individual_svg",
+      "title": "individual_svg",
+      "topics": [
+        "individual_svg"
+      ]
+    },
+    {
+      "page": "LIBD_subset",
+      "title": "Subset from the human DLPFC 10x Genomics Visium dataset of the 'spatialLIBD' package",
+      "topics": [
+        "LIBD_subset"
+      ]
+    },
+    {
+      "page": "results_individual_svg",
+      "title": "Results from 'individual_svg' function",
+      "topics": [
+        "results_individual_svg"
+      ]
+    },
+    {
+      "page": "results_svg_test",
+      "title": "Results from 'svg_test' function",
+      "topics": [
+        "results_svg_test"
+      ]
+    },
+    {
+      "page": "svg_test",
+      "title": "svg_test",
+      "topics": [
+        "svg_test"
+      ]
+    },
+    {
+      "page": "top_results",
+      "title": "top_results",
+      "topics": [
+        "top_results"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/DESpace/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "assertthat",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "class",
+    "classInt",
+    "cli",
+    "codetools",
+    "cpp11",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "dplyr",
+    "e1071",
+    "edgeR",
+    "farver",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggforce",
+    "ggnewscale",
+    "ggplot2",
+    "glue",
+    "goftest",
+    "gtable",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magick",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "nlme",
+    "openssl",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "polyclip",
+    "proxy",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "rjson",
+    "rlang",
+    "RSQLite",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "scuttle",
+    "Seqinfo",
+    "sf",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SpatialExperiment",
+    "spatstat.data",
+    "spatstat.explore",
+    "spatstat.geom",
+    "spatstat.random",
+    "spatstat.sparse",
+    "spatstat.univar",
+    "spatstat.utils",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "tensor",
+    "terra",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tweenr",
+    "units",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "wk",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "SVG.Rmd",
+      "filename": "SVG.html",
+      "title": "A framework to discover Spatially Variable genes via spatial clusters",
+      "author": "Peiying Cai, Simone Tiberi",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Basics",
+        "Data",
+        "Input data",
+        "Quality control/filtering",
+        "Individual sample",
+        "Clustering",
+        "Manual annotation",
+        "Spatially resolved clustering",
+        "BayesSpace",
+        "StLearn",
+        "SV testing",
+        "Gene-level test",
+        "Individual cluster test",
+        "Multiple samples",
+        "Spatially resolved (multi-sample) clustering",
+        "Single sample clustering",
+        "Sample-specific covariates (e.g., batch effects)",
+        "Session info",
+        "References"
+      ],
+      "created": "2025-03-19 14:26:45",
+      "modified": "2025-03-28 15:29:03",
+      "commits": 2
+    },
+    {
+      "source": "DSP.Rmd",
+      "filename": "DSP.html",
+      "title": "Differential Spatial Pattern between conditions",
+      "author": "Peiying Cai, Simone Tiberi",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Load packages",
+        "Data",
+        "Input data",
+        "Quality control/filtering",
+        "Clustering",
+        "Manual annotation",
+        "Spatially resolved (multi-sample) clustering",
+        "Single sample clustering",
+        "DSP testing",
+        "Gene-level test",
+        "Individual cluster test",
+        "Visualization",
+        "Abundance trend",
+        "Spatial expression",
+        "Smooth splines to model time",
+        "Predicted trend",
+        "Session info",
+        "References"
+      ],
+      "created": "2025-03-19 14:26:45",
+      "modified": "2025-11-28 13:30:27",
+      "commits": 3
+    }
+  ],
+  "_score": 6.535294120042771,
+  "_indexed": true,
+  "_nocasepkg": "despace",
+  "_universes": [
+    "bioc",
+    "peicai"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:10:35.000Z",
+      "distro": "noble",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "60b56e9fc108e25e6b52bd2da0de2de51bf673087e27cd4d07d22e6aa9812564",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:10:01.000Z",
+      "distro": "noble",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "837a60557a9408d3c3d40186dcd5dbfb8617aa45396cbeba068fc1e0b0610e3e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:07:40.000Z",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "d3006c0a1d46292ec54400be21c546b0df664cff5fc7dda7f66e6234e8894d9c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:07:26.000Z",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "54e35da1a525368063e8fddb44dcc2a28fb5281f45757fd7c2c821101e79593e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:09:55.000Z",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "e8e36bedabbbb263ae1cc304dda3bdf5af35116bc291c668ddcf90611a38b0ac",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:07:44.000Z",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "23dfaf55e3166e0e26627d74ebb2d0dadec9faa965aaec56a73c15b1301aedde",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:08:29.000Z",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "b0fdaaf90a3f37292e59c2bc4971627f39a24d36713425af66ca0ae767e34b48",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.3.2",
+      "date": "2026-01-31T09:08:59.000Z",
+      "commit": "855bfbab3517b98ce09f176301f3a5a128bb4815",
+      "fileid": "6ce0f208dad905786ce8db5032d911c0c408f240a2e2df703e23c5adc15b3b21",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21541961345"
+    }
+  ]
+}

@@ -1,0 +1,822 @@
+{
+  "Package": "Modstrings",
+  "Type": "Package",
+  "Title": "Working with modified nucleotide sequences",
+  "Version": "1.27.2",
+  "Date": "2022-12-24",
+  "Authors@R": "c(person(\"Felix G.M.\", \n\"Ernst\",\nemail = \"felix.gm.ernst@outlook.com\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0001-5064-0928\")),\nperson(\"Denis L.J.\",\n\"Lafontaine\",\nemail = \"denis.lafontaine@ulb.ac.be\",\nrole = c(\"ctb\", \"fnd\")))",
+  "Description": "Representing nucleotide modifications in a nucleotide\nsequence is usually done via special characters from a number\nof sources. This represents a challenge to work with in R and\nthe Biostrings package. The Modstrings package implements this\nfunctionallity for RNA and DNA sequences containing modified\nnucleotides by translating the character internally in order to\nwork with the infrastructure of the Biostrings package. For\nthis the ModRNAString and ModDNAString classes and derivates\nand functions to construct and modify these objects despite the\nencoding issues are implemenented. In addition the conversion\nfrom sequences to list like location information (and the\nreverse operation) is implemented as well.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "biocViews": "DataImport, DataRepresentation, Infrastructure, Sequencing,\nSoftware",
+  "Collate": "'Modstrings.R' 'AllGenerics.R'\n'Modstrings-external-functions.R'\n'Modstrings-external-C-calls.R' 'Modstrings-ModStringCodec.R'\n'Modstrings-ModString.R' 'Modstrings-ModStringSet.R'\n'Modstrings-ModStringViews.R' 'Modstrings-MaskedModString.R'\n'Modstrings-ModStringCodec-data.R'\n'Modstrings-ModStringSet-io.R' 'Modstrings-ModStringSetList.R'\n'Modstrings-QualityScaledModStringSet.R'\n'Modstrings-letterFrequency.R' 'Modstrings-modifyNucleotide.R'\n'Modstrings-replaceLetterAt.R' 'Modstrings-sanitize.R'\n'Modstrings-separate.R' 'Modstrings-seqtype.R' 'datasets.R'\n'utils.R' 'zzz.R'",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.3",
+  "BugReports": "https://github.com/FelixErnst/Modstrings/issues",
+  "Config/pak/sysreqs": "libicu-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-12-24 13:33:31 UTC",
+  "RemoteUrl": "https://github.com/bioc/Modstrings",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-30 09:09:00 UTC",
+    "User": "root"
+  },
+  "Author": "Felix G.M. Ernst [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-5064-0928>),\nDenis L.J. Lafontaine [ctb, fnd]",
+  "Maintainer": "Felix G.M. Ernst <felix.gm.ernst@outlook.com>",
+  "MD5sum": "4740d37f720d4de033792494b19f05d3",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "Modstrings_1.27.2.tar.gz",
+  "_fileid": "21efc904f3f733a8c3b9a7acf61171ebfdcca842bf7d186b7407f3abc7570b61",
+  "_filesize": 261216,
+  "_sha256": "21efc904f3f733a8c3b9a7acf61171ebfdcca842bf7d186b7407f3abc7570b61",
+  "_created": "2026-01-30T09:09:00.000Z",
+  "_published": "2026-01-30T09:14:22.629Z",
+  "_jobs": [
+    {
+      "job": 61975975419,
+      "time": 168,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5315937470"
+    },
+    {
+      "job": 61975975390,
+      "time": 259,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5315953117"
+    },
+    {
+      "job": 61975975385,
+      "time": 275,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5315955765"
+    },
+    {
+      "job": 61975975392,
+      "time": 158,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5315935799"
+    },
+    {
+      "job": 61975975403,
+      "time": 225,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5315947005"
+    },
+    {
+      "job": 61975663037,
+      "time": 212,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5315908378"
+    },
+    {
+      "job": 61975975394,
+      "time": 112,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5315927960"
+    },
+    {
+      "job": 61975975388,
+      "time": 168,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5315937557"
+    },
+    {
+      "job": 61975975434,
+      "time": 188,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5315941111"
+    },
+    {
+      "job": 61975975453,
+      "time": 159,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5315936189"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/Modstrings",
+  "_commit": {
+    "id": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+    "author": "FelixErnst <felix.gm.ernst@outlook.com>",
+    "committer": "FelixErnst <felix.gm.ernst@outlook.com>",
+    "message": "Updated comparison to work with Biostrings 2.79.3\n\ncomparable_seqtypes was changed in Biostrings to allow for seqtypes \"ModRNA\" and \"ModDNA\" to be used efficiently. Performance improvements by avoiding the constructor calls as suggested by Herve Pages were implemented.\n",
+    "time": 1766583211
+  },
+  "_maintainer": {
+    "name": "Felix G.M. Ernst",
+    "email": "felix.gm.ernst@outlook.com",
+    "login": "felixernst",
+    "uuid": 17824332,
+    "orcid": "0000-0001-5064-0928"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "Biostrings",
+      "version": ">= 2.79.3",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "XVector",
+      "role": "Imports"
+    },
+    {
+      "package": "stringi",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "crayon",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "usethis",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 8,
+  "_updates": [
+    {
+      "week": "2025-39",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2025-51",
+      "n": 1
+    },
+    {
+      "week": "2025-52",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.27.2",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.26.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dataimport",
+    "datarepresentation",
+    "infrastructure",
+    "sequencing",
+    "software",
+    "bioconductor",
+    "biostrings",
+    "dna",
+    "dna-modifications",
+    "modified-nucleotides",
+    "nucleotides",
+    "rna",
+    "rna-modification-alphabet",
+    "rna-modifications",
+    "sequences"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "felixernst",
+      "count": 142,
+      "uuid": 17824332
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 428,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/Modstrings"
+  },
+  "_devurl": "https://github.com/felixernst/modstrings",
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/Modstrings.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/felixernst/modstrings",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "alphabet",
+    "alphabetFrequency",
+    "combineIntoModstrings",
+    "combineModifications",
+    "consensusMatrix",
+    "consensusString",
+    "fullName",
+    "hasOnlyBaseLetters",
+    "incompatibleModifications",
+    "letterFrequency",
+    "ModDNAString",
+    "ModDNAStringSet",
+    "ModDNAStringSetList",
+    "modifyNucleotides",
+    "ModRNAString",
+    "ModRNAStringSet",
+    "ModRNAStringSetList",
+    "nomenclature",
+    "QualityScaledModDNAStringSet",
+    "QualityScaledModRNAStringSet",
+    "readModDNAStringSet",
+    "readModRNAStringSet",
+    "readQualityScaledModDNAStringSet",
+    "readQualityScaledModRNAStringSet",
+    "removeIncompatibleModifications",
+    "replaceLetterAt",
+    "sanitizeFromModomics",
+    "sanitizeFromtRNAdb",
+    "sanitizeInput",
+    "separate",
+    "seqtype",
+    "seqtype<-",
+    "shortName",
+    "Views",
+    "writeModStringSet",
+    "writeQualityScaledModStringSet",
+    "XString",
+    "XStringSet"
+  ],
+  "_datasets": [
+    {
+      "name": "MOD_RNA_DICT_MODOMICS",
+      "title": "Modstrings internals",
+      "object": "MOD_RNA_DICT_MODOMICS",
+      "file": "MOD_RNA_DICT_MODOMICS.rda",
+      "class": [
+        "DFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "MOD_RNA_DICT_TRNADB",
+      "title": "Modstrings internals",
+      "object": "MOD_RNA_DICT_TRNADB",
+      "file": "MOD_RNA_DICT_TRNADB.rda",
+      "class": [
+        "DFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "modsDNA",
+      "title": "Modstrings internals",
+      "object": "modsDNA",
+      "file": "modsDNA.rda",
+      "class": [
+        "DFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "modsRNA",
+      "title": "Modstrings internals",
+      "object": "modsRNA",
+      "file": "modsRNA.rda",
+      "class": [
+        "DFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "letterFrequency",
+      "title": "Calculate the frequency of letters in nucleotide sequence with modifications, or the consensus matrix of a set of sequences",
+      "topics": [
+        "alphabetFrequency",
+        "alphabetFrequency,MaskedModString-method",
+        "alphabetFrequency,ModDNAString-method",
+        "alphabetFrequency,ModDNAStringSet-method",
+        "alphabetFrequency,ModRNAString-method",
+        "alphabetFrequency,ModRNAStringSet-method",
+        "consensusMatrix,ModStringSet-method",
+        "consensusString",
+        "consensusString,ModDNAStringSet-method",
+        "consensusString,ModRNAStringSet-method",
+        "consensusString,ModStringViews-method",
+        "hasOnlyBaseLetters",
+        "hasOnlyBaseLetters,ModDNAString-method",
+        "hasOnlyBaseLetters,ModDNAStringSet-method",
+        "hasOnlyBaseLetters,ModRNAString-method",
+        "hasOnlyBaseLetters,ModRNAStringSet-method",
+        "letterFrequency",
+        "letterFrequency,MaskedModString-method",
+        "letterFrequency,ModStringViews-method",
+        "letterFrequencyInSlidingView"
+      ]
+    },
+    {
+      "page": "MaskedModString",
+      "title": "MaskedModString objects",
+      "topics": [
+        "MaskedModString",
+        "seqtype,MaskedModString-method"
+      ]
+    },
+    {
+      "page": "ModDNAString",
+      "title": "ModDNAString class",
+      "topics": [
+        "ModDNAString"
+      ]
+    },
+    {
+      "page": "modifyNucleotides",
+      "title": "Modifying nucleotides in a nucleotide sequence (or set of sequences) at specified locations",
+      "topics": [
+        "modifyNucleotides",
+        "modifyNucleotides,DNAString-method",
+        "modifyNucleotides,DNAStringSet-method",
+        "modifyNucleotides,ModString-method",
+        "modifyNucleotides,ModStringSet-method",
+        "modifyNucleotides,RNAString-method",
+        "modifyNucleotides,RNAStringSet-method"
+      ]
+    },
+    {
+      "page": "ModRNAString",
+      "title": "ModDNAString class",
+      "topics": [
+        "ModRNAString"
+      ]
+    },
+    {
+      "page": "ModString",
+      "title": "ModString objects",
+      "topics": [
+        "==,ModString,ModString-method",
+        "==,ModString,XString-method",
+        "==,XString,ModString-method",
+        "as.character,ModString-method",
+        "as.vector,ModString-method",
+        "ModDNAString-class",
+        "ModRNAString-class",
+        "ModString",
+        "ModString,AsIs-method",
+        "ModString,character-method",
+        "ModString,factor-method",
+        "ModString,MaskedModString-method",
+        "ModString,ModString-method",
+        "ModString,XString-method"
+      ]
+    },
+    {
+      "page": "Modstrings",
+      "title": "Modstrings: implementation of Biostrings to work with nucleotide sequences containing modified nucleotides.",
+      "topics": [
+        "Modstrings"
+      ]
+    },
+    {
+      "page": "Modstrings-internals",
+      "title": "Modstrings internals",
+      "topics": [
+        "modsDNA",
+        "modsRNA",
+        "Modstrings-internals",
+        "MOD_RNA_DICT_MODOMICS",
+        "MOD_RNA_DICT_TRNADB",
+        "seqtype,ModDNAString-method",
+        "seqtype,ModRNAString-method",
+        "seqtype<-,ModString-method",
+        "seqtype<-,ModStringSet-method",
+        "XString,ModString-method",
+        "XStringSet,ModStringSet-method"
+      ]
+    },
+    {
+      "page": "ModStringSet",
+      "title": "ModStringSet objects",
+      "topics": [
+        "==,ModStringSet,ModStringSet-method",
+        "==,ModStringSet,XStringSet-method",
+        "==,XStringSet,ModStringSet-method",
+        "as.character,ModStringSet-method",
+        "ModDNAStringSet",
+        "ModDNAStringSet-class",
+        "ModRNAStringSet",
+        "ModRNAStringSet-class",
+        "ModStringSet",
+        "ModStringSet,ANY-method",
+        "ModStringSet,AsIs-method",
+        "ModStringSet,character-method",
+        "ModStringSet,factor-method",
+        "ModStringSet,list-method",
+        "ModStringSet,missing-method",
+        "ModStringSet,ModString-method",
+        "ModStringSet,ModStringSet-method",
+        "show,ModStringSet-method"
+      ]
+    },
+    {
+      "page": "ModStringSet-io",
+      "title": "Read/write an ModStringSet object from/to a file",
+      "topics": [
+        "ModStringSet-io",
+        "readModDNAStringSet",
+        "readModRNAStringSet",
+        "writeModStringSet"
+      ]
+    },
+    {
+      "page": "ModStringSetList",
+      "title": "ModStringSetList",
+      "topics": [
+        "ModDNAStringSetList",
+        "ModDNAStringSetList-class",
+        "ModRNAStringSetList",
+        "ModRNAStringSetList-class",
+        "ModStringSetList"
+      ]
+    },
+    {
+      "page": "ModStringViews",
+      "title": "The ModStringViews class extending the XStringViews class",
+      "topics": [
+        "==,ModStringViews,ModStringViews-method",
+        "==,ModStringViews,XString-method",
+        "==,XStringViews,ModString-method",
+        "ModStringSet,ModStringViews-method",
+        "ModStringViews",
+        "show,ModStringViews-method",
+        "Views,ModString-method"
+      ]
+    },
+    {
+      "page": "QualityScaledModStringSet",
+      "title": "QualityScaledModDNAStringSet and QualityScaledModRNAStringSet objects",
+      "topics": [
+        "QualityScaledModDNAStringSet",
+        "QualityScaledModDNAStringSet-class",
+        "QualityScaledModRNAStringSet",
+        "QualityScaledModRNAStringSet-class",
+        "QualityScaledModStringSet",
+        "readQualityScaledModDNAStringSet",
+        "readQualityScaledModRNAStringSet",
+        "show,QualityScaledModStringSet-method",
+        "writeQualityScaledModStringSet"
+      ]
+    },
+    {
+      "page": "replaceLetterAt",
+      "title": "Replacing letters in a nucleotide sequence (or set of nucleotide sequences) at some specified locations containing nucleotide modifications",
+      "topics": [
+        "replaceLetterAt",
+        "replaceLetterAt,ModString-method",
+        "replaceLetterAt,ModStringSet-method"
+      ]
+    },
+    {
+      "page": "sanitizeInput",
+      "title": "Sanitize input strings for use with ModString classes",
+      "topics": [
+        "sanitizeFromModomics",
+        "sanitizeFromtRNAdb",
+        "sanitizeInput"
+      ]
+    },
+    {
+      "page": "separate",
+      "title": "Separating and combining a modification information into/from a 'XString' and a 'GRanges' object",
+      "topics": [
+        "combineIntoModstrings",
+        "combineIntoModstrings,XString,GRanges-method",
+        "combineIntoModstrings,XStringSet,GRanges-method",
+        "combineIntoModstrings,XStringSet,GRangesList-method",
+        "combineModifications",
+        "combineModifications,GRanges-method",
+        "combineModifications,GRangesList-method",
+        "incompatibleModifications",
+        "incompatibleModifications,GRanges,XString-method",
+        "incompatibleModifications,GRanges,XStringSet-method",
+        "incompatibleModifications,GRangesList,XStringSet-method",
+        "removeIncompatibleModifications",
+        "removeIncompatibleModifications,GRanges,XString-method",
+        "removeIncompatibleModifications,GRanges,XStringSet-method",
+        "removeIncompatibleModifications,GRangesList,XStringSet-method",
+        "separate",
+        "separate,GRanges-method",
+        "separate,GRangesList-method",
+        "separate,ModString-method",
+        "separate,ModStringSet-method"
+      ]
+    },
+    {
+      "page": "alphabet",
+      "title": "Base information for sequence characters of nucleotide strings containing modifications",
+      "topics": [
+        "alphabet",
+        "alphabet,ModString-method",
+        "alphabet,ModStringSet-method",
+        "fullName",
+        "fullName,ModString-method",
+        "fullName,ModStringSet-method",
+        "nomenclature",
+        "nomenclature,ModString-method",
+        "nomenclature,ModStringSet-method",
+        "shortName",
+        "shortName,ModString-method",
+        "shortName,ModStringSet-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/Modstrings/raw/HEAD/README.md",
+  "_rundeps": [
+    "BiocGenerics",
+    "Biostrings",
+    "cli",
+    "crayon",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "IRanges",
+    "lifecycle",
+    "magrittr",
+    "rlang",
+    "S4Vectors",
+    "Seqinfo",
+    "stringi",
+    "stringr",
+    "vctrs",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "Modstrings.Rmd",
+      "filename": "Modstrings.html",
+      "title": "Modstrings",
+      "author": "Felix G.M. Ernst & Denis L.J. Lafontaine",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Creating a ModRNAString object",
+        "Streamlining object creation and modification",
+        "Comparing ModString objects",
+        "Conversion of ModString objects",
+        "Quality scaled ModString",
+        "Saving and reading ModString objects to/from file",
+        "Pattern matching",
+        "Future development",
+        "Import example",
+        "Sessioninfo",
+        "References"
+      ],
+      "created": "2019-01-02 15:38:28",
+      "modified": "2020-04-10 12:19:13",
+      "commits": 12
+    },
+    {
+      "source": "ModDNAString-alphabet.Rmd",
+      "filename": "ModDNAString-alphabet.html",
+      "title": "ModDNAString alphabet",
+      "author": "Felix G.M. Ernst & Denis L.J. Lafontaine",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "References"
+      ],
+      "created": "2019-01-02 15:38:28",
+      "modified": "2020-02-01 14:21:56",
+      "commits": 6
+    },
+    {
+      "source": "ModRNAString-alphabet.Rmd",
+      "filename": "ModRNAString-alphabet.html",
+      "title": "ModRNAString alphabet",
+      "author": "Felix G.M. Ernst & Denis L.J. Lafontaine",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "References"
+      ],
+      "created": "2019-01-02 15:38:28",
+      "modified": "2020-02-01 14:21:56",
+      "commits": 6
+    }
+  ],
+  "_score": 6.635483746814912,
+  "_indexed": true,
+  "_nocasepkg": "modstrings",
+  "_universes": [
+    "bioc",
+    "felixernst"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:12:16.000Z",
+      "distro": "noble",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "00cd910d9a4864ab0e296b0873afe4ae41fdc015652cdc68ca40523afa097150",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:12:25.000Z",
+      "distro": "noble",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "bec1a4e2ea6a3ee1ed5ffcd7464fff5009a0a91ac250540b2de89bc3b5f666a7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:10:57.000Z",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "e6b594545ce178667a359db055245fb81e0fa0a42961a352ce1efa0bea4f8ff6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:11:22.000Z",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "ed5dadc2592a01d90f8070e52241e5484cb4c30bf669374c50941f47a99490a1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:11:17.000Z",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "861c7f5b6f3ff51c86bbe01e61751a00fc963e96232932fd9ed2b78fb31a631f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:10:30.000Z",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "6246c1a1ac565e153ba7e76bfa7b21784d2d8b88d38d8415b6b067c7b84c75ec",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:10:32.000Z",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "c0d3454a1bb63a131f29581c5433b368b9b90e866db628bcb5ce4af4493829bb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.27.2",
+      "date": "2026-01-30T09:10:26.000Z",
+      "commit": "f830d42b85d1dbbc9d408d471277b2b2d8476621",
+      "fileid": "8061bc06432d676c5085289c38bb76c0dfb2aa1d66bc5c782fb5809446c9889e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21510351913"
+    }
+  ]
+}

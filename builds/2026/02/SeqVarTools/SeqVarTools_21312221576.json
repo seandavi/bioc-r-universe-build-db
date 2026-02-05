@@ -1,0 +1,913 @@
+{
+  "Package": "SeqVarTools",
+  "Version": "1.49.0",
+  "Type": "Package",
+  "Title": "Tools for variant data",
+  "Description": "An interface to the fast-access storage format for VCF\ndata provided in SeqArray, with tools for common operations and\nanalysis.",
+  "Author": "Stephanie M. Gogarten, Xiuwen Zheng, Adrienne Stilp",
+  "Maintainer": "Stephanie M. Gogarten <sdmorris@uw.edu>",
+  "License": "GPL-3",
+  "URL": "https://github.com/smgogarten/SeqVarTools",
+  "LazyData": "yes",
+  "biocViews": "SNP, GeneticVariability, Sequencing, Genetics",
+  "Collate": "AllClasses.R AllGenerics.R AllUtilities.R\nMethods-SeqVarGDSClass.R Methods-SeqVarData.R\nMethods-Iterator.R chromWithPAR.R duplicateDiscordance.R hwe.R\ninbreedCoeff.R mendelErr.R pca.R setVariantID.R\nalternateAlleleDetection.R refFrac.R regression.R",
+  "Config/pak/sysreqs": "cmake make libicu-dev libx11-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:15:55 UTC",
+  "RemoteUrl": "https://github.com/bioc/SeqVarTools",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "2d4221b9f6874ac622dc2e379527b804856b2068",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-24 08:34:26 UTC",
+    "User": "root"
+  },
+  "MD5sum": "ac83a677b6559ee4ccd13ad69e09853f",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "SeqVarTools_1.49.0.tar.gz",
+  "_fileid": "4b695e891d87e2a8d05fb89ba24952e5d5f4a3edb1803cb255f84579025cecea",
+  "_filesize": 1230949,
+  "_sha256": "4b695e891d87e2a8d05fb89ba24952e5d5f4a3edb1803cb255f84579025cecea",
+  "_created": "2026-01-24T08:34:26.000Z",
+  "_published": "2026-01-24T08:40:40.302Z",
+  "_jobs": [
+    {
+      "job": 61350243027,
+      "time": 210,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5243090838"
+    },
+    {
+      "job": 61350243019,
+      "time": 292,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5243094490"
+    },
+    {
+      "job": 61350243031,
+      "time": 327,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5243096091"
+    },
+    {
+      "job": 61350243015,
+      "time": 154,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5243088284"
+    },
+    {
+      "job": 61350243012,
+      "time": 157,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5243088486"
+    },
+    {
+      "job": 61350107069,
+      "time": 291,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5243080780"
+    },
+    {
+      "job": 61350243022,
+      "time": 132,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5243087335"
+    },
+    {
+      "job": 61350243035,
+      "time": 201,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5243090501"
+    },
+    {
+      "job": 61350243042,
+      "time": 228,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5243091936"
+    },
+    {
+      "job": 61350243044,
+      "time": 217,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5243091135"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 3,
+    "note": 18
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/SeqVarTools",
+  "_commit": {
+    "id": "2d4221b9f6874ac622dc2e379527b804856b2068",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761747355
+  },
+  "_maintainer": {
+    "name": "Stephanie M. Gogarten",
+    "email": "sdmorris@uw.edu",
+    "login": "smgogarten",
+    "orcid": "0000-0002-7231-9745",
+    "uuid": 2028958
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "SeqArray",
+      "role": "Depends"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "gdsfmt",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "GWASExactHW",
+      "role": "Imports"
+    },
+    {
+      "package": "logistf",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "stringr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 2,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.49.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.48.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "snp",
+    "geneticvariability",
+    "sequencing",
+    "genetics"
+  ],
+  "_stars": 3,
+  "_contributors": [
+    {
+      "user": "smgogarten",
+      "count": 74,
+      "uuid": 2028958
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "dtenenba",
+      "count": 12,
+      "uuid": 2286826
+    },
+    {
+      "user": "jwokaty",
+      "count": 8,
+      "uuid": 1744257
+    },
+    {
+      "user": "amstilp",
+      "count": 7,
+      "uuid": 3944584
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "sonali-bioc",
+      "count": 2,
+      "uuid": 6373953
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 1037,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/SeqVarTools"
+  },
+  "_mentions": 4,
+  "_devurl": "https://github.com/smgogarten/seqvartools",
+  "_searchresults": 468,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/SeqVarTools.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/smgogarten/seqvartools",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "alleleCount",
+    "alleleDosage",
+    "alleleFrequency",
+    "altChar",
+    "altDosage",
+    "alternateAlleleDetection",
+    "applyMethod",
+    "chromWithPAR",
+    "countSingletons",
+    "currentRanges",
+    "currentVariants",
+    "duplicateDiscordance",
+    "expandedAltDosage",
+    "expandedVariantIndex",
+    "getGenotype",
+    "getGenotypeAlleles",
+    "getVariableLengthData",
+    "granges",
+    "heterozygosity",
+    "hethom",
+    "homozygosity",
+    "hwe",
+    "imputedDosage",
+    "inbreedCoeff",
+    "isSNV",
+    "isVariant",
+    "iterateFilter",
+    "lastFilter",
+    "lastFilter<-",
+    "meanBySample",
+    "mendelErr",
+    "minorAlleleCount",
+    "missingGenotypeRate",
+    "nAlleles",
+    "pca",
+    "refChar",
+    "refDosage",
+    "refFrac",
+    "refFracOverHets",
+    "refFracPlot",
+    "regression",
+    "resetIterator",
+    "sampleData",
+    "sampleData<-",
+    "SeqVarBlockIterator",
+    "SeqVarData",
+    "SeqVarIterator",
+    "SeqVarListIterator",
+    "SeqVarRangeIterator",
+    "SeqVarWindowIterator",
+    "setVariantID",
+    "show",
+    "titv",
+    "validateSex",
+    "variantBlock",
+    "variantData",
+    "variantData<-",
+    "variantFilter",
+    "variantInfo",
+    "variantRanges"
+  ],
+  "_datasets": [
+    {
+      "name": "pedigree",
+      "title": "Pedigree for example data",
+      "object": "pedigree",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "family",
+        "individ",
+        "father",
+        "mother",
+        "sex",
+        "sample.id"
+      ],
+      "rows": 90,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "SeqVarTools-package",
+      "title": "Tools for Variant Analysis",
+      "topics": [
+        "SeqVarTools-package",
+        "SeqVarTools"
+      ]
+    },
+    {
+      "page": "allele-methods",
+      "title": "Extract allele information from a GDS object",
+      "topics": [
+        "allele-methods",
+        "altChar",
+        "altChar,SeqVarGDSClass-method",
+        "nAlleles",
+        "nAlleles,SeqVarGDSClass-method",
+        "refChar",
+        "refChar,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "alleleFrequency",
+      "title": "Allele frequency",
+      "topics": [
+        "alleleCount",
+        "alleleCount,SeqVarData-method",
+        "alleleCount,SeqVarGDSClass-method",
+        "alleleFrequency",
+        "alleleFrequency,SeqVarData-method",
+        "alleleFrequency,SeqVarGDSClass-method",
+        "minorAlleleCount",
+        "minorAlleleCount,SeqVarData-method",
+        "minorAlleleCount,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "alternateAlleleDetection",
+      "title": "alternateAlleleDetection",
+      "topics": [
+        "alternateAlleleDetection",
+        "alternateAlleleDetection,SeqVarData,SeqVarData-method"
+      ]
+    },
+    {
+      "page": "applyMethod",
+      "title": "Apply method to GDS object",
+      "topics": [
+        "applyMethod",
+        "applyMethod,SeqVarGDSClass,function,character-method",
+        "applyMethod,SeqVarGDSClass,function,GRanges-method",
+        "applyMethod,SeqVarGDSClass,function,missing-method",
+        "applyMethod,SeqVarGDSClass,function,numeric-method"
+      ]
+    },
+    {
+      "page": "chromWithPAR",
+      "title": "Identify pseudoautosomal region",
+      "topics": [
+        "chromWithPAR",
+        "chromWithPAR,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "countSingletons",
+      "title": "Count singletons",
+      "topics": [
+        "countSingletons",
+        "countSingletons,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "duplicateDiscordance",
+      "title": "Duplicate discordance",
+      "topics": [
+        "duplicateDiscordance",
+        "duplicateDiscordance,SeqVarData,missing-method",
+        "duplicateDiscordance,SeqVarData,SeqVarData-method",
+        "duplicateDiscordance,SeqVarIterator,missing-method"
+      ]
+    },
+    {
+      "page": "getGenotype",
+      "title": "Get genotype data",
+      "topics": [
+        "alleleDosage",
+        "alleleDosage,SeqVarGDSClass,list-method",
+        "alleleDosage,SeqVarGDSClass,numeric-method",
+        "altDosage",
+        "altDosage,SeqVarGDSClass-method",
+        "expandedAltDosage",
+        "expandedAltDosage,SeqVarGDSClass-method",
+        "getGenotype",
+        "getGenotype,SeqVarGDSClass-method",
+        "getGenotypeAlleles",
+        "getGenotypeAlleles,SeqVarGDSClass-method",
+        "refDosage",
+        "refDosage,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "getVariableLengthData",
+      "title": "Get variable-length data",
+      "topics": [
+        "getVariableLengthData",
+        "getVariableLengthData,SeqVarGDSClass,character-method"
+      ]
+    },
+    {
+      "page": "heterozygosity",
+      "title": "Heterozygosity and Homozygosity",
+      "topics": [
+        "heterozygosity",
+        "heterozygosity,SeqVarGDSClass-method",
+        "hethom",
+        "hethom,SeqVarGDSClass-method",
+        "homozygosity",
+        "homozygosity,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "hwe",
+      "title": "Exact test for Hardy-Weinberg equilibrium",
+      "topics": [
+        "hwe",
+        "hwe,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "imputedDosage",
+      "title": "Get imputed dosage",
+      "topics": [
+        "imputedDosage",
+        "imputedDosage,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "inbreedCoeff",
+      "title": "Inbreeding coefficient",
+      "topics": [
+        "inbreedCoeff",
+        "inbreedCoeff,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "isSNV",
+      "title": "Flag single nucleotide variants",
+      "topics": [
+        "isSNV",
+        "isSNV,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "isVariant",
+      "title": "Locate variant samples across sites",
+      "topics": [
+        "isVariant",
+        "isVariant,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "Iterator-class",
+      "title": "Iterators",
+      "topics": [
+        "currentRanges",
+        "currentRanges,SeqVarBlockIterator-method",
+        "currentRanges,SeqVarListIterator-method",
+        "currentRanges,SeqVarRangeIterator-method",
+        "currentVariants",
+        "currentVariants,SeqVarBlockIterator-method",
+        "currentVariants,SeqVarIterator-method",
+        "iterateFilter",
+        "iterateFilter,SeqVarIterator-method",
+        "lastFilter",
+        "lastFilter,SeqVarIterator-method",
+        "lastFilter<-",
+        "lastFilter<-,SeqVarIterator,numeric-method",
+        "resetIterator",
+        "resetIterator,SeqVarIterator-method",
+        "SeqVarBlockIterator",
+        "SeqVarBlockIterator-class",
+        "SeqVarIterator",
+        "SeqVarIterator-class",
+        "SeqVarListIterator",
+        "SeqVarListIterator-class",
+        "SeqVarRangeIterator",
+        "SeqVarRangeIterator-class",
+        "SeqVarWindowIterator",
+        "SeqVarWindowIterator-class",
+        "show,SeqVarIterator-method",
+        "show,SeqVarListIterator-method",
+        "show,SeqVarRangeIterator-method",
+        "variantBlock",
+        "variantBlock,SeqVarBlockIterator-method",
+        "variantFilter",
+        "variantFilter,SeqVarIterator-method",
+        "variantRanges",
+        "variantRanges,SeqVarListIterator-method",
+        "variantRanges,SeqVarRangeIterator-method"
+      ]
+    },
+    {
+      "page": "meanBySample",
+      "title": "Mean value by sample",
+      "topics": [
+        "meanBySample",
+        "meanBySample,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "mendelErr",
+      "title": "Mendelian errors",
+      "topics": [
+        "mendelErr",
+        "mendelErr,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "missingGenotypeRate",
+      "title": "Missing genotype rate",
+      "topics": [
+        "missingGenotypeRate",
+        "missingGenotypeRate,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "pca",
+      "title": "Principal Component Analysis",
+      "topics": [
+        "pca",
+        "pca,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "pedigree",
+      "title": "Pedigree for example data",
+      "topics": [
+        "pedigree"
+      ]
+    },
+    {
+      "page": "refFrac",
+      "title": "Reference allele fraction",
+      "topics": [
+        "refFrac",
+        "refFrac,SeqVarGDSClass-method",
+        "refFracOverHets",
+        "refFracOverHets,SeqVarGDSClass-method",
+        "refFracPlot",
+        "refFracPlot,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "regression",
+      "title": "Linear or logistic regression",
+      "topics": [
+        "regression",
+        "regression,SeqVarData-method"
+      ]
+    },
+    {
+      "page": "SeqVarData-class",
+      "title": "SeqVarData",
+      "topics": [
+        "granges",
+        "granges,SeqVarData-method",
+        "sampleData",
+        "sampleData,SeqVarData-method",
+        "sampleData<-",
+        "sampleData<-,SeqVarData,AnnotatedDataFrame-method",
+        "SeqVarData",
+        "SeqVarData-class",
+        "show,SeqVarData-method",
+        "validateSex",
+        "validateSex,SeqVarData-method",
+        "variantData",
+        "variantData,SeqVarData-method",
+        "variantData<-",
+        "variantData<-,SeqVarData,AnnotatedDataFrame-method"
+      ]
+    },
+    {
+      "page": "setVariantID",
+      "title": "Change the variant ID of a GDS file",
+      "topics": [
+        "setVariantID"
+      ]
+    },
+    {
+      "page": "titv",
+      "title": "Transition/Transversion Ratio",
+      "topics": [
+        "titv",
+        "titv,SeqVarGDSClass-method"
+      ]
+    },
+    {
+      "page": "variantInfo",
+      "title": "Variant info",
+      "topics": [
+        "expandedVariantIndex",
+        "expandedVariantIndex,SeqVarGDSClass-method",
+        "variantInfo",
+        "variantInfo,SeqVarGDSClass-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/SeqVarTools/raw/HEAD/README.md",
+  "_rundeps": [
+    "backports",
+    "Biobase",
+    "BiocGenerics",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "boot",
+    "broom",
+    "cli",
+    "clipr",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "digest",
+    "dplyr",
+    "forcats",
+    "foreach",
+    "formula.tools",
+    "gdsfmt",
+    "generics",
+    "GenomicRanges",
+    "glmnet",
+    "glue",
+    "GWASExactHW",
+    "haven",
+    "hms",
+    "IRanges",
+    "iterators",
+    "jomo",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "logistf",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "mgcv",
+    "mice",
+    "minqa",
+    "mitml",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "operator.tools",
+    "ordinal",
+    "pan",
+    "pillar",
+    "pkgconfig",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "R6",
+    "rbibutils",
+    "Rcpp",
+    "RcppEigen",
+    "Rdpack",
+    "readr",
+    "reformulas",
+    "rlang",
+    "rpart",
+    "S4Vectors",
+    "SeqArray",
+    "Seqinfo",
+    "shape",
+    "stringi",
+    "stringr",
+    "survival",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tzdb",
+    "ucminf",
+    "utf8",
+    "vctrs",
+    "vroom",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "SeqVarTools.Rnw",
+      "filename": "SeqVarTools.pdf",
+      "title": "Introduction to SeqVarTools",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2013-08-26 22:10:49",
+      "modified": "2017-08-23 20:07:53",
+      "commits": 7
+    },
+    {
+      "source": "Iterators.Rnw",
+      "filename": "Iterators.pdf",
+      "title": "Iterators in SeqVarTools",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2019-04-12 00:25:38",
+      "modified": "2019-04-12 00:25:38",
+      "commits": 1
+    }
+  ],
+  "_score": 8.689485141572673,
+  "_indexed": true,
+  "_nocasepkg": "seqvartools",
+  "_universes": [
+    "bioc",
+    "smgogarten"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:38:04.000Z",
+      "distro": "noble",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "e7397a739723c36c72884ffdad57da88d8be3d4b63519be2f3efb14ee8ab6619",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:38:33.000Z",
+      "distro": "noble",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "63340a1946439dd654ff28599c6e7fa2ad057da88bcd5fc7119f0bc46e87fb4a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:36:18.000Z",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "ea9d653616f3520a94b2bdcfedb20d7fd2b3902935e7b14be7444ee8bb4d04a6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:36:20.000Z",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "6c158e9ed1c189a337bdedc8482aed83d43fc99ba6a170285a32410638febf3e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:37:06.000Z",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "49925a436b2c741f28100df5cad462b0634b2c412a19a2b0cb9dea93f0baa55a",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:35:54.000Z",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "5eac1b4b1f32798e4755bf63216e26735997120303a41b1b4e56a620252e711c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:36:24.000Z",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "fd7a557a4d8353323cb68edb4b2cfce8da11ca130722f0a80447dd2f609ed149",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.49.0",
+      "date": "2026-01-24T08:36:07.000Z",
+      "commit": "2d4221b9f6874ac622dc2e379527b804856b2068",
+      "fileid": "08b184f48e616342f04a2833fa0677d3c093be3f715335d8475bc8492c167383",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21312221576"
+    }
+  ]
+}

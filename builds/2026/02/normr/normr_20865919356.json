@@ -1,0 +1,779 @@
+{
+  "Package": "normr",
+  "Type": "Package",
+  "Title": "Normalization and difference calling in ChIP-seq data",
+  "Version": "1.37.0",
+  "Date": "2021-09-21",
+  "Authors@R": "c(person(given=\"Johannes\",family=\"Helmuth\",\nemail=\"johannes.helmuth@laborberlin.com\", role=c(\"aut\", \"cre\")),\nperson(given=\"Ho-Ryun\",family=\"Chung\",\nemail=\"chung@molgen.mpg.de\", role=c(\"aut\")))",
+  "Author": "Johannes Helmuth [aut, cre], Ho-Ryun Chung [aut]",
+  "Maintainer": "Johannes Helmuth <johannes.helmuth@laborberlin.com>",
+  "Description": "Robust normalization and difference calling procedures for\nChIP-seq and alike data. Read counts are modeled jointly as a\nbinomial mixture model with a user-specified number of\ncomponents. A fitted background estimate accounts for the\neffect of enrichment in certain regions and, therefore,\nrepresents an appropriate null hypothesis. This robust\nbackground is used to identify significantly enriched or\ndepleted regions.",
+  "License": "GPL-2",
+  "SystemRequirements": "C++11",
+  "biocViews": "Bayesian, DifferentialPeakCalling, Classification,\nDataImport, ChIPSeq, RIPSeq, FunctionalGenomics, Genetics,\nMultipleComparison, Normalization, PeakDetection,\nPreprocessing, Alignment",
+  "VignetteBuilder": "knitr",
+  "NeedsCompilation": "yes",
+  "Collate": "'NormRFit.R' 'methods.R' 'NormRCountConfig.R' 'RcppExports.R'",
+  "RoxygenNote": "6.0.1",
+  "URL": "https://github.com/your-highness/normR",
+  "BugReports": "https://github.com/your-highness/normR/issues",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libxml2-dev\nlibssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:32:51 UTC",
+  "RemoteUrl": "https://github.com/bioc/normr",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "76e2183cb5a004989d94564e8edddeed28ba4802",
+  "Packaged": {
+    "Date": "2026-01-09 21:35:04 UTC",
+    "User": "root"
+  },
+  "MD5sum": "89750fb85bac4718b9f6575f1a546b8f",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "normr_1.37.0.tar.gz",
+  "_fileid": "ddd6b913fd90bc925c3848d529e5983ee69e16818f7f21eb709b2d3bb4ac8fba",
+  "_filesize": 3794838,
+  "_sha256": "ddd6b913fd90bc925c3848d529e5983ee69e16818f7f21eb709b2d3bb4ac8fba",
+  "_created": "2026-01-09T21:35:04.000Z",
+  "_published": "2026-01-11T03:51:55.822Z",
+  "_jobs": [
+    {
+      "job": 60016250395,
+      "time": 197,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081368125"
+    },
+    {
+      "job": 60016250328,
+      "time": 324,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5087809472"
+    },
+    {
+      "job": 60016250330,
+      "time": 317,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5087808953"
+    },
+    {
+      "job": 60016250331,
+      "time": 316,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5087809056"
+    },
+    {
+      "job": 60016250335,
+      "time": 346,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5087810603"
+    },
+    {
+      "job": 60016250308,
+      "time": 312,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5087887016"
+    },
+    {
+      "job": 60016250307,
+      "time": 182,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 60016250317,
+      "time": 359,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5087874790"
+    },
+    {
+      "job": 60016250321,
+      "time": 434,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5087884289"
+    },
+    {
+      "job": 60016250275,
+      "time": 326,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081330935"
+    },
+    {
+      "job": 60016250348,
+      "time": 152,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5081361464"
+    },
+    {
+      "job": 60016250320,
+      "time": 389,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5087813239"
+    },
+    {
+      "job": 60016250315,
+      "time": 367,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5087811731"
+    },
+    {
+      "job": 60016250322,
+      "time": 336,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5087810027"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/normr",
+  "_commit": {
+    "id": "76e2183cb5a004989d94564e8edddeed28ba4802",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748371
+  },
+  "_maintainer": {
+    "name": "Johannes Helmuth",
+    "email": "johannes.helmuth@laborberlin.com",
+    "login": "your-highness",
+    "mastodon": "@hoellenmotte@genomic.social",
+    "linkedin": "in/johanneshelmuth",
+    "uuid": 1949888
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.11",
+      "role": "Imports"
+    },
+    {
+      "package": "qvalue",
+      "version": ">= 2.2",
+      "role": "Imports"
+    },
+    {
+      "package": "bamsignals",
+      "version": ">= 1.4",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "version": ">= 1.32",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 1.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Enhances"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.37.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.36.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "bayesian",
+    "differentialpeakcalling",
+    "classification",
+    "dataimport",
+    "chipseq",
+    "ripseq",
+    "functionalgenomics",
+    "genetics",
+    "multiplecomparison",
+    "normalization",
+    "peakdetection",
+    "preprocessing",
+    "alignment",
+    "cpp",
+    "openmp"
+  ],
+  "_stars": 11,
+  "_contributors": [
+    {
+      "user": "your-highness",
+      "count": 28,
+      "uuid": 1949888
+    },
+    {
+      "user": "nturaga",
+      "count": 10,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    },
+    {
+      "user": "lshep",
+      "count": 1,
+      "uuid": 18724380
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 407,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/normr"
+  },
+  "_devurl": "https://github.com/your-highness/normr",
+  "_searchresults": 23,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/normr.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/your-highness/normr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "countConfigPairedEnd",
+    "countConfigSingleEnd",
+    "diffR",
+    "enrichR",
+    "exportR",
+    "getClasses",
+    "getCounts",
+    "getEnrichment",
+    "getFilter",
+    "getPosteriors",
+    "getPvalues",
+    "getQvalues",
+    "getRanges",
+    "plot",
+    "print",
+    "regimeR",
+    "show",
+    "summary"
+  ],
+  "_help": [
+    {
+      "page": "normR-diffR",
+      "title": "Difference Calling between conditional ChIP-seq data in normR with diffR",
+      "topics": [
+        "differenceCall",
+        "DifferenceCalling",
+        "diffR",
+        "diffr",
+        "diffR,character,character,character-method",
+        "diffR,character,character,data.frame-method",
+        "diffR,character,character,GenomicRanges-method",
+        "diffR,integer,integer,GenomicRanges-method",
+        "diffR-generic"
+      ]
+    },
+    {
+      "page": "normR-enrichR",
+      "title": "Enrichment Calling on ChIP-seq data in normR with enrichR",
+      "topics": [
+        "enrichmentCall",
+        "EnrichmentCalling",
+        "enrichR",
+        "enrichr",
+        "enrichR,character,character,character-method",
+        "enrichR,character,character,data.frame-method",
+        "enrichR,character,character,GenomicRanges-method",
+        "enrichR,integer,integer,GenomicRanges-method",
+        "enrichR-generic"
+      ]
+    },
+    {
+      "page": "normR",
+      "title": "Enrichment, Difference and Regime Calling in ChIP-seq data.",
+      "topics": [
+        "normR-package",
+        "DifferentialPeakCalling",
+        "normR",
+        "normr",
+        "PeakCalling"
+      ]
+    },
+    {
+      "page": "NormRCountConfig-class",
+      "title": "Container for configuration of read counting with bamsignals in normR",
+      "topics": [
+        "BamsignalsConfig",
+        "BamsignalsCountConfig",
+        "configPairedEnd",
+        "configSingleEnd",
+        "countConfigPairedEnd",
+        "countConfigPairedEnd,ANY-method",
+        "countConfigSingleEnd",
+        "countConfigSingleEnd,ANY-method",
+        "getBamsignalsFilter",
+        "getFilter",
+        "getFilter,NormRCountConfig-method",
+        "getNormRCountConfigFilter",
+        "NormRCountConfig",
+        "NormRCountConfig-class",
+        "print,NormRCountConfig-method",
+        "show,NormRCountConfig-method"
+      ]
+    },
+    {
+      "page": "NormRFit-class",
+      "title": "Container for a fit done with normR",
+      "topics": [
+        "exportR",
+        "exportR,NormRFit,character-method",
+        "getClasses",
+        "getClasses,NormRFit-method",
+        "getCounts",
+        "getCounts,NormRFit-method",
+        "getEnrichment",
+        "getEnrichment,NormRFit-method",
+        "getPosteriors",
+        "getPosteriors,NormRFit-method",
+        "getPvalues",
+        "getPvalues,NormRFit-method",
+        "getQvalues",
+        "getQvalues,NormRFit-method",
+        "getRanges",
+        "getRanges,NormRFit-method",
+        "length,NormRFit-method",
+        "NormRFit",
+        "NormRfit",
+        "normRFit",
+        "normrfit",
+        "NormRFit-class",
+        "plot,NormRFit,missing-method",
+        "plot.NormRFit",
+        "print,NormRFit-method",
+        "show,NormRFit-method",
+        "summary,NormRFit-method"
+      ]
+    },
+    {
+      "page": "normR-regimeR",
+      "title": "Regime Enrichment Calling for ChIP-seq data in normR with regimeR",
+      "topics": [
+        "regimeCall",
+        "RegimeCalling",
+        "regimeR",
+        "regimer",
+        "regimeR,character,character,character,numeric-method",
+        "regimeR,character,character,data.frame,numeric-method",
+        "regimeR,character,character,GenomicRanges,numeric-method",
+        "regimeR,integer,integer,GenomicRanges,numeric-method",
+        "regimeR-generic"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/normr/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "bamsignals",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "openssl",
+    "plyr",
+    "qvalue",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "UCSC.utils",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    },
+    {
+      "shlib": "libgomp",
+      "package": "libgomp1",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "openmp",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GCC OpenMP (GOMP) support library"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "normr.Rmd",
+      "filename": "normr.html",
+      "title": "Introduction to the normR package",
+      "author": "Johannes Helmuth",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "TL;DR (Too long; didn't read)",
+        "Introduction to normR",
+        "Toy Examples",
+        "enrichR(): Calling Enrichment with an Input Control",
+        "Analyzing Results",
+        "Exporting Results",
+        "diffR(): Calling Differential Enrichment without a Control Experiment",
+        "regimeR(): Identify Enrichment Regimes in ChIP-seq Experiments",
+        "Advanced Topics",
+        "Change Read Counting Strategy with NormRCountConfig-class",
+        "Analyzing Predefined Regions",
+        "Post-processing of Difference Calls with CNV information"
+      ],
+      "created": "2016-07-12 14:03:46",
+      "modified": "2020-04-14 15:10:59",
+      "commits": 5
+    }
+  ],
+  "_score": 6.102090525511836,
+  "_indexed": true,
+  "_nocasepkg": "normr",
+  "_universes": [
+    "bioc",
+    "your-highness"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2025-12-23T08:37:26.000Z",
+      "arch": "x86_64",
+      "commit": "d7934508786c8f6f4b1ee8fe3fc2d8a913a601bb",
+      "fileid": "9ff72fab3207808aa550a8f72c9fee7d36dcd5604cfc3f49786ffa00982c606d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20455293282"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:29:02.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "067cf9d6324c973c3df8ba0611cf35594c84cbd901d0dd1f0ef01a457216f001",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:28:42.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "69c5c96d3a8e207046cb20ac12644bc0c3a6f7fcf2332863ee57233014fa203e",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:29:01.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "800cc6e86be7c933ac5149782261c29f3cc705420c251e115eacce5471f4c1bc",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:29:05.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "b9ca9550eb72bae5c7ca7ee366b2a5bc8aa6a1455c30af7ac0551a106625456c",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:48:19.000Z",
+      "arch": "aarch64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "65e5311963b8958343f548bfa70abed2d89e082d1ea498e337f3ed324da40837",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:44:40.000Z",
+      "arch": "aarch64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "2c3ae9564451c0beb65558e8b4252a33b4536ad9e354136be2b0c5e59679889d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:46:29.000Z",
+      "arch": "x86_64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "cc24d605b1418118a9aaec3e01840ca541da72be0ba5066978d18ba9aed16571",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:39:11.000Z",
+      "arch": "emscripten",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "e2259b7fd1bb389e2cba2410f8142604d15f3139175912bd63c1ac9f5859b55c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:29:06.000Z",
+      "arch": "x86_64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "1dcbc634af78da588555ef60427a167b41098a19638bd16d020ebc40b50b6490",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:28:46.000Z",
+      "arch": "x86_64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "9c05ccce6cd36f80344a1efc6b9808f30a2b29f9ca627b474bbd8c54f7d70a35",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-11T03:28:21.000Z",
+      "arch": "x86_64",
+      "commit": "76e2183cb5a004989d94564e8edddeed28ba4802",
+      "fileid": "3631900729cc11ddcf3c190c993662f2dfefe40aa53f31e5d00b24b599c7116a",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865919356"
+    }
+  ]
+}

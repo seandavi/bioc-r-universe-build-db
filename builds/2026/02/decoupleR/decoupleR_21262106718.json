@@ -1,0 +1,925 @@
+{
+  "Type": "Package",
+  "Package": "decoupleR",
+  "Title": "decoupleR: Ensemble of computational methods to infer biological\nactivities from omics data",
+  "Version": "2.17.0",
+  "Authors@R": "c(person(given = \"Pau\",\nfamily = \"Badia-i-Mompel\",\nrole = c(\"aut\",\"cre\"),\nemail = \"pau.badia@uni-heidelberg.de\",\ncomment = c(ORCID = \"0000-0002-1004-3923\")),\nperson(given = \"Jes\u00fas\",\nfamily = \"V\u00e9lez-Santiago\",\nrole = c(\"aut\"),\nemail = \"jvelezmagic@gmail.com\",\ncomment = c(ORCID = \"0000-0001-5128-3838\")),\nperson(given = \"Jana\",\nfamily = \"Braunger\",\nrole = c(\"aut\"),\nemail = \"jana.bc@gmx.de\",\ncomment = c(ORCID = \"0000-0003-0820-9987\")),\nperson(given = \"Celina\",\nfamily = \"Geiss\",\nrole = c(\"aut\"),\nemail = \"celina.geiss@stud.uni-heidelberg.de\",\ncomment = c(ORCID = \"0000-0002-8740-706X\")),\nperson(given = \"Daniel\",\nfamily = \"Dimitrov\",\nrole = c(\"aut\"),\nemail = \"daniel.dimitrov@uni-heidelberg.de\",\ncomment = c(ORCID = \"0000-0002-5197-2112\")),\nperson(given = \"Sophia\",\nfamily = \"M\u00fcller-Dott\",\nrole = c(\"aut\"),\nemail = \"sophia.mueller-dott@uni-heidelberg.de\",\ncomment = c(ORCID = \"0000-0002-9710-1865\")),\nperson(given = \"Petr\",\nfamily = \"Taus\",\nrole = c(\"aut\"),\nemail = \"petr.taus@ceitec.muni.cz\",\ncomment = c(ORCID = \"0000-0003-3764-9033\")),\nperson(given = \"Aur\u00e9lien\",\nfamily = \"Dugourd\",\nrole = c(\"aut\"),\nemail = \"aurelien.dugourd@bioquant.uni-heidelberg.de\",\ncomment = c(ORCID = \"0000-0002-0714-028X\")),\nperson(given = \"Christian H.\",\nfamily = \"Holland\",\nrole = \"aut\",\nemail = \"cholland2408@gmail.com\",\ncomment = c(ORCID = \"0000-0002-3060-5786\")),\nperson(given = \"Ricardo O.\",\nfamily = \"Ramirez Flores\",\nrole = c(\"aut\"),\nemail = \"roramirezf@uni-heidelberg.de \",\ncomment = c(ORCID = \"0000-0003-0087-371X\")),\nperson(given = \"Julio\",\nfamily = \"Saez-Rodriguez\",\nrole = c(\"aut\"),\nemail = \"pub.saez@uni-heidelberg.de\",\ncomment = c(ORCID = \"0000-0002-8552-8976\"))\n)",
+  "Description": "Many methods allow us to extract biological activities\nfrom omics data using information from prior knowledge\nresources, reducing the dimensionality for increased\nstatistical power and better interpretability. Here, we present\ndecoupleR, a Bioconductor package containing different\nstatistical methods to extract these signatures within a\nunified framework. decoupleR allows the user to flexibly test\nany method with any resource. It incorporates methods that take\ninto account the sign and weight of network interactions.\ndecoupleR can be used with any omic, as long as its features\ncan be linked to a biological process based on prior knowledge.\nFor example, in transcriptomics gene sets regulated by a\ntranscription factor, or in phospho-proteomics phosphosites\nthat are targeted by a kinase.",
+  "License": "GPL-3 + file LICENSE",
+  "URL": "https://saezlab.github.io/decoupleR/",
+  "BugReports": "https://github.com/saezlab/decoupleR/issues",
+  "VignetteBuilder": "knitr",
+  "biocViews": "DifferentialExpression, FunctionalGenomics, GeneExpression,\nGeneRegulation, Network, Software, StatisticalMethod,\nTranscription,",
+  "Config/testthat/edition": "3",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.0",
+  "Config/pak/sysreqs": "libicu-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:09:41 UTC",
+  "RemoteUrl": "https://github.com/bioc/decoupleR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-22 19:37:20 UTC",
+    "User": "root"
+  },
+  "Author": "Pau Badia-i-Mompel [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-1004-3923>),\nJes\u00fas V\u00e9lez-Santiago [aut] (ORCID:\n<https://orcid.org/0000-0001-5128-3838>),\nJana Braunger [aut] (ORCID: <https://orcid.org/0000-0003-0820-9987>),\nCelina Geiss [aut] (ORCID: <https://orcid.org/0000-0002-8740-706X>),\nDaniel Dimitrov [aut] (ORCID: <https://orcid.org/0000-0002-5197-2112>),\nSophia M\u00fcller-Dott [aut] (ORCID:\n<https://orcid.org/0000-0002-9710-1865>),\nPetr Taus [aut] (ORCID: <https://orcid.org/0000-0003-3764-9033>),\nAur\u00e9lien Dugourd [aut] (ORCID: <https://orcid.org/0000-0002-0714-028X>),\nChristian H. Holland [aut] (ORCID:\n<https://orcid.org/0000-0002-3060-5786>),\nRicardo O. Ramirez Flores [aut] (ORCID:\n<https://orcid.org/0000-0003-0087-371X>),\nJulio Saez-Rodriguez [aut] (ORCID:\n<https://orcid.org/0000-0002-8552-8976>)",
+  "Maintainer": "Pau Badia-i-Mompel <pau.badia@uni-heidelberg.de>",
+  "MD5sum": "80e4ec5793821da574ba45c57a8a381a",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "decoupleR_2.17.0.tar.gz",
+  "_fileid": "472b7f5a1ebcea46eefa4568249d419e2e3e22e8c24d7746ddf52907eb3a6360",
+  "_filesize": 3433168,
+  "_sha256": "472b7f5a1ebcea46eefa4568249d419e2e3e22e8c24d7746ddf52907eb3a6360",
+  "_created": "2026-01-22T19:37:20.000Z",
+  "_published": "2026-01-22T20:17:59.072Z",
+  "_jobs": [
+    {
+      "job": 61192619576,
+      "time": 224,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5224701846"
+    },
+    {
+      "job": 61192619585,
+      "time": 1226,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5224892768"
+    },
+    {
+      "job": 61192619573,
+      "time": 881,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5224827980"
+    },
+    {
+      "job": 61192619580,
+      "time": 699,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5225019143"
+    },
+    {
+      "job": 61192619571,
+      "time": 1174,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5225126698"
+    },
+    {
+      "job": 61191961804,
+      "time": 382,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224654925"
+    },
+    {
+      "job": 61192619709,
+      "time": 191,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5224694866"
+    },
+    {
+      "job": 61192619634,
+      "time": 944,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5224839775"
+    },
+    {
+      "job": 61192619625,
+      "time": 1628,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5224970222"
+    },
+    {
+      "job": 61192619604,
+      "time": 714,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5224798629"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/decoupleR",
+  "_commit": {
+    "id": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750581
+  },
+  "_maintainer": {
+    "name": "Pau Badia-i-Mompel",
+    "email": "pau.badia@uni-heidelberg.de",
+    "login": "paubadiam",
+    "bluesky": "@paubadiam.bsky.social",
+    "linkedin": "in/pau-badia-i-mompel-347b8016b",
+    "orcid": "0000-0002-1004-3923",
+    "uuid": 44896790
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "broom",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "parallelly",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "withr",
+      "role": "Imports"
+    },
+    {
+      "package": "glmnet",
+      "version": ">= 4.1-7",
+      "role": "Suggests"
+    },
+    {
+      "package": "GSVA",
+      "role": "Suggests"
+    },
+    {
+      "package": "viper",
+      "role": "Suggests"
+    },
+    {
+      "package": "fgsea",
+      "version": ">= 1.15.4",
+      "role": "Suggests"
+    },
+    {
+      "package": "AUCell",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "rpart",
+      "role": "Suggests"
+    },
+    {
+      "package": "ranger",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "pkgdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "RefManageR",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "role": "Suggests"
+    },
+    {
+      "package": "sessioninfo",
+      "role": "Suggests"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "OmnipathR",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seurat",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Suggests"
+    },
+    {
+      "package": "patchwork",
+      "role": "Suggests"
+    },
+    {
+      "package": "magick",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 5,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.17.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.16.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "differentialexpression",
+    "functionalgenomics",
+    "geneexpression",
+    "generegulation",
+    "network",
+    "software",
+    "statisticalmethod",
+    "transcription"
+  ],
+  "_stars": 281,
+  "_contributors": [
+    {
+      "user": "jvelezmagic",
+      "count": 268,
+      "uuid": 46458320
+    },
+    {
+      "user": "paubadiam",
+      "count": 258,
+      "uuid": 44896790
+    },
+    {
+      "user": "christianholland",
+      "count": 101,
+      "uuid": 28303875
+    },
+    {
+      "user": "deeenes",
+      "count": 65,
+      "uuid": 2679889
+    },
+    {
+      "user": "petrsh",
+      "count": 9,
+      "uuid": 55283841
+    },
+    {
+      "user": "enblacar",
+      "count": 8,
+      "uuid": 42321264
+    },
+    {
+      "user": "nturaga",
+      "count": 6,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    },
+    {
+      "user": "fanzheng10",
+      "count": 4,
+      "uuid": 22034405
+    },
+    {
+      "user": "smuellerd",
+      "count": 4,
+      "uuid": 78087387
+    },
+    {
+      "user": "gabora",
+      "count": 3,
+      "uuid": 3891745
+    },
+    {
+      "user": "adugourd",
+      "count": 3,
+      "uuid": 16302934
+    },
+    {
+      "user": "christinaschmidt1",
+      "count": 1,
+      "uuid": 61190603
+    },
+    {
+      "user": "npalacioescat",
+      "count": 1,
+      "uuid": 22887412
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 2482,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/decoupleR"
+  },
+  "_devurl": "https://github.com/saezlab/decoupler",
+  "_pkgdown": "https://saezlab.github.io/decoupleR/",
+  "_searchresults": 532,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/decoupleR.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/saezlab/decoupler",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ":=",
+    ".data",
+    ".fit_preprocessing",
+    "%>%",
+    "abort",
+    "as_label",
+    "as_name",
+    "check_corr",
+    "convert_f_defaults",
+    "decouple",
+    "enquo",
+    "enquos",
+    "exec",
+    "expr",
+    "extract_sets",
+    "filt_minsize",
+    "get_collectri",
+    "get_dorothea",
+    "get_ksn_omnipath",
+    "get_progeny",
+    "get_resource",
+    "get_toy_data",
+    "intersect_regulons",
+    "pivot_wider_profile",
+    "quo_is_missing",
+    "quo_is_null",
+    "rename_net",
+    "run_aucell",
+    "run_consensus",
+    "run_fgsea",
+    "run_gsva",
+    "run_mdt",
+    "run_mlm",
+    "run_ora",
+    "run_udt",
+    "run_ulm",
+    "run_viper",
+    "run_wmean",
+    "run_wsum",
+    "show_methods",
+    "show_resources",
+    "sym",
+    "syms"
+  ],
+  "_help": [
+    {
+      "page": "dot-fit_preprocessing",
+      "title": "Pre-processing for methods that fit networks.",
+      "topics": [
+        ".fit_preprocessing"
+      ]
+    },
+    {
+      "page": "check_corr",
+      "title": "Check correlation (colinearity)",
+      "topics": [
+        "check_corr"
+      ]
+    },
+    {
+      "page": "convert_f_defaults",
+      "title": "Rename columns and add defaults values if column not present",
+      "topics": [
+        "convert_f_defaults"
+      ]
+    },
+    {
+      "page": "decouple",
+      "title": "Evaluate multiple statistics with same input data",
+      "topics": [
+        "decouple"
+      ]
+    },
+    {
+      "page": "extract_sets",
+      "title": "Extract sets",
+      "topics": [
+        "extract_sets"
+      ]
+    },
+    {
+      "page": "filt_minsize",
+      "title": "Filter sources with minsize targets",
+      "topics": [
+        "filt_minsize"
+      ]
+    },
+    {
+      "page": "get_collectri",
+      "title": "CollecTRI gene regulatory network. Wrapper to access CollecTRI gene regulatory network. CollecTRI is a comprehensive resource containing a curated collection of transcription factors (TFs) and their target genes. It is an expansion of DoRothEA. Each interaction is weighted by its mode of regulation (either positive or negative).",
+      "topics": [
+        "get_collectri"
+      ]
+    },
+    {
+      "page": "get_dorothea",
+      "title": "DoRothEA gene regulatory network.",
+      "topics": [
+        "get_dorothea"
+      ]
+    },
+    {
+      "page": "get_ksn_omnipath",
+      "title": "OmniPath kinase-substrate network",
+      "topics": [
+        "get_ksn_omnipath"
+      ]
+    },
+    {
+      "page": "get_progeny",
+      "title": "Pathway RespOnsive GENes for activity inference (PROGENy).",
+      "topics": [
+        "get_progeny"
+      ]
+    },
+    {
+      "page": "get_resource",
+      "title": "Wrapper to access resources inside Omnipath. This wrapper allows to easily query different prior knowledge resources. To check available resources run 'decoupleR::show_resources()'. For more information visit the official website for Omnipath.",
+      "topics": [
+        "get_resource"
+      ]
+    },
+    {
+      "page": "get_toy_data",
+      "title": "Generate a toy 'mat' and 'network'.",
+      "topics": [
+        "get_toy_data"
+      ]
+    },
+    {
+      "page": "intersect_regulons",
+      "title": "Intersect network target features with input matrix.",
+      "topics": [
+        "intersect_regulons"
+      ]
+    },
+    {
+      "page": "rename_net",
+      "title": "Rename network",
+      "topics": [
+        "rename_net"
+      ]
+    },
+    {
+      "page": "run_aucell",
+      "title": "AUCell",
+      "topics": [
+        "run_aucell"
+      ]
+    },
+    {
+      "page": "run_consensus",
+      "title": "Consensus score between methods",
+      "topics": [
+        "run_consensus"
+      ]
+    },
+    {
+      "page": "run_fgsea",
+      "title": "Fast Gene Set Enrichment Analysis (FGSEA)",
+      "topics": [
+        "run_fgsea"
+      ]
+    },
+    {
+      "page": "run_gsva",
+      "title": "Gene Set Variation Analysis (GSVA)",
+      "topics": [
+        "run_gsva"
+      ]
+    },
+    {
+      "page": "run_mdt",
+      "title": "Multivariate Decision Trees (MDT)",
+      "topics": [
+        "run_mdt"
+      ]
+    },
+    {
+      "page": "run_mlm",
+      "title": "Multivariate Linear Model (MLM)",
+      "topics": [
+        "run_mlm"
+      ]
+    },
+    {
+      "page": "run_ora",
+      "title": "Over Representation Analysis (ORA)",
+      "topics": [
+        "run_ora"
+      ]
+    },
+    {
+      "page": "run_udt",
+      "title": "Univariate Decision Tree (UDT)",
+      "topics": [
+        "run_udt"
+      ]
+    },
+    {
+      "page": "run_ulm",
+      "title": "Univariate Linear Model (ULM)",
+      "topics": [
+        "run_ulm"
+      ]
+    },
+    {
+      "page": "run_viper",
+      "title": "Virtual Inference of Protein-activity by Enriched Regulon analysis (VIPER)",
+      "topics": [
+        "run_viper"
+      ]
+    },
+    {
+      "page": "run_wmean",
+      "title": "Weighted Mean (WMEAN)",
+      "topics": [
+        "run_wmean"
+      ]
+    },
+    {
+      "page": "run_wsum",
+      "title": "Weighted Sum (WSUM)",
+      "topics": [
+        "run_wsum"
+      ]
+    },
+    {
+      "page": "show_methods",
+      "title": "Show methods",
+      "topics": [
+        "show_methods"
+      ]
+    },
+    {
+      "page": "show_resources",
+      "title": "Shows available resources in Omnipath. For more information visit the official website for Omnipath.",
+      "topics": [
+        "show_resources"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/decoupleR/raw/HEAD/man/figures/logo.svg",
+  "_readme": "https://github.com/bioc/decoupleR/raw/HEAD/README.md",
+  "_rundeps": [
+    "backports",
+    "BH",
+    "BiocParallel",
+    "broom",
+    "cli",
+    "codetools",
+    "cpp11",
+    "dplyr",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "glue",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "parallelly",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "R6",
+    "rlang",
+    "snow",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "withr"
+  ],
+  "_vignettes": [
+    {
+      "source": "decoupleR.Rmd",
+      "filename": "decoupleR.html",
+      "title": "Introduction",
+      "author": "Pau Badia-i-Mompel, Jes\u00fas V\u00e9lez-Santiago",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Usage",
+        "Libraries",
+        "Input data",
+        "Methods",
+        "Running methods",
+        "Individual methods",
+        "Multiple methods",
+        "Session information",
+        "Bibliography"
+      ],
+      "created": "2020-12-14 09:49:51",
+      "modified": "2022-04-01 09:24:05",
+      "commits": 11
+    },
+    {
+      "source": "pw_sc.Rmd",
+      "filename": "pw_sc.html",
+      "title": "Pathway activity inference from scRNA-seq",
+      "author": "Pau Badia-i-Mompel",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Loading packages",
+        "Loading the data-set",
+        "PROGENy model",
+        "Activity inference with Multivariate Linear Model (MLM)",
+        "Visualization",
+        "Exploration",
+        "Session information"
+      ],
+      "created": "2022-03-30 16:28:49",
+      "modified": "2023-11-21 17:22:26",
+      "commits": 10
+    },
+    {
+      "source": "pw_bk.Rmd",
+      "filename": "pw_bk.html",
+      "title": "Pathway activity inference in bulk RNA-seq",
+      "author": "Pau Badia-i-Mompel",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Loading packages",
+        "Loading the data-set",
+        "PROGENy model",
+        "Activity inference with Multivariate Linear Model (MLM)",
+        "Visualization",
+        "Session information"
+      ],
+      "created": "2022-04-01 09:42:06",
+      "modified": "2023-11-21 17:22:26",
+      "commits": 3
+    },
+    {
+      "source": "tf_sc.Rmd",
+      "filename": "tf_sc.html",
+      "title": "Transcription factor activity inference from scRNA-seq",
+      "author": "Pau Badia-i-Mompel",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Loading packages",
+        "Loading the data-set",
+        "CollecTRI network",
+        "Activity inference with Univariate Linear Model (ULM)",
+        "Visualization",
+        "Exploration",
+        "Session information"
+      ],
+      "created": "2022-03-30 14:58:07",
+      "modified": "2023-11-21 17:22:26",
+      "commits": 11
+    },
+    {
+      "source": "tf_bk.Rmd",
+      "filename": "tf_bk.html",
+      "title": "Transcription factor activity inference in bulk RNA-seq",
+      "author": "Pau Badia-i-Mompel",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Loading packages",
+        "Loading the data-set",
+        "CollecTRI network",
+        "Activity inference with Univariate Linear Model (ULM)",
+        "Visualization",
+        "Session information"
+      ],
+      "created": "2022-04-01 09:42:06",
+      "modified": "2023-11-21 17:22:26",
+      "commits": 5
+    }
+  ],
+  "_score": 11.558424345061376,
+  "_indexed": true,
+  "_nocasepkg": "decoupler",
+  "_universes": [
+    "bioc",
+    "paubadiam",
+    "saezlab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.17.0",
+      "date": "2026-01-22T19:41:39.000Z",
+      "distro": "noble",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "95961145eeb0b699dccef499dd0cdb471417e48e281c3a5c3f58cef195169ef2",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.17.0",
+      "date": "2026-01-22T19:41:10.000Z",
+      "distro": "noble",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "f33d5691997e3ce1b1bc02f517d69ac94c08c57d4c8b28b4027a3cfab5dda121",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.17.0",
+      "date": "2026-01-22T19:59:04.000Z",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "6a5d72992c4e54396810b2ffc64557ba9a3b390d02099bc82f4a44b01bc01084",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.17.0",
+      "date": "2026-01-22T20:00:23.000Z",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "ec73247edd188ae5a9b2bac9ca8bda98550562e9c7d993474518a62149e9160f",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.17.0",
+      "date": "2026-01-22T19:40:52.000Z",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "66737713b74f1ea47d9fa7479cfdf8c1f63362e44743eec3461ebb391f32df16",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.17.0",
+      "date": "2026-01-22T19:39:15.000Z",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "5a603d6bfecdb0d890194ee4c3d681490799908e3b28a4fc263f896c3debe399",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.17.0",
+      "date": "2026-01-22T19:40:03.000Z",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "4399963aa0abee3e74222b8fa3911e7922d20e5f4e40ccd54ed86aa4217df093",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.17.0",
+      "date": "2026-01-22T19:39:16.000Z",
+      "commit": "6d54bcec4ad18b216dfe2ee1a90906a51af5d19b",
+      "fileid": "9784b1bf6041a00a055b0a3d76ce29ded70a97b0bf526a5f2e6e888276665f51",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262106718"
+    }
+  ]
+}

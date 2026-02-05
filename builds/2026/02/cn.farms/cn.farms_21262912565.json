@@ -1,0 +1,833 @@
+{
+  "Package": "cn.farms",
+  "Title": "cn.FARMS - factor analysis for copy number estimation",
+  "Version": "1.59.0",
+  "Date": "2025-07-12",
+  "Type": "Package",
+  "License": "LGPL (>= 2.0)",
+  "Author": "Andreas Mitterecker, Djork-Arne Clevert",
+  "Maintainer": "Andreas Mitterecker <mitteran11@gmail.com>",
+  "Description": "This package implements the cn.FARMS algorithm for copy\nnumber variation (CNV) analysis. cn.FARMS allows to analyze the\nmost common Affymetrix (250K-SNP6.0) array types, supports\nhigh-performance computing using snow and ff.",
+  "URL": "http://www.bioinf.jku.at/software/cnfarms/cnfarms.html",
+  "Collate": "'callSummarize.R' 'combineData.R' 'correctPkgname.R'\n'cnFarms.R' 'createAnnotation.R' 'createMatrix.R'\n'determineBaselineArray.R' 'distributionDistance.R'\n'dnaCopySf.R' 'doCnFarms.R' 'fragLengthCorr.R' 'normAdd.R'\n'normalizeAverage.R' 'normalizeCels.R' 'normalizeNpData.R'\n'normalizeQuantiles.R' 'normalizeSor.R' 'plotDendrogram.R'\n'plotDensity.R' 'plotEvalIc.R' 'plotSmoothScatter.R'\n'plotsRegions.R' 'plotViolines.R' 'sparseFarmsC.R'\n'summarizationMl.R' 'summarizationSl.R'\n'summarizeFarmsGaussian.R' 'summarizeFarmsLaplaceExact.R'\n'summarizeFarmsLaplaceVar.R' 'summarizeFarmsMethods.R'\n'summarizeStatistics.R' 'windowFunctions.R' 'windowMethods.R'\n'normalizeProbeSequence.R' 'snowfallExt.R'\n'summarizeFarmsLaplaceExact2.R' 'summarizeFarmsLaplaceExact3.R'\n'normalizeNone.R' 'utils-lds.R' 'zzz.R' 'sFclusterFunctions.R'\n'sFinit.R' 'sFsnowfall-internal.R' 'sFsnowWrappers.R'\n'sFsocketRequest.R' 'vanillaIce.R'",
+  "biocViews": "Microarray, CopyNumberVariation",
+  "Roxygen": "list(wrap = FALSE)",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:07:06 UTC",
+  "RemoteUrl": "https://github.com/bioc/cn.farms",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "cd33296658ca61dea165445e7c0a6136e67406ca",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-01-22 20:01:16 UTC",
+    "User": "root"
+  },
+  "MD5sum": "d98bd5daaebf280bfafe34374246bfe0",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "cn.farms_1.59.0.tar.gz",
+  "_fileid": "4428be91f5e387c0dcdaba7150ba43c245b8ee913241cafad56ee23aa8d6e847",
+  "_filesize": 2514486,
+  "_sha256": "4428be91f5e387c0dcdaba7150ba43c245b8ee913241cafad56ee23aa8d6e847",
+  "_created": "2026-01-22T20:01:16.000Z",
+  "_published": "2026-01-22T20:30:14.641Z",
+  "_jobs": [
+    {
+      "job": 61195061844,
+      "time": 178,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5224972370"
+    },
+    {
+      "job": 61195061941,
+      "time": 290,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5224994287"
+    },
+    {
+      "job": 61195061910,
+      "time": 347,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225004455"
+    },
+    {
+      "job": 61195061860,
+      "time": 306,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5224998443"
+    },
+    {
+      "job": 61195061888,
+      "time": 296,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5224994789"
+    },
+    {
+      "job": 61195061884,
+      "time": 282,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225269212"
+    },
+    {
+      "job": 61195061866,
+      "time": 553,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5225092109"
+    },
+    {
+      "job": 61195061900,
+      "time": 269,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225269447"
+    },
+    {
+      "job": 61195061879,
+      "time": 382,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5225039015"
+    },
+    {
+      "job": 61194659347,
+      "time": 234,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224936918"
+    },
+    {
+      "job": 61195061901,
+      "time": 129,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5224962737"
+    },
+    {
+      "job": 61195061852,
+      "time": 237,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5224984086"
+    },
+    {
+      "job": 61195061895,
+      "time": 260,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5224988472"
+    },
+    {
+      "job": 61195061842,
+      "time": 232,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5224983077"
+    }
+  ],
+  "_bioccheck": {
+    "error": 2,
+    "warning": 5,
+    "note": 19
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/cn.farms",
+  "_commit": {
+    "id": "cd33296658ca61dea165445e7c0a6136e67406ca",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761746826
+  },
+  "_maintainer": {
+    "name": "Andreas Mitterecker",
+    "email": "mitteran11@gmail.com"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "ff",
+      "role": "Depends"
+    },
+    {
+      "package": "oligoClasses",
+      "role": "Depends"
+    },
+    {
+      "package": "snow",
+      "role": "Depends"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "affxparser",
+      "role": "Imports"
+    },
+    {
+      "package": "oligo",
+      "role": "Imports"
+    },
+    {
+      "package": "DNAcopy",
+      "role": "Imports"
+    },
+    {
+      "package": "preprocessCore",
+      "role": "Imports"
+    },
+    {
+      "package": "lattice",
+      "role": "Imports"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-28",
+      "n": 2
+    },
+    {
+      "week": "2025-29",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.59.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.58.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "microarray",
+    "copynumbervariation",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 352,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/cn.farms"
+  },
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/cn.farms.html",
+    "extra/contents.json",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "cn.farms",
+    "cnLibrary",
+    "combineData",
+    "createAnnotation",
+    "createMatrix",
+    "distributionDistance",
+    "dnaCopySf",
+    "fragLengCorr",
+    "mlSummarization",
+    "normalizeAverage",
+    "normalizeCels",
+    "normalizeNpData",
+    "normalizeSequenceEffect",
+    "plotDendrogram",
+    "plotDensity",
+    "plotEvalIc",
+    "plotRegions",
+    "plotSmoothScatter",
+    "plotViolines",
+    "slSummarization",
+    "sparseFarmsC",
+    "summarizeFarmsExact",
+    "summarizeFarmsExact2",
+    "summarizeFarmsExact3",
+    "summarizeFarmsGaussian",
+    "summarizeFarmsMethods",
+    "summarizeFarmsStatistics",
+    "summarizeFarmsVariational",
+    "summarizeWindowBps",
+    "summarizeWindowMethods",
+    "summarizeWindowStd"
+  ],
+  "_help": [
+    {
+      "page": "callSummarize",
+      "title": "Defines which variables should be written back when calling a cn.farms run",
+      "topics": [
+        "callSummarize"
+      ]
+    },
+    {
+      "page": "cn.farms",
+      "title": "cn.farms",
+      "topics": [
+        "cn.farms"
+      ]
+    },
+    {
+      "page": "cnLibrary",
+      "title": "This function was taken from snowfall and edited due to some deprecated function calls.",
+      "topics": [
+        "cnLibrary"
+      ]
+    },
+    {
+      "page": "combineData",
+      "title": "Combine two ExpressionSet objects",
+      "topics": [
+        "combineData"
+      ]
+    },
+    {
+      "page": "createAnnotation",
+      "title": "Creation of annotation files",
+      "topics": [
+        "createAnnotation"
+      ]
+    },
+    {
+      "page": "createMatrix",
+      "title": "Creates the needed matrix",
+      "topics": [
+        "createMatrix"
+      ]
+    },
+    {
+      "page": "distributionDistance",
+      "title": "Computes the distribution distance",
+      "topics": [
+        "distributionDistance"
+      ]
+    },
+    {
+      "page": "dnaCopySf",
+      "title": "Runs DNAcopy in parallel mode",
+      "topics": [
+        "dnaCopySf"
+      ]
+    },
+    {
+      "page": "doCnFarmsSingle",
+      "title": "Does the whole cn.farms process in one call",
+      "topics": [
+        "doCnFarmsSingle"
+      ]
+    },
+    {
+      "page": "flcSnp6Std",
+      "title": "Does a fragment length correction on intensities",
+      "topics": [
+        "flcSnp6Std"
+      ]
+    },
+    {
+      "page": "flcStd",
+      "title": "Does a fragment length correction on intensities",
+      "topics": [
+        "flcStd"
+      ]
+    },
+    {
+      "page": "fragLengCorr",
+      "title": "Does a fragment length correction",
+      "topics": [
+        "fragLengCorr"
+      ]
+    },
+    {
+      "page": "getFragmentSet",
+      "title": "Finds SNPs which belong to one fragment",
+      "topics": [
+        "getFragmentSet"
+      ]
+    },
+    {
+      "page": "getSingleProbeSetSize",
+      "title": "Combines data for probeset summarization",
+      "topics": [
+        "getSingleProbeSetSize"
+      ]
+    },
+    {
+      "page": "mlSummarization",
+      "title": "Method for computation of the multi-loci summarization",
+      "topics": [
+        "mlSummarization"
+      ]
+    },
+    {
+      "page": "normAdd",
+      "title": "Extracts info from the package name",
+      "topics": [
+        "normAdd"
+      ]
+    },
+    {
+      "page": "normalizeAverage",
+      "title": "Scales the range of the non-polymorphic data to the range of a given array.",
+      "topics": [
+        "normalizeAverage"
+      ]
+    },
+    {
+      "page": "normalizeCels",
+      "title": "Wrapper for the normalization functions",
+      "topics": [
+        "normalizeCels"
+      ]
+    },
+    {
+      "page": "normalizeNone",
+      "title": "Runs the SOR normalization on microarray data",
+      "topics": [
+        "normalizeNone"
+      ]
+    },
+    {
+      "page": "normalizeNpData",
+      "title": "Processes the non-polymorphic data",
+      "topics": [
+        "normalizeNpData"
+      ]
+    },
+    {
+      "page": "normalizeQuantiles",
+      "title": "Normalization Quantiles",
+      "topics": [
+        "normalizeQuantiles"
+      ]
+    },
+    {
+      "page": "normalizeSequenceEffect",
+      "title": "Correction for probe sequence effects",
+      "topics": [
+        "normalizeSequenceEffect"
+      ]
+    },
+    {
+      "page": "normalizeSor",
+      "title": "Runs the SOR normalization on microarray data",
+      "topics": [
+        "normalizeSor"
+      ]
+    },
+    {
+      "page": "plotDendrogram",
+      "title": "Plots a dendrogram",
+      "topics": [
+        "plotDendrogram"
+      ]
+    },
+    {
+      "page": "plotDensity",
+      "title": "Function to create a density plot",
+      "topics": [
+        "plotDensity"
+      ]
+    },
+    {
+      "page": "plotEvalIc",
+      "title": "Creates a plot with known regions and a numeric vector",
+      "topics": [
+        "plotEvalIc"
+      ]
+    },
+    {
+      "page": "plotRegions",
+      "title": "Plots given regions by segments",
+      "topics": [
+        "plotRegions"
+      ]
+    },
+    {
+      "page": "plotSmoothScatter",
+      "title": "Creates a smooth scatter plot",
+      "topics": [
+        "plotSmoothScatter"
+      ]
+    },
+    {
+      "page": "plotViolines",
+      "title": "Create a violine plot",
+      "topics": [
+        "plotViolines"
+      ]
+    },
+    {
+      "page": "slSummarization",
+      "title": "Method for computation of the single-locus summarization",
+      "topics": [
+        "slSummarization"
+      ]
+    },
+    {
+      "page": "sparseFarmsC",
+      "title": "Normalizes the data with SOR",
+      "topics": [
+        "sparseFarmsC"
+      ]
+    },
+    {
+      "page": "summarizeFarmsExact",
+      "title": "Summarization Laplacian approach with exact computation",
+      "topics": [
+        "summarizeFarmsExact"
+      ]
+    },
+    {
+      "page": "summarizeFarmsExact2",
+      "title": "Summarization Laplacian approach with exact computation",
+      "topics": [
+        "summarizeFarmsExact2"
+      ]
+    },
+    {
+      "page": "summarizeFarmsExact3",
+      "title": "Summarization Laplacian approach with exact computation",
+      "topics": [
+        "summarizeFarmsExact3"
+      ]
+    },
+    {
+      "page": "summarizeFarmsGaussian",
+      "title": "Summarization Gaussian approach",
+      "topics": [
+        "summarizeFarmsGaussian"
+      ]
+    },
+    {
+      "page": "summarizeFarmsMethods",
+      "title": "Lists methods for possible FARMS summarization",
+      "topics": [
+        "summarizeFarmsMethods"
+      ]
+    },
+    {
+      "page": "summarizeFarmsStatistics",
+      "title": "Mean or median instead of the FARMS model",
+      "topics": [
+        "summarizeFarmsStatistics"
+      ]
+    },
+    {
+      "page": "summarizeFarmsVariational",
+      "title": "Summarization variational Laplacian approach",
+      "topics": [
+        "summarizeFarmsVariational"
+      ]
+    },
+    {
+      "page": "summarizeWindowBps",
+      "title": "Combines neighbouring locations to windows",
+      "topics": [
+        "summarizeWindowBps"
+      ]
+    },
+    {
+      "page": "summarizeWindowMethods",
+      "title": "Lists methods for possible window methods",
+      "topics": [
+        "summarizeWindowMethods"
+      ]
+    },
+    {
+      "page": "summarizeWindowStd",
+      "title": "Combines neighbouring locations to windows",
+      "topics": [
+        "summarizeWindowStd"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "affxparser",
+    "affyio",
+    "Biobase",
+    "BiocGenerics",
+    "BiocManager",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "DBI",
+    "DelayedArray",
+    "DNAcopy",
+    "fastmap",
+    "ff",
+    "foreach",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "IRanges",
+    "iterators",
+    "lattice",
+    "lifecycle",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "oligo",
+    "oligoClasses",
+    "pkgconfig",
+    "plogr",
+    "preprocessCore",
+    "rlang",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "vctrs",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "cn.farms.Rnw",
+      "filename": "cn.farms.pdf",
+      "title": "cn.farms: Manual for the R package",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2012-11-06 15:37:41",
+      "modified": "2014-05-16 11:31:22",
+      "commits": 4
+    }
+  ],
+  "_score": 3.6020599913279625,
+  "_indexed": true,
+  "_nocasepkg": "cn.farms",
+  "_universes": [
+    "bioc"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:04:43.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "7ecd83b0ebea48af8659fef3ae0c52bce74f17783cdb63e22faf25a039f334d1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:05:12.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "537d260e0fa19d43ac7283e127a585e380b14f008536c86933d67ef431ccc699",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:05:02.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "16b0b29ab7d7cb0d025ca252c03c2ca77ed13339311e339cac9329d873a9027d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:04:32.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "f04f112f6e709f0c5aac023d9edb474b0efbc2ed67a2c9edfa8ad27690746641",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:26:35.000Z",
+      "arch": "aarch64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "ab418bd9951548405a4ba612563a36a5d0cbdb68ecaf232760a516c99d9001b5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:09:28.000Z",
+      "arch": "x86_64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "251101591d78ee56e8d3018580900800138e15f0f5ded75641220217a877405b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:26:57.000Z",
+      "arch": "aarch64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "c1722dc597eebc7fb6807d294335c9a9fdc1dad45605c6087a9aab575e1595ef",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:06:29.000Z",
+      "arch": "x86_64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "e1f936ee23aadefb339d9802aa800e1f90a96210a3cdad54b7eca92a893a33fb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:04:02.000Z",
+      "arch": "emscripten",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "3e1f157fb019b03ed1c6ac4002c2173a57376d2b46b46a0b14f607b6c320b854",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:02:58.000Z",
+      "arch": "x86_64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "9355fa5cb1f59f2ae02a721f415359c49fb7d7329bb0962d3dfd06e60adb9c2e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:03:14.000Z",
+      "arch": "x86_64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "fb85fc70168842a924a5e8b3482824d26e9c57a6a5b757d842401fd7359c0cec",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.59.0",
+      "date": "2026-01-22T20:02:53.000Z",
+      "arch": "x86_64",
+      "commit": "cd33296658ca61dea165445e7c0a6136e67406ca",
+      "fileid": "2cdb4c61c7edc58344560a181238e3dd3e930fd84b9618df36dc94a0a4c19158",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21262912565"
+    }
+  ]
+}

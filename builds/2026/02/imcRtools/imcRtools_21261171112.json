@@ -1,0 +1,969 @@
+{
+  "Package": "imcRtools",
+  "Version": "1.17.0",
+  "Title": "Methods for imaging mass cytometry data analysis",
+  "Description": "This R package supports the handling and analysis of\nimaging mass cytometry and other highly multiplexed imaging\ndata. The main functionality includes reading in single-cell\ndata after image segmentation and measurement, data formatting\nto perform channel spillover correction and a number of spatial\nanalysis approaches. First, cell-cell interactions are detected\nvia spatial graph construction; these graphs can be visualized\nwith cells representing nodes and interactions representing\nedges. Furthermore, per cell, its direct neighbours are\nsummarized to allow spatial clustering. Per image/grouping\nlevel, interactions between types of cells are counted,\naveraged and compared against random permutations. In that way,\ntypes of cells that interact more (attraction) or less\n(avoidance) frequently than expected by chance are detected.",
+  "Authors@R": "c(person(\"Nils\", \"Eling\", role = \"aut\"),\nperson(\"Tobias\", \"Hoch\", role = \"ctb\"),\nperson(\"Vito\", \"Zanotelli\", role = \"ctb\"),\nperson(\"Jana\", \"Fischer\", role = \"ctb\"),\nperson(\"Daniel\", \"Schulz\", role = c(\"ctb\", \"cre\"),email = \"daniel.schulz@uzh.ch\",comment = c(ORCID = \"0000-0002-0913-1678\")),\nperson(\"Lasse\",\"Meyer\", role = \"ctb\"),\nperson(\"Lutz\",\"Marlene\", role = \"ctb\"),\nperson(\"Schiller\",\"Chiara\", role = \"ctb\"),\nperson(\"Iba\u00f1ez\", \"Victor\", role = \"ctb\"))",
+  "License": "GPL-3",
+  "biocViews": "ImmunoOncology, SingleCell, Spatial, DataImport, Clustering",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/BodenmillerGroup/imcRtools",
+  "BugReports": "https://github.com/BodenmillerGroup/imcRtools/issues",
+  "RoxygenNote": "7.3.2",
+  "Encoding": "UTF-8",
+  "Config/pak/sysreqs": "libabsl-dev cmake libfftw3-dev libfontconfig1-dev\nlibfreetype6-dev libfribidi-dev libgdal-dev gdal-bin\nlibgeos-dev libglpk-dev make libharfbuzz-dev libmagick++-dev\ngsfonts libicu-dev libjpeg-dev libpng-dev libtiff-dev\nlibxml2-dev libssl-dev libproj-dev libsqlite3-dev\nlibudunits2-dev libnode-dev libx11-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:12:28 UTC",
+  "RemoteUrl": "https://github.com/bioc/imcRtools",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "00166f28885c3f34e2674969b26b85da9a97c15d",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-22 19:08:25 UTC",
+    "User": "root"
+  },
+  "Author": "Nils Eling [aut],\nTobias Hoch [ctb],\nVito Zanotelli [ctb],\nJana Fischer [ctb],\nDaniel Schulz [ctb, cre] (ORCID:\n<https://orcid.org/0000-0002-0913-1678>),\nLasse Meyer [ctb],\nLutz Marlene [ctb],\nSchiller Chiara [ctb],\nIba\u00f1ez Victor [ctb]",
+  "Maintainer": "Daniel Schulz <daniel.schulz@uzh.ch>",
+  "MD5sum": "51cca39d19fe818c8441eae17862c361",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "imcRtools_1.17.0.tar.gz",
+  "_fileid": "ee466f632d9c7ef62bd6bda2c4632d05fe9254b24113799cf25147de0858fe69",
+  "_filesize": 9685709,
+  "_sha256": "ee466f632d9c7ef62bd6bda2c4632d05fe9254b24113799cf25147de0858fe69",
+  "_created": "2026-01-22T19:08:25.000Z",
+  "_published": "2026-01-22T19:41:53.816Z",
+  "_jobs": [
+    {
+      "job": 61189690729,
+      "time": 274,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5224370057"
+    },
+    {
+      "job": 61189690688,
+      "time": 1070,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5224533637"
+    },
+    {
+      "job": 61189690717,
+      "time": 1201,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5224559889"
+    },
+    {
+      "job": 61189690751,
+      "time": 874,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5224689987"
+    },
+    {
+      "job": 61189690732,
+      "time": 948,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5224702449"
+    },
+    {
+      "job": 61188811528,
+      "time": 488,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5224310301"
+    },
+    {
+      "job": 61189690685,
+      "time": 249,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5224364871"
+    },
+    {
+      "job": 61189691059,
+      "time": 1291,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5224578089"
+    },
+    {
+      "job": 61189691116,
+      "time": 1149,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5224549300"
+    },
+    {
+      "job": 61189691040,
+      "time": 1173,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5224554088"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/imcRtools",
+  "_commit": {
+    "id": "00166f28885c3f34e2674969b26b85da9a97c15d",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750748
+  },
+  "_maintainer": {
+    "name": "Daniel Schulz",
+    "email": "daniel.schulz@uzh.ch",
+    "orcid": "0000-0002-0913-1678"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "scuttle",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "readr",
+      "role": "Imports"
+    },
+    {
+      "package": "EBImage",
+      "role": "Imports"
+    },
+    {
+      "package": "cytomapper",
+      "role": "Imports"
+    },
+    {
+      "package": "abind",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "DT",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "vroom",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocNeighbors",
+      "role": "Imports"
+    },
+    {
+      "package": "RTriangle",
+      "role": "Imports"
+    },
+    {
+      "package": "ggraph",
+      "role": "Imports"
+    },
+    {
+      "package": "tidygraph",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "sf",
+      "role": "Imports"
+    },
+    {
+      "package": "concaveman",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "distances",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "CATALYST",
+      "role": "Suggests"
+    },
+    {
+      "package": "grid",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-24",
+      "n": 1
+    },
+    {
+      "week": "2025-27",
+      "n": 1
+    },
+    {
+      "week": "2025-28",
+      "n": 1
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.17.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.16.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "singlecell",
+    "spatial",
+    "dataimport",
+    "clustering",
+    "imc",
+    "single-cell"
+  ],
+  "_stars": 29,
+  "_contributors": [
+    {
+      "user": "nilseling",
+      "count": 402,
+      "uuid": 11314064
+    },
+    {
+      "user": "schulzdan",
+      "count": 50,
+      "uuid": 18529618
+    },
+    {
+      "user": "lassedochreden",
+      "count": 33,
+      "uuid": 73339780
+    },
+    {
+      "user": "chiarasch",
+      "count": 31,
+      "uuid": 94467188
+    },
+    {
+      "user": "marlenelutz1",
+      "count": 20,
+      "uuid": 150016484
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "toobiwankenobi",
+      "count": 6,
+      "uuid": 38858452
+    },
+    {
+      "user": "nturaga",
+      "count": 4,
+      "uuid": 2746443
+    },
+    {
+      "user": "brunopalau",
+      "count": 1,
+      "uuid": 75067080
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 567,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/imcRtools"
+  },
+  "_devurl": "https://github.com/bodenmillergroup/imcrtools",
+  "_searchresults": 372,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/imcRtools.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bodenmillergroup/imcrtools",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "aggregateNeighbors",
+    "binAcrossPixels",
+    "buildSpatialGraph",
+    "countInteractions",
+    "detectCommunity",
+    "detectSpatialContext",
+    "distToCells",
+    "filterPixels",
+    "filterSpatialContext",
+    "findBorderCells",
+    "patchDetection",
+    "patchSize",
+    "plotInteractions",
+    "plotSpatial",
+    "plotSpatialContext",
+    "plotSpotHeatmap",
+    "read_cpout",
+    "read_steinbock",
+    "readImagefromTXT",
+    "readSCEfromTIFF",
+    "readSCEfromTXT",
+    "show_cpout_features",
+    "testInteractions"
+  ],
+  "_help": [
+    {
+      "page": "aggregateNeighbors",
+      "title": "Function to aggregate all neighbors of each cell.",
+      "topics": [
+        "aggregateNeighbors"
+      ]
+    },
+    {
+      "page": "binAcrossPixels",
+      "title": "Aggregate consecutive pixels per single-metal spot",
+      "topics": [
+        "binAcrossPixels"
+      ]
+    },
+    {
+      "page": "buildSpatialGraph",
+      "title": "Builds an interaction graph based on the cells' locations",
+      "topics": [
+        "buildSpatialGraph"
+      ]
+    },
+    {
+      "page": "countInteractions",
+      "title": "Summarizes cell-cell interactions within grouping levels (e.g. images)",
+      "topics": [
+        "countInteractions"
+      ]
+    },
+    {
+      "page": "detectCommunity",
+      "title": "Detect the spatial community of each cell",
+      "topics": [
+        "detectCommunity"
+      ]
+    },
+    {
+      "page": "detectSpatialContext",
+      "title": "Detect the spatial context of each cell based on its neighborhood",
+      "topics": [
+        "detectSpatialContext"
+      ]
+    },
+    {
+      "page": "distToCells",
+      "title": "Function to calculate distance to cells of interest",
+      "topics": [
+        "distToCells"
+      ]
+    },
+    {
+      "page": "filterPixels",
+      "title": "Filter pixels based on their assigned masses",
+      "topics": [
+        "filterPixels"
+      ]
+    },
+    {
+      "page": "filterSpatialContext",
+      "title": "Filter spatial contexts",
+      "topics": [
+        "filterSpatialContext"
+      ]
+    },
+    {
+      "page": "findBorderCells",
+      "title": "Find cells at the image border",
+      "topics": [
+        "findBorderCells"
+      ]
+    },
+    {
+      "page": "patchDetection",
+      "title": "Function to detect patches containing defined cell types",
+      "topics": [
+        "patchDetection"
+      ]
+    },
+    {
+      "page": "patchSize",
+      "title": "Function to compute the area of c3ll patches",
+      "topics": [
+        "patchSize"
+      ]
+    },
+    {
+      "page": "plotInteractions",
+      "title": "Plot interaction graph",
+      "topics": [
+        "plotInteractions"
+      ]
+    },
+    {
+      "page": "plotSpatial",
+      "title": "Visualizes the spatial locations and interactions of cells",
+      "topics": [
+        "plotSpatial"
+      ]
+    },
+    {
+      "page": "plotSpatialContext",
+      "title": "Plot spatial context graph",
+      "topics": [
+        "plotSpatialContext"
+      ]
+    },
+    {
+      "page": "plotSpotHeatmap",
+      "title": "Summarizes and visualizes the pixel intensities per spot and channel",
+      "topics": [
+        "plotSpotHeatmap"
+      ]
+    },
+    {
+      "page": "read_cpout",
+      "title": "Reads in single-cell data generated by the ImcSegmentationPipeline",
+      "topics": [
+        "read_cpout"
+      ]
+    },
+    {
+      "page": "read_steinbock",
+      "title": "Reads in single-cell data generated by the steinbock pipeline",
+      "topics": [
+        "read_steinbock"
+      ]
+    },
+    {
+      "page": "readImagefromTXT",
+      "title": "Reads one or multiple .txt files into a CytoImageList object",
+      "topics": [
+        "readImagefromTXT"
+      ]
+    },
+    {
+      "page": "readSCEfromTIFF",
+      "title": "Generates a SingleCellExperiment from .tiff files",
+      "topics": [
+        "readSCEfromTIFF"
+      ]
+    },
+    {
+      "page": "readSCEfromTXT",
+      "title": "Generates a SingleCellExperiment from .txt files",
+      "topics": [
+        "readSCEfromTXT"
+      ]
+    },
+    {
+      "page": "show_cpout_features",
+      "title": "Display all features measured by CellProfiler.",
+      "topics": [
+        "show_cpout_features"
+      ]
+    },
+    {
+      "page": "testInteractions",
+      "title": "Tests if cell types interact more or less frequently than random",
+      "topics": [
+        "testInteractions"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/imcRtools/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bslib",
+    "cachem",
+    "class",
+    "classInt",
+    "cli",
+    "clipr",
+    "codetools",
+    "commonmark",
+    "concaveman",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "cytomapper",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "distances",
+    "dplyr",
+    "DT",
+    "e1071",
+    "EBImage",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fftwtools",
+    "filelock",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggforce",
+    "ggplot2",
+    "ggraph",
+    "ggrepel",
+    "glue",
+    "graphlayouts",
+    "gridExtra",
+    "gtable",
+    "h5mread",
+    "HDF5Array",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "locfit",
+    "magick",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nnls",
+    "openssl",
+    "otel",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "polyclip",
+    "prettyunits",
+    "progress",
+    "promises",
+    "proxy",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "raster",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "readr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "RTriangle",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scuttle",
+    "Seqinfo",
+    "sf",
+    "shiny",
+    "shinydashboard",
+    "SingleCellExperiment",
+    "snow",
+    "sourcetools",
+    "sp",
+    "SparseArray",
+    "SpatialExperiment",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "svglite",
+    "svgPanZoom",
+    "sys",
+    "systemfonts",
+    "terra",
+    "textshaping",
+    "tibble",
+    "tidygraph",
+    "tidyr",
+    "tidyselect",
+    "tiff",
+    "tinytex",
+    "tweenr",
+    "tzdb",
+    "units",
+    "utf8",
+    "V8",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "wk",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "imcRtools.Rmd",
+      "filename": "imcRtools.html",
+      "title": "Tools for IMC data analysis",
+      "author": "Nils Eling, Lasse Meyer, Daniel Schulz",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Overview",
+        "Highly multiplexed imaging",
+        "Imaging mass cytometry",
+        "Data types",
+        "Segmentation and feature extraction",
+        "Example data",
+        "For spillover correction",
+        "Raw data in form of .txt files",
+        "ImcSegmentationPipeline output data",
+        "steinbock output data",
+        "Read in IMC data",
+        "Read in CellProfiler output",
+        "Read in steinbock output",
+        "Read raw .txt files into Image objects",
+        "Spillover correction",
+        "Read in the single-spot acquisitions",
+        "From txt",
+        "From tiff",
+        "Quality control on single-spot acquisitions",
+        "Consecutive pixel binning",
+        "Pixel filtering",
+        "Estimating the spillover matrix",
+        "Spatial analysis",
+        "Constructing graphs",
+        "Graph/cell visualization",
+        "Neighborhood aggregation",
+        "Spatial context analysis",
+        "Community detection",
+        "Border cells",
+        "Patch detection",
+        "Distance statistics to cells of interest",
+        "Neighborhood permutation testing",
+        "Summarizing interactions",
+        "Testing for significance",
+        "Visualizing interactions",
+        "Visualizing interactions when choosing method = \"conditional\"",
+        "Contributions",
+        "Session info",
+        "References"
+      ],
+      "created": "2020-12-17 16:51:01",
+      "modified": "2025-10-13 17:07:06",
+      "commits": 28
+    }
+  ],
+  "_score": 8.589243438548142,
+  "_indexed": true,
+  "_nocasepkg": "imcrtools",
+  "_universes": [
+    "bioc",
+    "bodenmillergroup"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:14:01.000Z",
+      "distro": "noble",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "2ae07a9e5b5fd9d663b7da974355b2d087c72a0424353e66468f69beaabdfd4c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:15:38.000Z",
+      "distro": "noble",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "5c63111fd89632fcf6353831b60058877c446904996e6f8cdd25e141010725ce",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:27:43.000Z",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "f0ea6a282840b4e60abbb720548d1ac6a52f7cfb9c83a19a9fb7cc13b63775bc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:27:25.000Z",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "adec90e92f88792ec420777456fa8d46e9cedb942578509efb00558db6f10df7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:13:38.000Z",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "0bb382b4024bcea6150556be5ceeb29f34fccd3b3e3d81de62e1331cb3cd08c8",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:12:22.000Z",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "bcc6c6d19c9c84b4e97b93b42c59320e845ef5e44c08a9c098df2042cb8a7b74",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:11:37.000Z",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "bfaa9ce3f488e8b21132793a4da78b90cbb1a75c06f052ecf17b626abc26b5ff",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-01-22T19:11:46.000Z",
+      "commit": "00166f28885c3f34e2674969b26b85da9a97c15d",
+      "fileid": "4a690b8cd2b5f7df8432912a696a1a01f0906930a8ef0640759b2225891fd3d6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21261171112"
+    }
+  ]
+}

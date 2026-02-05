@@ -1,0 +1,691 @@
+{
+  "Package": "soGGi",
+  "Type": "Package",
+  "Title": "Visualise ChIP-seq, MNase-seq and motif occurrence as aggregate\nplots Summarised Over Grouped Genomic Intervals",
+  "Version": "1.43.0",
+  "Date": "2025-07-24",
+  "Author": "Gopuraja Dharmalingam, Doug Barrows, Tom Carroll",
+  "Maintainer": "Tom Carroll <tc.infomatics@gmail.com>",
+  "Description": "The soGGi package provides a toolset to create genomic\ninterval aggregate/summary plots of signal or motif occurence\nfrom BAM and bigWig files as well as PWM, rlelist, GRanges and\nGAlignments Bioconductor objects. soGGi allows for\nnormalisation, transformation and arithmetic operation on and\nbetween summary plot objects as well as grouping and subsetting\nof plots by GRanges objects and user supplied metadata. Plots\nare created using the GGplot2 libary to allow user defined\nmanipulation of the returned plot object. Coupled together,\nsoGGi features a broad set of methods to visualise genomics\ndata in the context of groups of genomic intervals such as\ngenes, superenhancers and transcription factor binding events.",
+  "biocViews": "Sequencing, ChIPSeq, Coverage",
+  "License": "GPL (>= 3)",
+  "LazyLoad": "yes",
+  "Collate": "'allClasses.r' 'motifTools.R' 'peakTransforms.r' 'plots.R'\n'soggi.R'",
+  "VignetteBuilder": "knitr",
+  "NeedsCompilation": "no",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev libjpeg-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:25:37 UTC",
+  "RemoteUrl": "https://github.com/bioc/soGGi",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+  "Packaged": {
+    "Date": "2026-01-30 08:18:45 UTC",
+    "User": "root"
+  },
+  "MD5sum": "0b162ea18677917c36e61742d62bb1ec",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "soGGi_1.43.0.tar.gz",
+  "_fileid": "8dbba9634aec575840ce6036bbca537d4ee8eb51bc9bdb185b79f2f45a47eb44",
+  "_filesize": 3755294,
+  "_sha256": "8dbba9634aec575840ce6036bbca537d4ee8eb51bc9bdb185b79f2f45a47eb44",
+  "_created": "2026-01-30T08:18:45.000Z",
+  "_published": "2026-01-30T08:28:23.537Z",
+  "_jobs": [
+    {
+      "job": 61971870245,
+      "time": 183,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5315468166"
+    },
+    {
+      "job": 61971870255,
+      "time": 426,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5315504470"
+    },
+    {
+      "job": 61971870260,
+      "time": 508,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5315516823"
+    },
+    {
+      "job": 61971870249,
+      "time": 357,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5315493997"
+    },
+    {
+      "job": 61971870265,
+      "time": 210,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5315472189"
+    },
+    {
+      "job": 61971228888,
+      "time": 468,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5315439770"
+    },
+    {
+      "job": 61971870246,
+      "time": 166,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5315465628"
+    },
+    {
+      "job": 61971870258,
+      "time": 307,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5315486767"
+    },
+    {
+      "job": 61971870271,
+      "time": 296,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5315485206"
+    },
+    {
+      "job": 61971870262,
+      "time": 318,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5315488329"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 5,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/soGGi",
+  "_commit": {
+    "id": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761747937
+  },
+  "_maintainer": {
+    "name": "Tom Carroll",
+    "email": "tc.infomatics@gmail.com",
+    "login": "thomascarroll",
+    "uuid": 5750801
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "preprocessCore",
+      "role": "Imports"
+    },
+    {
+      "package": "chipseq",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-42",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.43.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.41.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "sequencing",
+    "chipseq",
+    "coverage"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 856,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/soGGi"
+  },
+  "_mentions": 1,
+  "_searchresults": 83,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/soGGi.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "cbind",
+    "findconsensusRegions",
+    "groupByOverlaps",
+    "makeMotifScoreRle",
+    "mean",
+    "normalise",
+    "normalise.ChIPprofile",
+    "normaliseQuantiles",
+    "normaliseQuantiles.ChIPprofile",
+    "Ops",
+    "orientBy",
+    "plotRegion",
+    "pwmToCoverage",
+    "rbind",
+    "regionPlot",
+    "summitPipeline"
+  ],
+  "_datasets": [
+    {
+      "name": "chipExampleBig",
+      "title": "Example ChIPprofiles",
+      "object": "chipExampleBig",
+      "file": "chipExampleBig.rda",
+      "class": [
+        "ChIPprofile"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ik_Example",
+      "title": "Example Ikaros peaksets",
+      "object": "ik_Example",
+      "file": "ik_Example.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ik_Profiles",
+      "title": "Example Ikaros signal over peaksets",
+      "object": "ik_Profiles",
+      "file": "ik_Profiles.rda",
+      "class": [
+        "ChIPprofile"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "pwmCov",
+      "title": "Example motif coverage",
+      "object": "pwmCov",
+      "file": "pwmCov.rda",
+      "class": [
+        "SimpleRleList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "singleGRange",
+      "title": "A single GRange",
+      "object": "singleGRange",
+      "file": "singleGRange.rda",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "manipulateObjects",
+      "title": "Join, subset and manipulate ChIPprofile objects",
+      "topics": [
+        "$,ChIPprofile-method",
+        "c,ChIPprofile-method",
+        "cbind,ChIPprofile-method",
+        "rbind,ChIPprofile-method",
+        "[[,ChIPprofile,ANY,missing-method"
+      ]
+    },
+    {
+      "page": "chipExampleBig",
+      "title": "Example ChIPprofiles",
+      "topics": [
+        "chipExampleBig"
+      ]
+    },
+    {
+      "page": "ChIPprofile",
+      "title": "The soggi function and ChIPprofile object.",
+      "topics": [
+        "ChIPprofile",
+        "ChIPprofile-ChIPprofile",
+        "ChIPprofile-class",
+        "regionPlot",
+        "soggi"
+      ]
+    },
+    {
+      "page": "findconsensusRegions",
+      "title": "Plot coverage of points or regions.",
+      "topics": [
+        "findconsensusRegions",
+        "summitPipeline"
+      ]
+    },
+    {
+      "page": "groupByOverlaps",
+      "title": "Create GRangeslist from all combinations of GRanges",
+      "topics": [
+        "groupByOverlaps"
+      ]
+    },
+    {
+      "page": "ik_Example",
+      "title": "Example Ikaros peaksets",
+      "topics": [
+        "ik_Example"
+      ]
+    },
+    {
+      "page": "ik_Profiles",
+      "title": "Example Ikaros signal over peaksets",
+      "topics": [
+        "ik_Profiles"
+      ]
+    },
+    {
+      "page": "normalise",
+      "title": "Normalise ChIPprofiles",
+      "topics": [
+        "normalise",
+        "normalise,ChIPprofile,character,numeric-method",
+        "normalise,ChIPprofile-method",
+        "normalise.ChIPprofile"
+      ]
+    },
+    {
+      "page": "normaliseQuantiles",
+      "title": "Normalise quantile",
+      "topics": [
+        "normaliseQuantiles",
+        "normaliseQuantiles,ChIPprofile-method",
+        "normaliseQuantiles.ChIPprofile"
+      ]
+    },
+    {
+      "page": "Ops",
+      "title": "Arithmetic operations",
+      "topics": [
+        "log,ChIPprofile-method",
+        "log2,ChIPprofile-method",
+        "mean,ChIPprofile-method",
+        "Ops,ChIPprofile,ChIPprofile-method",
+        "Ops,ChIPprofile,numeric-method",
+        "Ops,numeric,ChIPprofile-method"
+      ]
+    },
+    {
+      "page": "orientBy",
+      "title": "Set strand by overlapping or nearest anchor GRanges",
+      "topics": [
+        "orientBy"
+      ]
+    },
+    {
+      "page": "plotRegion",
+      "title": "Plot regions",
+      "topics": [
+        "plotRegion",
+        "plotRegion,ChIPprofile-method",
+        "plotRegion.ChIPprofile"
+      ]
+    },
+    {
+      "page": "pwmCov",
+      "title": "Example motif coverage",
+      "topics": [
+        "pwmCov"
+      ]
+    },
+    {
+      "page": "pwmToCoverage",
+      "title": "PWM hits and motif scores as an RLElist",
+      "topics": [
+        "makeMotifScoreRle",
+        "pwmToCoverage"
+      ]
+    },
+    {
+      "page": "singleGRange",
+      "title": "A single GRange",
+      "topics": [
+        "singleGRange"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "chipseq",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "deldir",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "httr",
+    "hwriter",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "latticeExtra",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "openssl",
+    "plyr",
+    "png",
+    "preprocessCore",
+    "pwalign",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "ShortRead",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "soggi.Rnw",
+      "filename": "soggi.pdf",
+      "title": "soggi",
+      "engine": "knitr::knitr",
+      "headings": [],
+      "created": "2015-04-06 16:21:26",
+      "modified": "2015-05-12 07:07:40",
+      "commits": 2
+    }
+  ],
+  "_score": 4.998259338423699,
+  "_indexed": true,
+  "_nocasepkg": "soggi",
+  "_universes": [
+    "bioc",
+    "thomascarroll"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:23:01.000Z",
+      "distro": "noble",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "7f4aa1c2722da2a934a90692a49b776c131b137df11a22a20e045ea602d475ce",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:24:17.000Z",
+      "distro": "noble",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "c3ff74cf6736faf2bd5f2644d09278600f46e94ce13f10570e067d05eeddc9eb",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:21:35.000Z",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "6003087404af0b00e0e4aba4bc7a0273e9adc83d8c0914013d4d1c8352419315",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:20:54.000Z",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "7ab669e1cc5fdced405910c9ea574d98237454453f9c1e909cf2edba2111003a",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:22:15.000Z",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "def9e4c5748cb95c38b3f8171410290ff6f96f13bba8e4d339cc2c58386e60f2",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:20:48.000Z",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "7faeed886f10311e50c6d5eb15a04271a317e28e69d48b49468bb36f559a8c8e",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:20:53.000Z",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "21a850ab26a1d75d2ab49f9a41c6b97cdef1db061cd996ba8467b92927ec8b25",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.43.0",
+      "date": "2026-01-30T08:21:01.000Z",
+      "commit": "c0596bdbb0346b99e6e82302c388324f942cb0ab",
+      "fileid": "50c232b3446f292f741c13d97ca74e16f16eb08575cfdebef71e5d47e620fb6d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21508991098"
+    }
+  ]
+}
