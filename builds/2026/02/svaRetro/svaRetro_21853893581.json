@@ -1,0 +1,603 @@
+{
+  "_id": "698acfd05fcc687c95016e73",
+  "Package": "svaRetro",
+  "Type": "Package",
+  "Title": "Retrotransposed transcript detection from structural variants",
+  "Version": "1.17.4",
+  "Date": "2026-02-10",
+  "Authors@R": "c(person(given = \"Ruining\",\nfamily = \"Dong\",\nrole = c(\"aut\", \"cre\"),\nemail = \"lnyidrn@gmail.com\",\ncomment = c(ORCID = \"0000-0003-1433-0484\")))",
+  "Description": "svaRetro contains functions for detecting retrotransposed\ntranscripts (RTs) from structural variant calls. It takes\nstructural variant calls in GRanges of breakend notation and\nidentifies RTs by exon-exon junctions and insertion sites. The\ncandidate RTs are reported by events and annotated with\ninformation of the inserted transcripts.",
+  "License": "GPL-3 + file LICENSE",
+  "RoxygenNote": "7.1.1",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "biocViews": "DataImport, Sequencing, Annotation, Genetics,\nVariantAnnotation, Coverage, VariantDetection",
+  "BugReports": "https://github.com/PapenfussLab/svaRetro/issues",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-02-10 02:27:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/svaRetro",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-10 06:17:10 UTC",
+    "User": "root"
+  },
+  "Author": "Ruining Dong [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-1433-0484>)",
+  "Maintainer": "Ruining Dong <lnyidrn@gmail.com>",
+  "MD5sum": "52ec0f26883d0fd99815234e623b948a",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "svaRetro_1.17.4.tar.gz",
+  "_fileid": "1fee72d95152f4a9c7b37f15f4b127de1906a8c86152e345cbc7b058d165b99a",
+  "_filesize": 1432855,
+  "_sha256": "1fee72d95152f4a9c7b37f15f4b127de1906a8c86152e345cbc7b058d165b99a",
+  "_created": "2026-02-10T06:17:10.000Z",
+  "_published": "2026-02-10T06:27:28.716Z",
+  "_jobs": [
+    {
+      "job": 63066820851,
+      "time": 240,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5443774038"
+    },
+    {
+      "job": 63066820850,
+      "time": 489,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5443808867"
+    },
+    {
+      "job": 63066820855,
+      "time": 498,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5443810191"
+    },
+    {
+      "job": 63066820860,
+      "time": 348,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5443788602"
+    },
+    {
+      "job": 63066820867,
+      "time": 388,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5443794231"
+    },
+    {
+      "job": 63066436395,
+      "time": 343,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5443741282"
+    },
+    {
+      "job": 63066820830,
+      "time": 197,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5443768231"
+    },
+    {
+      "job": 63066820845,
+      "time": 380,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5443793427"
+    },
+    {
+      "job": 63066820862,
+      "time": 553,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5443817919"
+    },
+    {
+      "job": 63066820842,
+      "time": 476,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5443807336"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/svaRetro",
+  "_commit": {
+    "id": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+    "author": "Ruining Dong <lnyidrn@gmail.com>",
+    "committer": "Ruining Dong <lnyidrn@gmail.com>",
+    "message": "Replace dplyr::as_tibble with as.data.frame for Hits objects + add diagnostics\n\n- Replace dplyr::as_tibble(hits) with as.data.frame(hits) for S4 Hits objects\n  to fix potential S4Vectors compatibility issue in newer Bioconductor\n- Add diagnostic output in vignette to show RT class/structure after rtDetect\n- Add NULL check in vignette before using RT$SKA3 to prevent crash and\n  provide informative error message\n- Bump version to 1.17.4\n",
+    "time": 1770690432
+  },
+  "_maintainer": {
+    "name": "Ruining Dong",
+    "email": "lnyidrn@gmail.com",
+    "login": "jackieduckie",
+    "orcid": "0000-0003-1433-0484",
+    "uuid": 13995001
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "StructuralVariantAnnotation",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Imports"
+    },
+    {
+      "package": "assertthat",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 2.1.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "plyranges",
+      "role": "Suggests"
+    },
+    {
+      "package": "circlize",
+      "role": "Suggests"
+    },
+    {
+      "package": "tictoc",
+      "role": "Suggests"
+    },
+    {
+      "package": "IRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "stats",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-03",
+      "n": 1
+    },
+    {
+      "week": "2026-04",
+      "n": 2
+    },
+    {
+      "week": "2026-06",
+      "n": 1
+    },
+    {
+      "week": "2026-07",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.17.3",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.15.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dataimport",
+    "sequencing",
+    "annotation",
+    "genetics",
+    "variantannotation",
+    "coverage",
+    "variantdetection"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "jackieduckie",
+      "count": 121,
+      "uuid": 13995001
+    },
+    {
+      "user": "d-cameron",
+      "count": 94,
+      "uuid": 6036536
+    },
+    {
+      "user": "nturaga",
+      "count": 10,
+      "uuid": 2746443
+    },
+    {
+      "user": "cbrueffer",
+      "count": 3,
+      "uuid": 2705287
+    },
+    {
+      "user": "jbedo",
+      "count": 2,
+      "uuid": 372912
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 262,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/svaRetro"
+  },
+  "_devurl": "https://github.com/papenfusslab/svaretro",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/svaRetro.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/papenfusslab/svaretro",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "rtDetect"
+  ],
+  "_help": [
+    {
+      "page": "grapes-na-grapes",
+      "title": "Replaces the NA values in a with corresponding values in b",
+      "topics": [
+        "%na%"
+      ]
+    },
+    {
+      "page": "grapes-null-grapes",
+      "title": "Uses b if a is NULL",
+      "topics": [
+        "%null%"
+      ]
+    },
+    {
+      "page": "rtDetect",
+      "title": "Detecting retrotranscript insertion in nuclear genomes.",
+      "topics": [
+        "rtDetect"
+      ]
+    },
+    {
+      "page": "svaRetro",
+      "title": "svaRetro: a package for retrotransposed transcript detection",
+      "topics": [
+        "svaRetro"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/svaRetro/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "assertthat",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "dplyr",
+    "fastmap",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "glue",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "KEGGREST",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "pwalign",
+    "R6",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "StructuralVariantAnnotation",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_score": 4.146128035678238,
+  "_indexed": true,
+  "_nocasepkg": "svaretro",
+  "_universes": [
+    "bioc",
+    "jackieduckie",
+    "papenfusslab"
+  ],
+  "_previous": "1.17.3",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:21:54.000Z",
+      "distro": "noble",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "c3fbb7b8afea81579cdc6879a7271c353fcab315cb5f86b730471101a41e6b1a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:21:54.000Z",
+      "distro": "noble",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "b15b475cc31cd57738c48bd3135270ea66bdb6e02ed22bf5945a24c25fcda44a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:19:48.000Z",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "d482aa7cd4801a917752a927fb8e2dbfc5a2dec944a239d39520f8da5e566c09",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:20:22.000Z",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "0d68f4d10d07008726a00203d0ff83d3c7594f6039628128a2cc080702a91191",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:21:07.000Z",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "76a734747a2821f28c96c7aee038568b7179b8a7bf429da02ec32304216916e3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:19:56.000Z",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "aeeb337c1215850508f3601c020359cf19d376c987d492cf6d914d7ca7b7bd47",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:22:07.000Z",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "5dc4ab045af939cd1935e3942b72aab673a21ee8611e01b8b4ab1759a55989b1",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.17.4",
+      "date": "2026-02-10T06:20:53.000Z",
+      "commit": "e1c94bdc2e82b6bf15635e7d1f8893dd4e940a71",
+      "fileid": "7e8ba9170ed3459203f7736589c5a8ad0c3110e151be4d0b56df6fa8f9f6e507",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21853893581"
+    }
+  ]
+}
