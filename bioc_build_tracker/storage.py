@@ -35,17 +35,13 @@ class BuildStorage:
     def build_exists(self, package: str, run_id: str) -> bool:
         """Check if a build already exists in storage.
 
-        Searches both the current layout (package/YYYY/MM/file) and the
-        legacy layout (YYYY/MM/package/file) for backwards compatibility.
+        Searches the current layout (package/YYYY/MM/file) 
+        for existence. 
         """
         filename = make_filename(package, run_id)
         # New layout: builds/package/YYYY/MM/filename
         new_pattern = f"{package}/**/{filename}"
-        # Legacy layout: builds/YYYY/MM/package/filename
-        legacy_pattern = f"**/{package}/{filename}"
-        return any(self.builds_dir.glob(new_pattern)) or any(
-            self.builds_dir.glob(legacy_pattern)
-        )
+        return any(self.builds_dir.glob(new_pattern))
 
     def save_build(
         self,
