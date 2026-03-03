@@ -2,7 +2,13 @@
 
 from pathlib import Path
 
-# API Endpoints
+# Environments: maps label -> base URL (no trailing slash)
+ENVIRONMENTS = {
+    "devel": "https://bioc.r-universe.dev",
+    "release": "https://bioc-release.r-universe.dev",
+}
+
+# API Endpoints (devel defaults kept for backward compatibility)
 RSS_FEED_URL = "https://bioc.r-universe.dev/feed.xml"
 PACKAGE_API_URL = "https://bioc.r-universe.dev/api/packages/{package}"
 NDJSON_STREAM_URL = "https://bioc.r-universe.dev/api/packages?stream=1"

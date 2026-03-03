@@ -50,8 +50,8 @@ def run_sync(
         cursor = storage.load_cursor()
         logger.info(f"Loaded cursor: last_pub_date={cursor.last_pub_date}")
 
-        # Fetch and parse RSS feed
-        items = parse_feed()
+        # Fetch and parse RSS feed using the client's configured base URL
+        items = parse_feed(client.feed_url)
         logger.info(f"Found {len(items)} items in RSS feed")
 
         # Filter to items newer than cursor

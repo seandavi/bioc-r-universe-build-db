@@ -8,17 +8,20 @@ import httpx
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 from .config import (
+    ENVIRONMENTS,
     HTTP_RETRIES,
     HTTP_TIMEOUT,
-    NDJSON_STREAM_URL,
-    PACKAGE_API_URL,
 )
+
+# Default base URL (devel)
+_DEFAULT_BASE_URL = ENVIRONMENTS["devel"]
 
 
 class APIClient:
     """Synchronous HTTP client for R-Universe API."""
 
-    def __init__(self, timeout: float = HTTP_TIMEOUT):
+    def __init__(self, base_url: str = _DEFAULT_BASE_URL, timeout: float = HTTP_TIMEOUT):
+        self._base_url = base_url.rstrip("/")
         self._timeout = timeout
         self._client: httpx.Client | None = None
 
@@ -58,7 +61,7 @@ class APIClient:
         Raises:
             httpx.HTTPStatusError: If request fails after retries
         """
-        url = PACKAGE_API_URL.format(package=package_name)
+        url = f"{self._base_url}/api/packages/{package_name}"
         response = self.client.get(url)
         response.raise_for_status()
         return response.json()
@@ -69,7 +72,8 @@ class APIClient:
         Yields:
             Package data dictionaries one at a time
         """
-        with self.client.stream("GET", NDJSON_STREAM_URL) as response:
+        url = f"{self._base_url}/api/packages?stream=1"
+        with self.client.stream("GET", url) as response:
             response.raise_for_status()
             for line in response.iter_lines():
                 if line.strip():
@@ -92,3 +96,8 @@ class APIClient:
         response = self.client.get(feed_url)
         response.raise_for_status()
         return response.text
+
+    @property
+    def feed_url(self) -> str:
+        """RSS feed URL for this environment."""
+        return f"{self._base_url}/feed.xml"
