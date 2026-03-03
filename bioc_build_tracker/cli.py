@@ -4,9 +4,10 @@ import logging
 import sys
 
 import click
+from upath import UPath
 
 from .client import APIClient
-from .config import DEFAULT_DATA_DIR
+from .config import DEFAULT_DATA_DIR, ENVIRONMENTS
 from .storage import BuildStorage
 from .sync import run_backfill, run_sync
 
@@ -48,25 +49,32 @@ def sync(ctx: click.Context, data_dir: str, dry_run: bool) -> None:
 
     Fetches the RSS feed, finds new items since the last sync,
     downloads full package JSON for each, and saves to storage.
+    Runs for both devel and release environments.
     """
-    storage = BuildStorage(data_dir)
-
-    click.echo(f"Syncing from RSS feed to {data_dir}")
+    click.echo(f"Syncing builds to {data_dir}")
     if dry_run:
         click.echo("(dry run - no changes will be saved)")
 
-    with APIClient() as client:
-        result = run_sync(storage, client, dry_run=dry_run)
+    any_errors = False
+    for env_name, base_url in ENVIRONMENTS.items():
+        env_dir = UPath(data_dir) / env_name
+        storage = BuildStorage(env_dir)
+        click.echo(f"\n[{env_name}] Syncing from {base_url}")
 
-    click.echo(f"\nResults:")
-    click.echo(f"  Processed: {result.processed}")
-    click.echo(f"  Skipped:   {result.skipped}")
-    click.echo(f"  Failed:    {result.failed}")
+        with APIClient(base_url=base_url) as client:
+            result = run_sync(storage, client, dry_run=dry_run)
 
-    if result.errors:
-        click.echo(f"\nErrors:")
-        for error in result.errors:
-            click.echo(f"  - {error}")
+        click.echo(f"  Processed: {result.processed}")
+        click.echo(f"  Skipped:   {result.skipped}")
+        click.echo(f"  Failed:    {result.failed}")
+
+        if result.errors:
+            click.echo(f"  Errors:")
+            for error in result.errors:
+                click.echo(f"    - {error}")
+            any_errors = True
+
+    if any_errors:
         sys.exit(1)
 
 
@@ -83,31 +91,37 @@ def sync(ctx: click.Context, data_dir: str, dry_run: bool) -> None:
 def backfill(ctx: click.Context, data_dir: str, limit: int | None, dry_run: bool) -> None:
     """Fetch all current packages from NDJSON endpoint.
 
-    Downloads the complete package list and saves each one.
-    Use --limit for testing with a subset of packages.
+    Downloads the complete package list and saves each one for both
+    devel and release environments. Use --limit for testing with a subset.
     """
-    storage = BuildStorage(data_dir)
-
-    click.echo(f"Backfilling from NDJSON stream to {data_dir}")
+    click.echo(f"Backfilling builds to {data_dir}")
     if limit:
         click.echo(f"(limited to {limit} packages)")
     if dry_run:
         click.echo("(dry run - no changes will be saved)")
 
-    with APIClient() as client:
-        result = run_backfill(storage, client, limit=limit, dry_run=dry_run)
+    any_errors = False
+    for env_name, base_url in ENVIRONMENTS.items():
+        env_dir = UPath(data_dir) / env_name
+        storage = BuildStorage(env_dir)
+        click.echo(f"\n[{env_name}] Backfilling from {base_url}")
 
-    click.echo(f"\nResults:")
-    click.echo(f"  Processed: {result.processed}")
-    click.echo(f"  Skipped:   {result.skipped}")
-    click.echo(f"  Failed:    {result.failed}")
+        with APIClient(base_url=base_url) as client:
+            result = run_backfill(storage, client, limit=limit, dry_run=dry_run)
 
-    if result.errors:
-        click.echo(f"\nErrors ({len(result.errors)} total):")
-        for error in result.errors[:10]:  # Show first 10 errors
-            click.echo(f"  - {error}")
-        if len(result.errors) > 10:
-            click.echo(f"  ... and {len(result.errors) - 10} more")
+        click.echo(f"  Processed: {result.processed}")
+        click.echo(f"  Skipped:   {result.skipped}")
+        click.echo(f"  Failed:    {result.failed}")
+
+        if result.errors:
+            click.echo(f"  Errors ({len(result.errors)} total):")
+            for error in result.errors[:10]:
+                click.echo(f"    - {error}")
+            if len(result.errors) > 10:
+                click.echo(f"    ... and {len(result.errors) - 10} more")
+            any_errors = True
+
+    if any_errors:
         sys.exit(1)
 
 
@@ -120,33 +134,35 @@ def backfill(ctx: click.Context, data_dir: str, limit: int | None, dry_run: bool
 )
 @click.pass_context
 def status(ctx: click.Context, data_dir: str) -> None:
-    """Show cursor state and storage statistics."""
-    storage = BuildStorage(data_dir)
-
-    # Load cursor
-    cursor = storage.load_cursor()
-
+    """Show cursor state and storage statistics for each environment."""
     click.echo(f"Data directory: {data_dir}")
-    click.echo()
 
-    click.echo("Cursor:")
-    if cursor.last_pub_date:
-        click.echo(f"  Last processed: {cursor.last_pub_date.isoformat()}")
-        click.echo(f"  Last package:   {cursor.last_package}")
-        click.echo(f"  Last updated:   {cursor.last_updated.isoformat()}")
-    else:
-        click.echo("  (no cursor - sync has not been run)")
+    for env_name in ENVIRONMENTS:
+        env_dir = UPath(data_dir) / env_name
+        storage = BuildStorage(env_dir)
 
-    click.echo()
+        click.echo()
+        click.echo(f"[{env_name}]")
 
-    # Get storage stats
-    stats = storage.get_stats()
+        # Load cursor
+        cursor = storage.load_cursor()
 
-    click.echo("Storage:")
-    click.echo(f"  Total builds:    {stats['total_builds']}")
-    click.echo(f"  Unique packages: {stats['packages']}")
-    if stats["years"]:
-        click.echo(f"  Years:           {', '.join(stats['years'])}")
+        click.echo("  Cursor:")
+        if cursor.last_pub_date:
+            click.echo(f"    Last processed: {cursor.last_pub_date.isoformat()}")
+            click.echo(f"    Last package:   {cursor.last_package}")
+            click.echo(f"    Last updated:   {cursor.last_updated.isoformat()}")
+        else:
+            click.echo("    (no cursor - sync has not been run)")
+
+        # Get storage stats
+        stats = storage.get_stats()
+
+        click.echo("  Storage:")
+        click.echo(f"    Total builds:    {stats['total_builds']}")
+        click.echo(f"    Unique packages: {stats['packages']}")
+        if stats["years"]:
+            click.echo(f"    Years:           {', '.join(stats['years'])}")
 
 
 if __name__ == "__main__":
