@@ -26,11 +26,11 @@ class BuildStorage:
     def _get_build_path(self, package: str, pub_date: datetime, filename: str) -> UPath:
         """Get the full path for a build file.
 
-        Directory structure: builds/YYYY/MM/package/filename.json
+        Directory structure: builds/package/YYYY/MM/filename.json
         """
         year = pub_date.strftime("%Y")
         month = pub_date.strftime("%m")
-        return self.builds_dir / year / month / package / filename
+        return self.builds_dir / package / year / month / filename
 
     def build_exists(self, package: str, run_id: str) -> bool:
         """Check if a build already exists in storage.
@@ -38,8 +38,8 @@ class BuildStorage:
         Searches all date directories for the build file by run_id.
         """
         filename = make_filename(package, run_id)
-        # Search in all year/month directories
-        pattern = f"**/{package}/{filename}"
+        # Search in all date subdirectories under the package directory
+        pattern = f"{package}/**/{filename}"
         matches = list(self.builds_dir.glob(pattern))
         return len(matches) > 0
 
@@ -109,11 +109,11 @@ class BuildStorage:
             # Count all JSON files
             for json_file in self.builds_dir.glob("**/*.json"):
                 stats["total_builds"] += 1
-                # Extract package name from path (builds/year/month/package/file.json)
+                # Extract package name from path (builds/package/year/month/file.json)
                 parts = json_file.relative_to(self.builds_dir).parts
                 if len(parts) >= 4:
-                    stats["years"].add(parts[0])
-                    stats["packages"].add(parts[2])
+                    stats["packages"].add(parts[0])
+                    stats["years"].add(parts[1])
 
         stats["packages"] = len(stats["packages"])
         stats["years"] = sorted(stats["years"])
