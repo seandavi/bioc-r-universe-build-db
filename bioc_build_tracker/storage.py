@@ -35,13 +35,17 @@ class BuildStorage:
     def build_exists(self, package: str, run_id: str) -> bool:
         """Check if a build already exists in storage.
 
-        Searches all date directories for the build file by run_id.
+        Searches both the current layout (package/YYYY/MM/file) and the
+        legacy layout (YYYY/MM/package/file) for backwards compatibility.
         """
         filename = make_filename(package, run_id)
-        # Search in all date subdirectories under the package directory
-        pattern = f"{package}/**/{filename}"
-        matches = list(self.builds_dir.glob(pattern))
-        return len(matches) > 0
+        # New layout: builds/package/YYYY/MM/filename
+        new_pattern = f"{package}/**/{filename}"
+        # Legacy layout: builds/YYYY/MM/package/filename
+        legacy_pattern = f"**/{package}/{filename}"
+        return any(self.builds_dir.glob(new_pattern)) or any(
+            self.builds_dir.glob(legacy_pattern)
+        )
 
     def save_build(
         self,
@@ -109,11 +113,17 @@ class BuildStorage:
             # Count all JSON files
             for json_file in self.builds_dir.glob("**/*.json"):
                 stats["total_builds"] += 1
-                # Extract package name from path (builds/package/year/month/file.json)
                 parts = json_file.relative_to(self.builds_dir).parts
                 if len(parts) >= 4:
-                    stats["packages"].add(parts[0])
-                    stats["years"].add(parts[1])
+                    # Detect layout by checking if first component is a 4-digit year
+                    # Legacy layout: builds/YYYY/MM/package/file.json
+                    # New layout:    builds/package/YYYY/MM/file.json
+                    if parts[0].isdigit() and len(parts[0]) == 4 and 1900 <= int(parts[0]) <= 2100:
+                        stats["years"].add(parts[0])
+                        stats["packages"].add(parts[2])
+                    else:
+                        stats["packages"].add(parts[0])
+                        stats["years"].add(parts[1])
 
         stats["packages"] = len(stats["packages"])
         stats["years"] = sorted(stats["years"])
