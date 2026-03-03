@@ -2,9 +2,9 @@
 
 import logging
 import sys
-from pathlib import Path
 
 import click
+from upath import UPath
 
 from .client import APIClient
 from .config import DEFAULT_DATA_DIR, ENVIRONMENTS
@@ -57,7 +57,7 @@ def sync(ctx: click.Context, data_dir: str, dry_run: bool) -> None:
 
     any_errors = False
     for env_name, base_url in ENVIRONMENTS.items():
-        env_dir = Path(data_dir) / env_name
+        env_dir = UPath(data_dir) / env_name
         storage = BuildStorage(env_dir)
         click.echo(f"\n[{env_name}] Syncing from {base_url}")
 
@@ -102,7 +102,7 @@ def backfill(ctx: click.Context, data_dir: str, limit: int | None, dry_run: bool
 
     any_errors = False
     for env_name, base_url in ENVIRONMENTS.items():
-        env_dir = Path(data_dir) / env_name
+        env_dir = UPath(data_dir) / env_name
         storage = BuildStorage(env_dir)
         click.echo(f"\n[{env_name}] Backfilling from {base_url}")
 
@@ -138,7 +138,7 @@ def status(ctx: click.Context, data_dir: str) -> None:
     click.echo(f"Data directory: {data_dir}")
 
     for env_name in ENVIRONMENTS:
-        env_dir = Path(data_dir) / env_name
+        env_dir = UPath(data_dir) / env_name
         storage = BuildStorage(env_dir)
 
         click.echo()
