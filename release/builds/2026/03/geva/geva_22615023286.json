@@ -1,0 +1,901 @@
+{
+  "Package": "geva",
+  "Type": "Package",
+  "Title": "Gene Expression Variation Analysis (GEVA)",
+  "Description": "Statistic methods to evaluate variations of differential\nexpression (DE) between multiple biological conditions. It\ntakes into account the fold-changes and p-values from previous\ndifferential expression (DE) results that use large-scale data\n(*e.g.*, microarray and RNA-seq) and evaluates which genes\nwould react in response to the distinct experiments. This\nevaluation involves an unique pipeline of statistical methods,\nincluding weighted summarization, quantile detection, cluster\nanalysis, and ANOVA tests, in order to classify a subset of\nrelevant genes whose DE is similar or dependent to certain\nbiological factors.",
+  "Version": "1.18.0",
+  "Authors@R": "c(person(given = \"Itamar Jos\u00e9\",\nfamily = \"Guimar\u00e3es Nunes\",\nrole = c(\"aut\", \"cre\"),\nemail = \"nunesijg@gmail.com\",\ncomment = c(ORCID = \"0000-0002-6246-4658\")),\nperson(given = \"Murilo\",\nfamily = \"Zanini David\",\nemail = \"zanini.murilo@gmail.com\",\nrole = \"ctb\"),\nperson(given = \"Bruno\",\nfamily = \"C\u00e9sar Feltes\",\nemail = \"bcfeltes@gmail.com\",\nrole = \"ctb\",\ncomment = c(ORCID = \"0000-0002-2825-8295\")),\nperson(given = \"Marcio\",\nfamily = \"Dorn\",\nemail = \"mdorn@inf.ufrgs.br\",\nrole = \"ctb\",\ncomment = c(ORCID = \"0000-0001-8534-3480\")))",
+  "URL": "https://github.com/sbcblab/geva",
+  "BiocType": "Software",
+  "biocViews": "Classification, DifferentialExpression, GeneExpression,\nMicroarray, MultipleComparison, RNASeq, SystemsBiology,\nTranscriptomics",
+  "License": "LGPL-3",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.1.1",
+  "VignetteBuilder": "knitr",
+  "Collate": "'stringhelpers.R' 'callhelpers.R' 'vectorhelpers.R'\n'printhelpers.R' 'asserts.R' 'usecasechecks.R' 'plotting.R'\n'dochelpers.R' 'generics.R' 'classhelpers.R' 'c_SVTable.R'\n'c_GEVAGroupSet.R' 'c_GEVACluster.R' 'funhelpers.R' 'linq.R'\n'c_TypedList.R' 'c_SVAttribute.R' 'c_GEVAInput.R'\n'c_GEVASummary.R' 'c_GEVAGroupedSummary.R' 'c_GEVAQuantiles.R'\n'c_GEVAQuantilesAdjusted.R' 'c_GEVAResults.R' 'summarization.R'\n'clusteringbase.R' 'matrixhelpers.R' 'statmath.R'\n'dclustering.R' 'quantiles.R' 'factoring.R' 'scoremerge.R'\n'finalize.R' 'geva-package.R' 'hclustering.R' 'idealtesting.R'\n'input.R'",
+  "Config/testthat/edition": "3",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:07:07 UTC",
+  "RemoteUrl": "https://github.com/bioc/geva",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-03-03 08:44:53 UTC",
+    "User": "root"
+  },
+  "Author": "Itamar Jos\u00e9 Guimar\u00e3es Nunes [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-6246-4658>),\nMurilo Zanini David [ctb],\nBruno C\u00e9sar Feltes [ctb] (ORCID:\n<https://orcid.org/0000-0002-2825-8295>),\nMarcio Dorn [ctb] (ORCID: <https://orcid.org/0000-0001-8534-3480>)",
+  "Maintainer": "Itamar Jos\u00e9 Guimar\u00e3es Nunes <nunesijg@gmail.com>",
+  "MD5sum": "e091303bf307ed3b63a14a21c95146c0",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "geva_1.18.0.tar.gz",
+  "_fileid": "d2651a1e75f9cf465624c78dfd4853fcec6cd68e1043cfa79ababa8c69a6d10e",
+  "_filesize": 5752537,
+  "_sha256": "d2651a1e75f9cf465624c78dfd4853fcec6cd68e1043cfa79ababa8c69a6d10e",
+  "_created": "2026-03-03T08:44:53.000Z",
+  "_published": "2026-03-03T08:51:58.482Z",
+  "_jobs": [
+    {
+      "job": 65526193866,
+      "time": 183,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5737015508"
+    },
+    {
+      "job": 65526194011,
+      "time": 379,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5737061700"
+    },
+    {
+      "job": 65526194029,
+      "time": 314,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5737046726"
+    },
+    {
+      "job": 65526193935,
+      "time": 192,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5737033470"
+    },
+    {
+      "job": 65526193913,
+      "time": 182,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5737024860"
+    },
+    {
+      "job": 65525656326,
+      "time": 287,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5736971831"
+    },
+    {
+      "job": 65526193892,
+      "time": 123,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5737001184"
+    },
+    {
+      "job": 65526193939,
+      "time": 215,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5737023446"
+    },
+    {
+      "job": 65526193992,
+      "time": 276,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5737042980"
+    },
+    {
+      "job": 65526193918,
+      "time": 204,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5737021226"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 3,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/geva",
+  "_commit": {
+    "id": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750427
+  },
+  "_maintainer": {
+    "name": "Itamar Jos\u00e9 Guimar\u00e3es Nunes",
+    "email": "nunesijg@gmail.com",
+    "login": "nunesijg",
+    "uuid": 51794955,
+    "orcid": "0000-0002-6246-4658"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "dbscan",
+      "role": "Imports"
+    },
+    {
+      "package": "fastcluster",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "role": "Suggests"
+    },
+    {
+      "package": "limma",
+      "role": "Suggests"
+    },
+    {
+      "package": "topGO",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.19.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.18.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "classification",
+    "differentialexpression",
+    "geneexpression",
+    "microarray",
+    "multiplecomparison",
+    "rnaseq",
+    "systemsbiology",
+    "transcriptomics"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "nunesijg",
+      "count": 69,
+      "uuid": 51794955
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 299,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/geva"
+  },
+  "_devurl": "https://github.com/sbcblab/geva",
+  "_searchresults": 4,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/geva.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/sbcblab/geva",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "analysis.params",
+    "as.SVTable",
+    "centroids",
+    "classification.table",
+    "classification.table<-",
+    "cluster.method",
+    "elem.class",
+    "elem.class<-",
+    "factors",
+    "factors<-",
+    "featureTable",
+    "featureTable<-",
+    "get.distance.method",
+    "get.summary.method",
+    "get.variation.method",
+    "geva.cluster",
+    "geva.dcluster",
+    "geva.finalize",
+    "geva.hcluster",
+    "geva.ideal.example",
+    "geva.input.correct",
+    "geva.input.filter",
+    "geva.input.rename.rows",
+    "geva.merge.input",
+    "geva.quantiles",
+    "geva.quick",
+    "geva.read.tables",
+    "geva.summarize",
+    "group.rels",
+    "groups",
+    "groupsets",
+    "groupsets<-",
+    "infolist",
+    "infolist<-",
+    "inputdata",
+    "inputnames",
+    "inputvalues",
+    "inputweights",
+    "offsets",
+    "options.cl.score.method",
+    "options.cluster.method",
+    "options.dcluster.method",
+    "options.distance",
+    "options.factoring.p.adjust",
+    "options.hc.method",
+    "options.hc.metric",
+    "options.quantiles",
+    "options.summary",
+    "options.variation",
+    "plot",
+    "qareasizes",
+    "qcount",
+    "qindexes",
+    "quantiles",
+    "quantiles.method",
+    "results.table",
+    "scores",
+    "show",
+    "sv",
+    "sv.data",
+    "sv.scores",
+    "svattr",
+    "svtable",
+    "top.genes",
+    "typed.list",
+    "variation"
+  ],
+  "_help": [
+    {
+      "page": "generics",
+      "title": "GEVA Generic Methods",
+      "topics": [
+        "analysis.params",
+        "as.SVTable",
+        "centroids",
+        "classification.table",
+        "classification.table<-",
+        "cluster.method",
+        "elem.class",
+        "elem.class<-",
+        "factors",
+        "factors<-",
+        "featureTable",
+        "featureTable<-",
+        "generics",
+        "get.distance.method",
+        "get.summary.method",
+        "get.variation.method",
+        "group.rels",
+        "groups",
+        "groupsets",
+        "groupsets<-",
+        "infolist",
+        "infolist<-",
+        "inputdata",
+        "inputnames",
+        "inputvalues",
+        "inputweights",
+        "offsets",
+        "qareasizes",
+        "qcount",
+        "qindexes",
+        "quantiles",
+        "quantiles.method",
+        "results.table",
+        "scores",
+        "sv",
+        "sv.data",
+        "sv.scores",
+        "svattr",
+        "variation"
+      ]
+    },
+    {
+      "page": "geva.cluster",
+      "title": "GEVA Cluster Analysis",
+      "concept": "geva.cluster",
+      "topics": [
+        "geva.cluster",
+        "options.cl.score.method",
+        "options.cluster.method",
+        "options.distance"
+      ]
+    },
+    {
+      "page": "geva.dcluster",
+      "title": "GEVA Density Clustering",
+      "concept": "geva.cluster",
+      "topics": [
+        "geva.dcluster",
+        "options.dcluster.method"
+      ]
+    },
+    {
+      "page": "geva.finalize",
+      "title": "Concatenating GEVA calculations into the final results",
+      "topics": [
+        "geva.finalize",
+        "options.factoring.p.adjust"
+      ]
+    },
+    {
+      "page": "geva.hcluster",
+      "title": "GEVA Hierarchical Clustering",
+      "concept": "geva.cluster",
+      "topics": [
+        "geva.hcluster",
+        "options.hc.method",
+        "options.hc.metric"
+      ]
+    },
+    {
+      "page": "geva.ideal.example",
+      "title": "GEVA ``Ideal'' Example for Package Testing",
+      "topics": [
+        "geva.ideal.example"
+      ]
+    },
+    {
+      "page": "geva.input.correct",
+      "title": "GEVA Input Post-processing",
+      "topics": [
+        "geva.input.correct",
+        "geva.input.filter",
+        "geva.input.rename.rows"
+      ]
+    },
+    {
+      "page": "geva.merge.input",
+      "title": "GEVA Input Processing and Merge",
+      "topics": [
+        "geva.merge.input",
+        "geva.read.tables"
+      ]
+    },
+    {
+      "page": "geva.quantiles",
+      "title": "GEVA Quantiles Detection",
+      "concept": "geva.cluster",
+      "topics": [
+        "geva.quantiles",
+        "options.quantiles"
+      ]
+    },
+    {
+      "page": "geva.quick",
+      "title": "All-In-One Function for GEVA Intermediate Procedures",
+      "topics": [
+        "geva.quick"
+      ]
+    },
+    {
+      "page": "geva.summarize",
+      "title": "Summarizes the GEVAInput",
+      "topics": [
+        "geva.summarize",
+        "options.summary",
+        "options.variation"
+      ]
+    },
+    {
+      "page": "GEVACluster-class",
+      "title": "GEVA Clustering Results",
+      "topics": [
+        "cluster.method,GEVACluster-method",
+        "GEVACluster-class",
+        "lines.GEVACluster",
+        "plot,GEVACluster,SVTable-method",
+        "show,GEVACluster-method"
+      ]
+    },
+    {
+      "page": "GEVAGroupedSummary-class",
+      "title": "GEVA Grouped Summary-Variation Table",
+      "topics": [
+        "analysis.params,GEVAGroupedSummary-method",
+        "as.expression.GEVAGroupedSummary",
+        "as.matrix.GEVAGroupedSummary",
+        "cluster.method,GEVAGroupedSummary-method",
+        "GEVAGroupedSummary-class",
+        "groupsets,GEVAGroupedSummary-method",
+        "groupsets<-,GEVAGroupedSummary,GEVAGroupSet-method",
+        "lines.GEVAGroupedSummary",
+        "plot,GEVAGroupedSummary,missing-method",
+        "points.GEVAGroupedSummary",
+        "quantiles,GEVAGroupedSummary-method",
+        "show,GEVAGroupedSummary-method"
+      ]
+    },
+    {
+      "page": "GEVAGroupSet-class",
+      "title": "GEVA Grouping Results",
+      "topics": [
+        "analysis.params,GEVAGroupSet-method",
+        "as.data.frame.GEVAGroupSet",
+        "as.expression.GEVAGroupSet",
+        "as.SVTable.GEVAGroupSet",
+        "centroids,GEVAGroupSet-method",
+        "classification.table,GEVAGroupSet-method",
+        "classification.table<-,GEVAGroupSet,data.frame-method",
+        "cluster.method,GEVAGroupSet-method",
+        "color.values.GEVAGroupSet",
+        "featureTable,GEVAGroupSet-method",
+        "GEVAGroupSet-class",
+        "groups,GEVAGroupSet-method",
+        "infolist,GEVAGroupSet,character-method",
+        "infolist,GEVAGroupSet,missing-method",
+        "infolist<-,GEVAGroupSet,list-method",
+        "length,GEVAGroupSet-method",
+        "levels.GEVAGroupSet",
+        "names,GEVAGroupSet-method",
+        "offsets,GEVAGroupSet-method",
+        "plot,GEVAGroupSet,GEVAGroupSet-method",
+        "plot,GEVAGroupSet,missing-method",
+        "plot,GEVAGroupSet,SVTable-method",
+        "plot,SVTable,GEVAGroupSet-method",
+        "points.GEVAGroupSet",
+        "scores,GEVAGroupSet,character-method",
+        "scores,GEVAGroupSet,missing-method",
+        "show,GEVAGroupSet-method",
+        "sv,GEVAGroupSet-method",
+        "sv.data,GEVAGroupSet-method"
+      ]
+    },
+    {
+      "page": "GEVAInput-class",
+      "title": "GEVA Input Data",
+      "topics": [
+        "analysis.params,GEVAInput-method",
+        "as.array.GEVAInput",
+        "dim,GEVAInput-method",
+        "dimnames,GEVAInput-method",
+        "dimnames<-,GEVAInput,list-method",
+        "factors,GEVAInput-method",
+        "factors<-,GEVAInput,character-method",
+        "factors<-,GEVAInput,factor-method",
+        "featureTable,GEVAInput-method",
+        "featureTable<-,GEVAInput,data.frame-method",
+        "GEVAInput-class",
+        "head.GEVAInput",
+        "infolist,GEVAInput,character-method",
+        "infolist,GEVAInput,missing-method",
+        "infolist<-,GEVAInput,list-method",
+        "inputdata,GEVAInput-method",
+        "inputnames,GEVAInput-method",
+        "inputvalues,GEVAInput-method",
+        "inputweights,GEVAInput,logical-method",
+        "inputweights,GEVAInput,missing-method",
+        "length,GEVAInput-method",
+        "levels.GEVAInput",
+        "names,GEVAInput-method",
+        "plot,GEVAInput,missing-method",
+        "show,GEVAInput-method",
+        "tail.GEVAInput",
+        "[,GEVAInput,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "GEVAQuantiles-class",
+      "title": "GEVA Quantiles Grouping Results",
+      "topics": [
+        "as.expression.GEVAQuantiles",
+        "as.SVTable.GEVAQuantiles",
+        "classification.table,GEVAQuantiles-method",
+        "classification.table<-,GEVAQuantiles,data.frame-method",
+        "cluster.method,GEVAQuantiles-method",
+        "dim,GEVAQuantiles-method",
+        "GEVAQuantiles-class",
+        "lines.GEVAQuantiles",
+        "plot,GEVAQuantiles,SVTable-method",
+        "qareasizes,GEVAQuantiles-method",
+        "qcount,GEVAQuantiles-method",
+        "qindexes,GEVAQuantiles-method",
+        "quantiles,GEVAQuantiles-method",
+        "quantiles.method,GEVAQuantiles-method",
+        "show,GEVAQuantiles-method",
+        "sv.scores,GEVAQuantiles-method",
+        "[,GEVAQuantiles,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "GEVAQuantilesAdjusted-class",
+      "title": "GEVA Adjusted Quantiles Results",
+      "topics": [
+        "GEVAQuantilesAdjusted-class",
+        "group.rels,GEVAQuantilesAdjusted-method",
+        "show,GEVAQuantilesAdjusted-method"
+      ]
+    },
+    {
+      "page": "GEVAResults-class",
+      "title": "GEVA Results Table",
+      "topics": [
+        "$,GEVAResults-method",
+        "analysis.params,GEVAResults-method",
+        "as.expression.GEVAResults",
+        "dim,GEVAResults-method",
+        "dimnames,GEVAResults-method",
+        "featureTable,GEVAResults-method",
+        "GEVAResults-class",
+        "head.GEVAResults",
+        "infolist,GEVAResults,character-method",
+        "infolist,GEVAResults,missing-method",
+        "inputdata,GEVAResults-method",
+        "inputvalues,GEVAResults-method",
+        "inputweights,GEVAResults,logical-method",
+        "inputweights,GEVAResults,missing-method",
+        "length,GEVAResults-method",
+        "levels.GEVAResults",
+        "names,GEVAResults-method",
+        "plot,GEVAResults,missing-method",
+        "points.GEVAResults",
+        "quantiles,GEVAResults-method",
+        "results.table,GEVAResults-method",
+        "show,GEVAResults-method",
+        "sv,GEVAResults-method",
+        "sv.data,GEVAResults-method",
+        "[,GEVAResults,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "GEVASummary-class",
+      "title": "GEVA Summary-Variation Table",
+      "topics": [
+        "analysis.params,GEVASummary-method",
+        "as.expression.GEVASummary",
+        "as.matrix.GEVASummary",
+        "factors,GEVASummary-method",
+        "factors<-,GEVASummary,character-method",
+        "factors<-,GEVASummary,factor-method",
+        "featureTable,GEVASummary-method",
+        "get.summary.method.GEVASummary",
+        "get.variation.method.GEVASummary",
+        "GEVASummary-class",
+        "groupsets,GEVASummary-method",
+        "groupsets<-,GEVASummary,GEVAGroupSet-method",
+        "groupsets<-,GEVASummary,TypedList-method",
+        "infolist,GEVASummary,missing-method",
+        "infolist<-,GEVASummary,list-method",
+        "inputdata,GEVASummary-method",
+        "inputnames,GEVASummary-method",
+        "inputvalues,GEVASummary-method",
+        "inputweights,GEVASummary,logical-method",
+        "inputweights,GEVASummary,missing-method",
+        "plot,GEVASummary,missing-method",
+        "quantiles,GEVASummary-method",
+        "show,GEVASummary-method"
+      ]
+    },
+    {
+      "page": "SVAttribute-class",
+      "title": "Summary-Variation Attribute Field",
+      "topics": [
+        "$,SVAttribute-method",
+        "as.character.SVAttribute",
+        "as.vector.SVAttribute",
+        "dim,SVAttribute-method",
+        "names,SVAttribute-method",
+        "show,SVAttribute-method",
+        "summary.SVAttribute",
+        "sv,SVAttribute-method",
+        "sv.data,SVAttribute-method",
+        "svattr,character,character-method",
+        "svattr,integer,integer-method",
+        "svattr,numeric,numeric-method",
+        "SVAttribute",
+        "SVAttribute-class",
+        "SVChrAttribute",
+        "SVChrAttribute-class",
+        "SVIntAttribute",
+        "SVIntAttribute-class",
+        "SVNumAttribute",
+        "SVNumAttribute-class",
+        "variation.SVAttribute",
+        "[,SVAttribute,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "SVTable-class",
+      "title": "Summary-Variation Table",
+      "topics": [
+        "$,SVTable-method",
+        "as.data.frame.SVTable",
+        "as.matrix.SVTable",
+        "as.SVTable.data.frame",
+        "as.SVTable.matrix",
+        "as.SVTable.SVTable",
+        "dim,SVTable-method",
+        "dimnames,SVTable-method",
+        "format.SVTable",
+        "head.SVTable",
+        "is.na.SVTable",
+        "length,SVTable-method",
+        "names,SVTable-method",
+        "plot,SVTable,missing-method",
+        "points.SVTable",
+        "show,SVTable-method",
+        "summary.SVTable",
+        "sv,SVTable-method",
+        "sv.data,SVTable-method",
+        "SVTable",
+        "svtable",
+        "SVTable-class",
+        "tail.SVTable",
+        "variation.SVTable",
+        "with.SVTable",
+        "[,SVTable,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "top.genes",
+      "title": "Top Results from GEVA",
+      "topics": [
+        "top.genes"
+      ]
+    },
+    {
+      "page": "TypedList-class",
+      "title": "Type-strict List (TypedList-class)",
+      "topics": [
+        "as.list.TypedList",
+        "as.typed.list.list",
+        "as.typed.list.TypedList",
+        "as.typed.list.vector",
+        "elem.class,TypedList-method",
+        "elem.class<-,TypedList,character-method",
+        "show,TypedList-method",
+        "typed.list",
+        "TypedList-class",
+        "[,TypedList,ANY,missing,missing-method",
+        "[<-,TypedList,character,missing-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/geva/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "dbscan",
+    "fastcluster",
+    "generics",
+    "matrixStats",
+    "Rcpp"
+  ],
+  "_vignettes": [
+    {
+      "source": "geva.Rmd",
+      "filename": "geva.html",
+      "title": "Gene Expression Variation Analysis (GEVA)",
+      "author": "Itamar Jos\u00e9 Guimar\u00e3es Nunes^[Structural Bioinformatics and Computational Lab (SBCB) -- Federal University of Rio Grande do Sul (UFRGS)], Murilo Zanini David^[Graduate Program in Ecology -- Federal University of Rio Grande do Sul (UFRGS)], \\linebreak, Bruno C\u00e9sar Feltes\\footnotemark[1], and Marcio Dorn\\footnotemark[1]",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Data input",
+        "Alternative 1 -- Tab-delimited Text Files",
+        "Alternative 2 -- Multiple table objects",
+        "Alternative 3 -- Results from limma",
+        "Alternative 4 -- Ideal input data (for tests only)",
+        "Input data post-processing (optional)",
+        "Numeric table correcting",
+        "Filtering values below statistical significance",
+        "Renaming the row names",
+        "SV Analyses",
+        "Summarization",
+        "Makes a safe copy of the summary data",
+        "Appends the quantiles data",
+        "Appends the clustered data",
+        "Draws a SV plot with grouped highlights (optional)",
+        "Alternative 2 -- With factors",
+        "Shortcut function and reanalysis"
+      ],
+      "created": "2021-01-20 16:57:58",
+      "modified": "2021-03-10 00:15:24",
+      "commits": 6
+    }
+  ],
+  "_score": 4.301029995663981,
+  "_indexed": false,
+  "_nocasepkg": "geva",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/geva",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:49:45.000Z",
+      "distro": "noble",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "4c1459b834aa0a159f4ccdd3851cc254e8a29cb3ced7cddfa9c17bb2dc18f9b7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:48:40.000Z",
+      "distro": "noble",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "ed01dfb2ed2a71e4d0805e66e314d20d3fa6083b8570ac17d02ff76bf689b83c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:48:10.000Z",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "73aa7874b2b6b9289e4cca0da3b8abe95f290ff5407683d48a1e06f2d89e49ed",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:47:46.000Z",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "fa0e9918b6a1ed61e55e6fca6aca50644351f20a6ae4731598db88f817cb9266",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:47:25.000Z",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "5267458256449cebb36f53553318304df8af17d4cbc31276eff1a800ca8482de",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:46:43.000Z",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "7d0bb1db8bb47df6465bf9fe0bb8ffdcec77cb1dccc75c9affc845c19e3167bc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:47:57.000Z",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "393586b48b1db2202d3935be25fad6c65cadb0cee69a0de41213b5caed734682",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.18.0",
+      "date": "2026-03-03T08:46:43.000Z",
+      "commit": "c291ceb59b475ac7b42bf9416771f049978e8bad",
+      "fileid": "cad1d206005e4e1c093350ec8136e80f406b392c947ed486ae3e4a00fc7382f0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615023286"
+    }
+  ]
+}

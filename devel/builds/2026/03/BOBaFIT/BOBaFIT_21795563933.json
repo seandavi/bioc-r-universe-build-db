@@ -1,0 +1,672 @@
+{
+  "Package": "BOBaFIT",
+  "Type": "Package",
+  "Title": "Refitting diploid region profiles using a clustering procedure",
+  "Version": "1.15.0",
+  "Authors@R": "c(person(\"Andrea\", \"Poletti\", email=\"andrea.poletti5@gmail.com\", \nrole=c(\"aut\")),\nperson(\"Gaia\", \"Mazzocchetti\", email=\"bioinformatic.seragnoli@gmail.com\",\nrole=c(\"aut\", \"cre\")),\nperson(\"Vincenza\", \"Solli\", email=\"vincenza.solli2@unibo.it\",\nrole=c(\"aut\")))",
+  "Description": "This package provides a method to refit and correct the\ndiploid region in copy number profiles. It uses a clustering\nalgorithm to identify pathology-specific normal (diploid)\nchromosomes and then use their copy number signal to refit the\nwhole profile.  The package is composed by three functions:\nDRrefit (the main function), ComputeNormalChromosome and\nPlotCluster.",
+  "License": "GPL (>= 3)",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "RoxygenNote": "7.1.2",
+  "URL": "https://github.com/andrea-poletti-unibo/BOBaFIT",
+  "BugReports": "https://github.com/andrea-poletti-unibo/BOBaFIT/issues",
+  "Config/testthat/edition": "3",
+  "biocViews": "CopyNumberVariation, Clustering, Visualization,\nNormalization, Software",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev make libbz2-dev\nlibicu-dev liblzma-dev libpng-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:14:21 UTC",
+  "RemoteUrl": "https://github.com/bioc/BOBaFIT",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-08 09:09:46 UTC",
+    "User": "root"
+  },
+  "Author": "Andrea Poletti [aut],\nGaia Mazzocchetti [aut, cre],\nVincenza Solli [aut]",
+  "Maintainer": "Gaia Mazzocchetti <bioinformatic.seragnoli@gmail.com>",
+  "MD5sum": "c7845ee0ce5e4da936cc03dcb964bd93",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "BOBaFIT_1.15.0.tar.gz",
+  "_fileid": "1eed46946976a8c5ecdddcf6d4a6d2d27b0489b938f337231aa1abf3298e7f89",
+  "_filesize": 2286701,
+  "_sha256": "1eed46946976a8c5ecdddcf6d4a6d2d27b0489b938f337231aa1abf3298e7f89",
+  "_created": "2026-02-08T09:09:46.000Z",
+  "_published": "2026-02-08T09:19:25.105Z",
+  "_jobs": [
+    {
+      "job": 62882672071,
+      "time": 225,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421697993"
+    },
+    {
+      "job": 62882672077,
+      "time": 507,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421716388"
+    },
+    {
+      "job": 62882672074,
+      "time": 507,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421716406"
+    },
+    {
+      "job": 62882672068,
+      "time": 339,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421708255"
+    },
+    {
+      "job": 62882672082,
+      "time": 288,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421705458"
+    },
+    {
+      "job": 62882464064,
+      "time": 347,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5421681977"
+    },
+    {
+      "job": 62882672076,
+      "time": 187,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421695300"
+    },
+    {
+      "job": 62882672084,
+      "time": 421,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421711104"
+    },
+    {
+      "job": 62882672080,
+      "time": 478,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5421714599"
+    },
+    {
+      "job": 62882672094,
+      "time": 432,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421711847"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 11
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/BOBaFIT",
+  "_commit": {
+    "id": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750861
+  },
+  "_maintainer": {
+    "name": "Gaia Mazzocchetti",
+    "email": "bioinformatic.seragnoli@gmail.com"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 2.10",
+      "role": "Depends"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "NbClust",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggbio",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "ggforce",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "plyranges",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "utils",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "copynumbervariation",
+    "clustering",
+    "visualization",
+    "normalization",
+    "software"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "gaia-mazzocchetti",
+      "count": 77,
+      "uuid": 67413031
+    },
+    {
+      "user": "andrea-poletti-bio",
+      "count": 17,
+      "uuid": 52926104
+    },
+    {
+      "user": "nturaga",
+      "count": 2,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 272,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/BOBaFIT"
+  },
+  "_devurl": "https://github.com/andrea-poletti-unibo/bobafit",
+  "_searchresults": 4,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/BOBaFIT.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioinformatic-seragnoli/bobafit",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "%>%",
+    "computeNormalChromosomes",
+    "DRrefit",
+    "DRrefit_plot",
+    "PlotChrCluster",
+    "Popeye"
+  ],
+  "_datasets": [
+    {
+      "name": "TCGA_BRCA_CN_segments",
+      "title": "Segments of 100 Breast Cancer samples, downloaded from TCGA-BRCA.",
+      "object": "TCGA_BRCA_CN_segments",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "chr",
+        "start",
+        "end",
+        "width",
+        "strand",
+        "ID",
+        "Num_Probes",
+        "Segment_Mean",
+        "Sample",
+        "arm",
+        "chrarm",
+        "CN"
+      ],
+      "rows": 79607,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "computeNormalChromosomes",
+      "title": "computeNormalChromosomes",
+      "topics": [
+        "computeNormalChromosomes"
+      ]
+    },
+    {
+      "page": "DRrefit",
+      "title": "DRrefit",
+      "topics": [
+        "DRrefit"
+      ]
+    },
+    {
+      "page": "DRrefit_plot",
+      "title": "DRrefit_plot",
+      "topics": [
+        "DRrefit_plot"
+      ]
+    },
+    {
+      "page": "PlotChrCluster",
+      "title": "PlotChrCluster",
+      "topics": [
+        "PlotChrCluster"
+      ]
+    },
+    {
+      "page": "Popeye",
+      "title": "Popeye",
+      "topics": [
+        "Popeye"
+      ]
+    },
+    {
+      "page": "TCGA_BRCA_CN_segments",
+      "title": "Segments of 100 Breast Cancer samples, downloaded from TCGA-BRCA.",
+      "topics": [
+        "TCGA_BRCA_CN_segments"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "dichromat",
+    "digest",
+    "dplyr",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggbio",
+    "ggforce",
+    "ggplot2",
+    "glue",
+    "graph",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "Hmisc",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "NbClust",
+    "nnet",
+    "openssl",
+    "OrganismDbi",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "plyranges",
+    "png",
+    "polyclip",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RBGL",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "tweenr",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "BOBaFIT.Rmd",
+      "filename": "BOBaFIT.html",
+      "title": "BOBaFIT",
+      "author": "Gaia Mazzocchetti",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Data",
+        "BOBaFIT Workflow",
+        "ComputeNormalChromosome",
+        "DRrefit",
+        "The Dataframes",
+        "DRrefit_plot",
+        "PlotChrCluster",
+        "Session info",
+        "Reference"
+      ],
+      "created": "2021-05-04 13:06:19",
+      "modified": "2022-05-25 09:53:02",
+      "commits": 17
+    },
+    {
+      "source": "Data-Preparation.Rmd",
+      "filename": "Data-Preparation.html",
+      "title": "Data preparation using TCGA-BRCA database",
+      "author": "Gaia Mazzocchetti",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Download from TCGA",
+        "Columns preparation",
+        "Assign the chromosome arm with Popeye",
+        "Calculation of the Copy Number",
+        "Session info"
+      ],
+      "created": "2021-10-20 09:38:08",
+      "modified": "2022-05-25 09:53:02",
+      "commits": 5
+    }
+  ],
+  "_score": 3.9030899869919438,
+  "_indexed": true,
+  "_nocasepkg": "bobafit",
+  "_universes": [
+    "bioc",
+    "andrea-poletti-unibo"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:13:47.000Z",
+      "distro": "noble",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "da9468a277b1d57fa575d67b63b1b2fef79a45a78249d6e64d5e2b2093daa7af",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:14:07.000Z",
+      "distro": "noble",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "df8771d730192ef55c9c0b0a7e912663c029feb83588a0dc667ccb175244b5cc",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:13:05.000Z",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "d8b3e80c5644eae29c8c7ca984a0784ffccbbb5876d1c102e80459967ea1824d",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:12:49.000Z",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "479f6201bc0bb951c9feaee58341fdfe784a5a8760ac2a8468fbd8185b712977",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:13:38.000Z",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "97e60a20f05989fcfdf1d7aa51bacf824f86b16e4e0355dea05beb557215cfa1",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:12:10.000Z",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "b2fa2fb8051800d13fbd63ab4af39a130929f9f2b0ce5f6fad499cf4a502a8a8",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:12:50.000Z",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "c5318b81f68b0e647982e2e7d78ff365872a230b391fc09904155e15e047ebb4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-08T09:12:20.000Z",
+      "commit": "1c84f64b21a09afb4f80ca0d72ff4bf4d3d69b5b",
+      "fileid": "5cb657996e88f755458b9a913ec4d5522ab3120e135564327b5152ba360c51d6",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795563933"
+    }
+  ]
+}

@@ -1,0 +1,915 @@
+{
+  "Package": "consensusSeekeR",
+  "Version": "1.39.0",
+  "Date": "2025-10-14",
+  "Title": "Detection of consensus regions inside a group of experiences\nusing genomic positions and genomic ranges",
+  "Description": "This package compares genomic positions and genomic ranges\nfrom multiple experiments to extract common regions. The size\nof the analyzed region is adjustable as well as the number of\nexperiences in which a feature must be present in a potential\nregion to tag this region as a consensus region. In genomic\nanalysis where feature identification generates a position\nvalue surrounded by a genomic range, such as ChIP-Seq peaks and\nnucleosome positions, the replication of an experiment may\nresult in slight differences between predicted values. This\npackage enables the conciliation of the results into consensus\nregions.",
+  "Authors@R": "c(person(\"Astrid\", \"Desch\u00eanes\", email=\"adeschen@hotmail.com\", \nrole=c(\"cre\",\"aut\"), comment=c(ORCID=\"0000-0001-7846-6749\")),\nperson(\"Fabien Claude\", \"Lamaze\", email=\"fabien.lamaze.1@ulaval.ca\",\nrole=c(\"ctb\")),\nperson(\"Pascal\", \"Belleau\", email=\"pascal_belleau@hotmail.com\",\nrole=c(\"aut\"), comment=c(ORCID=\"0000-0002-0802-1071\")),\nperson(\"Arnaud\", \"Droit\", email=\"arnaud.droit@crchuq.ulaval.ca\",\nrole=c(\"aut\")))",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "URL": "https://github.com/adeschen/consensusSeekeR",
+  "BugReports": "https://github.com/adeschen/consensusSeekeR/issues",
+  "VignetteBuilder": "knitr",
+  "NeedsCompilation": "no",
+  "biocViews": "BiologicalQuestion, ChIPSeq, Genetics, MultipleComparison,\nTranscription, PeakDetection, Sequencing, Coverage",
+  "RoxygenNote": "7.3.3",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libxml2-dev\nlibssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:28:45 UTC",
+  "RemoteUrl": "https://github.com/bioc/consensusSeekeR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+  "Packaged": {
+    "Date": "2026-02-08 09:07:22 UTC",
+    "User": "root"
+  },
+  "Author": "Astrid Desch\u00eanes [cre, aut] (ORCID:\n<https://orcid.org/0000-0001-7846-6749>),\nFabien Claude Lamaze [ctb],\nPascal Belleau [aut] (ORCID: <https://orcid.org/0000-0002-0802-1071>),\nArnaud Droit [aut]",
+  "Maintainer": "Astrid Desch\u00eanes <adeschen@hotmail.com>",
+  "MD5sum": "5ec71a701cba7944306ee6209b5add5a",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "consensusSeekeR_1.39.0.tar.gz",
+  "_fileid": "d43d30e5f9d0628ef34f6156d2fcd2e7286c621c38135c119e90888bf5549a09",
+  "_filesize": 721275,
+  "_sha256": "d43d30e5f9d0628ef34f6156d2fcd2e7286c621c38135c119e90888bf5549a09",
+  "_created": "2026-02-08T09:07:22.000Z",
+  "_published": "2026-02-08T09:14:23.307Z",
+  "_jobs": [
+    {
+      "job": 62882576853,
+      "time": 196,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421684305"
+    },
+    {
+      "job": 62882576844,
+      "time": 360,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421696034"
+    },
+    {
+      "job": 62882576833,
+      "time": 355,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421695795"
+    },
+    {
+      "job": 62882576842,
+      "time": 263,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421689017"
+    },
+    {
+      "job": 62882576837,
+      "time": 198,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421684477"
+    },
+    {
+      "job": 62882431781,
+      "time": 239,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5421671313"
+    },
+    {
+      "job": 62882576845,
+      "time": 148,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421681213"
+    },
+    {
+      "job": 62882576888,
+      "time": 257,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421688734"
+    },
+    {
+      "job": 62882576864,
+      "time": 278,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5421690119"
+    },
+    {
+      "job": 62882576880,
+      "time": 266,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421689335"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 4
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/consensusSeekeR",
+  "_commit": {
+    "id": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748125
+  },
+  "_maintainer": {
+    "name": "Astrid Desch\u00eanes",
+    "email": "adeschen@hotmail.com",
+    "login": "adeschen",
+    "orcid": "0000-0001-7846-6749",
+    "uuid": 7254636
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "IRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Depends"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-42",
+      "n": 7
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.39.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.38.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "biologicalquestion",
+    "chipseq",
+    "genetics",
+    "multiplecomparison",
+    "transcription",
+    "peakdetection",
+    "sequencing",
+    "coverage",
+    "chip-seq-analysis",
+    "genomic-data-analysis",
+    "nucleosome-positioning"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "adeschen",
+      "count": 331,
+      "uuid": 7254636
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "hpages",
+      "count": 5,
+      "uuid": 8810451
+    },
+    {
+      "user": "dtenenba",
+      "count": 4,
+      "uuid": 2286826
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "jimhester",
+      "count": 1,
+      "uuid": 205275
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 336,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/consensusSeekeR"
+  },
+  "_devurl": "https://github.com/adeschen/consensusseeker",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/consensusSeekeR.html",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/adeschen/consensusseeker",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "findConsensusPeakRegions",
+    "readNarrowPeakFile"
+  ],
+  "_datasets": [
+    {
+      "name": "A549_CTCF_MYJ_NarrowPeaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "object": "A549_CTCF_MYJ_NarrowPeaks_partial",
+      "file": "A549_CTCF_MYJ_NarrowPeaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_CTCF_MYJ_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "object": "A549_CTCF_MYJ_Peaks_partial",
+      "file": "A549_CTCF_MYJ_Peaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_CTCF_MYN_NarrowPeaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "object": "A549_CTCF_MYN_NarrowPeaks_partial",
+      "file": "A549_CTCF_MYN_NarrowPeaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_CTCF_MYN_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "object": "A549_CTCF_MYN_Peaks_partial",
+      "file": "A549_CTCF_MYN_Peaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_FOSL2_01_NarrowPeaks_partial",
+      "title": "Genomic regions with the greatest evidence of transcription factor binding for the FOSL2 transcription factor (for demonstration purpose)",
+      "object": "A549_FOSL2_01_NarrowPeaks_partial",
+      "file": "A549_FOSL2_01_NarrowPeaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_FOSL2_01_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the FOSL2 transcription factor (for demonstration purpose)",
+      "object": "A549_FOSL2_01_Peaks_partial",
+      "file": "A549_FOSL2_01_Peaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_FOXA1_01_NarrowPeaks_partial",
+      "title": "Genomic regions with the greatest evidence of transcription factor binding for the FOXA1 transcription factor (for demonstration purpose)",
+      "object": "A549_FOXA1_01_NarrowPeaks_partial",
+      "file": "A549_FOXA1_01_NarrowPeaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_FOXA1_01_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the FOXA1 transcription factor (for demonstration purpose)",
+      "object": "A549_FOXA1_01_Peaks_partial",
+      "file": "A549_FOXA1_01_Peaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_NR3C1_CFQ_NarrowPeaks_partial",
+      "title": "Ranges with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFQ). For demonstration purpose.",
+      "object": "A549_NR3C1_CFQ_NarrowPeaks_partial",
+      "file": "A549_NR3C1_CFQ_NarrowPeaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_NR3C1_CFQ_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFQ). For demonstration purpose.",
+      "object": "A549_NR3C1_CFQ_Peaks_partial",
+      "file": "A549_NR3C1_CFQ_Peaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_NR3C1_CFR_NarrowPeaks_partial",
+      "title": "Ranges with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFR). For demonstration purpose.",
+      "object": "A549_NR3C1_CFR_NarrowPeaks_partial",
+      "file": "A549_NR3C1_CFR_NarrowPeaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_NR3C1_CFR_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFR). For demonstration purpose.",
+      "object": "A549_NR3C1_CFR_Peaks_partial",
+      "file": "A549_NR3C1_CFR_Peaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_NR3C1_CFS_NarrowPeaks_partial",
+      "title": "Ranges with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFS). For demonstration purpose.",
+      "object": "A549_NR3C1_CFS_NarrowPeaks_partial",
+      "file": "A549_NR3C1_CFS_NarrowPeaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "A549_NR3C1_CFS_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFS). For demonstration purpose.",
+      "object": "A549_NR3C1_CFS_Peaks_partial",
+      "file": "A549_NR3C1_CFS_Peaks_partial.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "NOrMAL_nucleosome_positions",
+      "title": "Nucleosome positions detected by the NOrMAL software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "object": "NOrMAL_nucleosome_positions",
+      "file": "NOrMAL_nucleosome_positions.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "NOrMAL_nucleosome_ranges",
+      "title": "Ranges associated to nucleosomes detected by the NOrMAL software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "object": "NOrMAL_nucleosome_ranges",
+      "file": "NOrMAL_nucleosome_ranges.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "NucPosSimulator_nucleosome_positions",
+      "title": "Nucleosome positions detected by the NucPosSimulator software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "object": "NucPosSimulator_nucleosome_positions",
+      "file": "NucPosSimulator_nucleosome_positions.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "NucPosSimulator_nucleosome_ranges",
+      "title": "Ranges associated to nucleosomes detected by the NucPosSimulator software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "object": "NucPosSimulator_nucleosome_ranges",
+      "file": "NucPosSimulator_nucleosome_ranges.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "PING_nucleosome_positions",
+      "title": "Nucleosome positions detected by the PING software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "object": "PING_nucleosome_positions",
+      "file": "PING_nucleosome_positions.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "PING_nucleosome_ranges",
+      "title": "Ranges associated to nucleosomes detected by the PING software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "object": "PING_nucleosome_ranges",
+      "file": "PING_nucleosome_ranges.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "consensusSeekeR-package",
+      "title": "consensusSeekeR: Detection of consensus peak regions inside a group of experiments using narrowPeak files",
+      "topics": [
+        "consensusSeekeR-package",
+        "consensusSeekeR"
+      ]
+    },
+    {
+      "page": "A549_CTCF_MYJ_NarrowPeaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_CTCF_MYJ_NarrowPeaks_partial"
+      ]
+    },
+    {
+      "page": "A549_CTCF_MYJ_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_CTCF_MYJ_Peaks_partial"
+      ]
+    },
+    {
+      "page": "A549_CTCF_MYN_NarrowPeaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_CTCF_MYN_NarrowPeaks_partial"
+      ]
+    },
+    {
+      "page": "A549_CTCF_MYN_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the CTCF transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_CTCF_MYN_Peaks_partial"
+      ]
+    },
+    {
+      "page": "A549_FOSL2_01_NarrowPeaks_partial",
+      "title": "Genomic regions with the greatest evidence of transcription factor binding for the FOSL2 transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_FOSL2_01_NarrowPeaks_partial"
+      ]
+    },
+    {
+      "page": "A549_FOSL2_01_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the FOSL2 transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_FOSL2_01_Peaks_partial"
+      ]
+    },
+    {
+      "page": "A549_FOXA1_01_NarrowPeaks_partial",
+      "title": "Genomic regions with the greatest evidence of transcription factor binding for the FOXA1 transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_FOXA1_01_NarrowPeaks_partial"
+      ]
+    },
+    {
+      "page": "A549_FOXA1_01_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the FOXA1 transcription factor (for demonstration purpose)",
+      "topics": [
+        "A549_FOXA1_01_Peaks_partial"
+      ]
+    },
+    {
+      "page": "A549_NR3C1_CFQ_NarrowPeaks_partial",
+      "title": "Ranges with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFQ). For demonstration purpose.",
+      "topics": [
+        "A549_NR3C1_CFQ_NarrowPeaks_partial"
+      ]
+    },
+    {
+      "page": "A549_NR3C1_CFQ_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFQ). For demonstration purpose.",
+      "topics": [
+        "A549_NR3C1_CFQ_Peaks_partial"
+      ]
+    },
+    {
+      "page": "A549_NR3C1_CFR_NarrowPeaks_partial",
+      "title": "Ranges with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFR). For demonstration purpose.",
+      "topics": [
+        "A549_NR3C1_CFR_NarrowPeaks_partial"
+      ]
+    },
+    {
+      "page": "A549_NR3C1_CFR_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFR). For demonstration purpose.",
+      "topics": [
+        "A549_NR3C1_CFR_Peaks_partial"
+      ]
+    },
+    {
+      "page": "A549_NR3C1_CFS_NarrowPeaks_partial",
+      "title": "Ranges with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFS). For demonstration purpose.",
+      "topics": [
+        "A549_NR3C1_CFS_NarrowPeaks_partial"
+      ]
+    },
+    {
+      "page": "A549_NR3C1_CFS_Peaks_partial",
+      "title": "Sites with the greatest evidence of transcription factor binding for the NR3C1 transcription factor from ENCODE (DDC accession: ENCFF002CFS). For demonstration purpose.",
+      "topics": [
+        "A549_NR3C1_CFS_Peaks_partial"
+      ]
+    },
+    {
+      "page": "findConsensusPeakRegions",
+      "title": "Extract regions sharing features in more than one experiment",
+      "topics": [
+        "findConsensusPeakRegions"
+      ]
+    },
+    {
+      "page": "NOrMAL_nucleosome_positions",
+      "title": "Nucleosome positions detected by the NOrMAL software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "topics": [
+        "NOrMAL_nucleosome_positions"
+      ]
+    },
+    {
+      "page": "NOrMAL_nucleosome_ranges",
+      "title": "Ranges associated to nucleosomes detected by the NOrMAL software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "topics": [
+        "NOrMAL_nucleosome_ranges"
+      ]
+    },
+    {
+      "page": "NucPosSimulator_nucleosome_positions",
+      "title": "Nucleosome positions detected by the NucPosSimulator software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "topics": [
+        "NucPosSimulator_nucleosome_positions"
+      ]
+    },
+    {
+      "page": "NucPosSimulator_nucleosome_ranges",
+      "title": "Ranges associated to nucleosomes detected by the NucPosSimulator software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "topics": [
+        "NucPosSimulator_nucleosome_ranges"
+      ]
+    },
+    {
+      "page": "PING_nucleosome_positions",
+      "title": "Nucleosome positions detected by the PING software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "topics": [
+        "PING_nucleosome_positions"
+      ]
+    },
+    {
+      "page": "PING_nucleosome_ranges",
+      "title": "Ranges associated to nucleosomes detected by the PING software using syntetic reads generated using a normal distribution. For demonstration purpose.",
+      "topics": [
+        "PING_nucleosome_ranges"
+      ]
+    },
+    {
+      "page": "readNarrowPeakFile",
+      "title": "Extract narrow regions and peaks from a narrrowPeak file",
+      "topics": [
+        "readNarrowPeakFile"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/consensusSeekeR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "glue",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "openssl",
+    "R6",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "vctrs",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "consensusSeekeR.Rmd",
+      "filename": "consensusSeekeR.html",
+      "title": "Detection of consensus regions inside a group of experiments",
+      "author": "Astrid Desch\u00eanes, Fabien Claude Lamaze, Pascal Belleau and Arnaud Droit",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Licensing and citing",
+        "Introduction",
+        "The consensusSeekeR package",
+        "Loading consensusSeekeR package",
+        "Inputs",
+        "Positions and Ranges",
+        "Chromosomes information",
+        "Read NarrowPeak files",
+        "Case study: nucleosome positioning",
+        "Comparing nucleosome positioning results from different software",
+        "Case study: ChIP-Seq data",
+        "ChIP-Seq replicates from one experiment",
+        "ChIP-Seq data from multiple experiments",
+        "Parameters",
+        "Effect of the shrinkToFitPeakRegion parameter",
+        "Effect of the expandToFitPeakRegion parameter",
+        "Effect of the extendingSize parameter",
+        "Parallelizing consensusSeekeR",
+        "Acknowledgment",
+        "Session info",
+        "References"
+      ],
+      "created": "2015-11-13 14:44:37",
+      "modified": "2025-10-14 20:50:08",
+      "commits": 13
+    }
+  ],
+  "_score": 5.2552725051033065,
+  "_indexed": true,
+  "_nocasepkg": "consensusseeker",
+  "_universes": [
+    "bioc",
+    "adeschen"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:11:05.000Z",
+      "distro": "noble",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "0cc90fbe6adad13c3c4da3792d03da1be3903c027e35b3da81d97110f678ccf9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:11:02.000Z",
+      "distro": "noble",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "1b2c5f3c519752b099629babf40a864211cdd08b2d524d7d889e1c65ad67e1c9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:09:34.000Z",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "829f8e0ef6a45ca14971fc51ea3b72f03a3656b8de089c334507c810f54efe21",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:09:24.000Z",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "6864c0cf8cb1278897e6d3f67aa5ae89b0c8e703951db14184133c81c69350c7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:10:23.000Z",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "4d3be9449149cc58b2bd62297670b087318bb513e1735f2bc696acc6f5a337d3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:09:13.000Z",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "2712f764664e31a496895aa2ee05a6afb78e08e275f09ff3528a605017455b1a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:09:31.000Z",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "41d27ba51308065a5d2006467235ad8822fe674a95b04aaca2b5be9b8bf11b8a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-02-08T09:09:09.000Z",
+      "commit": "35fd99125cb05962b7ae6711d29ab4016d32d403",
+      "fileid": "7f3a6eb6a8e429e60de5691249299bdbadaa6505e14d0640c648315d4fc86146",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795550284"
+    }
+  ]
+}

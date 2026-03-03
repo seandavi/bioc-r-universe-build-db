@@ -1,0 +1,1386 @@
+{
+  "Package": "GRaNIE",
+  "Title": "GRaNIE: Reconstruction cell type specific gene regulatory\nnetworks including enhancers using single-cell or bulk\nchromatin accessibility and RNA-seq data",
+  "Version": "1.15.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(person(\"Christian\", \"Arnold\", email =\n\"chrarnold@web.de\", role = c(\"cre\",\"aut\")),\nperson(\"Judith\", \"Zaugg\", email =\n\"judith.zaugg@embl.de\", role = c(\"aut\")),\nperson(\"Rim\", \"Moussa\", email =\n\"rim.moussa01@gmail.com\", role = \"aut\"),\nperson(\"Armando\", \"Reyes-Palomares\", email =\n\"armandorp@gmail.com\", role = \"ctb\"),\nperson(\"Giovanni\", \"Palla\", email =\n\"giov.pll@gmail.com\", role = \"ctb\"),\nperson(\"Maksim\", \"Kholmatov\", email =\n\"maksim.kholmatov@embl.de\", role = \"ctb\"))",
+  "Description": "Genetic variants associated with diseases often affect\nnon-coding regions, thus likely having a regulatory role. To\nunderstand the effects of genetic variants in these regulatory\nregions, identifying genes that are modulated by specific\nregulatory elements (REs) is crucial. The effect of gene\nregulatory elements, such as enhancers, is often cell-type\nspecific, likely because the combinations of transcription\nfactors (TFs) that are regulating a given enhancer have\ncell-type specific activity. This TF activity can be quantified\nwith existing tools such as diffTF and captures differences in\nbinding of a TF in open chromatin regions. Collectively, this\nforms a gene regulatory network (GRN) with cell-type and\ndata-specific TF-RE and RE-gene links. Here, we reconstruct\nsuch a GRN using single-cell or bulk RNAseq and open chromatin\n(e.g., using ATACseq or ChIPseq for open chromatin marks) and\noptionally (Capture) Hi-C data. Our network contains different\ntypes of links, connecting TFs to regulatory elements, the\nlatter of which is connected to genes in the vicinity or within\nthe same chromatin domain (TAD). We use a statistical framework\nto assign empirical FDRs and weights to all links using a\npermutation-based approach.",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, GeneExpression, GeneRegulation, NetworkInference,\nGeneSetEnrichment, BiomedicalInformatics, Genetics,\nTranscriptomics, ATACSeq, RNASeq, GraphAndNetwork, Regression,\nTranscription, ChIPSeq",
+  "License": "Artistic-2.0",
+  "URL": "https://grp-zaugg.embl-community.io/GRaNIE",
+  "BugReports": "https://git.embl.de/grp-zaugg/GRaNIE/issues",
+  "RoxygenNote": "7.3.1",
+  "Config/testthat/parallel": "true",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libglpk-dev make libbz2-dev libicu-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev perl libx11-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:16:56 UTC",
+  "RemoteUrl": "https://github.com/bioc/GRaNIE",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "43246b67dd83843f773c54ac0d88211789089ee4",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-11 09:23:01 UTC",
+    "User": "root"
+  },
+  "Author": "Christian Arnold [cre, aut],\nJudith Zaugg [aut],\nRim Moussa [aut],\nArmando Reyes-Palomares [ctb],\nGiovanni Palla [ctb],\nMaksim Kholmatov [ctb]",
+  "Maintainer": "Christian Arnold <chrarnold@web.de>",
+  "MD5sum": "7bfff7a24cba0cbc5f9ce63c13faa0e5",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "GRaNIE_1.15.0.tar.gz",
+  "_fileid": "8212f29ab971e35bb662de0b0a46e3829fd8289efef2eadf4a06792e260a9a6d",
+  "_filesize": 9432685,
+  "_sha256": "8212f29ab971e35bb662de0b0a46e3829fd8289efef2eadf4a06792e260a9a6d",
+  "_created": "2026-02-11T09:23:01.000Z",
+  "_published": "2026-02-11T09:48:07.835Z",
+  "_jobs": [
+    {
+      "job": 63223611805,
+      "time": 1114,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5462878969"
+    },
+    {
+      "job": 63223611661,
+      "time": 1383,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5462933392"
+    },
+    {
+      "job": 63223611702,
+      "time": 1421,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5462941089"
+    },
+    {
+      "job": 63223611859,
+      "time": 826,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5462818960"
+    },
+    {
+      "job": 63223611890,
+      "time": 1056,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5462866474"
+    },
+    {
+      "job": 63221388514,
+      "time": 1278,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5462642367"
+    },
+    {
+      "job": 63223611856,
+      "time": 1016,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5462858587"
+    },
+    {
+      "job": 63223611719,
+      "time": 1043,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5462865452"
+    },
+    {
+      "job": 63223611691,
+      "time": 1410,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5462939367"
+    },
+    {
+      "job": 63223611823,
+      "time": 1269,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5462910411"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/GRaNIE",
+  "_commit": {
+    "id": "43246b67dd83843f773c54ac0d88211789089ee4",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751016
+  },
+  "_maintainer": {
+    "name": "Christian Arnold",
+    "email": "chrarnold@web.de",
+    "login": "chrarnold",
+    "twitter": "@chrarnold84",
+    "uuid": 26325437
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "futile.logger",
+      "role": "Imports"
+    },
+    {
+      "package": "checkmate",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "version": ">= 1.2.0",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "role": "Imports"
+    },
+    {
+      "package": "progress",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "version": ">= 1.34.8",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "forcats",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "readr",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "version": ">= 1.3.0",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "role": "Imports"
+    },
+    {
+      "package": "colorspace",
+      "role": "Imports"
+    },
+    {
+      "package": "biomaRt",
+      "role": "Imports"
+    },
+    {
+      "package": "topGO",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Imports"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm39",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm10",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm9",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Rnorvegicus.UCSC.rn6",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Rnorvegicus.UCSC.rn7",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Dmelanogaster.UCSC.dm6",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmulatta.UCSC.rheMac10",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg38.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm39.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm10.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm9.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Rnorvegicus.UCSC.rn6.refGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Rnorvegicus.UCSC.rn7.refGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Dmelanogaster.UCSC.dm6.ensGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmulatta.UCSC.rheMac10.refGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Mm.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Rn.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Dm.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Mmu.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "IHW",
+      "role": "Suggests"
+    },
+    {
+      "package": "clusterProfiler",
+      "role": "Suggests"
+    },
+    {
+      "package": "ReactomePA",
+      "role": "Suggests"
+    },
+    {
+      "package": "DOSE",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Suggests"
+    },
+    {
+      "package": "ChIPseeker",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "csaw",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "WGCNA",
+      "role": "Suggests"
+    },
+    {
+      "package": "variancePartition",
+      "role": "Suggests"
+    },
+    {
+      "package": "purrr",
+      "role": "Suggests"
+    },
+    {
+      "package": "EDASeq",
+      "role": "Suggests"
+    },
+    {
+      "package": "JASPAR2022",
+      "role": "Suggests"
+    },
+    {
+      "package": "JASPAR2024",
+      "role": "Suggests"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Suggests"
+    },
+    {
+      "package": "TFBSTools",
+      "role": "Suggests"
+    },
+    {
+      "package": "motifmatchr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rbioapi",
+      "role": "Suggests"
+    },
+    {
+      "package": "LDlinkR",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "geneexpression",
+    "generegulation",
+    "networkinference",
+    "genesetenrichment",
+    "biomedicalinformatics",
+    "genetics",
+    "transcriptomics",
+    "atacseq",
+    "rnaseq",
+    "graphandnetwork",
+    "regression",
+    "transcription",
+    "chipseq"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 280,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/GRaNIE"
+  },
+  "_pkgdown": "https://grp-zaugg.embl-community.io/GRaNIE",
+  "_searchresults": 14,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/GRaNIE.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "add_featureVariation",
+    "add_TF_gene_correlation",
+    "addConnections_peak_gene",
+    "addConnections_TF_peak",
+    "addData",
+    "addSNPData",
+    "addTFBS",
+    "AR_classification_wrapper",
+    "build_eGRN_graph",
+    "calculateCommunitiesEnrichment",
+    "calculateCommunitiesStats",
+    "calculateGeneralEnrichment",
+    "calculateTFEnrichment",
+    "changeOutputDirectory",
+    "deleteIntermediateData",
+    "filterConnectionsForPlotting",
+    "filterData",
+    "filterGRNAndConnectGenes",
+    "generateStatsSummary",
+    "getCounts",
+    "getGRNConnections",
+    "getGRNSummary",
+    "getParameters",
+    "getTopNodes",
+    "initializeGRN",
+    "loadExampleObject",
+    "nGenes",
+    "nPeaks",
+    "nTFs",
+    "overlapPeaksAndTFBS",
+    "performAllNetworkAnalyses",
+    "plot_stats_connectionSummary",
+    "plotCommunitiesEnrichment",
+    "plotCommunitiesStats",
+    "plotCorrelations",
+    "plotDiagnosticPlots_peakGene",
+    "plotDiagnosticPlots_TFPeaks",
+    "plotDiagnosticPlots_TFPeaks_GC",
+    "plotGeneralEnrichment",
+    "plotGeneralGraphStats",
+    "plotPCA_all",
+    "plotTFEnrichment",
+    "visualizeGRN"
+  ],
+  "_help": [
+    {
+      "page": "add_featureVariation",
+      "title": "Quantify and interpret multiple sources of biological and technical variation for features (TFs, peaks, and genes) in a 'GRN' object",
+      "topics": [
+        "add_featureVariation"
+      ]
+    },
+    {
+      "page": "add_TF_gene_correlation",
+      "title": "Add TF-gene correlations to a 'GRN' object.",
+      "topics": [
+        "add_TF_gene_correlation"
+      ]
+    },
+    {
+      "page": "addConnections_peak_gene",
+      "title": "Add peak-gene connections to a 'GRN' object",
+      "topics": [
+        "addConnections_peak_gene"
+      ]
+    },
+    {
+      "page": "addConnections_TF_peak",
+      "title": "Add TF-peak connections to a 'GRN' object",
+      "topics": [
+        "addConnections_TF_peak"
+      ]
+    },
+    {
+      "page": "addData",
+      "title": "Add data to a 'GRN' object.",
+      "topics": [
+        "addData"
+      ]
+    },
+    {
+      "page": "addData_TFActivity",
+      "title": "Add TF activity data to GRN object using a simplified procedure for estimating it. EXPERIMENTAL.",
+      "topics": [
+        "addData_TFActivity"
+      ]
+    },
+    {
+      "page": "addSNPData",
+      "title": "Add SNP data to a 'GRN' object and associate SNPs to peaks.",
+      "topics": [
+        "addSNPData"
+      ]
+    },
+    {
+      "page": "addTFBS",
+      "title": "Add TFBS to a 'GRN' object.",
+      "topics": [
+        "addTFBS"
+      ]
+    },
+    {
+      "page": "AR_classification_wrapper",
+      "title": "Run the activator-repressor classification for the TFs for a 'GRN' object",
+      "topics": [
+        "AR_classification_wrapper"
+      ]
+    },
+    {
+      "page": "build_eGRN_graph",
+      "title": "Builds a graph out of a set of connections",
+      "topics": [
+        "build_eGRN_graph"
+      ]
+    },
+    {
+      "page": "calculateCommunitiesEnrichment",
+      "title": "Run an enrichment analysis for the genes in each community in the filtered 'GRN' object",
+      "topics": [
+        "calculateCommunitiesEnrichment"
+      ]
+    },
+    {
+      "page": "calculateCommunitiesStats",
+      "title": "Generate graph communities and their summarizing statistics",
+      "topics": [
+        "calculateCommunitiesStats"
+      ]
+    },
+    {
+      "page": "calculateGeneralEnrichment",
+      "title": "Run an enrichment analysis for the genes in the whole network in the filtered 'GRN' object",
+      "topics": [
+        "calculateGeneralEnrichment"
+      ]
+    },
+    {
+      "page": "calculateTFEnrichment",
+      "title": "Run an enrichment analysis for the set of genes connected to a particular TF or sets of TFs in the filtered 'GRN' object",
+      "topics": [
+        "calculateTFEnrichment"
+      ]
+    },
+    {
+      "page": "changeOutputDirectory",
+      "title": "Change the output directory of a GRN object",
+      "topics": [
+        "changeOutputDirectory"
+      ]
+    },
+    {
+      "page": "deleteIntermediateData",
+      "title": "Optional convenience function to delete intermediate data from the function 'AR_classification_wrapper' and summary statistics that may occupy a lot of space",
+      "topics": [
+        "deleteIntermediateData"
+      ]
+    },
+    {
+      "page": "filterConnectionsForPlotting",
+      "title": "Filter connections for subsequent visualization with `visualizeGRN()` from the filtered eGRN",
+      "topics": [
+        "filterConnectionsForPlotting"
+      ]
+    },
+    {
+      "page": "filterData",
+      "title": "Filter RNA-seq and/or peak data from a 'GRN' object",
+      "topics": [
+        "filterData"
+      ]
+    },
+    {
+      "page": "filterGRNAndConnectGenes",
+      "title": "Filter TF-peaks and peak-gene connections and combine them to TF-peak-gene connections to construct an eGRN.",
+      "topics": [
+        "filterGRNAndConnectGenes"
+      ]
+    },
+    {
+      "page": "generateStatsSummary",
+      "title": "Generate a summary for the number of connections for different filtering criteria for a 'GRN' object.",
+      "topics": [
+        "generateStatsSummary"
+      ]
+    },
+    {
+      "page": "getCounts",
+      "title": "Get counts for the various data defined in a 'GRN' object",
+      "topics": [
+        "getCounts"
+      ]
+    },
+    {
+      "page": "getGRNConnections",
+      "title": "Extract connections or links from a 'GRN' object as a data frame.",
+      "topics": [
+        "getGRNConnections"
+      ]
+    },
+    {
+      "page": "getGRNSummary",
+      "title": "Summarize a 'GRN' object to a named list for comparison with other 'GRN' objects.",
+      "topics": [
+        "getGRNSummary"
+      ]
+    },
+    {
+      "page": "getParameters",
+      "title": "Retrieve parameters for previously used function calls and general parameters for a 'GRN' object.",
+      "topics": [
+        "getParameters"
+      ]
+    },
+    {
+      "page": "getTopNodes",
+      "title": "Retrieve the top nodes (TFs or genes) with respect to either degree or Eigenvector centrality in the filtered 'GRN' object.",
+      "topics": [
+        "getTopNodes"
+      ]
+    },
+    {
+      "page": "GRaNIE",
+      "title": "*GRaNIE* (*G*ene *R*egul*a*tory *N*etwork *I*nference including *E*nhancers): Reconstruction and evaluation of data-driven, cell type specific gene regulatory networks including enhancers using chromatin accessibility and RNAseq data (general package information)",
+      "topics": [
+        "GRaNIE-package",
+        "GRaNIE"
+      ]
+    },
+    {
+      "page": "GRN-class",
+      "title": "Create, represent, investigate, quantify and visualize enhancer-mediated gene regulatory networks (*eGRNs*)",
+      "topics": [
+        "GRN-class"
+      ]
+    },
+    {
+      "page": "importTFData",
+      "title": "Import externally derived TF Activity data. EXPERIMENTAL.",
+      "topics": [
+        "importTFData"
+      ]
+    },
+    {
+      "page": "initializeGRN",
+      "title": "Create and initialize an empty 'GRN' object.",
+      "topics": [
+        "initializeGRN"
+      ]
+    },
+    {
+      "page": "loadExampleObject",
+      "title": "Load example GRN dataset",
+      "topics": [
+        "loadExampleObject"
+      ]
+    },
+    {
+      "page": "nGenes",
+      "title": "Get the number of genes for a 'GRN' object.",
+      "topics": [
+        "genes",
+        "nGenes"
+      ]
+    },
+    {
+      "page": "nPeaks",
+      "title": "Get the number of peaks for a 'GRN' object.",
+      "topics": [
+        "nPeaks",
+        "peaks"
+      ]
+    },
+    {
+      "page": "nTFs",
+      "title": "Get the number of TFs for a 'GRN' object.",
+      "topics": [
+        "nTFs",
+        "TFs"
+      ]
+    },
+    {
+      "page": "overlapPeaksAndTFBS",
+      "title": "Overlap peaks and TFBS for a 'GRN' object",
+      "topics": [
+        "overlapPeaksAndTFBS"
+      ]
+    },
+    {
+      "page": "performAllNetworkAnalyses",
+      "title": "Perform all network-related statistical and descriptive analyses, including community and enrichment analyses. See the functions it executes in the @seealso section below.",
+      "topics": [
+        "performAllNetworkAnalyses"
+      ]
+    },
+    {
+      "page": "plot_stats_connectionSummary",
+      "title": "Plot various network connectivity summaries for a 'GRN' object",
+      "topics": [
+        "plot_stats_connectionSummary"
+      ]
+    },
+    {
+      "page": "plotCommunitiesEnrichment",
+      "title": "Plot community-based enrichment results for a filtered 'GRN' object",
+      "topics": [
+        "plotCommunitiesEnrichment"
+      ]
+    },
+    {
+      "page": "plotCommunitiesStats",
+      "title": "Plot general structure & connectivity statistics for each community in a filtered 'GRN'",
+      "topics": [
+        "plotCommunitiesStats"
+      ]
+    },
+    {
+      "page": "plotCorrelations",
+      "title": "Plot scatter plots of the underlying count data for either TF-peak, peak-gene or TF-gene pairs for a 'GRN' object",
+      "topics": [
+        "plotCorrelations"
+      ]
+    },
+    {
+      "page": "plotDiagnosticPlots_peakGene",
+      "title": "Plot diagnostic plots for peak-gene connections for a 'GRN' object",
+      "topics": [
+        "plotDiagnosticPlots_peakGene"
+      ]
+    },
+    {
+      "page": "plotDiagnosticPlots_TFPeaks",
+      "title": "Plot diagnostic plots for TF-peak connections for a 'GRN' object",
+      "topics": [
+        "plotDiagnosticPlots_TFPeaks"
+      ]
+    },
+    {
+      "page": "plotDiagnosticPlots_TFPeaks_GC",
+      "title": "Plot GC-specific diagnostic plots for TF-peak connections for a 'GRN' object",
+      "topics": [
+        "plotDiagnosticPlots_TFPeaks_GC"
+      ]
+    },
+    {
+      "page": "plotGeneralEnrichment",
+      "title": "Plot the general enrichement results",
+      "topics": [
+        "plotGeneralEnrichment"
+      ]
+    },
+    {
+      "page": "plotGeneralGraphStats",
+      "title": "Plot general structure and connectivity statistics for a filtered 'GRN' object",
+      "topics": [
+        "plotGeneralGraphStats"
+      ]
+    },
+    {
+      "page": "plotPCA_all",
+      "title": "Produce a PCA plot of the data from a 'GRN' object",
+      "topics": [
+        "plotPCA_all"
+      ]
+    },
+    {
+      "page": "plotTFEnrichment",
+      "title": "Plot TF-based GO enrichment results",
+      "topics": [
+        "plotTFEnrichment"
+      ]
+    },
+    {
+      "page": "visualizeGRN",
+      "title": "Visualize a filtered eGRN in a flexible manner.",
+      "topics": [
+        "visualizeGRN"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/GRaNIE/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/GRaNIE/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "AnnotationHub",
+    "askpass",
+    "backports",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocVersion",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "circlize",
+    "cli",
+    "clipr",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DESeq2",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "ensembldb",
+    "farver",
+    "fastmap",
+    "filelock",
+    "forcats",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggplot2",
+    "GlobalOptions",
+    "glue",
+    "GO.db",
+    "graph",
+    "gridExtra",
+    "gtable",
+    "hms",
+    "httr",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "readr",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "shape",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "topGO",
+    "tzdb",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "GRaNIE_packageDetails.Rmd",
+      "filename": "GRaNIE_packageDetails.html",
+      "title": "Package Details",
+      "author": "Christian Arnold",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Motivation and Necessity",
+        "Installation",
+        "GRaNIE package and required dependency packages",
+        "Additional packages",
+        "Detailed information about the scope of the optional packages",
+        "Example Workflow",
+        "Example GRN object",
+        "Input",
+        "Open chromatin and RNA-seq data",
+        "TF and TFBS data",
+        "HOCOMOCO-derived TFBS and download links",
+        "Other TFBS sources",
+        "Importing TF and TFBS from the JASPAR databases directly in R",
+        "Sample metadata (optional but highly recommended)",
+        "Hi-C data (optional)",
+        "Capture Hi-C data / known promoter-enhancer links (optional)",
+        "SNP data (optional)",
+        "TF activity data (optional, coming soon)",
+        "Methodological Details and Basic Mode of Action",
+        "Data normalization",
+        "Normalization methods common for peaks and RNA data",
+        "Normalization methods specific for peaks data",
+        "Raw vs pre.normalized data",
+        "TF-peak connections",
+        "TF-peak connection types",
+        "GC correction",
+        "TF Activity connections",
+        "Calculating TF Activity",
+        "Importing TF Activity",
+        "Adding TF Activity TF-peak connections",
+        "Peak-gene associations",
+        "Building eGRNs: Linking TF-peak and peak-gene links and filtering",
+        "Background eGRN",
+        "Methods",
+        "Object and output details related to the background links",
+        "Constructing the eGRN graph",
+        "Enrichment analyses",
+        "Network visualization and visualization filtering",
+        "General comments",
+        "Changing the visualization parameters and layout",
+        "Filtering the network for visualization purposes",
+        "Feature variation quantification",
+        "Output",
+        "GRN object and results stored within",
+        "Object details",
+        "Results in the object",
+        "Object summary",
+        "Original and normalized data, annotations and provided metadata",
+        "Object data",
+        "Plots",
+        "PCA plots and results",
+        "TF-peak results and diagnostic plots",
+        "Overall connection summary",
+        "TF-specific plots",
+        "Connection summary",
+        "Correlation plots",
+        "Extra plots for the GC correction",
+        "Overall summary",
+        "Activator-repressor classification results and diagnostic plots",
+        "Peak-gene results and diagnostic plots",
+        "Correlation raw p-value distribution",
+        "Correlation coefficient distribution",
+        "Stratification with metadata and additional features",
+        "Filtered TF-peak-gene connections (eGRN table)",
+        "TF-gene connections",
+        "Connection summary plots",
+        "eGRN graph",
+        "Community information",
+        "Enrichment results and plots",
+        "General enrichment",
+        "Community enrichment",
+        "TF enrichment",
+        "Feature variation quantification",
+        "SNP data",
+        "Guidelines, Recommendations, Limitations, Scope",
+        "Package scope",
+        "Number of samples",
+        "Peaks",
+        "RNA-Seq",
+        "Transcription factor binding sites (TFBS)",
+        "Choice of correlation methods for TF-peak, peak-gene, TF-gene connections and outlier robustness",
+        "Peak-gene p-values accuracy and violations",
+        "eGRNs from single-cell data",
+        "Recapitulating object history, function parameters etc",
+        "Memory footprint and execution time, feasibility with large datasets",
+        "CPU time",
+        "Memory footprint",
+        "References"
+      ],
+      "created": "2022-09-14 08:59:35",
+      "modified": "2024-09-25 17:13:46",
+      "commits": 24
+    },
+    {
+      "source": "GRaNIE_singleCell_eGRNs.Rmd",
+      "filename": "GRaNIE_singleCell_eGRNs.html",
+      "title": "GRaNIE single-cell eGRN inference",
+      "author": "Christian Arnold",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Motivation and Summary",
+        "General notes and sources",
+        "Prerequisites: a multimodal Seurat object",
+        "Our default preprocessing",
+        "RNA",
+        "ATAC",
+        "Integrating the modalities",
+        "Clustering and pseudobulk creation",
+        "Methods",
+        "Choosing the right number of clusters and working strategies for running GRaNIE",
+        "Filtering",
+        "Preparing the input data for GRaNIE",
+        "Metadata",
+        "TF database",
+        "Running GRaNIE",
+        "Scripts",
+        "Data processing and GRaNIE preparation",
+        "Current limitations",
+        "Example data",
+        "Further notes and FAQs",
+        "Session Info"
+      ],
+      "created": "2023-01-26 19:22:45",
+      "modified": "2024-09-02 14:07:08",
+      "commits": 11
+    },
+    {
+      "source": "GRaNIE_workflow.Rmd",
+      "filename": "GRaNIE_workflow.html",
+      "title": "GRaNIE Workflow Example",
+      "author": "Christian Arnold",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Motivation and Summary",
+        "Example data",
+        "Example Workflow",
+        "Install suggested, additional packages for full functionality",
+        "Note on version compatibility and errors in the vignette",
+        "General notes",
+        "Reading the data required for the GRaNIE package",
+        "Initialize a GRaNIE object",
+        "Add data",
+        "Object history",
+        "Quality control 1: PCA plots",
+        "Add TFs and TFBS and overlap with peak",
+        "Filter data (optional)",
+        "Add TF-enhancer connections",
+        "Quality control 2: Diagnostic plots for TF-enhancer connections",
+        "Run the AR classification and QC (optional)",
+        "Save GRaNIE object to disk (optional)",
+        "Add enhancer-gene connections",
+        "Quality control 3: Diagnostic plots for enhancer-gene connections",
+        "Combine TF-enhancer and enhancer-gene connections and filter",
+        "Add TF-gene correlations (optional)",
+        "Retrieve filtered connections",
+        "Generate a connection summary for filtered connections",
+        "Construct the eGRN graph",
+        "Visualize the eGRN",
+        "Network and enrichment analyses for filtered connections",
+        "General network statistics",
+        "General network enrichment",
+        "Community network statistics and enrichment",
+        "TF enrichment analyses",
+        "Wrapping up",
+        "How to continue?",
+        "Session Info"
+      ],
+      "created": "2022-04-25 15:22:49",
+      "modified": "2023-10-26 15:36:52",
+      "commits": 26
+    }
+  ],
+  "_score": 4.623249290397901,
+  "_indexed": true,
+  "_nocasepkg": "granie",
+  "_universes": [
+    "bioc",
+    "chrarnold"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:40:43.000Z",
+      "distro": "noble",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "a9d9d578f90cd063df18984cdf5e78fe849fea60012d1bb92d9325a00b4fff5d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:41:00.000Z",
+      "distro": "noble",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "48cf2910b8e693e8705aa92f1a5344a08322161f5d78d179090e0a2d94bf72bf",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:32:24.000Z",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "32e6a19900fa1ba11e1426cb2dca11778182e88956a0f59a6604807ae3238d59",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:35:35.000Z",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "b92af0d90ed9fb02409374534e4abe0a95bda3898598ea6bd95cfae70c0fd8e8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:40:49.000Z",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "356e90b9c7f9ad6f24897965a7ff218f37e5240daf1201dd14c87e1084761c24",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:36:03.000Z",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "d2e634845c158136f3225629158c5a362a1a3d32c138b5df4b8cfc4b08da1b29",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:42:00.000Z",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "0d6cba2acedd3c15ca829fcaa3b10e53c9590dd5156a6f43bf8f7ce7386f5679",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.15.0",
+      "date": "2026-02-11T09:37:51.000Z",
+      "commit": "43246b67dd83843f773c54ac0d88211789089ee4",
+      "fileid": "7aa86b3cd494abf6f8b903249a037fa910cc39f6c2807e2f069c7b49407d0e9a",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21898801535"
+    }
+  ]
+}

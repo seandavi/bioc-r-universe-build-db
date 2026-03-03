@@ -1,0 +1,956 @@
+{
+  "Package": "RadioGx",
+  "Type": "Package",
+  "Title": "Analysis of Large-Scale Radio-Genomic Data",
+  "Version": "2.14.0",
+  "Date": "2023-04-19",
+  "Authors@R": "c(\nperson(\"Venkata\",\"Manem\", email = \"mail2mvskumar@gmail.com\",\nrole = c(\"aut\")),\nperson(\"Petr\",\"Smirnov\", email = \"petr.smirnov@uhnresearch.ca\",\nrole = c(\"aut\")),\nperson(\"Ian\",\"Smith\", email = \"ianc.smith@mail.utoronto.ca\",\nrole = c(\"aut\")),\nperson(\"Meghan\",\"Lambie\", email = \"megan.lambie@mail.utoronto.ca\",\nrole = c(\"aut\")),\nperson(\"Christopher\",\"Eeles\", email = \"christopher.eeles@uhnresearch.ca\",\nrole = c(\"aut\")),\nperson(\"Scott\", \"Bratman\", email = \"scott.bratman@rmp.uhn.ca\",\nrole = c(\"aut\")),\nperson(\"Jermiah\", \"Joseph\", email = \"jermiah.joseph@uhn.ca\",\nrole = c(\"aut\")),\nperson(\"Benjamin\",\"Haibe-Kains\", email = \"benjamin.haibe.kains@utoronto.ca\",\nrole = c(\"aut\",\"cre\"))\n)",
+  "Description": "Computational tool box for radio-genomic analysis which\nintegrates radio-response data, radio-biological modelling and\ncomprehensive cell line annotations for hundreds of cancer cell\nlines. The 'RadioSet' class enables creation and manipulation\nof standardized datasets including information about cancer\ncells lines, radio-response assays and dose-response\nindicators. Included methods allow fitting and plotting\ndose-response data using established radio-biological models\nalong with quality control to validate results. Additional\nfunctions related to fitting and plotting dose response curves,\nquantifying statistical correlation and calculating area under\nthe curve (AUC) or survival fraction (SF) are included. For\nmore details please see the included documentation, references,\nas well as: Manem, V. et al (2018) <doi:10.1101/449793>.",
+  "License": "GPL-3",
+  "VignetteBuilder": "knitr",
+  "VignetteEngine": "knitr::rmarkdown",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "biocViews": "Software, Pharmacogenetics, QualityControl, Survival,\nPharmacogenomics, Classification",
+  "RoxygenNote": "7.2.3",
+  "Collate": "'OERmodel.R' 'RadioSet-class.R' 'RadioSet-accessors.R'\n'computeAUC.R' 'computeD10.R' 'computeSF2.R'\n'computeSensitivity.R' 'datasets.R' 'doseResponseCurve.R'\n'downloadRSet.R' 'geneDrugSensitivity.R' 'linearQuadratic.R'\n'linearQuadraticInv.R' 'linearQuadraticModel.R'\n'makeGrittyGuess.R' 'plotCurve.R' 'radSensitivitySig.R'\n'rankGeneRadSensitivity.R' 'signatureClass.R'\n'subsetTo-methods.R' 'summarizeMolecularProfiles-methods.R'\n'summarizeSensitivityProfiles-methods.R'\n'updateObject-methods.R' 'utilities.R' 'zzz.R'",
+  "Config/pak/sysreqs": "libglpk-dev make libicu-dev libxml2-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:00:09 UTC",
+  "RemoteUrl": "https://github.com/bioc/RadioGx",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-03-01 08:06:08 UTC",
+    "User": "root"
+  },
+  "Author": "Venkata Manem [aut],\nPetr Smirnov [aut],\nIan Smith [aut],\nMeghan Lambie [aut],\nChristopher Eeles [aut],\nScott Bratman [aut],\nJermiah Joseph [aut],\nBenjamin Haibe-Kains [aut, cre]",
+  "Maintainer": "Benjamin Haibe-Kains <benjamin.haibe.kains@utoronto.ca>",
+  "MD5sum": "ddec4fb144ad47e11de64232016f4f22",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "RadioGx_2.14.0.tar.gz",
+  "_fileid": "9bbba67f1263950ccd31782d870ebaab92cb5701452f255213506179fcb0edd3",
+  "_filesize": 3157380,
+  "_sha256": "9bbba67f1263950ccd31782d870ebaab92cb5701452f255213506179fcb0edd3",
+  "_created": "2026-03-01T08:06:08.000Z",
+  "_published": "2026-03-01T08:14:01.189Z",
+  "_jobs": [
+    {
+      "job": 65291539504,
+      "time": 204,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5708662548"
+    },
+    {
+      "job": 65291539501,
+      "time": 382,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5708677721"
+    },
+    {
+      "job": 65291539514,
+      "time": 406,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5708679790"
+    },
+    {
+      "job": 65291539529,
+      "time": 201,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5708662262"
+    },
+    {
+      "job": 65291539513,
+      "time": 210,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5708663135"
+    },
+    {
+      "job": 65291325084,
+      "time": 302,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5708646505"
+    },
+    {
+      "job": 65291539499,
+      "time": 171,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5708659833"
+    },
+    {
+      "job": 65291539506,
+      "time": 283,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5708669296"
+    },
+    {
+      "job": 65291539522,
+      "time": 328,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5708672943"
+    },
+    {
+      "job": 65291539518,
+      "time": 279,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5708668918"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/RadioGx",
+  "_commit": {
+    "id": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750009
+  },
+  "_maintainer": {
+    "name": "Benjamin Haibe-Kains",
+    "email": "benjamin.haibe.kains@utoronto.ca",
+    "login": "bhaibeka",
+    "uuid": 594954
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "CoreGx",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "caTools",
+      "role": "Imports"
+    },
+    {
+      "package": "magicaxis",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "assertthat",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "downloader",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "pander",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "pharmacogenetics",
+    "qualitycontrol",
+    "survival",
+    "pharmacogenomics",
+    "classification"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 366,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/RadioGx"
+  },
+  "_mentions": 1,
+  "_searchresults": 15,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/RadioGx.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_releases": [
+    {
+      "version": "0.0.1",
+      "date": "2019-06-18"
+    },
+    {
+      "version": "0.0.2",
+      "date": "2019-12-20"
+    }
+  ],
+  "_exports": [
+    ".convertRsetMolecularProfilesToSE",
+    "annotation",
+    "annotation<-",
+    "availableRSets",
+    "checkRSetStructure",
+    "computeAUC",
+    "computeD10",
+    "computeSF2",
+    "curation",
+    "curation<-",
+    "datasetType",
+    "datasetType<-",
+    "dateCreated",
+    "dateCreated<-",
+    "doseResponseCurve",
+    "downloadRSet",
+    "featureInfo",
+    "featureInfo<-",
+    "fNames",
+    "fNames<-",
+    "linearQuadraticModel",
+    "mDataNames",
+    "mDataNames<-",
+    "molecularProfiles",
+    "molecularProfiles<-",
+    "molecularProfilesSlot",
+    "molecularProfilesSlot<-",
+    "name",
+    "name<-",
+    "pertNumber",
+    "pertNumber<-",
+    "phenoInfo",
+    "phenoInfo<-",
+    "plotCurve",
+    "radiationInfo",
+    "radiationInfo<-",
+    "radiationTypes",
+    "radiationTypes<-",
+    "RadioSet",
+    "RadioSig",
+    "radSensitivitySig",
+    "sampleInfo",
+    "sampleInfo<-",
+    "sampleNames",
+    "sampleNames<-",
+    "sensitivityInfo",
+    "sensitivityInfo<-",
+    "sensitivityMeasures",
+    "sensitivityProfiles",
+    "sensitivityProfiles<-",
+    "sensitivityRaw",
+    "sensitivityRaw<-",
+    "sensNumber",
+    "sensNumber<-",
+    "show",
+    "showSigAnnot",
+    "subsetTo",
+    "summarizeMolecularProfiles",
+    "summarizeSensitivityProfiles",
+    "treatmentInfo",
+    "treatmentInfo<-",
+    "treatmentNames",
+    "treatmentNames<-",
+    "treatmentResponse",
+    "treatmentResponse<-",
+    "updateObject"
+  ],
+  "_datasets": [
+    {
+      "name": "clevelandSmall",
+      "title": "Cleaveland_mut RadioSet subsetted",
+      "object": "clevelandSmall",
+      "class": [
+        "RadioSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "sub-RadioSet-ANY-ANY-ANY-method",
+      "title": "`[`",
+      "topics": [
+        "[,RadioSet,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "availableRSets",
+      "title": "Return a table of RadioSets available for download",
+      "topics": [
+        "availableRSets"
+      ]
+    },
+    {
+      "page": "checkRSetStructure",
+      "title": "A function to verify the structure of a RadioSet",
+      "topics": [
+        "checkRSetStructure"
+      ]
+    },
+    {
+      "page": "clevelandSmall",
+      "title": "Cleaveland_mut RadioSet subsetted",
+      "topics": [
+        "clevelandSmall"
+      ]
+    },
+    {
+      "page": "computeAUC",
+      "title": "computeAUC: computes AUC",
+      "topics": [
+        "computeAUC"
+      ]
+    },
+    {
+      "page": "computeD10",
+      "title": "Compute D10",
+      "topics": [
+        "computeD10"
+      ]
+    },
+    {
+      "page": "computeSF2",
+      "title": "Compute SF2",
+      "topics": [
+        "computeSF2"
+      ]
+    },
+    {
+      "page": "dim-RadioSet-method",
+      "title": "Get the dimensions of a RadioSet",
+      "topics": [
+        "dim,RadioSet-method"
+      ]
+    },
+    {
+      "page": "doseResponseCurve",
+      "title": "Plot drug response curve of a given drug and a given cell for a list of rSets (objects of the RadioSet class).",
+      "topics": [
+        "doseResponseCurve"
+      ]
+    },
+    {
+      "page": "downloadRSet",
+      "title": "Download a RadioSet object",
+      "topics": [
+        "downloadRSet"
+      ]
+    },
+    {
+      "page": "linearQuadraticModel",
+      "title": "Fit linear-quadratic curves to dose-response data",
+      "topics": [
+        "linearQuadraticModel"
+      ]
+    },
+    {
+      "page": "plotCurve",
+      "title": "Plot radiation dose-response curve",
+      "topics": [
+        "plotCurve"
+      ]
+    },
+    {
+      "page": "RadioSet",
+      "title": "RadioSet constructor",
+      "topics": [
+        "RadioSet"
+      ]
+    },
+    {
+      "page": "RadioSet-accessors",
+      "title": "Accessing and modifying information in a `RadioSet`",
+      "topics": [
+        "annotation",
+        "annotation,RadioSet-method",
+        "annotation<-",
+        "annotation<-,RadioSet,list-method",
+        "cellInfo",
+        "cellInfo,RadioSet-method",
+        "cellInfo<-",
+        "cellInfo<-,RadioSet,data.frame-method",
+        "cellName,RadioSet-method",
+        "cellNames",
+        "cellNames<-",
+        "cellNames<-,RadioSet,list-method",
+        "curation",
+        "curation,RadioSet-method",
+        "curation<-",
+        "curation<-,RadioSet,list-method",
+        "datasetType",
+        "datasetType,RadioSet-method",
+        "datasetType<-",
+        "datasetType<-,RadioSet,character-method",
+        "dateCreated",
+        "dateCreated,RadioSet-method",
+        "dateCreated<-",
+        "dateCreated<-,RadioSet,character-method",
+        "dateCreated<-,RadioSet-method",
+        "featureInfo",
+        "featureInfo,RadioSet-method",
+        "featureInfo<-",
+        "featureInfo<-,RadioSet,character,data.frame-method",
+        "featureInfo<-,RadioSet,character,DataFrame-method",
+        "fNames",
+        "fNames,RadioSet,character-method",
+        "fNames<-",
+        "fNames<-,RadioSet,character,character-method",
+        "mDataNames",
+        "mDataNames,RadioSet-method",
+        "mDataNames<-",
+        "mDataNames<-,RadioSet,ANY-method",
+        "mDataNames<-,RadioSet-method",
+        "molecularProfiles",
+        "molecularProfiles,RadioSet-method",
+        "molecularProfiles<-",
+        "molecularProfiles<-,RadioSet,character,character,matrix-method",
+        "molecularProfiles<-,RadioSet,character,missing,matrix-method",
+        "molecularProfiles<-,RadioSet,missing,missing,list-method",
+        "molecularProfiles<-,RadioSet,missing,missing,MutliAssayExperiment-method",
+        "molecularProfilesSlot",
+        "molecularProfilesSlot,RadioSet-method",
+        "molecularProfilesSlot<-",
+        "molecularProfilesSlot<-,RadioSet,list-method",
+        "molecularProfilesSlot<-,RadioSet,list_OR_MAE-method",
+        "molecularProfilesSlot<-RadioSet,MultiAssayExperiment-method",
+        "moleculerProfilesSlot,RadioSet-method",
+        "name",
+        "name,RadioSet-method",
+        "name<-",
+        "name<-,RadioSet,character-method",
+        "name<-,RadioSet-method",
+        "pertNumber",
+        "pertNumber,RadioSet-method",
+        "pertNumber<-",
+        "pertNumber<-,RadioSet,array-method",
+        "phenoInfo",
+        "phenoInfo,RadioSet,character-method",
+        "phenoInfo<-",
+        "phenoInfo<-,RadioSet,character,data.frame-method",
+        "phenoInfo<-,RadioSet,character,DataFrame-method",
+        "radiationInfo",
+        "radiationInfo<-",
+        "radiationTypes",
+        "radiationTypes<-",
+        "RadioSet-accessors",
+        "sampleInfo",
+        "sampleInfo,RadioSet-method",
+        "sampleInfo<-",
+        "sampleInfo<-,RadioSet,data.frame-method",
+        "sampleName,RadioSet-method",
+        "sampleNames",
+        "sampleNames,RadioSet-method",
+        "sampleNames<-",
+        "sampleNames<-,RadioSet,character-method",
+        "sampleNames<-,RadioSet,list-method",
+        "sensitivityInfo,RadioSet,character-method",
+        "sensitivityInfo,RadioSet,missing-method",
+        "sensitivityInfo,RadioSet-method",
+        "sensitivityInfo<-,RadioSet,data.frame-method",
+        "sensitivityInfo<-,RadioSet,missing,data.frame-method",
+        "sensitivityMeasures,RadioSet-method",
+        "sensitivityMeasures<-,RadioSet,character-method",
+        "sensitivityProfiles,RadioSet-method",
+        "sensitivityProfiles<-,RadioSet,data.frame-method",
+        "sensitivityRaw,RadioSet-method",
+        "sensitivityRaw<-,RadioSet,array-method",
+        "sensitivitySlot",
+        "sensitivitySlot<-",
+        "sensitvityInfo<-,RadioSet,character,data.frame-method",
+        "sensNumber",
+        "sensNumber,RadioSet-method",
+        "sensNumber<-",
+        "sensNumber<-,RadioSet,matrix-method",
+        "treamentResponse<-,RadioSet,list-method",
+        "treatmentInfo",
+        "treatmentInfo,RadioSet-method",
+        "treatmentInfo<-",
+        "treatmentInfo<-,RadioSet,data.frame-method",
+        "treatmentNames",
+        "treatmentNames,RadioSet-method",
+        "treatmentNames<-",
+        "treatmentNames<-,RadioSet,character-method",
+        "treatmentResponse",
+        "treatmentResponse,RadioSet-method",
+        "treatmentResponse<-",
+        "treatmentResponse<-,RadioSet,list_OR_LongTable-method",
+        "treatmentResponse<-,RadioSet,LongTable-method"
+      ]
+    },
+    {
+      "page": "RadioSet-class",
+      "title": "A Class to Contain RadioGenomic datasets together with their curations",
+      "topics": [
+        ".RadioSet",
+        "RadioSet-class"
+      ]
+    },
+    {
+      "page": "RadioSig",
+      "title": "Radiation Signature Class Constructor",
+      "topics": [
+        "RadioSig"
+      ]
+    },
+    {
+      "page": "radSensitivitySig",
+      "title": "Creates a signature representing the association between gene expression (or other molecular profile) and radiation dose response, for use in radiation sensitivity analysis.",
+      "topics": [
+        "radSensitivitySig"
+      ]
+    },
+    {
+      "page": "show-RadioSet-method",
+      "title": "Show a RadioSet",
+      "topics": [
+        "show,RadioSet-method"
+      ]
+    },
+    {
+      "page": "show-RadioSig-method",
+      "title": "Show RadioGx Signatures",
+      "topics": [
+        "show,RadioSig-method"
+      ]
+    },
+    {
+      "page": "showSigAnnot-RadioSig-method",
+      "title": "Show the Annotations of a signature object",
+      "topics": [
+        "showSigAnnot,RadioSig-method"
+      ]
+    },
+    {
+      "page": "subsetTo-RadioSet-method",
+      "title": "A function to subset a RadioSet to data containing only specified radiations, cells and genes",
+      "topics": [
+        "subsetTo,RadioSet-method"
+      ]
+    },
+    {
+      "page": "summarizeMolecularProfiles-RadioSet-method",
+      "title": "Takes molecular data from a RadioSet, and summarises them into one entry per drug",
+      "topics": [
+        "summarizeMolecularProfiles,RadioSet-method"
+      ]
+    },
+    {
+      "page": "summarizeSensitivityProfiles-RadioSet-method",
+      "title": "Takes the sensitivity data from a RadioSet, and summarises them into a drug vs cell line table",
+      "topics": [
+        "summarizeSensitivityProfiles,RadioSet-method"
+      ]
+    },
+    {
+      "page": "updateObject-RadioSet-method",
+      "title": "Update the RadioSet class after changes in it struture or API",
+      "topics": [
+        "updateObject,RadioSet-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/RadioGx/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "assertthat",
+    "backports",
+    "base64enc",
+    "bench",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocParallel",
+    "bitops",
+    "bslib",
+    "BumpyMatrix",
+    "cachem",
+    "caTools",
+    "celestial",
+    "checkmate",
+    "cli",
+    "cluster",
+    "codetools",
+    "commonmark",
+    "CoreGx",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "data.table",
+    "DelayedArray",
+    "digest",
+    "downloader",
+    "dplyr",
+    "DT",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fastmatch",
+    "fgsea",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gplots",
+    "gtable",
+    "gtools",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "lsa",
+    "magicaxis",
+    "magrittr",
+    "mapproj",
+    "maps",
+    "marray",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "MultiAssayExperiment",
+    "NISTunits",
+    "otel",
+    "piano",
+    "pillar",
+    "pkgconfig",
+    "plotrix",
+    "plyr",
+    "pracma",
+    "profmem",
+    "promises",
+    "purrr",
+    "R6",
+    "RANN",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "relations",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "sets",
+    "shiny",
+    "shinydashboard",
+    "shinyjs",
+    "slam",
+    "sm",
+    "snow",
+    "SnowballC",
+    "sourcetools",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "visNetwork",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "RadioGx.Rmd",
+      "filename": "RadioGx.html",
+      "title": "RadioGx: An R Package for Analysis of Large Radiogenomic Datasets",
+      "author": "Venkata Manem, Petr Smirnov, Ian Smith, Meghan Lambie, Christopher Eeles, Scott Bratman, Benjamin Haibe-Kains",
+      "engine": "knitr::knitr",
+      "headings": [
+        "Introduction",
+        "Creating a RadioSet",
+        "Basic Functionalities of RadioGx",
+        "Installing RadioGx",
+        "RadioSet",
+        "Accessing Data",
+        "Accessing metadata",
+        "Accessing molecular data",
+        "Accessing response data",
+        "Fitting Linear Quadratic (LQ) Models",
+        "Calculating Dose-Response Metrics",
+        "Dose-Response Curves",
+        "Summarizing Sensitivity",
+        "Summarizing Molecular Data",
+        "Molecular Signatures for Biomarker Discovery"
+      ],
+      "created": "2020-03-31 22:04:43",
+      "modified": "2022-07-18 19:01:52",
+      "commits": 11
+    }
+  ],
+  "_score": 4.176091259055681,
+  "_indexed": false,
+  "_nocasepkg": "radiogx",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/RadioGx",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:09:58.000Z",
+      "distro": "noble",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "94c89e981cd422772be5b83fad99b39104c03756bdd352136d5192ecadb1b0c9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:10:26.000Z",
+      "distro": "noble",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "9891d9751f91148f16d419cf65f232220101bf67b721d51c00dd18f4f492df9f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:08:13.000Z",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "09ab3e21cfe190ab3206ed389e704dbc0eca3827c746feb5bef2838949bae33d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:08:20.000Z",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "20d3f7f19c4e2f34189c4cdb636eb4dd490ad7f6daeb89362393f056a4acc2d8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:09:38.000Z",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "d15e34cb66140255a1cd31ff2311276b4b4331e0c451089eb31369357176cf74",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:08:12.000Z",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "990720b6f6f01391aceede478f835999c07445c5649aa70a7a5731e7bce71cd3",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:09:00.000Z",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "da65d4c001141bdfdabe3281442b4388eb65d1f7028bdcc472b0f08616b7abf4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.14.0",
+      "date": "2026-03-01T08:08:08.000Z",
+      "commit": "060523930469e89864d47c3af5f2e52fc8e63b5f",
+      "fileid": "d0c995e369279714c8584b3dbe4a3be56e19f553bdb80a706ac0c043f0dd4b98",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22539067996"
+    }
+  ]
+}

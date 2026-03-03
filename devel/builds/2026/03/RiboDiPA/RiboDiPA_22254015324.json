@@ -1,0 +1,875 @@
+{
+  "Package": "RiboDiPA",
+  "Type": "Package",
+  "Title": "Differential pattern analysis for Ribo-seq data",
+  "Date": "2024-03-19",
+  "Version": "1.19.0",
+  "Authors@R": "c(person(given = \"Keren\",\nfamily = \"Li\",\nrole = c(\"aut\"),\nemail = \"keren.li@northwestern.edu\"),\nperson(given = \"Matt\",\nfamily = \"Hope\",\nrole = \"aut\"),\nperson(given = \"Xiaozhong\",\nfamily = \"Wang\",\nrole = \"aut\"),\nperson(given = \"Ji-Ping\",\nfamily = \"Wang\",\nrole = c(\"aut\",\"cre\"),\nemail = \"jzwang@northwestern.edu\"))",
+  "Description": "This package performs differential pattern analysis for\nRibo-seq data. It identifies genes with significantly different\npatterns in the ribosome footprint between two conditions.\nRiboDiPA contains five major components including bam file\nprocessing, P-site mapping, data binning, differential pattern\nanalysis and footprint visualization.",
+  "License": "LGPL (>= 3)",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "NeedsCompilation": "yes",
+  "RoxygenNote": "6.1.1",
+  "VignetteBuilder": "knitr",
+  "biocViews": "RiboSeq, GeneExpression, GeneRegulation,\nDifferentialExpression, Sequencing, Coverage, Alignment,\nRNASeq, ImmunoOncology, QualityControl, DataImport, Software,\nNormalization",
+  "git_url": "https://git.bioconductor.org/packages/RiboDiPA",
+  "git_branch": "master",
+  "git_last_commit": "7a819c5",
+  "git_last_commit_date": "2021-05-19",
+  "Packaged": {
+    "Date": "2026-02-21 09:08:02 UTC",
+    "User": "root"
+  },
+  "Author": "Keren Li [aut], Matt Hope [aut], Xiaozhong Wang [aut], Ji-Ping\nWang [aut, cre]",
+  "Maintainer": "Ji-Ping Wang <jzwang@northwestern.edu>",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:05:49 UTC",
+  "RemoteUrl": "https://github.com/bioc/RiboDiPA",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+  "MD5sum": "05231193c8daed99e682b75369ea87f9",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "RiboDiPA_1.19.0.tar.gz",
+  "_fileid": "089de5f6c4d5b292f24c627740043e0b49306eb8d1fe7f93a316764b431c5102",
+  "_filesize": 1844819,
+  "_sha256": "089de5f6c4d5b292f24c627740043e0b49306eb8d1fe7f93a316764b431c5102",
+  "_created": "2026-02-21T09:08:02.000Z",
+  "_published": "2026-02-21T09:29:31.822Z",
+  "_jobs": [
+    {
+      "job": 64382546837,
+      "time": 230,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5600594130"
+    },
+    {
+      "job": 64382546847,
+      "time": 671,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600623670"
+    },
+    {
+      "job": 64382546854,
+      "time": 770,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600629708"
+    },
+    {
+      "job": 64382546850,
+      "time": 666,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600623342"
+    },
+    {
+      "job": 64382546852,
+      "time": 766,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600629404"
+    },
+    {
+      "job": 64382546890,
+      "time": 405,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600631374"
+    },
+    {
+      "job": 64382546844,
+      "time": 838,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600654712"
+    },
+    {
+      "job": 64382546859,
+      "time": 370,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600628036"
+    },
+    {
+      "job": 64382546851,
+      "time": 840,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600655392"
+    },
+    {
+      "job": 64382251086,
+      "time": 507,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600577920"
+    },
+    {
+      "job": 64382546856,
+      "time": 204,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600592257"
+    },
+    {
+      "job": 64382546840,
+      "time": 751,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600628599"
+    },
+    {
+      "job": 64382546839,
+      "time": 762,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5600629263"
+    },
+    {
+      "job": 64382546849,
+      "time": 658,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600622637"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 0,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/RiboDiPA",
+  "_commit": {
+    "id": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750349
+  },
+  "_maintainer": {
+    "name": "Ji-Ping Wang",
+    "email": "jzwang@northwestern.edu",
+    "login": "jipingw",
+    "uuid": 45120092
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 1.0.2",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "elitism",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "reldist",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "qvalue",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-21",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.19.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.18.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "riboseq",
+    "geneexpression",
+    "generegulation",
+    "differentialexpression",
+    "sequencing",
+    "coverage",
+    "alignment",
+    "rnaseq",
+    "immunooncology",
+    "qualitycontrol",
+    "dataimport",
+    "software",
+    "normalization",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 318,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/RiboDiPA"
+  },
+  "_searchresults": 1,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/RiboDiPA.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/jipingw/ribodipa",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "binTrack",
+    "bpTrack",
+    "dataBinning",
+    "diffPatternTest",
+    "diffPatternTestExon",
+    "exonTrack",
+    "normFactor",
+    "plotTest",
+    "plotTrack",
+    "psiteCal",
+    "psiteMapping",
+    "RiboDiPA"
+  ],
+  "_datasets": [
+    {
+      "name": "data.binned",
+      "title": "An example of binned P-sites data",
+      "object": "data.binned",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "data.psite",
+      "title": "An example of P-site coverage data",
+      "object": "data.psite",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "result.exon",
+      "title": "An example of exon-level differential pattern analysis result",
+      "object": "result.exon",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "result.pst",
+      "title": "An example of differential pattern analysis result",
+      "object": "result.pst",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "binTrack",
+      "title": "Visualization: generating tracks for 'igvR' (per bin)",
+      "topics": [
+        "binTrack"
+      ]
+    },
+    {
+      "page": "bpTrack",
+      "title": "Visualization: generating tracks for 'igvR' (per bp)",
+      "topics": [
+        "bpTrack"
+      ]
+    },
+    {
+      "page": "data.binned",
+      "title": "An example of binned P-sites data",
+      "topics": [
+        "data.binned"
+      ]
+    },
+    {
+      "page": "data.psite",
+      "title": "An example of P-site coverage data",
+      "topics": [
+        "data.psite"
+      ]
+    },
+    {
+      "page": "DataBinning",
+      "title": "Data binning",
+      "topics": [
+        "dataBinning"
+      ]
+    },
+    {
+      "page": "diffPatternTest",
+      "title": "Differential pattern analysis of Ribo-seq data",
+      "topics": [
+        "diffPatternTest"
+      ]
+    },
+    {
+      "page": "diffPatternTestExon",
+      "title": "Main function for differential pattern analysis of exon-binned Ribo-seq data",
+      "topics": [
+        "diffPatternTestExon"
+      ]
+    },
+    {
+      "page": "exonTrack",
+      "title": "Visualization: generating tracks for 'igvR' (per exon)",
+      "topics": [
+        "exonTrack"
+      ]
+    },
+    {
+      "page": "normFactor",
+      "title": "Size factors for normalization by sequencing depth",
+      "topics": [
+        "normFactor"
+      ]
+    },
+    {
+      "page": "plotTest",
+      "title": "Plotting ribosome footprint data from mapped P-sites at the bin level.",
+      "topics": [
+        "plotTest"
+      ]
+    },
+    {
+      "page": "plotTrack",
+      "title": "Plotting ribosome footprint data at the mapped P-site level",
+      "topics": [
+        "plotTrack"
+      ]
+    },
+    {
+      "page": "psitecal",
+      "title": "P-site position of reads",
+      "topics": [
+        "psiteCal"
+      ]
+    },
+    {
+      "page": "PsiteMapping",
+      "title": "P-site mapping",
+      "topics": [
+        "psiteMapping"
+      ]
+    },
+    {
+      "page": "result.exon",
+      "title": "An example of exon-level differential pattern analysis result",
+      "topics": [
+        "result.exon"
+      ]
+    },
+    {
+      "page": "result.pst",
+      "title": "An example of differential pattern analysis result",
+      "topics": [
+        "result.pst"
+      ]
+    },
+    {
+      "page": "RiboDiPA",
+      "title": "A wrapper function for the RiboDiPA pipeline",
+      "topics": [
+        "RiboDiPA"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/RiboDiPA/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "backports",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "callr",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "densEstBayes",
+    "desc",
+    "DESeq2",
+    "distributional",
+    "doParallel",
+    "dplyr",
+    "elitism",
+    "farver",
+    "fastmap",
+    "filelock",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "hms",
+    "httr",
+    "httr2",
+    "inline",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "locfit",
+    "loo",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mime",
+    "nlme",
+    "numDeriv",
+    "openssl",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "posterior",
+    "prettyunits",
+    "processx",
+    "progress",
+    "ps",
+    "purrr",
+    "QuickJSR",
+    "qvalue",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppParallel",
+    "RCurl",
+    "reldist",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rstan",
+    "rstantools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "StanHeaders",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tensorA",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "txdbmaker",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "RiboDiPA.Rmd",
+      "filename": "RiboDiPA.html",
+      "title": "RiboDiPA R package",
+      "author": "Keren Li, Matthew Hope, Xiaozhong A. Wang, Ji-Ping Wang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Maintainer: Ji-Ping Wang, <jzwang@northwestern.edu>",
+        "What is RiboDiPA?",
+        "RiboDiPA pipeline",
+        "Installation",
+        "Input files",
+        "RiboDiPA main features",
+        "The RiboDiPA pipeline",
+        "0. Ribo-DiPA Wrapper Function",
+        "1. P-site mapping",
+        "2. Data binning",
+        "3. Differential pattern analysis",
+        "4. Plotting and genome visualization",
+        "Individual gene plotting",
+        "Track plotting via genome browser",
+        "Conclusion",
+        "Session info"
+      ],
+      "created": "2020-04-20 23:52:21",
+      "modified": "2021-12-29 20:08:47",
+      "commits": 12
+    }
+  ],
+  "_score": 4.176091259055681,
+  "_indexed": true,
+  "_nocasepkg": "ribodipa",
+  "_universes": [
+    "bioc",
+    "jipingw"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:11:30.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "e2809c7b83c774a26f3486c8d39f4abccdc6d5c3daee5699fa69b6db6a7d8a63",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:12:03.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "947193f1fb41b1c0ab9313c6132778408241c732e56a0bec2292d63a2480ca17",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:11:35.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "0b10518a25856c79b0fbdaefb59aadb99f26df706ab614aba2baa3a8e46d4cf9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:12:26.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "dcf3aeeeb6947c88eff4e388056b3c3cabb108997c0697892b99846c703f3560",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:16:51.000Z",
+      "arch": "aarch64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "6ab0619749fcc7cc899d55f889c3ff0cea989efd8c9e59b923a221cb7a96a50f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:17:45.000Z",
+      "arch": "x86_64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "565cba379bca0618fcbe9c7ee1554031e39ca3b3d04854b818524649cbc453df",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:16:19.000Z",
+      "arch": "aarch64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "06af1080bbc724a0e75e0e8a6ba7594524575ad75e3cb1da9e0df60fc5db59f8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:17:37.000Z",
+      "arch": "x86_64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "05adeb83bed4b08fc0acdb1d4108a4336a46db39b17fda351853f599a109f390",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:12:07.000Z",
+      "arch": "emscripten",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "00c14e801abe0ecf91ac0169681d9dceb4208dee4f49aa7816d6ceb677a8acff",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:10:28.000Z",
+      "arch": "x86_64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "3a138144511656abfbccf4a4d9c43a1b76632e77c33e7afbbff5a0bb272d7c4c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:10:36.000Z",
+      "arch": "x86_64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "427499c048e7925aaf903b5bdf64f354647051740f917f06de20ce70f1a2ba24",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-21T09:10:29.000Z",
+      "arch": "x86_64",
+      "commit": "2487cc41ec8f7aaec93fb7f5c56eb48034ebad8d",
+      "fileid": "21fb8c16a59f7e4a5a15531a5bb7d15dd6b3d72abebc6ea48de9e7f27e27abf3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22254015324"
+    }
+  ]
+}

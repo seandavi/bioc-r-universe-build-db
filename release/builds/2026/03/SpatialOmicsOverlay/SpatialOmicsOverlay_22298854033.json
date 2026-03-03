@@ -1,0 +1,967 @@
+{
+  "Package": "SpatialOmicsOverlay",
+  "Title": "Spatial Overlay for Omic Data from Nanostring GeoMx Data",
+  "Description": "Tools for NanoString Technologies GeoMx Technology.\nPackage to easily graph on top of an OME-TIFF image. Plotting\nannotations can range from tissue segment to gene expression.",
+  "Version": "1.10.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(person(\"Maddy\", \"Griswold\", email = \"mgriswold@nanostring.com\", role = c(\"cre\",\"aut\")),\nperson(\"Megan\", \"Vandenberg\", email = \"mvandenberg@nanostring.com\", role = c(\"ctb\")),\nperson(\"Stephanie\", \"Zimmerman\", role = c(\"ctb\")))",
+  "License": "MIT",
+  "Collate": "addImage.R addPlottingFactor.R coordinateGeneration.R\nimageManipulation.R omeExtraction.R plottingBasics.R\nreadSpatialOverlay.R removeSamples.R SpatialPosition-class.R\nSpatialOverlay-class.R utils.R xmlParsing.R",
+  "biocViews": "GeneExpression, Transcription, CellBasedAssays, DataImport,\nTranscriptomics, Proteomics, ProprietaryPlatforms, RNASeq,\nSpatial, DataRepresentation, Visualization",
+  "VignetteEngine": "knitr::rmarkdown",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.1",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfftw3-dev libfontconfig1-dev\nlibfreetype6-dev make libmagick++-dev gsfonts default-jdk\nlibicu-dev libjpeg-dev libpng-dev libtiff-dev libxml2-dev\nlibssl-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:22:27 UTC",
+  "RemoteUrl": "https://github.com/bioc/SpatialOmicsOverlay",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "edcd7be383e59f442127db1fa365d26978397028",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-23 09:03:11 UTC",
+    "User": "root"
+  },
+  "Author": "Maddy Griswold [cre, aut],\nMegan Vandenberg [ctb],\nStephanie Zimmerman [ctb]",
+  "Maintainer": "Maddy Griswold <mgriswold@nanostring.com>",
+  "MD5sum": "5e4265e0b23248ab565c306a8d7f4ce1",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "SpatialOmicsOverlay_1.10.0.tar.gz",
+  "_fileid": "9269ff6dbbf46d01b9f721134070fe84ccb665d393536bc3e5b3af7f67a55f25",
+  "_filesize": 4458852,
+  "_sha256": "9269ff6dbbf46d01b9f721134070fe84ccb665d393536bc3e5b3af7f67a55f25",
+  "_created": "2026-02-23T09:03:11.000Z",
+  "_published": "2026-02-23T09:25:46.238Z",
+  "_jobs": [
+    {
+      "job": 64503099634,
+      "time": 237,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613925206"
+    },
+    {
+      "job": 64503099627,
+      "time": 1276,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614147997"
+    },
+    {
+      "job": 64503099649,
+      "time": 946,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614074643"
+    },
+    {
+      "job": 64503099653,
+      "time": 786,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614148806"
+    },
+    {
+      "job": 64503099645,
+      "time": 796,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614151680"
+    },
+    {
+      "job": 64501530421,
+      "time": 954,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613878183"
+    },
+    {
+      "job": 64503099621,
+      "time": 210,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5613919926"
+    },
+    {
+      "job": 64503099650,
+      "time": 1128,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614115012"
+    },
+    {
+      "job": 64503099797,
+      "time": 1141,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5614117387"
+    },
+    {
+      "job": 64503099676,
+      "time": 975,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614080920"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/SpatialOmicsOverlay",
+  "_commit": {
+    "id": "edcd7be383e59f442127db1fa365d26978397028",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751347
+  },
+  "_maintainer": {
+    "name": "Maddy Griswold",
+    "email": "mgriswold@nanostring.com",
+    "login": "maddygriz",
+    "uuid": 40255151
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "base64enc",
+      "role": "Imports"
+    },
+    {
+      "package": "EBImage",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "XML",
+      "role": "Imports"
+    },
+    {
+      "package": "scattermore",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "pbapply",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "readxl",
+      "role": "Imports"
+    },
+    {
+      "package": "magick",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "plotrix",
+      "role": "Imports"
+    },
+    {
+      "package": "GeomxTools",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "ggtext",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "RBioFormats",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "stringi",
+      "role": "Suggests"
+    },
+    {
+      "package": "qpdf",
+      "role": "Suggests"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Suggests"
+    },
+    {
+      "package": "viridis",
+      "role": "Suggests"
+    },
+    {
+      "package": "cowplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "vdiffr",
+      "role": "Suggests"
+    },
+    {
+      "package": "sf",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-20",
+      "n": 1
+    },
+    {
+      "week": "2025-21",
+      "n": 1
+    },
+    {
+      "week": "2025-28",
+      "n": 1
+    },
+    {
+      "week": "2025-39",
+      "n": 1
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.11.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.10.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "geneexpression",
+    "transcription",
+    "cellbasedassays",
+    "dataimport",
+    "transcriptomics",
+    "proteomics",
+    "proprietaryplatforms",
+    "rnaseq",
+    "spatial",
+    "datarepresentation",
+    "visualization",
+    "openjdk"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 250,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/SpatialOmicsOverlay"
+  },
+  "_searchresults": 15,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/SpatialOmicsOverlay.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "add4ChannelImage",
+    "addImageFile",
+    "addImageOmeTiff",
+    "addPlottingFactor",
+    "bookendStr",
+    "changeColoringIntensity",
+    "changeImageColoring",
+    "checkValidRes",
+    "coords",
+    "createCoordFile",
+    "createMask",
+    "cropSamples",
+    "cropTissue",
+    "downloadMouseBrainImage",
+    "flipX",
+    "flipY",
+    "fluor",
+    "fluorLegend",
+    "imageInfo",
+    "labWork",
+    "meta",
+    "moveCoords",
+    "outline",
+    "overlay",
+    "parseOverlayAttrs",
+    "parseScanMetadata",
+    "plotFactors",
+    "plotSpatialOverlay",
+    "position",
+    "readLabWorksheet",
+    "readSpatialOverlay",
+    "recolor",
+    "removeSample",
+    "res",
+    "sampNames",
+    "scaleBarRatio",
+    "scaled",
+    "scanMeta",
+    "seg",
+    "show",
+    "showImage",
+    "slideName",
+    "SpatialOverlay",
+    "spatialPos",
+    "SpatialPosition",
+    "workflow",
+    "xmlExtraction"
+  ],
+  "_help": [
+    {
+      "page": "add4ChannelImage",
+      "title": "Add 4-channel image to SpatialOverlay from OME-TIFF. Allows for recoloring of image",
+      "topics": [
+        "add4ChannelImage"
+      ]
+    },
+    {
+      "page": "addImageFile",
+      "title": "Add image to SpatialOverlay from disk",
+      "topics": [
+        "addImageFile"
+      ]
+    },
+    {
+      "page": "addImageOmeTiff",
+      "title": "Add image to SpatialOverlay from OME-TIFF",
+      "topics": [
+        "addImageOmeTiff"
+      ]
+    },
+    {
+      "page": "addPlottingFactor",
+      "title": "Add plotting factor to 'SpatialOverlay' object",
+      "topics": [
+        "addPlottingFactor",
+        "addPlottingFactor,character-method",
+        "addPlottingFactor,data.frame-method",
+        "addPlottingFactor,factor-method",
+        "addPlottingFactor,matrix-method",
+        "addPlottingFactor,NanoStringGeoMxSet-method",
+        "addPlottingFactor,numeric-method",
+        "addPlottingFactor,tbl-method",
+        "addPlottingFactor,tbl_df-method"
+      ]
+    },
+    {
+      "page": "annotMatching",
+      "title": "Match ROIs in annotation file to xml",
+      "topics": [
+        "annotMatching"
+      ]
+    },
+    {
+      "page": "bookendStr",
+      "title": "Print long string in more managable fashion",
+      "topics": [
+        "bookendStr"
+      ]
+    },
+    {
+      "page": "changeColoringIntensity",
+      "title": "Update color intensities for changing to RGB image",
+      "topics": [
+        "changeColoringIntensity"
+      ]
+    },
+    {
+      "page": "changeImageColoring",
+      "title": "Update color scheme for changing to RGB image",
+      "topics": [
+        "changeImageColoring"
+      ]
+    },
+    {
+      "page": "checkValidRes",
+      "title": "Determine lowest resolution image in OME-TIFF",
+      "topics": [
+        "checkValidRes"
+      ]
+    },
+    {
+      "page": "createCoordFile",
+      "title": "Create coordinate file for entire scan",
+      "topics": [
+        "createCoordFile"
+      ]
+    },
+    {
+      "page": "createMask",
+      "title": "Create a binary mask from a base 64 string",
+      "topics": [
+        "createMask"
+      ]
+    },
+    {
+      "page": "cropSamples",
+      "title": "Crop to zoom in on given ROIs",
+      "topics": [
+        "cropSamples"
+      ]
+    },
+    {
+      "page": "cropTissue",
+      "title": "Crop to remove black boundary around tissue.",
+      "topics": [
+        "cropTissue"
+      ]
+    },
+    {
+      "page": "downloadMouseBrainImage",
+      "title": "Download Mouse Brain OME-TIFF from NanoString's Spatial Organ Atlas",
+      "topics": [
+        "downloadMouseBrainImage"
+      ]
+    },
+    {
+      "page": "flipX",
+      "title": "Flip x axis in image and overlay points",
+      "topics": [
+        "flipX"
+      ]
+    },
+    {
+      "page": "flipY",
+      "title": "Flip y axis in image and overlay points",
+      "topics": [
+        "flipY"
+      ]
+    },
+    {
+      "page": "fluorLegend",
+      "title": "Add legend of fluorescence targets that make up image",
+      "topics": [
+        "fluorLegend"
+      ]
+    },
+    {
+      "page": "moveCoords",
+      "title": "Move coordinates if they don't match image",
+      "topics": [
+        "moveCoords"
+      ]
+    },
+    {
+      "page": "parseOverlayAttrs",
+      "title": "Parse the xml file for AOI attributes in GeoMx images",
+      "topics": [
+        "parseOverlayAttrs"
+      ]
+    },
+    {
+      "page": "parseScanMetadata",
+      "title": "Parse the xml file for the scan metadata of GeoMx images",
+      "topics": [
+        "parseScanMetadata"
+      ]
+    },
+    {
+      "page": "plotSpatialOverlay",
+      "title": "overlay plots",
+      "topics": [
+        "plotSpatialOverlay"
+      ]
+    },
+    {
+      "page": "readLabWorksheet",
+      "title": "Read lab worksheet into dataframe of annotations",
+      "topics": [
+        "readLabWorksheet"
+      ]
+    },
+    {
+      "page": "readSpatialOverlay",
+      "title": "Read in 'SpatialOverlay' from tiff file and annotations",
+      "topics": [
+        "readSpatialOverlay"
+      ]
+    },
+    {
+      "page": "recolor",
+      "title": "recolor images after changing colors and/or color intensities",
+      "topics": [
+        "recolor"
+      ]
+    },
+    {
+      "page": "removeSample",
+      "title": "Remove sample(s) from SpatialOverlay",
+      "topics": [
+        "removeSample"
+      ]
+    },
+    {
+      "page": "SpatialOverlay-class",
+      "title": "Class to Contain NanoString Spatial Overlay Images and Data",
+      "topics": [
+        "class:SpatialOverlay",
+        "coords",
+        "coords,SpatialOverlay-method",
+        "fluor",
+        "fluor,SpatialOverlay-method",
+        "imageInfo",
+        "imageInfo,SpatialOverlay-method",
+        "labWork",
+        "labWork,SpatialOverlay-method",
+        "outline",
+        "outline,SpatialOverlay-method",
+        "overlay",
+        "overlay,SpatialOverlay-method",
+        "plotFactors",
+        "plotFactors,SpatialOverlay-method",
+        "res",
+        "res,SpatialOverlay-method",
+        "sampNames",
+        "sampNames,SpatialOverlay-method",
+        "scaleBarRatio",
+        "scaleBarRatio,SpatialOverlay-method",
+        "scaled",
+        "scaled,SpatialOverlay-method",
+        "scanMeta",
+        "scanMeta,SpatialOverlay-method",
+        "seg",
+        "seg,SpatialOverlay-method",
+        "show,SpatialOverlay-method",
+        "showImage",
+        "showImage,SpatialOverlay-method",
+        "slideName",
+        "slideName,SpatialOverlay-method",
+        "SpatialOverlay",
+        "SpatialOverlay,character-method",
+        "SpatialOverlay-class",
+        "workflow",
+        "workflow,SpatialOverlay-method"
+      ]
+    },
+    {
+      "page": "SpatialPosition-class",
+      "title": "Class to Contain NanoString Spatial Overlay ROI information",
+      "topics": [
+        "class:SpatialPosition",
+        "meta",
+        "meta,SpatialPosition-method",
+        "position",
+        "position,SpatialPosition-method",
+        "show,SpatialPosition-method",
+        "spatialPos",
+        "spatialPos,SpatialPosition-method",
+        "SpatialPosition",
+        "SpatialPosition,data.frame-method",
+        "SpatialPosition,environment-method",
+        "SpatialPosition,matrix-method",
+        "SpatialPosition,missing-method",
+        "SpatialPosition-class"
+      ]
+    },
+    {
+      "page": "xmlExtraction",
+      "title": "Extract xml from OME-TIFF",
+      "topics": [
+        "xmlExtraction"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/SpatialOmicsOverlay/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "beeswarm",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "bslib",
+    "cachem",
+    "cellranger",
+    "cli",
+    "codetools",
+    "commonmark",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "digest",
+    "dotCall64",
+    "dplyr",
+    "EBImage",
+    "EnvStats",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fftwtools",
+    "filelock",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "forcats",
+    "fs",
+    "future",
+    "future.apply",
+    "gdtools",
+    "generics",
+    "GeomxTools",
+    "GGally",
+    "ggbeeswarm",
+    "ggiraph",
+    "ggplot2",
+    "ggstats",
+    "ggtext",
+    "ggthemes",
+    "globals",
+    "glue",
+    "gridtext",
+    "gtable",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "listenv",
+    "litedown",
+    "lme4",
+    "lmerTest",
+    "locfit",
+    "magick",
+    "magrittr",
+    "markdown",
+    "MASS",
+    "Matrix",
+    "memoise",
+    "mime",
+    "minqa",
+    "NanoStringNCTools",
+    "nlme",
+    "nloptr",
+    "nortest",
+    "numDeriv",
+    "openssl",
+    "parallelly",
+    "patchwork",
+    "pbapply",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plotrix",
+    "plyr",
+    "png",
+    "prettyunits",
+    "progress",
+    "progressr",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RBioFormats",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RCurl",
+    "Rdpack",
+    "readxl",
+    "reformulas",
+    "rematch",
+    "reshape2",
+    "rJava",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scattermore",
+    "Seqinfo",
+    "SeuratObject",
+    "sp",
+    "spam",
+    "stringi",
+    "stringr",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tiff",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "vipor",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libjvm",
+      "package": "openjdk-21-jre-headless",
+      "headers": "openjdk-21-jre-headless",
+      "source": "openjdk",
+      "version": "21.0.10+7-1~24.04",
+      "name": "openjdk",
+      "homepage": "https://openjdk.java.net/",
+      "description": "OpenJDK Java runtime, using Hotspot JIT (headless)"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "SpatialOmicsOverlay.Rmd",
+      "filename": "SpatialOmicsOverlay.html",
+      "title": "Introduction to SpatialOmicsOverlay",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Load Libraries",
+        "Download OME-TIFF from GeoMx",
+        "Data Ingestion",
+        "SpatialOverlay Accessors",
+        "Plotting Without Image",
+        "Customizing the graph",
+        "Adding the Image",
+        "Visualization Marker Legends",
+        "Image Manipulation",
+        "Flipping Axes",
+        "Cropping",
+        "Image Coloring",
+        "Troubleshooting",
+        "java.lang.OutOfMemoryError: Java heap space",
+        "java.lang.NegativeArraySizeException",
+        "cache resources exhausted",
+        "Future Directions"
+      ],
+      "created": "2022-03-31 22:59:18",
+      "modified": "2025-05-12 15:18:54",
+      "commits": 21
+    }
+  ],
+  "_score": 4.653212513775344,
+  "_indexed": false,
+  "_nocasepkg": "spatialomicsoverlay",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/SpatialOmicsOverlay",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:07:16.000Z",
+      "distro": "noble",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "45b7c7cf65d4a8770db815d86c8f0373ccf53ce1e41a82a5a6af45022a778d16",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:07:22.000Z",
+      "distro": "noble",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "8025451cbc2cc2d4e47d67b637a66dfd7c986a4ac8b8c7042e694f1ea36ee1fb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:13:29.000Z",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "3b75f51d3de76eb43b8d4c052e7ab37064f5ece5229461fcae8096b7b07f7142",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:13:28.000Z",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "3172f585844756bc734dfffb5abec1320307b2ac457abd12143ed2c8337271d6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:06:58.000Z",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "cb348bc0185e7fb3a04a2e66e01adb35b23b75a3d81e5eeda334bfdcf1ec13b9",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:05:08.000Z",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "5bdcc9b68bb251cb4c627e67c50322eaa6355042d640202943ec4a9e75526e8c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:05:10.000Z",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "04b9686324466a3afbbac49084b1695d7ed1e01dcd85a8a66b3a54d7421b0ba4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.10.0",
+      "date": "2026-02-23T09:05:01.000Z",
+      "commit": "edcd7be383e59f442127db1fa365d26978397028",
+      "fileid": "fbb8c76370d6bdfcd6f61360bfd1029112f84251c134b94c96c83c5c18634ff1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298854033"
+    }
+  ]
+}

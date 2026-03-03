@@ -1,0 +1,795 @@
+{
+  "Package": "VDJdive",
+  "Title": "Analysis Tools for 10X V(D)J Data",
+  "Version": "1.13.0",
+  "Authors@R": "c(\nperson(\"Kelly\", \"Street\", role = c(\"aut\", \"cre\"), email = \"street.kelly@gmail.com\", comment = c(ORCID = \"0000-0001-6379-5013\")),\nperson(\"Mercedeh\", \"Movassagh\", role = \"aut\", email = \"mercedeh@ds.dfci.harvard.edu\", comment = c(ORCID = \"0000-0001-7690-0230\")),\nperson(\"Jill\", \"Lundell\", role = \"aut\", email = \"jflundell@gmail.com\", comment = c(ORCID = \"0000-0002-6048-4700\")),\nperson(\"Jared\", \"Brown\", role = \"ctb\"),\nperson(\"Linglin\", \"Huang\", role = \"ctb\"),\nperson(\"Mingzhi\", \"Ye\", role = \"ctb\"))",
+  "Description": "This package provides functions for handling and analyzing\nimmune receptor repertoire data, such as produced by the\nCellRanger V(D)J pipeline. This includes reading the data into\nR, merging it with paired single-cell data, quantifying\nclonotype abundances, calculating diversity metrics, and\nproducing common plots. It implements the E-M Algorithm for\nclonotype assignment, along with other methods, which makes use\nof ambiguous cells for improved quantification.",
+  "License": "Artistic-2.0",
+  "URL": "https://github.com/kstreet13/VDJdive",
+  "BugReports": "https://github.com/kstreet13/VDJdive/issues",
+  "biocViews": "Software, ImmunoOncology, SingleCell, Annotation, RNASeq,\nTargetedResequencing",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.2.3",
+  "StagedInstall": "no",
+  "VignetteBuilder": "knitr",
+  "Collate": "'RcppExports.R' 'clonoStats_class.R' 'abundanceVDJ.R'\n'barVDJ.R' 'boxVDJ.R' 'calculateDiversity.R'\n'clonoStats_helpers.R' 'clonoStats.R' 'contigs.R' 'pieVDJ.R'\n'runBreakaway.R' 'runVDJPCA.R' 'scatterVDJ.R' 'setup.R'\n'utils.R'",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:18:28 UTC",
+  "RemoteUrl": "https://github.com/bioc/VDJdive",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-21 07:07:47 UTC",
+    "User": "root"
+  },
+  "Author": "Kelly Street [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-6379-5013>),\nMercedeh Movassagh [aut] (ORCID:\n<https://orcid.org/0000-0001-7690-0230>),\nJill Lundell [aut] (ORCID: <https://orcid.org/0000-0002-6048-4700>),\nJared Brown [ctb],\nLinglin Huang [ctb],\nMingzhi Ye [ctb]",
+  "Maintainer": "Kelly Street <street.kelly@gmail.com>",
+  "MD5sum": "3a78cda704353b41c1338910e986523f",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "VDJdive_1.13.0.tar.gz",
+  "_fileid": "8fd2a7da284d084199e26cec602b5b264e6288c33845b0f1434b2bdd13ec3f09",
+  "_filesize": 485759,
+  "_sha256": "8fd2a7da284d084199e26cec602b5b264e6288c33845b0f1434b2bdd13ec3f09",
+  "_created": "2026-02-21T07:07:47.000Z",
+  "_published": "2026-02-21T07:18:02.592Z",
+  "_jobs": [
+    {
+      "job": 64378462945,
+      "time": 196,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600150366"
+    },
+    {
+      "job": 64378462962,
+      "time": 279,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600155491"
+    },
+    {
+      "job": 64378462963,
+      "time": 363,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600160547"
+    },
+    {
+      "job": 64378462959,
+      "time": 297,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600156623"
+    },
+    {
+      "job": 64378462961,
+      "time": 377,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600161322"
+    },
+    {
+      "job": 64378462944,
+      "time": 236,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600157230"
+    },
+    {
+      "job": 64378462943,
+      "time": 392,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600166405"
+    },
+    {
+      "job": 64378462952,
+      "time": 156,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600152940"
+    },
+    {
+      "job": 64378462946,
+      "time": 481,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600174686"
+    },
+    {
+      "job": 64378317660,
+      "time": 269,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600139619"
+    },
+    {
+      "job": 64378462941,
+      "time": 176,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600149068"
+    },
+    {
+      "job": 64378462954,
+      "time": 275,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600155056"
+    },
+    {
+      "job": 64378462947,
+      "time": 274,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5600154961"
+    },
+    {
+      "job": 64378462948,
+      "time": 252,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600153641"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/VDJdive",
+  "_commit": {
+    "id": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751108
+  },
+  "_maintainer": {
+    "name": "Kelly Street",
+    "email": "street.kelly@gmail.com",
+    "login": "kstreet13",
+    "uuid": 11052277,
+    "orcid": "0000-0001-6379-5013"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.2",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "cowplot",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "breakaway",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.12.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "immunooncology",
+    "singlecell",
+    "annotation",
+    "rnaseq",
+    "targetedresequencing",
+    "cpp"
+  ],
+  "_stars": 9,
+  "_contributors": [
+    {
+      "user": "kstreet13",
+      "count": 92,
+      "uuid": 11052277
+    },
+    {
+      "user": "mercedeh66",
+      "count": 14,
+      "uuid": 22622865
+    },
+    {
+      "user": "jillbo1000",
+      "count": 7,
+      "uuid": 7329383
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 256,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/VDJdive"
+  },
+  "_devurl": "https://github.com/kstreet13/vdjdive",
+  "_searchresults": 1,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/VDJdive.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/kstreet13/vdjdive",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "abundanceVDJ",
+    "addVDJtoSCE",
+    "barVDJ",
+    "boxVDJ",
+    "calculateDiversity",
+    "clonoAbundance",
+    "clonoAssignment",
+    "clonoFrequency",
+    "clonoGroup",
+    "clonoNames",
+    "clonoStats",
+    "pieVDJ",
+    "readVDJcontigs",
+    "runBreakaway",
+    "runVDJPCA",
+    "scatterVDJ",
+    "show",
+    "splitClonotypes",
+    "summarizeClonotypes",
+    "writeVDJcontigs"
+  ],
+  "_datasets": [
+    {
+      "name": "contigs",
+      "title": "SplitDataFrameList containing AIRR-seq (TCR) data for six cells",
+      "object": "contigs",
+      "file": "contigs.rda",
+      "class": [
+        "CompressedSplitDFrameList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "abundanceVDJ",
+      "title": "Create an abundance graph for clonotype expansion",
+      "topics": [
+        "abundanceVDJ",
+        "abundanceVDJ,clonoStats-method"
+      ]
+    },
+    {
+      "page": "addVDJtoSCE",
+      "title": "Add 10X CellRanger V(D)J data to SingleCellExperiment",
+      "topics": [
+        "addVDJtoSCE",
+        "addVDJtoSCE,character,SingleCellExperiment-method",
+        "addVDJtoSCE,SplitDataFrameList,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "barVDJ",
+      "title": "Create a bar graph for clonotype expansion",
+      "topics": [
+        "barVDJ",
+        "barVDJ,clonoStats-method",
+        "barVDJ,Matrix-method",
+        "barVDJ,matrix-method"
+      ]
+    },
+    {
+      "page": "boxVDJ",
+      "title": "Create a box plot for diversity measures",
+      "topics": [
+        "boxVDJ",
+        "boxVDJ,matrix-method"
+      ]
+    },
+    {
+      "page": "calculateDiversity",
+      "title": "Sample diversity estimation",
+      "topics": [
+        "calculateDiversity",
+        "calculateDiversity,clonoStats-method",
+        "calculateDiversity,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "clonoStats",
+      "title": "Assign cell-level clonotypes and calculate abundances",
+      "topics": [
+        "clonoStats",
+        "clonoStats,clonoStats-method",
+        "clonoStats,SingleCellExperiment-method",
+        "clonoStats,SplitDataFrameList-method"
+      ]
+    },
+    {
+      "page": "clonoStats-class",
+      "title": "'clonoStats' object class",
+      "topics": [
+        "clonoAbundance",
+        "clonoAbundance,clonoStats-method",
+        "clonoAbundance,SingleCellExperiment-method",
+        "clonoAssignment",
+        "clonoAssignment,clonoStats-method",
+        "clonoAssignment,SingleCellExperiment-method",
+        "clonoFrequency",
+        "clonoFrequency,clonoStats-method",
+        "clonoFrequency,SingleCellExperiment-method",
+        "clonoGroup",
+        "clonoGroup,clonoStats-method",
+        "clonoGroup,SingleCellExperiment-method",
+        "clonoNames",
+        "clonoNames,clonoStats-method",
+        "clonoNames,SingleCellExperiment-method",
+        "clonoStats-class",
+        "show,clonoStats-method"
+      ]
+    },
+    {
+      "page": "contigs",
+      "title": "SplitDataFrameList containing AIRR-seq (TCR) data for six cells",
+      "topics": [
+        "contigs"
+      ]
+    },
+    {
+      "page": "pieVDJ",
+      "title": "Create a pie chart for clonotype expansion",
+      "topics": [
+        "pieVDJ",
+        "pieVDJ,clonoStats-method",
+        "pieVDJ,Matrix-method",
+        "pieVDJ,matrix-method"
+      ]
+    },
+    {
+      "page": "readVDJcontigs",
+      "title": "Load 10X CellRanger V(D)J data",
+      "topics": [
+        "readVDJcontigs",
+        "readVDJcontigs,character-method"
+      ]
+    },
+    {
+      "page": "runBreakaway",
+      "title": "Clonotype richness estimation with Breakaway",
+      "topics": [
+        "runBreakaway",
+        "runBreakaway,clonoStats-method"
+      ]
+    },
+    {
+      "page": "runVDJPCA",
+      "title": "Run PCA on clonotype abundance matrix",
+      "topics": [
+        "runVDJPCA",
+        "runVDJPCA,clonoStats-method"
+      ]
+    },
+    {
+      "page": "scatterVDJ",
+      "title": "Create a scatterplot for diversity evenness and abundance",
+      "topics": [
+        "scatterVDJ",
+        "scatterVDJ,matrix-method"
+      ]
+    },
+    {
+      "page": "splitClonotypes",
+      "title": "Split cell-level clonotype counts by sample",
+      "topics": [
+        "splitClonotypes",
+        "splitClonotypes,clonoStats-method",
+        "splitClonotypes,Matrix-method",
+        "splitClonotypes,matrix-method",
+        "splitClonotypes,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "summarizeClonotypes",
+      "title": "Get sample-level clonotype counts",
+      "topics": [
+        "summarizeClonotypes",
+        "summarizeClonotypes,clonoStats-method",
+        "summarizeClonotypes,Matrix-method",
+        "summarizeClonotypes,matrix-method",
+        "summarizeClonotypes,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "writeVDJcontigs",
+      "title": "Write V(D)J contig data in 10X format",
+      "topics": [
+        "writeVDJcontigs",
+        "writeVDJcontigs,character,SplitDataFrameList-method"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/VDJdive/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/VDJdive/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "cli",
+    "codetools",
+    "cowplot",
+    "cpp11",
+    "DelayedArray",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "IRanges",
+    "isoband",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "workflow.Rmd",
+      "filename": "workflow.html",
+      "title": "VDJdive Workflow",
+      "author": "Kelly Street, Mercedeh Movassagh, Jill Lundell",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Read in 10X data",
+        "Merging V(D)J and scRNAseq Data",
+        "Assign Clonotypes and Calculate Summaries",
+        "Diversity",
+        "Cluster Diversity",
+        "Visualization",
+        "Clonotype Abundance Bar Plot",
+        "Clonotype Abundance Pie Chart",
+        "Richness vs. Evenness Scatter Plot",
+        "Clonotype Abundance Dot Plot",
+        "Session Info"
+      ],
+      "created": "2022-02-14 16:57:52",
+      "modified": "2023-05-04 18:50:46",
+      "commits": 13
+    }
+  ],
+  "_score": 5.431363764158988,
+  "_indexed": true,
+  "_nocasepkg": "vdjdive",
+  "_universes": [
+    "bioc",
+    "kstreet13"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:10:47.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "0c421596c6eb10cf26882b9507a5c825d1e58fc71043924ba6bbcc3ba64a2c48",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:11:45.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "577737e92aee99aeb93ccd1852a0491c9c467de07c49f0333cb55b9c28100fb3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:11:10.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "99284a5aaae0c68c970761a8e989f831c584b3a4be6ddea10d1c841b02bd1c00",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:11:57.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "255ac91e7d7272f4508208eb3c3a58c4974ab2a38677ffea36096445f60344ac",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:11:16.000Z",
+      "arch": "aarch64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "fd0e9468a904061d697233585dfa04562a5a67f37e381661a376481f7c970cd2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:12:02.000Z",
+      "arch": "x86_64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "6072e6aec1db356806c9183130e6ef9eebc4954a1f1f48cde693dc5260fd57a4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:10:55.000Z",
+      "arch": "aarch64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "5a8e006d8c0853139b869964a9225a75b700d0871e572ba5d277d65bb0553032",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:14:00.000Z",
+      "arch": "x86_64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "db07d06520b5c9e0c67402d16efdd0e9e3feda5603863dd2d91ef8af64cba998",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:11:08.000Z",
+      "arch": "emscripten",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "2f21052224b8760dc0054a4e71dacb1af3c22f50478efc07a2d8580ac5f3787f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:09:40.000Z",
+      "arch": "x86_64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "d7fa9790363a3c1cb01e2935d468a7e5e0c34d77ca8f5b415619e471b831f94d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:09:47.000Z",
+      "arch": "x86_64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "bbed202d224149bc1b9fb76d5f6971b0963ace1ddbc2f1eb06b701f09840d402",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-21T07:09:42.000Z",
+      "arch": "x86_64",
+      "commit": "06997fb6d14050fc75f48b256edacb5cb8cdebfb",
+      "fileid": "ca96fd6fdeb29b7ea0bc3fd09ae14968f3037dfa6cec1f185bdc786a1ce369ac",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252456169"
+    }
+  ]
+}

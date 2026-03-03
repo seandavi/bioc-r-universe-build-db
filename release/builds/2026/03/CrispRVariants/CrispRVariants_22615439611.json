@@ -1,0 +1,982 @@
+{
+  "Package": "CrispRVariants",
+  "Type": "Package",
+  "Title": "Tools for counting and visualising mutations in a target\nlocation",
+  "Version": "1.38.0",
+  "Authors@R": "c(person(given = \"Helen\", family = \"Lindsay\", role = c(\"aut\", \"cre\"), email =\n\"helen.lindsay@chuv.ch\"))",
+  "Author": "Helen Lindsay [aut, cre]",
+  "Description": "CrispRVariants provides tools for analysing the results of\na CRISPR-Cas9 mutagenesis sequencing experiment, or other\nsequencing experiments where variants within a given region are\nof interest. These tools allow users to localize variant allele\ncombinations with respect to any genomic location (e.g. the\nCas9 cut site), plot allele combinations and calculate mutation\nrates with flexible filtering of unrelated variants.",
+  "biocViews": "ImmunoOncology, CRISPR, GenomicVariation, VariantDetection,\nGeneticVariability, DataRepresentation, Visualization,\nSequencing",
+  "Encoding": "UTF-8",
+  "License": "GPL-2",
+  "VignetteBuilder": "knitr",
+  "NeedsCompilation": "no",
+  "RoxygenNote": "7.2.3",
+  "Config/pak/sysreqs": "libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:29:17 UTC",
+  "RemoteUrl": "https://github.com/bioc/CrispRVariants",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+  "Packaged": {
+    "Date": "2026-03-03 08:58:19 UTC",
+    "User": "root"
+  },
+  "Maintainer": "Helen Lindsay <helen.lindsay@chuv.ch>",
+  "MD5sum": "0059ccdf509e8aa4eb6c66116ca961d9",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "CrispRVariants_1.38.0.tar.gz",
+  "_fileid": "21938c23b6bbec1550064551820fdfade19d0424eac64f8b7a7fadc85058d851",
+  "_filesize": 3821440,
+  "_sha256": "21938c23b6bbec1550064551820fdfade19d0424eac64f8b7a7fadc85058d851",
+  "_created": "2026-03-03T08:58:19.000Z",
+  "_published": "2026-03-03T09:09:18.110Z",
+  "_jobs": [
+    {
+      "job": 65527703346,
+      "time": 221,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5737217003"
+    },
+    {
+      "job": 65527703374,
+      "time": 582,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5737299865"
+    },
+    {
+      "job": 65527703339,
+      "time": 398,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5737257167"
+    },
+    {
+      "job": 65527703304,
+      "time": 214,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5737215441"
+    },
+    {
+      "job": 65527703359,
+      "time": 259,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5737225727"
+    },
+    {
+      "job": 65527028515,
+      "time": 366,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5737164792"
+    },
+    {
+      "job": 65527703258,
+      "time": 179,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5737206959"
+    },
+    {
+      "job": 65527703250,
+      "time": 319,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5737239643"
+    },
+    {
+      "job": 65527703259,
+      "time": 333,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5737242586"
+    },
+    {
+      "job": 65527703303,
+      "time": 298,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5737235325"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/CrispRVariants",
+  "_commit": {
+    "id": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761748157
+  },
+  "_maintainer": {
+    "name": "Helen Lindsay",
+    "email": "helen.lindsay@chuv.ch",
+    "login": "helenlindsay",
+    "uuid": 99725678
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 2.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.9.38",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "readxl",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    },
+    {
+      "package": "sangerseqR",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.39.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.38.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "crispr",
+    "genomicvariation",
+    "variantdetection",
+    "geneticvariability",
+    "datarepresentation",
+    "visualization",
+    "sequencing"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 414,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/CrispRVariants"
+  },
+  "_mentions": 18,
+  "_searchresults": 40,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/CrispRVariants.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "abifToFastq",
+    "alleles",
+    "alns",
+    "barplotAlleleFreqs",
+    "consensusSeqs",
+    "countDeletions",
+    "countIndels",
+    "countInsertions",
+    "CrisprRun",
+    "CrisprSet",
+    "findChimeras",
+    "findSNVs",
+    "getChimeras",
+    "indelPercent",
+    "mergeCrisprSets",
+    "mutationEfficiency",
+    "narrowAlignments",
+    "plotAlignments",
+    "plotChimeras",
+    "plotFreqHeatmap",
+    "plotVariants",
+    "readsByPCRPrimer",
+    "readsToTarget",
+    "readsToTargets",
+    "refFromAlns",
+    "variantCounts"
+  ],
+  "_datasets": [
+    {
+      "name": "gol",
+      "title": "Variant sequences from golden clutch 1 (Burger et al)",
+      "object": "gol_clutch1",
+      "file": "gol_clutch1.rda",
+      "class": [
+        "CrisprSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "explodeCigarOpCombs",
+      "title": ".explodeCigarOpCombs",
+      "topics": [
+        ".explodeCigarOpCombs"
+      ]
+    },
+    {
+      "page": "alleleLabelsHelpers",
+      "title": "formatVarLabels",
+      "topics": [
+        ".findMismatches",
+        ".formatVarLabels"
+      ]
+    },
+    {
+      "page": "getAxisCoords",
+      "title": ".getAxisCoords",
+      "topics": [
+        ".getAxisCoords"
+      ]
+    },
+    {
+      "page": "intersperse",
+      "title": ".intersperse",
+      "topics": [
+        ".intersperse"
+      ]
+    },
+    {
+      "page": "selectAlnRegionsHelpers",
+      "title": "Helper functions for selectAlnRegions",
+      "topics": [
+        ".adjustRelativeInsLocs",
+        ".checkRelativeLocs",
+        ".invertKeepRanges",
+        ".offsetIndices"
+      ]
+    },
+    {
+      "page": "abifToFastq",
+      "title": "Read a file in ab1 (Sanger) format and convert to fastq",
+      "topics": [
+        "abifToFastq"
+      ]
+    },
+    {
+      "page": "addClipped",
+      "title": "Extrapolates mapping location from clipped, aligned reads",
+      "topics": [
+        "addClipped",
+        "addClipped,GAlignments-method"
+      ]
+    },
+    {
+      "page": "addCodonFrame",
+      "title": "Internal CrispRVariants function for indicating codon frame on an alignment tile plot",
+      "topics": [
+        "addCodonFrame"
+      ]
+    },
+    {
+      "page": "alleles",
+      "title": "Get allele names",
+      "topics": [
+        "alleles",
+        "alleles,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "alns",
+      "title": "Get alignments",
+      "topics": [
+        "alns",
+        "alns,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "annotateGenePlot",
+      "title": "Plots and annotates transcripts",
+      "topics": [
+        "annotateGenePlot"
+      ]
+    },
+    {
+      "page": "arrangePlots",
+      "title": "Arrange plots for plotVariants:CrisprSet",
+      "topics": [
+        "arrangePlots"
+      ]
+    },
+    {
+      "page": "barplotAlleleFreqs",
+      "title": "Plots barplots of the spectrum of variants for a sample set",
+      "topics": [
+        "barplotAlleleFreqs",
+        "barplotAlleleFreqs,CrisprSet-method",
+        "barplotAlleleFreqs,matrix-method"
+      ]
+    },
+    {
+      "page": "collapsePairs",
+      "title": "Internal CrispRVariants function for collapsing pairs with concordant indels",
+      "topics": [
+        "collapsePairs"
+      ]
+    },
+    {
+      "page": "consensusSeqs",
+      "title": "Get consensus sequences for variant alleles",
+      "topics": [
+        "consensusSeqs",
+        "consensusSeqs,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "indelCounts",
+      "title": "Count the number of reads containing an insertion or deletion",
+      "topics": [
+        "countDeletions",
+        "countDeletions,GAlignments-method",
+        "countIndels",
+        "countIndels,GAlignments-method",
+        "countInsertions",
+        "countInsertions,GAlignments-method",
+        "indelPercent",
+        "indelPercent,GAlignments-method"
+      ]
+    },
+    {
+      "page": "CrisprRun-class",
+      "title": "CrisprRun class",
+      "topics": [
+        "CrisprRun",
+        "CrisprRun-class"
+      ]
+    },
+    {
+      "page": "CrisprSet-class",
+      "title": "CrisprSet class",
+      "topics": [
+        "CrisprSet",
+        "CrisprSet-class"
+      ]
+    },
+    {
+      "page": "dispatchDots",
+      "title": "dispatchDots",
+      "topics": [
+        "dispatchDots"
+      ]
+    },
+    {
+      "page": "excludeFromBam",
+      "title": "Removes reads from a bam file",
+      "topics": [
+        "excludeFromBam"
+      ]
+    },
+    {
+      "page": "findChimeras",
+      "title": "Find chimeric reads",
+      "topics": [
+        "findChimeras"
+      ]
+    },
+    {
+      "page": "findSNVs",
+      "title": "Find frequent SNVs",
+      "topics": [
+        "findSNVs",
+        "findSNVs,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "getChimeras",
+      "title": "Get chimeric alignments",
+      "topics": [
+        "getChimeras",
+        "getChimeras,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "getInsertionsTable",
+      "title": "getInsertionsTable",
+      "topics": [
+        "getInsertionsTable"
+      ]
+    },
+    {
+      "page": "gol_clutch1",
+      "title": "Variant sequences from golden clutch 1 (Burger et al)",
+      "topics": [
+        "gol",
+        "gol_clutch1"
+      ]
+    },
+    {
+      "page": "indelLabels",
+      "title": "indelLabels",
+      "topics": [
+        "indelLabels"
+      ]
+    },
+    {
+      "page": "makeAlignmentTilePlot",
+      "title": "Internal CrispRVariants function for creating the plotAlignments background",
+      "topics": [
+        "makeAlignmentTilePlot"
+      ]
+    },
+    {
+      "page": "mergeChimeras",
+      "title": "mergeChimeras",
+      "topics": [
+        "mergeChimeras"
+      ]
+    },
+    {
+      "page": "mergeCrisprSets",
+      "title": "Merge two CrisprSets",
+      "topics": [
+        "mergeCrisprSets",
+        "mergeCrisprSets,CrisprSet,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "mismatchLabels",
+      "title": "nonindelLabels",
+      "topics": [
+        "mismatchLabels"
+      ]
+    },
+    {
+      "page": "mutationEfficiency",
+      "title": "Get mutation efficiency",
+      "topics": [
+        "mutationEfficiency",
+        "mutationEfficiency,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "narrowAlignments",
+      "title": "Narrow a set of aligned reads to a target region",
+      "topics": [
+        "narrowAlignments",
+        "narrowAlignments,GAlignments,GRanges-method"
+      ]
+    },
+    {
+      "page": "plotAlignments",
+      "title": "Plot alignments with respect to a reference sequence",
+      "topics": [
+        "plotAlignments",
+        "plotAlignments,character-method",
+        "plotAlignments,CrisprSet-method",
+        "plotAlignments,DNAString-method"
+      ]
+    },
+    {
+      "page": "plotChimeras",
+      "title": "Display a dot plot of chimeric alignments",
+      "topics": [
+        "plotChimeras"
+      ]
+    },
+    {
+      "page": "plotFreqHeatmap",
+      "title": "Plot a table of counts with colours indicating frequency",
+      "topics": [
+        "plotFreqHeatmap",
+        "plotFreqHeatmap,CrisprSet-method",
+        "plotFreqHeatmap,matrix-method"
+      ]
+    },
+    {
+      "page": "plotVariants",
+      "title": "Plot alignments, frequencies and location of target sequence",
+      "topics": [
+        "plotVariants",
+        "plotVariants,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "rcAlns",
+      "title": "Internal CrispRVariants function for determining read orientation",
+      "topics": [
+        "rcAlns"
+      ]
+    },
+    {
+      "page": "readsByPCRPrimer",
+      "title": "Finds overlaps between aligned reads and PCR primers",
+      "topics": [
+        "readsByPCRPrimer",
+        "readsByPCRPrimer,GAlignments,GRanges-method",
+        "readsByPCRPrimer,GRanges,GRanges-method"
+      ]
+    },
+    {
+      "page": "readsToTarget",
+      "title": "Trims reads to a target region.",
+      "topics": [
+        "readsToTarget",
+        "readsToTarget,character,GRanges-method",
+        "readsToTarget,GAlignments,GRanges-method",
+        "readsToTarget,GAlignmentsList,GRanges-method",
+        "readsToTargets",
+        "readsToTargets,character,GRanges-method",
+        "readsToTargets,GAlignmentsList,GRanges-method"
+      ]
+    },
+    {
+      "page": "readTargetBam",
+      "title": "Internal CrispRVariants function for reading and filtering a bam file",
+      "topics": [
+        "readTargetBam"
+      ]
+    },
+    {
+      "page": "refFromAlns",
+      "title": "refFromAlns",
+      "topics": [
+        "refFromAlns",
+        "refFromAlns,GAlignments,ANY-method",
+        "refFromAlns,GAlignments,GRanges-method"
+      ]
+    },
+    {
+      "page": "reverseCigar",
+      "title": "Reverses the order of operations in a cigar string",
+      "topics": [
+        "reverseCigar"
+      ]
+    },
+    {
+      "page": "rmMultiPCRChimera",
+      "title": "Remove chimeric reads overlapping multiple primers",
+      "topics": [
+        "rmMultiPCRChimera",
+        "rmMultiPCRChimera,character,Hits,integer-method"
+      ]
+    },
+    {
+      "page": "selectOps",
+      "title": "selectOps",
+      "topics": [
+        "selectOps",
+        "selectOps,character-method"
+      ]
+    },
+    {
+      "page": "seqsToAln",
+      "title": "Creates a text alignment from a set of cigar strings",
+      "topics": [
+        "selectAlnRegions",
+        "seqsToAln"
+      ]
+    },
+    {
+      "page": "setDNATileColours",
+      "title": "Sets colours for plotting aligned DNA sequences.",
+      "topics": [
+        "setDNATileColours"
+      ]
+    },
+    {
+      "page": "setMismatchTileColours",
+      "title": "Sets colours for plotting mismatches in aligned DNA sequences.",
+      "topics": [
+        "setMismatchTileColours"
+      ]
+    },
+    {
+      "page": "transformAlnsToLong",
+      "title": "Transform data for plotting",
+      "topics": [
+        "transformAlnsToLong"
+      ]
+    },
+    {
+      "page": "variantCounts",
+      "title": "Get variant counts",
+      "topics": [
+        "variantCounts",
+        "variantCounts,CrisprSet-method"
+      ]
+    },
+    {
+      "page": "writeFastq",
+      "title": "Append a sequence to a fastq file",
+      "topics": [
+        "writeFastq"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/CrispRVariants/raw/RELEASE_3_22/readme.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "farver",
+    "fastmap",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "reshape2",
+    "Rhtslib",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "UCSC.utils",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "user_guide.Rmd",
+      "filename": "user_guide.html",
+      "title": "CrispRVariants User Guide",
+      "author": "Helen Lindsay, Mark Robinson",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Quickstart",
+        "Case study: Analysis of ptena mutant spectrum in zebrafish",
+        "Convert AB1-format Sanger sequences to FASTQ",
+        "Map the FASTQ reads",
+        "List the BAM files",
+        "Create the target location and reference sequence",
+        "Note for Windows and Galaxy Users",
+        "Creating a CrisprSet",
+        "Creating summary plots of variants",
+        "Calculating the mutation efficiency",
+        "Get consensus alleles",
+        "Plot chimeric alignments",
+        "Choosing the strand for display",
+        "Multiple guides",
+        "Changing the appearance of plots",
+        "Filtering data in plotVariants",
+        "plotAlignments",
+        "Insertion symbols",
+        "Whitespace between rows",
+        "Box around guide",
+        "Text sizes",
+        "Box around PAM",
+        "Add a codon frame",
+        "Other modifications",
+        "plotFreqHeatmap",
+        "Plotting allele proportions",
+        "Changing the header",
+        "Heatmap colours",
+        "Changing colours of x-labels",
+        "Controlling the appearance of the legend",
+        "Further customisation",
+        "barplotAlleleFreqs",
+        "Using CrispRVariants plotting functions independently",
+        "Plot the reference sequence",
+        "Note about handling of large deletions",
+        "Session Info"
+      ],
+      "created": "2015-12-30 20:30:54",
+      "modified": "2023-04-28 19:17:23",
+      "commits": 11
+    }
+  ],
+  "_score": 6.079181246047625,
+  "_indexed": false,
+  "_nocasepkg": "crisprvariants",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/CrispRVariants",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:05:08.000Z",
+      "distro": "noble",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "5768c7d00d45e4135dc530c3f26e5c7a5f860613882f5a06e2ba2f6d3d5d8768",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:02:12.000Z",
+      "distro": "noble",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "d5db6f90a94e1a9ac06f3c1f722be4a3b6fa24fdd4e05ec6e1f1b58874cab506",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:00:34.000Z",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "3f432361c51432ebdf20499d6bfb293d36f885c03acdbb0516d76a6b94450284",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:00:44.000Z",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "819412bf1ffa546f196b7ed8c98b4ce5d7cb582e4d60e5b69e066c54f9a6d92d",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:01:57.000Z",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "d2b156349f4d8db7e75e6b12066efe2b39c141a6b50d92a8fcc42f7415374266",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:00:30.000Z",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "6b8d412ab348b26880bf4951cbb7a6f863a39a8670e5e0bf47fc4775480ee50c",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:01:05.000Z",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "4b560cdc9055c48b8dff993c9280409726eaeb15327ec0294733936a3b59ea70",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-03-03T09:00:31.000Z",
+      "commit": "d78780f35ece08021efb33b3d1919c889c2dba7f",
+      "fileid": "3addb646ea8d124b4a6a1cd06799d97ee12da06e31f01989de43a53375c3d67d",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22615439611"
+    }
+  ]
+}

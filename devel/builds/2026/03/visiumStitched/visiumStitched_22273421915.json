@@ -1,0 +1,810 @@
+{
+  "Package": "visiumStitched",
+  "Title": "Enable downstream analysis of Visium capture areas stitched\ntogether with Fiji",
+  "Version": "1.3.0",
+  "Date": "2025-10-22",
+  "Authors@R": "c(\nperson(\"Nicholas J.\", \"Eagles\", email = \"nickeagles77@gmail.com\",\nrole = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-9808-5254\")),\nperson(\"Leonardo\", \"Collado-Torres\", role = c(\"ctb\"),\nemail = \"lcolladotor@gmail.com\", comment = c(ORCID = \"0000-0003-2140-308X\"))\n)",
+  "Description": "This package provides helper functions for working with\nmultiple Visium capture areas that overlap each other. This\npackage was developed along with the companion example use case\ndata available from\nhttps://github.com/LieberInstitute/visiumStitched_brain.\nvisiumStitched prepares SpaceRanger (10x Genomics) output files\nso you can stitch the images from groups of capture areas\ntogether with Fiji. Then visiumStitched builds a\nSpatialExperiment object with the stitched data and makes an\nartificial hexagonal grid enabling the seamless use of spatial\nclustering methods that rely on such grid to identify\nneighboring spots, such as PRECAST and BayesSpace. The\nSpatialExperiment objects created by visiumStitched are\ncompatible with spatialLIBD, which can be used to build\ninteractive websites for stitched SpatialExperiment objects.\nvisiumStitched also enables casting SpatialExperiment objects\nas Seurat objects.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "Config/testthat/edition": "3",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, Spatial, Transcriptomics, Transcription,\nGeneExpression, Visualization, DataImport",
+  "URL": "https://github.com/LieberInstitute/visiumStitched",
+  "BugReports": "https://support.bioconductor.org/tag/visiumStitched",
+  "Config/pak/sysreqs": "libcairo2-dev libfftw3-dev libfontconfig1-dev\nlibfreetype6-dev libfribidi-dev libglpk-dev make\nlibharfbuzz-dev libmagick++-dev gsfonts libbz2-dev libicu-dev\nlibjpeg-dev liblzma-dev libpng-dev libtiff-dev libwebp-dev\nlibxml2-dev libssl-dev perl libx11-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:33:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/visiumStitched",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-22 08:22:15 UTC",
+    "User": "root"
+  },
+  "Author": "Nicholas J. Eagles [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-9808-5254>),\nLeonardo Collado-Torres [ctb] (ORCID:\n<https://orcid.org/0000-0003-2140-308X>)",
+  "Maintainer": "Nicholas J. Eagles <nickeagles77@gmail.com>",
+  "MD5sum": "b8fc698b1cb089cfef163ee32b3d068d",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "visiumStitched_1.3.0.tar.gz",
+  "_fileid": "4bcd4d311520f65958088db6983781322e5e00952236764af88e1c15f63d4439",
+  "_filesize": 2583824,
+  "_sha256": "4bcd4d311520f65958088db6983781322e5e00952236764af88e1c15f63d4439",
+  "_created": "2026-02-22T08:22:15.000Z",
+  "_published": "2026-02-22T08:37:27.487Z",
+  "_jobs": [
+    {
+      "job": 64432014317,
+      "time": 302,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5606005772"
+    },
+    {
+      "job": 64432014344,
+      "time": 784,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5606037820"
+    },
+    {
+      "job": 64432014329,
+      "time": 779,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5606037534"
+    },
+    {
+      "job": 64432014341,
+      "time": 647,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5606029076"
+    },
+    {
+      "job": 64432014343,
+      "time": 591,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5606025113"
+    },
+    {
+      "job": 64431646935,
+      "time": 612,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5605985680"
+    },
+    {
+      "job": 64432014310,
+      "time": 236,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5606001588"
+    },
+    {
+      "job": 64432014323,
+      "time": 831,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5606040708"
+    },
+    {
+      "job": 64432014335,
+      "time": 739,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5606035192"
+    },
+    {
+      "job": 64432014331,
+      "time": 726,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5606034281"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/visiumStitched",
+  "_commit": {
+    "id": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751992
+  },
+  "_maintainer": {
+    "name": "Nicholas J. Eagles",
+    "email": "nickeagles77@gmail.com",
+    "login": "nick-eagles",
+    "linkedin": "in/nick-eagles-7a5b30161",
+    "orcid": "0000-0002-9808-5254",
+    "uuid": 45461721
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4",
+      "role": "Depends"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocBaseUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "clue",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "DropletUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "imager",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "pkgcond",
+      "role": "Imports"
+    },
+    {
+      "package": "readr",
+      "role": "Imports"
+    },
+    {
+      "package": "rjson",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "spatialLIBD",
+      "version": ">= 1.17.8",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "xml2",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "RefManageR",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "sessioninfo",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seurat",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-37",
+      "n": 2
+    },
+    {
+      "week": "2025-38",
+      "n": 14
+    },
+    {
+      "week": "2025-39",
+      "n": 12
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "spatial",
+    "transcriptomics",
+    "transcription",
+    "geneexpression",
+    "visualization",
+    "dataimport",
+    "10xgenomics",
+    "bioconductor",
+    "spatial-transcriptomics",
+    "spatialexperiment",
+    "spatiallibd",
+    "visium"
+  ],
+  "_stars": 4,
+  "_contributors": [
+    {
+      "user": "nick-eagles",
+      "count": 306,
+      "uuid": 45461721
+    },
+    {
+      "user": "lcolladotor",
+      "count": 86,
+      "uuid": 2288213
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 216,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/visiumStitched"
+  },
+  "_devurl": "https://github.com/lieberinstitute/visiumstitched",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/visiumStitched.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/lieberinstitute/visiumstitched",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "add_array_coords",
+    "add_overlap_info",
+    "as.Seurat",
+    "build_SpatialExperiment",
+    "merge_overlapping",
+    "prep_fiji_coords",
+    "prep_fiji_image",
+    "rescale_fiji_inputs"
+  ],
+  "_help": [
+    {
+      "page": "add_array_coords",
+      "title": "Add transformed array and pixel coordinates to a 'SpatialExperiment'",
+      "topics": [
+        "add_array_coords"
+      ]
+    },
+    {
+      "page": "add_overlap_info",
+      "title": "Add info about how spots overlap among capture areas",
+      "topics": [
+        "add_overlap_info"
+      ]
+    },
+    {
+      "page": "as.Seurat",
+      "title": "Convert a 'SpatialExperiment' object to a 'Seurat' object",
+      "topics": [
+        "as.Seurat"
+      ]
+    },
+    {
+      "page": "build_SpatialExperiment",
+      "title": "Build stitched 'SpatialExperiment'",
+      "topics": [
+        "build_SpatialExperiment"
+      ]
+    },
+    {
+      "page": "merge_overlapping",
+      "title": "Merge overlapping spots",
+      "topics": [
+        "merge_overlapping"
+      ]
+    },
+    {
+      "page": "prep_fiji",
+      "title": "Prepare Fiji outputs for building a SpatialExperiment",
+      "topics": [
+        "prep_fiji",
+        "prep_fiji_coords",
+        "prep_fiji_image"
+      ]
+    },
+    {
+      "page": "rescale_fiji_inputs",
+      "title": "Write same-scale hires images for input to Fiji",
+      "topics": [
+        "rescale_fiji_inputs"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/visiumStitched/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/visiumStitched/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationHub",
+    "askpass",
+    "assertthat",
+    "assorthead",
+    "attempt",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "benchmarkme",
+    "benchmarkmeData",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "BiocVersion",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bmp",
+    "bslib",
+    "cachem",
+    "Cairo",
+    "cigarillo",
+    "circlize",
+    "cli",
+    "clipr",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "commonmark",
+    "ComplexHeatmap",
+    "config",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "digest",
+    "doParallel",
+    "downloader",
+    "dplyr",
+    "dqrng",
+    "DropletUtils",
+    "DT",
+    "edgeR",
+    "evaluate",
+    "ExperimentHub",
+    "farver",
+    "fastmap",
+    "filelock",
+    "FNN",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggbeeswarm",
+    "ggplot2",
+    "ggrastr",
+    "ggrepel",
+    "GlobalOptions",
+    "glue",
+    "golem",
+    "gridExtra",
+    "gtable",
+    "h5mread",
+    "HDF5Array",
+    "here",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "igraph",
+    "imager",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magick",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "otel",
+    "paletteer",
+    "pheatmap",
+    "pillar",
+    "pkgcond",
+    "pkgconfig",
+    "plotly",
+    "png",
+    "prettyunits",
+    "prismatic",
+    "progress",
+    "promises",
+    "purrr",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "ragg",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "RCurl",
+    "readbitmap",
+    "readr",
+    "rematch2",
+    "restfulr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rprojroot",
+    "Rsamtools",
+    "RSpectra",
+    "RSQLite",
+    "rstudioapi",
+    "rsvd",
+    "rtracklayer",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "Seqinfo",
+    "sessioninfo",
+    "shape",
+    "shiny",
+    "shinyWidgets",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "sourcetools",
+    "SparseArray",
+    "sparseMatrixStats",
+    "SpatialExperiment",
+    "spatialLIBD",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tiff",
+    "tinytex",
+    "tzdb",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "visiumStitched.Rmd",
+      "filename": "visiumStitched.html",
+      "title": "Introduction to visiumStitched",
+      "author": "Nicholas J. Eagles, Leonardo Collado-Torres",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Basics",
+        "Install visiumStitched",
+        "Citing visiumStitched",
+        "Packages used in this vignette",
+        "Preparing Experiment Information",
+        "Preparing Inputs to Fiji",
+        "Building a SpatialExperiment",
+        "Stitching Images with Fiji",
+        "Creating Group-Level Samples",
+        "Constructing the Object",
+        "Examining the stitched data",
+        "Stitched plotting",
+        "Defining Array Coordinates",
+        "Error metrics",
+        "Downstream applications",
+        "Conclusion",
+        "Reproducibility",
+        "Bibliography"
+      ],
+      "created": "2024-05-22 18:44:36",
+      "modified": "2025-09-23 13:33:39",
+      "commits": 35
+    },
+    {
+      "source": "misc.Rmd",
+      "filename": "misc.html",
+      "title": "Miscellaneous notes",
+      "author": "Nicholas J. Eagles, Leonardo Collado-Torres",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Load data",
+        "Geometric transformations notes",
+        "A note on normalization",
+        "Merging overlapping spots"
+      ],
+      "created": "2024-07-30 14:02:50",
+      "modified": "2024-10-24 19:43:33",
+      "commits": 5
+    }
+  ],
+  "_score": 5.681241237375588,
+  "_indexed": true,
+  "_nocasepkg": "visiumstitched",
+  "_universes": [
+    "bioc",
+    "nick-eagles",
+    "lieberinstitute"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:27:58.000Z",
+      "distro": "noble",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "83caad2d7cacda0b2bcc5ecffb8b8ea697d0f655b0de1468446a942b0501308b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:28:05.000Z",
+      "distro": "noble",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "1f8a8ca7ab11aa1393d6b9653029851f392dbbdc4dc1f74b185c88a8b7887c34",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:25:41.000Z",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "391ba2892fcee2e8e763401513d181160f631085ece10958c186664108b9b72f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:25:55.000Z",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "6be9f4ca944df7ec850e062bf25363b55c8c7356c322c1cd7705fb8cb99c1b27",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:27:08.000Z",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "01a1ffa7b052de5b53109f03518a9825c63eefcad3828c8e1e39df582f1fac37",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:26:54.000Z",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "83db28b3ce183fe65f09d2dfc837eb944c0f8548bf15f663b6c4c744351f401a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:25:56.000Z",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "7546820c1812b330d2f5751f19dc2c02650633cb6a525db524cfd04033f4836a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-22T08:25:38.000Z",
+      "commit": "829e946d5c2b96e551ff1d0a9a5e1c72e6ecc6dd",
+      "fileid": "695a88fd8b06b423f80b785180a1201849328a780a088a58233cc3a87ad167ec",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273421915"
+    }
+  ]
+}

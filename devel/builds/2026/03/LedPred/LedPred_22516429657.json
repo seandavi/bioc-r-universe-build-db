@@ -1,0 +1,821 @@
+{
+  "Package": "LedPred",
+  "Title": "Learning from DNA to Predict Enhancers",
+  "Description": "This package aims at creating a predictive model of\nregulatory sequences used to score unknown sequences based on\nthe content of DNA motifs, next-generation sequencing (NGS)\npeaks and signals and other numerical scores of the sequences\nusing supervised classification. The package contains a\nworkflow based on the support vector machine (SVM) algorithm\nthat maps features to sequences, optimize SVM parameters and\nfeature number and creates a model that can be stored and used\nto score the regulatory potential of unknown sequences.",
+  "Version": "1.45.0",
+  "Date": "2016-08-13",
+  "Author": "Elodie Darbo, Denis Seyres, Aitor Gonzalez",
+  "Maintainer": "Aitor Gonzalez <aitor.gonzalez@univ-amu.fr>",
+  "License": "MIT | file LICENSE",
+  "LazyData": "true",
+  "Packaged": {
+    "Date": "2026-02-28 07:44:37 UTC",
+    "User": "root"
+  },
+  "biocViews": "SupportVectorMachine, Software, MotifAnnotation, ChIPSeq,\nSequencing, Classification",
+  "NeedsCompilation": "no",
+  "BugReports": "https://github.com/aitgon/LedPred/issues",
+  "RoxygenNote": "5.0.1",
+  "Config/pak/sysreqs": "make",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:26:57 UTC",
+  "RemoteUrl": "https://github.com/bioc/LedPred",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+  "MD5sum": "b6bcbeb7119bb47123b7f1fff288e8ad",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "LedPred_1.45.0.tar.gz",
+  "_fileid": "cfd9c7cfa357334949c54bfd6b6be953ee454b3222314a6557ff8c317e20dd13",
+  "_filesize": 1511838,
+  "_sha256": "cfd9c7cfa357334949c54bfd6b6be953ee454b3222314a6557ff8c317e20dd13",
+  "_created": "2026-02-28T07:44:37.000Z",
+  "_published": "2026-02-28T07:49:16.268Z",
+  "_jobs": [
+    {
+      "job": 65234816126,
+      "time": 164,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5702017188"
+    },
+    {
+      "job": 65234816122,
+      "time": 217,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5702020903"
+    },
+    {
+      "job": 65234816124,
+      "time": 242,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5702022538"
+    },
+    {
+      "job": 65234816129,
+      "time": 128,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5702014681"
+    },
+    {
+      "job": 65234816139,
+      "time": 94,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5702012306"
+    },
+    {
+      "job": 65234719394,
+      "time": 162,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5702005248"
+    },
+    {
+      "job": 65234816118,
+      "time": 128,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5702014583"
+    },
+    {
+      "job": 65234816167,
+      "time": 94,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5702012490"
+    },
+    {
+      "job": 65234816166,
+      "time": 103,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5702013029"
+    },
+    {
+      "job": 65234816155,
+      "time": 103,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5702013003"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 5,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/LedPred",
+  "_commit": {
+    "id": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748017
+  },
+  "_maintainer": {
+    "name": "Aitor Gonzalez",
+    "email": "aitor.gonzalez@univ-amu.fr",
+    "login": "aitgon",
+    "uuid": 4428917
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "e1071",
+      "version": ">= 1.6",
+      "role": "Depends"
+    },
+    {
+      "package": "akima",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "irr",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "plot3D",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "RCurl",
+      "role": "Imports"
+    },
+    {
+      "package": "ROCR",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Imports"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.45.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.44.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "supportvectormachine",
+    "software",
+    "motifannotation",
+    "chipseq",
+    "sequencing",
+    "classification"
+  ],
+  "_stars": 3,
+  "_contributors": [
+    {
+      "user": "aitgon",
+      "count": 74,
+      "uuid": 4428917
+    },
+    {
+      "user": "dtenenba",
+      "count": 4,
+      "uuid": 2286826
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "sonali-bioc",
+      "count": 1,
+      "uuid": 6373953
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 306,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/LedPred"
+  },
+  "_devurl": "https://github.com/aitgon/ledpred",
+  "_searchresults": 3,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/LedPred.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/aitgon/ledpred",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "createModel",
+    "evaluateModelPerformance",
+    "LedPred",
+    "mapFeaturesToCRMs",
+    "mcTune",
+    "rankFeatures",
+    "scoreData",
+    "tuneFeatureNb"
+  ],
+  "_datasets": [
+    {
+      "name": "crm.features",
+      "title": "This is data to be included in my package",
+      "object": "crm.features",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "cl",
+        "AbdA_FlyReg_FBgn0000014",
+        "AbdB_Cell_FBgn0000015",
+        "Achi_Cell_FBgn0033749",
+        "Adf1_FlyReg_FBgn0000054",
+        "Aef1_FlyReg_FBgn0005694",
+        "Al_Cell_FBgn0000061",
+        "Antp_Cell_FBgn0000095",
+        "Ap_Cell_FBgn0000099",
+        "Ara_Cell_FBgn0015904",
+        "Atf_2_SANGER_5_FBgn0050420",
+        "Awh_Cell_FBgn0013751",
+        "BH1_Cell_FBgn0011758",
+        "BH2_Cell_FBgn0004854",
+        "Bap_Cell_FBgn0004862",
+        "Bcd_Cell_FBgn0000166",
+        "Blimp_1_NAR_FBgn0035625",
+        "Bsh_Cell_FBgn0000529",
+        "Bteb2_SOLEXA_2_5_FBgn0025679",
+        "Btn_SOLEXA_FBgn0014949",
+        "C15_SOLEXA_FBgn0004863",
+        "CG10267_SOLEXA_5_FBgn0037446",
+        "CG11085_Cell_FBgn0030408",
+        "CG11294_Cell_FBgn0030058",
+        "CG11617_Cell_FBgn0031232",
+        "CG12029_SOLEXA_5_FBgn0035454",
+        "CG12236_SANGER_10_FBgn0029822",
+        "CG12361_SOLEXA_2_FBgn0250756",
+        "CG12605_SOLEXA_5_FBgn0035481",
+        "CG13424_SOLEXA_FBgn0034520",
+        "CG14962_SOLEXA_5_FBgn0035407",
+        "CG15696_SOLEXA_FBgn0038833",
+        "CG16899_SANGER_5_FBgn0037735",
+        "CG17181_SOLEXA_5_FBgn0035144",
+        "CG18599_Cell_FBgn0038592",
+        "CG2052_SANGER_2_5_FBgn0039905",
+        "CG3065_F1_3_SOLEXA_2_5_FBgn0034946",
+        "CG31670_SOLEXA_5_FBgn0031375",
+        "CG32105_Cell_FBgn0052105",
+        "CG32532_Cell_FBgn0052532",
+        "CG32830_SOLEXA_5_FBgn0052830",
+        "CG33557_da_SANGER_5_FBgn0053557",
+        "CG33980_SOLEXA_2_0_FBgn0053980",
+        "CG34031_Cell_FBgn0054031",
+        "CG3407_SOLEXA_2_5_FBgn0031573",
+        "CG4136_SOLEXA_FBgn0029775",
+        "CG4328_SOLEXA_FBgn0036274",
+        "CG4854_SOLEXA_5_FBgn0038766",
+        "CG5669_SANGER_10_FBgn0039169",
+        "CG7056_Cell_FBgn0038852",
+        "CG7368_SANGER_5_FBgn0036179",
+        "CG7928_SANGER_10_FBgn0039740",
+        "CG8319_SOLEXA_2_5_FBgn0037722",
+        "CG9876_SOLEXA_FBgn0034821",
+        "CG9895_SOLEXA_5_FBgn0034810",
+        "Cad_Cell_FBgn0000251",
+        "Caup_Cell_FBgn0015919",
+        "Cf2_II_FlyReg_FBgn0000286",
+        "Clk_cyc_SANGER_5_FBgn0023076",
+        "CrebA_SANGER_5_FBgn0004396",
+        "Ct_SOLEXA_FBgn0004198",
+        "D_NAR_FBgn0000411",
+        "Deaf1_FlyReg_FBgn0013799",
+        "Dfd_Cell_FBgn0000439",
+        "Dll_Cell_FBgn0000157",
+        "Dr_Cell_FBgn0000492",
+        "Dref_FlyReg_FBgn0015664",
+        "E5_Cell_FBgn0008646",
+        "ERR_SANGER_5_FBgn0035849",
+        "E_spl_SANGER_5_FBgn0000591",
+        "EcR_SANGER_5_FBgn0000546",
+        "Eip74EF_FlyReg_FBgn0000567",
+        "Eip78C_SANGER_5_FBgn0004865",
+        "Ems_SOLEXA_FBgn0000576",
+        "En_Cell_FBgn0000577",
+        "Espl_FlyReg_FBgn0000591",
+        "Eve_SOLEXA_FBgn0000606",
+        "Exd_Cell_FBgn0000611",
+        "Exex_SOLEXA_FBgn0041156",
+        "Fer1_SANGER_5_FBgn0037475",
+        "Fer3_da_SANGER_5_FBgn0037937",
+        "Ftz_Cell_FBgn0001077",
+        "Gsc_Cell_FBgn0010323",
+        "H2_0_SOLEXA_FBgn0001170",
+        "HLH106_SANGER_10_FBgn0261283",
+        "HLH4C_SANGER_5_FBgn0011277",
+        "HLH54F_da_SANGER_5_FBgn0022740",
+        "HLHm3_SANGER_5_FBgn0002609",
+        "HLHm5_SANGER_5_FBgn0002631",
+        "HLHm7_SANGER_5_FBgn0002633",
+        "HLHmbeta_SANGER_10_FBgn0002733",
+        "HLHmdelta_SANGER_10_FBgn0002734",
+        "HLHmgamma_SANGER_10_FBgn0002735",
+        "Hbn_SOLEXA_FBgn0008636",
+        "Hey_SANGER_5_FBgn0027788",
+        "Hgtx_Cell_FBgn0040318",
+        "Hmx_Cell_FBgn0085448",
+        "Hnf4_SANGER_10_FBgn0004914",
+        "Hr46_SANGER_5_FBgn0000448",
+        "Hr4_SANGER_5_FBgn0023546",
+        "Hr78_SANGER_5_FBgn0015239",
+        "Hr83_SANGER_5_FBgn0037436",
+        "Hsf_FlyReg_FBgn0001222",
+        "Ind_Cell_FBgn0025776",
+        "Inv_Cell_FBgn0001269",
+        "Kr_NAR_FBgn0001325",
+        "Lab_Cell_FBgn0002522",
+        "Lag1_Cell_FBgn0040918",
+        "Lbe_SOLEXA_FBgn0011278",
+        "Lbl_Cell_FBgn0008651",
+        "Lim1_Cell_FBgn0026411",
+        "Lim3_Cell_FBgn0002023",
+        "MEF2_04",
+        "Mad_FlyReg_FBgn0011648",
+        "Med_FlyReg_FBgn0011655",
+        "Mirr_Cell_FBgn0014343",
+        "NK7_1_Cell_FBgn0024321",
+        "Oc_Cell_FBgn0004102",
+        "Odsh_Cell_FBgn0026058",
+        "Optix_SOLEXA_FBgn0025360",
+        "Otp_SOLEXA_FBgn0015524",
+        "Pb_Cell_FBgn0051481",
+        "PhdP_SOLEXA_FBgn0025334",
+        "Pmad",
+        "Poxm_SOLEXA_5_FBgn0003129",
+        "Poxn_SOLEXA_5_FBgn0003130",
+        "Pph13_SOLEXA_FBgn0023489",
+        "Ptx1_SOLEXA_FBgn0020912",
+        "Repo_Cell_FBgn0011701",
+        "Ro_Cell_FBgn0003267",
+        "Rx_Cell_FBgn0020617",
+        "Scr_Cell_FBgn0003339",
+        "Side_SANGER_5_FBgn0032741",
+        "Six4_Cell_FBgn0027364",
+        "Slou_Cell_FBgn0002941",
+        "So_Cell_FBgn0003460",
+        "Sox14_SANGER_10_FBgn0005612",
+        "Sox15_SANGER_5_FBgn0005613",
+        "Sp1_SOLEXA_2_5_FBgn0020378",
+        "SuH_FlyReg_FBgn0004837",
+        "Trl_FlyReg_FBgn0013263",
+        "Tup_SOLEXA_FBgn0003896",
+        "Ubx_Cell_FBgn0003944",
+        "Unc4_Cell_FBgn0024184",
+        "Unpg_Cell_FBgn0015561",
+        "Vis_SOLEXA_FBgn0033748",
+        "Vnd_Cell_FBgn0003986",
+        "Zen2_Cell_FBgn0004054",
+        "Zen_Cell_FBgn0004053",
+        "ab_SANGER_10_FBgn0259750",
+        "ac_da_SANGER_5_FBgn0000022",
+        "acj6_SOLEXA_5_FBgn0000028",
+        "amos_da_SANGER_10_FBgn0003270",
+        "ase_da_SANGER_10_FBgn0000137",
+        "ato_da_SANGER_10_FBgn0010433",
+        "bab1_FlyReg_FBgn0004870",
+        "bin_SANGER_5_FBgn0045759",
+        "brZ1_FlyReg_FBgn0000210",
+        "brZ2_FlyReg_FBgn0000210",
+        "brZ3_FlyReg_FBgn0000210",
+        "brZ4_FlyReg_FBgn0000210",
+        "br_SOLEXA_10_FBgn0000210",
+        "brk_FlyReg_FBgn0024250",
+        "btd_NAR_FBgn0000233",
+        "byn_FlyReg_FBgn0011723",
+        "cato_da_SANGER_10_FBgn0024249",
+        "cic_SANGER_5_FBgn0028386",
+        "crp_SANGER_10_FBgn0001994",
+        "cwo_SANGER_5_FBgn0259938",
+        "dTCF",
+        "da_SANGER_10_FBgn0000413",
+        "dei_da_SANGER_5_FBgn0008649",
+        "dimm_da_SANGER_5_FBgn0023091",
+        "disco_SOLEXA_5_FBgn0000459",
+        "dl_NBT_FBgn0000462",
+        "dm_Max_SANGER_10_FBgn0000472",
+        "doc",
+        "dpn_SANGER_10_FBgn0010109",
+        "dsf_SANGER_5_FBgn0015381",
+        "dsxF_FlyReg_FBgn0000504",
+        "dsxM_FlyReg_FBgn0000504",
+        "dys_tgo_SANGER_5_FBgn0039411",
+        "eg_SANGER_5_FBgn0000560",
+        "esg_SANGER_2_5_FBgn0001981",
+        "ey_SOLEXA_5_FBgn0005558",
+        "fd64A_SANGER_5_FBgn0004895",
+        "fkh_NAR_FBgn0000659",
+        "foxo_SANGER_10_FBgn0038197",
+        "fru_SOLEXA_5_FBgn0004652",
+        "ftzf1_FlyReg_FBgn0001078",
+        "gl_SANGER_5_FBgn0004618",
+        "grh_FlyReg_FBgn0259211",
+        "gsb_SOLEXA_5_FBgn0001148",
+        "gsb_n_SOLEXA_5_FBgn0001147",
+        "gt_NAR_FBgn0001150",
+        "h_SANGER_5_FBgn0001168",
+        "hb_SANGER_2_5_FBgn0001180",
+        "her_SOLEXA_10_FBgn0001185",
+        "hkb_NAR_FBgn0001204",
+        "hth_SOLEXA_2_FBgn0001235",
+        "jim_SANGER_2_5_FBgn0027339",
+        "ken_SOLEXA_5_FBgn0011236",
+        "klu_SANGER_10_FBgn0013469",
+        "kni_SANGER_5_FBgn0001320",
+        "l3_neo38_SANGER_2_5_FBgn0086910",
+        "l_1_sc_da_SANGER_5_FBgn0002561",
+        "lim_SOLEXA_2_FBgn0026411",
+        "lmd_SANGER_5_FBgn0039039",
+        "lola_SOLEXA_5_FBgn0005630",
+        "luna_SOLEXA_5_FBgn0040765",
+        "nau_SANGER_5_FBgn0002922",
+        "net_da_SANGER_10_FBgn0002931",
+        "nub_NAR_FBgn0085424",
+        "odd_NAR_FBgn0002985",
+        "onecut_Cell_FBgn0028996",
+        "opa_NAR_FBgn0003002",
+        "ovo_SANGER_5_FBgn0003028",
+        "pad_SANGER_5_FBgn0038418",
+        "pan_FlyReg_FBgn0085432",
+        "pdm2_SOLEXA_5_FBgn0004394",
+        "pdm3_SOLEXA_5_FBgn0033288",
+        "pho_SANGER_10_FBgn0002521",
+        "phol_SANGER_5_FBgn0035997",
+        "pnr",
+        "prd_SOLEXA_5_FBgn0003145",
+        "rn_SANGER_10_FBgn0259172",
+        "run_Bgb_NBT_FBgn0003300",
+        "sage_da_SANGER_5_FBgn0037672",
+        "sc_da_SANGER_10_FBgn0004170",
+        "scrt_SOLEXA_2_5_2_FBgn0004880",
+        "sd_FlyReg_FBgn0003345",
+        "sens_2_SANGER_2_5_FBgn0051632",
+        "sens_SOLEXA_5_FBgn0002573",
+        "slbo_FlyReg_FBgn0005638",
+        "slp1_NAR_FBgn0003430",
+        "slp2_SANGER_5_FBgn0004567",
+        "sna_SOLEXA_5_FBgn0003448",
+        "sob_SOLEXA_5_FBgn0004892",
+        "sqz_SANGER_5_FBgn0010768",
+        "sr_SANGER_5_FBgn0003499",
+        "srp_FlyReg_FBgn0003507",
+        "ss_tgo_SANGER_10_FBgn0003513",
+        "suHw_FlyReg_FBgn0003567",
+        "sug_SOLEXA_5_FBgn0033782",
+        "sv_SOLEXA_5_FBgn0005561",
+        "svp_SANGER_5_FBgn0003651",
+        "tap_da_SANGER_5_FBgn0015550",
+        "tgo_ss_SANGER_5_FBgn0015014",
+        "tin",
+        "tin_FlyReg_FBgn0004110",
+        "tll_NAR_FBgn0003720",
+        "toy_FlyReg_FBgn0019650",
+        "ttk_NAR_FBgn0003870",
+        "twi_da_SANGER_5_FBgn0003900",
+        "usp_SANGER_5_FBgn0003964",
+        "vfl_SOLEXA_5_FBgn0259789",
+        "vri_SANGER_5_FBgn0016076",
+        "vvl_SOLEXA_5_FBgn0086680",
+        "wor_SOLEXA_2_5_FBgn0001983",
+        "z_FlyReg_FBgn0004050",
+        "docBoundCRM.bed",
+        "dtcfBoundCRM.bed",
+        "pmadBoundCRM.bed",
+        "pnrBoundCRM.bed",
+        "tinBoundCRM.bed",
+        "K4me1_E_F_6_8h_H3_subtracted_reduced.wig"
+      ],
+      "rows": 550,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "feature.ranking",
+      "title": "This is data to be included in my package",
+      "object": "feature.ranking",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "FeatureName",
+        "FeatureID",
+        "AvgRank"
+      ],
+      "rows": 265,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "createModel",
+      "title": "Create the model with the optimal features",
+      "topics": [
+        "createModel"
+      ]
+    },
+    {
+      "page": "crm.features",
+      "title": "This is data to be included in my package",
+      "topics": [
+        "crm.features"
+      ]
+    },
+    {
+      "page": "evaluateModelPerformance",
+      "title": "Evaluate model performances",
+      "topics": [
+        "evaluateModelPerformance"
+      ]
+    },
+    {
+      "page": "feature.ranking",
+      "title": "This is data to be included in my package",
+      "topics": [
+        "feature.ranking"
+      ]
+    },
+    {
+      "page": "LedPred",
+      "title": "Creates an SVM model given a feature matrix",
+      "topics": [
+        "LedPred"
+      ]
+    },
+    {
+      "page": "mapFeaturesToCRMs",
+      "title": "R interface to bed_to_matrix REST in server",
+      "topics": [
+        "mapFeaturesToCRMs"
+      ]
+    },
+    {
+      "page": "mcTune",
+      "title": "Tuning the SVM parameters",
+      "topics": [
+        "mcTune"
+      ]
+    },
+    {
+      "page": "rankFeatures",
+      "title": "Ranking the features according to their importance",
+      "topics": [
+        "rankFeatures"
+      ]
+    },
+    {
+      "page": "scoreData",
+      "title": "Predicting new regulatory regions",
+      "topics": [
+        "scoreData"
+      ]
+    },
+    {
+      "page": "tuneFeatureNb",
+      "title": "Selecting the optimal number of features",
+      "topics": [
+        "tuneFeatureNb"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "akima",
+    "bitops",
+    "brio",
+    "callr",
+    "caTools",
+    "class",
+    "cli",
+    "cpp11",
+    "crayon",
+    "desc",
+    "diffobj",
+    "e1071",
+    "evaluate",
+    "farver",
+    "fs",
+    "ggplot2",
+    "glue",
+    "gplots",
+    "gtable",
+    "gtools",
+    "irr",
+    "isoband",
+    "jsonlite",
+    "KernSmooth",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "lpSolve",
+    "magrittr",
+    "MASS",
+    "misc3d",
+    "pkgbuild",
+    "pkgload",
+    "plot3D",
+    "plyr",
+    "praise",
+    "processx",
+    "proxy",
+    "ps",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "rlang",
+    "ROCR",
+    "rprojroot",
+    "S7",
+    "scales",
+    "sp",
+    "testthat",
+    "vctrs",
+    "viridisLite",
+    "waldo",
+    "withr"
+  ],
+  "_vignettes": [
+    {
+      "source": "LedPred.Rnw",
+      "filename": "LedPred.pdf",
+      "title": "LedPred Example",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2015-07-23 17:55:28",
+      "modified": "2016-04-19 11:16:28",
+      "commits": 8
+    }
+  ],
+  "_score": 4.2552725051033065,
+  "_indexed": true,
+  "_nocasepkg": "ledpred",
+  "_universes": [
+    "bioc",
+    "aitgon"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:47:47.000Z",
+      "distro": "noble",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "65d7ed9345ae4889c4aac942adca57380f5fe651f58a360187342a6d9b510817",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:48:10.000Z",
+      "distro": "noble",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "85a70cd24462437c5d42b8cb193f12e7fde78e7e1561a90394017c491c6f0136",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:46:20.000Z",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "f63c71039627a98fee953f1a22a257a25eba827dd87b61fddd4736be3470a336",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:45:59.000Z",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "ba737b862d1e6efa607c82bcb6d9da8b804161a5e0e2484f366c5878f8ee3b26",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:47:04.000Z",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "9f453b72ef65cc0927a51c628a01dc01fc59f6cf7c9a7277fd66789c8634d4d3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:45:48.000Z",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "ea65d2e36199cbdca8b06e6084d8a583b7712f6ad88829fbe592dcb74e3ed8d0",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:45:57.000Z",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "333d11b8d7b13cb056ad1b49590e67f68c89724a8ee9b88ea5b0799258e406d1",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-02-28T07:45:55.000Z",
+      "commit": "f513d31adae8ec74e5bd17b176003e6add0dcf63",
+      "fileid": "4d81b66cb584c7090e4ed40e4f454a8d4760b6cb6e8d93616ce040c3d9e00663",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22516429657"
+    }
+  ]
+}

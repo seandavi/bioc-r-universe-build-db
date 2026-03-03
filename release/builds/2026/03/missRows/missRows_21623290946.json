@@ -1,0 +1,578 @@
+{
+  "Package": "missRows",
+  "Type": "Package",
+  "Title": "Handling Missing Individuals in Multi-Omics Data Integration",
+  "Version": "1.30.0",
+  "Date": "2022-01-14",
+  "Author": "Ignacio Gonzalez and Valentin Voillet",
+  "Maintainer": "Gonzalez Ignacio <ignacio.gonzalez@bbox.fr>",
+  "Description": "The missRows package implements the MI-MFA method to deal\nwith missing individuals ('biological units') in multi-omics\ndata integration. The MI-MFA method generates multiple imputed\ndatasets from a Multiple Factor Analysis model, then the yield\nresults are combined in a single consensus solution. The\npackage provides functions for estimating coordinates of\nindividuals and variables, imputing missing individuals, and\nvarious diagnostic plots to inspect the pattern of missingness\nand visualize the uncertainty due to missing values.",
+  "License": "Artistic-2.0",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, StatisticalMethod, DimensionReduction,\nPrincipalComponent, MathematicalBiology, Visualization",
+  "RoxygenNote": "6.0.1",
+  "Config/pak/sysreqs": "libicu-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:44:35 UTC",
+  "RemoteUrl": "https://github.com/bioc/missRows",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 08:50:10 UTC",
+    "User": "root"
+  },
+  "MD5sum": "622c3c54df30c385b7c2800f510b44b1",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "missRows_1.30.0.tar.gz",
+  "_fileid": "46ede4b81c1fd7c8034f7da5c922bca2fbe82dcf8d002d9b6f3d52ea991bd661",
+  "_filesize": 820397,
+  "_sha256": "46ede4b81c1fd7c8034f7da5c922bca2fbe82dcf8d002d9b6f3d52ea991bd661",
+  "_created": "2026-02-03T08:50:10.000Z",
+  "_published": "2026-02-03T09:01:14.552Z",
+  "_jobs": [
+    {
+      "job": 62317623997,
+      "time": 176,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5354562433"
+    },
+    {
+      "job": 62317623965,
+      "time": 324,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354590034"
+    },
+    {
+      "job": 62317624002,
+      "time": 346,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354596071"
+    },
+    {
+      "job": 62317623974,
+      "time": 252,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354644035"
+    },
+    {
+      "job": 62317623989,
+      "time": 189,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354630529"
+    },
+    {
+      "job": 62317134017,
+      "time": 291,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354528401"
+    },
+    {
+      "job": 62317623975,
+      "time": 121,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5354552227"
+    },
+    {
+      "job": 62317624028,
+      "time": 253,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354577178"
+    },
+    {
+      "job": 62317623980,
+      "time": 238,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5354574175"
+    },
+    {
+      "job": 62317624015,
+      "time": 227,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354572005"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/missRows",
+  "_commit": {
+    "id": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761749075
+  },
+  "_maintainer": {
+    "name": "Gonzalez Ignacio",
+    "email": "ignacio.gonzalez@bbox.fr",
+    "login": "gonzalezignacio",
+    "uuid": 35460245
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Depends"
+    },
+    {
+      "package": "grDevices",
+      "role": "Depends"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.31.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.30.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "statisticalmethod",
+    "dimensionreduction",
+    "principalcomponent",
+    "mathematicalbiology",
+    "visualization"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 292,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/missRows"
+  },
+  "_searchresults": 3,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/missRows.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "compromise",
+    "configurations",
+    "imputedData",
+    "imputedIndv",
+    "MIDTList",
+    "MIMFA",
+    "MIparam",
+    "missingIndv",
+    "missPattern",
+    "plotInd",
+    "plotVar",
+    "tuneM"
+  ],
+  "_datasets": [
+    {
+      "name": "NCI60",
+      "title": "Data of the NCI-60 Cell Lines with Missing Individuals",
+      "object": "NCI60",
+      "file": "NCI60.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "missRows-package",
+      "title": "Handling Missing Individuals in Multi-Omics Data Integration",
+      "topics": [
+        "missRows-package",
+        "missRows"
+      ]
+    },
+    {
+      "page": "eigenvalue",
+      "title": "Scaled Firts Singular Value of the SVD of a Matrix",
+      "topics": [
+        "eigenvalue"
+      ]
+    },
+    {
+      "page": "estimNC",
+      "title": "Estimate the Number of Components for Data Imputation",
+      "topics": [
+        "estimNC"
+      ]
+    },
+    {
+      "page": "imputeDataMFA",
+      "title": "Impute Missing Rows and Estimates MFA Axes",
+      "topics": [
+        "imputeDataMFA"
+      ]
+    },
+    {
+      "page": "imputedData",
+      "title": "Get the Imputed Data Tables",
+      "topics": [
+        "imputedData"
+      ]
+    },
+    {
+      "page": "MFA",
+      "title": "Multiple Factor Analysis (MFA)",
+      "topics": [
+        "MFA"
+      ]
+    },
+    {
+      "page": "MIDTList",
+      "title": "Infrastructure for Multiple Imputation and Multi-omics Experiments",
+      "topics": [
+        "compromise",
+        "compromise,MIDTList-method",
+        "configurations",
+        "configurations,MIDTList-method",
+        "imputedIndv",
+        "imputedIndv,MIDTList-method",
+        "initialize,MIDTList-method",
+        "MIDTList",
+        "MIDTList-class",
+        "MIparam",
+        "MIparam,MIDTList-method",
+        "missingIndv",
+        "missingIndv,MIDTList-method",
+        "strata",
+        "strata,MIDTList-method"
+      ]
+    },
+    {
+      "page": "MIMFA",
+      "title": "Handling Missing Individuals in MFA",
+      "topics": [
+        "MIMFA"
+      ]
+    },
+    {
+      "page": "missPattern",
+      "title": "Inspects Pattern of Missingness",
+      "topics": [
+        "missPattern",
+        "print.missPattern"
+      ]
+    },
+    {
+      "page": "NCI60",
+      "title": "Data of the NCI-60 Cell Lines with Missing Individuals",
+      "topics": [
+        "NCI60"
+      ]
+    },
+    {
+      "page": "plotInd",
+      "title": "Plot of Individuals (Experimental Units)",
+      "topics": [
+        "plotInd"
+      ]
+    },
+    {
+      "page": "plotVar",
+      "title": "Plot of Variables: Correlation Circle",
+      "topics": [
+        "plotVar"
+      ]
+    },
+    {
+      "page": "RVcoeff",
+      "title": "Calculate the RV Coefficient",
+      "topics": [
+        "RVcoeff"
+      ]
+    },
+    {
+      "page": "searchsComb",
+      "title": "Search the Element of a Combination",
+      "topics": [
+        "searchsComb"
+      ]
+    },
+    {
+      "page": "STATIS",
+      "title": "STATIS Analysis of Multiple Data Tables",
+      "topics": [
+        "STATIS"
+      ]
+    },
+    {
+      "page": "tuneM",
+      "title": "Tune the Number of Imputations in MI-MFA",
+      "topics": [
+        "print.tuneM",
+        "tuneM"
+      ]
+    },
+    {
+      "page": "wrapperSVD",
+      "title": "Singular Value Decomposition of a Matrix",
+      "topics": [
+        "wrapperSVD"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "cli",
+    "cpp11",
+    "DelayedArray",
+    "dplyr",
+    "farver",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "gtools",
+    "IRanges",
+    "isoband",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "MultiAssayExperiment",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "purrr",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "missRows.Rnw",
+      "filename": "missRows.pdf",
+      "title": "missRows",
+      "engine": "knitr::knitr",
+      "headings": [],
+      "created": "2018-02-23 10:27:05",
+      "modified": "2018-08-30 17:52:29",
+      "commits": 18
+    }
+  ],
+  "_score": 3.3010299956639813,
+  "_indexed": false,
+  "_nocasepkg": "missrows",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/missRows",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:53:39.000Z",
+      "distro": "noble",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "392b8b80e269f33eedf5020576749038b0b11b8d9a048b90ac5a5cc329412349",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:54:12.000Z",
+      "distro": "noble",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "c16372acdeaf6c3efa2cb19dfdb824a24cb525c2e58937c57be5ab6c0c759fcb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:58:15.000Z",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "5de81de6648d03a7785d11e5a42b1a63baa143a5a6b8a61697cc0f4dd0223e2a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:57:57.000Z",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "226adf108a3bce655d506ae118e795374db56b9a49a98c6d90c676b2a67563fc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:52:42.000Z",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "74c23a05cfe11f8d1ee26a6618656ca531fa67e318634de5df83ad68cc523275",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:52:09.000Z",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "0c0780889d8dc3feed8a072fa3fcca970d65af8a9d85e408b9232a8040b45ffe",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:51:58.000Z",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "04b28592a07091ed3235ac41664c530ab62f815500504851290e9f9acb569e80",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.30.0",
+      "date": "2026-02-03T08:51:51.000Z",
+      "commit": "2560586595a77bc0bf3c642717dc8bf82644edbb",
+      "fileid": "6a282a4d67431227613b9c232f7f23bea2ce2b7914264d79012d0339897a8667",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623290946"
+    }
+  ]
+}

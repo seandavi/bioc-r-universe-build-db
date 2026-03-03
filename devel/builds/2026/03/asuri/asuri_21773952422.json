@@ -1,0 +1,783 @@
+{
+  "Package": "asuri",
+  "Date": "2024-04-03",
+  "Type": "Package",
+  "Title": "Analysis of SUrvival and RIsk prediction in patients based on\ngene signatures",
+  "Version": "0.99.19",
+  "Description": "The ASURI (Analysis of SUrvival and patients RIsk\nprediction based on gene signatures) package discovers marker\ngenes that are related to risk prediction capabilities and to a\nclinical variable of interest. It uses two main steps,\nincluding subsampling glmnet and unicox. The package implements\nrobust functions to discover survival markers related to a\nclinical phenotype and to predict a risk score, allowing to\nstudy the patient's risk based on the gene signatures. Several\nplots are provided to visualise the relevance of the genes, the\nrisk score, and patient stratification, as well as a robust\nversion of the Kaplan-Meier curves.",
+  "Authors@R": "c(\nperson(given = \"Alberto\",\nfamily = \"Berral-Gonzalez\",\nemail = \"aberralgonzalez@gmail.com\",\nrole = c(\"aut\", \"cre\", \"ctb\"),\ncomment = c(ORCID = \"0000-0001-8388-6051\")),\nperson(given = \"Santiago\",\nfamily = \"Bueno-Fortes\",\nrole = c(\"aut\", \"ctb\"),\ncomment = c(ORCID = \"0000-0001-7141-2860\")),\nperson(given = \"Natalia\",\nfamily = \"Alonso-Moreda\",\nrole = c(\"aut\", \"ctb\"),\ncomment = c(ORCID = \"0000-0002-2347-5127\")),\nperson(given = \"Jose Manuel\",\nfamily = \"Sanchez-Santos\",\nrole = c(\"aut\", \"ctb\"),\ncomment = c(ORCID = \"0000-0002-7434-7598\")),\nperson(given = \"Manuel\",\nfamily = \"Martin-Merino Acera\",\nrole = c(\"aut\", \"ctb\"),\ncomment = c(ORCID = \"0000-0002-5914-2332\")),\nperson(given = \"Javier\",\nfamily = \"De Las Rivas\",\nemail = \"jrivas@usal.es\",\nrole = c(\"aut\", \"ctb\"),\ncomment = c(ORCID = \"0000-0002-0984-9946\"))\n)",
+  "License": "LGPL-3 + file LICENSE",
+  "biocViews": "Software, StatisticalMethod, WorkflowStep, GeneExpression,\nMicroarray, DifferentialExpression, GenePrediction, Regression,\nSurvival, ExonArray, MultipleComparison",
+  "URL": "https://github.com/jdelasrivas-lab/asuri",
+  "BugReports": "https://github.com/jdelasrivas-lab/asuri/issues",
+  "BiocType": "Software",
+  "ZipData": "TRUE",
+  "RoxygenNote": "7.3.3",
+  "NeedsCompilation": "no",
+  "RdMacros": "Rdpack",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "LazyData": "false",
+  "Config/pak/sysreqs": "libicu-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-02-06 10:14:03 UTC",
+  "RemoteUrl": "https://github.com/bioc/asuri",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+  "Packaged": {
+    "Date": "2026-02-07 04:16:46 UTC",
+    "User": "root"
+  },
+  "Author": "Alberto Berral-Gonzalez [aut, cre, ctb] (ORCID:\n<https://orcid.org/0000-0001-8388-6051>),\nSantiago Bueno-Fortes [aut, ctb] (ORCID:\n<https://orcid.org/0000-0001-7141-2860>),\nNatalia Alonso-Moreda [aut, ctb] (ORCID:\n<https://orcid.org/0000-0002-2347-5127>),\nJose Manuel Sanchez-Santos [aut, ctb] (ORCID:\n<https://orcid.org/0000-0002-7434-7598>),\nManuel Martin-Merino Acera [aut, ctb] (ORCID:\n<https://orcid.org/0000-0002-5914-2332>),\nJavier De Las Rivas [aut, ctb] (ORCID:\n<https://orcid.org/0000-0002-0984-9946>)",
+  "Maintainer": "Alberto Berral-Gonzalez <aberralgonzalez@gmail.com>",
+  "MD5sum": "e6199b85288bb8b3d7607de6acc5c57a",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "asuri_0.99.19.tar.gz",
+  "_fileid": "af98e4550f088d7aff6578ba9d652f7a2d732b2d9e174a0bbe65e6d9f4ef3729",
+  "_filesize": 3945571,
+  "_sha256": "af98e4550f088d7aff6578ba9d652f7a2d732b2d9e174a0bbe65e6d9f4ef3729",
+  "_created": "2026-02-07T04:16:46.000Z",
+  "_published": "2026-02-07T04:26:07.854Z",
+  "_jobs": [
+    {
+      "job": 62827301985,
+      "time": 207,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5415159974"
+    },
+    {
+      "job": 62827302000,
+      "time": 444,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5415177265"
+    },
+    {
+      "job": 62827301980,
+      "time": 467,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5415178963"
+    },
+    {
+      "job": 62827301982,
+      "time": 383,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5415172646"
+    },
+    {
+      "job": 62827301986,
+      "time": 350,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5415170190"
+    },
+    {
+      "job": 62826880330,
+      "time": 414,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5415145037"
+    },
+    {
+      "job": 62827301973,
+      "time": 153,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5415156291"
+    },
+    {
+      "job": 62827301989,
+      "time": 481,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5415180137"
+    },
+    {
+      "job": 62827301998,
+      "time": 499,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5415181366"
+    },
+    {
+      "job": 62827301987,
+      "time": 480,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5415180041"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/asuri",
+  "_commit": {
+    "id": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+    "author": "aberral <aberralgonzalez@gmail.com>",
+    "committer": "aberral <aberralgonzalez@gmail.com>",
+    "message": "fix(patientRisk): ensure extended list expands gene selection\n",
+    "time": 1770372843
+  },
+  "_maintainer": {
+    "name": "Alberto Berral-Gonzalez",
+    "email": "aberralgonzalez@gmail.com",
+    "login": "aberral",
+    "uuid": 31618843,
+    "orcid": "0000-0001-8388-6051"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "spsUtil",
+      "role": "Imports"
+    },
+    {
+      "package": "lubridate",
+      "role": "Imports"
+    },
+    {
+      "package": "survival",
+      "role": "Imports"
+    },
+    {
+      "package": "glmnet",
+      "role": "Imports"
+    },
+    {
+      "package": "siggenes",
+      "role": "Imports"
+    },
+    {
+      "package": "survcomp",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "ROCR",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "Rdpack",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "formatR",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "magick",
+      "role": "Suggests"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-17",
+      "n": 7
+    },
+    {
+      "week": "2025-22",
+      "n": 3
+    },
+    {
+      "week": "2025-23",
+      "n": 1
+    },
+    {
+      "week": "2025-24",
+      "n": 2
+    },
+    {
+      "week": "2025-25",
+      "n": 2
+    },
+    {
+      "week": "2025-28",
+      "n": 14
+    },
+    {
+      "week": "2025-37",
+      "n": 2
+    },
+    {
+      "week": "2025-38",
+      "n": 7
+    },
+    {
+      "week": "2025-44",
+      "n": 4
+    },
+    {
+      "week": "2026-06",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.18",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "software",
+    "statisticalmethod",
+    "workflowstep",
+    "geneexpression",
+    "microarray",
+    "differentialexpression",
+    "geneprediction",
+    "regression",
+    "survival",
+    "exonarray",
+    "multiplecomparison"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "aberral",
+      "count": 43,
+      "uuid": 31618843
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 84,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/asuri"
+  },
+  "_devurl": "https://github.com/jdelasrivas-lab/asuri",
+  "_searchresults": 1,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/asuri.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/jdelasrivas-lab/asuri",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "genePheno",
+    "geneSurv",
+    "patientRisk",
+    "plotBetas",
+    "plotBoxplot",
+    "plotKM",
+    "plotLambda",
+    "plotLogRank",
+    "plotProbClass",
+    "plotSigmoid",
+    "predict_PatientRisk",
+    "predict_SurvCurve",
+    "prefilterSAM"
+  ],
+  "_datasets": [
+    {
+      "name": "ex_genePheno",
+      "title": "ex_genePheno",
+      "object": "ex_genePheno",
+      "file": "ex_genePheno.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ex_patientRisk",
+      "title": "ex_patientRisk",
+      "object": "ex_patientRisk",
+      "file": "ex_patientRisk.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ex_predictPatientRisk",
+      "title": "ex_predictPatientRisk",
+      "object": "ex_predictPatientRisk",
+      "file": "ex_predictPatientRisk.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Sample4"
+      ],
+      "rows": 77,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "ex_prefilterSAM",
+      "title": "ex_prefilterSAM",
+      "object": "ex_prefilterSAM",
+      "file": "ex_prefilterSAM.rda",
+      "class": [
+        "character"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "seBRCA",
+      "title": "Example SummarizedExperiment object",
+      "object": "seBRCA",
+      "file": "seBRCA.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "asuri",
+      "title": "asuri: *A*nalysis of disease *SU*rvival and patient *RI*sk prediction based on gene signatures",
+      "topics": [
+        "asuri"
+      ]
+    },
+    {
+      "page": "ex_genePheno",
+      "title": "ex_genePheno",
+      "topics": [
+        "ex_genePheno"
+      ]
+    },
+    {
+      "page": "ex_patientRisk",
+      "title": "ex_patientRisk",
+      "topics": [
+        "ex_patientRisk"
+      ]
+    },
+    {
+      "page": "ex_predictPatientRisk",
+      "title": "ex_predictPatientRisk",
+      "topics": [
+        "ex_predictPatientRisk"
+      ]
+    },
+    {
+      "page": "ex_prefilterSAM",
+      "title": "ex_prefilterSAM",
+      "topics": [
+        "ex_prefilterSAM"
+      ]
+    },
+    {
+      "page": "genePheno",
+      "title": "Identify Predictive Genes for a Phenotype",
+      "topics": [
+        "genePheno"
+      ]
+    },
+    {
+      "page": "geneSurv",
+      "title": "Kaplan-Meier Survival Analysis Based on Gene Expression or Risk Score",
+      "topics": [
+        "geneSurv"
+      ]
+    },
+    {
+      "page": "patientRisk",
+      "title": "patientRisk",
+      "topics": [
+        "patientRisk"
+      ]
+    },
+    {
+      "page": "plotBetas",
+      "title": "Plot the ordered beta values for patientRisk()",
+      "topics": [
+        "plotBetas"
+      ]
+    },
+    {
+      "page": "plotBoxplot",
+      "title": "Plot a Boxplot for geneSurv()",
+      "topics": [
+        "plotBoxplot"
+      ]
+    },
+    {
+      "page": "plotKM",
+      "title": "Plot the KM curves for geneSurv() and patientRisk()",
+      "topics": [
+        "plotKM"
+      ]
+    },
+    {
+      "page": "plotLambda",
+      "title": "Plot a lambda distribution for patientRisk()",
+      "topics": [
+        "plotLambda"
+      ]
+    },
+    {
+      "page": "plotLogRank",
+      "title": "Plot the logrank p-value for each patient splitting for patientRisk()",
+      "topics": [
+        "plotLogRank"
+      ]
+    },
+    {
+      "page": "plotProbClass",
+      "title": "Plot a class probability distribution for geneSurv()",
+      "topics": [
+        "plotProbClass"
+      ]
+    },
+    {
+      "page": "plotSigmoid",
+      "title": "Plot the ordered risk distribution for patientRisk()",
+      "topics": [
+        "plotSigmoid"
+      ]
+    },
+    {
+      "page": "predict_PatientRisk",
+      "title": "Predict Patient Risk Based on Gene Expression Data",
+      "topics": [
+        "predict_PatientRisk"
+      ]
+    },
+    {
+      "page": "predict_SurvCurve",
+      "title": "Predict Survival Curve for a Test Patient Using Cox Model Predictions",
+      "topics": [
+        "predict_SurvCurve"
+      ]
+    },
+    {
+      "page": "prefilterSAM",
+      "title": "Pre-filter Genes using SAM (Significance Analysis of Microarrays)",
+      "topics": [
+        "prefilterSAM"
+      ]
+    },
+    {
+      "page": "seBRCA",
+      "title": "Example SummarizedExperiment object",
+      "topics": [
+        "seBRCA"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/asuri/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "assertthat",
+    "Biobase",
+    "BiocGenerics",
+    "bitops",
+    "bootstrap",
+    "caTools",
+    "class",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "diagram",
+    "digest",
+    "farver",
+    "foreach",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glmnet",
+    "globals",
+    "glue",
+    "gplots",
+    "gtable",
+    "gtools",
+    "httr",
+    "ipred",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KernSmooth",
+    "labeling",
+    "lattice",
+    "lava",
+    "lifecycle",
+    "listenv",
+    "lubridate",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "multtest",
+    "nnet",
+    "numDeriv",
+    "openssl",
+    "parallelly",
+    "prodlim",
+    "progressr",
+    "R6",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "Rdpack",
+    "rlang",
+    "rmeta",
+    "ROCR",
+    "rpart",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "scrime",
+    "Seqinfo",
+    "shape",
+    "siggenes",
+    "SparseArray",
+    "spsUtil",
+    "SQUAREM",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "SuppDists",
+    "survcomp",
+    "survival",
+    "survivalROC",
+    "sys",
+    "timechange",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "asuri.Rmd",
+      "filename": "asuri.html",
+      "title": "ASURI: An R Package for Survival Analysis and Risk Prediction using Gene Expression",
+      "author": "Alberto Berral-Gonzalez, Santiago Bueno-Fortes, Natalia Alonso-Moreda, Jose Manuel Sanchez-Santos, Manuel Martin-Merino, Javier De Las Rivas",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Package download and installation. Package dependencies.",
+        "Dataset description and download.",
+        "Platforms supported by the library and preprocessing.",
+        "Survival and risk assessment (case study on Breast Cancer).",
+        "Analysis of individual genes as survival markers: geneSurv()",
+        "Discovery of genes associated with phenotypic factors: genePheno()",
+        "Identification of gene survival markers & patient risk prediction: patientRisk()",
+        "Risk Prediction for an independent set of patients: predict_PatientRisk()",
+        "Survival estimation from the COX regression for a test patient: predict_SurvCurve()",
+        "Brief comparison of ASURI and other related R tools",
+        "Session Info",
+        "References"
+      ],
+      "created": "2025-04-24 08:42:04",
+      "modified": "2025-10-27 15:26:18",
+      "commits": 14
+    }
+  ],
+  "_score": 4.698970004336019,
+  "_indexed": true,
+  "_nocasepkg": "asuri",
+  "_universes": [
+    "bioc",
+    "aberral",
+    "jdelasrivas-lab"
+  ],
+  "_previous": "0.99.18",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:20:18.000Z",
+      "distro": "noble",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "aafb29796a36095e115680225e7f1c2dd45e1eac94ef0654a0102f1efa71702c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:20:24.000Z",
+      "distro": "noble",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "88e99ea0b94fc8fd6622f8fcd143872781f9faee15249841a059c68f8715322a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:19:07.000Z",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "e68a0511287eab9ac0138a864dd2e0ab183518d74293016ceb616783f49d54c9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:19:31.000Z",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "a16c155c9160c07389a62f8edfb742617b9ddc7a7b06d41fb6ffc4b5bdb65df8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:19:53.000Z",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "41e36d5bb71d13d6f9f88cea64df4373d21a6693c70029487cd70c3173933c72",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:18:34.000Z",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "b4973b039701decc331f6a08a064ff93d274543c947540028f221487270fe612",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:18:41.000Z",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "14f4fae85d09189a347235323974f8852dcea2e083cbfa569f1b8441797fae98",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "0.99.19",
+      "date": "2026-02-07T04:18:44.000Z",
+      "commit": "d545c655ce0b72fd6face7ec2d659b74775b93cb",
+      "fileid": "921e70dcf94e276e739e6defbeabe1a59d4138861c3403d705f8f7c9736cbfbe",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21773952422"
+    }
+  ]
+}

@@ -1,0 +1,685 @@
+{
+  "Package": "AnnotationForge",
+  "Title": "Tools for building SQLite-based annotation data packages",
+  "Description": "Provides code for generating Annotation packages and their\ndatabases.  Packages produced are intended to be used with\nAnnotationDbi.",
+  "biocViews": "Annotation, Infrastructure",
+  "URL": "https://bioconductor.org/packages/AnnotationForge",
+  "BugReports": "https://github.com/Bioconductor/AnnotationForge/issues",
+  "Version": "1.52.0",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(\nperson(\"Marc\", \"Carlson\", role = \"aut\"),\nperson(\"Herv\u00e9\", \"Pag\u00e8s\", role = \"aut\"),\nperson(\"Madelyn\", \"Carlson\", role = \"ctb\",\ncomment = \"'Creating probe packages' vignette translation from Sweave to Rmarkdown / HTML\"),\nperson(\"Bioconductor Package Maintainer\", role = \"cre\",\nemail = \"maintainer@bioconductor.org\")\n)",
+  "VignetteBuilder": "knitr",
+  "BuildKeepEmpty": "TRUE",
+  "Collate": "makeAnnDbPkg.R sqlForge_utils.R sqlForge_baseMapBuilder.R\nsqlForge_schemaGen.R sqlForge_tableBuilder.R\nsqlForge_makeAnnPkgs.R sqlForge_wrapBaseDBPkgs.R\nsqlForge_seqnames.R makeProbePackage.R makeOrgPackage.R\nmakeChipPackageFromDataFrames.R makeOrgPackageFromNCBI.R\nNCBI_getters.R makeInparanoidDbs.R\ntest_AnnotationForge_package.R",
+  "Date": "2024-10-28",
+  "Config/pak/sysreqs": "make libpng-dev libxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:11:26 UTC",
+  "RemoteUrl": "https://github.com/bioc/AnnotationForge",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-22 07:59:29 UTC",
+    "User": "root"
+  },
+  "Author": "Marc Carlson [aut],\nHerv\u00e9 Pag\u00e8s [aut],\nMadelyn Carlson [ctb] ('Creating probe packages' vignette translation\nfrom Sweave to Rmarkdown / HTML),\nBioconductor Package Maintainer [cre]",
+  "Maintainer": "Bioconductor Package Maintainer <maintainer@bioconductor.org>",
+  "MD5sum": "6894e2b562a372150f496bde8190fb4a",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "AnnotationForge_1.52.0.tar.gz",
+  "_fileid": "125e59c7eec735e1365f7a8435996e353ee364edc983ae07c43ea174aa4597c9",
+  "_filesize": 3523852,
+  "_sha256": "125e59c7eec735e1365f7a8435996e353ee364edc983ae07c43ea174aa4597c9",
+  "_created": "2026-02-22T07:59:29.000Z",
+  "_published": "2026-02-22T08:08:29.595Z",
+  "_jobs": [
+    {
+      "job": 64431158350,
+      "time": 295,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5605909654"
+    },
+    {
+      "job": 64431158368,
+      "time": 484,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5605922091"
+    },
+    {
+      "job": 64431158361,
+      "time": 355,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5605913304"
+    },
+    {
+      "job": 64431158351,
+      "time": 181,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5605902667"
+    },
+    {
+      "job": 64431158354,
+      "time": 211,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5605904462"
+    },
+    {
+      "job": 64430876605,
+      "time": 517,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5605891578"
+    },
+    {
+      "job": 64431158339,
+      "time": 265,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5605907822"
+    },
+    {
+      "job": 64431158359,
+      "time": 271,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5605908187"
+    },
+    {
+      "job": 64431158372,
+      "time": 249,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5605906882"
+    },
+    {
+      "job": 64431158353,
+      "time": 243,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5605906451"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 4,
+    "note": 18
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/AnnotationForge",
+  "_commit": {
+    "id": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761747086
+  },
+  "_maintainer": {
+    "name": "Bioconductor Package Maintainer",
+    "email": "maintainer@bioconductor.org",
+    "login": "bioconductor-bot",
+    "uuid": 11681645
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "utils",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "version": ">= 0.15.10",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "version": ">= 1.17.0",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationDbi",
+      "version": ">= 1.33.14",
+      "role": "Depends"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Imports"
+    },
+    {
+      "package": "XML",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "RCurl",
+      "role": "Imports"
+    },
+    {
+      "package": "biomaRt",
+      "role": "Suggests"
+    },
+    {
+      "package": "httr",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "version": ">= 1.17.1",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Suggests"
+    },
+    {
+      "package": "affy",
+      "role": "Suggests"
+    },
+    {
+      "package": "hgu95av2.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "human.db0",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "Homo.sapiens",
+      "role": "Suggests"
+    },
+    {
+      "package": "GO.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 18,
+  "_updates": [
+    {
+      "week": "2025-11",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.53.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.52.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "annotation",
+    "infrastructure",
+    "bioconductor-package",
+    "core-package"
+  ],
+  "_stars": 5,
+  "_contributors": [
+    {
+      "user": "lshep",
+      "count": 38,
+      "uuid": 18724380
+    },
+    {
+      "user": "dtenenba",
+      "count": 23,
+      "uuid": 2286826
+    },
+    {
+      "user": "jwokaty",
+      "count": 15,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jmacdon",
+      "count": 14,
+      "uuid": 5940924
+    },
+    {
+      "user": "hpages",
+      "count": 12,
+      "uuid": 8810451
+    },
+    {
+      "user": "link-ny",
+      "count": 6,
+      "uuid": 4392950
+    },
+    {
+      "user": "dvantwisk",
+      "count": 3,
+      "uuid": 10927671
+    },
+    {
+      "user": "kayla-morrell",
+      "count": 3,
+      "uuid": 32339524
+    },
+    {
+      "user": "vobencha",
+      "count": 3,
+      "uuid": 2466173
+    },
+    {
+      "user": "mtmorgan",
+      "count": 2,
+      "uuid": 118552
+    },
+    {
+      "user": "martinholub",
+      "count": 2,
+      "uuid": 8350200
+    },
+    {
+      "user": "knokknok",
+      "count": 1,
+      "uuid": 1275796
+    },
+    {
+      "user": "mcarlsn",
+      "count": 1,
+      "uuid": 105299892
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 3308,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/AnnotationForge"
+  },
+  "_mentions": 11,
+  "_devurl": "https://github.com/bioconductor/annotationforge",
+  "_searchresults": 185,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/AnnotationForge.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioconductor/annotationforge",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "available.chipdbschemas",
+    "available.db0pkgs",
+    "available.dbschemas",
+    "getProbeData_1lq",
+    "getProbeDataAffy",
+    "loadAnnDbPkgIndex",
+    "makeAnnDbPkg",
+    "makeChipPackage",
+    "makeDBPackage",
+    "makeInpDb",
+    "makeOrgPackage",
+    "makeOrgPackageFromNCBI",
+    "makeProbePackage",
+    "populateDB",
+    "wrapBaseDBPackages"
+  ],
+  "_help": [
+    {
+      "page": "available.db0pkgs",
+      "title": "available.db0pkgs",
+      "topics": [
+        "available.chipdbschemas",
+        "available.db0pkgs",
+        "available.dbschemas"
+      ]
+    },
+    {
+      "page": "generateSeqnames_db",
+      "title": "Generates the seqnames.db package and database",
+      "topics": [
+        "generateSeqnames.db"
+      ]
+    },
+    {
+      "page": "getProbeData_1lq",
+      "title": "Read a 1lq file for an Affymetrix genechip",
+      "topics": [
+        "getProbeData_1lq"
+      ]
+    },
+    {
+      "page": "getProbeDataAffy",
+      "title": "Read a data file describing the probe sequences on an Affymetrix genechip",
+      "topics": [
+        "getProbeDataAffy"
+      ]
+    },
+    {
+      "page": "AnnDbPkg-maker",
+      "title": "Create an SQLite-based annotation package",
+      "topics": [
+        "AnnDbPkgSeed",
+        "AnnDbPkgSeed-class",
+        "class:AnnDbPkgSeed",
+        "loadAnnDbPkgIndex",
+        "makeAnnDbPkg",
+        "makeAnnDbPkg,AnnDbPkgSeed-method",
+        "makeAnnDbPkg,character-method",
+        "makeAnnDbPkg,list-method"
+      ]
+    },
+    {
+      "page": "makeChipPackageFromDataFrames",
+      "title": "Making a chip package from annotations available from data.frame of probes mapped to gene IDs and an existing org package.",
+      "topics": [
+        "makeChipPackage"
+      ]
+    },
+    {
+      "page": "sqlForge-makeCHIPDB",
+      "title": "Creates a sqlite database, and then makes an annotation package with it",
+      "topics": [
+        "makeDBPackage"
+      ]
+    },
+    {
+      "page": "makeInpDb",
+      "title": "Builds an individual DB from online files at inparanoid that is in turn meant for generating Inparanoid 8 based objects.",
+      "topics": [
+        "makeInpDb"
+      ]
+    },
+    {
+      "page": "makeOrgPackage",
+      "title": "Making an organism package from annotations available from a set of named data.frames.",
+      "topics": [
+        "makeOrgPackage"
+      ]
+    },
+    {
+      "page": "makeOrgPackageFromNCBI",
+      "title": "Make an organism package from annotations available from NCBI.",
+      "topics": [
+        "makeOrgPackageFromNCBI"
+      ]
+    },
+    {
+      "page": "makeProbePackage",
+      "title": "Make a package with probe sequence related data for microarrays",
+      "topics": [
+        "makeProbePackage"
+      ]
+    },
+    {
+      "page": "sqlForge-popDB",
+      "title": "Populates an SQLite DB with and produces a schema definition",
+      "topics": [
+        "popBOVINECHIPDB",
+        "popBOVINEDB",
+        "popCANINECHIPDB",
+        "popCANINEDB",
+        "popCHICKENCHIPDB",
+        "popCHICKENDB",
+        "popECOLICHIPDB",
+        "popECOLIDB",
+        "popFLYCHIPDB",
+        "popFLYDB",
+        "popHUMANCHIPDB",
+        "popHUMANDB",
+        "popMALARIADB",
+        "popMOUSECHIPDB",
+        "popMOUSEDB",
+        "popPIGCHIPDB",
+        "popPIGDB",
+        "popRATCHIPDB",
+        "popRATDB",
+        "populateDB",
+        "popWORMCHIPDB",
+        "popWORMDB",
+        "popYEASTDB",
+        "popYEASTNCBIDB",
+        "popZEBRAFISHCHIPDB",
+        "popZEBRAFISHDB"
+      ]
+    },
+    {
+      "page": "sqlForge-wrapDBPackages",
+      "title": "Wrap up all the Base Databases into Packages for distribution",
+      "topics": [
+        "wrapBaseDBPackages"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/AnnotationForge/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "AnnotationDbi",
+    "askpass",
+    "Biobase",
+    "BiocGenerics",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "cli",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "fastmap",
+    "generics",
+    "glue",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "KEGGREST",
+    "lifecycle",
+    "memoise",
+    "mime",
+    "openssl",
+    "pkgconfig",
+    "png",
+    "R6",
+    "RCurl",
+    "rlang",
+    "RSQLite",
+    "S4Vectors",
+    "Seqinfo",
+    "sys",
+    "vctrs",
+    "XML",
+    "XVector"
+  ],
+  "_score": 9.633074341413328,
+  "_indexed": false,
+  "_nocasepkg": "annotationforge",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/AnnotationForge",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:06:54.000Z",
+      "distro": "noble",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "4e778136e14ac079da5485563b859613ba22dbf2f6b0e2588bd17cc89010eb38",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:04:45.000Z",
+      "distro": "noble",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "5dee1efb27d91b00cc28c78e6d9eaccfdf115bccd5599280e4e20659a2dd1cc2",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:02:13.000Z",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "9bd9fa4b6de7a377f6ce542cfe0a752266d2b3e62c5db743214d1cdb480b5c1f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:02:31.000Z",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "249bfcdbd14d13f7cfb13cc50d83e6961a0d790499f5e390d87a22e57f57949b",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:04:29.000Z",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "aaed7bdc4a1d00f79b61f88f28b0d066420b8e9236b1a6ac09f3ecac5847cd70",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:02:50.000Z",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "c41a1f48002cc06de80fb5e59e21cc499fc3107c79ca967ecfc3d6648f5021a5",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:02:47.000Z",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "756c425adb8037434b13ce8bb7e8eb65b31c926a57e39fc7c994406c26a51e15",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.52.0",
+      "date": "2026-02-22T08:02:41.000Z",
+      "commit": "c5f7358acef71ffcafaf0f0ce3e25c88f4728d00",
+      "fileid": "b635bee735ad7e7b335fd308366da54d1611b400ae48dac628888c0fb78f2b0b",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273118400"
+    }
+  ]
+}

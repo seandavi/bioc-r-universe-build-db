@@ -1,0 +1,885 @@
+{
+  "Package": "tradeSeq",
+  "Type": "Package",
+  "Title": "trajectory-based differential expression analysis for sequencing\ndata",
+  "Date": "2019-03-17",
+  "Version": "1.24.0",
+  "Authors@R": "c(person(\"Koen\", \"Van den Berge\", role = c(\"aut\"),\nemail = \"koen.vandenberge@ugent.be\"),\nperson(\"Hector\", \"Roux de Bezieux\", role = c(\"aut\", \"cre\"),\nemail = \"hector.rouxdebezieux@berkeley.edu\",\ncomment = c(ORCID = \"0000-0002-1489-8339\")),\nperson(\"Kelly\",\"Street\", role = c(\"aut\",\"ctb\")),\nperson(\"Lieven\",\"Clement\", role=c(\"aut\",\"ctb\")),\nperson(\"Sandrine\",\"Dudoit\", role=\"ctb\"))",
+  "Description": "tradeSeq provides a flexible method for fitting regression\nmodels that can be used to find genes that are differentially\nexpressed along one or multiple lineages in a trajectory. Based\non the fitted models, it uses a variety of tests suited to\nanswer different questions of interest, e.g. the discovery of\ngenes for which expression is associated with pseudotime, or\nwhich are differentially expressed (in a specific region) along\nthe trajectory. It fits a negative binomial generalized\nadditive model (GAM) for each gene, and performs inference on\nthe parameters of the GAM.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "URL": "https://statomics.github.io/tradeSeq/index.html",
+  "Collate": "'AllGenerics.R' 'utils.R' 'associationTest.R'\n'clusterExpressionPatterns.R' 'conditionTest.R' 'data.R'\n'diffEndTest.R' 'earlyDETest.R' 'evaluateK.R' 'fitGAM.R'\n'getSmootherPvalues.R' 'getSmootherTestStats.R' 'nknots.R'\n'patternTest.R' 'plotGeneCount.R' 'plotSmoothers.R'\n'predictCells.R' 'predictSmooth.R' 'startVsEndTest.R'",
+  "RoxygenNote": "7.2.1",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Clustering, Regression, TimeCourse, DifferentialExpression,\nGeneExpression, RNASeq, Sequencing, Software, SingleCell,\nTranscriptomics, MultipleComparison, Visualization",
+  "BugReports": "https://github.com/statOmics/tradeSeq/issues",
+  "Config/pak/sysreqs": "libglpk-dev libxml2-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:55:42 UTC",
+  "RemoteUrl": "https://github.com/bioc/tradeSeq",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-23 09:01:11 UTC",
+    "User": "root"
+  },
+  "Author": "Koen Van den Berge [aut],\nHector Roux de Bezieux [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-1489-8339>),\nKelly Street [aut, ctb],\nLieven Clement [aut, ctb],\nSandrine Dudoit [ctb]",
+  "Maintainer": "Hector Roux de Bezieux <hector.rouxdebezieux@berkeley.edu>",
+  "MD5sum": "99d4090d584ad955049460e66d446c9a",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "tradeSeq_1.24.0.tar.gz",
+  "_fileid": "fcb201282c80bfb1c196778717847ab372e7162288d51be63e97c03121555a35",
+  "_filesize": 4757403,
+  "_sha256": "fcb201282c80bfb1c196778717847ab372e7162288d51be63e97c03121555a35",
+  "_created": "2026-02-23T09:01:11.000Z",
+  "_published": "2026-02-23T09:19:51.750Z",
+  "_jobs": [
+    {
+      "job": 64502909868,
+      "time": 254,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613905736"
+    },
+    {
+      "job": 64502909856,
+      "time": 877,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614033603"
+    },
+    {
+      "job": 64502909914,
+      "time": 888,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614036066"
+    },
+    {
+      "job": 64502909890,
+      "time": 539,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614072088"
+    },
+    {
+      "job": 64502909950,
+      "time": 424,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614047237"
+    },
+    {
+      "job": 64501925868,
+      "time": 594,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613855301"
+    },
+    {
+      "job": 64502909842,
+      "time": 189,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5613893160"
+    },
+    {
+      "job": 64502909880,
+      "time": 918,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614042597"
+    },
+    {
+      "job": 64502909895,
+      "time": 931,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5614045277"
+    },
+    {
+      "job": 64502909931,
+      "time": 930,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614045132"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/tradeSeq",
+  "_commit": {
+    "id": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761749742
+  },
+  "_maintainer": {
+    "name": "Hector Roux de Bezieux",
+    "email": "hector.rouxdebezieux@berkeley.edu",
+    "login": "hectorrdb",
+    "twitter": "@hector_rdb",
+    "uuid": 27447880,
+    "orcid": "0000-0002-1489-8339"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "mgcv",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "slingshot",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "pbapply",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "princurve",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "TrajectoryUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "clusterExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "DelayedMatrixStats",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.25.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.24.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "clustering",
+    "regression",
+    "timecourse",
+    "differentialexpression",
+    "geneexpression",
+    "rnaseq",
+    "sequencing",
+    "software",
+    "singlecell",
+    "transcriptomics",
+    "multiplecomparison",
+    "visualization"
+  ],
+  "_stars": 290,
+  "_contributors": [
+    {
+      "user": "koenvandenberge",
+      "count": 462,
+      "uuid": 10134844
+    },
+    {
+      "user": "hectorrdb",
+      "count": 255,
+      "uuid": 27447880
+    },
+    {
+      "user": "nturaga",
+      "count": 12,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "alexis-varin",
+      "count": 1,
+      "uuid": 149001252
+    },
+    {
+      "user": "szcf-weiya",
+      "count": 1,
+      "uuid": 13688320
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 1414,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/tradeSeq"
+  },
+  "_mentions": 6,
+  "_devurl": "https://github.com/statomics/tradeseq",
+  "_searchresults": 660,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/tradeSeq.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/statomics/tradeseq",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "associationTest",
+    "clusterExpressionPatterns",
+    "conditionTest",
+    "diffEndTest",
+    "earlyDETest",
+    "evaluateK",
+    "fitGAM",
+    "getSmootherPvalues",
+    "getSmootherTestStats",
+    "nknots",
+    "patternTest",
+    "plot_evalutateK_results",
+    "plotGeneCount",
+    "plotSmoothers",
+    "predictCells",
+    "predictSmooth",
+    "startVsEndTest"
+  ],
+  "_datasets": [
+    {
+      "name": "celltype",
+      "title": "A vector defining cell types, used in the package vignette.",
+      "object": "celltype",
+      "file": "celltype.rda",
+      "class": [
+        "character"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "countMatrix",
+      "title": "A count matrix, used in the package vignette.",
+      "object": "countMatrix",
+      "file": "countMatrix.rda",
+      "class": [
+        "dgCMatrix"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "crv",
+      "title": "A SlingshotDataset object, used in the package vignette.",
+      "object": "crv",
+      "file": "crv.rda",
+      "class": [
+        "SlingshotDataSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "gamList",
+      "title": "A list of GAM models, used to demonstrate the various tests.",
+      "object": "gamList",
+      "file": "gamList.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "sds",
+      "title": "A SlingshotDataset object, used in the package unit tests.",
+      "object": "sds",
+      "file": "sds.rda",
+      "class": [
+        "SlingshotDataSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "associationTest",
+      "title": "Perform statistical test to check whether gene expression is constant across pseudotime within a lineage",
+      "topics": [
+        "associationTest",
+        "associationTest,list-method",
+        "associationTest,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "celltype",
+      "title": "A vector defining cell types, used in the package vignette.",
+      "topics": [
+        "celltype"
+      ]
+    },
+    {
+      "page": "clusterExpressionPatterns",
+      "title": "Cluster gene expression patterns.",
+      "topics": [
+        "clusterExpressionPatterns",
+        "clusterExpressionPatterns,list-method",
+        "clusterExpressionPatterns,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "conditionTest",
+      "title": "Assess differential expression patterns between conditions within a lineage.",
+      "topics": [
+        "conditionTest",
+        "conditionTest,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "countMatrix",
+      "title": "A count matrix, used in the package vignette.",
+      "topics": [
+        "countMatrix"
+      ]
+    },
+    {
+      "page": "crv",
+      "title": "A SlingshotDataset object, used in the package vignette.",
+      "topics": [
+        "crv"
+      ]
+    },
+    {
+      "page": "diffEndTest",
+      "title": "Perform statistical test to check for DE between final stages of every lineage.",
+      "topics": [
+        "diffEndTest",
+        "diffEndTest,list-method",
+        "diffEndTest,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "earlyDETest",
+      "title": "Perform test of early differences between lineages",
+      "topics": [
+        "earlyDETest",
+        "earlyDETest,list-method",
+        "earlyDETest,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "evaluateK",
+      "title": "Evaluate the optimal number of knots required for fitGAM.",
+      "topics": [
+        "evaluateK",
+        "evaluateK,dgCMatrix-method",
+        "evaluateK,matrix-method",
+        "evaluateK,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "fitGAM",
+      "title": "fitGAM",
+      "topics": [
+        "fitGAM",
+        "fitGAM,dgCMatrix-method",
+        "fitGAM,matrix-method",
+        "fitGAM,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "gamList",
+      "title": "A list of GAM models, used to demonstrate the various tests.",
+      "topics": [
+        "gamList"
+      ]
+    },
+    {
+      "page": "getSmootherPvalues",
+      "title": "Get smoother p-value as returned by 'mgcv'.",
+      "topics": [
+        "getSmootherPvalues"
+      ]
+    },
+    {
+      "page": "getSmootherTestStats",
+      "title": "Get smoother Chi-squared test statistics.",
+      "topics": [
+        "getSmootherTestStats"
+      ]
+    },
+    {
+      "page": "nknots",
+      "title": "knots",
+      "topics": [
+        "nknots",
+        "nknots,list-method",
+        "nknots,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "patternTest",
+      "title": "Assess differential expression pattern between lineages.",
+      "topics": [
+        "patternTest",
+        "patternTest,list-method",
+        "patternTest,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "plot_evalutateK_results",
+      "title": "Evaluate an appropriate number of knots.",
+      "topics": [
+        "plot_evalutateK_results"
+      ]
+    },
+    {
+      "page": "plotGeneCount",
+      "title": "Plot gene expression in reduced dimension.",
+      "topics": [
+        "plotGeneCount",
+        "plotGeneCount,PseudotimeOrdering-method",
+        "plotGeneCount,SingleCellExperiment-method",
+        "plotGeneCount,SlingshotDataSet-method"
+      ]
+    },
+    {
+      "page": "plotSmoothers",
+      "title": "Plot the log-transformed counts and the fitted values for a particular gene along all lineages",
+      "topics": [
+        "plotSmoothers",
+        "plotSmoothers,gam-method",
+        "plotSmoothers,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "predictCells",
+      "title": "predictCells",
+      "topics": [
+        "predictCells",
+        "predictCells,list-method",
+        "predictCells,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "predictSmooth",
+      "title": "predictSmooth",
+      "topics": [
+        "predictSmooth",
+        "predictSmooth,list-method",
+        "predictSmooth,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "sds",
+      "title": "A SlingshotDataset object, used in the package unit tests.",
+      "topics": [
+        "sds"
+      ]
+    },
+    {
+      "page": "startVsEndTest",
+      "title": "Perform statistical test to check for DE between starting point and the end stages of every lineage",
+      "topics": [
+        "startVsEndTest",
+        "startVsEndTest,list-method",
+        "startVsEndTest,SingleCellExperiment-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/tradeSeq/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "cli",
+    "codetools",
+    "cpp11",
+    "DelayedArray",
+    "edgeR",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mgcv",
+    "nlme",
+    "pbapply",
+    "pillar",
+    "pkgconfig",
+    "princurve",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "slingshot",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "SummarizedExperiment",
+    "tibble",
+    "TrajectoryUtils",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "multipleConditions.Rmd",
+      "filename": "multipleConditions.html",
+      "title": "Working with multiple conditions",
+      "author": "Kelly Street, Koen Van den Berge and Hector Roux de B\u00e9zieux",
+      "engine": "knitr::rmarkdown",
+      "headings": [],
+      "created": "2020-10-16 23:06:04",
+      "modified": "2020-10-16 23:06:04",
+      "commits": 1
+    },
+    {
+      "source": "Monocle.Rmd",
+      "filename": "Monocle.html",
+      "title": "Using Monocle as input to tradeSeq",
+      "author": "Koen Van den Berge and Hector Roux de B\u00e9zieux",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Load data",
+        "Monocle3",
+        "Constructing the trajectory",
+        "Extracting the pseudotimes and cell weights for tradeSeq",
+        "Session",
+        "References"
+      ],
+      "created": "2020-04-24 17:15:30",
+      "modified": "2021-07-02 17:33:45",
+      "commits": 4
+    },
+    {
+      "source": "fitGAM.Rmd",
+      "filename": "fitGAM.html",
+      "title": "Fitting the models and additional control of fitGAM in tradeSeq",
+      "author": "Koen Van den Berge and Hector Roux de B\u00e9zieux",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Load data",
+        "Choosing K: a deeper dive into the output from evaluateK",
+        "Fit additive models",
+        "Adding covariates to the model",
+        "Parallel computing",
+        "Fitting only a subset of genes",
+        "Zero inflation",
+        "Convergence issues on small or zero-inflated datasets",
+        "tradeSeq list output",
+        "Session",
+        "References"
+      ],
+      "created": "2020-04-24 17:15:30",
+      "modified": "2021-03-30 17:23:00",
+      "commits": 5
+    },
+    {
+      "source": "tradeSeq.Rmd",
+      "filename": "tradeSeq.html",
+      "title": "The tradeSeq workflow",
+      "author": "Koen Van den Berge and Hector Roux de B\u00e9zieux",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Load data",
+        "Fit negative binomial model",
+        "Within-lineage comparisons",
+        "Association of gene expression with pseudotime",
+        "Discovering progenitor marker genes",
+        "Comparing specific pseudotime values within a lineage",
+        "Between-lineage comparisons",
+        "Discovering differentiated cell type markers",
+        "Discovering genes with different expression patterns",
+        "Example on combining patternTest with diffEndTest results",
+        "Early drivers of differentiation",
+        "Differential expression in large datasets",
+        "Clustering of genes according to their expression pattern",
+        "Extracting fitted values to use with any clustering method",
+        "Clustering using RSEC, clusterExperiment",
+        "Contributing and requesting",
+        "Session",
+        "References"
+      ],
+      "created": "2019-03-15 23:19:02",
+      "modified": "2021-11-19 11:05:36",
+      "commits": 42
+    }
+  ],
+  "_score": 10.511572588949331,
+  "_indexed": false,
+  "_nocasepkg": "tradeseq",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/tradeSeq",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:05:12.000Z",
+      "distro": "noble",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "e454cc6c1b0ef2a91463b29a9a712c41bfd18d0b61055069e5712f3d444b26cc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:05:46.000Z",
+      "distro": "noble",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "90ecd38498fe726ec9e3c2152b2700fa35cb64b07401f7e80687275673b170a4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:12:29.000Z",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "80f2da24e86d328bfaf53a8c0c59fd1f2d841b511b31d2f3bdb03b598821a43c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:11:51.000Z",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "9ddae5d05428a00db7e988950cc640c10d3917989358a63920a961179b221051",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:05:00.000Z",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "aeff112e6b00d3a9619a78ff243c03ef0c148ec27c61cfdcff597f5f98329945",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:04:07.000Z",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "c8308189db6fc6aa505f052e261ff1d75a54c97cdba55d452d1c15b821160a43",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:03:28.000Z",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "0b3167fef10655ba2c149a298c6f7d48d0c8412c4c2e3a4072ac70f93a59202f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.24.0",
+      "date": "2026-02-23T09:04:39.000Z",
+      "commit": "7eea99e915958402e5e9f71b3015d43fe52e20e8",
+      "fileid": "8e271b19e9a0f04494589234be358d9b9108fd57b74cfc822d3d73239a898ff5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298980472"
+    }
+  ]
+}

@@ -1,0 +1,837 @@
+{
+  "Package": "treeclimbR",
+  "Type": "Package",
+  "Title": "An algorithm to find optimal signal levels in a tree",
+  "Version": "1.6.0",
+  "Date": "2025-07-18",
+  "Authors@R": "c(person(\"Ruizhu\", \"Huang\", email = \"ruizhuRH@gmail.com\",\nrole = c(\"aut\"),\ncomment = c(ORCID = \"0000-0003-3285-1945\")),\nperson(\"Charlotte\", \"Soneson\",\nemail = \"charlottesoneson@gmail.com\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0003-3833-2169\")))",
+  "Description": "The arrangement of hypotheses in a hierarchical structure\nappears in many research fields and often indicates different\nresolutions at which data can be viewed. This raises the\nquestion of which resolution level the signal should best be\ninterpreted on. treeclimbR provides a flexible method to select\noptimal resolution levels (potentially different levels in\ndifferent parts of the tree), rather than cutting the tree at\nan arbitrary level. treeclimbR uses a tuning parameter to\ngenerate candidate resolutions and from these selects the\noptimal one.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "biocViews": "StatisticalMethod, CellBasedAssays",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/csoneson/treeclimbR",
+  "BugReports": "https://github.com/csoneson/treeclimbR/issues",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libglpk-dev make libicu-dev libpng-dev\nlibxml2-dev perl zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:28:31 UTC",
+  "RemoteUrl": "https://github.com/bioc/treeclimbR",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-23 08:47:32 UTC",
+    "User": "root"
+  },
+  "Author": "Ruizhu Huang [aut] (ORCID: <https://orcid.org/0000-0003-3285-1945>),\nCharlotte Soneson [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-3833-2169>)",
+  "Maintainer": "Charlotte Soneson <charlottesoneson@gmail.com>",
+  "MD5sum": "98b2798e62696ee5e13ff7ae87a263a7",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "treeclimbR_1.6.0.tar.gz",
+  "_fileid": "fc9c6b558eb438a61ca23e80f2b7bb18b3b785af0ffc4075ae5d9d5f71968393",
+  "_filesize": 721089,
+  "_sha256": "fc9c6b558eb438a61ca23e80f2b7bb18b3b785af0ffc4075ae5d9d5f71968393",
+  "_created": "2026-02-23T08:47:32.000Z",
+  "_published": "2026-02-23T08:56:47.029Z",
+  "_jobs": [
+    {
+      "job": 64501567798,
+      "time": 219,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5613743153"
+    },
+    {
+      "job": 64501567752,
+      "time": 483,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5613793618"
+    },
+    {
+      "job": 64501567753,
+      "time": 487,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613794452"
+    },
+    {
+      "job": 64501567749,
+      "time": 263,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5613773643"
+    },
+    {
+      "job": 64501567744,
+      "time": 280,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613776480"
+    },
+    {
+      "job": 64501019881,
+      "time": 336,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613701277"
+    },
+    {
+      "job": 64501567742,
+      "time": 206,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5613740383"
+    },
+    {
+      "job": 64501567789,
+      "time": 399,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5613777675"
+    },
+    {
+      "job": 64501567769,
+      "time": 398,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5613777195"
+    },
+    {
+      "job": 64501567794,
+      "time": 407,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613779360"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 5
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/treeclimbR",
+  "_commit": {
+    "id": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751711
+  },
+  "_maintainer": {
+    "name": "Charlotte Soneson",
+    "email": "charlottesoneson@gmail.com",
+    "login": "csoneson",
+    "orcid": "0000-0003-3833-2169",
+    "uuid": 5628952
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "TreeSummarizedExperiment",
+      "version": ">= 1.99.0",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "dirmult",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "ape",
+      "role": "Imports"
+    },
+    {
+      "package": "diffcyt",
+      "role": "Imports"
+    },
+    {
+      "package": "ggnewscale",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 3.4.0",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "role": "Imports"
+    },
+    {
+      "package": "ggtree",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "scales",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-29",
+      "n": 8
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "statisticalmethod",
+    "cellbasedassays"
+  ],
+  "_stars": 20,
+  "_contributors": [
+    {
+      "user": "fionarhuang",
+      "count": 217,
+      "uuid": 22393299
+    },
+    {
+      "user": "csoneson",
+      "count": 169,
+      "uuid": 5628952
+    },
+    {
+      "user": "jwokaty",
+      "count": 8,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 228,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/treeclimbR"
+  },
+  "_devurl": "https://github.com/csoneson/treeclimbr",
+  "_searchresults": 52,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/treeclimbR.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/csoneson/treeclimbr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "aggDS",
+    "buildTree",
+    "calcMediansByTreeMarker",
+    "calcTreeCounts",
+    "calcTreeMedians",
+    "edgerWrp",
+    "evalCand",
+    "fdr",
+    "findChild",
+    "findExcl",
+    "getCand",
+    "getData",
+    "getLevel",
+    "infoCand",
+    "isConnect",
+    "medianByClusterMarker",
+    "nodeResult",
+    "parEstimate",
+    "runDA",
+    "runDS",
+    "selNode",
+    "simData",
+    "topNodes",
+    "tpr",
+    "TreeHeatmap",
+    "treeScore"
+  ],
+  "_help": [
+    {
+      "page": "aggDS",
+      "title": "Aggregate observed data based on a tree",
+      "topics": [
+        "aggDS"
+      ]
+    },
+    {
+      "page": "diffcyt_workflow",
+      "title": "Tree versions of diffcyt functions",
+      "topics": [
+        "buildTree",
+        "calcMediansByTreeMarker",
+        "calcTreeCounts",
+        "calcTreeMedians",
+        "diffcyt_workflow"
+      ]
+    },
+    {
+      "page": "edgerWrp",
+      "title": "Wrapper applying an edgeR differential analysis workflow",
+      "topics": [
+        "edgerWrp"
+      ]
+    },
+    {
+      "page": "evalCand",
+      "title": "Evaluate candidate levels and select the optimal one",
+      "topics": [
+        "evalCand"
+      ]
+    },
+    {
+      "page": "fdr",
+      "title": "Calculate false discovery rate (FDR) on a tree structure",
+      "topics": [
+        "fdr"
+      ]
+    },
+    {
+      "page": "findChild",
+      "title": "Find the children of an internal node in a tree",
+      "topics": [
+        "findChild"
+      ]
+    },
+    {
+      "page": "findExcl",
+      "title": "Find branches that are non-overlapping with specified branches in a tree",
+      "topics": [
+        "findExcl"
+      ]
+    },
+    {
+      "page": "getCand",
+      "title": "Generate candidates for different thresholds",
+      "topics": [
+        "getCand"
+      ]
+    },
+    {
+      "page": "getData",
+      "title": "Extract data from a TreeHeatmap",
+      "topics": [
+        "getData"
+      ]
+    },
+    {
+      "page": "getLevel",
+      "title": "Search for a target level on the tree via a specified score",
+      "topics": [
+        "getLevel"
+      ]
+    },
+    {
+      "page": "infoCand",
+      "title": "Get information of candidates",
+      "topics": [
+        "infoCand"
+      ]
+    },
+    {
+      "page": "isConnect",
+      "title": "Check whether nodes are contained in the same path from a leaf to the root in a tree",
+      "topics": [
+        "isConnect"
+      ]
+    },
+    {
+      "page": "medianByClusterMarker",
+      "title": "Calculate median values of markers for each cluster",
+      "topics": [
+        "medianByClusterMarker"
+      ]
+    },
+    {
+      "page": "nodeResult",
+      "title": "Extract table with node-level DA/DS results",
+      "topics": [
+        "nodeResult"
+      ]
+    },
+    {
+      "page": "parEstimate",
+      "title": "Parameter estimation for Dirichlet-multinomial distribution",
+      "topics": [
+        "parEstimate"
+      ]
+    },
+    {
+      "page": "runDA",
+      "title": "Test for differential abundance using edgeR",
+      "topics": [
+        "runDA"
+      ]
+    },
+    {
+      "page": "runDS",
+      "title": "Test for differential state using edgeR",
+      "topics": [
+        "runDS"
+      ]
+    },
+    {
+      "page": "selNode",
+      "title": "Select branches meeting certain criteria",
+      "topics": [
+        "selNode"
+      ]
+    },
+    {
+      "page": "simData",
+      "title": "Simulate different scenarios of abundance change in entities",
+      "topics": [
+        "simData"
+      ]
+    },
+    {
+      "page": "topNodes",
+      "title": "Generate a table of top-ranked entities (nodes)",
+      "topics": [
+        "topNodes"
+      ]
+    },
+    {
+      "page": "tpr",
+      "title": "Calculate true positive rate (TPR) on a tree structure",
+      "topics": [
+        "tpr"
+      ]
+    },
+    {
+      "page": "TreeHeatmap",
+      "title": "Generate a heatmap corresponding to an arbitrary aggregation level of a tree",
+      "topics": [
+        "TreeHeatmap"
+      ]
+    },
+    {
+      "page": "treeScore",
+      "title": "Generate weighted tree score accounting for the family effect",
+      "topics": [
+        "treeScore"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/treeclimbR/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "ALL",
+    "ape",
+    "aplot",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "car",
+    "carData",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorRamps",
+    "colorspace",
+    "ComplexHeatmap",
+    "ConsensusClusterPlus",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "cytolib",
+    "DelayedArray",
+    "Deriv",
+    "diffcyt",
+    "digest",
+    "dirmult",
+    "doBy",
+    "doParallel",
+    "dplyr",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "flowCore",
+    "FlowSOM",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "foreach",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdtools",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggpubr",
+    "ggrepel",
+    "ggsci",
+    "ggsignif",
+    "ggtree",
+    "GlobalOptions",
+    "glue",
+    "gridExtra",
+    "gridGraphics",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "lme4",
+    "lmtest",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "microbenchmark",
+    "mime",
+    "minqa",
+    "modelr",
+    "multcomp",
+    "mvtnorm",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "patchwork",
+    "pbkrtest",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "polyclip",
+    "polynom",
+    "purrr",
+    "quantreg",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "reformulas",
+    "reshape2",
+    "Rhdf5lib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RProtoBufLib",
+    "rstatix",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sandwich",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "shape",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "systemfonts",
+    "TH.data",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "timeDate",
+    "tinytex",
+    "treeio",
+    "TreeSummarizedExperiment",
+    "tweenr",
+    "urca",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "XVector",
+    "yaml",
+    "yulab.utils",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "treeclimbR.Rmd",
+      "filename": "treeclimbR.html",
+      "title": "Finding optimal resolution of hierarchical hypotheses with treeclimbR",
+      "author": "Charlotte Soneson and Ruizhu Huang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Preparation",
+        "Differential abundance (DA) analysis",
+        "Load and visualize example data",
+        "Aggregate counts for internal nodes",
+        "Perform differential analysis for leaves and nodes",
+        "Find candidates",
+        "Select the optimal candidate",
+        "Differential state (DS) analysis",
+        "Additional examples",
+        "Session info",
+        "References"
+      ],
+      "created": "2024-02-10 15:56:59",
+      "modified": "2024-03-10 20:44:05",
+      "commits": 7
+    }
+  ],
+  "_score": 6.494154594018443,
+  "_indexed": false,
+  "_nocasepkg": "treeclimbr",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/treeclimbR",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:51:56.000Z",
+      "distro": "noble",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "601a05ecf10e4a9771e0d96ecda6902297efd41dbf03a999b098c22f5b25bca0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:52:09.000Z",
+      "distro": "noble",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "ae58f5e7ec9ca9c222fd8f610b31257c81c59dbb5967a56fea339324ffc12e8d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:51:52.000Z",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "fb5261efb6740d54d5d709bc0d6879a24ec2c1bedd59a97fd0b5b6cac7bc975a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:51:40.000Z",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "a0ea69524deefb777a92d22c2720f68a0d3789f4b6d7463093486ca236982d87",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:51:37.000Z",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "1046d2589a53446f98be21d266e69d580807efb92d822632cb3661d2ff4b5383",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:50:10.000Z",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "0741bc2997bdb3cad0088e08c6a42c456e5ac07c5d69aaabace772195fc6c3a1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:49:50.000Z",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "8135d57bb425b0c9d233c668ff298fae8adb8a5d8d2ae80017d1adac15a0e160",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:50:14.000Z",
+      "commit": "45ad92ceaddf7105dc01e658af5d1cedba1737a0",
+      "fileid": "fe44c9c1d15db977fc7e63f76c277ff3994c0c1475fb9f0096d95941537a5aec",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298698007"
+    }
+  ]
+}

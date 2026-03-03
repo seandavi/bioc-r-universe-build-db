@@ -1,0 +1,1373 @@
+{
+  "Package": "kebabs",
+  "Type": "Package",
+  "Title": "Kernel-Based Analysis of Biological Sequences",
+  "Version": "1.44.0",
+  "Date": "2025-09-19",
+  "Authors@R": "c(person(given = \"Johannes\",\nfamily = \"Palme\",\nrole = c(\"aut\")),\nperson(given = \"Ulrich\",\nfamily = \"Bodenhofer\",\nrole = c(\"aut\", \"cre\", \"ths\"),\nemail = \"ulrich@bodenhofer.com\"))",
+  "Maintainer": "Ulrich Bodenhofer <ulrich@bodenhofer.com>",
+  "Description": "The package provides functionality for kernel-based\nanalysis of DNA, RNA, and amino acid sequences via SVM-based\nmethods. As core functionality, kebabs implements following\nsequence kernels: spectrum kernel, mismatch kernel, gappy pair\nkernel, and motif kernel. Apart from an efficient\nimplementation of standard position-independent functionality,\nthe kernels are extended in a novel way to take the position of\npatterns into account for the similarity measure. Because of\nthe flexibility of the kernel formulation, other kernels like\nthe weighted degree kernel or the shifted weighted degree\nkernel with constant weighting of positions are included as\nspecial cases. An annotation-specific variant of the kernels\nuses annotation information placed along the sequence together\nwith the patterns in the sequence. The package allows for the\ngeneration of a kernel matrix or an explicit feature\nrepresentation in dense or sparse format for all available\nkernels which can be used with methods implemented in other R\npackages. With focus on SVM-based methods, kebabs provides a\nframework which simplifies the usage of existing SVM\nimplementations in kernlab, e1071, and LiblineaR. Binary and\nmulti-class classification as well as regression tasks can be\nused in a unified way without having to deal with the different\nfunctions, parameters, and formats of the selected SVM. As\nsupport for choosing hyperparameters, the package provides\ncross validation - including grouped cross validation, grid\nsearch and model selection functions. For easier biological\ninterpretation of the results, the package computes feature\nweights for all SVMs and prediction profiles which show the\ncontribution of individual sequence positions to the prediction\nresult and indicate the relevance of sequence sections for the\nlearning result and the underlying biological functions.",
+  "URL": "https://github.com/UBod/kebabs",
+  "License": "GPL (>= 2.1)",
+  "Collate": "AllClasses.R AllGenerics.R access-methods.R svmModel.R\nkebabs.R kebabsData.R runtimeMessage.R parameters.R\nsequenceKernel.R annotationSpecificKernel.R\npositionDependentKernel.R spectrum.R mismatch.R gappyPair.R\nmotif.R explicitRepresentation.R coerce-methods.R\nfeatureWeights.R heatmap-methods.R kbsvm-methods.R\nperformCrossValidation-methods.R gridSearch.R modelSelection.R\ntrainsvm-methods.R predictsvm-methods.R predict-methods.R\npredictionProfile.R plot-methods.R kebabsDemo.R show-methods.R\nsymmetricPair.R svm.R utils.R zzz.R",
+  "VignetteBuilder": "knitr",
+  "biocViews": "SupportVectorMachine, Classification, Clustering, Regression",
+  "NeedsCompilation": "yes",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:22:35 UTC",
+  "RemoteUrl": "https://github.com/bioc/kebabs",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+  "Packaged": {
+    "Date": "2026-02-27 09:29:03 UTC",
+    "User": "root"
+  },
+  "Author": "Johannes Palme [aut],\nUlrich Bodenhofer [aut, cre, ths]",
+  "MD5sum": "50f0bbf92eedd4b71cbd352e8c84eeb4",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "kebabs_1.44.0.tar.gz",
+  "_fileid": "b22a798791890315fefc933e4cbdbe4c205c1e8e773c60641c01a97e119b8d37",
+  "_filesize": 2794039,
+  "_sha256": "b22a798791890315fefc933e4cbdbe4c205c1e8e773c60641c01a97e119b8d37",
+  "_created": "2026-02-27T09:29:03.000Z",
+  "_published": "2026-02-27T09:36:25.912Z",
+  "_jobs": [
+    {
+      "job": 65117755564,
+      "time": 204,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5687708136"
+    },
+    {
+      "job": 65117755642,
+      "time": 287,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5687725553"
+    },
+    {
+      "job": 65117755734,
+      "time": 327,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5687733341"
+    },
+    {
+      "job": 65117755599,
+      "time": 264,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5687720717"
+    },
+    {
+      "job": 65117755614,
+      "time": 315,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5687730930"
+    },
+    {
+      "job": 65117755639,
+      "time": 173,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5687700984"
+    },
+    {
+      "job": 65117755662,
+      "time": 340,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5687736141"
+    },
+    {
+      "job": 65117755631,
+      "time": 207,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5687708272"
+    },
+    {
+      "job": 65117755637,
+      "time": 342,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5687736127"
+    },
+    {
+      "job": 65117005292,
+      "time": 403,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687663085"
+    },
+    {
+      "job": 65117755573,
+      "time": 107,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 65117755604,
+      "time": 300,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5687727703"
+    },
+    {
+      "job": 65117755711,
+      "time": 287,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5687724956"
+    },
+    {
+      "job": 65117755593,
+      "time": 264,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5687720447"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 4,
+    "note": 19
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/kebabs",
+  "_commit": {
+    "id": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761747755
+  },
+  "_maintainer": {
+    "name": "Ulrich Bodenhofer",
+    "email": "ulrich@bodenhofer.com",
+    "login": "ubod",
+    "uuid": 7002430
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Biostrings",
+      "version": ">= 2.35.5",
+      "role": "Depends"
+    },
+    {
+      "package": "kernlab",
+      "role": "Depends"
+    },
+    {
+      "package": "IRanges",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "XVector",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Biostrings",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.11.2",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "version": ">= 1.5-0",
+      "role": "Imports"
+    },
+    {
+      "package": "XVector",
+      "version": ">= 0.7.3",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.27.3",
+      "role": "Imports"
+    },
+    {
+      "package": "e1071",
+      "role": "Imports"
+    },
+    {
+      "package": "LiblineaR",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "apcluster",
+      "role": "Imports"
+    },
+    {
+      "package": "SparseM",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biobase",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 3,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-38",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.45.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.44.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "supportvectormachine",
+    "classification",
+    "clustering",
+    "regression",
+    "cpp"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "ubod",
+      "count": 19,
+      "uuid": 7002430
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "dtenenba",
+      "count": 10,
+      "uuid": 2286826
+    },
+    {
+      "user": "hpages",
+      "count": 4,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 492,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/kebabs"
+  },
+  "_devurl": "https://github.com/ubod/kebabs",
+  "_searchresults": 48,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/kebabs.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ubod/kebabs",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "AAVector",
+    "annotationCharset",
+    "annotationMetadata",
+    "annotationMetadata<-",
+    "as.KernelMatrix",
+    "auc",
+    "auc<-",
+    "baselines",
+    "computeROCandAUC",
+    "cvResult",
+    "cvResult<-",
+    "DNAVector",
+    "evaluatePrediction",
+    "expWeight",
+    "featureWeights",
+    "featureWeights<-",
+    "folds",
+    "fpr",
+    "fpr<-",
+    "fullModel",
+    "gappyPairKernel",
+    "gaussWeight",
+    "genRandBioSeqs",
+    "getExRep",
+    "getExRepQuadratic",
+    "getFeatureSpaceDimension",
+    "getFeatureWeights",
+    "getKernelMatrix",
+    "getPredictionProfile",
+    "getPredProfMixture",
+    "getSVMSlotValue",
+    "gridColumns",
+    "gridErrors",
+    "gridRows",
+    "heatmap",
+    "isUserDefined",
+    "kbsvm",
+    "kebabsCollectInfo",
+    "kebabsDemo",
+    "kernelParameters",
+    "linearKernel",
+    "linWeight",
+    "mismatchKernel",
+    "modelOffset",
+    "modelOffset<-",
+    "modelSelResult",
+    "modelSelResult<-",
+    "motifKernel",
+    "performance",
+    "performCrossValidation",
+    "plot",
+    "positionMetadata",
+    "positionMetadata<-",
+    "predict",
+    "predictSVM",
+    "probabilityModel",
+    "probabilityModel<-",
+    "profiles",
+    "RNAVector",
+    "selGridCol",
+    "selGridRow",
+    "seqKernelAsChar",
+    "sequences",
+    "show",
+    "showAnnotatedSeq",
+    "spectrumKernel",
+    "SVindex",
+    "svmModel",
+    "svmModel<-",
+    "swdWeight",
+    "symmetricPairKernel",
+    "tpr",
+    "tpr<-",
+    "trainSVM",
+    "width"
+  ],
+  "_datasets": [
+    {
+      "name": "ccannot",
+      "title": "KeBABS Sequence Data",
+      "object": "CCoil",
+      "file": "CCoil.RData",
+      "class": [
+        "character"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "ccgroups",
+      "title": "KeBABS Sequence Data",
+      "object": "CCoil",
+      "file": "CCoil.RData",
+      "class": [
+        "integer"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "ccseq",
+      "title": "KeBABS Sequence Data",
+      "object": "CCoil",
+      "file": "CCoil.RData",
+      "class": [
+        "AAStringSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "enhancerFB",
+      "title": "KeBABS Sequence Data",
+      "object": "TFBS",
+      "file": "TFBS.RData",
+      "class": [
+        "DNAStringSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "yCC",
+      "title": "KeBABS Sequence Data",
+      "object": "CCoil",
+      "file": "CCoil.RData",
+      "class": [
+        "factor"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "yFB",
+      "title": "KeBABS Sequence Data",
+      "object": "TFBS",
+      "file": "TFBS.RData",
+      "class": [
+        "numeric"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "yMC",
+      "title": "KeBABS Sequence Data",
+      "object": "TFBS",
+      "file": "TFBS.RData",
+      "class": [
+        "numeric"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "yReg",
+      "title": "KeBABS Sequence Data",
+      "object": "TFBS",
+      "file": "TFBS.RData",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": {},
+      "rows": 500,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "BioVector",
+      "title": "DNAVector, RNAVector, AAVector Objects and BioVector Class",
+      "topics": [
+        "AAVector",
+        "as.character,BioVector-method",
+        "BioVector",
+        "c,BioVector-method",
+        "DNAVector",
+        "length",
+        "length,BioVector-method",
+        "names",
+        "names,BioVector-method",
+        "names<-",
+        "names<-,BioVector-method",
+        "RNAVector",
+        "width",
+        "width,BioVector-method",
+        "[,BioVector,index,missing,ANY-method",
+        "[,BioVector-method"
+      ]
+    },
+    {
+      "page": "BioVector-class",
+      "title": "BioVector, DNAVector, RNAVector and AAVector Classes",
+      "topics": [
+        "AAVector-class",
+        "BioVector-class",
+        "class:AAVector",
+        "class:BioVector",
+        "class:DNAVector",
+        "class:RNAVector",
+        "DNAVector-class",
+        "RNAVector-class"
+      ]
+    },
+    {
+      "page": "computeROCandAUC",
+      "title": "Compute Receiver Operating Characteristic And Area Under The Curve",
+      "topics": [
+        "computeROCandAUC"
+      ]
+    },
+    {
+      "page": "ControlInformation-class",
+      "title": "KeBABS Control Information Class",
+      "topics": [
+        "class:ControlInformation",
+        "ControlInformation",
+        "ControlInformation-class"
+      ]
+    },
+    {
+      "page": "CrossValidationResult-class",
+      "title": "Cross Validation Result Class",
+      "topics": [
+        "class:CrossValidationResult",
+        "CrossValidationResult",
+        "CrossValidationResult-class"
+      ]
+    },
+    {
+      "page": "CrossValidationResultAccessors",
+      "title": "CrossValidationResult Accessors",
+      "topics": [
+        "CrossValidationResultAccessors",
+        "folds",
+        "folds,CrossValidationResult-method",
+        "performance,CrossValidationResult-method"
+      ]
+    },
+    {
+      "page": "evaluatePrediction",
+      "title": "Evaluate Prediction",
+      "topics": [
+        "evaluatePrediction"
+      ]
+    },
+    {
+      "page": "ExplicitRepresentation-class",
+      "title": "Explicit Representation Dense and Sparse Classes",
+      "topics": [
+        "class:ExplicitRepresentation",
+        "class:ExplicitRepresentationDense",
+        "class:ExplicitRepresentationSparse",
+        "ExplicitRepresentation",
+        "ExplicitRepresentation-class",
+        "ExplicitRepresentationDense",
+        "ExplicitRepresentationDense-class",
+        "ExplicitRepresentationSparse",
+        "ExplicitRepresentationSparse-class"
+      ]
+    },
+    {
+      "page": "ExplicitRepresentationAccessors",
+      "title": "ExplicitRepresentation Accessors",
+      "topics": [
+        "%*%,dgRMatrix,numeric-method",
+        "%*%,matrix,dgRMatrix-method",
+        "ExplicitRepresentationAccessors",
+        "[,ExplicitRepresentation,index,index,ANY-method",
+        "[,ExplicitRepresentationDense,index,index,ANY-method",
+        "[,ExplicitRepresentationDense,index,missing,ANY-method",
+        "[,ExplicitRepresentationDense,missing,index,ANY-method",
+        "[,ExplicitRepresentationSparse,index,index,ANY-method",
+        "[,ExplicitRepresentationSparse,index,index,logical-method",
+        "[,ExplicitRepresentationSparse,index,index,missing-method",
+        "[,ExplicitRepresentationSparse,index,missing,ANY-method",
+        "[,ExplicitRepresentationSparse,index,missing,logical-method",
+        "[,ExplicitRepresentationSparse,index,missing,missing-method",
+        "[,ExplicitRepresentationSparse,missing,index,ANY-method",
+        "[,ExplicitRepresentationSparse,missing,index,logical-method",
+        "[,ExplicitRepresentationSparse,missing,index,missing-method"
+      ]
+    },
+    {
+      "page": "gappyPairKernel",
+      "title": "Gappy Pair Kernel",
+      "topics": [
+        "gappyPairKernel",
+        "getFeatureSpaceDimension,GappyPairKernel-method"
+      ]
+    },
+    {
+      "page": "GappyPairKernel-class",
+      "title": "Gappy Pair Kernel Class",
+      "topics": [
+        "class:GappyPairKernel",
+        "GappyPairKernel",
+        "GappyPairKernel-class"
+      ]
+    },
+    {
+      "page": "genRandBioSeqs",
+      "title": "Generate Random Biological Sequences",
+      "topics": [
+        "genRandBioSeqs"
+      ]
+    },
+    {
+      "page": "explicitRepresentation",
+      "title": "Explict Representation",
+      "topics": [
+        "getExRep",
+        "getExRepQuadratic"
+      ]
+    },
+    {
+      "page": "featureWeights",
+      "title": "Feature Weights",
+      "topics": [
+        "getFeatureWeights"
+      ]
+    },
+    {
+      "page": "getPredictionProfile-methods",
+      "title": "Calculation Of Predicition Profiles",
+      "topics": [
+        "getPredictionProfile",
+        "getPredictionProfile,BioVector-method",
+        "getPredictionProfile,XString-method",
+        "getPredictionProfile,XStringSet-method"
+      ]
+    },
+    {
+      "page": "getPredProfMixture-methods",
+      "title": "Calculation Of Predicition Profiles for Mixture Kernels",
+      "topics": [
+        "getPredProfMixture",
+        "getPredProfMixture,BioVector-method",
+        "getPredProfMixture,XString-method",
+        "getPredProfMixture,XStringSet-method"
+      ]
+    },
+    {
+      "page": "heatmap-methods",
+      "title": "Heatmap Methods",
+      "topics": [
+        "heatmap",
+        "heatmap,PredictionProfile,missing-method",
+        "heatmap,PredictionProfile-method"
+      ]
+    },
+    {
+      "page": "KBModel-class",
+      "title": "KeBABS Model Class",
+      "topics": [
+        "class:KBModel",
+        "KBModel",
+        "KBModel-class"
+      ]
+    },
+    {
+      "page": "KBModelAccessors",
+      "title": "KBModel Accessors",
+      "topics": [
+        "cvResult",
+        "cvResult,KBModel-method",
+        "cvResult<-",
+        "cvResult<-,KBModel-method",
+        "featureWeights",
+        "featureWeights,KBModel-method",
+        "featureWeights<-",
+        "featureWeights<-,KBModel-method",
+        "getSVMSlotValue",
+        "KBModelAccessors",
+        "modelOffset",
+        "modelOffset,KBModel-method",
+        "modelOffset<-",
+        "modelOffset<-,KBModel-method",
+        "modelSelResult",
+        "modelSelResult,KBModel-method",
+        "modelSelResult<-",
+        "modelSelResult<-,KBModel-method",
+        "probabilityModel",
+        "probabilityModel,KBModel-method",
+        "probabilityModel<-",
+        "probabilityModel<-,KBModel-method",
+        "SVindex",
+        "SVindex,KBModel-method",
+        "SVindex<-",
+        "SVindex<-,KBModel-method",
+        "svmModel",
+        "svmModel,KBModel-method",
+        "svmModel<-",
+        "svmModel<-,KBModel-method"
+      ]
+    },
+    {
+      "page": "kbsvm-methods",
+      "title": "KeBABS Training Methods",
+      "topics": [
+        "kbsvm",
+        "kbsvm,BioVector-method",
+        "kbsvm,ExplicitRepresentation-method",
+        "kbsvm,KernelMatrix-method",
+        "kbsvm,XStringSet-method"
+      ]
+    },
+    {
+      "page": "kebabsCollectInfo",
+      "title": "Collect KeBABS Package Information",
+      "topics": [
+        "kebabsCollectInfo"
+      ]
+    },
+    {
+      "page": "kebabsData",
+      "title": "KeBABS Sequence Data",
+      "topics": [
+        "ccannot",
+        "ccgroups",
+        "ccseq",
+        "enhancerFB",
+        "kebabsData",
+        "TFBS",
+        "yCC",
+        "yFB",
+        "yMC",
+        "yReg"
+      ]
+    },
+    {
+      "page": "kebabsOverview",
+      "title": "kebabs",
+      "topics": [
+        "KEBABS",
+        "KeBABS",
+        "kebabs",
+        "kebabsDemo"
+      ]
+    },
+    {
+      "page": "KernelMatrix-class",
+      "title": "Kernel Matrix Class",
+      "topics": [
+        "class:KernelMatrix",
+        "KernelMatrix",
+        "KernelMatrix-class"
+      ]
+    },
+    {
+      "page": "KernelMatrixAccessors",
+      "title": "KernelMatrix Accessors",
+      "topics": [
+        "as.KernelMatrix",
+        "as.KernelMatrix,matrix-method",
+        "KernelMatrixAccessors",
+        "[,KernelMatrix,index,index,ANY-method",
+        "[,KernelMatrix,index,missing,ANY-method",
+        "[,KernelMatrix,missing,index,ANY-method"
+      ]
+    },
+    {
+      "page": "LinearKernel",
+      "title": "Linear Kernel",
+      "topics": [
+        "linearKernel"
+      ]
+    },
+    {
+      "page": "positionDependentKernel",
+      "title": "Position Dependent Kernel",
+      "topics": [
+        "DistanceWeightedKernel",
+        "distanceWeightedKernel",
+        "expWeight",
+        "gaussWeight",
+        "linWeight",
+        "PositionDependentKernel",
+        "positionDependentKernel",
+        "positionMetadata",
+        "positionMetadata,BioVector-method",
+        "positionMetadata,XStringSet-method",
+        "positionMetadata<-",
+        "positionMetadata<-,BioVector-method",
+        "positionMetadata<-,XStringSet-method",
+        "PositionSpecificKernel",
+        "positionSpecificKernel",
+        "swdWeight"
+      ]
+    },
+    {
+      "page": "mismatchKernel",
+      "title": "Mismatch Kernel",
+      "topics": [
+        "getFeatureSpaceDimension,MismatchKernel-method",
+        "mismatchKernel"
+      ]
+    },
+    {
+      "page": "MismatchKernel-class",
+      "title": "Mismatch Kernel Class",
+      "topics": [
+        "class:MismatchKernel",
+        "MismatchKernel",
+        "MismatchKernel-class"
+      ]
+    },
+    {
+      "page": "ModelSelectionResult-class",
+      "title": "Model Selection Result Class",
+      "topics": [
+        "class:ModelSelectionResult",
+        "ModelSelectionResult",
+        "ModelSelectionResult-class"
+      ]
+    },
+    {
+      "page": "ModelSelectionResultAccessors",
+      "title": "ModelSelectionResult Accessors",
+      "topics": [
+        "fullModel",
+        "fullModel,ModelSelectionResult-method",
+        "gridColumns",
+        "gridColumns,ModelSelectionResult-method",
+        "gridErrors",
+        "gridErrors,ModelSelectionResult-method",
+        "gridRows",
+        "gridRows,ModelSelectionResult-method",
+        "ModelSelectionResultAccessors",
+        "performance",
+        "performance,ModelSelectionResult-method",
+        "selGridCol",
+        "selGridCol,ModelSelectionResult-method",
+        "selGridRow",
+        "selGridRow,ModelSelectionResult-method"
+      ]
+    },
+    {
+      "page": "motifKernel",
+      "title": "Motif Kernel",
+      "topics": [
+        "getFeatureSpaceDimension,MotifKernel-method",
+        "motifKernel"
+      ]
+    },
+    {
+      "page": "MotifKernel-class",
+      "title": "Motif Kernel Class",
+      "topics": [
+        "class:MotifKernel",
+        "MotifKernel",
+        "MotifKernel-class"
+      ]
+    },
+    {
+      "page": "performCrossValidation-methods",
+      "title": "KeBABS Cross Validation",
+      "topics": [
+        "cross.validation",
+        "CrossValidation",
+        "crossValidation",
+        "performCrossValidation",
+        "performCrossValidation,ExplicitRepresentation-method",
+        "performCrossValidation,KernelMatrix-method"
+      ]
+    },
+    {
+      "page": "performGridSearch",
+      "title": "KeBABS Grid Search",
+      "topics": [
+        "grid.search",
+        "GridSearch",
+        "gridSearch",
+        "performGridSearch"
+      ]
+    },
+    {
+      "page": "performModelSelection",
+      "title": "KeBABS Model Selection",
+      "topics": [
+        "model.selection",
+        "ModelSelection",
+        "modelSelection",
+        "performModelSelection"
+      ]
+    },
+    {
+      "page": "plot-methods",
+      "title": "Plot Prediction Profiles, Cross Validation Result, Grid Search Performance Parameters and Receiver Operating Characteristics",
+      "topics": [
+        "plot",
+        "plot,CrossValidationResult,missing-method",
+        "plot,CrossValidationResult-method",
+        "plot,ModelSelectionResult,missing-method",
+        "plot,ModelSelectionResult-method",
+        "plot,PredictionProfile,missing-method",
+        "plot,PredictionProfile-method",
+        "plot,ROCData,missing-method",
+        "plot,ROCData-method"
+      ]
+    },
+    {
+      "page": "predict-methods",
+      "title": "KeBABS Prediction Methods",
+      "topics": [
+        "predict",
+        "predict,KBModel-method",
+        "predict.KBModel",
+        "predict.kbsvm"
+      ]
+    },
+    {
+      "page": "PredictionProfile-class",
+      "title": "Prediction Profile Class",
+      "topics": [
+        "class:PredictionProfile",
+        "PredictionProfile",
+        "PredictionProfile-class"
+      ]
+    },
+    {
+      "page": "PredictionProfileAccessors",
+      "title": "PredictionProfile Accessors",
+      "topics": [
+        "baselines",
+        "baselines,PredictionProfile-method",
+        "PredictionProfileAccessors",
+        "profiles",
+        "profiles,PredictionProfile-method",
+        "sequences",
+        "sequences,PredictionProfile-method",
+        "[,PredictionProfile,index,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "SVMAccess",
+      "title": "SVM Access for Training and Prediction",
+      "topics": [
+        "predictSVM",
+        "predictSVM,ExpicitRepresentation-method",
+        "predictSVM,ExplicitRepresentation-method",
+        "predictSVM,KernelMatrix-method",
+        "predictSVM,missing-method",
+        "predictSVM.KernelMatrix",
+        "trainSVM",
+        "trainSVM,ExplicitRepresentation-method",
+        "trainSVM,KernelMatrix-method"
+      ]
+    },
+    {
+      "page": "ROCData-class",
+      "title": "ROC Data Class",
+      "topics": [
+        "class:ROCData",
+        "ROCData",
+        "ROCData-class"
+      ]
+    },
+    {
+      "page": "ROCDataAccessors",
+      "title": "ROCData Accessors",
+      "topics": [
+        "auc",
+        "auc,ROCData-method",
+        "auc<-",
+        "auc<-,ROCData-method",
+        "fpr",
+        "fpr,ROCData-method",
+        "fpr<-",
+        "fpr<-,ROCData-method",
+        "ROCDataAccessors",
+        "tpr",
+        "tpr,ROCData-method",
+        "tpr<-",
+        "tpr<-,ROCData-method"
+      ]
+    },
+    {
+      "page": "sequenceKernel",
+      "title": "Sequence Kernel",
+      "topics": [
+        "getKernelMatrix",
+        "isUserDefined",
+        "isUserDefined,SequenceKernel-method",
+        "kernelParameters",
+        "kernelParameters,GappyPairKernel-method",
+        "kernelParameters,MismatchKernel-method",
+        "kernelParameters,MotifKernel-method",
+        "kernelParameters,SpectrumKernel-method",
+        "kernelParameters,SymmetricPair-method",
+        "kernelParameters,SymmetricPairKernel-method",
+        "kernelParameters-method",
+        "seqKernelAsChar",
+        "sequenceKernel"
+      ]
+    },
+    {
+      "page": "SequenceKernel-class",
+      "title": "Sequence Kernel Class",
+      "topics": [
+        "class:SequenceKernel",
+        "SequenceKernel",
+        "SequenceKernel-class"
+      ]
+    },
+    {
+      "page": "show-methods",
+      "title": "Display Various KeBABS Objects",
+      "topics": [
+        "show",
+        "show,BioVector-method",
+        "show,CrossValidationResult-method",
+        "show,ExplicitRepresentationDense-method",
+        "show,ExplicitRepresentationSparse-method",
+        "show,GappyPairKernel-method",
+        "show,KBModel-method",
+        "show,MismatchKernel-method",
+        "show,ModelSelectionResult-method",
+        "show,MotifKernel-method",
+        "show,PredictionProfile-method",
+        "show,ROCData-method",
+        "show,SpectrumKernel-method",
+        "show,SVMInformation-method",
+        "show,SymmetricPairKernel-method",
+        "show.BioVector"
+      ]
+    },
+    {
+      "page": "annotationSpecificKernel",
+      "title": "Annotation Specific Kernel",
+      "topics": [
+        "annotationCharset",
+        "annotationCharset,BioVector-method",
+        "annotationCharset,XStringSet-method",
+        "annotationMetadata",
+        "annotationMetadata,BioVector-method",
+        "annotationMetadata,XStringSet-method",
+        "annotationMetadata<-",
+        "annotationMetadata<-,BioVector-method",
+        "annotationMetadata<-,XStringSet-method",
+        "AnnotationSpecificKernel",
+        "annotationSpecificKernel",
+        "character",
+        "set",
+        "showAnnotatedSeq"
+      ]
+    },
+    {
+      "page": "spectrumKernel",
+      "title": "Spectrum Kernel",
+      "topics": [
+        "getFeatureSpaceDimension",
+        "getFeatureSpaceDimension,ANY-method",
+        "getFeatureSpaceDimension,SpectrumKernel-method",
+        "spectrumKernel"
+      ]
+    },
+    {
+      "page": "SpectrumKernel-class",
+      "title": "Spectrum Kernel Class",
+      "topics": [
+        "class:SpectrumKernel",
+        "SpectrumKernel",
+        "SpectrumKernel-class"
+      ]
+    },
+    {
+      "page": "SVMInformation-class",
+      "title": "SVM Information Class",
+      "topics": [
+        "class:SVMInformation",
+        "SVMInformation",
+        "SVMInformation-class"
+      ]
+    },
+    {
+      "page": "symmetricPairKernel",
+      "title": "Symmetric Pair Kernel",
+      "topics": [
+        "symmetricPairKernel"
+      ]
+    },
+    {
+      "page": "SymmetricPairKernel-class",
+      "title": "Symmetric Pair Kernel Class",
+      "topics": [
+        "class:SymmetricPairKernel",
+        "SymmetricPairKernel",
+        "SymmetricPairKernel-class"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/kebabs/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "apcluster",
+    "BiocGenerics",
+    "Biostrings",
+    "class",
+    "crayon",
+    "e1071",
+    "generics",
+    "IRanges",
+    "kernlab",
+    "lattice",
+    "LiblineaR",
+    "MASS",
+    "Matrix",
+    "proxy",
+    "Rcpp",
+    "S4Vectors",
+    "Seqinfo",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04.1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "kebabs.Rnw",
+      "filename": "kebabs.pdf",
+      "title": "KeBABS - An R Package for Kernel Based Analysis of Biological Sequences",
+      "engine": "knitr::knitr",
+      "headings": [],
+      "created": "2015-01-12 14:34:34",
+      "modified": "2024-04-25 16:53:03",
+      "commits": 18
+    }
+  ],
+  "_score": 6.589726256254237,
+  "_indexed": false,
+  "_nocasepkg": "kebabs",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/kebabs",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:32:40.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "9589eacd67479ce3aa3b0bf44f7512f12e0b645dc5f017d57020d26317d116b4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:33:00.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "125b7680ecf6ddd4ef1406908dea1a900350ea2eaeb431c5b90f2243bc21a339",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:32:28.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "74088e9fe7cea076389bbe4f0a4aced362d0955ee02d3d3b52e30851d4f9c2fa",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:32:59.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "08ba4d0f5a75b004c51bdd36cb8c9238c2c4df8071397633a63586180288d29f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:31:32.000Z",
+      "arch": "aarch64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "027c6f6cb83c4db919b6c94f062a78a4362f611a2e2431112d4d2887fda25a22",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:32:35.000Z",
+      "arch": "x86_64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "16ad0a24dbd6c5e094b35972fd7305afb11c519ecef6a23b2d47027f083c6fa0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:31:49.000Z",
+      "arch": "aarch64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "4891d2ea2cd609bcafb0ab682fad702ac6220a8737562e00f672fa84f1b96e8c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:32:29.000Z",
+      "arch": "x86_64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "5ba562d439186b9adf68b41c1b5dbe89eafb4577e58a21cb777d66ceb7b563b8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:31:17.000Z",
+      "arch": "x86_64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "aa89b0a2c01985164efc0448ee5deb48216b93ed44b9cdc6d54d85af47c4a4f1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:31:15.000Z",
+      "arch": "x86_64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "8e1649b6a08f6d7401fac4622773aedcc36fe98e71e267cc53f4c64dce67a9b3",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.44.0",
+      "date": "2026-02-27T09:31:09.000Z",
+      "arch": "x86_64",
+      "commit": "db39eb7ef2a013ea9a0a118d420e1f6db0ce6762",
+      "fileid": "ff1ea67a9dc4cc4dc7ef8830bdec9584adc7f7e79b82009b23342a4093410690",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22480419696"
+    }
+  ]
+}

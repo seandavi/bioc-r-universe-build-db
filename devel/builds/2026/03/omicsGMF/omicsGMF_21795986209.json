@@ -1,0 +1,767 @@
+{
+  "Package": "omicsGMF",
+  "Type": "Package",
+  "Authors@R": "c(\nperson(\"Alexandre\", \"Segers\", role=c(\"aut\", \"cre\", \"fnd\"), email=\"alexandresegers@outlook.com\"),\nperson(\"Cristian\", \"Castiglione\", role=c(\"ctb\"), email=\"cristian.castiglione@unipd.it\"),\nperson(\"Christophe\", \"Vanderaa\", role = c(\"ctb\"), email=\"christophe.vanderaa@ugent.be\"),\nperson(\"Davide\", \"Risso\", role=c(\"ctb\", \"fnd\"), email=\"davide.risso@unipd.it\"),\nperson(\"Lieven\", \"Clement\", role=c(\"ctb\", \"fnd\"), email=\"lieven.clement@ugent.be\")\n)",
+  "Version": "1.1.0",
+  "Date": "2025-01-14",
+  "Title": "Dimensionality reduction of (single-cell) omics data in R using\nomicsGMF",
+  "Description": "omicsGMF is a Bioconductor package that uses the\nsgdGMF-framework of the \\code{sgdGMF} package for highly\nperformant and fast matrix factorization that can be used for\ndimensionality reduction, visualization and imputation of omics\ndata. It considers data from the general exponential family as\ninput, and therefore suits the use of both RNA-seq (Poisson or\nNegative Binomial data) and proteomics data (Gaussian data). It\ndoes not require prior transformation of counts to the\nlog-scale, because it rather optimizes the deviances from the\ndata family specified. Also, it allows to correct for known\nsample-level and feature-level covariates, therefore enabling\nvisualization and dimensionality reduction upon batch\ncorrection. Last but not least, it deals with missing values,\nand allows to impute these after matrix factorization, useful\nfor proteomics data. This Bioconductor package allows input of\nSummarizedExperiment, SingleCellExperiment, and QFeature\nclasses.",
+  "biocViews": "SingleCell, RNASeq, Proteomics, QualityControl,\nPreprocessing, Normalization, Visualization,\nDimensionReduction, Transcriptomics, GeneExpression,\nSequencing, Software, DataRepresentation, MassSpectrometry",
+  "License": "Artistic-2.0",
+  "URL": "https://github.com/statOmics/omicsGMF",
+  "BugReports": "https://github.com/statOmics/omicsGMF/issues",
+  "Config/testthat/edition": "3",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "Funding": "This work was supported by grants from Ghent University\nSpecial Research Fund [BOF20/GOA/023] (A.S., L.C.), Research\nFoundation Flanders [FWO G062219N] (A.S., L.C.) and as WOG\n[W005325N] (L.C.). This work was supported by EU funding within\nthe MUR PNRR ``National Center for HPC, big data and quantum\ncomputing'' (Project no. CN00000013 CN1). D.R. was also\nsupported by the National Cancer Institute of the National\nInstitutes of Health (U24CA289073). The views and opinions\nexpressed are only those of the authors and do not necessarily\nreflect those of the European Union or the European Commission.\nNeither the European Union nor the European Commission can be\nheld responsible for them.",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libfribidi-dev libglpk-dev make\nlibharfbuzz-dev libicu-dev libjpeg-dev libpng-dev libtiff-dev\nlibwebp-dev libxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:39:15 UTC",
+  "RemoteUrl": "https://github.com/bioc/omicsGMF",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "66f9d2d59adb899f0d19401e95004180a82c909b",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-08 09:41:35 UTC",
+    "User": "root"
+  },
+  "Author": "Alexandre Segers [aut, cre, fnd],\nCristian Castiglione [ctb],\nChristophe Vanderaa [ctb],\nDavide Risso [ctb, fnd],\nLieven Clement [ctb, fnd]",
+  "Maintainer": "Alexandre Segers <alexandresegers@outlook.com>",
+  "MD5sum": "40d3856336681db2d84baca54260cdb9",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "omicsGMF_1.1.0.tar.gz",
+  "_fileid": "664d30464dd98f487d4a3cf47eb06393237e0f05e168fde492f254fd0f496fe1",
+  "_filesize": 417656,
+  "_sha256": "664d30464dd98f487d4a3cf47eb06393237e0f05e168fde492f254fd0f496fe1",
+  "_created": "2026-02-08T09:41:35.000Z",
+  "_published": "2026-02-08T10:05:52.289Z",
+  "_jobs": [
+    {
+      "job": 62883713745,
+      "time": 224,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421814927"
+    },
+    {
+      "job": 62883713748,
+      "time": 664,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421842770"
+    },
+    {
+      "job": 62883713752,
+      "time": 668,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421842984"
+    },
+    {
+      "job": 62883713755,
+      "time": 362,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421882995"
+    },
+    {
+      "job": 62883713757,
+      "time": 425,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421886812"
+    },
+    {
+      "job": 62883553293,
+      "time": 300,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5421799482"
+    },
+    {
+      "job": 62883713744,
+      "time": 200,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421813408"
+    },
+    {
+      "job": 62883713758,
+      "time": 592,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421838008"
+    },
+    {
+      "job": 62883713751,
+      "time": 601,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5421838599"
+    },
+    {
+      "job": 62883713753,
+      "time": 597,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421838372"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/omicsGMF",
+  "_commit": {
+    "id": "66f9d2d59adb899f0d19401e95004180a82c909b",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752355
+  },
+  "_maintainer": {
+    "name": "Alexandre Segers",
+    "email": "alexandresegers@outlook.com",
+    "login": "alexandresegers",
+    "uuid": 91479262
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "sgdGMF",
+      "role": "Depends"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "scuttle",
+      "role": "Depends"
+    },
+    {
+      "package": "scater",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocSingular",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "beachmat",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "QFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "graphics",
+      "role": "Suggests"
+    },
+    {
+      "package": "grDevices",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-09",
+      "n": 12
+    },
+    {
+      "week": "2025-10",
+      "n": 2
+    },
+    {
+      "week": "2025-12",
+      "n": 8
+    },
+    {
+      "week": "2025-13",
+      "n": 13
+    },
+    {
+      "week": "2025-38",
+      "n": 2
+    },
+    {
+      "week": "2025-42",
+      "n": 5
+    },
+    {
+      "week": "2025-43",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "singlecell",
+    "rnaseq",
+    "proteomics",
+    "qualitycontrol",
+    "preprocessing",
+    "normalization",
+    "visualization",
+    "dimensionreduction",
+    "transcriptomics",
+    "geneexpression",
+    "sequencing",
+    "software",
+    "datarepresentation",
+    "massspectrometry"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "alexandresegers",
+      "count": 49,
+      "uuid": 91479262
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 177,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/omicsGMF"
+  },
+  "_devurl": "https://github.com/statomics/omicsgmf",
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/omicsGMF.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/statomics/omicsgmf",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "calculateCVGMF",
+    "calculateGMF",
+    "calculateRankGMF",
+    "imputeGMF",
+    "plot_cv",
+    "plotCV",
+    "plotGMF",
+    "plotRank",
+    "runCVGMF",
+    "runGMF",
+    "runRankGMF",
+    "screeplot_rank"
+  ],
+  "_help": [
+    {
+      "page": "runCVGMF",
+      "title": "Perform a stochastic gradient descent generalized matrix factorization (sgdGMF) on cells, based on the expression or mass spectrometry data in a SingleCellExperiment, SummarizedExperiment or QFeatures object.",
+      "topics": [
+        "calculateCVGMF",
+        "calculateCVGMF,ANY-method",
+        "calculateCVGMF,QFeatures-method",
+        "calculateCVGMF,SingleCellExperiment-method",
+        "calculateCVGMF,SummarizedExperiment-method",
+        "runCVGMF",
+        "runCVGMF,QFeatures-method",
+        "runCVGMF,SingleCellExperiment-method",
+        "runCVGMF,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "runGMF",
+      "title": "Perform a stochastic gradient descent generalized matrix factorization (sgdGMF) on cells or bulk samples, based on the expression or mass spectrometry data in a SingleCellExperiment, SummarizedExperiment or QFeatures object.",
+      "topics": [
+        "calculateGMF",
+        "calculateGMF,ANY-method",
+        "calculateGMF,QFeatures-method",
+        "calculateGMF,SingleCellExperiment-method",
+        "calculateGMF,SummarizedExperiment-method",
+        "runGMF",
+        "runGMF,QFeatures-method",
+        "runGMF,SingleCellExperiment-method",
+        "runGMF,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "runRankGMF",
+      "title": "Perform an eigendecomposition for model selection based on a screeplot.",
+      "topics": [
+        "calculateRankGMF",
+        "calculateRankGMF,ANY-method",
+        "calculateRankGMF,QFeatures-method",
+        "calculateRankGMF,SingleCellExperiment-method",
+        "calculateRankGMF,SummarizedExperiment-method",
+        "runRankGMF",
+        "runRankGMF,QFeatures-method",
+        "runRankGMF,SingleCellExperiment-method",
+        "runRankGMF,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "imputeGMF",
+      "title": "Impute missing values based on the results of runGMF.",
+      "topics": [
+        "imputeGMF",
+        "imputeGMF,ANY-method",
+        "imputeGMF,QFeatures-method",
+        "imputeGMF,SingleCellExperiment-method",
+        "imputeGMF,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "plotCV",
+      "title": "Functions to create a scree plot for model selection.",
+      "topics": [
+        "plotCV",
+        "plot_cv",
+        "plot_cv,ANY-method"
+      ]
+    },
+    {
+      "page": "plotGMF",
+      "title": "Wrapper functions to create plots for specific types of reduced dimension results in a SingleCellExperiment object, similar as the 'scater' package.",
+      "topics": [
+        "plotGMF"
+      ]
+    },
+    {
+      "page": "plotRank",
+      "title": "Functions to create a scree plot for model selection.",
+      "topics": [
+        "plotRank",
+        "screeplot_rank",
+        "screeplot_rank,ANY-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/omicsGMF/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationFilter",
+    "askpass",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "Cairo",
+    "car",
+    "carData",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "Deriv",
+    "digest",
+    "doBy",
+    "doParallel",
+    "dplyr",
+    "dqrng",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "FNN",
+    "fontawesome",
+    "foreach",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggplot2",
+    "ggpubr",
+    "ggrastr",
+    "ggrepel",
+    "ggsci",
+    "ggsignif",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "lme4",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "microbenchmark",
+    "mime",
+    "minqa",
+    "modelr",
+    "MsCoreUtils",
+    "MultiAssayExperiment",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "openssl",
+    "otel",
+    "pbkrtest",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "polynom",
+    "promises",
+    "ProtGenerics",
+    "purrr",
+    "QFeatures",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "R6",
+    "ragg",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "Rdpack",
+    "reformulas",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "RSpectra",
+    "rstatix",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "Seqinfo",
+    "sgdGMF",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "SuppDists",
+    "survival",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tinytex",
+    "tseries",
+    "TTR",
+    "urca",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xts",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "Proteomics-vignette.Rmd",
+      "filename": "Proteomics-vignette.html",
+      "title": "Proteomics vignette: dimensionality reduction and imputation with omicsGMF",
+      "author": "Alexandre Segers",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Package installation",
+        "Proteomics data analysis"
+      ],
+      "created": "2025-02-28 16:43:30",
+      "modified": "2025-10-16 13:07:41",
+      "commits": 9
+    },
+    {
+      "source": "RNASeq-vignette.Rmd",
+      "filename": "RNASeq-vignette.html",
+      "title": "RNA-seq vignette: dimensionality reduction with omicsGMF",
+      "author": "Alexandre Segers",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Package installation",
+        "RNA-seq analysis"
+      ],
+      "created": "2025-02-28 16:43:30",
+      "modified": "2025-10-16 13:07:41",
+      "commits": 8
+    }
+  ],
+  "_score": 5.204119982655925,
+  "_indexed": true,
+  "_nocasepkg": "omicsgmf",
+  "_universes": [
+    "bioc",
+    "alexandresegers",
+    "statomics"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-08T09:45:35.000Z",
+      "distro": "noble",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "3fb6657b85fa92b3ffe1373cc97031a0fc632d01de7595014fe3779aa59ad5f8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-08T09:45:36.000Z",
+      "distro": "noble",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "d29e3488b8e6c7520b4e4af05d3678463615f74bb674d0f6f376f977f78cf440",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-08T10:00:23.000Z",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "0eedc4df116b7114548b380b0ddc77ffc152fcd427810e82dbd7b6aecd587e85",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-08T10:00:25.000Z",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "e206d690fecadeb137ced3fdde709a984786b2fd7acfe6b84b9048cd5f686158",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.1.0",
+      "date": "2026-02-08T09:45:32.000Z",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "29f64abe55ff43425b89e71bc2234bc3185917f2a9c610a948c503c1891b987f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-08T09:43:36.000Z",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "9c33251b8de670adbde517217abd169ad0d9ab6d69e52f0fa68d81bb1e9f836d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-08T09:43:51.000Z",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "0262b9cb401da656e28bc4db1a5ec5aad30301f969aa90b3dab8768db6e98efc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-08T09:43:48.000Z",
+      "commit": "66f9d2d59adb899f0d19401e95004180a82c909b",
+      "fileid": "9a670fb0efe8961f5dec3d5d37581b97eb77a0e7c38bcf533a3f8dc9221089f7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795986209"
+    }
+  ]
+}

@@ -1,0 +1,1694 @@
+{
+  "Package": "CAGEr",
+  "Title": "Analysis of CAGE (Cap Analysis of Gene Expression) sequencing\ndata for precise mapping of transcription start sites and\npromoterome mining",
+  "Version": "2.16.0",
+  "Date": "2025-10-10",
+  "Authors@R": "c( person(\"Vanja\",   \"Haberle\",   email = \"vanja.haberle@gmail.com\",       role = \"aut\"),\nperson(\"Charles\", \"Plessy\",    email = \"charles.plessy@oist.jp\",        role = \"cre\"),\nperson(\"Damir\",   \"Baranasic\", email = \"damir.baranasic@lms.mrc.ac.uk\", role = \"ctb\"),\nperson(\"Katalin\", \"Ferenc\",    email = \"k.t.ferenc@ncmbm.uio.no\",       role = \"ctb\"),\nperson(\"Sarvesh\", \"Nikumbh\",   email = \"s.nikumbh@lms.mrc.ac.uk\",       role = \"ctb\")\n)",
+  "Description": "The _CAGEr_ package identifies transcription start sites\n(TSS) and their usage frequency from CAGE (Cap Analysis Gene\nExpression) sequencing data. It normalises raw CAGE tag count,\nclusters TSSs into tag clusters (TC) and aggregates them across\nmultiple CAGE experiments to construct consensus clusters (CC)\nrepresenting the promoterome.  CAGEr provides functions to\nprofile expression levels of these clusters by cumulative\nexpression and rarefaction analysis, and outputs the plots in\nggplot2 format for further facetting and customisation.  After\nclustering, CAGEr performs analyses of promoter width and\ndetects differential usage of TSSs (promoter shifting) between\nsamples.  CAGEr also exports its data as genome browser tracks,\nand as R objects for downsteam expression analysis by other\nBioconductor packages such as DESeq2, CAGEfightR, or seqArchR.",
+  "License": "GPL-3",
+  "biocViews": "Preprocessing, Sequencing, Normalization,\nFunctionalGenomics, Transcription, GeneExpression, Clustering,\nVisualization",
+  "Collate": "'Multicore.R' 'CTSS.R' 'CAGEexp.R' 'ClusteringFunctions.R'\n'ClusteringMethods.R' 'CAGEr.R' 'Annotations.R'\n'AggregationMethods.R' 'CAGEfightR.R' 'CAGEr-package.R'\n'Paraclu.R' 'CorrelationMethods.R' 'GetMethods.R'\n'CumulativeDistributionMethods.R' 'Distclu.R' 'ExportMethods.R'\n'ExpressionProfilingMethods.R' 'ImportFunctions.R'\n'SetMethods.R' 'ImportMethods.R' 'MergingMethods.R'\n'NormalizationFunctions.R' 'NormalizationMethods.R'\n'QCmethods.R' 'QuantileWidthMethods.R' 'ResetMethods.R'\n'Richness.R' 'RleDataFrame.R' 'ShiftingFunctions.R'\n'ShiftingMethods.R' 'StrandInvaders.R' 'TSSlogo.R'",
+  "LazyData": "true",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.3",
+  "Roxygen": "list(markdown = TRUE)",
+  "Encoding": "UTF-8",
+  "Config/pak/sysreqs": "libglpk-dev make libbz2-dev libicu-dev libjpeg-dev\nliblzma-dev libpng-dev libxml2-dev libssl-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:13:45 UTC",
+  "RemoteUrl": "https://github.com/bioc/CAGEr",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "b717389861b449b181f49403bafc25ff5a928811",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-02 09:36:58 UTC",
+    "User": "root"
+  },
+  "Author": "Vanja Haberle [aut],\nCharles Plessy [cre],\nDamir Baranasic [ctb],\nKatalin Ferenc [ctb],\nSarvesh Nikumbh [ctb]",
+  "Maintainer": "Charles Plessy <charles.plessy@oist.jp>",
+  "MD5sum": "3f64054f65d7c14e38f70d2be36802c5",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "CAGEr_2.16.0.tar.gz",
+  "_fileid": "208f1adb8fb6451b8b64b1546926b70c40d7a82e6cf201006befdec60a4538b1",
+  "_filesize": 2101864,
+  "_sha256": "208f1adb8fb6451b8b64b1546926b70c40d7a82e6cf201006befdec60a4538b1",
+  "_created": "2026-02-02T09:36:58.000Z",
+  "_published": "2026-02-02T10:35:03.472Z",
+  "_jobs": [
+    {
+      "job": 62190393234,
+      "time": 424,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5340861232"
+    },
+    {
+      "job": 62190393368,
+      "time": 893,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5340957379"
+    },
+    {
+      "job": 62190393303,
+      "time": 822,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340942648"
+    },
+    {
+      "job": 62190393307,
+      "time": 490,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5341425489"
+    },
+    {
+      "job": 62190393275,
+      "time": 776,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5341482388"
+    },
+    {
+      "job": 62189221674,
+      "time": 661,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340775397"
+    },
+    {
+      "job": 62190393270,
+      "time": 405,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5340857300"
+    },
+    {
+      "job": 62190393317,
+      "time": 654,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5340907107"
+    },
+    {
+      "job": 62190393314,
+      "time": 648,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5340906392"
+    },
+    {
+      "job": 62190393316,
+      "time": 677,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5340912428"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 3,
+    "note": 22
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/CAGEr",
+  "_commit": {
+    "id": "b717389861b449b181f49403bafc25ff5a928811",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761747225
+  },
+  "_maintainer": {
+    "name": "Charles Plessy",
+    "email": "charles.plessy@oist.jp",
+    "login": "charles-plessy",
+    "uuid": 1834905
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "CAGEfightR",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "formula.tools",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "version": ">= 1.45.1",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "version": ">= 1.61.4",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "version": ">= 1.61.1",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 4.0.0",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "version": ">= 2.18.0",
+      "role": "Imports"
+    },
+    {
+      "package": "KernSmooth",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "memoise",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "version": ">= 2.25.1",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "version": ">= 1.69.1",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.27.5",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "som",
+      "role": "Imports"
+    },
+    {
+      "package": "stringdist",
+      "role": "Imports"
+    },
+    {
+      "package": "stringi",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "version": ">= 1.39.1",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "vegan",
+      "role": "Imports"
+    },
+    {
+      "package": "VGAM",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Dmelanogaster.UCSC.dm3",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Drerio.UCSC.danRer7",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg18",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm9",
+      "role": "Suggests"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Suggests"
+    },
+    {
+      "package": "FANTOM3and4CAGE",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggseqlogo",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-25",
+      "n": 1
+    },
+    {
+      "week": "2025-35",
+      "n": 1
+    },
+    {
+      "week": "2025-38",
+      "n": 3
+    },
+    {
+      "week": "2025-39",
+      "n": 4
+    },
+    {
+      "week": "2025-40",
+      "n": 2
+    },
+    {
+      "week": "2025-41",
+      "n": 3
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.17.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.16.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "preprocessing",
+    "sequencing",
+    "normalization",
+    "functionalgenomics",
+    "transcription",
+    "geneexpression",
+    "clustering",
+    "visualization"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 580,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/CAGEr"
+  },
+  "_mentions": 27,
+  "_searchresults": 107,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/CAGEr.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ".ctss_summary_for_clusters",
+    "aggregateTagClusters",
+    "annotateConsensusClusters",
+    "annotateCTSS",
+    "annotateTagClusters",
+    "CAGEexp",
+    "coerce",
+    "consensusClustersDESeq2",
+    "consensusClustersGR",
+    "consensusClustersGR<-",
+    "consensusClustersSE",
+    "consensusClustersSE<-",
+    "consensusClustersTpm",
+    "correlationMatrix",
+    "CTSS",
+    "CTSScoordinatesGR",
+    "CTSScoordinatesGR<-",
+    "CTSScumulativesCC",
+    "CTSScumulativesTagClusters",
+    "CTSSnormalizedTpmDF",
+    "CTSSnormalizedTpmGR",
+    "CTSStagCountDF",
+    "CTSStagCountGR",
+    "CTSStagCountSE",
+    "CTSStagCountSE<-",
+    "CTSStoGenes",
+    "cumulativeCTSSdistribution",
+    "CustomConsensusClusters",
+    "distclu",
+    "exportToTrack",
+    "expressionClasses",
+    "filteredCTSSidx",
+    "filterLowExpCTSS",
+    "findStrandInvaders",
+    "flagByUpstreamSequences",
+    "flagLowExpCTSS",
+    "GeneExpDESeq2",
+    "GeneExpSE",
+    "genomeName",
+    "genomeName<-",
+    "getCTSS",
+    "getExpressionProfiles",
+    "getShiftingPromoters",
+    "hanabi",
+    "hanabiPlot",
+    "importPublicData",
+    "inputFiles",
+    "inputFiles<-",
+    "inputFilesType",
+    "inputFilesType<-",
+    "librarySizes",
+    "mergeCAGEsets",
+    "mergeSamples",
+    "normalizeTagCount",
+    "paraclu",
+    "plotAnnot",
+    "plotCorrelation",
+    "plotCorrelation2",
+    "plotExpressionProfiles",
+    "plotInterquantileWidth",
+    "plotReverseCumulatives",
+    "quantilePositions",
+    "quickEnhancers",
+    "removeStrandInvaders",
+    "resetCAGEexp",
+    "sampleLabels",
+    "sampleLabels<-",
+    "sampleList",
+    "scoreShift",
+    "seqNameTotalsSE",
+    "setColors",
+    "summariseChrExpr",
+    "tagClustersGR",
+    "TSSlogo"
+  ],
+  "_datasets": [
+    {
+      "name": "FANTOM5humanSamples",
+      "title": "FANTOM5 human samples",
+      "object": "FANTOM5humanSamples",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "sample",
+        "type",
+        "description",
+        "library_id",
+        "data_url"
+      ],
+      "rows": 988,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "FANTOM5mouseSamples",
+      "title": "FANTOM5 mouse samples",
+      "object": "FANTOM5mouseSamples",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "sample",
+        "type",
+        "description",
+        "library_id",
+        "data_url"
+      ],
+      "rows": 395,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "exampleCAGEexp",
+      "title": "Example CAGEexp object.",
+      "object": "exampleCAGEexp",
+      "class": [
+        "CAGEexp"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "exampleZv9_annot",
+      "title": "Example zebrafish annotation data",
+      "object": "exampleZv9_annot",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "byCtss",
+      "title": "Apply functions to identical CTSSes.",
+      "topics": [
+        ".byCtss",
+        ".byCtss,data.table-method"
+      ]
+    },
+    {
+      "page": "dot-ctss_summary_for_clusters",
+      "title": "Summarise CTSSs included in clusters",
+      "topics": [
+        ".ctss_summary_for_clusters"
+      ]
+    },
+    {
+      "page": "QuantileWidthFunctions",
+      "title": "Get quantile positions",
+      "topics": [
+        ".get.quant.pos"
+      ]
+    },
+    {
+      "page": "powerLaw",
+      "title": ".powerLaw",
+      "topics": [
+        ".powerLaw"
+      ]
+    },
+    {
+      "page": "aggregateTagClusters",
+      "title": "Aggregate TCs across all samples",
+      "topics": [
+        "aggregateTagClusters",
+        "aggregateTagClusters,CAGEr-method"
+      ]
+    },
+    {
+      "page": "annotateCTSS",
+      "title": "Annotate and compute summary statistics",
+      "topics": [
+        "annotateConsensusClusters",
+        "annotateConsensusClusters,CAGEexp,GRanges-method",
+        "annotateConsensusClusters,CAGEexp,TxDb-method",
+        "annotateCTSS",
+        "annotateCTSS,CAGEexp,GRanges-method",
+        "annotateCTSS,CAGEexp,TxDb-method",
+        "annotateTagClusters",
+        "annotateTagClusters,CAGEexp,GRanges-method",
+        "annotateTagClusters,CAGEexp,TxDb-method"
+      ]
+    },
+    {
+      "page": "bam2CTSS",
+      "title": "bam2CTSS",
+      "topics": [
+        "bam2CTSS"
+      ]
+    },
+    {
+      "page": "CAGEexp-class",
+      "title": "CAGEr class to hold all data and metadata about one CAGE experiment.",
+      "topics": [
+        "CAGEexp",
+        "CAGEexp-class",
+        "coerce,data.frame,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "CAGEr_Multicore",
+      "title": "Multicore support in CAGEr",
+      "topics": [
+        "CAGEr_Multicore"
+      ]
+    },
+    {
+      "page": "CAGEr-class",
+      "title": "CAGEr objects",
+      "topics": [
+        "CAGEr-class"
+      ]
+    },
+    {
+      "page": "coerceInBSgenome",
+      "title": "coerceInBSgenome",
+      "topics": [
+        "coerceInBSgenome"
+      ]
+    },
+    {
+      "page": "ConsensusClusters-class",
+      "title": "ConsensusClusters",
+      "topics": [
+        ".ConsensusClusters",
+        "ConsensusClusters",
+        "ConsensusClusters-class"
+      ]
+    },
+    {
+      "page": "consensusClusters-set",
+      "title": "Set consensus clusters from CAGEr objects",
+      "topics": [
+        "consensusClusters<-",
+        "consensusClustersGR<-",
+        "consensusClustersGR<-,CAGEexp-method",
+        "consensusClustersSE<-",
+        "consensusClustersSE<-,CAGEexp,RangedSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "consensusClustersDESeq2",
+      "title": "Export _consensus cluster_ expression data for DESeq2 analysis",
+      "topics": [
+        "consensusClustersDESeq2",
+        "consensusClustersDESeq2,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "consensusClusters",
+      "title": "Get consensus clusters from CAGEr objects",
+      "topics": [
+        "consensusClustersGR",
+        "consensusClustersGR,CAGEexp-method",
+        "consensusClustersSE",
+        "consensusClustersSE,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "consensusClustersQuantile",
+      "title": "Quantile metadata stored in CAGEr objects.",
+      "topics": [
+        "consensusClustersQuantile",
+        "consensusClustersQuantile,CAGEexp-method",
+        "consensusClustersQuantileLow",
+        "consensusClustersQuantileLow,CAGEexp-method",
+        "consensusClustersQuantileLow<-",
+        "consensusClustersQuantileUp",
+        "consensusClustersQuantileUp,CAGEexp-method",
+        "consensusClustersQuantileUp<-"
+      ]
+    },
+    {
+      "page": "consensusClustersTpm",
+      "title": "Extracting consensus clusters tpm matrix from CAGEr object",
+      "topics": [
+        "consensusClustersTpm",
+        "consensusClustersTpm,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "CTSS-class",
+      "title": "CAGE Transcription Start Sites",
+      "topics": [
+        "coerce,CTSS,GRanges-method",
+        "coerce,GRanges,CTSS-method",
+        "CTSS",
+        "CTSS-class",
+        "initialize,CTSS-method",
+        "show,CTSS-method"
+      ]
+    },
+    {
+      "page": "CTSScoordinates",
+      "title": "Genomic coordinates of TSSs from a 'CAGEr' object",
+      "topics": [
+        "CTSScoordinatesGR",
+        "CTSScoordinatesGR,CAGEexp-method",
+        "CTSScoordinatesGR<-",
+        "CTSScoordinatesGR<-,CAGEexp-method",
+        "CTSStagCountSE<-",
+        "CTSStagCountSE<-,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "CTSScumulativesTagClusters",
+      "title": "Get/set CTSS cumulative TC or CC data",
+      "topics": [
+        "CTSScumulativesCC",
+        "CTSScumulativesCC,CAGEexp-method",
+        "CTSScumulativesTagClusters",
+        "CTSScumulativesTagClusters,CAGEexp-method",
+        "CTSScumulativesTagClusters<-",
+        "CTSScumulativesTagClusters<-,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "CTSSnormalizedTpm",
+      "title": "Extracting normalized CAGE signal for TSSs from CAGEr objects",
+      "topics": [
+        "CTSSnormalizedTpmDF",
+        "CTSSnormalizedTpmDF,CAGEexp-method",
+        "CTSSnormalizedTpmGR",
+        "CTSSnormalizedTpmGR,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "CTSStagCount",
+      "title": "Raw CAGE TSSs expression counts",
+      "topics": [
+        "CTSStagCountDF",
+        "CTSStagCountDF,CAGEexp-method",
+        "CTSStagCountGR",
+        "CTSStagCountGR,CAGEexp-method",
+        "CTSStagCountSE",
+        "CTSStagCountSE,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "CTSStoGenes",
+      "title": "Make a gene expression table.",
+      "topics": [
+        "CTSStoGenes",
+        "CTSStoGenes,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "cumulativeCTSSdistribution",
+      "title": "Cumulative sums of CAGE counts along genomic regions",
+      "topics": [
+        "cumulativeCTSSdistribution",
+        "cumulativeCTSSdistribution,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "CustomConsensusClusters",
+      "title": "Expression levels of consensus cluster",
+      "topics": [
+        "CustomConsensusClusters",
+        "CustomConsensusClusters,CAGEexp,GRanges-method"
+      ]
+    },
+    {
+      "page": "distclu",
+      "title": "Distance clustering",
+      "topics": [
+        "distclu",
+        "distclu,CAGEexp-method",
+        "distclu,CTSS-method",
+        "distclu,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "exampleCAGEexp",
+      "title": "Example CAGEexp object.",
+      "topics": [
+        "exampleCAGEexp"
+      ]
+    },
+    {
+      "page": "exampleZv9_annot",
+      "title": "Example zebrafish annotation data",
+      "topics": [
+        "exampleZv9_annot"
+      ]
+    },
+    {
+      "page": "exportToTrack",
+      "title": "Converts TSSs and clusters of TSSs to a genome browser track format",
+      "topics": [
+        "exportToTrack",
+        "exportToTrack,CAGEexp-method",
+        "exportToTrack,ConsensusClusters-method",
+        "exportToTrack,CTSS-method",
+        "exportToTrack,GRanges-method",
+        "exportToTrack,GRangesList-method",
+        "exportToTrack,TagClusters-method"
+      ]
+    },
+    {
+      "page": "expressionClasses",
+      "title": "Extract labels of _expression classes_",
+      "topics": [
+        "expressionClasses",
+        "expressionClasses,ConsensusClusters-method",
+        "expressionClasses,CTSS-method"
+      ]
+    },
+    {
+      "page": "FANTOM5humanSamples",
+      "title": "FANTOM5 human samples",
+      "topics": [
+        "FANTOM5humanSamples"
+      ]
+    },
+    {
+      "page": "FANTOM5mouseSamples",
+      "title": "FANTOM5 mouse samples",
+      "topics": [
+        "FANTOM5mouseSamples"
+      ]
+    },
+    {
+      "page": "filteredCTSSidx",
+      "title": "The 'filteredCTSSidx()' function is in _CAGEr_ functions to retrieve the result of the 'flagLowExpCTSS()' function in a safe way.",
+      "topics": [
+        "filteredCTSSidx",
+        "filteredCTSSidx,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "flagByUpstreamSequences",
+      "title": "Filter by upstream sequences",
+      "topics": [
+        "flagByUpstreamSequences",
+        "flagByUpstreamSequences,ConsensusClusters-method",
+        "flagByUpstreamSequences,CTSS-method",
+        "flagByUpstreamSequences,GRanges-method",
+        "flagByUpstreamSequences,TagClusters-method"
+      ]
+    },
+    {
+      "page": "flagLowExpCTSS",
+      "title": "Flag CTSSes based on sample expression",
+      "topics": [
+        "filterLowExpCTSS",
+        "filterLowExpCTSS,CAGEr-method",
+        "flagLowExpCTSS",
+        "flagLowExpCTSS,CAGEr-method",
+        "flagLowExpCTSS,DataFrame-method",
+        "flagLowExpCTSS,matrix-method",
+        "flagLowExpCTSS,RangedSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "GeneExpDESeq2",
+      "title": "Export gene expression data for DESeq2 analysis",
+      "topics": [
+        "GeneExpDESeq2",
+        "GeneExpDESeq2,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "GeneExpSE",
+      "title": "Retreives the SummarizedExperiment containing gene expression levels.",
+      "topics": [
+        "GeneExpSE",
+        "GeneExpSE,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "genomeName",
+      "title": "Extracting genome name from CAGEr objects",
+      "topics": [
+        "genomeName",
+        "genomeName,CAGEexp-method",
+        "genomeName,CTSS-method",
+        "genomeName<-",
+        "genomeName<-,CAGEexp-method",
+        "genomeName<-,CTSS-method"
+      ]
+    },
+    {
+      "page": "getCTSS",
+      "title": "Reading CAGE data from input file(s) and detecting TSSs",
+      "topics": [
+        "getCTSS",
+        "getCTSS,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "getExpressionProfiles",
+      "title": "CAGE data based expression clustering",
+      "topics": [
+        "getExpressionProfiles",
+        "getExpressionProfiles,CAGEexp-method",
+        "getExpressionProfiles,matrix-method"
+      ]
+    },
+    {
+      "page": "getShiftingPromoters",
+      "title": "Select consensus clusters with shifting score above threshold",
+      "topics": [
+        "getShiftingPromoters",
+        "getShiftingPromoters,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "hanabi",
+      "title": "Calcultate richness in preparation for plotting",
+      "topics": [
+        "hanabi",
+        "hanabi,GRanges-method",
+        "hanabi,integer-method",
+        "hanabi,List-method",
+        "hanabi,list-method",
+        "hanabi,matrix-method",
+        "hanabi,numeric-method",
+        "hanabi,Rle-method"
+      ]
+    },
+    {
+      "page": "hanabi-class",
+      "title": "Hanabi class",
+      "topics": [
+        ".hanabi",
+        "hanabi-class"
+      ]
+    },
+    {
+      "page": "hanabiPlot",
+      "title": "hanabiPlot",
+      "topics": [
+        "hanabiPlot"
+      ]
+    },
+    {
+      "page": "import.bam",
+      "title": "import.bam",
+      "topics": [
+        "import.bam"
+      ]
+    },
+    {
+      "page": "import.bam.ctss",
+      "title": "import.bam.ctss",
+      "topics": [
+        "import.bam.ctss"
+      ]
+    },
+    {
+      "page": "import.bedCTSS",
+      "title": "import.bedCTSS",
+      "topics": [
+        "import.bedCTSS"
+      ]
+    },
+    {
+      "page": "import.bedmolecule",
+      "title": "import.bedmolecule",
+      "topics": [
+        "import.bedmolecule"
+      ]
+    },
+    {
+      "page": "import.bedScore",
+      "title": "import.bedScore",
+      "topics": [
+        "import.bedScore"
+      ]
+    },
+    {
+      "page": "import.bigwig",
+      "title": "Read in BigWig files to CAGEexp object",
+      "topics": [
+        "import.bigwig"
+      ]
+    },
+    {
+      "page": "import.CAGEscanMolecule",
+      "title": "import.CAGEscanMolecule",
+      "topics": [
+        "import.CAGEscanMolecule"
+      ]
+    },
+    {
+      "page": "import.CTSS",
+      "title": "import.CTSS",
+      "topics": [
+        "import.CTSS"
+      ]
+    },
+    {
+      "page": "importPublicData",
+      "title": "importPublicData",
+      "topics": [
+        "importPublicData",
+        "importPublicData,character,character,ANY,character-method"
+      ]
+    },
+    {
+      "page": "inputFiles",
+      "title": "Extracting paths to input files from CAGEr objects",
+      "topics": [
+        "inputFiles",
+        "inputFiles,CAGEexp-method",
+        "inputFiles<-",
+        "inputFiles<-,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "inputFilesType",
+      "title": "Input file formats for CAGEr objects",
+      "topics": [
+        "inputFilesType",
+        "inputFilesType,CAGEexp-method",
+        "inputFilesType<-",
+        "inputFilesType<-,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "librarySizes",
+      "title": "Extracting library sizes from CAGEr objects",
+      "topics": [
+        "librarySizes",
+        "librarySizes,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "loadFileIntoGPos",
+      "title": "loadFileIntoGPos",
+      "topics": [
+        "loadFileIntoGPos"
+      ]
+    },
+    {
+      "page": "mapStats",
+      "title": "Process mapping statistics",
+      "topics": [
+        "mapStats"
+      ]
+    },
+    {
+      "page": "mapStatsScopes",
+      "title": "mapStats scopes",
+      "topics": [
+        "mapStatsScopes",
+        "msScope_all",
+        "msScope_annotation",
+        "msScope_counts",
+        "msScope_mapped",
+        "msScope_qc",
+        "msScope_steps"
+      ]
+    },
+    {
+      "page": "mergeCAGEsets",
+      "title": "Merge two CAGEr objects into one",
+      "topics": [
+        "mergeCAGEsets",
+        "mergeCAGEsets,CAGEexp,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "mergeSamples",
+      "title": "Merge CAGE samples",
+      "topics": [
+        "mergeSamples",
+        "mergeSamples,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "moleculesGR2CTSS",
+      "title": "moleculesGR2CTSS",
+      "topics": [
+        "moleculesGR2CTSS"
+      ]
+    },
+    {
+      "page": "normalizeTagCount",
+      "title": "Normalizing raw CAGE tag count",
+      "topics": [
+        "normalizeTagCount",
+        "normalizeTagCount,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "paraclu",
+      "title": "Parametric clustering",
+      "topics": [
+        "paraclu",
+        "paraclu,CAGEexp-method",
+        "paraclu,CTSS-method",
+        "paraclu,GRanges-method",
+        "paraclu,Pairs-method",
+        "paraclu,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "parseCAGEscanBlocksToGrangeTSS",
+      "title": "parseCAGEscanBlocksToGrangeTSS",
+      "topics": [
+        "parseCAGEscanBlocksToGrangeTSS"
+      ]
+    },
+    {
+      "page": "plot.hanabi",
+      "title": "Plotting Hanabi objects",
+      "topics": [
+        "lines.hanabi",
+        "plot.hanabi",
+        "points.hanabi"
+      ]
+    },
+    {
+      "page": "plotAnnot",
+      "title": "Plot annotation statistics",
+      "topics": [
+        "plotAnnot",
+        "plotAnnot,CAGEexp-method",
+        "plotAnnot,data.frame-method",
+        "plotAnnot,DataFrame-method",
+        "plotAnnot,GRangesList-method"
+      ]
+    },
+    {
+      "page": "plotCorrelation",
+      "title": "Pairwise scatter plots and correlations of CAGE signal",
+      "topics": [
+        "correlationMatrix",
+        "correlationMatrix,CAGEexp-method",
+        "correlationMatrix,data.frame-method",
+        "correlationMatrix,DataFrame-method",
+        "correlationMatrix,matrix-method",
+        "correlationMatrix,SummarizedExperiment-method",
+        "plotCorrelation",
+        "plotCorrelation,CAGEr-method",
+        "plotCorrelation2",
+        "plotCorrelation2,CAGEexp-method",
+        "plotCorrelation2,data.frame-method",
+        "plotCorrelation2,DataFrame-method",
+        "plotCorrelation2,matrix-method",
+        "plotCorrelation2,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "plotExpressionProfiles",
+      "title": "Plot CAGE expression profiles",
+      "topics": [
+        "plotExpressionProfiles",
+        "plotExpressionProfiles,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "plotInterquantileWidth",
+      "title": "Plot cluster widths",
+      "topics": [
+        "plotInterquantileWidth",
+        "plotInterquantileWidth,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "plotReverseCumulatives",
+      "title": "Plot reverse cumulative number of CAGE tags per CTSS",
+      "topics": [
+        "plotReverseCumulatives",
+        "plotReverseCumulatives,CAGEexp-method",
+        "plotReverseCumulatives,GRanges-method",
+        "plotReverseCumulatives,GRangesList-method"
+      ]
+    },
+    {
+      "page": "quantilePositions",
+      "title": "Determine CTSS quantile positions within clusters",
+      "topics": [
+        "quantilePositions",
+        "quantilePositions,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "quickEnhancers",
+      "title": "Identify and quantify enhancers.",
+      "topics": [
+        "quickEnhancers",
+        "quickEnhancers,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "ranges2annot",
+      "title": "Hierarchical annotation of genomic regions.",
+      "topics": [
+        "ranges2annot"
+      ]
+    },
+    {
+      "page": "ranges2genes",
+      "title": "ranges2genes",
+      "topics": [
+        "ranges2genes"
+      ]
+    },
+    {
+      "page": "ranges2names",
+      "title": "ranges2names",
+      "topics": [
+        "ranges2names"
+      ]
+    },
+    {
+      "page": "resetCAGEexp",
+      "title": "Reset a CAGEexp object",
+      "topics": [
+        "resetCAGEexp",
+        "resetCAGEexp,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "rowsum.RleDataFrame",
+      "title": "rowsum function for Rle DataFrames",
+      "topics": [
+        "rowsum.RleDataFrame"
+      ]
+    },
+    {
+      "page": "rowSums.RleDataFrame",
+      "title": "rowSums function for Rle DataFrames",
+      "topics": [
+        "rowSums.RleDataFrame"
+      ]
+    },
+    {
+      "page": "sampleLabels",
+      "title": "Get and set sample labels",
+      "topics": [
+        "sampleLabels",
+        "sampleLabels,CAGEexp-method",
+        "sampleLabels,CTSS-method",
+        "sampleLabels<-",
+        "sampleLabels<-,CAGEexp-method",
+        "sampleLabels<-,CTSS-method",
+        "sampleList",
+        "sampleList,CAGEr-method"
+      ]
+    },
+    {
+      "page": "scoreShift",
+      "title": "Calculate promoter shifting score",
+      "topics": [
+        "scoreShift",
+        "scoreShift,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "seqNameTotalsSE",
+      "title": "Retreives the SummarizedExperiment containing chromosome expression totals.",
+      "topics": [
+        "seqNameTotalsSE",
+        "seqNameTotalsSE,CAGEexp-method",
+        "seqNameTotalsSE<-"
+      ]
+    },
+    {
+      "page": "setColors",
+      "title": "Set colors for samples",
+      "topics": [
+        "setColors",
+        "setColors,CAGEr-method"
+      ]
+    },
+    {
+      "page": "strandInvaders",
+      "title": "Detect and remove strand invasion artefacts",
+      "topics": [
+        "findStrandInvaders",
+        "findStrandInvaders,CAGEexp-method",
+        "findStrandInvaders,CTSS-method",
+        "removeStrandInvaders",
+        "removeStrandInvaders,CAGEexp-method",
+        "removeStrandInvaders,CTSS-method",
+        "Strand invaders"
+      ]
+    },
+    {
+      "page": "summariseChrExpr",
+      "title": "Expression levels by chromosomes",
+      "topics": [
+        "summariseChrExpr",
+        "summariseChrExpr,CAGEexp-method"
+      ]
+    },
+    {
+      "page": "TagClusters-class",
+      "title": "TagClusters",
+      "topics": [
+        ".TagClusters",
+        "TagClusters",
+        "TagClusters-class"
+      ]
+    },
+    {
+      "page": "tagClusters",
+      "title": "Extract tag clusters (TCs) for individual CAGE experiments",
+      "topics": [
+        "tagClustersGR",
+        "tagClustersGR,CAGEexp-method",
+        "tagClustersGR<-",
+        "tagClustersGR<-,CAGEexp,ANY,TagClusters-method",
+        "tagClustersGR<-,CAGEexp,missing,GRangesList-method"
+      ]
+    },
+    {
+      "page": "TSSlogo",
+      "title": "TSS logo",
+      "topics": [
+        "TSSlogo",
+        "TSSlogo,CAGEexp-method",
+        "TSSlogo,ConsensusClusters-method",
+        "TSSlogo,CTSS-method",
+        "TSSlogo,TagClusters-method"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "assertthat",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "CAGEfightR",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "dichromat",
+    "digest",
+    "dplyr",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "formula.tools",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicFiles",
+    "GenomicInteractions",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "Gviz",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "igraph",
+    "InteractionSet",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "lobstr",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mime",
+    "MultiAssayExperiment",
+    "nlme",
+    "nnet",
+    "openssl",
+    "operator.tools",
+    "permute",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plyr",
+    "png",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "pryr",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "som",
+    "SparseArray",
+    "stringdist",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "vegan",
+    "VGAM",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "CAGEexp.Rmd",
+      "filename": "CAGEexp.html",
+      "title": "CAGEr: an R package for CAGE (Cap Analysis of Gene Expression) data analysis and promoterome mining",
+      "author": "Vanja Haberle, Charles Plessy, Sarvesh Nikumbh",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Input data for CAGEr",
+        "The CAGEr workflow",
+        "Getting started",
+        "Creating a CAGEexp object",
+        "Specifying a genome assembly",
+        "Specifying input files",
+        "Creating the object",
+        "Reading in the data",
+        "Quality controls and preliminary analyses",
+        "Genome annotations",
+        "Correlation between samples",
+        "Sequence distribution at the transcription start site.",
+        "Merging of replicates",
+        "Normalization",
+        "CTSS flagging",
+        "CTSS clustering",
+        "Promoter width",
+        "Creating consensus promoters across samples",
+        "Track export for genome browsers",
+        "Expression profiling",
+        "Differential expression analysis",
+        "Shifting promoters",
+        "Enhancers",
+        "Appendix",
+        "Creating a CAGEexp object by coercing a data frame",
+        "Summary of the CAGEr accessor functions",
+        "CTSS data",
+        "Cluster data",
+        "Gene data",
+        "Summary of the CAGEexp experiment slots and assays",
+        "CAGEexp assays",
+        "Summary of the CAGEr classes",
+        "Paired-end CAGE read alignment with the nf-core/rnaseq pipeline",
+        "Session info",
+        "References"
+      ],
+      "created": "2017-12-04 08:39:28",
+      "modified": "2025-09-18 10:44:40",
+      "commits": 40
+    },
+    {
+      "source": "CAGE_Resources.Rmd",
+      "filename": "CAGE_Resources.html",
+      "title": "Use of CAGE resources with CAGEr",
+      "author": "Vanja Haberle, Charles Plessy",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Available CAGE data resources",
+        "FANTOM5",
+        "FANTOM3 and 4",
+        "ENCODE cell lines",
+        "Zebrafish developmental timecourse",
+        "Importing public TSS data for manipulation in CAGEr",
+        "FANTOM5 human and mouse samples",
+        "FANTOM3and4CAGE data package",
+        "ENCODEprojectCAGE data package",
+        "ZebrafishDevelopmentalCAGE data package",
+        "Session info",
+        "References"
+      ],
+      "created": "2018-12-12 05:37:59",
+      "modified": "2024-05-10 09:08:43",
+      "commits": 2
+    }
+  ],
+  "_score": 6.284656282788516,
+  "_indexed": false,
+  "_nocasepkg": "cager",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/CAGEr",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.16.0",
+      "date": "2026-02-02T09:45:55.000Z",
+      "distro": "noble",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "071b05907fa6936ed1564703cbb49b3f249015e53b5efddcfa659bf9694d0de9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.16.0",
+      "date": "2026-02-02T09:44:40.000Z",
+      "distro": "noble",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "d57df23497057e467d7e59139be031f40cb5fe92b4f92421390a1d331d62d688",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.16.0",
+      "date": "2026-02-02T10:25:37.000Z",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "9a93c8454670792a2881cdf785cbe03e9e00f370adad98b17f0bff0cee885493",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.16.0",
+      "date": "2026-02-02T10:26:57.000Z",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "977f7b1d221e94cdf1aad91cc89d9b5d1451148b670a32d13f38de9b19203a8b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.16.0",
+      "date": "2026-02-02T09:44:53.000Z",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "b4e2932697a3f9515c7ec4f3dde744019792eacb293a92976e1d178a633e3f9a",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.16.0",
+      "date": "2026-02-02T09:42:08.000Z",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "b269a3f582d3074ca820e3bfc82c9dff81a554d49ebb333bd6a3d2ea4f760c0a",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.16.0",
+      "date": "2026-02-02T09:42:14.000Z",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "4bd64e36ada3ace8dddd0926205b3dd12c7ee57e3a4b7b3892494879dea903cc",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.16.0",
+      "date": "2026-02-02T09:42:24.000Z",
+      "commit": "b717389861b449b181f49403bafc25ff5a928811",
+      "fileid": "35116220c96cef5648d9c1b9f8aff8ec4aded95b009c3f1d68a58f02852625fa",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584490125"
+    }
+  ]
+}

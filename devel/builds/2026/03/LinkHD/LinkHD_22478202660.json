@@ -1,0 +1,782 @@
+{
+  "Package": "LinkHD",
+  "Type": "Package",
+  "Title": "LinkHD: a versatile framework to explore and integrate\nheterogeneous data",
+  "Version": "1.25.0",
+  "Author": "Laura M. Zingaretti [aut, cre]",
+  "Maintainer": "\"Laura M Zingaretti\" <m.lau.zingaretti@gmail.com>",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Classification,MultipleComparison,Regression,Software",
+  "output": "BiocStyle::html_document",
+  "vignette": "> %\\VignetteIndexEntry{LinkHD:Multiple Heterogeneous\n(communities) Data Integration }\n%\\VignetteEngine{knitr::rmarkdown} \\usepackage[utf8]{inputenc}",
+  "Description": "Here we present Link-HD, an approach to integrate\nheterogeneous datasets, as a generalization of STATIS-ACT\n(\u201cStructuration des Tableaux A Trois Indices de la\nStatistique\u2013Analyse Conjointe de Tableaux\u201d), a family of\nmethods to join and compare information from multiple\nsubspaces. However, STATIS-ACT has some drawbacks since it only\nallows continuous data and it is unable to establish\nrelationships between samples and features. In order to tackle\nthese constraints, we incorporate multiple distance options and\na linear regression based Biplot model in order to stablish\nrelationships between observations and variable and perform\nvariable selection.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "Collate": "'Read_Data.R' 'DataProcessing.R' 'DistStatis-Class.R'\n'LinkData.R' 'CompromisePlot.R' 'VarSelection.R' 'GlobalPlot.R'\n'CorrelationPlot.R' 'VarSelection-Class.R' 'Auxiliares.R'\n'ComputeDistance.R' 'dAB.R' 'OTU2Taxa.R'",
+  "LazyData": "true",
+  "NeedsCompilation": "no",
+  "Roxygen": "list(wrap=FALSE)",
+  "RoxygenNote": "6.1.1",
+  "Config/pak/sysreqs": "cmake make libicu-dev libssl-dev libx11-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:55:08 UTC",
+  "RemoteUrl": "https://github.com/bioc/LinkHD",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+  "Packaged": {
+    "Date": "2026-02-27 08:15:16 UTC",
+    "User": "root"
+  },
+  "MD5sum": "6f265c95cbe56c14e45a54af960dfd4b",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "LinkHD_1.25.0.tar.gz",
+  "_fileid": "e069997c6a358acace8217c0f55d9fd092f9c6fe5e8dbe3315f6c4926ec34f8c",
+  "_filesize": 2674621,
+  "_sha256": "e069997c6a358acace8217c0f55d9fd092f9c6fe5e8dbe3315f6c4926ec34f8c",
+  "_created": "2026-02-27T08:15:16.000Z",
+  "_published": "2026-02-27T08:22:27.594Z",
+  "_jobs": [
+    {
+      "job": 65110211610,
+      "time": 202,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5686803363"
+    },
+    {
+      "job": 65110211617,
+      "time": 373,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5686835330"
+    },
+    {
+      "job": 65110211600,
+      "time": 339,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5686828849"
+    },
+    {
+      "job": 65110211641,
+      "time": 223,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5686806755"
+    },
+    {
+      "job": 65110211644,
+      "time": 166,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5686796423"
+    },
+    {
+      "job": 65109746803,
+      "time": 285,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5686765575"
+    },
+    {
+      "job": 65110211606,
+      "time": 158,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5686794883"
+    },
+    {
+      "job": 65110211640,
+      "time": 240,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5686810386"
+    },
+    {
+      "job": 65110211624,
+      "time": 242,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5686810570"
+    },
+    {
+      "job": 65110211665,
+      "time": 241,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5686810209"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 1,
+    "note": 18
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/LinkHD",
+  "_commit": {
+    "id": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749708
+  },
+  "_maintainer": {
+    "name": "\"Laura M Zingaretti\"",
+    "email": "m.lau.zingaretti@gmail.com",
+    "login": "lauzingaretti",
+    "uuid": 10714469
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Depends"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "vegan",
+      "role": "Imports"
+    },
+    {
+      "package": "rio",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "emmeans",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "version": ">= 7.3.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.25.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.24.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "classification",
+    "multiplecomparison",
+    "regression",
+    "software"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 328,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/LinkHD"
+  },
+  "_mentions": 1,
+  "_searchresults": 2,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/LinkHD.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "compromise_coords",
+    "Compromise_matrix",
+    "CompromisePlot",
+    "correl",
+    "CorrelationPlot",
+    "dAB",
+    "DataProcessing",
+    "Euclid_Im",
+    "GlobalPlot",
+    "Inertia_comp",
+    "Inertia_RV",
+    "LinkData",
+    "OTU2Taxa",
+    "Read_Data",
+    "RQO",
+    "sign_values",
+    "Trajectories",
+    "Var_coordinates",
+    "Variables",
+    "VarSelection",
+    "VarTable"
+  ],
+  "_datasets": [
+    {
+      "name": "Ruminotypes",
+      "title": "Whole Ruminotypes dataset communities",
+      "object": "Ruminotypes",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "Taraoceans",
+      "title": "TARA Oceans datasets",
+      "object": "Taraoceans",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "compromise_coords-methods",
+      "title": "compromise_coords",
+      "topics": [
+        "compromise_coords",
+        "compromise_coords,DistStatis-method"
+      ]
+    },
+    {
+      "page": "Compromise_matrix-methods",
+      "title": "Compromise_matrix",
+      "topics": [
+        "Compromise_matrix",
+        "Compromise_matrix,DistStatis-method"
+      ]
+    },
+    {
+      "page": "DistStatis-CompromisePlot",
+      "title": "Compromise-Plot",
+      "topics": [
+        "CompromisePlot",
+        "CompromisePlot,DistStatis-method"
+      ]
+    },
+    {
+      "page": "correl-methods",
+      "title": "correl",
+      "topics": [
+        "correl",
+        "correl,DistStatis-method"
+      ]
+    },
+    {
+      "page": "DistStatis-CorrelationPlot",
+      "title": "Correlation-Plot",
+      "topics": [
+        "CorrelationPlot",
+        "CorrelationPlot,DistStatis-method"
+      ]
+    },
+    {
+      "page": "dAB-dAB",
+      "title": "dAB",
+      "topics": [
+        "dAB"
+      ]
+    },
+    {
+      "page": "DataProcessing",
+      "title": "DataProcessing",
+      "topics": [
+        "DataProcessing"
+      ]
+    },
+    {
+      "page": "DistStatis-Class",
+      "title": "Class 'DistStatis' DistStatis S4 class (linkHD:Multiple Heterogeneous Dataset Integration) Statis with Distance options implementation.",
+      "topics": [
+        "DistStatis-class"
+      ]
+    },
+    {
+      "page": "Euclid_Im-methods",
+      "title": "Euclid_Im",
+      "topics": [
+        "Euclid_Im",
+        "Euclid_Im,DistStatis-method"
+      ]
+    },
+    {
+      "page": "DistStatis-GlobalPlot",
+      "title": "Global-Plot",
+      "topics": [
+        "GlobalPlot",
+        "GlobalPlot,DistStatis-method"
+      ]
+    },
+    {
+      "page": "Inertia_comp-methods",
+      "title": "Inertia_comp",
+      "topics": [
+        "Inertia_comp",
+        "Inertia_comp,DistStatis-method"
+      ]
+    },
+    {
+      "page": "Inertia_RV-methods",
+      "title": "Inertia_RV",
+      "topics": [
+        "Inertia_RV",
+        "Inertia_RV,DistStatis-method"
+      ]
+    },
+    {
+      "page": "LinkData-LinkData",
+      "title": "LinkData: multiple heterogeneous dataset integration",
+      "topics": [
+        "LinkData"
+      ]
+    },
+    {
+      "page": "OTU2Taxa-OTU2Taxa",
+      "title": "OTU2Taxa",
+      "topics": [
+        "OTU2Taxa"
+      ]
+    },
+    {
+      "page": "Read_Data",
+      "title": "Read_Data: a fast way to data reading.",
+      "topics": [
+        "Read_Data"
+      ]
+    },
+    {
+      "page": "RQO-methods",
+      "title": "RQO",
+      "topics": [
+        "RQO",
+        "RQO,DistStatis-method"
+      ]
+    },
+    {
+      "page": "Ruminotypes",
+      "title": "Whole Ruminotypes dataset communities",
+      "topics": [
+        "Ruminotypes"
+      ]
+    },
+    {
+      "page": "sign_values-methods",
+      "title": "sign_values",
+      "topics": [
+        "sign_values",
+        "sign_values,VarSelection-method"
+      ]
+    },
+    {
+      "page": "Taraoceans",
+      "title": "TARA Oceans datasets",
+      "topics": [
+        "Taraoceans"
+      ]
+    },
+    {
+      "page": "Trajectories-methods",
+      "title": "Trajectories",
+      "topics": [
+        "Trajectories",
+        "Trajectories,DistStatis-method"
+      ]
+    },
+    {
+      "page": "Var_coordinates-methods",
+      "title": "Var_coordinates",
+      "topics": [
+        "Var_coordinates",
+        "Var_coordinates,VarSelection-method"
+      ]
+    },
+    {
+      "page": "Variables-methods",
+      "title": "Variables",
+      "topics": [
+        "Variables",
+        "Variables,VarSelection-method"
+      ]
+    },
+    {
+      "page": "VarSelection",
+      "title": "Variable Selection",
+      "topics": [
+        "VarSelection"
+      ]
+    },
+    {
+      "page": "VarSelection-Class",
+      "title": "class VarSelection",
+      "topics": [
+        "VarSelection-class"
+      ]
+    },
+    {
+      "page": "VarTable-methods",
+      "title": "VarTable",
+      "topics": [
+        "VarTable",
+        "VarTable,VarSelection-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/LinkHD/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "backports",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "boot",
+    "broom",
+    "car",
+    "carData",
+    "cellranger",
+    "cli",
+    "clipr",
+    "cluster",
+    "colorspace",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "Deriv",
+    "doBy",
+    "dplyr",
+    "emmeans",
+    "estimability",
+    "farver",
+    "forcats",
+    "forecast",
+    "foreign",
+    "Formula",
+    "fracdiff",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "ggpubr",
+    "ggrepel",
+    "ggsci",
+    "ggsignif",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "haven",
+    "hms",
+    "IRanges",
+    "isoband",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "mgcv",
+    "microbenchmark",
+    "minqa",
+    "modelr",
+    "MultiAssayExperiment",
+    "mvtnorm",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "pbkrtest",
+    "permute",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "polynom",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "quantreg",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "readr",
+    "readxl",
+    "reformulas",
+    "rematch",
+    "reshape2",
+    "rio",
+    "rlang",
+    "rstatix",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SparseArray",
+    "SparseM",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tzdb",
+    "urca",
+    "utf8",
+    "vctrs",
+    "vegan",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "writexl",
+    "XVector",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "LinkHD.Rmd",
+      "filename": "LinkHD.html",
+      "title": "Link-HD: a versatile framework to explore and integrate heterogeneous data",
+      "author": "Laura M Zingaretti, Yuliaxis Ramayo-Caldas",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Version Info",
+        "Introduction",
+        "STATIS: a general overview",
+        "Selecting variables",
+        "Regression Biplot approach",
+        "Differential abundance approach",
+        "Usage",
+        "Software Installation",
+        "Examples",
+        "Results",
+        "Ruminotypes analysis",
+        "Data Processing",
+        "Getting common structure",
+        "Obtaining individual projections",
+        "Relationships between communities",
+        "Sample stratification in ruminotypes-like clusters",
+        "Variable selection",
+        "Taxonomic aggregation and Taxon Set Enrichment Analysis",
+        "Taxon set enrichment analysis from a user-defined OTUs' list",
+        "Final Remarks",
+        "Appendix",
+        "References"
+      ],
+      "created": "2019-09-26 09:29:55",
+      "modified": "2019-10-16 14:40:34",
+      "commits": 4
+    }
+  ],
+  "_score": 4,
+  "_indexed": true,
+  "_nocasepkg": "linkhd",
+  "_universes": [
+    "bioc",
+    "lauzingaretti"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:19:27.000Z",
+      "distro": "noble",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "f20b418a2fb468f70b5c03860300d14fa460e67da461154aa6549f2948425606",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:19:01.000Z",
+      "distro": "noble",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "2984db42800dac299735843f9c495006804fed94e464686cdfddae20967761b0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:17:30.000Z",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "1737dd5fc0e9ee53833838297ae715049582c775a4ca574cc506762d9bc8f375",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:17:12.000Z",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "fbedfc432b49bfbf1329381122e2150b35e9fa83a4c6a2c658b1d98bbc207ad0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:18:25.000Z",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "8ec44d7254a282ecf813da7418a04142d27cb8cfbd7bd3861854a90700ebe246",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:17:03.000Z",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "442ef9bf80e5f56a0b7d327755eda85ab0590929c1fbf88aa33b93852137608e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:17:09.000Z",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "c79330921bb2aa00c8616a8621cf4b2425e01c9f52ac5e69c50ec411c4250d5b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.25.0",
+      "date": "2026-02-27T08:17:08.000Z",
+      "commit": "ceb49e358065af2459c817d3ddb0f127e9ad7c55",
+      "fileid": "32dc27820096713f17af5f50220681e55eab567dd1a5a1eada728710d2c529a2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22478202660"
+    }
+  ]
+}

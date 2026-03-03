@@ -1,0 +1,826 @@
+{
+  "Package": "GUIDEseq",
+  "Type": "Package",
+  "Title": "GUIDE-seq and PEtag-seq analysis pipeline",
+  "Version": "1.40.0",
+  "Date": "2024-04-23",
+  "Encoding": "UTF-8",
+  "Author": "Lihua Julie Zhu, Michael Lawrence, Ankit Gupta, Herv\u00e9 Pag\u00e8s ,\nAlper Kucukural, Manuel Garber, Scot A. Wolfe",
+  "Maintainer": "Lihua Julie Zhu <julie.zhu@umassmed.edu>",
+  "biocViews": "ImmunoOncology, GeneRegulation, Sequencing, WorkflowStep,\nCRISPR",
+  "VignetteBuilder": "knitr",
+  "Description": "The package implements GUIDE-seq and PEtag-seq analysis\nworkflow including functions for filtering UMI and reads with\nlow coverage, obtaining unique insertion sites (proxy of\ncleavage sites), estimating the locations of the insertion\nsites, aka, peaks, merging estimated insertion sites from plus\nand minus strand, and performing off target search of the\nextended regions around insertion sites with mismatches and\nindels.",
+  "License": "GPL (>= 2)",
+  "LazyLoad": "yes",
+  "NeedsCompilation": "no",
+  "Config/testthat/edition": "3",
+  "RoxygenNote": "7.3.1",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev python3 libx11-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:28:16 UTC",
+  "RemoteUrl": "https://github.com/bioc/GUIDEseq",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+  "Packaged": {
+    "Date": "2026-02-03 08:21:06 UTC",
+    "User": "root"
+  },
+  "MD5sum": "eeabec3a66b3f3b994cfc0bd6e62289e",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "GUIDEseq_1.40.0.tar.gz",
+  "_fileid": "931b15678fc274f217170c8272a968b25293ab55fd1e8c0f264819656501d9c6",
+  "_filesize": 6399758,
+  "_sha256": "931b15678fc274f217170c8272a968b25293ab55fd1e8c0f264819656501d9c6",
+  "_created": "2026-02-03T08:21:06.000Z",
+  "_published": "2026-02-03T08:33:59.860Z",
+  "_distro": "noble",
+  "_jobs": [
+    {
+      "job": 62314828171,
+      "time": 360,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "FAILURE",
+      "artifact": ""
+    },
+    {
+      "job": 62314828203,
+      "time": 687,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354340768"
+    },
+    {
+      "job": 62314828216,
+      "time": 686,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354340730"
+    },
+    {
+      "job": 62314828187,
+      "time": 488,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354304504"
+    },
+    {
+      "job": 62314828262,
+      "time": 478,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354302643"
+    },
+    {
+      "job": 62313915795,
+      "time": 561,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354216676"
+    },
+    {
+      "job": 62314828161,
+      "time": 327,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5354275998"
+    },
+    {
+      "job": 62314828232,
+      "time": 580,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354321385"
+    },
+    {
+      "job": 62314828218,
+      "time": 622,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5354328809"
+    },
+    {
+      "job": 62314828191,
+      "time": 566,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354318724"
+    }
+  ],
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/GUIDEseq",
+  "_commit": {
+    "id": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761748096
+  },
+  "_maintainer": {
+    "name": "Lihua Julie Zhu",
+    "email": "julie.zhu@umassmed.edu",
+    "login": "lihuajuliezhu",
+    "uuid": 30300372
+  },
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "pwalign",
+      "role": "Imports"
+    },
+    {
+      "package": "CRISPRseek",
+      "role": "Imports"
+    },
+    {
+      "package": "ChIPpeakAnno",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "version": ">= 2.5.5",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.9.6",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "multtest",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "version": ">= 1.7.3",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "hash",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "rio",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "openxlsx",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.41.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.40.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "generegulation",
+    "sequencing",
+    "workflowstep",
+    "crispr"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 381,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/GUIDEseq"
+  },
+  "_mentions": 4,
+  "_searchresults": 14,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/GUIDEseq.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotateOffTargets",
+    "buildFeatureVectorForScoringBulge",
+    "combineOfftargets",
+    "createBarcodeFasta",
+    "getBestAlnInfo",
+    "getPeaks",
+    "getUniqueCleavageEvents",
+    "getUsedBarcodes",
+    "GUIDEseqAnalysis",
+    "mergePlusMinusPeaks",
+    "offTargetAnalysisOfPeakRegions",
+    "offTargetAnalysisWithBulge",
+    "PEtagAnalysis",
+    "plotAlignedOfftargets",
+    "plotTracks"
+  ],
+  "_datasets": [
+    {
+      "name": "peaks.gr",
+      "title": "example cleavage sites",
+      "object": "peaks.gr",
+      "file": "peaks.gr.rda",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "uniqueCleavageEvents",
+      "title": "example unique cleavage sites",
+      "object": "uniqueCleavageEvents",
+      "file": "uniqueCleavageEvents.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "GUIDEseq-package",
+      "title": "Analysis of GUIDE-seq",
+      "topics": [
+        "GUIDEseq-package",
+        "GUIDEseq"
+      ]
+    },
+    {
+      "page": "annotateOffTargets",
+      "title": "Annotate offtargets with gene name",
+      "topics": [
+        "annotateOffTargets"
+      ]
+    },
+    {
+      "page": "buildFeatureVectorForScoringBulge",
+      "title": "Build Feature Vector For Scoring Offtargets with Bulge",
+      "topics": [
+        "buildFeatureVectorForScoringBulge"
+      ]
+    },
+    {
+      "page": "combineOfftargets",
+      "title": "Combine Offtargets",
+      "topics": [
+        "combineOfftargets"
+      ]
+    },
+    {
+      "page": "compareSamples",
+      "title": "Compare Samples using Fisher's exact test",
+      "topics": [
+        "compareSamples"
+      ]
+    },
+    {
+      "page": "createBarcodeFasta",
+      "title": "Create barcode as fasta file format for building bowtie1 index",
+      "topics": [
+        "createBarcodeFasta"
+      ]
+    },
+    {
+      "page": "getBestAlnInfo",
+      "title": "Parse pairwise alignment",
+      "topics": [
+        "getBestAlnInfo"
+      ]
+    },
+    {
+      "page": "getPeaks",
+      "title": "Obtain peaks from GUIDE-seq",
+      "topics": [
+        "getPeaks"
+      ]
+    },
+    {
+      "page": "getUniqueCleavageEvents",
+      "title": "Using UMI sequence to obtain the starting sequence library",
+      "topics": [
+        "getUniqueCleavageEvents"
+      ]
+    },
+    {
+      "page": "getUsedBarcodes",
+      "title": "Create barcodes from the p5 and p7 index used for each sequencing lane",
+      "topics": [
+        "getUsedBarcodes"
+      ]
+    },
+    {
+      "page": "GUIDEseqAnalysis",
+      "title": "Analysis pipeline for GUIDE-seq dataset",
+      "topics": [
+        "GUIDEseqAnalysis"
+      ]
+    },
+    {
+      "page": "mergePlusMinusPeaks",
+      "title": "Merge peaks from plus strand and minus strand",
+      "topics": [
+        "mergePlusMinusPeaks"
+      ]
+    },
+    {
+      "page": "offTargetAnalysisOfPeakRegions",
+      "title": "Offtarget Analysis of GUIDE-seq peaks",
+      "topics": [
+        "offTargetAnalysisOfPeakRegions"
+      ]
+    },
+    {
+      "page": "offTargetAnalysisWithBulge",
+      "title": "offTarget Analysis With Bulges Allowed Finding offtargets around peaks from GUIDE-seq or around any given genomic regions with bulges allowed in gRNA or the DNA sequence of offTargets when aligning gRNA and DNA sequences.",
+      "topics": [
+        "offTargetAnalysisWithBulge"
+      ]
+    },
+    {
+      "page": "peaks.gr",
+      "title": "example cleavage sites",
+      "topics": [
+        "peaks.gr"
+      ]
+    },
+    {
+      "page": "PEtagAnalysis",
+      "title": "Analysis pipeline for PEtag-seq dataset",
+      "topics": [
+        "PEtagAnalysis"
+      ]
+    },
+    {
+      "page": "plotAlignedOfftargets",
+      "title": "Plot offtargets aligned to the target sequence",
+      "topics": [
+        "plotAlignedOfftargets"
+      ]
+    },
+    {
+      "page": "plotHeatmapOfftargets",
+      "title": "Plot offtargets from multiple samples as heatmap",
+      "topics": [
+        "plotHeatmapOfftargets"
+      ]
+    },
+    {
+      "page": "plotTracks",
+      "title": "Plot offtargets as manhantann plots or along all chromosomes with one track per chromosome, or scatter plot for two selected measurements",
+      "topics": [
+        "plotTracks"
+      ]
+    },
+    {
+      "page": "uniqueCleavageEvents",
+      "title": "example unique cleavage sites",
+      "topics": [
+        "uniqueCleavageEvents"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "cachem",
+    "cellranger",
+    "ChIPpeakAnno",
+    "cigarillo",
+    "cli",
+    "clipr",
+    "codetools",
+    "config",
+    "cpp11",
+    "crayon",
+    "CRISPRseek",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dplyr",
+    "ensembldb",
+    "farver",
+    "fastmap",
+    "filelock",
+    "forcats",
+    "foreign",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "graph",
+    "gtable",
+    "gtools",
+    "hash",
+    "haven",
+    "here",
+    "hms",
+    "httr",
+    "httr2",
+    "InteractionSet",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "keras",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "mltools",
+    "multtest",
+    "nlme",
+    "openssl",
+    "openxlsx",
+    "patchwork",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "prettyunits",
+    "processx",
+    "progress",
+    "ProtGenerics",
+    "ps",
+    "purrr",
+    "pwalign",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RBGL",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppThread",
+    "RcppTOML",
+    "RCurl",
+    "readr",
+    "readxl",
+    "regioneR",
+    "rematch",
+    "restfulr",
+    "reticulate",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rio",
+    "rjson",
+    "rlang",
+    "rprojroot",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "segmented",
+    "Seqinfo",
+    "seqinr",
+    "snow",
+    "sp",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tensorflow",
+    "tfautograph",
+    "tfruns",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tzdb",
+    "UCSC.utils",
+    "universalmotif",
+    "utf8",
+    "vctrs",
+    "VennDiagram",
+    "viridisLite",
+    "vroom",
+    "whisker",
+    "withr",
+    "writexl",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml",
+    "zeallot",
+    "zip"
+  ],
+  "_vignettes": [
+    {
+      "source": "GUIDEseq.Rnw",
+      "filename": "GUIDEseq.pdf",
+      "title": "GUIDEseq Vignette",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2015-10-06 18:20:43",
+      "modified": "2024-03-18 21:14:12",
+      "commits": 14
+    }
+  ],
+  "_score": 4.049218022670182,
+  "_indexed": false,
+  "_nocasepkg": "guideseq",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/GUIDEseq",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:27:39.000Z",
+      "distro": "noble",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "10d1a3da507785f6033ec06a365f3bddcb95857084d2cde223e3d3a6fc6af30f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:28:05.000Z",
+      "distro": "noble",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "03c21b42508ded144c9e746694aa42e32c27beaba00a52ee66b0fe167cb79e40",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:25:06.000Z",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "61a6e764c70178fc0bf4a90508e252f7ed3c9b3c844112e875f2c64ee03975fb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:25:23.000Z",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "081c3e99bac091bcf3df565f1349e9d34d1c7d935d58d711b4ddf78a6f4cde66",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:27:23.000Z",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "703dcd20ad0b12e882f098d56fc9a6afa8220b66aa457f933ef3d1d4e31b2658",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:25:17.000Z",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "a3c6e86cf573c9ff8cd984b25eef437b7dcef83373b0a8dca5a5e5b05e93df64",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:25:38.000Z",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "acf47edc79eb7f067286a8a3444c39d70340e6cfda1dfeeee381211660b33ac7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.40.0",
+      "date": "2026-02-03T08:25:06.000Z",
+      "commit": "45a0042cc6e397c8a5246c1233d5db6f1b577785",
+      "fileid": "70222d827085e271f2535e98916c7c8cda084d854359682579df91f6e631086b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21622301549"
+    }
+  ]
+}

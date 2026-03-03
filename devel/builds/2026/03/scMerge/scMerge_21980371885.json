@@ -1,0 +1,850 @@
+{
+  "Package": "scMerge",
+  "Type": "Package",
+  "Title": "scMerge: Merging multiple batches of scRNA-seq data",
+  "Version": "1.27.0",
+  "Authors@R": "c(\nperson(\"Yingxin\", \"Lin\", email = \"yingxin.lin@sydney.edu.au\", role = c(\"aut\", \"cre\")\n),\nperson(\"Kevin\", \"Wang\", email = \"kevin.wang@sydney.edu.au\", role = c(\"aut\")\n),\nperson(\"Sydney Bioinformatics and Biometrics Group\", email = \"bioinformatics@maths.usyd.edu.au\", role = c(\"fnd\"))\n)",
+  "Description": "Like all gene expression data, single-cell data suffers\nfrom batch effects and other unwanted variations that makes\naccurate biological interpretations difficult. The scMerge\nmethod leverages factor analysis, stably expressed genes (SEGs)\nand (pseudo-) replicates to remove unwanted variations and\nmerge multiple single-cell data. This package contains all the\nnecessary functions in the scMerge pipeline, including the\nidentification of SEGs, replication-identification methods, and\nmerging of single-cell data.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "RoxygenNote": "7.2.3",
+  "VignetteBuilder": "knitr",
+  "biocViews": "BatchEffect, GeneExpression, Normalization, RNASeq,\nSequencing, SingleCell, Software, Transcriptomics",
+  "URL": "https://github.com/SydneyBioX/scMerge",
+  "BugReports": "https://github.com/SydneyBioX/scMerge/issues",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev libglpk-dev make libharfbuzz-dev libicu-dev\nlibjpeg-dev libpng-dev libtiff-dev libwebp-dev libxml2-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:51:54 UTC",
+  "RemoteUrl": "https://github.com/bioc/scMerge",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-13 08:47:51 UTC",
+    "User": "root"
+  },
+  "Author": "Yingxin Lin [aut, cre],\nKevin Wang [aut],\nSydney Bioinformatics and Biometrics Group [fnd]",
+  "Maintainer": "Yingxin Lin <yingxin.lin@sydney.edu.au>",
+  "MD5sum": "3370df07ece1338316a71cdd0578f219",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "scMerge_1.27.0.tar.gz",
+  "_fileid": "3e3400fb0835f29eb5608d82665cad173296ca41fbdab764246963cf5a47f317",
+  "_filesize": 2417155,
+  "_sha256": "3e3400fb0835f29eb5608d82665cad173296ca41fbdab764246963cf5a47f317",
+  "_created": "2026-02-13T08:47:51.000Z",
+  "_published": "2026-02-13T09:02:39.037Z",
+  "_jobs": [
+    {
+      "job": 63501775904,
+      "time": 238,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5496382041"
+    },
+    {
+      "job": 63501775906,
+      "time": 619,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5496454221"
+    },
+    {
+      "job": 63501775940,
+      "time": 631,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5496456323"
+    },
+    {
+      "job": 63501775945,
+      "time": 552,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5496440574"
+    },
+    {
+      "job": 63501775933,
+      "time": 407,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5496414420"
+    },
+    {
+      "job": 63501257509,
+      "time": 335,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5496337366"
+    },
+    {
+      "job": 63501775905,
+      "time": 196,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5496374221"
+    },
+    {
+      "job": 63501775896,
+      "time": 814,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5496489972"
+    },
+    {
+      "job": 63501776058,
+      "time": 520,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5496435995"
+    },
+    {
+      "job": 63501775950,
+      "time": 562,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5496443648"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/scMerge",
+  "_commit": {
+    "id": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749514
+  },
+  "_maintainer": {
+    "name": "Yingxin Lin",
+    "email": "yingxin.lin@sydney.edu.au",
+    "login": "yingxinlin",
+    "uuid": 30995032
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocSingular",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocNeighbors",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedMatrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "distr",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "M3Drop",
+      "version": ">= 1.9.4",
+      "role": "Imports"
+    },
+    {
+      "package": "proxyC",
+      "role": "Imports"
+    },
+    {
+      "package": "ruv",
+      "role": "Imports"
+    },
+    {
+      "package": "cvTools",
+      "role": "Imports"
+    },
+    {
+      "package": "scater",
+      "role": "Imports"
+    },
+    {
+      "package": "batchelor",
+      "role": "Imports"
+    },
+    {
+      "package": "scran",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.23.19",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "version": ">= 1.7.3",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "HDF5Array",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "Matrix",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "scales",
+      "role": "Suggests"
+    },
+    {
+      "package": "proxy",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "badger",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.27.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.26.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "batcheffect",
+    "geneexpression",
+    "normalization",
+    "rnaseq",
+    "sequencing",
+    "singlecell",
+    "software",
+    "transcriptomics",
+    "bioinformatics",
+    "single-cell"
+  ],
+  "_stars": 71,
+  "_contributors": [
+    {
+      "user": "kevinwang09",
+      "count": 215,
+      "uuid": 14134289
+    },
+    {
+      "user": "yingxinlin",
+      "count": 52,
+      "uuid": 30995032
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    },
+    {
+      "user": "kant",
+      "count": 1,
+      "uuid": 32717
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 710,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/scMerge"
+  },
+  "_mentions": 8,
+  "_devurl": "https://github.com/sydneybiox/scmerge",
+  "_searchresults": 163,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/scMerge.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/sydneybiox/scmerge",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "fastRUVIII",
+    "getAdjustedMat",
+    "ruvSimulate",
+    "sce_cbind",
+    "scMerge",
+    "scMerge2",
+    "scMerge2h",
+    "scReplicate",
+    "scRUVg",
+    "scRUVIII",
+    "scSEGIndex"
+  ],
+  "_datasets": [
+    {
+      "name": "example_sce",
+      "title": "Subsetted mouse ESC 'SingleCellExperiment' object",
+      "object": "example_sce",
+      "file": "example_sce.rda",
+      "class": [
+        "SingleCellExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "segList",
+      "title": "Stably expressed gene list in official gene symbols for both human and mouse",
+      "object": "segList",
+      "file": "segList.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "segList_ensemblGeneID",
+      "title": "Stably expressed gene list in EnsemblGeneID for both human and mouse",
+      "object": "segList_ensemblGeneID",
+      "file": "segList_ensemblGeneID.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "example_sce",
+      "title": "Subsetted mouse ESC `SingleCellExperiment` object",
+      "topics": [
+        "example_sce"
+      ]
+    },
+    {
+      "page": "fastRUVIII",
+      "title": "A fast version of the ruv::RUVIII algorithm",
+      "topics": [
+        "fastRUVIII"
+      ]
+    },
+    {
+      "page": "getAdjustedMat",
+      "title": "getAdjustedMat",
+      "topics": [
+        "getAdjustedMat"
+      ]
+    },
+    {
+      "page": "ruvSimulate",
+      "title": "Simulate a simple matrix or SingleCellExperiment to test internals of scMerge",
+      "topics": [
+        "ruvSimulate"
+      ]
+    },
+    {
+      "page": "sce_cbind",
+      "title": "Combind several 'SingleCellExperiment' objects from different batches/experiments",
+      "topics": [
+        "sce_cbind"
+      ]
+    },
+    {
+      "page": "scMerge",
+      "title": "Perform the scMerge algorithm",
+      "topics": [
+        "scMerge"
+      ]
+    },
+    {
+      "page": "scMerge2",
+      "title": "Perform the scMerge2 algorithm",
+      "topics": [
+        "scMerge2"
+      ]
+    },
+    {
+      "page": "scMerge2h",
+      "title": "Perform the scMerge2 (hierarchical) algorithm",
+      "topics": [
+        "scMerge2h"
+      ]
+    },
+    {
+      "page": "scReplicate",
+      "title": "Create replicate matrix for scMerge algorithm",
+      "topics": [
+        "scReplicate"
+      ]
+    },
+    {
+      "page": "scRUVg",
+      "title": "RUVg function for single cell (under development)",
+      "topics": [
+        "scRUVg"
+      ]
+    },
+    {
+      "page": "scRUVIII",
+      "title": "scRUVIII: RUVIII algorithm optimised for single cell data",
+      "topics": [
+        "scRUVIII"
+      ]
+    },
+    {
+      "page": "scSEGIndex",
+      "title": "Single Cell Stably Express Gene Index",
+      "topics": [
+        "scSEGIndex"
+      ]
+    },
+    {
+      "page": "segList",
+      "title": "Stably expressed gene list in official gene symbols for both human and mouse",
+      "topics": [
+        "segList"
+      ]
+    },
+    {
+      "page": "segList_ensemblGeneID",
+      "title": "Stably expressed gene list in EnsemblGeneID for both human and mouse",
+      "topics": [
+        "segList_ensemblGeneID"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/scMerge/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "batchelor",
+    "bbmle",
+    "bdsmatrix",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "bitops",
+    "bluster",
+    "bslib",
+    "cachem",
+    "Cairo",
+    "callr",
+    "caTools",
+    "checkmate",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "cvTools",
+    "data.table",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "densEstBayes",
+    "DEoptimR",
+    "desc",
+    "digest",
+    "distr",
+    "distributional",
+    "dqrng",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "FNN",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggplot2",
+    "ggrastr",
+    "ggrepel",
+    "glue",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "highr",
+    "Hmisc",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "igraph",
+    "inline",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "loo",
+    "M3Drop",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "metapod",
+    "mgcv",
+    "mime",
+    "mvtnorm",
+    "nlme",
+    "nnet",
+    "numDeriv",
+    "pheatmap",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "png",
+    "posterior",
+    "processx",
+    "proxyC",
+    "ps",
+    "QuickJSR",
+    "R6",
+    "ragg",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppML",
+    "RcppParallel",
+    "RcppProgress",
+    "reldist",
+    "ResidualMatrix",
+    "rlang",
+    "rmarkdown",
+    "robustbase",
+    "rpart",
+    "RSpectra",
+    "rstan",
+    "rstantools",
+    "rstudioapi",
+    "rsvd",
+    "Rtsne",
+    "ruv",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scran",
+    "scuttle",
+    "Seqinfo",
+    "sfsmisc",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "sparseMatrixStats",
+    "StanHeaders",
+    "startupmsg",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "systemfonts",
+    "tensorA",
+    "textshaping",
+    "tibble",
+    "tinytex",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "scMerge.Rmd",
+      "filename": "scMerge.html",
+      "title": "An introduction to the scMerge package",
+      "author": "Yingxin Lin, Kevin Y.X. Wang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Loading Packages and Data",
+        "Illustrating pseudo-replicates constructions",
+        "Unsupervised scMerge",
+        "Selecting all cells",
+        "Supervised scMerge",
+        "Semi-supervised scMerge I",
+        "Semi-supervised scMerge II",
+        "Selecting negative controls",
+        "Achieving fast and memory-efficient computation",
+        "Using approximated SVD",
+        "Parallelised computing",
+        "Sparse array",
+        "Out-of-memory computations (through HDF5Array)",
+        "Reference",
+        "Session Info"
+      ],
+      "created": "2018-08-09 03:48:54",
+      "modified": "2022-10-21 06:23:32",
+      "commits": 41
+    },
+    {
+      "source": "scMerge2.Rmd",
+      "filename": "scMerge2.html",
+      "title": "An introduction to scMerge2",
+      "author": "Yingxin Lin",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Loading Packages and Data",
+        "scMerge2",
+        "Unsupervised scMerge2",
+        "Semi-supervised scMerge2",
+        "More details of scMerge2",
+        "Number of pseudobulk",
+        "Return matrix by batch",
+        "Hierarchical scMerge2",
+        "Scenario 1",
+        "Scenario 2",
+        "Session Info"
+      ],
+      "created": "2022-10-21 06:23:32",
+      "modified": "2023-08-02 18:15:05",
+      "commits": 5
+    }
+  ],
+  "_score": 9.61974845389032,
+  "_indexed": true,
+  "_nocasepkg": "scmerge",
+  "_universes": [
+    "bioc",
+    "yingxinlin",
+    "sydneybiox"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:52:44.000Z",
+      "distro": "noble",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "441b4ece74d359a0b8df091c1510a34c530ec374db6296f26b3e49b9107f6af5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:52:46.000Z",
+      "distro": "noble",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "dd74be77b64804b3610763b1fa29ced238425bd52ddcf380233d282c9dfdd395",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:50:49.000Z",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "0d019afc639d7bd94210f659be466e2d264783cc0e77de934333d9cd2dde29cb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:50:37.000Z",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "c7655748d7e0aceb216420acb09f8c2352a136a0d01898fcece4ce8658c9b2dc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:51:50.000Z",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "7f96cd7dc20ec38ade4173c1f4dfb6c94b6016df92122b4e2151cc93b2b8bb2f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:55:43.000Z",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "7c21e9622e25b0f0e703d739156f7bda1fa592eebfac12774ff4eedbad5aa3b7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:50:56.000Z",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "97e964c1f1429bb0073145338be0880394044cefd09ea3cdd950cece510f84c0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.27.0",
+      "date": "2026-02-13T08:51:06.000Z",
+      "commit": "1741f7e4c12fc3923cf5118322072fa5dd153943",
+      "fileid": "2c9f78dc247f967ebe38e0331e6cc2e6bc296ffcf3c76a945447d6ea3252af2f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21980371885"
+    }
+  ]
+}

@@ -1,0 +1,545 @@
+{
+  "Package": "gcapc",
+  "Title": "GC Aware Peak Caller",
+  "Version": "1.35.0",
+  "Author": "Mingxiang Teng and Rafael A. Irizarry",
+  "Maintainer": "Mingxiang Teng <tengmx@gmail.com>",
+  "Description": "Peak calling for ChIP-seq data with consideration of\npotential GC bias in sequencing reads. GC bias is first\nestimated with generalized linear mixture models using\neffective GC strategy, then applied into peak significance\nestimation.",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/tengmx/gcapc",
+  "License": "GPL-3",
+  "biocViews": "Sequencing, ChIPSeq, BatchEffect, PeakDetection",
+  "RoxygenNote": "6.0.1",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:35:52 UTC",
+  "RemoteUrl": "https://github.com/bioc/gcapc",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-18 09:04:26 UTC",
+    "User": "root"
+  },
+  "MD5sum": "e17c10423439e644b6f744b2dba01e21",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "gcapc_1.35.0.tar.gz",
+  "_fileid": "7257abd2d2272a2c75a87ccb93740bc2b1ae679b2ab34a849195b3a5b3998e78",
+  "_filesize": 3904854,
+  "_sha256": "7257abd2d2272a2c75a87ccb93740bc2b1ae679b2ab34a849195b3a5b3998e78",
+  "_created": "2026-02-18T09:04:26.000Z",
+  "_published": "2026-02-18T09:13:47.425Z",
+  "_jobs": [
+    {
+      "job": 63978486639,
+      "time": 259,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5552532226"
+    },
+    {
+      "job": 63978486604,
+      "time": 499,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5552580197"
+    },
+    {
+      "job": 63978486565,
+      "time": 494,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5552579322"
+    },
+    {
+      "job": 63978486598,
+      "time": 306,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5552541393"
+    },
+    {
+      "job": 63978486926,
+      "time": 343,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5552548811"
+    },
+    {
+      "job": 63977707810,
+      "time": 463,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5552478262"
+    },
+    {
+      "job": 63978486667,
+      "time": 216,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5552523347"
+    },
+    {
+      "job": 63978486576,
+      "time": 413,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5552562818"
+    },
+    {
+      "job": 63978486593,
+      "time": 352,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5552550769"
+    },
+    {
+      "job": 63978486642,
+      "time": 427,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5552565985"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 1,
+    "note": 11
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/gcapc",
+  "_commit": {
+    "id": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748552
+  },
+  "_maintainer": {
+    "name": "Mingxiang Teng",
+    "email": "tengmx@gmail.com",
+    "login": "tengmx",
+    "uuid": 5973324
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.4",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "splines",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm10",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.35.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.34.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "sequencing",
+    "chipseq",
+    "batcheffect",
+    "peakdetection"
+  ],
+  "_stars": 10,
+  "_contributors": [
+    {
+      "user": "tengmx",
+      "count": 61,
+      "uuid": 5973324
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 353,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/gcapc"
+  },
+  "_devurl": "https://github.com/tengmx/gcapc",
+  "_searchresults": 11,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/gcapc.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/tengmx/gcapc",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "bindWidth",
+    "gcapcPeaks",
+    "gcEffects",
+    "peaksCAT",
+    "read5endCoverage",
+    "refinePeaks",
+    "refineSites"
+  ],
+  "_help": [
+    {
+      "page": "bindWidth",
+      "title": "ChIP-seq Binding Width And Peak Window Size Estimation",
+      "topics": [
+        "bindWidth"
+      ]
+    },
+    {
+      "page": "gcapcPeaks",
+      "title": "GC Effects Aware Peak Calling",
+      "topics": [
+        "gcapcPeaks"
+      ]
+    },
+    {
+      "page": "gcEffects",
+      "title": "ChIP-seq GC Effects Estimation",
+      "topics": [
+        "gcEffects"
+      ]
+    },
+    {
+      "page": "peaksCAT",
+      "title": "CATplot of Peaks",
+      "topics": [
+        "peaksCAT"
+      ]
+    },
+    {
+      "page": "read5endCoverage",
+      "title": "Reads Coverage Using 5-end Base",
+      "topics": [
+        "read5endCoverage"
+      ]
+    },
+    {
+      "page": "refinePeaks",
+      "title": "Refine Peaks with GC Effects",
+      "topics": [
+        "refinePeaks"
+      ]
+    },
+    {
+      "page": "refineSites",
+      "title": "Adjust ChIP-seq Read Count Table",
+      "topics": [
+        "refineSites"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/gcapc/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "BSgenome",
+    "cigarillo",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "lambda.r",
+    "lattice",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "openssl",
+    "R6",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "sys",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "gcapc.Rmd",
+      "filename": "gcapc.html",
+      "title": "The gcapc user's guide",
+      "author": "| Mingxiang Teng mxteng@jimmy.harvard.edu | Rafael A. Irizarry rafa@jimmy.harvard.edu | Department of Biostatistics, Dana-Farber Cancer Institute & | Harvard T.H. Chan School of Public Health, Boston, MA, USA",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Getting Started",
+        "Preparing Inputs",
+        "Peak Calling/Refining",
+        "Reads coverage",
+        "Binding width",
+        "GC effects",
+        "Peak significance",
+        "Peak refining",
+        "Correcting GC Effects for A Count Table",
+        "Summary",
+        "References"
+      ],
+      "created": "2016-10-19 15:02:19",
+      "modified": "2017-06-08 19:17:18",
+      "commits": 19
+    }
+  ],
+  "_score": 5.217483944213907,
+  "_indexed": true,
+  "_nocasepkg": "gcapc",
+  "_universes": [
+    "bioc",
+    "tengmx"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:09:23.000Z",
+      "distro": "noble",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "d90c4ecf7254bc8654886236ec8e9c971f048d665549c27694257661bd505faf",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:09:03.000Z",
+      "distro": "noble",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "d557d0569a578d4b6f55c1da2f41165ef05e502fd21ce6a99d5307d08ab15326",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:07:26.000Z",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "56ea0c8edc657061cc84efe4c5f2adbc60c6f7f7651997f77ea528d8d7d04f41",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:07:28.000Z",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "0f8b6091dbd48fc5211201156703fd57e893ea03cc406639bb146c3dbded68e9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:08:42.000Z",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "ad40475f23aab16e49ce098365d2efd413f7fd04edd01feffb0fdc386e7144ca",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:07:50.000Z",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "605f426d8982395fb1ef79f0389740bf892b16e4d925bb2350919387dd4453b7",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:07:24.000Z",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "7647fd69f65bb22de586b062deaaa62f039a1e1ab80a96d2e8b0ee745799e7a6",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-18T09:07:36.000Z",
+      "commit": "ffa3e8b8c64035e9485ba6098e884fcdca2055bf",
+      "fileid": "75766823b8320d133f3e4b90a6c9736d41aced1c485c7442554a0615827e5fb8",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22133057075"
+    }
+  ]
+}

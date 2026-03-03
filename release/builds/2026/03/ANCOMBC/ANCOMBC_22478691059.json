@@ -1,0 +1,982 @@
+{
+  "Package": "ANCOMBC",
+  "Type": "Package",
+  "Title": "Microbiome differential abudance and correlation analyses with\nbias correction",
+  "Version": "2.12.0",
+  "Description": "ANCOMBC is a package containing differential abundance\n(DA) and correlation analyses for microbiome data.\nSpecifically, the package includes Analysis of Compositions of\nMicrobiomes with Bias Correction 2 (ANCOM-BC2), Analysis of\nCompositions of Microbiomes with Bias Correction (ANCOM-BC),\nand Analysis of Composition of Microbiomes (ANCOM) for DA\nanalysis, and Sparse Estimation of Correlations among\nMicrobiomes (SECOM) for correlation analysis. Microbiome data\nare typically subject to two sources of biases: unequal\nsampling fractions (sample-specific biases) and differential\nsequencing efficiencies (taxon-specific biases). Methodologies\nincluded in the ANCOMBC package are designed to correct these\nbiases and construct statistically consistent estimators.",
+  "Date": "2025-03-16",
+  "Authors@R": "c(\nperson(given = \"Huang\",\nfamily = \"Lin\",\nemail = \"huanglinfrederick@gmail.com\",\nrole = c(\"cre\", \"aut\"),\ncomment = c(ORCID = \"0000-0002-4892-7871\")))",
+  "License": "Artistic-2.0",
+  "biocViews": "DifferentialExpression, Microbiome, Normalization,\nSequencing, Software",
+  "BugReports": "https://github.com/FrederickHuangLin/ANCOMBC/issues",
+  "URL": "https://github.com/FrederickHuangLin/ANCOMBC",
+  "VignetteBuilder": "knitr",
+  "RdMacros": "Rdpack",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "LazyData": "false",
+  "Config/pak/sysreqs": "cmake libgmp3-dev make libgsl0-dev libicu-dev\nlibmpfr-dev libssl-dev libx11-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:02:01 UTC",
+  "RemoteUrl": "https://github.com/bioc/ANCOMBC",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "5ceba73f418b58d137f09694d41cab53b30116cc",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-27 08:45:53 UTC",
+    "User": "root"
+  },
+  "Author": "Huang Lin [cre, aut] (ORCID: <https://orcid.org/0000-0002-4892-7871>)",
+  "Maintainer": "Huang Lin <huanglinfrederick@gmail.com>",
+  "MD5sum": "09d0de840bc437e1d271ebb42e415d4d",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "ANCOMBC_2.12.0.tar.gz",
+  "_fileid": "5f0225b551742d470a75922e6f45c25147f3d130d8ec1a25b2c09d867101f48f",
+  "_filesize": 2344105,
+  "_sha256": "5f0225b551742d470a75922e6f45c25147f3d130d8ec1a25b2c09d867101f48f",
+  "_created": "2026-02-27T08:45:53.000Z",
+  "_published": "2026-02-27T08:53:59.586Z",
+  "_jobs": [
+    {
+      "job": 65113139167,
+      "time": 239,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5687161308"
+    },
+    {
+      "job": 65113139206,
+      "time": 428,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5687199586"
+    },
+    {
+      "job": 65113139158,
+      "time": 439,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687201774"
+    },
+    {
+      "job": 65113139257,
+      "time": 191,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5687155613"
+    },
+    {
+      "job": 65113139196,
+      "time": 203,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687156225"
+    },
+    {
+      "job": 65111306705,
+      "time": 1122,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687112294"
+    },
+    {
+      "job": 65113139162,
+      "time": 210,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5687155279"
+    },
+    {
+      "job": 65113139161,
+      "time": 277,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5687169120"
+    },
+    {
+      "job": 65113139185,
+      "time": 344,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5687182908"
+    },
+    {
+      "job": 65113139181,
+      "time": 323,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687178729"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ANCOMBC",
+  "_commit": {
+    "id": "5ceba73f418b58d137f09694d41cab53b30116cc",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750121
+  },
+  "_maintainer": {
+    "name": "Huang Lin",
+    "email": "huanglinfrederick@gmail.com",
+    "login": "frederickhuanglin",
+    "orcid": "0000-0002-4892-7871",
+    "uuid": 7278887
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "CVXR",
+      "role": "Imports"
+    },
+    {
+      "package": "DescTools",
+      "role": "Imports"
+    },
+    {
+      "package": "Hmisc",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "Rdpack",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "doRNG",
+      "role": "Imports"
+    },
+    {
+      "package": "energy",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "lme4",
+      "role": "Imports"
+    },
+    {
+      "package": "lmerTest",
+      "role": "Imports"
+    },
+    {
+      "package": "multcomp",
+      "role": "Imports"
+    },
+    {
+      "package": "nloptr",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "mia",
+      "version": ">= 1.6.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "DT",
+      "role": "Suggests"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Suggests"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "TreeSummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "magrittr",
+      "role": "Suggests"
+    },
+    {
+      "package": "microbiome",
+      "role": "Suggests"
+    },
+    {
+      "package": "phyloseq",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-11",
+      "n": 2
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-21",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.12.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "differentialexpression",
+    "microbiome",
+    "normalization",
+    "sequencing",
+    "software",
+    "ancom",
+    "ancombc",
+    "ancombc2",
+    "correlation",
+    "differential-abundance-analysis",
+    "secom"
+  ],
+  "_stars": 130,
+  "_contributors": [
+    {
+      "user": "frederickhuanglin",
+      "count": 66,
+      "uuid": 7278887
+    },
+    {
+      "user": "jwokaty",
+      "count": 10,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 8,
+      "uuid": 2746443
+    },
+    {
+      "user": "0xmuluh",
+      "count": 6,
+      "uuid": 127390183
+    },
+    {
+      "user": "chiliubio",
+      "count": 2,
+      "uuid": 20815519
+    },
+    {
+      "user": "maggie8888",
+      "count": 2,
+      "uuid": 45131108
+    },
+    {
+      "user": "zclaas",
+      "count": 2,
+      "uuid": 52193148
+    },
+    {
+      "user": "bradley-720",
+      "count": 1,
+      "uuid": 87726043
+    },
+    {
+      "user": "dewittpe",
+      "count": 1,
+      "uuid": 3136617
+    },
+    {
+      "user": "antagomir",
+      "count": 1,
+      "uuid": 1228382
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 2912,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ANCOMBC"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/frederickhuanglin/ancombc",
+  "_searchresults": 708,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/ANCOMBC.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/frederickhuanglin/ancombc",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "ancom",
+    "ancombc",
+    "ancombc2",
+    "data_sanity_check",
+    "secom_dist",
+    "secom_linear",
+    "sim_plnm"
+  ],
+  "_datasets": [
+    {
+      "name": "QMP",
+      "title": "Quantitative Microbiome Project data",
+      "object": "QMP",
+      "file": "QMP.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "588755",
+        "313387",
+        "4456091",
+        "554296",
+        "183954",
+        "509621",
+        "287510",
+        "682726",
+        "357305",
+        "178759",
+        "163857",
+        "4472721",
+        "357111",
+        "360508",
+        "4453773",
+        "342427",
+        "337048",
+        "587933",
+        "177042",
+        "1952",
+        "287608",
+        "345362",
+        "231310",
+        "341920",
+        "843569",
+        "527988",
+        "585480",
+        "367215",
+        "4356080",
+        "327598",
+        "3138798",
+        "365965",
+        "311820",
+        "12574",
+        "317135",
+        "4306262",
+        "368490",
+        "149335",
+        "359809",
+        "222773",
+        "173965",
+        "351292",
+        "264967",
+        "314996",
+        "2829179",
+        "353149",
+        "317522",
+        "552235",
+        "4463108",
+        "606927",
+        "4420570",
+        "322361",
+        "176828",
+        "858896",
+        "4436552",
+        "157424",
+        "572843",
+        "290455",
+        "4435655",
+        "181432",
+        "319541",
+        "113417",
+        "196315",
+        "4339144",
+        "158404",
+        "849440",
+        "318970",
+        "4425214",
+        "313086",
+        "341460",
+        "807548",
+        "174755",
+        "4332878",
+        "336228",
+        "269386",
+        "150477",
+        "2631113",
+        "193710",
+        "360636",
+        "313672",
+        "306021",
+        "4463892",
+        "214036",
+        "4347159",
+        "357046",
+        "329313",
+        "4453609",
+        "359872",
+        "22697",
+        "569244",
+        "365385"
+      ],
+      "rows": 106,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "ancom",
+      "title": "Analysis of Composition of Microbiomes (ANCOM)",
+      "topics": [
+        "ancom"
+      ]
+    },
+    {
+      "page": "ancombc",
+      "title": "Analysis of Compositions of Microbiomes with Bias Correction (ANCOM-BC)",
+      "topics": [
+        "ancombc"
+      ]
+    },
+    {
+      "page": "ancombc2",
+      "title": "Analysis of Compositions of Microbiomes with Bias Correction 2 (ANCOM-BC2)",
+      "topics": [
+        "ancombc2"
+      ]
+    },
+    {
+      "page": "data_sanity_check",
+      "title": "Data Sanity and Integrity Check",
+      "topics": [
+        "data_sanity_check"
+      ]
+    },
+    {
+      "page": "QMP",
+      "title": "Quantitative Microbiome Project data",
+      "topics": [
+        "QMP"
+      ]
+    },
+    {
+      "page": "secom_dist",
+      "title": "Sparse estimation of distance correlations among microbiomes",
+      "topics": [
+        "secom_dist"
+      ]
+    },
+    {
+      "page": "secom_linear",
+      "title": "Sparse estimation of linear correlations among microbiomes",
+      "topics": [
+        "secom_linear"
+      ]
+    },
+    {
+      "page": "sim_plnm",
+      "title": "Simulate Microbial Absolute Abundance Data by Poisson lognormal (PLN) model Based on a Real Dataset",
+      "topics": [
+        "sim_plnm"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ANCOMBC/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "askpass",
+    "backports",
+    "base64enc",
+    "bit",
+    "bit64",
+    "boot",
+    "bslib",
+    "cachem",
+    "cellranger",
+    "checkmate",
+    "class",
+    "cli",
+    "clipr",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "curl",
+    "CVXR",
+    "data.table",
+    "DescTools",
+    "digest",
+    "doParallel",
+    "doRNG",
+    "e1071",
+    "ECOSolveR",
+    "energy",
+    "evaluate",
+    "Exact",
+    "expm",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "forcats",
+    "foreach",
+    "foreign",
+    "Formula",
+    "fs",
+    "ggplot2",
+    "gld",
+    "glue",
+    "gmp",
+    "gridExtra",
+    "gsl",
+    "gtable",
+    "gtools",
+    "haven",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "lmerTest",
+    "lmom",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "memoise",
+    "mime",
+    "minqa",
+    "multcomp",
+    "mvtnorm",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "openssl",
+    "osqp",
+    "pillar",
+    "pkgconfig",
+    "prettyunits",
+    "progress",
+    "proxy",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "Rdpack",
+    "readr",
+    "readxl",
+    "reformulas",
+    "rematch",
+    "rlang",
+    "rmarkdown",
+    "Rmpfr",
+    "rngtools",
+    "rootSolve",
+    "rpart",
+    "rstudioapi",
+    "S7",
+    "sandwich",
+    "sass",
+    "scales",
+    "scs",
+    "stringi",
+    "stringr",
+    "survival",
+    "sys",
+    "TH.data",
+    "tibble",
+    "tidyselect",
+    "tinytex",
+    "tzdb",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "ANCOM.Rmd",
+      "filename": "ANCOM.html",
+      "title": "ANCOM Tutorial",
+      "author": "Huang Lin$^1$, $^1$University of Maryland, College Park, MD 20742",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "1. Introduction",
+        "2. Installation",
+        "3. Run ANCOM on a real cross-sectional dataset",
+        "3.1 Import example data",
+        "3.2 Run ancom function using phyloseq data",
+        "3.3 Scatter plot for W statistics",
+        "3.4 Run ancom function using tse data",
+        "3.5 Run ancom function by directly providing the abundance and metadata",
+        "4. Run ANCOM on a real longitudinal dataset",
+        "4.1 Import example data",
+        "4.2 Run ancom function using phyloseq data",
+        "4.3 Visualization for W statistics",
+        "4.4 Run ancom function using tse data",
+        "4.5 Run ancom function by directly providing the abundance and metadata",
+        "Session information",
+        "References"
+      ],
+      "created": "2022-10-11 02:38:02",
+      "modified": "2024-10-21 16:17:11",
+      "commits": 9
+    },
+    {
+      "source": "ANCOMBC.Rmd",
+      "filename": "ANCOMBC.html",
+      "title": "ANCOM-BC Tutorial",
+      "author": "Huang Lin$^1$, $^1$University of Maryland, College Park, MD 20742",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "1. Introduction",
+        "2. Installation",
+        "3. Example Data",
+        "4 ANCOM-BC Implementation",
+        "4.1 Run ancombc function using the phyloseq object",
+        "4.2 ANCOMBC primary result",
+        "LFC",
+        "SE",
+        "Test statistic",
+        "P-values",
+        "Adjusted p-values",
+        "Differentially abundant taxa",
+        "Bias-corrected abundances",
+        "Visualization for age",
+        "Visualization for BMI",
+        "4.3 ANCOMBC global test result",
+        "Test statistics",
+        "Visualization",
+        "4.4 Run ancombc function using the tse object",
+        "4.5 Run ancombc function by directly providing the abundance and metadata",
+        "Session information",
+        "References"
+      ],
+      "created": "2020-08-10 16:28:27",
+      "modified": "2024-10-21 16:17:11",
+      "commits": 16
+    },
+    {
+      "source": "ANCOMBC2.Rmd",
+      "filename": "ANCOMBC2.html",
+      "title": "ANCOM-BC2 Tutorial",
+      "author": "Huang Lin$^1$, $^1$University of Maryland, College Park, MD 20742",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "1. Introduction",
+        "2. Installation",
+        "3. Run ANCOM-BC2 on a simulated dataset",
+        "3.1 Generate simulated data",
+        "3.2 Run ancombc2 function",
+        "3.3 Power and FDR",
+        "4. Benchmark the performance of ANCOM-BC2 on a null dataset",
+        "4.1 Import example data",
+        "4.2 Permute the bmi label",
+        "4.3 Run ancombc2 function",
+        "4.4 Visualization",
+        "5. Run ANCOM-BC2 on a real cross-sectional dataset",
+        "5.1 Import example data",
+        "5.2 Run ancombc2 function using the phyloseq object",
+        "5.3 Structural zeros (taxon presence/absence)",
+        "5.4 ANCOM-BC2 primary analysis",
+        "Results for age",
+        "Results for bmi",
+        "5.5 ANCOM-BC2 global test",
+        "5.6 ANCOM-BC2 multiple pairwise comparisons",
+        "5.7 ANCOM-BC2 multiple pairwise comparisons against a pre-specified group (Dunnett's type of test)",
+        "5.8 ANCOM-BC2 pattern analysis",
+        "5.9 Run ancombc2 function using the tse object",
+        "5.10 Run ancombc2 function by directly providing the abundance and metadata",
+        "6. Run ANCOM-BC2 on a real longitudinal dataset",
+        "6.1 Import example data",
+        "6.2 Run ancombc2 function using the phyloseq object",
+        "6.3 ANCOM-BC2 primary analysis",
+        "6.4 ANCOM-BC2 global test",
+        "6.5 ANCOM-BC2 multiple pairwise comparisons",
+        "6.6 ANCOM-BC2 Dunnett's type of test",
+        "6.7 ANCOM-BC2 pattern analysis",
+        "6.8 Run ancombc2 function using the tse object",
+        "6.9 Run ancombc2 function by directly providing the abundance and metadata",
+        "7. Bias-corrected log abundances",
+        "Session information",
+        "References"
+      ],
+      "created": "2022-10-11 02:38:02",
+      "modified": "2025-05-21 03:13:18",
+      "commits": 15
+    },
+    {
+      "source": "SECOM.Rmd",
+      "filename": "SECOM.html",
+      "title": "SECOM Tutorial",
+      "author": "Huang Lin$^1$, $^1$University of Maryland, College Park, MD 20742",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "1. Introduction",
+        "2. Installation",
+        "3. Example Data",
+        "4. Run SECOM on a Single Ecosystem",
+        "4.1 Run secom functions using the phyloseq object",
+        "4.2 Visualizations",
+        "Pearson correlation with thresholding",
+        "Pearson correlation with p-value filtering",
+        "Distance correlation with p-value filtering",
+        "4.3 Run secom functions using the tse object",
+        "4.4 Run secom functions by directly providing the abundance and metadata",
+        "5. Run SECOM on Multiple Ecosystems",
+        "5.1 Data manipulation",
+        "5.2 Run secom functions using the phyloseq object",
+        "5.3 Visualizations",
+        "5.4 Run secom functions using the tse object",
+        "5.5 Run secom functions by directly providing the abundance and metadata",
+        "Session information",
+        "References"
+      ],
+      "created": "2022-10-11 02:38:02",
+      "modified": "2025-01-07 23:59:55",
+      "commits": 7
+    },
+    {
+      "source": "data_sanity_check.Rmd",
+      "filename": "data_sanity_check.html",
+      "title": "Tutorial on Data Sanity and Integrity Checks",
+      "author": "Menglu Liang$^1$, Huang Lin$^1$, $^1$University of Maryland, College Park, MD 20742",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "1. Introduction",
+        "2. Installation",
+        "3. Examples",
+        "3.1 Import a phyloseq object",
+        "3.2 Import a tse object",
+        "3.3 Import a matrix or data.frame",
+        "Session information",
+        "References"
+      ],
+      "created": "2024-10-21 16:17:11",
+      "modified": "2025-03-16 14:52:53",
+      "commits": 2
+    }
+  ],
+  "_score": 11.160561740460574,
+  "_indexed": false,
+  "_nocasepkg": "ancombc",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/ANCOMBC",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:50:44.000Z",
+      "distro": "noble",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "db24db2c4b07925031bc1511ee71b56429b5ace2d1b06eb94cb967746ac50c7c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:50:51.000Z",
+      "distro": "noble",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "d081c0a99af7ba0a70493cfa3c592dcb22de00dcfe5b95ca5a4141b5a1d29bee",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:47:57.000Z",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "1d2f8d77591752740f46332b15241015599b5505714ff17d02a232ef0ecf83f8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:47:56.000Z",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "0c37bd086fe3d922c3793fa3d317ea6f9d5f8e6c86ee8e7ed552dc867ac91018",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:49:52.000Z",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "8add751b71cfdf7a9b9c59130a69d32439d9f13ae779b6473e76d0f33a8af96f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:47:58.000Z",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "fcf9a5641d4c675653d6620235d21f0e2c32938823a60dc30fdc8106e57472f1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:48:53.000Z",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "c428b1a5431532658136b29f63d04e2e870d5b6629f2080720d7a9b25958396c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.12.0",
+      "date": "2026-02-27T08:48:30.000Z",
+      "commit": "5ceba73f418b58d137f09694d41cab53b30116cc",
+      "fileid": "645c9ea971e07be0dc101e829b244cc35ab2b4cc1c0c266d96e239c1a241b16f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22478691059"
+    }
+  ]
+}

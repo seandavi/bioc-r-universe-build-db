@@ -1,0 +1,931 @@
+{
+  "Package": "segmenter",
+  "Type": "Package",
+  "Title": "Perform Chromatin Segmentation Analysis in R by Calling ChromHMM",
+  "Version": "1.17.0",
+  "Description": "Chromatin segmentation analysis transforms ChIP-seq data\ninto signals over the genome. The latter represents the\nobserved states in a multivariate Markov model to predict the\nchromatin's underlying states. ChromHMM, written in Java,\nintegrates histone modification datasets to learn the chromatin\nstates de-novo. The goal of this package is to call chromHMM\nfrom within R, capture the output files in an S4 object and\ninterface to other relevant Bioconductor analysis tools. In\naddition, segmenter provides functions to test, select and\nvisualize the output of the segmentation.",
+  "Authors@R": "person(\"Mahmoud\", \"Ahmed\",\nemail = \"mahmoud.s.fahmy@students.kasralainy.edu.eg\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-4377-6541\"))",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.1.1",
+  "BugReports": "https://github.com/MahShaaban/segmenter/issues",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, HistoneModification",
+  "LazyData": "True",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibglpk-dev make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev perl xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:10:27 UTC",
+  "RemoteUrl": "https://github.com/bioc/segmenter",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-20 04:53:02 UTC",
+    "User": "root"
+  },
+  "Author": "Mahmoud Ahmed [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-4377-6541>)",
+  "Maintainer": "Mahmoud Ahmed <mahmoud.s.fahmy@students.kasralainy.edu.eg>",
+  "MD5sum": "ee7a1e897d2228b9b8e632a2e2e9f7f9",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "segmenter_1.17.0.tar.gz",
+  "_fileid": "8438eb98bbbf90f5b39f1cd028597653bf727fe3c830e4dcc2eef81bae7a6aad",
+  "_filesize": 4486454,
+  "_sha256": "8438eb98bbbf90f5b39f1cd028597653bf727fe3c830e4dcc2eef81bae7a6aad",
+  "_created": "2026-02-20T04:53:02.000Z",
+  "_published": "2026-02-20T05:04:58.351Z",
+  "_jobs": [
+    {
+      "job": 64247674629,
+      "time": 287,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5584653696"
+    },
+    {
+      "job": 64247674610,
+      "time": 628,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5584697133"
+    },
+    {
+      "job": 64247674628,
+      "time": 538,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5584685055"
+    },
+    {
+      "job": 64247674630,
+      "time": 329,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5584658859"
+    },
+    {
+      "job": 64247674633,
+      "time": 433,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5584671667"
+    },
+    {
+      "job": 64246964082,
+      "time": 692,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5584617715"
+    },
+    {
+      "job": 64247674627,
+      "time": 253,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5584649169"
+    },
+    {
+      "job": 64247674634,
+      "time": 533,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5584684355"
+    },
+    {
+      "job": 64247674626,
+      "time": 511,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5584681649"
+    },
+    {
+      "job": 64247674632,
+      "time": 467,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5584676258"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/segmenter",
+  "_commit": {
+    "id": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750627
+  },
+  "_maintainer": {
+    "name": "Mahmoud Ahmed",
+    "email": "mahmoud.s.fahmy@students.kasralainy.edu.eg",
+    "login": "mahshaaban",
+    "uuid": 16605756,
+    "orcid": "0000-0002-4377-6541"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "ChIPseeker",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "bamsignals",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "chromhmmData",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg18.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "Gviz",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.17.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.16.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "histonemodification",
+    "bioconductor",
+    "chromhmm",
+    "segmentation-an"
+  ],
+  "_stars": 5,
+  "_contributors": [
+    {
+      "user": "mahshaaban",
+      "count": 3,
+      "uuid": 16605756
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 259,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/segmenter"
+  },
+  "_mentions": 1,
+  "_devurl": "https://github.com/mahshaaban/segmenter",
+  "_searchresults": 9,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/segmenter.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/mahshaaban/segmenter",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotate_segments",
+    "binarize_bam",
+    "binarize_bed",
+    "bins",
+    "cells",
+    "compare_models",
+    "counts",
+    "emission",
+    "emissions_file",
+    "enrichment_files",
+    "get_frequency",
+    "get_width",
+    "learn_model",
+    "likelihood",
+    "markers",
+    "model",
+    "model_file",
+    "overlap",
+    "overlap_files",
+    "plot_heatmap",
+    "read_bam_file",
+    "read_bins_file",
+    "read_cellmark_file",
+    "read_chromsize_file",
+    "read_emissions_file",
+    "read_enrichment_file",
+    "read_model_file",
+    "read_overlap_file",
+    "read_segements_file",
+    "read_transitions_file",
+    "segment",
+    "segments_files",
+    "show",
+    "states",
+    "TES",
+    "tidy_ranges",
+    "transition",
+    "transitions_file",
+    "TSS"
+  ],
+  "_datasets": [
+    {
+      "name": "test_obj",
+      "title": "A segmentation object generated from the test data",
+      "object": "test_obj",
+      "class": [
+        "segmentation"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "test_objs",
+      "title": "A a list of segmentation objects generated from the test data",
+      "object": "test_objs",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "dot-Binarize",
+      "title": "Call Java 'BinarizeBed'",
+      "topics": [
+        ".Binarize"
+      ]
+    },
+    {
+      "page": "dot-LearnModel",
+      "title": "Call Java 'LearnModel'",
+      "topics": [
+        ".LearnModel"
+      ]
+    },
+    {
+      "page": "accessors",
+      "title": "Accessors for the 'segmentation' objects",
+      "topics": [
+        "accessors",
+        "bins",
+        "bins,segmentation-method",
+        "cells",
+        "cells,segmentation-method",
+        "counts",
+        "counts,segmentation-method",
+        "emission",
+        "emission,segmentation-method",
+        "likelihood",
+        "likelihood,segmentation-method",
+        "markers",
+        "markers,segmentation-method",
+        "model",
+        "model,segmentation-method",
+        "overlap",
+        "overlap,segmentation-method",
+        "segment",
+        "segment,segmentation-method",
+        "states",
+        "states,segmentation-method",
+        "TES",
+        "TES,segmentation-method",
+        "transition",
+        "transition,segmentation-method",
+        "TSS",
+        "TSS,segmentation-method"
+      ]
+    },
+    {
+      "page": "annotate_segments",
+      "title": "Annotate segments",
+      "topics": [
+        "annotate_segments"
+      ]
+    },
+    {
+      "page": "binarize_bam",
+      "title": "Binarize the bam files",
+      "topics": [
+        "binarize_bam"
+      ]
+    },
+    {
+      "page": "binarize_bed",
+      "title": "Binarize the bed files",
+      "topics": [
+        "binarize_bed"
+      ]
+    },
+    {
+      "page": "compare_models",
+      "title": "Compare two or more models",
+      "topics": [
+        "compare_models"
+      ]
+    },
+    {
+      "page": "count_reads_ranges",
+      "title": "Count reads in 'GRanges' objects from bam files",
+      "topics": [
+        "count_reads_ranges"
+      ]
+    },
+    {
+      "page": "emissions_file",
+      "title": "Make emissions file name",
+      "topics": [
+        "emissions_file"
+      ]
+    },
+    {
+      "page": "enrichment_files",
+      "title": "Make enrichment file names",
+      "topics": [
+        "enrichment_files"
+      ]
+    },
+    {
+      "page": "get_frequency",
+      "title": "Get the frequency of the segments in each cell type",
+      "topics": [
+        "get_frequency"
+      ]
+    },
+    {
+      "page": "get_width",
+      "title": "Get the width of the segments in each cell type",
+      "topics": [
+        "get_width"
+      ]
+    },
+    {
+      "page": "learn_model",
+      "title": "Learn a multi-state model from chromatin data",
+      "topics": [
+        "learn_model"
+      ]
+    },
+    {
+      "page": "merge_segments_bins",
+      "title": "Merge segments and bins objects",
+      "topics": [
+        "merge_segments_bins"
+      ]
+    },
+    {
+      "page": "methods",
+      "title": "Methods to interact with 'segmentation' objects",
+      "topics": [
+        "methods",
+        "show,segmentation-method"
+      ]
+    },
+    {
+      "page": "model_file",
+      "title": "Make model file name",
+      "topics": [
+        "model_file"
+      ]
+    },
+    {
+      "page": "overlap_files",
+      "title": "Make overlap file names",
+      "topics": [
+        "overlap_files"
+      ]
+    },
+    {
+      "page": "plot_heatmap",
+      "title": "Visualize the model output",
+      "topics": [
+        "plot_heatmap"
+      ]
+    },
+    {
+      "page": "range_bins",
+      "title": "Format the loaded binarized data",
+      "topics": [
+        "range_bins"
+      ]
+    },
+    {
+      "page": "range_counts",
+      "title": "Format the loaded counts data",
+      "topics": [
+        "range_counts"
+      ]
+    },
+    {
+      "page": "read_bam_file",
+      "title": "Read 'bam' files",
+      "topics": [
+        "read_bam_file"
+      ]
+    },
+    {
+      "page": "read_bins_file",
+      "title": "Read 'bins' files",
+      "topics": [
+        "read_bins_file"
+      ]
+    },
+    {
+      "page": "read_cellmark_file",
+      "title": "Read 'cellmarktable' file",
+      "topics": [
+        "read_cellmark_file"
+      ]
+    },
+    {
+      "page": "read_chromsize_file",
+      "title": "Read 'chromsizefile'",
+      "topics": [
+        "read_chromsize_file"
+      ]
+    },
+    {
+      "page": "read_emissions_file",
+      "title": "Read 'emissions' file",
+      "topics": [
+        "read_emissions_file"
+      ]
+    },
+    {
+      "page": "read_enrichment_file",
+      "title": "Read 'enrichment' files",
+      "topics": [
+        "read_enrichment_file"
+      ]
+    },
+    {
+      "page": "read_model_file",
+      "title": "Read 'modelfile'",
+      "topics": [
+        "read_model_file"
+      ]
+    },
+    {
+      "page": "read_overlap_file",
+      "title": "Read 'segments' files",
+      "topics": [
+        "read_overlap_file"
+      ]
+    },
+    {
+      "page": "read_segements_file",
+      "title": "Read 'segments' files",
+      "topics": [
+        "read_segements_file"
+      ]
+    },
+    {
+      "page": "read_transitions_file",
+      "title": "Read 'transitions' file",
+      "topics": [
+        "read_transitions_file"
+      ]
+    },
+    {
+      "page": "segmentation",
+      "title": "segmentation objects",
+      "topics": [
+        "class:segmentation",
+        "segmentation",
+        "segmentation-class"
+      ]
+    },
+    {
+      "page": "segments_files",
+      "title": "Make segments file names",
+      "topics": [
+        "segments_files"
+      ]
+    },
+    {
+      "page": "test_obj",
+      "title": "A segmentation object generated from the test data",
+      "topics": [
+        "test_obj"
+      ]
+    },
+    {
+      "page": "test_objs",
+      "title": "A a list of segmentation objects generated from the test data",
+      "topics": [
+        "test_objs"
+      ]
+    },
+    {
+      "page": "tidy_ranges",
+      "title": "Tidy the metadata of a 'GRanges' object",
+      "topics": [
+        "tidy_ranges"
+      ]
+    },
+    {
+      "page": "transitions_file",
+      "title": "Make transitions file name",
+      "topics": [
+        "transitions_file"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/segmenter/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "ape",
+    "aplot",
+    "askpass",
+    "bamsignals",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "bslib",
+    "cachem",
+    "caTools",
+    "ChIPseeker",
+    "chromhmmData",
+    "cigarillo",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "DOSE",
+    "dplyr",
+    "enrichit",
+    "enrichplot",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdtools",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggrepel",
+    "ggtangle",
+    "ggtree",
+    "GlobalOptions",
+    "glue",
+    "GO.db",
+    "GOSemSim",
+    "gplots",
+    "gridGraphics",
+    "gtable",
+    "gtools",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nlme",
+    "openssl",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plotrix",
+    "plyr",
+    "png",
+    "polyclip",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scatterpie",
+    "Seqinfo",
+    "shape",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidydr",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tinytex",
+    "treeio",
+    "tweenr",
+    "TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "XVector",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "segmenter.Rmd",
+      "filename": "segmenter.html",
+      "title": "Chromatin Segmentation Analysis Using segmenter",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Installation",
+        "Background",
+        "Hidden Markov Models",
+        "ChromHMM",
+        "This package!",
+        "Getting started",
+        "Segmentation analysis using segmenter",
+        "Inputs",
+        "Model learning",
+        "Output segmentation Object",
+        "Comparing models",
+        "Interpreting models parameters",
+        "Emissions & transitions",
+        "Overlap Enrichemnt",
+        "Genomic locations enrichment",
+        "Segments",
+        "Final remarks"
+      ],
+      "created": "2021-04-19 01:29:27",
+      "modified": "2021-06-09 06:31:41",
+      "commits": 4
+    }
+  ],
+  "_score": 4.698970004336019,
+  "_indexed": true,
+  "_nocasepkg": "segmenter",
+  "_universes": [
+    "bioc",
+    "mahshaaban"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:58:58.000Z",
+      "distro": "noble",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "1b770923152e3ae6c960cea1454223ca7a1e80285704952220e7056c42739963",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:58:07.000Z",
+      "distro": "noble",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "fa55dd5d6be0fab164038ca10d06cc54ecbcea09726d37c5d8c3c8d4c48a847e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:55:51.000Z",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "e478a081a1253d247b154f2c64b02377eac724831e76c9798ed3498a41c19d83",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:56:31.000Z",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "b7621e2143eede4165d82aeefa63186e52ec38101f3093304dad01d03ec78856",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:58:08.000Z",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "7c275b3b6bbc9110e2780832127df34693774308f0a98b876d8b8bd98ed5d4db",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:56:34.000Z",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "e943ddec9d7ffb49495c8ee0c0b9b678b776a52a09e74ff836b938c0b50207e5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:56:35.000Z",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "6f987798572fc95cbc7009aa0122d07f0a7449c9f2d71ee063de3b6289724150",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.17.0",
+      "date": "2026-02-20T04:56:02.000Z",
+      "commit": "64fe6183b65f6223e23e97e9bfd973887dd4428f",
+      "fileid": "b29b280118e7b55f268859f102344469709e3722f792ddefdb897d828dbe33b9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22211605825"
+    }
+  ]
+}

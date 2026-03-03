@@ -1,0 +1,882 @@
+{
+  "Package": "HDF5Array",
+  "Title": "HDF5 datasets as array-like objects in R",
+  "Description": "The HDF5Array package is an HDF5 backend for DelayedArray\nobjects. It implements the HDF5Array, H5SparseMatrix,\nH5ADMatrix, and TENxMatrix classes, 4 convenient and\nmemory-efficient array-like containers for representing and\nmanipulating either: (1) a conventional (a.k.a. dense) HDF5\ndataset, (2) an HDF5 sparse matrix (stored in CSR/CSC/Yale\nformat), (3) the central matrix of an h5ad file (or any matrix\nin the /layers group), or (4) a 10x Genomics sparse matrix. All\nthese containers are DelayedArray extensions and thus support\nall operations (delayed or block-processed) supported by\nDelayedArray objects.",
+  "biocViews": "Infrastructure, DataRepresentation, DataImport, Sequencing,\nRNASeq, Coverage, Annotation, GenomeAnnotation, SingleCell,\nImmunoOncology",
+  "URL": "https://bioconductor.org/packages/HDF5Array",
+  "BugReports": "https://github.com/Bioconductor/HDF5Array/issues",
+  "Version": "1.38.0",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "person(\"Herv\u00e9\", \"Pag\u00e8s\", role=c(\"aut\", \"cre\"),\nemail=\"hpages.on.github@gmail.com\",\ncomment=c(ORCID=\"0009-0002-8272-4522\"))",
+  "VignetteBuilder": "knitr",
+  "Collate": "utils.R h5utils.R HDF5ArraySeed-class.R HDF5Array-class.R\nReshapedHDF5ArraySeed-class.R ReshapedHDF5Array-class.R\ndump-management.R writeHDF5Array.R\nsaveHDF5SummarizedExperiment.R H5SparseMatrixSeed-class.R\nH5SparseMatrix-class.R H5ADMatrixSeed-class.R\nH5ADMatrix-class.R TENxMatrixSeed-class.R TENxMatrix-class.R\nwriteTENxMatrix.R zzz.R",
+  "Config/pak/sysreqs": "libssl-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 16:29:19 UTC",
+  "RemoteUrl": "https://github.com/bioc/HDF5Array",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-02 09:41:58 UTC",
+    "User": "root"
+  },
+  "Author": "Herv\u00e9 Pag\u00e8s [aut, cre] (ORCID: <https://orcid.org/0009-0002-8272-4522>)",
+  "Maintainer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+  "MD5sum": "310eadbc7a5bfa3d908f371fb0cd9b5a",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "HDF5Array_1.38.0.tar.gz",
+  "_fileid": "5d9172c681c80430cf07e65f4bf0518df6f4f286fca41f2fbfe9f659d20aeaaf",
+  "_filesize": 8368769,
+  "_sha256": "5d9172c681c80430cf07e65f4bf0518df6f4f286fca41f2fbfe9f659d20aeaaf",
+  "_created": "2026-02-02T09:41:58.000Z",
+  "_published": "2026-02-02T10:48:14.762Z",
+  "_jobs": [
+    {
+      "job": 62190831750,
+      "time": 204,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340868697"
+    },
+    {
+      "job": 62190831821,
+      "time": 1264,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5341092420"
+    },
+    {
+      "job": 62190831810,
+      "time": 1342,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341105907"
+    },
+    {
+      "job": 62190831858,
+      "time": 1179,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5341641174"
+    },
+    {
+      "job": 62190831744,
+      "time": 929,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341586465"
+    },
+    {
+      "job": 62189245616,
+      "time": 905,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340827741"
+    },
+    {
+      "job": 62190831829,
+      "time": 192,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5340866215"
+    },
+    {
+      "job": 62190831765,
+      "time": 555,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5340940050"
+    },
+    {
+      "job": 62190831899,
+      "time": 481,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5340924298"
+    },
+    {
+      "job": 62190831785,
+      "time": 595,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340947722"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/HDF5Array",
+  "_commit": {
+    "id": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+    "author": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+    "committer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+    "message": "update NEWS\n",
+    "time": 1761755359
+  },
+  "_maintainer": {
+    "name": "Herv\u00e9 Pag\u00e8s",
+    "email": "hpages.on.github@gmail.com",
+    "login": "hpages",
+    "linkedin": "in/herv\u00e9-pag\u00e8s-5038527",
+    "uuid": 8810451
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.4",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "SparseArray",
+      "version": ">= 1.7.5",
+      "role": "Depends"
+    },
+    {
+      "package": "DelayedArray",
+      "version": ">= 0.33.5",
+      "role": "Depends"
+    },
+    {
+      "package": "h5mread",
+      "version": ">= 0.99.4",
+      "role": "Depends"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "version": ">= 0.51.2",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Arrays",
+      "version": ">= 1.1.1",
+      "role": "Imports"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "version": ">= 1.15.1",
+      "role": "Suggests"
+    },
+    {
+      "package": "h5vcData",
+      "role": "Suggests"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "TENxBrainData",
+      "role": "Suggests"
+    },
+    {
+      "package": "zellkonverter",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Suggests"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "DelayedMatrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "genefilter",
+      "role": "Suggests"
+    },
+    {
+      "package": "RSpectra",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 145,
+  "_updates": [
+    {
+      "week": "2025-05",
+      "n": 11
+    },
+    {
+      "week": "2025-06",
+      "n": 12
+    },
+    {
+      "week": "2025-07",
+      "n": 6
+    },
+    {
+      "week": "2025-08",
+      "n": 3
+    },
+    {
+      "week": "2025-12",
+      "n": 2
+    },
+    {
+      "week": "2025-16",
+      "n": 4
+    },
+    {
+      "week": "2025-35",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.39.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.38.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "datarepresentation",
+    "dataimport",
+    "sequencing",
+    "rnaseq",
+    "coverage",
+    "annotation",
+    "genomeannotation",
+    "singlecell",
+    "immunooncology",
+    "bioconductor-package",
+    "core-package",
+    "u24ca289073"
+  ],
+  "_stars": 12,
+  "_contributors": [
+    {
+      "user": "hpages",
+      "count": 435,
+      "uuid": 8810451
+    },
+    {
+      "user": "nturaga",
+      "count": 15,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "dtenenba",
+      "count": 4,
+      "uuid": 2286826
+    },
+    {
+      "user": "link-ny",
+      "count": 4,
+      "uuid": 4392950
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "petehaitch",
+      "count": 1,
+      "uuid": 1049741
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 28081,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/HDF5Array"
+  },
+  "_mentions": 3,
+  "_devurl": "https://github.com/bioconductor/hdf5array",
+  "_searchresults": 1320,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/HDF5Array.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioconductor/hdf5array",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "appendDatasetCreationToHDF5DumpLog",
+    "check_and_delete_files",
+    "chunkdim",
+    "close",
+    "coerce",
+    "create_dir",
+    "DelayedArray",
+    "extract_array",
+    "extract_sparse_array",
+    "extractNonzeroDataByCol",
+    "extractNonzeroDataByRow",
+    "getHDF5DumpChunkDim",
+    "getHDF5DumpChunkLength",
+    "getHDF5DumpChunkShape",
+    "getHDF5DumpCompressionLevel",
+    "getHDF5DumpDir",
+    "getHDF5DumpFile",
+    "getHDF5DumpName",
+    "H5ADMatrix",
+    "H5ADMatrixSeed",
+    "H5SparseMatrix",
+    "H5SparseMatrixSeed",
+    "HDF5Array",
+    "HDF5ArraySeed",
+    "HDF5RealizationSink",
+    "is_sparse",
+    "is_sparse<-",
+    "loadHDF5SummarizedExperiment",
+    "lsHDF5DumpFile",
+    "matrixClass",
+    "nzcount",
+    "path",
+    "path<-",
+    "quickResaveHDF5SummarizedExperiment",
+    "replace_dir",
+    "ReshapedHDF5Array",
+    "ReshapedHDF5ArraySeed",
+    "restore_absolute_assay2h5_links",
+    "saveHDF5SummarizedExperiment",
+    "setHDF5DumpChunkLength",
+    "setHDF5DumpChunkShape",
+    "setHDF5DumpCompressionLevel",
+    "setHDF5DumpDir",
+    "setHDF5DumpFile",
+    "setHDF5DumpName",
+    "shorten_assay2h5_links",
+    "show",
+    "showHDF5DumpLog",
+    "stop_if_bad_dir",
+    "t",
+    "t.CSC_H5ADMatrixSeed",
+    "t.CSC_H5SparseMatrixSeed",
+    "t.CSR_H5ADMatrixSeed",
+    "t.CSR_H5SparseMatrixSeed",
+    "TENxMatrix",
+    "TENxMatrixSeed",
+    "TENxRealizationSink",
+    "type",
+    "updateObject",
+    "validate_HDF5ArraySeed_dataset_geometry",
+    "write_block",
+    "write_h5_assays",
+    "writeHDF5Array",
+    "writeTENxMatrix"
+  ],
+  "_help": [
+    {
+      "page": "H5ADMatrix-class",
+      "title": "h5ad central matrices (or matrices in the /layers group) as DelayedMatrix objects",
+      "topics": [
+        "class:H5ADMatrix",
+        "DelayedArray,H5ADMatrixSeed-method",
+        "extractNonzeroDataByCol,H5ADMatrix-method",
+        "extractNonzeroDataByRow,H5ADMatrix-method",
+        "H5ADMatrix",
+        "H5ADMatrix-class",
+        "nzcount,H5ADMatrix-method"
+      ]
+    },
+    {
+      "page": "H5ADMatrixSeed-class",
+      "title": "H5ADMatrixSeed objects",
+      "topics": [
+        "class:CSC_H5ADMatrixSeed",
+        "class:CSR_H5ADMatrixSeed",
+        "class:Dense_H5ADMatrixSeed",
+        "class:H5ADMatrixSeed",
+        "CSC_H5ADMatrixSeed",
+        "CSC_H5ADMatrixSeed-class",
+        "CSR_H5ADMatrixSeed",
+        "CSR_H5ADMatrixSeed-class",
+        "Dense_H5ADMatrixSeed",
+        "Dense_H5ADMatrixSeed-class",
+        "dimnames,Dense_H5ADMatrixSeed-method",
+        "H5ADMatrixSeed",
+        "H5ADMatrixSeed-class",
+        "t,CSC_H5ADMatrixSeed-method",
+        "t,CSR_H5ADMatrixSeed-method",
+        "t.CSC_H5ADMatrixSeed",
+        "t.CSR_H5ADMatrixSeed"
+      ]
+    },
+    {
+      "page": "H5SparseMatrix-class",
+      "title": "HDF5 sparse matrices as DelayedMatrix objects",
+      "topics": [
+        "class:H5SparseMatrix",
+        "DelayedArray,H5SparseMatrixSeed-method",
+        "extractNonzeroDataByCol,H5SparseMatrix-method",
+        "extractNonzeroDataByRow,H5SparseMatrix-method",
+        "H5SparseMatrix",
+        "H5SparseMatrix-class",
+        "nzcount,H5SparseMatrix-method"
+      ]
+    },
+    {
+      "page": "H5SparseMatrixSeed-class",
+      "title": "H5SparseMatrixSeed objects",
+      "topics": [
+        "chunkdim,CSC_H5SparseMatrixSeed-method",
+        "chunkdim,CSR_H5SparseMatrixSeed-method",
+        "class:CSC_H5SparseMatrixSeed",
+        "class:CSR_H5SparseMatrixSeed",
+        "class:H5SparseMatrixSeed",
+        "CSC_H5SparseMatrixSeed",
+        "CSC_H5SparseMatrixSeed-class",
+        "CSR_H5SparseMatrixSeed",
+        "CSR_H5SparseMatrixSeed-class",
+        "dim,H5SparseMatrixSeed-method",
+        "dimnames,H5SparseMatrixSeed-method",
+        "extractNonzeroDataByCol",
+        "extractNonzeroDataByCol,CSC_H5SparseMatrixSeed-method",
+        "extractNonzeroDataByRow",
+        "extractNonzeroDataByRow,CSR_H5SparseMatrixSeed-method",
+        "extract_array,H5SparseMatrixSeed-method",
+        "extract_sparse_array,CSC_H5SparseMatrixSeed-method",
+        "extract_sparse_array,CSR_H5SparseMatrixSeed-method",
+        "H5SparseMatrixSeed",
+        "H5SparseMatrixSeed-class",
+        "is_sparse,H5SparseMatrixSeed-method",
+        "nzcount,H5SparseMatrixSeed-method",
+        "path,H5SparseMatrixSeed-method",
+        "path<-,H5SparseMatrixSeed-method",
+        "show,H5SparseMatrixSeed-method",
+        "t,CSC_H5SparseMatrixSeed-method",
+        "t,CSR_H5SparseMatrixSeed-method",
+        "t.CSC_H5SparseMatrixSeed",
+        "t.CSR_H5SparseMatrixSeed"
+      ]
+    },
+    {
+      "page": "dump-management",
+      "title": "HDF5 dump management",
+      "topics": [
+        "appendDatasetCreationToHDF5DumpLog",
+        "dump-management",
+        "getHDF5DumpChunkDim",
+        "getHDF5DumpChunkLength",
+        "getHDF5DumpChunkShape",
+        "getHDF5DumpCompressionLevel",
+        "getHDF5DumpDir",
+        "getHDF5DumpFile",
+        "getHDF5DumpName",
+        "HDF5-dump-management",
+        "lsHDF5DumpFile",
+        "setHDF5DumpChunkLength",
+        "setHDF5DumpChunkShape",
+        "setHDF5DumpCompressionLevel",
+        "setHDF5DumpDir",
+        "setHDF5DumpFile",
+        "setHDF5DumpName",
+        "showHDF5DumpLog"
+      ]
+    },
+    {
+      "page": "HDF5Array-class",
+      "title": "HDF5 datasets as DelayedArray objects",
+      "topics": [
+        "class:HDF5Array",
+        "class:HDF5Matrix",
+        "coerce,ANY,HDF5Matrix-method",
+        "coerce,HDF5Array,HDF5Matrix-method",
+        "coerce,HDF5Matrix,HDF5Array-method",
+        "DelayedArray,HDF5ArraySeed-method",
+        "HDF5Array",
+        "HDF5Array-class",
+        "HDF5Matrix",
+        "HDF5Matrix-class",
+        "is_sparse<-,HDF5Array-method",
+        "matrixClass,HDF5Array-method"
+      ]
+    },
+    {
+      "page": "HDF5ArraySeed-class",
+      "title": "HDF5ArraySeed objects",
+      "topics": [
+        "chunkdim,HDF5ArraySeed-method",
+        "class:HDF5ArraySeed",
+        "dim,HDF5ArraySeed-method",
+        "dimnames,HDF5ArraySeed-method",
+        "extract_array,HDF5ArraySeed-method",
+        "extract_sparse_array,HDF5ArraySeed-method",
+        "HDF5ArraySeed",
+        "HDF5ArraySeed-class",
+        "is_sparse,HDF5ArraySeed-method",
+        "is_sparse<-,HDF5ArraySeed-method",
+        "path,HDF5ArraySeed-method",
+        "path<-,HDF5ArraySeed-method",
+        "type,HDF5ArraySeed-method",
+        "updateObject,HDF5ArraySeed-method"
+      ]
+    },
+    {
+      "page": "ReshapedHDF5Array-class",
+      "title": "Virtually reshaped HDF5 datasets as DelayedArray objects",
+      "topics": [
+        "class:ReshapedHDF5Array",
+        "class:ReshapedHDF5Matrix",
+        "coerce,ANY,ReshapedHDF5Matrix-method",
+        "coerce,ReshapedHDF5Array,ReshapedHDF5Matrix-method",
+        "coerce,ReshapedHDF5Matrix,ReshapedHDF5Array-method",
+        "DelayedArray,ReshapedHDF5ArraySeed-method",
+        "matrixClass,ReshapedHDF5Array-method",
+        "ReshapedHDF5Array",
+        "ReshapedHDF5Array-class",
+        "ReshapedHDF5Matrix",
+        "ReshapedHDF5Matrix-class"
+      ]
+    },
+    {
+      "page": "ReshapedHDF5ArraySeed-class",
+      "title": "ReshapedHDF5ArraySeed objects",
+      "topics": [
+        "chunkdim,ReshapedHDF5ArraySeed-method",
+        "class:ReshapedHDF5ArraySeed",
+        "dim,ReshapedHDF5ArraySeed-method",
+        "extract_array,ReshapedHDF5ArraySeed-method",
+        "ReshapedHDF5ArraySeed",
+        "ReshapedHDF5ArraySeed-class"
+      ]
+    },
+    {
+      "page": "saveHDF5SummarizedExperiment",
+      "title": "Save/load an HDF5-based SummarizedExperiment object",
+      "topics": [
+        "loadHDF5SummarizedExperiment",
+        "quickResaveHDF5SummarizedExperiment",
+        "saveHDF5SummarizedExperiment"
+      ]
+    },
+    {
+      "page": "TENxMatrix-class",
+      "title": "10x Genomics datasets as DelayedMatrix objects",
+      "topics": [
+        "class:TENxMatrix",
+        "DelayedArray,TENxMatrixSeed-method",
+        "extractNonzeroDataByCol,TENxMatrix-method",
+        "nzcount,TENxMatrix-method",
+        "TENxMatrix",
+        "TENxMatrix-class"
+      ]
+    },
+    {
+      "page": "TENxMatrixSeed-class",
+      "title": "TENxMatrixSeed objects",
+      "topics": [
+        "class:TENxMatrixSeed",
+        "TENxMatrixSeed",
+        "TENxMatrixSeed-class"
+      ]
+    },
+    {
+      "page": "writeHDF5Array",
+      "title": "Write an array-like object to an HDF5 file",
+      "topics": [
+        "chunkdim,HDF5RealizationSink-method",
+        "class:HDF5RealizationSink",
+        "coerce,ANY,HDF5Array-method",
+        "coerce,DelayedArray,HDF5Array-method",
+        "coerce,DelayedMatrix,HDF5Matrix-method",
+        "coerce,HDF5RealizationSink,DelayedArray-method",
+        "coerce,HDF5RealizationSink,HDF5Array-method",
+        "coerce,HDF5RealizationSink,HDF5ArraySeed-method",
+        "dimnames,HDF5RealizationSink-method",
+        "HDF5RealizationSink",
+        "HDF5RealizationSink-class",
+        "is_sparse,HDF5RealizationSink-method",
+        "type,HDF5RealizationSink-method",
+        "writeHDF5Array",
+        "write_block,HDF5RealizationSink-method"
+      ]
+    },
+    {
+      "page": "writeTENxMatrix",
+      "title": "Write a matrix-like object as an HDF5-based sparse matrix",
+      "topics": [
+        "chunkdim,TENxRealizationSink-method",
+        "class:TENxRealizationSink",
+        "close,TENxRealizationSink-method",
+        "coerce,ANY,TENxMatrix-method",
+        "coerce,DelayedArray,TENxMatrix-method",
+        "coerce,DelayedMatrix,TENxMatrix-method",
+        "coerce,TENxRealizationSink,DelayedArray-method",
+        "coerce,TENxRealizationSink,TENxMatrix-method",
+        "coerce,TENxRealizationSink,TENxMatrixSeed-method",
+        "dimnames,TENxRealizationSink-method",
+        "TENxRealizationSink",
+        "TENxRealizationSink-class",
+        "type,TENxRealizationSink-method",
+        "writeTENxMatrix",
+        "write_block,TENxRealizationSink-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/HDF5Array/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "BiocGenerics",
+    "DelayedArray",
+    "generics",
+    "h5mread",
+    "IRanges",
+    "lattice",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "S4Arrays",
+    "S4Vectors",
+    "SparseArray",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "HDF5Array_performance.Rmd",
+      "filename": "HDF5Array_performance.html",
+      "title": "HDF5Array performance",
+      "author": "Herv\u00e9 Pag\u00e8s",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Install and load the required packages",
+        "The test datasets",
+        "Sparse vs dense representation",
+        "TENxMatrix vs HDF5Matrix objects",
+        "Bring the sparse dataset in R",
+        "Bring the dense dataset in R",
+        "Create the test datasets",
+        "Block-processed normalization and PCA",
+        "Code used for normalization and PCA",
+        "Block processing and block size",
+        "Monitoring memory usage",
+        "Normalization and PCA of the 27,998 x 12,500 test dataset",
+        "Normalization",
+        "TENxMatrix (sparse)",
+        "HDF5Matrix (dense)",
+        "HDF5Matrix as sparse",
+        "On-disk realization of the normalized datasets",
+        "PCA",
+        "Comprehensive timings obtained on various machines",
+        "Timings for DELL XPS 15 laptop",
+        "Timings for Supermicro SuperServer 1029GQ-TRT",
+        "Timings for Apple Silicon Mac Pro",
+        "Timings for Intel Mac Pro",
+        "Discussion",
+        "TENxMatrix (sparse) vs HDF5Matrix (dense)",
+        "Hybrid approach",
+        "A note about memory usage",
+        "Main takeaways",
+        "Session information"
+      ],
+      "created": "2025-01-14 07:06:14",
+      "modified": "2025-04-15 01:12:48",
+      "commits": 35
+    }
+  ],
+  "_score": 13.14398950014946,
+  "_indexed": false,
+  "_nocasepkg": "hdf5array",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/HDF5Array",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.38.0",
+      "date": "2026-02-02T09:46:13.000Z",
+      "distro": "noble",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "5865efeda760ebbcc11bbd115e7cce395b3698851af9693b7347acd14d389878",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.38.0",
+      "date": "2026-02-02T09:46:09.000Z",
+      "distro": "noble",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "ba74d8c9db5fc398c3eeb4b1d7480e935aa85fccb45cc1509e7abde6169af6a7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.38.0",
+      "date": "2026-02-02T10:30:33.000Z",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "5cec6b47a4a83d917a213d993178a72eacca7a2736453fbeb435d745e7829383",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.38.0",
+      "date": "2026-02-02T10:29:25.000Z",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "9ef1e0a74c5ff06bad8b2097f9087d43e603b2282fdcc7b79305de2c5df75da6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.38.0",
+      "date": "2026-02-02T09:45:45.000Z",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "bebe1a808a6e0ea6739758db6b3f424c3e58752208a94804c9b7b8199867f085",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-02-02T09:44:26.000Z",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "d37872e6b76998eb3cf7fa333380cc093d1054dd1bddbbd7bd5ce9d5d2ad2b9f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-02-02T09:44:39.000Z",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "67ac16d804528e1929b5a1473b739f9c58c5867dcdb0eca893490dbfccb9e215",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-02-02T09:44:28.000Z",
+      "commit": "9bca08f886ec15fa872dd8f96a7c9bb3b791df8b",
+      "fileid": "0ca18288f6a539cbf4f4a83e19042a44a35341714525a45737990c500caec5aa",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21584496197"
+    }
+  ]
+}

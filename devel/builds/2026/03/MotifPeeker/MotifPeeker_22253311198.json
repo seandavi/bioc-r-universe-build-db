@@ -1,0 +1,991 @@
+{
+  "Type": "Package",
+  "Package": "MotifPeeker",
+  "Title": "Benchmarking Epigenomic Profiling Methods Using Motif Enrichment",
+  "Version": "1.3.1",
+  "Authors@R": "c( \nperson(given = \"Hiranyamaya\",\nfamily = \"Dash\",\nrole = c(\"cre\", \"aut\"),\nemail = \"hdash.work@gmail.com\",\ncomment = c(ORCID = \"0009-0005-5514-505X\")),\nperson(given = \"Thomas\",\nfamily = \"Roberts\",\nrole = c(\"aut\"),\nemail = \"tomroberts.work15@gmail.com\",\ncomment = c(ORCID = \"0009-0006-6244-8670\")),\nperson(given = \"Maria\",\nfamily = \"Weinert\",\nrole = c(\"aut\"),\nemail = \"m.weinert13@imperial.ac.uk\",\ncomment = c(ORCID = \"0000-0001-6187-1000\")),\nperson(given = \"Nathan\",\nfamily = \"Skene\",\nrole = c(\"aut\"),\nemail = \"nathan.skene@gmail.com\",\ncomment = c(ORCID = \"0000-0002-6807-3180\"))\n)",
+  "Description": "MotifPeeker is used to compare and analyse datasets from\nepigenomic profiling methods with motif enrichment as the key\nbenchmark.  The package outputs an HTML report consisting of\nthree sections: (1. General Metrics) Overview of peaks-related\ngeneral metrics for the datasets (FRiP scores, peak widths and\nmotif-summit distances).  (2. Known Motif Enrichment Analysis)\nStatistics for the frequency of user-provided motifs enriched\nin the datasets.  (3. Motif Discovery Enrichment Analysis)\nStatistics for the frequency of ab-initio discovered motifs\nenriched in the datasets and compared with known motifs.",
+  "License": "GPL (>= 3)",
+  "URL": "https://github.com/neurogenomics/MotifPeeker",
+  "BugReports": "https://github.com/neurogenomics/MotifPeeker/issues",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Epigenetics, Genetics, QualityControl, ChIPSeq,\nMultipleComparison, FunctionalGenomics, MotifDiscovery,\nSequenceMatching, Software, Alignment",
+  "Config/testthat/edition": "3",
+  "Encoding": "UTF-8",
+  "LazyData": "FALSE",
+  "RoxygenNote": "7.3.3",
+  "SystemRequirements": "MEME Suite (v5.3.3 or above)\n<http://meme-suite.org/doc/download.html>",
+  "Config/pak/sysreqs": "git make libmagick++-dev gsfonts libbz2-dev\nlibgit2-dev libicu-dev liblzma-dev libxml2-dev libssl-dev\nlibx11-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-11-20 12:15:08 UTC",
+  "RemoteUrl": "https://github.com/bioc/MotifPeeker",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-21 08:14:54 UTC",
+    "User": "root"
+  },
+  "Author": "Hiranyamaya Dash [cre, aut] (ORCID:\n<https://orcid.org/0009-0005-5514-505X>),\nThomas Roberts [aut] (ORCID: <https://orcid.org/0009-0006-6244-8670>),\nMaria Weinert [aut] (ORCID: <https://orcid.org/0000-0001-6187-1000>),\nNathan Skene [aut] (ORCID: <https://orcid.org/0000-0002-6807-3180>)",
+  "Maintainer": "Hiranyamaya Dash <hdash.work@gmail.com>",
+  "MD5sum": "f5105f4d87b318e173bbeb60419676a4",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "MotifPeeker_1.3.1.tar.gz",
+  "_fileid": "b9cf9485a87dd2aabb6af936f27348010eaf73890114a1f17a6e30d51be158c9",
+  "_filesize": 3313060,
+  "_sha256": "b9cf9485a87dd2aabb6af936f27348010eaf73890114a1f17a6e30d51be158c9",
+  "_created": "2026-02-21T08:14:54.000Z",
+  "_published": "2026-02-21T08:26:27.231Z",
+  "_jobs": [
+    {
+      "job": 64380742537,
+      "time": 427,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5600408058"
+    },
+    {
+      "job": 64380742541,
+      "time": 566,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600416097"
+    },
+    {
+      "job": 64380742546,
+      "time": 619,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600419401"
+    },
+    {
+      "job": 64380742538,
+      "time": 292,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600400002"
+    },
+    {
+      "job": 64380742536,
+      "time": 328,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600402020"
+    },
+    {
+      "job": 64380417279,
+      "time": 531,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600380856"
+    },
+    {
+      "job": 64380742545,
+      "time": 409,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600406854"
+    },
+    {
+      "job": 64380742558,
+      "time": 492,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5600411865"
+    },
+    {
+      "job": 64380742561,
+      "time": 498,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5600412188"
+    },
+    {
+      "job": 64380742548,
+      "time": 487,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5600411610"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/MotifPeeker",
+  "_commit": {
+    "id": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+    "author": "Hiranyamaya (Hiru) Dash <16350928+HDash@users.noreply.github.com>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Merge pull request #11 from neurogenomics/revision_changes\n\nRevision changes",
+    "time": 1763640908
+  },
+  "_maintainer": {
+    "name": "Hiranyamaya Dash",
+    "email": "hdash.work@gmail.com",
+    "login": "hdash",
+    "uuid": 16350928
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "DT",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "universalmotif",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "htmltools",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "htmlwidgets",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "memes",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "heatmaply",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm10",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm39",
+      "role": "Suggests"
+    },
+    {
+      "package": "downloadthis",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "methods",
+      "role": "Suggests"
+    },
+    {
+      "package": "remotes",
+      "role": "Suggests"
+    },
+    {
+      "package": "rworkflows",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "withr",
+      "role": "Suggests"
+    },
+    {
+      "package": "emoji",
+      "role": "Suggests"
+    },
+    {
+      "package": "curl",
+      "role": "Suggests"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-26",
+      "n": 4
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2025-47",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "epigenetics",
+    "genetics",
+    "qualitycontrol",
+    "chipseq",
+    "multiplecomparison",
+    "functionalgenomics",
+    "motifdiscovery",
+    "sequencematching",
+    "software",
+    "alignment",
+    "bioconductor",
+    "bioconductor-package",
+    "chip-seq",
+    "epigenomics",
+    "interactive-report",
+    "motif-enrichment-analysis"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "hdash",
+      "count": 172,
+      "uuid": 16350928
+    },
+    {
+      "user": "jwokaty",
+      "count": 5,
+      "uuid": 1744257
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 207,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MotifPeeker"
+  },
+  "_devurl": "https://github.com/neurogenomics/motifpeeker",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/MotifPeeker.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/neurogenomics/motifpeeker",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "%>%",
+    "bootstrap_distances",
+    "calc_frip",
+    "check_ENCODE",
+    "check_genome_build",
+    "check_JASPAR",
+    "denovo_motifs",
+    "find_motifs",
+    "get_df_distances",
+    "get_df_distances_bootstrapped",
+    "get_df_enrichment",
+    "get_JASPARCORE",
+    "motif_enrichment",
+    "motif_similarity",
+    "MotifPeeker",
+    "read_motif_file",
+    "read_peak_file",
+    "save_peak_file",
+    "segregate_seqs",
+    "summit_to_motif"
+  ],
+  "_datasets": [
+    {
+      "name": "CTCF_ChIP_peaks",
+      "title": "Example ChIP-seq peak file",
+      "object": "CTCF_ChIP_peaks",
+      "file": "CTCF_ChIP_peaks.rda",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "CTCF_TIP_peaks",
+      "title": "Example TIP-seq peak file",
+      "object": "CTCF_TIP_peaks",
+      "file": "CTCF_TIP_peaks.rda",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "motif_MA1102.3",
+      "title": "Example CTCFL JASPAR motif file",
+      "object": "motif_MA1102.3",
+      "file": "motif_MA1102.3.rda",
+      "class": [
+        "universalmotif"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "motif_MA1930.2",
+      "title": "Example CTCF JASPAR motif file",
+      "object": "motif_MA1930.2",
+      "file": "motif_MA1930.2.rda",
+      "class": [
+        "universalmotif"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "bootstrap_distances",
+      "title": "Bootstrap motif-summit distances for one set of peaks and one motif",
+      "topics": [
+        "bootstrap_distances"
+      ]
+    },
+    {
+      "page": "calc_frip",
+      "title": "Calculate FRiP score",
+      "topics": [
+        "calc_frip"
+      ]
+    },
+    {
+      "page": "check_ENCODE",
+      "title": "Check for ENCODE input",
+      "topics": [
+        "check_ENCODE"
+      ]
+    },
+    {
+      "page": "check_genome_build",
+      "title": "Check genome build",
+      "topics": [
+        "check_genome_build"
+      ]
+    },
+    {
+      "page": "check_JASPAR",
+      "title": "Check for JASPAR input",
+      "topics": [
+        "check_JASPAR"
+      ]
+    },
+    {
+      "page": "CTCF_ChIP_peaks",
+      "title": "Example ChIP-seq peak file",
+      "topics": [
+        "CTCF_ChIP_peaks"
+      ]
+    },
+    {
+      "page": "CTCF_TIP_peaks",
+      "title": "Example TIP-seq peak file",
+      "topics": [
+        "CTCF_TIP_peaks"
+      ]
+    },
+    {
+      "page": "denovo_motifs",
+      "title": "Discover motifs in sequences",
+      "topics": [
+        "denovo_motifs"
+      ]
+    },
+    {
+      "page": "find_motifs",
+      "title": "Find similar motifs",
+      "topics": [
+        "find_motifs"
+      ]
+    },
+    {
+      "page": "get_df_distances",
+      "title": "Get dataframe with motif-summit distances",
+      "topics": [
+        "get_df_distances"
+      ]
+    },
+    {
+      "page": "get_df_distances_bootstrapped",
+      "title": "Get dataframe with bootstrapped motif-summit distances",
+      "topics": [
+        "get_df_distances_bootstrapped"
+      ]
+    },
+    {
+      "page": "get_df_enrichment",
+      "title": "Get dataframe with motif enrichment values",
+      "topics": [
+        "get_df_enrichment"
+      ]
+    },
+    {
+      "page": "get_JASPARCORE",
+      "title": "Download JASPAR CORE database",
+      "topics": [
+        "get_JASPARCORE"
+      ]
+    },
+    {
+      "page": "motif_enrichment",
+      "title": "Calculate motif enrichment in a set of sequences",
+      "topics": [
+        "motif_enrichment"
+      ]
+    },
+    {
+      "page": "motif_MA1102.3",
+      "title": "Example CTCFL JASPAR motif file",
+      "topics": [
+        "motif_MA1102.3"
+      ]
+    },
+    {
+      "page": "motif_MA1930.2",
+      "title": "Example CTCF JASPAR motif file",
+      "topics": [
+        "motif_MA1930.2"
+      ]
+    },
+    {
+      "page": "motif_similarity",
+      "title": "Compare motifs from segregated sequences",
+      "topics": [
+        "motif_similarity"
+      ]
+    },
+    {
+      "page": "MotifPeeker",
+      "title": "Benchmark epigenomic profiling methods using motif enrichment",
+      "topics": [
+        "MotifPeeker"
+      ]
+    },
+    {
+      "page": "read_motif_file",
+      "title": "Read a motif file",
+      "topics": [
+        "read_motif_file"
+      ]
+    },
+    {
+      "page": "read_peak_file",
+      "title": "Read MACS2/3 narrowPeak or SEACR BED peak file",
+      "topics": [
+        "read_peak_file"
+      ]
+    },
+    {
+      "page": "save_peak_file",
+      "title": "Minimally save a peak object to a file (BED4)",
+      "topics": [
+        "save_peak_file"
+      ]
+    },
+    {
+      "page": "segregate_seqs",
+      "title": "Segregate input sequences into common and unique groups",
+      "topics": [
+        "segregate_seqs"
+      ]
+    },
+    {
+      "page": "summit_to_motif",
+      "title": "Calculate the distance between peak summits and motifs",
+      "topics": [
+        "summit_to_motif"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/MotifPeeker/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "assertthat",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "brio",
+    "BSgenome",
+    "bslib",
+    "ca",
+    "cachem",
+    "callr",
+    "cigarillo",
+    "cli",
+    "clipr",
+    "cluster",
+    "cmdfun",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "credentials",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dendextend",
+    "desc",
+    "diffobj",
+    "digest",
+    "dplyr",
+    "DT",
+    "egg",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gclus",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "gert",
+    "ggplot2",
+    "gh",
+    "gitcreds",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "heatmaply",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "ini",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memes",
+    "memoise",
+    "mgcv",
+    "mime",
+    "nlme",
+    "openssl",
+    "otel",
+    "patchwork",
+    "permute",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "pkgload",
+    "plotly",
+    "plyr",
+    "praise",
+    "prettyunits",
+    "processx",
+    "progress",
+    "promises",
+    "ps",
+    "purrr",
+    "qap",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppThread",
+    "RCurl",
+    "readr",
+    "registry",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rprojroot",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "seriation",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "testthat",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "TSP",
+    "tzdb",
+    "universalmotif",
+    "usethis",
+    "utf8",
+    "vctrs",
+    "vegan",
+    "viridis",
+    "viridisLite",
+    "vroom",
+    "waldo",
+    "webshot",
+    "whisker",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml",
+    "zip"
+  ],
+  "_vignettes": [
+    {
+      "source": "MotifPeeker.Rmd",
+      "filename": "MotifPeeker.html",
+      "title": "Get started",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Introduction",
+        "Data",
+        "Installation",
+        "Running MotifPeeker",
+        "Load the package",
+        "Load the example datasets",
+        "Prepare input data",
+        "Peak Files",
+        "Alignment Files",
+        "Genome Build",
+        "Motif Files",
+        "Run MotifPeeker",
+        "Required Inputs",
+        "Optional Inputs",
+        "Other Options",
+        "Runtime Guidance",
+        "Outputs",
+        "Troubleshooting",
+        "Future Enhancements",
+        "Session Info"
+      ],
+      "created": "2024-07-10 19:04:06",
+      "modified": "2025-11-20 12:15:08",
+      "commits": 15
+    },
+    {
+      "source": "troubleshooting.Rmd",
+      "filename": "troubleshooting.html",
+      "title": "Troubleshooting",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "MEME Suite Related",
+        "MotifPeeker() Related",
+        "Session Info"
+      ],
+      "created": "2024-07-11 15:37:09",
+      "modified": "2024-11-12 13:42:44",
+      "commits": 5
+    }
+  ],
+  "_score": 5.380211241711606,
+  "_indexed": true,
+  "_nocasepkg": "motifpeeker",
+  "_universes": [
+    "bioc",
+    "hdash",
+    "neurogenomics"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:21:35.000Z",
+      "distro": "noble",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "d9077ba0bf77eef70ccf1478f500dfef50906b99a21bd239d981a0d7c675350b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:22:27.000Z",
+      "distro": "noble",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "dfe59fa2e46056d63752e53c0fe2c4f5cef93045a8a5594328fd4c9a991e50ac",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:18:27.000Z",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "c79ec09c5ccb18b645bfb3e31c3a9fe79408868e94bcc625a708369b43056d86",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:19:07.000Z",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "c0180e83bf7ca86fcc230064fca860c8f8d8c79129209e060e5a246fa0162eb9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:22:29.000Z",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "ed20ad42a552fef03dc85991f5f57a6885de081471714644b7d98653be25ef5c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:19:14.000Z",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "d71e90f1dd144ccc562e0912390d18a01bbbab68b91279f47f01f67d2f129180",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:19:32.000Z",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "7253bfd3592da4af2e718f726ee7adfa9cca9773d27b454419484c63cd700799",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.3.1",
+      "date": "2026-02-21T08:19:06.000Z",
+      "commit": "d02958ecbc866cb3ec37533abd6aa7028d9f235f",
+      "fileid": "3cc039d53c5beca89984c94bed2616fac64ce5ec24c5b8523645d6dbf2ac5e53",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253311198"
+    }
+  ]
+}

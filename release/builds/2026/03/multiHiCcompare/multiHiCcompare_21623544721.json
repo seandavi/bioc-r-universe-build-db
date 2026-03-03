@@ -1,0 +1,982 @@
+{
+  "Package": "multiHiCcompare",
+  "Title": "Normalize and detect differences between Hi-C datasets when\nreplicates of each experimental condition are available",
+  "Version": "1.28.0",
+  "Authors@R": "c(\nperson(given = \"Mikhail\",\nfamily = \"Dozmorov\",\nrole = c(\"aut\", \"cre\"),\nemail = \"mikhail.dozmorov@gmail.com\",\ncomment = c(ORCID = \"0000-0002-0086-8358\")),\nperson(given = \"John\",\nfamily = \"Stansfield\",\nrole = c(\"aut\"),\nemail = \"stansfieldjc@vcu.edu\"))",
+  "Description": "multiHiCcompare provides functions for joint normalization\nand difference detection in multiple Hi-C datasets. This\nextension of the original HiCcompare package now allows for\nHi-C experiments with more than 2 groups and multiple samples\nper group. multiHiCcompare operates on processed Hi-C data in\nthe form of sparse upper triangular matrices. It accepts four\ncolumn (chromosome, region1, region2, IF) tab-separated text\nfiles storing chromatin interaction matrices. multiHiCcompare\nprovides cyclic loess and fast loess (fastlo) methods adapted\nto jointly normalizing Hi-C data. Additionally, it provides a\ngeneral linear model (GLM) framework adapting the edgeR package\nto detect differences in Hi-C data in a distance dependent\nmanner.",
+  "biocViews": "Software, HiC, Sequencing, Normalization",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "RoxygenNote": "7.1.1",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/dozmorovlab/multiHiCcompare/issues",
+  "URL": "https://github.com/dozmorovlab/multiHiCcompare",
+  "Config/pak/sysreqs": "libssl-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:46:53 UTC",
+  "RemoteUrl": "https://github.com/bioc/multiHiCcompare",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 08:58:10 UTC",
+    "User": "root"
+  },
+  "Author": "Mikhail Dozmorov [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-0086-8358>),\nJohn Stansfield [aut]",
+  "Maintainer": "Mikhail Dozmorov <mikhail.dozmorov@gmail.com>",
+  "MD5sum": "0b1385fe4ae0b1f3540de8346e400114",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "multiHiCcompare_1.28.0.tar.gz",
+  "_fileid": "a6e75cb2c301df36869f84031f6fcd507c128231e852c2ecd62af78cb304ae97",
+  "_filesize": 4671572,
+  "_sha256": "a6e75cb2c301df36869f84031f6fcd507c128231e852c2ecd62af78cb304ae97",
+  "_created": "2026-02-03T08:58:10.000Z",
+  "_published": "2026-02-03T09:22:44.270Z",
+  "_jobs": [
+    {
+      "job": 62318416649,
+      "time": 186,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354657471"
+    },
+    {
+      "job": 62318416602,
+      "time": 396,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354698637"
+    },
+    {
+      "job": 62318416659,
+      "time": 364,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354691823"
+    },
+    {
+      "job": 62318416629,
+      "time": 304,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354864305"
+    },
+    {
+      "job": 62318416657,
+      "time": 277,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354906742"
+    },
+    {
+      "job": 62317975140,
+      "time": 267,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354619915"
+    },
+    {
+      "job": 62318416608,
+      "time": 165,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5354652887"
+    },
+    {
+      "job": 62318416616,
+      "time": 316,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5354682674"
+    },
+    {
+      "job": 62318416621,
+      "time": 274,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5354674719"
+    },
+    {
+      "job": 62318416647,
+      "time": 270,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354674025"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/multiHiCcompare",
+  "_commit": {
+    "id": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761749213
+  },
+  "_maintainer": {
+    "name": "Mikhail Dozmorov",
+    "email": "mikhail.dozmorov@gmail.com",
+    "login": "mdozmorov",
+    "twitter": "@mikhaildozmorov",
+    "uuid": 864945,
+    "orcid": "0000-0002-0086-8358"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "HiCcompare",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "qqman",
+      "role": "Imports"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "pbapply",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDbData",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "aggregation",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 2,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.29.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.28.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "hic",
+    "sequencing",
+    "normalization"
+  ],
+  "_stars": 10,
+  "_contributors": [
+    {
+      "user": "jstansfield0",
+      "count": 154,
+      "uuid": 20071664
+    },
+    {
+      "user": "mdozmorov",
+      "count": 43,
+      "uuid": 864945
+    },
+    {
+      "user": "nturaga",
+      "count": 12,
+      "uuid": 2746443
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "armenabnousi",
+      "count": 1,
+      "uuid": 17502044
+    },
+    {
+      "user": "menggf",
+      "count": 1,
+      "uuid": 24888187
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 406,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/multiHiCcompare"
+  },
+  "_mentions": 1,
+  "_devurl": "https://github.com/dozmorovlab/multihiccompare",
+  "_searchresults": 40,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/multiHiCcompare.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/dozmorovlab/multihiccompare",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "cyclic_loess",
+    "exportJuicebox",
+    "fastlo",
+    "hic_exactTest",
+    "hic_filter",
+    "hic_glm",
+    "hic_scale",
+    "hic_table",
+    "make_hicexp",
+    "manhattan_hicexp",
+    "MD_composite",
+    "MD_hicexp",
+    "meta",
+    "normalized",
+    "perm_test",
+    "plot_counts",
+    "plot_pvals",
+    "pval_heatmap",
+    "resolution",
+    "results",
+    "show",
+    "topDirs"
+  ],
+  "_datasets": [
+    {
+      "name": "HCT116_r1",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "object": "HCT116_r1",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "\"22\"",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 56603,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "HCT116_r2",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "object": "HCT116_r2",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "\"22\"",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 57010,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "HCT116_r3",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "object": "HCT116_r3",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "\"22\"",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 56744,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "HCT116_r4",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "object": "HCT116_r4",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "\"22\"",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 54307,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "HCT116_r5",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "object": "HCT116_r5",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "\"22\"",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 55092,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "HCT116_r6",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "object": "HCT116_r6",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "\"22\"",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 55581,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "hg19_cyto",
+      "title": "A GenomicRanges object containing centromeric, gvar, and stalk regions.",
+      "object": "hg19_cyto",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "hg38_cyto",
+      "title": "A GenomicRanges object containing centromeric, gvar, and stalk regions.",
+      "object": "hg38_cyto",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "hicexp2",
+      "title": "hicexp object with 4 samples from two groups.",
+      "object": "hicexp2",
+      "class": [
+        "Hicexp"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "hicexp_diff",
+      "title": "hicexp object with 7 samples from two groups.",
+      "object": "hicexp_diff",
+      "class": [
+        "Hicexp"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "cyclic_loess",
+      "title": "Cyclic Loess normalization for Hi-C data",
+      "topics": [
+        "cyclic_loess"
+      ]
+    },
+    {
+      "page": "exportJuicebox",
+      "title": "Export multiHiCcompare results for visualization in Juicebox",
+      "topics": [
+        "exportJuicebox"
+      ]
+    },
+    {
+      "page": "fastlo",
+      "title": "Perform fast loess normalization on a Hi-C experiment",
+      "topics": [
+        "fastlo"
+      ]
+    },
+    {
+      "page": "HCT116_r1",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "topics": [
+        "HCT116_r1"
+      ]
+    },
+    {
+      "page": "HCT116_r2",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "topics": [
+        "HCT116_r2"
+      ]
+    },
+    {
+      "page": "HCT116_r3",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "topics": [
+        "HCT116_r3"
+      ]
+    },
+    {
+      "page": "HCT116_r4",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "topics": [
+        "HCT116_r4"
+      ]
+    },
+    {
+      "page": "HCT116_r5",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "topics": [
+        "HCT116_r5"
+      ]
+    },
+    {
+      "page": "HCT116_r6",
+      "title": "A 4 column sparse matrix for a Hi-C matrix.",
+      "topics": [
+        "HCT116_r6"
+      ]
+    },
+    {
+      "page": "hg19_cyto",
+      "title": "A GenomicRanges object containing centromeric, gvar, and stalk regions.",
+      "topics": [
+        "hg19_cyto"
+      ]
+    },
+    {
+      "page": "hg38_cyto",
+      "title": "A GenomicRanges object containing centromeric, gvar, and stalk regions.",
+      "topics": [
+        "hg38_cyto"
+      ]
+    },
+    {
+      "page": "hic_exactTest",
+      "title": "Perform exact test based difference detection on a Hi-C experiment",
+      "topics": [
+        "hic_exactTest"
+      ]
+    },
+    {
+      "page": "hic_filter",
+      "title": "Perform filtering on a Hi-C experiment",
+      "topics": [
+        "hic_filter"
+      ]
+    },
+    {
+      "page": "hic_glm",
+      "title": "Function to perform GLM differential analysis on Hi-C experiment",
+      "topics": [
+        "hic_glm"
+      ]
+    },
+    {
+      "page": "hic_scale",
+      "title": "Perform library scaling on a hicexp object",
+      "topics": [
+        "hic_scale"
+      ]
+    },
+    {
+      "page": "hic_table",
+      "title": "Print the hic_table",
+      "topics": [
+        "hic_table",
+        "hic_table,character,ANY-method",
+        "hic_table,Hicexp-method"
+      ]
+    },
+    {
+      "page": "hicexp_diff",
+      "title": "hicexp object with 7 samples from two groups.",
+      "topics": [
+        "hicexp_diff"
+      ]
+    },
+    {
+      "page": "Hicexp-class",
+      "title": "An S4 class for working with Hi-C data",
+      "topics": [
+        "Hicexp-class"
+      ]
+    },
+    {
+      "page": "hicexp2",
+      "title": "hicexp object with 4 samples from two groups.",
+      "topics": [
+        "hicexp2"
+      ]
+    },
+    {
+      "page": "make_hicexp",
+      "title": "Make Hi-C experiment object from data",
+      "topics": [
+        "make_hicexp"
+      ]
+    },
+    {
+      "page": "manhattan_hicexp",
+      "title": "Manhattan plot function for results of multiHiCcompare",
+      "topics": [
+        "manhattan_hicexp"
+      ]
+    },
+    {
+      "page": "MD_composite",
+      "title": "Plot a composite MD plot with the results of a comparison",
+      "topics": [
+        "MD_composite"
+      ]
+    },
+    {
+      "page": "MD_hicexp",
+      "title": "Make MD plots for all combinations of a condition",
+      "topics": [
+        "MD_hicexp"
+      ]
+    },
+    {
+      "page": "meta",
+      "title": "Print the metadata",
+      "topics": [
+        "meta",
+        "meta,character,ANY-method",
+        "meta,Hicexp-method"
+      ]
+    },
+    {
+      "page": "normalized",
+      "title": "Print the indicator for if the data is normalized",
+      "topics": [
+        "normalized",
+        "normalized,character,ANY-method",
+        "normalized,Hicexp-method"
+      ]
+    },
+    {
+      "page": "perm_test",
+      "title": "Perform a permutation test to check enrichment of a genomic feature with DIRs detected by multiHiCcompare",
+      "topics": [
+        "perm_test"
+      ]
+    },
+    {
+      "page": "plot_counts",
+      "title": "Plot the count results from topDirs",
+      "topics": [
+        "plot_counts"
+      ]
+    },
+    {
+      "page": "plot_pvals",
+      "title": "Plot the p-value results from topDirs",
+      "topics": [
+        "plot_pvals"
+      ]
+    },
+    {
+      "page": "pval_heatmap",
+      "title": "Function to visualize p-values from multiHiCcompare results",
+      "topics": [
+        "pval_heatmap"
+      ]
+    },
+    {
+      "page": "resolution",
+      "title": "Print the resolution",
+      "topics": [
+        "resolution",
+        "resolution,character,ANY-method",
+        "resolution,Hicexp-method"
+      ]
+    },
+    {
+      "page": "results",
+      "title": "Print the results",
+      "topics": [
+        "results",
+        "results,character,ANY-method",
+        "results,Hicexp-method"
+      ]
+    },
+    {
+      "page": "show",
+      "title": "Print information about a HiCexp object",
+      "topics": [
+        "show,character,ANY-method",
+        "show,Hicexp-method"
+      ]
+    },
+    {
+      "page": "smartApply",
+      "title": "Function to apply either biocParallel or standard lapply",
+      "topics": [
+        "smartApply"
+      ]
+    },
+    {
+      "page": "topDirs",
+      "title": "Filter results of multiHiCcompare",
+      "topics": [
+        "topDirs"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/multiHiCcompare/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "aggregation",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "calibrate",
+    "cli",
+    "codetools",
+    "cpp11",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "dplyr",
+    "edgeR",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomeInfoDbData",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "HiCcompare",
+    "httr",
+    "InteractionSet",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mgcv",
+    "mime",
+    "nlme",
+    "openssl",
+    "pbapply",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "qqman",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "juiceboxVisualization.Rmd",
+      "filename": "juiceboxVisualization.html",
+      "title": "Visualizing multiHiCcompare results in Juicebox",
+      "author": "John C. Stansfield & Mikhail G. Dozmorov",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Getting started",
+        "Example"
+      ],
+      "created": "2018-11-13 20:57:49",
+      "modified": "2020-11-23 16:14:00",
+      "commits": 7
+    },
+    {
+      "source": "multiHiCcompare.Rmd",
+      "filename": "multiHiCcompare.html",
+      "title": "multiHiCcompare Vignette",
+      "author": "John C. Stansfield & Mikhail G. Dozmorov",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "How to use multiHiCcompare",
+        "Install multiHiCcompare from Bioconductor",
+        "Getting Hi-C Data",
+        "Extracting data from .hic files",
+        "Extracting data from .cool files",
+        "Using data from HiC-Pro",
+        "Parallel Processing",
+        "Creating the hicexp object",
+        "Sparse upper triangular format",
+        "The hicexp object",
+        "Normalization",
+        "Library scaling",
+        "Cyclic Loess Normalization",
+        "Fast Loess Normalization (Fastlo)",
+        "Difference Detection",
+        "Exact Test",
+        "GLM Methods",
+        "Downstream analysis",
+        "Other functions",
+        "Session Info"
+      ],
+      "created": "2018-08-03 15:05:41",
+      "modified": "2020-11-23 16:14:00",
+      "commits": 18
+    }
+  ],
+  "_score": 7.380211241711606,
+  "_indexed": false,
+  "_nocasepkg": "multihiccompare",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/multiHiCcompare",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:02:24.000Z",
+      "distro": "noble",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "41a35c0dcaec5376b05d88a2fe3ecaa1f0861ea75f92408ebfe7ab5f5e46ffd6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:01:49.000Z",
+      "distro": "noble",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "d2c44095fd623f74d1dfed562d436f707def21a28f1e1307d6324bbb4f0ec7b3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:15:51.000Z",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "790fc7e1a81344af88d61a8eb1ac19660d93209c6138f9a35b7e35c2d9d8a0a1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:19:46.000Z",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "10369ced796ef129173bc118870d3fe6f685bc8055cc17f66edae6c9d7e0afe3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:01:29.000Z",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "285f433ddb37b51c99cc6922b76e16c8b1f0c97c2e3bc13432cf06ea8d5f8d04",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:00:44.000Z",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "db926346d3039fdd0ac337ea86f5674de206859f0e83126261fb622a7b8341ce",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:00:18.000Z",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "a63791755d3d828562e3ed914e4fb026c19f2f76d37468167fd2f75ef6e86c89",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.28.0",
+      "date": "2026-02-03T09:00:12.000Z",
+      "commit": "5d0766c2438a6d9d30d2b5392833d9ac2a1eb00e",
+      "fileid": "22a9f87145730afea3a67407820263de5c32b2240d957a5131d68b1d5fcdbcd7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21623544721"
+    }
+  ]
+}

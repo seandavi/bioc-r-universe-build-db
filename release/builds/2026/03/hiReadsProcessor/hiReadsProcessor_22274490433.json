@@ -1,0 +1,923 @@
+{
+  "Package": "hiReadsProcessor",
+  "Title": "Functions to process LM-PCR reads from 454/Illumina data",
+  "Version": "1.46.0",
+  "Date": "2024-04-24",
+  "Author": "Nirav V Malani <malnirav@gmail.com>",
+  "Maintainer": "Nirav V Malani <malnirav@gmail.com>",
+  "Description": "hiReadsProcessor contains set of functions which allow\nusers to process LM-PCR products sequenced using any platform.\nGiven an excel/txt file containing parameters for\ndemultiplexing and sample metadata, the functions automate\ntrimming of adaptors and identification of the genomic product.\nGenomic products are further processed for QC and abundance\nquantification.",
+  "License": "GPL-3",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Sequencing, Preprocessing",
+  "LazyLoad": "yes",
+  "SystemRequirements": "BLAT, UCSC hg18 in 2bit format for BLAT",
+  "RoxygenNote": "7.3.1",
+  "PackageStatus": "Deprecated",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:21:04 UTC",
+  "RemoteUrl": "https://github.com/bioc/hiReadsProcessor",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-22 09:31:38 UTC",
+    "User": "root"
+  },
+  "MD5sum": "5391a11169798d5344df225245c8a73e",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "hiReadsProcessor_1.46.0.tar.gz",
+  "_fileid": "1e74160ced1471837258edef56ccd96ea2f2829c43492296e6f5de434d87b53c",
+  "_filesize": 3576514,
+  "_sha256": "1e74160ced1471837258edef56ccd96ea2f2829c43492296e6f5de434d87b53c",
+  "_created": "2026-02-22T09:31:38.000Z",
+  "_published": "2026-02-22T09:39:33.798Z",
+  "_jobs": [
+    {
+      "job": 64434522833,
+      "time": 193,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606275471"
+    },
+    {
+      "job": 64434522767,
+      "time": 373,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5606286242"
+    },
+    {
+      "job": 64434522762,
+      "time": 408,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606288168"
+    },
+    {
+      "job": 64434522768,
+      "time": 288,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5606280961"
+    },
+    {
+      "job": 64434522753,
+      "time": 187,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606275140"
+    },
+    {
+      "job": 64434349439,
+      "time": 298,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5606263348"
+    },
+    {
+      "job": 64434522758,
+      "time": 149,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5606272745"
+    },
+    {
+      "job": 64434522775,
+      "time": 273,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5606280194"
+    },
+    {
+      "job": 64434522778,
+      "time": 306,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5606282153"
+    },
+    {
+      "job": 64434522769,
+      "time": 286,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606280862"
+    }
+  ],
+  "_bioccheck": {
+    "error": 4,
+    "warning": 4,
+    "note": 16
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/hiReadsProcessor",
+  "_commit": {
+    "id": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761747664
+  },
+  "_maintainer": {
+    "name": "Nirav V Malani",
+    "email": "malnirav@gmail.com",
+    "login": "malnirav",
+    "orcid": "0000-0002-4218-0551",
+    "uuid": 1264567
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Depends"
+    },
+    {
+      "package": "pwalign",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Depends"
+    },
+    {
+      "package": "hiAnnotator",
+      "role": "Depends"
+    },
+    {
+      "package": "sonicLength",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "readxl",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-25",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_topics": [
+    "sequencing",
+    "preprocessing"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 317,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/hiReadsProcessor"
+  },
+  "_searchresults": 8,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/hiReadsProcessor.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_cranurl": false,
+  "_exports": [
+    "addFeature",
+    "addListNameToReads",
+    "annotateSites",
+    "blatListedSet",
+    "blatSeqs",
+    "chunkize",
+    "clusterSites",
+    "crossOverCheck",
+    "decodeByBarcode",
+    "dereplicateReads",
+    "doRCtest",
+    "extractFeature",
+    "extractSeqs",
+    "findAndRemoveVector",
+    "findAndTrimSeq",
+    "findBarcodes",
+    "findIntegrations",
+    "findLinkers",
+    "findLTRs",
+    "findPrimers",
+    "findVector",
+    "getIntegrationSites",
+    "getSectorsForSamples",
+    "getSonicAbund",
+    "isuSites",
+    "otuSites",
+    "pairUpAlignments",
+    "pairwiseAlignSeqs",
+    "primerIDAlignSeqs",
+    "pslCols",
+    "pslToRangedObject",
+    "read.BAMasPSL",
+    "read.blast8",
+    "read.psl",
+    "read.sampleInfo",
+    "read.SeqFolder",
+    "read.seqsFromSector",
+    "removeReadsWithNs",
+    "replicateReads",
+    "sampleSummary",
+    "splitByBarcode",
+    "splitSeqsToFiles",
+    "startgfServer",
+    "trimSeqs",
+    "troubleshootLinkers",
+    "vpairwiseAlignSeqs",
+    "write.listedDNAStringSet",
+    "write.psl"
+  ],
+  "_datasets": [
+    {
+      "name": "psl",
+      "title": "PSL file output",
+      "object": "psl",
+      "file": "psl.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "matches",
+        "misMatches",
+        "repMatches",
+        "nCount",
+        "qNumInsert",
+        "qBaseInsert",
+        "tNumInsert",
+        "tBaseInsert",
+        "strand",
+        "qName",
+        "qSize",
+        "qStart",
+        "qEnd",
+        "tName",
+        "tSize",
+        "tStart",
+        "tEnd",
+        "blockCount",
+        "blockSizes",
+        "qStarts",
+        "tStarts"
+      ],
+      "rows": 1000,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "seqProps",
+      "title": "Sample Integration Sites Sequencing Data",
+      "object": "FLX_seqProps",
+      "file": "FLX_seqProps.RData",
+      "class": [
+        "SimpleList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "addFeature",
+      "title": "Add a specific feature/attribute to the sampleInfo object.",
+      "topics": [
+        "addFeature"
+      ]
+    },
+    {
+      "page": "addListNameToReads",
+      "title": "Prepend name attribute of a list to DNAStringSet",
+      "topics": [
+        "addListNameToReads"
+      ]
+    },
+    {
+      "page": "annotateSites",
+      "title": "Find the 5' primers and add results to SampleInfo object.",
+      "topics": [
+        "annotateSites"
+      ]
+    },
+    {
+      "page": "blatListedSet",
+      "title": "Align a listed DNAStringSet to a reference using gfClient or standalone BLAT.",
+      "topics": [
+        "blatListedSet"
+      ]
+    },
+    {
+      "page": "blatSeqs",
+      "title": "Align sequences using BLAT.",
+      "topics": [
+        "blatSeqs"
+      ]
+    },
+    {
+      "page": "chunkize",
+      "title": "Breaks an object into chunks of N size.",
+      "topics": [
+        "chunkize"
+      ]
+    },
+    {
+      "page": "clusterSites",
+      "title": "Cluster/Correct values within a window based on their frequency given discrete factors",
+      "topics": [
+        "clusterSites"
+      ]
+    },
+    {
+      "page": "crossOverCheck",
+      "title": "Remove values/positions which are overlapping between discrete groups based on their frequency.",
+      "topics": [
+        "crossOverCheck"
+      ]
+    },
+    {
+      "page": "dereplicateReads",
+      "title": "Removes duplicate sequences from DNAStringSet object.",
+      "topics": [
+        "dereplicateReads"
+      ]
+    },
+    {
+      "page": "doRCtest",
+      "title": "Test if pattern aligns better in +/- orientation.",
+      "topics": [
+        "doRCtest"
+      ]
+    },
+    {
+      "page": "extractFeature",
+      "title": "Extract a specific feature/attribute of the sampleInfo object.",
+      "topics": [
+        "extractFeature"
+      ]
+    },
+    {
+      "page": "extractSeqs",
+      "title": "Extract sequences for a feature in the sampleInfo object.",
+      "topics": [
+        "extractSeqs"
+      ]
+    },
+    {
+      "page": "findAndRemoveVector",
+      "title": "Find and trim vector sequence from reads.",
+      "topics": [
+        "findAndRemoveVector"
+      ]
+    },
+    {
+      "page": "findAndTrimSeq",
+      "title": "Find and trim a short pattern sequence from the subject.",
+      "topics": [
+        "findAndTrimSeq"
+      ]
+    },
+    {
+      "page": "findBarcodes",
+      "title": "Demultiplex reads by their barcodes",
+      "topics": [
+        "decodeByBarcode",
+        "findBarcodes"
+      ]
+    },
+    {
+      "page": "findIntegrations",
+      "title": "Find the integration sites and add results to SampleInfo object.",
+      "topics": [
+        "findIntegrations"
+      ]
+    },
+    {
+      "page": "findLinkers",
+      "title": "Find the 3' linkers and add results to SampleInfo object.",
+      "topics": [
+        "findLinkers"
+      ]
+    },
+    {
+      "page": "findLTRs",
+      "title": "Find the 5' LTRs and add results to SampleInfo object.",
+      "topics": [
+        "findLTRs"
+      ]
+    },
+    {
+      "page": "findPrimers",
+      "title": "Find the 5' primers and add results to SampleInfo object.",
+      "topics": [
+        "findPrimers"
+      ]
+    },
+    {
+      "page": "findVector",
+      "title": "Find vector DNA in reads and add results to SampleInfo object.",
+      "topics": [
+        "findVector"
+      ]
+    },
+    {
+      "page": "getIntegrationSites",
+      "title": "Obtain integration sites from BLAT output",
+      "topics": [
+        "getIntegrationSites"
+      ]
+    },
+    {
+      "page": "getSectorsForSamples",
+      "title": "Get sectors for samples defined in the sampleInfo object.",
+      "topics": [
+        "getSectorsForSamples"
+      ]
+    },
+    {
+      "page": "getSonicAbund",
+      "title": "Calculate breakpoint/sonic abundance of integration sites in a population",
+      "topics": [
+        "getSonicAbund"
+      ]
+    },
+    {
+      "page": "hiReadsProcessor",
+      "title": "Functions to process LM-PCR reads from 454/Illumina data",
+      "topics": [
+        "hiReadsProcessor-package",
+        "hiReadsProcessor"
+      ]
+    },
+    {
+      "page": "isuSites",
+      "title": "Bin values or make ISUs by assigning a unique ID to them within discrete factors.",
+      "topics": [
+        "isuSites"
+      ]
+    },
+    {
+      "page": "otuSites",
+      "title": "Bin values or make OTUs by assigning a unique ID to them within discrete factors.",
+      "topics": [
+        "otuSites"
+      ]
+    },
+    {
+      "page": "pairUpAlignments",
+      "title": "Pair up alignments in a GRanges object",
+      "topics": [
+        "pairUpAlignments"
+      ]
+    },
+    {
+      "page": "pairwiseAlignSeqs",
+      "title": "Align a short pattern to variable length target sequences.",
+      "topics": [
+        "pairwiseAlignSeqs"
+      ]
+    },
+    {
+      "page": "primerIDAlignSeqs",
+      "title": "Align a short pattern with PrimerID to variable length target sequences.",
+      "topics": [
+        "primerIDAlignSeqs"
+      ]
+    },
+    {
+      "page": "psl",
+      "title": "PSL file output",
+      "topics": [
+        "psl"
+      ]
+    },
+    {
+      "page": "pslCols",
+      "title": "Return PSL file columns with classes",
+      "topics": [
+        "pslCols"
+      ]
+    },
+    {
+      "page": "pslToRangedObject",
+      "title": "Convert psl dataframe to GRanges",
+      "topics": [
+        "pslToRangedObject"
+      ]
+    },
+    {
+      "page": "read.BAMasPSL",
+      "title": "Reads a BAM/SAM file and converts it into a PSL like format.",
+      "topics": [
+        "read.BAMasPSL"
+      ]
+    },
+    {
+      "page": "read.blast8",
+      "title": "Read blast8 file(s) outputted by BLAT",
+      "topics": [
+        "read.blast8"
+      ]
+    },
+    {
+      "page": "read.psl",
+      "title": "Read PSL file(s) outputted by BLAT",
+      "topics": [
+        "read.psl"
+      ]
+    },
+    {
+      "page": "read.sampleInfo",
+      "title": "Read a sample information file and format appropriate metadata.",
+      "topics": [
+        "read.sampleInfo"
+      ]
+    },
+    {
+      "page": "read.SeqFolder",
+      "title": "Read contents of a sequencing folder and make a SimpleList object",
+      "topics": [
+        "read.SeqFolder"
+      ]
+    },
+    {
+      "page": "read.seqsFromSector",
+      "title": "Read fasta/fastq given the path or sampleInfo object.",
+      "topics": [
+        "read.seqsFromSector"
+      ]
+    },
+    {
+      "page": "removeReadsWithNs",
+      "title": "Remove sequences with ambiguous nucleotides.",
+      "topics": [
+        "removeReadsWithNs"
+      ]
+    },
+    {
+      "page": "replicateReads",
+      "title": "Replicate sequences from DNAStringSet object using counts identifier or vector",
+      "topics": [
+        "replicateReads"
+      ]
+    },
+    {
+      "page": "sampleSummary",
+      "title": "Simple summary of a sampleInfo object.",
+      "topics": [
+        "sampleSummary"
+      ]
+    },
+    {
+      "page": "seqProps",
+      "title": "Sample Integration Sites Sequencing Data",
+      "topics": [
+        "seqProps"
+      ]
+    },
+    {
+      "page": "splitByBarcode",
+      "title": "Split DNAStringSet object using first X number of bases defined by a vector.",
+      "topics": [
+        "splitByBarcode"
+      ]
+    },
+    {
+      "page": "splitSeqsToFiles",
+      "title": "Split DNA sequences into smaller files.",
+      "topics": [
+        "splitSeqsToFiles"
+      ]
+    },
+    {
+      "page": "startgfServer",
+      "title": "Start/Stop a gfServer instance",
+      "topics": [
+        "startgfServer",
+        "stopgfServer"
+      ]
+    },
+    {
+      "page": "trimSeqs",
+      "title": "Trim sequences from a specific side.",
+      "topics": [
+        "trimSeqs"
+      ]
+    },
+    {
+      "page": "troubleshootLinkers",
+      "title": "Compare LTRed/Primed sequences to all linkers.",
+      "topics": [
+        "troubleshootLinkers"
+      ]
+    },
+    {
+      "page": "vpairwiseAlignSeqs",
+      "title": "Align a short pattern to variable length target sequences.",
+      "topics": [
+        "vpairwiseAlignSeqs"
+      ]
+    },
+    {
+      "page": "write.listedDNAStringSet",
+      "title": "Write a fasta file per sample in parallel",
+      "topics": [
+        "write.listedDNAStringSet"
+      ]
+    },
+    {
+      "page": "write.psl",
+      "title": "Write PSL file from dataframe or GRanges",
+      "topics": [
+        "write.psl"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/hiReadsProcessor/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "BSgenome",
+    "cellranger",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "dplyr",
+    "farver",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "hiAnnotator",
+    "hms",
+    "httr",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "prettyunits",
+    "progress",
+    "pwalign",
+    "R6",
+    "RColorBrewer",
+    "RCurl",
+    "readxl",
+    "rematch",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "sonicLength",
+    "SparseArray",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "Tutorial.Rmd",
+      "filename": "Tutorial.html",
+      "title": "Using hiReadsProcessor",
+      "engine": "knitr::knitr",
+      "headings": [
+        "Introduction",
+        "Quick hiReadsProcessor tutorial.",
+        "Step 1: Loading the tools",
+        "Step 2: Processing the data",
+        "Read the data + metadata files",
+        "Demultiplex reads",
+        "Detect primers",
+        "Detect LTR edge",
+        "Detect vector sequence...if any!",
+        "Detect Linker adaptors",
+        "Detect integration sites",
+        "Obtain summary",
+        "Detailed hiReadsProcessor tutorial.",
+        "Sequencing Run related functions",
+        "Reads related functions",
+        "Alignment functions",
+        "Alignment related functions",
+        "Integration Site functions",
+        "Utility functions",
+        "Session Info"
+      ],
+      "created": "2014-07-17 15:16:11",
+      "modified": "2017-09-12 21:07:53",
+      "commits": 4
+    }
+  ],
+  "_score": 3.1760912590556813,
+  "_indexed": false,
+  "_nocasepkg": "hireadsprocessor",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:35:25.000Z",
+      "distro": "noble",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "cf465b8a69f8e7c73e18602d1367ffad329dcaef14fff5fdaf2e0316dbc5edec",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:35:51.000Z",
+      "distro": "noble",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "656a8e7b4a2374515670b0f8097d03839990aa8e0365df108c8c6f7e99ea4a78",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:34:13.000Z",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "5b9f7a6a22e8ecc534481f1ff537d1d743dfb9980ca7d39764654996941e89ed",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:33:45.000Z",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "d93a8ff25fc9029ec5d8c6093350af4a87fadaf23509fe04864e46ba71ff290a",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:34:53.000Z",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "b91aa48fb1086c29db3a0e1374c4c832517f289ccc705b150fb4248abcb8a9ea",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:33:37.000Z",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "c359f7d4fff7fa6bc4e8adb4a4be7cfec07152ebf08edcb21d5430f62e65a811",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:34:08.000Z",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "fdcd71d91f9c6db819b0992ceb30cd056e80a4c681ff59605767e82835f2b6fc",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.46.0",
+      "date": "2026-02-22T09:33:46.000Z",
+      "commit": "8ccca6df3b66eaa9e640da79ee11e940f36b72f1",
+      "fileid": "3b20238c3d779f4848ecf71d59f79a0463f088700ac3c1ea9416ded71e1260b9",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274490433"
+    }
+  ]
+}

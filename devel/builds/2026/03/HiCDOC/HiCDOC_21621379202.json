@@ -1,0 +1,953 @@
+{
+  "Package": "HiCDOC",
+  "Title": "A/B compartment detection and differential analysis",
+  "Version": "1.13.0",
+  "Date": "2025-07-22",
+  "Authors@R": "c(\nperson(\"Kurylo\", \"Cyril\", email = \"cyril.kurylo@inrae.fr\", role = c(\"aut\")),\nperson(\"Zytnicki\", \"Matthias\", email = \"matthias.zytnicki@inrae.fr\", role = c(\"aut\")),\nperson(\"Foissac\", \"Sylvain\", email = \"sylvain.foissac@inrae.fr\", role = c(\"aut\")),\nperson(\"Maign\u00e9\", \"\u00c9lise\", email = \"elise.maigne@inrae.fr\", role = c(\"aut\", \"cre\")))",
+  "Description": "HiCDOC normalizes intrachromosomal Hi-C matrices, uses\nunsupervised learning to predict A/B compartments from multiple\nreplicates, and detects significant compartment changes between\nexperiment conditions. It provides a collection of functions\nassembled into a pipeline to filter and normalize the data,\npredict the compartments and visualize the results. It accepts\nseveral type of data: tabular `.tsv` files, Cooler `.cool` or\n`.mcool` files, Juicer `.hic` files or HiC-Pro `.matrix` and\n`.bed` files.",
+  "License": "LGPL-3",
+  "Encoding": "UTF-8",
+  "SystemRequirements": "C++11",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "HiC, DNA3DStructure, Normalization, Sequencing, Software,\nClustering",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/mzytnicki/HiCDOC",
+  "BugReports": "https://github.com/mzytnicki/HiCDOC/issues",
+  "Config/pak/sysreqs": "libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:17:41 UTC",
+  "RemoteUrl": "https://github.com/bioc/HiCDOC",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-03 07:43:31 UTC",
+    "User": "root"
+  },
+  "Author": "Kurylo Cyril [aut],\nZytnicki Matthias [aut],\nFoissac Sylvain [aut],\nMaign\u00e9 \u00c9lise [aut, cre]",
+  "Maintainer": "Maign\u00e9 \u00c9lise <elise.maigne@inrae.fr>",
+  "MD5sum": "25a1782156174fedf4420cb4396b46dd",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "HiCDOC_1.13.0.tar.gz",
+  "_fileid": "bc81f3122664079b058cc2ec18b94d8887b466714489aca6a32ef90672b41a47",
+  "_filesize": 3477881,
+  "_sha256": "bc81f3122664079b058cc2ec18b94d8887b466714489aca6a32ef90672b41a47",
+  "_created": "2026-02-03T07:43:31.000Z",
+  "_published": "2026-02-03T07:54:45.047Z",
+  "_jobs": [
+    {
+      "job": 62311511902,
+      "time": 193,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5353876185"
+    },
+    {
+      "job": 62311511940,
+      "time": 373,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5353903496"
+    },
+    {
+      "job": 62311511905,
+      "time": 469,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5353917056"
+    },
+    {
+      "job": 62311511933,
+      "time": 378,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5353904161"
+    },
+    {
+      "job": 62311511923,
+      "time": 466,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5353916911"
+    },
+    {
+      "job": 62311511898,
+      "time": 337,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5353896946"
+    },
+    {
+      "job": 62311511910,
+      "time": 604,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5353938194"
+    },
+    {
+      "job": 62311511899,
+      "time": 315,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5353894215"
+    },
+    {
+      "job": 62311511911,
+      "time": 501,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5353923665"
+    },
+    {
+      "job": 62311036472,
+      "time": 358,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5353848358"
+    },
+    {
+      "job": 62311511888,
+      "time": 162,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5353871476"
+    },
+    {
+      "job": 62311511885,
+      "time": 427,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5353910887"
+    },
+    {
+      "job": 62311511945,
+      "time": 483,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5353921034"
+    },
+    {
+      "job": 62311511893,
+      "time": 449,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5353914163"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/HiCDOC",
+  "_commit": {
+    "id": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751061
+  },
+  "_maintainer": {
+    "name": "Maign\u00e9 \u00c9lise",
+    "email": "elise.maigne@inrae.fr",
+    "login": "emaigne",
+    "uuid": 29623754
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "InteractionSet",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.8",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "pbapply",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "cowplot",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "multiHiCcompare",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-20",
+      "n": 3
+    },
+    {
+      "week": "2025-29",
+      "n": 1
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.12.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "hic",
+    "dna3dstructure",
+    "normalization",
+    "sequencing",
+    "software",
+    "clustering",
+    "zlib",
+    "cpp"
+  ],
+  "_stars": 4,
+  "_contributors": [
+    {
+      "user": "emaigne",
+      "count": 483,
+      "uuid": 29623754
+    },
+    {
+      "user": "mzytnicki",
+      "count": 85,
+      "uuid": 34034101
+    },
+    {
+      "user": "chbk",
+      "count": 69,
+      "uuid": 7478535
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "cmdoret",
+      "count": 5,
+      "uuid": 22558602
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 308,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/HiCDOC"
+  },
+  "_devurl": "https://github.com/mzytnicki/hicdoc",
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/HiCDOC.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/mzytnicki/hicdoc",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "chromosomes",
+    "compartments",
+    "concordances",
+    "defaultHiCDOCParameters",
+    "detectCompartments",
+    "differences",
+    "filterSmallChromosomes",
+    "filterSparseReplicates",
+    "filterWeakPositions",
+    "HiCDOC",
+    "HiCDOCDataSetFromCool",
+    "HiCDOCDataSetFromHiC",
+    "HiCDOCDataSetFromHiCPro",
+    "HiCDOCDataSetFromTabular",
+    "normalizeBiologicalBiases",
+    "normalizeDistanceEffect",
+    "normalizeTechnicalBiases",
+    "parameters",
+    "parameters<-",
+    "plotCentroids",
+    "plotCompartmentChanges",
+    "plotCompartments",
+    "plotConcordanceDifferences",
+    "plotConcordances",
+    "plotDistanceEffect",
+    "plotInteractions",
+    "plotSelfInteractionRatios",
+    "reduceHiCDOCDataSet",
+    "sampleConditions",
+    "sampleReplicates",
+    "show"
+  ],
+  "_datasets": [
+    {
+      "name": "exampleHiCDOCDataSet",
+      "title": "Example HiCDOCDataSet.",
+      "object": "exampleHiCDOCDataSet",
+      "file": "exampleHiCDOCDataSet.rda",
+      "class": [
+        "HiCDOCDataSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "exampleHiCDOCDataSetProcessed",
+      "title": "Example HiCDOCDataSet, filtered, normalized and with compartements detected.",
+      "object": "exampleHiCDOCDataSetProcessed",
+      "file": "exampleHiCDOCDataSetProcessed.rda",
+      "class": [
+        "HiCDOCDataSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "HiCDOC-package",
+      "title": "A/B compartment detection and differential analysis",
+      "topics": [
+        "HiCDOC-package"
+      ]
+    },
+    {
+      "page": "detectCompartments",
+      "title": "A and B compartments detection and differences across conditions.",
+      "topics": [
+        "detectCompartments"
+      ]
+    },
+    {
+      "page": "exampleHiCDOCDataSet",
+      "title": "Example HiCDOCDataSet.",
+      "topics": [
+        "exampleHiCDOCDataSet"
+      ]
+    },
+    {
+      "page": "exampleHiCDOCDataSetProcessed",
+      "title": "Example HiCDOCDataSet, filtered, normalized and with compartements detected.",
+      "topics": [
+        "exampleHiCDOCDataSetProcessed"
+      ]
+    },
+    {
+      "page": "filterSmallChromosomes",
+      "title": "Filter small chromosomes.",
+      "topics": [
+        "filterSmallChromosomes"
+      ]
+    },
+    {
+      "page": "filterSparseReplicates",
+      "title": "Filter sparse replicates.",
+      "topics": [
+        "filterSparseReplicates"
+      ]
+    },
+    {
+      "page": "filterWeakPositions",
+      "title": "Filter weak positions.",
+      "topics": [
+        "filterWeakPositions"
+      ]
+    },
+    {
+      "page": "HiCDOC",
+      "title": "Default pipeline to run on the HiCDOC analysis.",
+      "topics": [
+        "HiCDOC"
+      ]
+    },
+    {
+      "page": "HiCDOCDataSet-class",
+      "title": "'HiCDOCDataSet' S4 class.",
+      "topics": [
+        "HiCDOCDataSet",
+        "HiCDOCDataSet-class"
+      ]
+    },
+    {
+      "page": "HiCDOCDataSet-methods",
+      "title": "Methods to access a 'HiCDOCDataSet' components.",
+      "topics": [
+        "chromosomes",
+        "chromosomes,HiCDOCDataSet-method",
+        "compartments",
+        "compartments,HiCDOCDataSet-method",
+        "concordances",
+        "concordances,HiCDOCDataSet-method",
+        "differences",
+        "differences,HiCDOCDataSet-method",
+        "HiCDOCDataSet-methods",
+        "sampleConditions",
+        "sampleConditions,HiCDOCDataSet-method",
+        "sampleReplicates",
+        "sampleReplicates,HiCDOCDataSet-method",
+        "show,HiCDOCDataSet-method"
+      ]
+    },
+    {
+      "page": "HiCDOCDataSet-parameters",
+      "title": "Access the parameters of a 'HiCDOCDataSet'.",
+      "topics": [
+        "defaultHiCDOCParameters",
+        "HiCDOCDataSet-parameters",
+        "parameters",
+        "parameters,HiCDOCDataSet-method",
+        "parameters<-",
+        "parameters<-,HiCDOCDataSet-method"
+      ]
+    },
+    {
+      "page": "HiCDOCDataSetFromCool",
+      "title": "'HiCDOCDataSet' constructor from Cool files.",
+      "topics": [
+        "HiCDOCDataSetFromCool"
+      ]
+    },
+    {
+      "page": "HiCDOCDataSetFromHiC",
+      "title": "'HiCDOCDataSet' constructor from HiC files.",
+      "topics": [
+        "HiCDOCDataSetFromHiC"
+      ]
+    },
+    {
+      "page": "HiCDOCDataSetFromHiCPro",
+      "title": "'HiCDOCDataSet' constructor from HiC-Pro files.",
+      "topics": [
+        "HiCDOCDataSetFromHiCPro"
+      ]
+    },
+    {
+      "page": "HiCDOCDataSetFromTabular",
+      "title": "'HiCDOCDataSet' constructor from a tabular file.",
+      "topics": [
+        "HiCDOCDataSetFromTabular"
+      ]
+    },
+    {
+      "page": "normalizeBiologicalBiases",
+      "title": "Normalize biological biases.",
+      "topics": [
+        "normalizeBiologicalBiases"
+      ]
+    },
+    {
+      "page": "normalizeDistanceEffect",
+      "title": "Normalize distance effect.",
+      "topics": [
+        "normalizeDistanceEffect"
+      ]
+    },
+    {
+      "page": "normalizeTechnicalBiases",
+      "title": "Normalize technical biases.",
+      "topics": [
+        "normalizeTechnicalBiases"
+      ]
+    },
+    {
+      "page": "plotCentroids",
+      "title": "Plot centroids.",
+      "topics": [
+        "plotCentroids"
+      ]
+    },
+    {
+      "page": "plotCompartmentChanges",
+      "title": "Plot compartment changes.",
+      "topics": [
+        "plotCompartmentChanges"
+      ]
+    },
+    {
+      "page": "plotCompartments",
+      "title": "Plot A/B compartments.",
+      "topics": [
+        "plotCompartments"
+      ]
+    },
+    {
+      "page": "plotConcordanceDifferences",
+      "title": "Plot the distribution of concordance differences.",
+      "topics": [
+        "plotConcordanceDifferences"
+      ]
+    },
+    {
+      "page": "plotConcordances",
+      "title": "Plot concordances.",
+      "topics": [
+        "plotConcordances"
+      ]
+    },
+    {
+      "page": "plotDistanceEffect",
+      "title": "Plot the distance effect.",
+      "topics": [
+        "plotDistanceEffect"
+      ]
+    },
+    {
+      "page": "plotInteractions",
+      "title": "Plot interaction matrices.",
+      "topics": [
+        "plotInteractions"
+      ]
+    },
+    {
+      "page": "plotSelfInteractionRatios",
+      "title": "Plot boxplots of self interaction ratios.",
+      "topics": [
+        "plotSelfInteractionRatios"
+      ]
+    },
+    {
+      "page": "reduceHiCDOCDataSet",
+      "title": "Reduce a 'HiCDOCDataSet'.",
+      "topics": [
+        "reduceHiCDOCDataSet"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/HiCDOC/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "aggregation",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "calibrate",
+    "cli",
+    "codetools",
+    "cowplot",
+    "cpp11",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "dplyr",
+    "edgeR",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomeInfoDbData",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "HiCcompare",
+    "httr",
+    "InteractionSet",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mgcv",
+    "mime",
+    "multiHiCcompare",
+    "nlme",
+    "openssl",
+    "pbapply",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "qqman",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libz",
+      "package": "zlib1g",
+      "headers": "zlib1g-dev",
+      "source": "zlib",
+      "version": "1:1.3.dfsg-3.1ubuntu2.1",
+      "name": "zlib",
+      "homepage": "http://zlib.net/",
+      "description": "compression library - runtime"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "HiCDOC.Rmd",
+      "filename": "HiCDOC.html",
+      "title": "HiCDOC",
+      "author": "Cyril Kurylo & Matthias Zytnicki & Sylvain Foissac & Elise Maign\u00e9",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Importing Hi-C data",
+        "Tabular files",
+        "Cooler files",
+        "Juicer files",
+        "HiC-Pro files",
+        "Running the HiCDOC pipeline",
+        "Filtering data",
+        "Normalizing biases",
+        "Technical biases",
+        "Biological biases",
+        "Distance effect",
+        "Predicting compartments and differences",
+        "Visualizing data and results",
+        "Sanity checks",
+        "PCA checks",
+        "Compartment assignemnt",
+        "Warnings",
+        "Session info",
+        "References"
+      ],
+      "created": "2020-10-08 09:52:54",
+      "modified": "2023-09-06 08:37:20",
+      "commits": 32
+    }
+  ],
+  "_score": 5.982271233039569,
+  "_indexed": true,
+  "_nocasepkg": "hicdoc",
+  "_universes": [
+    "bioc",
+    "emaigne",
+    "mzytnicki"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:46:41.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "4f6d2d9e4d9cfccba49f47c291cfe87f34bbc7ad60b8a728d09afe1a094a30c7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:47:36.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "63cb19a9fd75b1b2cf945da6854a06edda311a68c66d64994772e5e0a70ea0b5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:46:44.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "c0ca77c6d42a504f7bb58d96dca3ca7fd2bfefcb74155218eca417792990f3be",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:47:05.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "14f00b969de92cbdbf9ce697eeb2d80e52ee1d9a41f69b8129cfc9a5b0c7543d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:45:37.000Z",
+      "arch": "aarch64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "96d870bf1c9877d34f985265caf05f8be8570960dce8b5fa02850f2bee32f935",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:47:10.000Z",
+      "arch": "x86_64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "117a4f397e04172de7e82261a1650fa6293c59bff04d173a9360f1845c056790",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:46:14.000Z",
+      "arch": "aarch64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "823104febd6f2f8d359d17c74a097344a22db00a3c8671a17600586c93af5ff7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:46:55.000Z",
+      "arch": "x86_64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "d8e6e400365ace13572c32107545d811f7c53380c30021860a17b3cb72959d9b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:46:49.000Z",
+      "arch": "emscripten",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "21488e9cc0bf8b73baec115f174ca5e399bf1315b61145a939ebc89cdc4506ff",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:45:56.000Z",
+      "arch": "x86_64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "6f45d6421bc943745c662da486c4160c57b6c0fb27f3118cffb9f78b19d66cb4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:46:55.000Z",
+      "arch": "x86_64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "4557a2c96b5a581203a4fc04956334c62a43945a53c4be09205394c64df155f7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T07:45:47.000Z",
+      "arch": "x86_64",
+      "commit": "6ee95b833e4f864f4be610b722e08cba0be38a1a",
+      "fileid": "2fde9448c9ad51f85f78b90c0762fb4c175cf0dc162bd8a9de7109eb1245bebc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621379202"
+    }
+  ]
+}

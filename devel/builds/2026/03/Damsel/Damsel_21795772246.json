@@ -1,0 +1,870 @@
+{
+  "Package": "Damsel",
+  "Type": "Package",
+  "Title": "Damsel: an end to end analysis of DamID",
+  "Version": "1.7.0",
+  "Authors@R": "person(\"Caitlin\", \"Page\", \nemail = \"caitlin.page@petermac.org\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0009-0004-7949-8143\"))",
+  "Description": "Damsel provides an end to end analysis of DamID data.\nDamsel takes bam files from Dam-only control and fusion samples\nand counts the reads matching to each GATC region. edgeR is\nutilised to identify regions of enrichment in the fusion\nrelative to the control. Enriched regions are combined into\npeaks, and are associated with nearby genes. Damsel allows for\nIGV style plots to be built as the results build, inspired by\nggcoverage, and using the functionality and layering ability of\nggplot2. Damsel also conducts gene ontology testing with bias\ncorrection through goseq, and future versions of Damsel will\nalso incorporate motif enrichment analysis. Overall, Damsel is\nthe first package allowing for an end to end analysis with\nvisual capabilities. The goal of Damsel was to bring all the\nanalysis into one place, and allow for exploratory analysis\nwithin R.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Config/testthat/edition": "3",
+  "RoxygenNote": "7.3.1",
+  "BugReports": "https://github.com/Oshlack/Damsel",
+  "URL": "https://github.com/Oshlack/Damsel",
+  "biocViews": "DifferentialMethylation, PeakDetection, GenePrediction,\nGeneSetEnrichment",
+  "VignetteBuilder": "knitr",
+  "LazyData": "FALSE",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev perl xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:29:38 UTC",
+  "RemoteUrl": "https://github.com/bioc/Damsel",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-08 09:29:31 UTC",
+    "User": "root"
+  },
+  "Author": "Caitlin Page [aut, cre] (ORCID:\n<https://orcid.org/0009-0004-7949-8143>)",
+  "Maintainer": "Caitlin Page <caitlin.page@petermac.org>",
+  "MD5sum": "be6a30757eff201a90cad0e839c80997",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "Damsel_1.7.0.tar.gz",
+  "_fileid": "338630db2d1757f15f7ada2a2c23e6784ca5a3f67c4bae4de23557a7b11a681a",
+  "_filesize": 3371462,
+  "_sha256": "338630db2d1757f15f7ada2a2c23e6784ca5a3f67c4bae4de23557a7b11a681a",
+  "_created": "2026-02-08T09:29:31.000Z",
+  "_published": "2026-02-08T09:40:40.750Z",
+  "_jobs": [
+    {
+      "job": 62883311876,
+      "time": 292,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421772451"
+    },
+    {
+      "job": 62883311886,
+      "time": 450,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421781799"
+    },
+    {
+      "job": 62883311883,
+      "time": 457,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421782236"
+    },
+    {
+      "job": 62883311901,
+      "time": 227,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421789355"
+    },
+    {
+      "job": 62883311885,
+      "time": 285,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421792277"
+    },
+    {
+      "job": 62883010276,
+      "time": 557,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5421755285"
+    },
+    {
+      "job": 62883311874,
+      "time": 297,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421772715"
+    },
+    {
+      "job": 62883311906,
+      "time": 340,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421775347"
+    },
+    {
+      "job": 62883311908,
+      "time": 320,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5421774201"
+    },
+    {
+      "job": 62883311907,
+      "time": 335,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421774946"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/Damsel",
+  "_commit": {
+    "id": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751778
+  },
+  "_maintainer": {
+    "name": "Caitlin Page",
+    "email": "caitlin.page@petermac.org",
+    "login": "caitlinpage",
+    "uuid": 100269204
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "ggbio",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "goseq",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "plyranges",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsubread",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "biomaRt",
+      "role": "Suggests"
+    },
+    {
+      "package": "biovizBase",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Dmelanogaster.UCSC.dm6",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "limma",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Dm.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Dmelanogaster.UCSC.dm6.ensGene",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "differentialmethylation",
+    "peakdetection",
+    "geneprediction",
+    "genesetenrichment"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "caitlinpage",
+      "count": 405,
+      "uuid": 100269204
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "lonsbio",
+      "count": 1,
+      "uuid": 2631592
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 230,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/Damsel"
+  },
+  "_devurl": "https://github.com/oshlack/damsel",
+  "_searchresults": 20,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/Damsel.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/oshlack/damsel",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "%>%",
+    "annotatePeaksGenes",
+    "collateGenes",
+    "countBamInGATC",
+    "geom_dm",
+    "geom_gatc",
+    "geom_genes_tx",
+    "geom_peak",
+    "getGatcRegions",
+    "identifyPeaks",
+    "makeDGE",
+    "plotCorrHeatmap",
+    "plotCounts",
+    "plotCountsDistribution",
+    "plotCountsInPeaks",
+    "plotGeneOntology",
+    "plotWrap",
+    "random_counts",
+    "random_edgeR_results",
+    "random_regions",
+    "testDmRegions",
+    "testGeneOntology"
+  ],
+  "_datasets": [
+    {
+      "name": "dros_counts",
+      "title": "Example Drosophila DamID counts",
+      "object": "dros_counts",
+      "file": "dros_counts.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "X",
+        "Position",
+        "seqnames",
+        "start",
+        "end",
+        "width",
+        "strand",
+        "dam_1_SRR7948872.BAM",
+        "sd_1_SRR7948874.BAM",
+        "dam_2_SRR7948876.BAM",
+        "sd_2_SRR7948877.BAM"
+      ],
+      "rows": 80000,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "annotatePeaksGenes",
+      "title": "Annotation of peaks and genes",
+      "topics": [
+        "annotatePeaksGenes"
+      ]
+    },
+    {
+      "page": "collateGenes",
+      "title": "Get list of genes",
+      "topics": [
+        "collateGenes"
+      ]
+    },
+    {
+      "page": "countBamInGATC",
+      "title": "Obtain region counts for BAM files",
+      "topics": [
+        "countBamInGATC"
+      ]
+    },
+    {
+      "page": "dros_counts",
+      "title": "Example Drosophila DamID counts",
+      "topics": [
+        "dros_counts"
+      ]
+    },
+    {
+      "page": "geom_dm",
+      "title": "Plotting results from differential methylation testing",
+      "topics": [
+        "geom_dm"
+      ]
+    },
+    {
+      "page": "geom_gatc",
+      "title": "Plot for a GATC track",
+      "topics": [
+        "geom_gatc"
+      ]
+    },
+    {
+      "page": "geom_genes_tx",
+      "title": "Plotting genes",
+      "topics": [
+        "geom_genes_tx"
+      ]
+    },
+    {
+      "page": "geom_peak",
+      "title": "Plotting peaks",
+      "topics": [
+        "geom_peak"
+      ]
+    },
+    {
+      "page": "getGatcRegions",
+      "title": "Extract GATC regions",
+      "topics": [
+        "getGatcRegions"
+      ]
+    },
+    {
+      "page": "identifyPeaks",
+      "title": "Identify peaks from differentially methylated regions",
+      "topics": [
+        "identifyPeaks"
+      ]
+    },
+    {
+      "page": "makeDGE",
+      "title": "Create DGE object for differential testing",
+      "topics": [
+        "makeDGE"
+      ]
+    },
+    {
+      "page": "plotCorrHeatmap",
+      "title": "Plot correlation heatmap",
+      "topics": [
+        "plotCorrHeatmap"
+      ]
+    },
+    {
+      "page": "plotCounts",
+      "title": "Plot for counts for all samples across a given region",
+      "topics": [
+        "plotCounts"
+      ]
+    },
+    {
+      "page": "plotCountsDistribution",
+      "title": "Plot distribution of counts `plotCountsDistribution` plots the distribution of counts enabling the comparison of different samples. Can highlight the different library sizes of the samples.",
+      "topics": [
+        "plotCountsDistribution"
+      ]
+    },
+    {
+      "page": "plotCountsInPeaks",
+      "title": "Plotting the",
+      "topics": [
+        "plotCountsInPeaks"
+      ]
+    },
+    {
+      "page": "plotGeneOntology",
+      "title": "Plot gene ontology results",
+      "topics": [
+        "plotGeneOntology"
+      ]
+    },
+    {
+      "page": "plotWrap",
+      "title": "Wrapper function for plotting",
+      "topics": [
+        "plotWrap"
+      ]
+    },
+    {
+      "page": "random_counts",
+      "title": "Create example counts",
+      "topics": [
+        "random_counts"
+      ]
+    },
+    {
+      "page": "random_edgeR_results",
+      "title": "Create example edgeR results",
+      "topics": [
+        "random_edgeR_results"
+      ]
+    },
+    {
+      "page": "random_regions",
+      "title": "Create example regions",
+      "topics": [
+        "random_regions"
+      ]
+    },
+    {
+      "page": "testDmRegions",
+      "title": "Differential testing",
+      "topics": [
+        "testDmRegions"
+      ]
+    },
+    {
+      "page": "testGeneOntology",
+      "title": "Gene ontology analysis",
+      "topics": [
+        "testGeneOntology"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/Damsel/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "BiasedUrn",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dichromat",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "edgeR",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreach",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "geneLenDataBase",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggbio",
+    "ggplot2",
+    "GlobalOptions",
+    "glue",
+    "GO.db",
+    "goseq",
+    "graph",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mime",
+    "nlme",
+    "nnet",
+    "openssl",
+    "OrganismDbi",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "plyranges",
+    "png",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RBGL",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "Rsubread",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "shape",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "txdbmaker",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "Damsel-workflow.Rmd",
+      "filename": "Damsel-workflow.html",
+      "title": "Damsel-workflow",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "1. Introduction",
+        "Installation",
+        "Processing the BAM files",
+        "Introducing the GATC region file",
+        "Extracting the counts within the GATC regions",
+        "Correlation analysis of samples",
+        "Visualisation of coverage",
+        "Differential methylation analysis",
+        "Setting up edgeR analysis",
+        "Examining the data - multidimensional scaling plot",
+        "Identifying differentially methylated regions",
+        "Identifying peaks (bridges)",
+        "Aggregating the regions",
+        "Plotting",
+        "Identifying genes associated with peaks",
+        "Extract genes",
+        "A TxDb object",
+        "Accessing the biomaRt resource",
+        "Annotating genes to peaks",
+        "Interpreting results and plotting",
+        "Gene ontology",
+        "GO analysis with goseq",
+        "Appendix"
+      ],
+      "created": "2024-03-04 11:35:23",
+      "modified": "2024-10-01 02:02:17",
+      "commits": 6
+    }
+  ],
+  "_score": 4.6020599913279625,
+  "_indexed": true,
+  "_nocasepkg": "damsel",
+  "_universes": [
+    "bioc",
+    "caitlinpage",
+    "oshlack"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:34:56.000Z",
+      "distro": "noble",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "8b7c48d158563180dc5479baf5d361cd0a23d83245b729ce05e11e416073afa0",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:35:10.000Z",
+      "distro": "noble",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "6cfa1b574a9848b214f152fe8edcfaf1b04685cceb7d509614dcb4e463e01f3c",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:37:40.000Z",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "118e449779fdb4d74af4471a07159754fdfa7f1632ad90f501de93dfcb530e28",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:37:50.000Z",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "fa7bd0f47ab9622653fee7f73dbd379b89c8188265c58fe6195822ba93033e1e",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:34:44.000Z",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "703c701738796308e5b92e327b4389cfd12b51927467f46ed9325c0a6ebb1fae",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:32:36.000Z",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "47915c635853c26e471d44204289d27908aab06c17e89fb341ae61cb18c070d2",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:32:32.000Z",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "55aa5685990e164f4142380c795a40051aff0298b70975c72b3e8cffc6969c22",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.7.0",
+      "date": "2026-02-08T09:32:27.000Z",
+      "commit": "4c35e04dba13e3451332bc8c8eb2d60a363ec718",
+      "fileid": "e1e0bc05e1f31775787989365515ed5f0d658b65ef51dc7f9ddbc111af1cba74",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795772246"
+    }
+  ]
+}

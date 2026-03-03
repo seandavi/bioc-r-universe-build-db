@@ -1,0 +1,684 @@
+{
+  "Package": "specL",
+  "Type": "Package",
+  "Title": "specL - Prepare Peptide Spectrum Matches for Use in Targeted\nProteomics",
+  "Version": "1.45.0",
+  "Authors@R": "c(person(\"Christian\", \"Panse\", \nemail = \"cp@fgcz.ethz.ch\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0003-1975-3064\")),\nperson(\"Jonas\", \"Grossmann\",\nemail = \"jg@fgcz.ethz.ch\",\nrole = \"aut\",\ncomment = c(ORCID = \"0000-0002-6899-9020\")),\nperson(\"Christian\", \"Trachsel\",\nrole = \"aut\"),\nperson(\"Witold E.\", \"Wolski\",\nemail = \"wew@fgcz.ethz.ch\",\nrole = \"ctb\"))",
+  "Description": "provides a functions for generating spectra libraries that\ncan be used for MRM SRM MS workflows in proteomics. The package\nprovides a BiblioSpec reader, a function which can add the\nprotein information using a FASTA formatted amino acid file,\nand an export method for using the created library in the\nSpectronaut software. The package is developed, tested and used\nat the Functional Genomics Center Zurich <https://fgcz.ch>.",
+  "License": "GPL-3",
+  "URL": "http://bioconductor.org/packages/specL/",
+  "Collate": "read.bibliospec.R genSwathIonLib.R annotate.protein_id.R\nAllGenerics.R specL.R specLSet.R cdsw.R zzz.R",
+  "biocViews": "MassSpectrometry, Proteomics",
+  "LazyData": "true",
+  "BugReports": "https://github.com/fgcz/specL/issues",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:22:54 UTC",
+  "RemoteUrl": "https://github.com/bioc/specL",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-05 08:49:47 UTC",
+    "User": "root"
+  },
+  "Author": "Christian Panse [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-1975-3064>),\nJonas Grossmann [aut] (ORCID: <https://orcid.org/0000-0002-6899-9020>),\nChristian Trachsel [aut],\nWitold E. Wolski [ctb]",
+  "Maintainer": "Christian Panse <cp@fgcz.ethz.ch>",
+  "MD5sum": "8dc743f2e71ce969bf9735736c8d34de",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "specL_1.45.0.tar.gz",
+  "_fileid": "e13f9841998dc2af992bd526433c04c40dd768c1a4b9fb5cd122907184e95a02",
+  "_filesize": 1729896,
+  "_sha256": "e13f9841998dc2af992bd526433c04c40dd768c1a4b9fb5cd122907184e95a02",
+  "_created": "2026-02-05T08:49:47.000Z",
+  "_published": "2026-02-05T08:53:43.950Z",
+  "_jobs": [
+    {
+      "job": 62593515345,
+      "time": 156,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5387185353"
+    },
+    {
+      "job": 62593515349,
+      "time": 172,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5387188434"
+    },
+    {
+      "job": 62593515392,
+      "time": 197,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5387193598"
+    },
+    {
+      "job": 62593515358,
+      "time": 124,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5387179330"
+    },
+    {
+      "job": 62593515341,
+      "time": 100,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5387174810"
+    },
+    {
+      "job": 62593198011,
+      "time": 200,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5387155210"
+    },
+    {
+      "job": 62593515394,
+      "time": 112,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5387177119"
+    },
+    {
+      "job": 62593515411,
+      "time": 109,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5387176578"
+    },
+    {
+      "job": 62593515409,
+      "time": 88,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5387172812"
+    },
+    {
+      "job": 62593515458,
+      "time": 105,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5387175939"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 4,
+    "note": 19
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/specL",
+  "_commit": {
+    "id": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761747774
+  },
+  "_maintainer": {
+    "name": "Christian Panse",
+    "email": "cp@fgcz.ethz.ch",
+    "login": "cpanse",
+    "mastodon": "@hb9feb@fosstodon.org",
+    "linkedin": "in/cpanse",
+    "orcid": "0000-0003-1975-3064",
+    "uuid": 4901987
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "DBI",
+      "version": ">= 0.5",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "version": ">= 3.3",
+      "role": "Depends"
+    },
+    {
+      "package": "protViz",
+      "version": ">= 0.7",
+      "role": "Depends"
+    },
+    {
+      "package": "RSQLite",
+      "version": ">= 1.1",
+      "role": "Depends"
+    },
+    {
+      "package": "seqinr",
+      "version": ">= 3.3",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "version": ">= 2.2",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.15",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "version": ">= 0.4",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.45.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.44.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "massspectrometry",
+    "proteomics",
+    "dda",
+    "dia",
+    "mass-spectrometry"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "cpanse",
+      "count": 126,
+      "uuid": 4901987
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "dtenenba",
+      "count": 10,
+      "uuid": 2286826
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "kayla-morrell",
+      "count": 1,
+      "uuid": 32339524
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 354,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/specL"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/fgcz/specl",
+  "_searchresults": 10,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/specL.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/fgcz/specl",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotate.protein_id",
+    "cdsw",
+    "generate.consensus",
+    "genSwathIonLib",
+    "getProteinPeptideTable",
+    "ionlibrary",
+    "merge.specLSet",
+    "plot",
+    "plot.psm",
+    "plot.psmSet",
+    "read.bibliospec",
+    "rt.input",
+    "rt.normalized",
+    "show",
+    "summary",
+    "summary.psmSet",
+    "write.spectronaut"
+  ],
+  "_datasets": [
+    {
+      "name": "iRTpeptides",
+      "title": "iRT peptides - independent retention time peptides",
+      "object": "iRTpeptides",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "peptide",
+        "rt"
+      ],
+      "rows": 31,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "ms1.p2069",
+      "title": "ms1 mass",
+      "object": "ms1_p2069",
+      "class": [
+        "numeric"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "peptideStd",
+      "title": "Peptide standard",
+      "object": "peptideStd",
+      "class": [
+        "psmSet"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": false
+    },
+    {
+      "name": "peptideStd.redundant",
+      "title": "Peptide standard",
+      "object": "peptideStd",
+      "class": [
+        "psmSet"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "annotate.protein_id",
+      "title": "Annotate protein_id",
+      "topics": [
+        "annotate.protein_id"
+      ]
+    },
+    {
+      "page": "cdsw",
+      "title": "Generate Dynamic SWATH Window",
+      "topics": [
+        "cdsw",
+        "generateDynamicSwathWindow"
+      ]
+    },
+    {
+      "page": "genSwathIonLib",
+      "title": "Spectrum library generator for SWATH analysis",
+      "topics": [
+        "genSwathIonLib",
+        "MRM",
+        "specL",
+        "SWATH",
+        "swath"
+      ]
+    },
+    {
+      "page": "iRTpeptides",
+      "title": "iRT peptides - independent retention time peptides",
+      "topics": [
+        "iRT",
+        "irt",
+        "iRTpeptides"
+      ]
+    },
+    {
+      "page": "ms1.p2069",
+      "title": "ms1 mass",
+      "topics": [
+        "ms1.p2069"
+      ]
+    },
+    {
+      "page": "peptideStd",
+      "title": "Peptide standard",
+      "topics": [
+        "peptideStd",
+        "peptideStd.redundant"
+      ]
+    },
+    {
+      "page": "plot-methods",
+      "title": "Method for Function 'plot' in Package 'specL'",
+      "topics": [
+        "plot,ANY-method",
+        "plot,specL-methods",
+        "plot,specLSet-methods",
+        "plot-methods"
+      ]
+    },
+    {
+      "page": "read.bibliospec",
+      "title": "BiblioSpec Reader",
+      "topics": [
+        "BiblioSpec",
+        "bibliospec",
+        "plot.psm",
+        "plot.psmSet",
+        "read.bibliospec",
+        "Skyline",
+        "skyline",
+        "summary.psmSet"
+      ]
+    },
+    {
+      "page": "show-methods",
+      "title": "Methods for Function 'show' in Package 'specL' ~~",
+      "topics": [
+        "show,ANY-method",
+        "show-methods"
+      ]
+    },
+    {
+      "page": "specL-class",
+      "title": "Class '\"specL\"'",
+      "topics": [
+        "plot,specL-method",
+        "show,specL-method",
+        "specL-class",
+        "write.spectronaut,specL-method"
+      ]
+    },
+    {
+      "page": "specLSet-class",
+      "title": "Class '\"specLSet\"'",
+      "topics": [
+        "generate.consensus",
+        "generate.consensus,specLSet-method",
+        "getProteinPeptideTable",
+        "getProteinPeptideTable,specLSet-method",
+        "ionlibrary",
+        "ionlibrary,specLSet-method",
+        "merge.specLSet",
+        "merge.specLSet,specLSet-method",
+        "plot",
+        "plot,specLSet-method",
+        "rt.input",
+        "rt.input,specLSet-method",
+        "rt.normalized",
+        "rt.normalized,specLSet-method",
+        "show,specLSet-method",
+        "specLSet-class",
+        "summary,specLSet-method",
+        "write.spectronaut,specLSet-method"
+      ]
+    },
+    {
+      "page": "write.spectronaut-methods",
+      "title": "Methods for Function 'write.spectronaut' in Package 'specL'",
+      "topics": [
+        "write.spectronaut",
+        "write.spectronaut,ANY-method",
+        "write.spectronaut,specL-methods",
+        "write.spectronaut,specLSet-methods"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/specL/raw/HEAD/README.md",
+  "_rundeps": [
+    "ade4",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "cpp11",
+    "DBI",
+    "fastmap",
+    "glue",
+    "lattice",
+    "lifecycle",
+    "MASS",
+    "memoise",
+    "nlme",
+    "pixmap",
+    "pkgconfig",
+    "plogr",
+    "protViz",
+    "Rcpp",
+    "RcppArmadillo",
+    "rlang",
+    "RSQLite",
+    "segmented",
+    "seqinr",
+    "sp",
+    "vctrs"
+  ],
+  "_vignettes": [
+    {
+      "source": "report.Rmd",
+      "filename": "report.html",
+      "title": "specL automatic report",
+      "author": "Christian Panse, Witold E. Wolski",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Requirements",
+        "Input",
+        "Parameter",
+        "Define the fragment ions of interest",
+        "Read the sqlite files",
+        "Protein (re)-annotation",
+        "Peptides used for RT normalization",
+        "Generate the ion library",
+        "Library Generation Summary",
+        "Output",
+        "Remarks",
+        "Session info",
+        "References"
+      ],
+      "created": "2017-04-14 12:59:00",
+      "modified": "2022-12-07 07:07:48",
+      "commits": 12
+    },
+    {
+      "source": "specL.Rmd",
+      "filename": "specL.html",
+      "title": "Prepare Peptide Spectrum Matches for Use in Targeted Proteomics",
+      "author": "Christian Panse, Christian Trachsel, Jonas Grossmann, Witold E. Wolski",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Workflow",
+        "Prologue - How to get the input for the specL package?",
+        "Read from redundant plus non-redundant blib files",
+        "Read from Mascot result files",
+        "Annotate protein IDs using FASTA",
+        "Generate the spectral library (assay)",
+        "Normalizing the retention time using iRT peptides",
+        "Generate the spectral library having no iRTs",
+        "Write output to file",
+        "Epilogue",
+        "What can I do with that library now?",
+        "Benchmark",
+        "Acknowledgement",
+        "TODO for next releases",
+        "Session information",
+        "References"
+      ],
+      "created": "2022-12-07 07:58:07",
+      "modified": "2022-12-08 14:13:07",
+      "commits": 4
+    }
+  ],
+  "_score": 5.380211241711606,
+  "_indexed": true,
+  "_nocasepkg": "specl",
+  "_universes": [
+    "bioc",
+    "cpanse",
+    "fgcz"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:52:28.000Z",
+      "distro": "noble",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "93538bd3abe0b95b4e7d886836246496f852ca3307186aa2e09cc5073a728877",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:52:54.000Z",
+      "distro": "noble",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "9754283adbce7b8e8c8e6b7943b81a0b370bcb020b7733baeb38d8cf027b694b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:51:40.000Z",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "ee40ff896884abd4c69e468d72653aebb53ff2d1c4f4fc5055d6e2fbd60e105c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:51:25.000Z",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "27616c96918c29922003040335e7776befb36d1d3e262798b928037c344f0b61",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:51:57.000Z",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "a2f660094af04280d64554fd0e32d80e317bb91b8477096b5b2d494a1fd89e34",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:51:17.000Z",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "92b25feadf15b1a016b80eb33da235641999785aa5d5a50a644cb835afa33c98",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:50:59.000Z",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "221ff5ef5a806782f1bf6267ef22f3dee02f36a0dd996696a8e3f9c4b3a50df8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.45.0",
+      "date": "2026-02-05T08:51:14.000Z",
+      "commit": "fcfdc2870afe8d8bdb642971ef8e93e5a7fb4b17",
+      "fileid": "7064ece9e9ca30b418f15079e085fc9c5265d7ed63141716b8c9a3b5a9b12d15",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21704818565"
+    }
+  ]
+}

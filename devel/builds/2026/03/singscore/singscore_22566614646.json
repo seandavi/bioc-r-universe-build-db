@@ -1,0 +1,940 @@
+{
+  "Package": "singscore",
+  "Type": "Package",
+  "Title": "Rank-based single-sample gene set scoring method",
+  "Version": "1.31.0",
+  "Authors@R": "c(\nperson(\"Dharmesh\",\"Bhuva\", \"D.\", email = \"bhuva.d@wehi.edu.au\", role = c(\"aut\"), comment = c(ORCID = '0000-0002-6398-9157')),\nperson(\"Ruqian\", \"Lyu\", email = \"ruqianl@student.unimelb.edu.au\", role = c(\"aut\", \"ctb\")),\nperson(\"Momeneh\", \"Foroutan\", email = \"foroutan.m@wehi.edu.au\", role = c(\"aut\", \"ctb\"), comment = c(ORCID = '0000-0002-1440-0457')),\nperson(\"Malvika\", \"Kharbanda\", email = \"kharbanda.m@wehi.edu.au\", role = c(\"aut\", \"cre\"), comment = c(ORCID = '0000-0001-9726-3023'))\n)",
+  "Description": "A simple single-sample gene signature scoring method that\nuses rank-based statistics to analyze the sample's gene\nexpression profile. It scores the expression activities of gene\nsets at a single-sample level.",
+  "biocViews": "Software, GeneExpression, GeneSetEnrichment",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "RoxygenNote": "7.2.0",
+  "Roxygen": "list(markdown = TRUE)",
+  "Collate": "'singscore.R' 'rankAndScoring.R' 'permuTest.R'\n'generatNullGeneric.R' 'multiScoreGeneric.R' 'plot.R'\n'plotRankDensityGeneric.R' 'rankGenesGeneric.R'\n'simpleScoreGeneric.R' 'stableGenes.R'",
+  "VignetteBuilder": "knitr",
+  "URL": "https://davislaboratory.github.io/singscore",
+  "BugReports": "https://github.com/DavisLaboratory/singscore/issues",
+  "Config/pak/sysreqs": "make libicu-dev libpng-dev libxml2-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:45:11 UTC",
+  "RemoteUrl": "https://github.com/bioc/singscore",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-03-02 08:02:27 UTC",
+    "User": "root"
+  },
+  "Author": "Dharmesh D. Bhuva [aut] (ORCID:\n<https://orcid.org/0000-0002-6398-9157>),\nRuqian Lyu [aut, ctb],\nMomeneh Foroutan [aut, ctb] (ORCID:\n<https://orcid.org/0000-0002-1440-0457>),\nMalvika Kharbanda [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-9726-3023>)",
+  "Maintainer": "Malvika Kharbanda <kharbanda.m@wehi.edu.au>",
+  "MD5sum": "b063df373bd5602b2f99ab723db60c65",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "singscore_1.31.0.tar.gz",
+  "_fileid": "aa475fdecdcc09b77f6ee93c5d03538dc400f674aac54abe260a9e14e307624d",
+  "_filesize": 3004902,
+  "_sha256": "aa475fdecdcc09b77f6ee93c5d03538dc400f674aac54abe260a9e14e307624d",
+  "_created": "2026-03-02T08:02:27.000Z",
+  "_published": "2026-03-02T08:09:48.472Z",
+  "_jobs": [
+    {
+      "job": 65364667123,
+      "time": 204,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5717252874"
+    },
+    {
+      "job": 65364667080,
+      "time": 375,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5717283637"
+    },
+    {
+      "job": 65364667076,
+      "time": 360,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5717281033"
+    },
+    {
+      "job": 65364667125,
+      "time": 199,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5717251797"
+    },
+    {
+      "job": 65364667091,
+      "time": 179,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5717248292"
+    },
+    {
+      "job": 65364067844,
+      "time": 393,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5717215811"
+    },
+    {
+      "job": 65364667107,
+      "time": 174,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5717247260"
+    },
+    {
+      "job": 65364667120,
+      "time": 277,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5717265651"
+    },
+    {
+      "job": 65364667126,
+      "time": 347,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5717278306"
+    },
+    {
+      "job": 65364667138,
+      "time": 269,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5717264140"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/singscore",
+  "_commit": {
+    "id": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749111
+  },
+  "_maintainer": {
+    "name": "Malvika Kharbanda",
+    "email": "kharbanda.m@wehi.edu.au",
+    "orcid": "0000-0001-9726-3023"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "GSEABase",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "pkgdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "hexbin",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 5,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-42",
+      "n": 2
+    },
+    {
+      "week": "2025-43",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.31.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.30.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "geneexpression",
+    "genesetenrichment",
+    "bioinformatics"
+  ],
+  "_stars": 47,
+  "_contributors": [
+    {
+      "user": "ruqianl",
+      "count": 47,
+      "uuid": 12887308
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "bhuvad",
+      "count": 6,
+      "uuid": 30132854
+    },
+    {
+      "user": "malvikakh",
+      "count": 6,
+      "uuid": 36639840
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "ahmohamed",
+      "count": 1,
+      "uuid": 6384340
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 2466,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/singscore"
+  },
+  "_mentions": 13,
+  "_devurl": "https://github.com/davislaboratory/singscore",
+  "_pkgdown": "https://davislaboratory.github.io/singscore",
+  "_searchresults": 163,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/singscore.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/davislaboratory/singscore",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "generateNull",
+    "getPvals",
+    "getStableGenes",
+    "multiScore",
+    "plotDispersion",
+    "plotNull",
+    "plotRankDensity",
+    "plotScoreLandscape",
+    "projectScoreLandscape",
+    "rankGenes",
+    "simpleScore"
+  ],
+  "_datasets": [
+    {
+      "name": "scoredf_ccle_epi",
+      "title": "Pre-computed scores of the CCLE dataset against an epithelial gene signature",
+      "object": "scoredf_ccle_epi",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "TotalScore",
+        "TotalDispersion"
+      ],
+      "rows": 55,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "scoredf_ccle_mes",
+      "title": "Pre-computed scores of the CCLE dataset against a mesenchymal gene signature",
+      "object": "scoredf_ccle_mes",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "TotalScore",
+        "TotalDispersion"
+      ],
+      "rows": 55,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "scoredf_tcga_epi",
+      "title": "Pre-computed scores of the TCGA breast cancer gene expression matrix against an epithelial signature",
+      "object": "scoredf_tcga_epi",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "TotalScore",
+        "TotalDispersion"
+      ],
+      "rows": 1119,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "scoredf_tcga_mes",
+      "title": "Pre-computed scores of the TCGA breast cancer gene expression matrix against a mesenchymal signature",
+      "object": "scoredf_tcga_mes",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "TotalScore",
+        "TotalDispersion"
+      ],
+      "rows": 1119,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "tgfb_expr_10_se",
+      "title": "An example gene expression dataset",
+      "object": "tgfb_expr_10_se",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "tgfb_gs_dn",
+      "title": "Gene set of down-regulated genes for the TGFb-induced EMT gene signature",
+      "object": "tgfb_gs_dn",
+      "class": [
+        "GeneSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "tgfb_gs_up",
+      "title": "Gene set of up-regulated genes for the TGFb-induced EMT gene signature",
+      "object": "tgfb_gs_up",
+      "class": [
+        "GeneSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "toy_expr_se",
+      "title": "A toy gene expression dataset of two samples",
+      "object": "toy_expr_se",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "toy_gs_dn",
+      "title": "A gene set object of down-regulated genes for the toy dataset",
+      "object": "toy_gs_dn",
+      "class": [
+        "GeneSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "toy_gs_up",
+      "title": "A gene set object of up-regulated genes for the toy dataset",
+      "object": "toy_gs_up",
+      "class": [
+        "GeneSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "generateNull",
+      "title": "Permutation test for the derived scores of each sample",
+      "topics": [
+        "generateNull",
+        "generateNull,GeneSet,ANY-method",
+        "generateNull,GeneSet,GeneSet-method",
+        "generateNull,vector,ANY-method",
+        "generateNull,vector,vector-method"
+      ]
+    },
+    {
+      "page": "getPvals",
+      "title": "Estimate the empirical p-values",
+      "topics": [
+        "getPvals"
+      ]
+    },
+    {
+      "page": "getStableGenes",
+      "title": "Get a list of stably expressed genes",
+      "topics": [
+        "getStableGenes"
+      ]
+    },
+    {
+      "page": "multiScore",
+      "title": "single-sample gene-set scoring method for multiple signatures",
+      "topics": [
+        "multiScore",
+        "multiScore,matrix,GeneSetCollection,GeneSetCollection-method",
+        "multiScore,matrix,GeneSetCollection,missing-method",
+        "multiScore,matrix,list,list-method",
+        "multiScore,matrix,list,missing-method"
+      ]
+    },
+    {
+      "page": "plotDispersion",
+      "title": "Plot the score v.s. despersion for all samples",
+      "topics": [
+        "plotDispersion"
+      ]
+    },
+    {
+      "page": "plotNull",
+      "title": "Plot the empirically estimated null distribution and associated p-values",
+      "topics": [
+        "plotNull"
+      ]
+    },
+    {
+      "page": "plotRankDensity",
+      "title": "Plot the densities of ranks for one sample",
+      "topics": [
+        "plotRankDensity",
+        "plotRankDensity,ANY,GeneSet,GeneSet-method",
+        "plotRankDensity,ANY,GeneSet,missing-method",
+        "plotRankDensity,ANY,vector,missing-method",
+        "plotRankDensity,ANY,vector,vector-method"
+      ]
+    },
+    {
+      "page": "plotScoreLandscape",
+      "title": "Plot landscape of two gene signatures scores",
+      "topics": [
+        "plotScoreLandscape"
+      ]
+    },
+    {
+      "page": "projectScoreLandscape",
+      "title": "Project data on the landscape plot obtained from 'plotScoreLandscape()'",
+      "topics": [
+        "projectScoreLandscape"
+      ]
+    },
+    {
+      "page": "rankGenes",
+      "title": "Rank genes by the gene expression intensities",
+      "topics": [
+        "rankGenes",
+        "rankGenes,data.frame-method",
+        "rankGenes,DGEList-method",
+        "rankGenes,ExpressionSet-method",
+        "rankGenes,matrix-method",
+        "rankGenes,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "scoredf_ccle_epi",
+      "title": "Pre-computed scores of the CCLE dataset against an epithelial gene signature",
+      "topics": [
+        "scoredf_ccle_epi"
+      ]
+    },
+    {
+      "page": "scoredf_ccle_mes",
+      "title": "Pre-computed scores of the CCLE dataset against a mesenchymal gene signature",
+      "topics": [
+        "scoredf_ccle_mes"
+      ]
+    },
+    {
+      "page": "scoredf_tcga_epi",
+      "title": "Pre-computed scores of the TCGA breast cancer gene expression matrix against an epithelial signature",
+      "topics": [
+        "scoredf_tcga_epi"
+      ]
+    },
+    {
+      "page": "scoredf_tcga_mes",
+      "title": "Pre-computed scores of the TCGA breast cancer gene expression matrix against a mesenchymal signature",
+      "topics": [
+        "scoredf_tcga_mes"
+      ]
+    },
+    {
+      "page": "simpleScore",
+      "title": "single-sample gene-set scoring method",
+      "topics": [
+        "simpleScore",
+        "simpleScore,matrix,GeneSet,GeneSet-method",
+        "simpleScore,matrix,GeneSet,missing-method",
+        "simpleScore,matrix,vector,missing-method",
+        "simpleScore,matrix,vector,vector-method"
+      ]
+    },
+    {
+      "page": "singscore",
+      "title": "singscore: A package for deriving gene-set scores at a single sample level",
+      "topics": [
+        "singscore-package",
+        "singscore"
+      ]
+    },
+    {
+      "page": "tgfb_expr_10_se",
+      "title": "An example gene expression dataset",
+      "topics": [
+        "tgfb_expr_10_se"
+      ]
+    },
+    {
+      "page": "tgfb_gs_dn",
+      "title": "Gene set of down-regulated genes for the TGFb-induced EMT gene signature",
+      "topics": [
+        "tgfb_gs_dn"
+      ]
+    },
+    {
+      "page": "tgfb_gs_up",
+      "title": "Gene set of up-regulated genes for the TGFb-induced EMT gene signature",
+      "topics": [
+        "tgfb_gs_up"
+      ]
+    },
+    {
+      "page": "toy_expr_se",
+      "title": "A toy gene expression dataset of two samples",
+      "topics": [
+        "toy_expr_se"
+      ]
+    },
+    {
+      "page": "toy_gs_dn",
+      "title": "A gene set object of down-regulated genes for the toy dataset",
+      "topics": [
+        "toy_gs_dn"
+      ]
+    },
+    {
+      "page": "toy_gs_up",
+      "title": "A gene set object of up-regulated genes for the toy dataset",
+      "topics": [
+        "toy_gs_up"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/singscore/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/singscore/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "annotate",
+    "AnnotationDbi",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "bslib",
+    "cachem",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "ggrepel",
+    "glue",
+    "graph",
+    "GSEABase",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "promises",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "reshape",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "singscore.Rmd",
+      "filename": "singscore.html",
+      "title": "singscore",
+      "author": "Ruqian Lyu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Install \"singscore\" R package",
+        "Sample scoring",
+        "Sample scoring with a reduced number of measurements",
+        "Visualisation and diagnostic functions",
+        "Plot rank densities",
+        "Plot dispersions of scores",
+        "Plot score landscape",
+        "Estimate empirical p-values for the obtained scores in individual samples and plot null distributions",
+        "Permutation test",
+        "Estimate empirical p-values",
+        "Plot null distribution",
+        "More on the datasets",
+        "Session Info",
+        "References"
+      ],
+      "created": "2017-11-15 08:13:34",
+      "modified": "2022-05-12 02:43:32",
+      "commits": 20
+    }
+  ],
+  "_score": 10.656489776310995,
+  "_indexed": true,
+  "_nocasepkg": "singscore",
+  "_universes": [
+    "bioc",
+    "davislaboratory"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:06:18.000Z",
+      "distro": "noble",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "408da5feb59476b266dc516095097168b18376a0fa9b8ffe5cfb7fdcff89a1aa",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:06:14.000Z",
+      "distro": "noble",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "6ba12b4eea492083b4e7077d34a273b67082c4536fc068b35a2f851965ef6446",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:04:40.000Z",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "3079511dd27d4f9fc157d3fb4213a8be3c12ca36358936750adee8a5dd1c4bf6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:04:32.000Z",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "f2770d83078ddb617a8e446aae8909082a8e581b9a0a2b83003be76e5d15c1d8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:06:05.000Z",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "40e8a519a8d191fd79aedb156dc3615ef29870f41801c3c7e0cc8cee28db85b8",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:04:33.000Z",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "618e2aa944038089e2ae006415df6609dc1e8caba3d3f0086357c41f51c8dcaf",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:05:50.000Z",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "952af0b67f8ca44164a74812c182829fd40d3fed98362f0d5b201e2861582b87",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.31.0",
+      "date": "2026-03-02T08:04:32.000Z",
+      "commit": "c86aa468fae210e3f88e03a39f96fa1af03aa058",
+      "fileid": "bc1a2a15214463e3b230298f6cca36f64cb105155af4c430d75cd70b3ea8de1c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22566614646"
+    }
+  ]
+}

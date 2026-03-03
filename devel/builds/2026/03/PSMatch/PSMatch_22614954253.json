@@ -1,0 +1,775 @@
+{
+  "Package": "PSMatch",
+  "Title": "Handling and Managing Peptide Spectrum Matches",
+  "Version": "1.15.1",
+  "Authors@R": "c(person(given = \"Laurent\", family = \"Gatto\",\nemail = \"laurent.gatto@uclouvain.be\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-1520-2268\")),\nperson(given = \"Johannes\", family = \"Rainer\",\nemail = \"Johannes.Rainer@eurac.edu\",\nrole = \"aut\",\ncomment = c(ORCID = \"0000-0002-6977-7147\")),\nperson(given = \"Sebastian\", family = \"Gibb\",\nemail = \"mail@sebastiangibb.de\",\nrole = \"aut\",\ncomment = c(ORCID = \"0000-0001-7406-4443\")),\nperson(given = \"Samuel\", family = \"Wieczorek\",\nemail = \"samuel.wieczorek@cea.fr\",\nrole = \"ctb\"),\nperson(given = \"Thomas\", family = \"Burger\",\nemail = \"thomas.burger@cea.fr\",\nrole = \"ctb\"),\nperson(given = \"Guillaume\", family = \"Deflandre\",\nemail = \"guillaume.deflandre@uclouvain.be\",\nrole = \"ctb\",\ncomment = c(ORCID = \"0009-0008-1257-2416\")))",
+  "Description": "The PSMatch package helps proteomics practitioners to\nload, handle and manage Peptide Spectrum Matches. It provides\nfunctions to model peptide-protein relations as adjacency\nmatrices and connected components, visualise these as graphs\nand make informed decision about shared peptide filtering. The\npackage also provides functions to calculate and visualise MS2\nfragment ions.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/RforMassSpectrometry/PSM/issues",
+  "URL": "https://github.com/RforMassSpectrometry/PSM",
+  "biocViews": "Infrastructure, Proteomics, MassSpectrometry",
+  "Config/pak/sysreqs": "libglpk-dev make libicu-dev libxml2-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-12-20 13:41:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/PSMatch",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "f5d3f6931aa85045106345194ed9a39378208e02",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-03-03 08:42:55 UTC",
+    "User": "root"
+  },
+  "Author": "Laurent Gatto [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-1520-2268>),\nJohannes Rainer [aut] (ORCID: <https://orcid.org/0000-0002-6977-7147>),\nSebastian Gibb [aut] (ORCID: <https://orcid.org/0000-0001-7406-4443>),\nSamuel Wieczorek [ctb],\nThomas Burger [ctb],\nGuillaume Deflandre [ctb] (ORCID:\n<https://orcid.org/0009-0008-1257-2416>)",
+  "Maintainer": "Laurent Gatto <laurent.gatto@uclouvain.be>",
+  "MD5sum": "28c9be2f02e85cc70ef6c93ff9b510f5",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "PSMatch_1.15.1.tar.gz",
+  "_fileid": "27f9f3a03a9baeba30758198521ff56adc469653039deafd4a81459c7b86d787",
+  "_filesize": 1138596,
+  "_sha256": "27f9f3a03a9baeba30758198521ff56adc469653039deafd4a81459c7b86d787",
+  "_created": "2026-03-03T08:42:55.000Z",
+  "_published": "2026-03-03T08:51:39.389Z",
+  "_jobs": [
+    {
+      "job": 65525990841,
+      "time": 258,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5737006683"
+    },
+    {
+      "job": 65525990843,
+      "time": 465,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5737055900"
+    },
+    {
+      "job": 65525990845,
+      "time": 431,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5737048550"
+    },
+    {
+      "job": 65525990840,
+      "time": 303,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5737017703"
+    },
+    {
+      "job": 65525990848,
+      "time": 223,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5736998791"
+    },
+    {
+      "job": 65525421463,
+      "time": 308,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5736947126"
+    },
+    {
+      "job": 65525990836,
+      "time": 213,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5736996031"
+    },
+    {
+      "job": 65525990884,
+      "time": 336,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5737026092"
+    },
+    {
+      "job": 65525990858,
+      "time": 390,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5737038721"
+    },
+    {
+      "job": 65525990857,
+      "time": 329,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5737024487"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/PSMatch",
+  "_commit": {
+    "id": "f5d3f6931aa85045106345194ed9a39378208e02",
+    "author": "Laurent Gatto <lgatto@protonmail.ch>",
+    "committer": "Laurent Gatto <lgatto@protonmail.ch>",
+    "message": "fix merge conflict\n",
+    "time": 1766238072
+  },
+  "_maintainer": {
+    "name": "Laurent Gatto",
+    "email": "laurent.gatto@uclouvain.be",
+    "login": "lgatto",
+    "mastodon": "@lgatto@fediscience.org",
+    "orcid": "0000-0002-1520-2268",
+    "uuid": 384198
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "S4Vectors",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Spectra",
+      "version": ">= 1.17.10",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "ProtGenerics",
+      "version": ">= 1.27.1",
+      "role": "Imports"
+    },
+    {
+      "package": "QFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "MsCoreUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "msdata",
+      "role": "Suggests"
+    },
+    {
+      "package": "rpx",
+      "role": "Suggests"
+    },
+    {
+      "package": "mzID",
+      "role": "Suggests"
+    },
+    {
+      "package": "mzR",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "factoextra",
+      "role": "Suggests"
+    },
+    {
+      "package": "vdiffr",
+      "version": ">= 1.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 39,
+  "_updates": [
+    {
+      "week": "2025-15",
+      "n": 9
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-31",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2025-51",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.15.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "proteomics",
+    "massspectrometry",
+    "mass-spectrometry",
+    "peptide-spectrum-matches"
+  ],
+  "_stars": 4,
+  "_contributors": [
+    {
+      "user": "lgatto",
+      "count": 288,
+      "uuid": 384198
+    },
+    {
+      "user": "guideflandre",
+      "count": 127,
+      "uuid": 37773040
+    },
+    {
+      "user": "jwokaty",
+      "count": 10,
+      "uuid": 1744257
+    },
+    {
+      "user": "sgibb",
+      "count": 4,
+      "uuid": 1828443
+    },
+    {
+      "user": "nturaga",
+      "count": 2,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 3580,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/PSMatch"
+  },
+  "_devurl": "https://github.com/rformassspectrometry/psm",
+  "_searchresults": 31,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/PSMatch.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/rformassspectrometry/psmatch",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "addFragments",
+    "adjacencyMatrix",
+    "calculateFragments",
+    "ccMatrix",
+    "connectedComponents",
+    "ConnectedComponents",
+    "defaultNeutralLoss",
+    "describePeptides",
+    "describeProteins",
+    "dims",
+    "filterPsmDecoy",
+    "filterPsmFdr",
+    "filterPsmRank",
+    "filterPSMs",
+    "filterPsmShared",
+    "getAminoAcids",
+    "getAtomicMass",
+    "labelFragments",
+    "makeAdjacencyMatrix",
+    "makePeptideProteinVector",
+    "ncols",
+    "nrows",
+    "plotAdjacencyMatrix",
+    "plotSpectraPTM",
+    "prioritiseConnectedComponents",
+    "prioritizeConnectedComponents",
+    "PSM",
+    "psmVariables",
+    "readPSMs",
+    "reduced",
+    "reduced<-",
+    "reducePSMs"
+  ],
+  "_help": [
+    {
+      "page": "adjacencyMatrix",
+      "title": "Convert to/from an adjacency matrix.",
+      "topics": [
+        "adjacencyMatrix",
+        "makeAdjacencyMatrix",
+        "makePeptideProteinVector",
+        "plotAdjacencyMatrix"
+      ]
+    },
+    {
+      "page": "calculateFragments",
+      "title": "Calculate ions produced by fragmentation with variable modifications",
+      "topics": [
+        "calculateFragments",
+        "calculateFragments,character,missing-method",
+        "defaultNeutralLoss",
+        "modificationPositions"
+      ]
+    },
+    {
+      "page": "ConnectedComponents",
+      "title": "Connected components",
+      "topics": [
+        "adjacencyMatrix,ConnectedComponents",
+        "adjacencyMatrix,ConnectedComponents-method",
+        "ccMatrix",
+        "ConnectedComponents",
+        "connectedComponents",
+        "ConnectedComponents-class",
+        "dims,ConnectedComponents",
+        "dims,ConnectedComponents-method",
+        "length,ConnectedComponents",
+        "length,ConnectedComponents-method",
+        "ncols,ConnectedComponents",
+        "ncols,ConnectedComponents-method",
+        "nrows,ConnectedComponents",
+        "nrows,ConnectedComponents-method",
+        "prioritiseConnectedComponents",
+        "prioritizeConnectedComponents",
+        "show,ConnectedComponents",
+        "[,ConnectedComponents,integer,ANY,ANY",
+        "[,ConnectedComponents,integer,ANY,ANY-method",
+        "[,ConnectedComponents,logical,ANY,ANY",
+        "[,ConnectedComponents,logical,ANY,ANY-method",
+        "[,ConnectedComponents,numeric,ANY,ANY",
+        "[,ConnectedComponents,numeric,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "describeProteins",
+      "title": "Describe protein and peptide compositions",
+      "topics": [
+        "describePeptides",
+        "describeProteins"
+      ]
+    },
+    {
+      "page": "filterPSMs",
+      "title": "Filter out unreliable PSMs.",
+      "topics": [
+        "filterPsmDecoy",
+        "filterPsmFdr",
+        "filterPsmRank",
+        "filterPSMs",
+        "filterPsmShared"
+      ]
+    },
+    {
+      "page": "getAminoAcids",
+      "title": "Amino acids",
+      "topics": [
+        "getAminoAcids"
+      ]
+    },
+    {
+      "page": "getAtomicMass",
+      "title": "Atomic mass.",
+      "topics": [
+        "getAtomicMass"
+      ]
+    },
+    {
+      "page": "labelFragments",
+      "title": "labels MS2 Fragments",
+      "topics": [
+        "addFragments",
+        "labelFragments"
+      ]
+    },
+    {
+      "page": "plotSpectraPTM",
+      "title": "Function to plot MS/MS spectra with PTMs",
+      "topics": [
+        "plotSpectraPTM"
+      ]
+    },
+    {
+      "page": "PSM",
+      "title": "A class for peptide-spectrum matches",
+      "topics": [
+        "adjacencyMatrix,PSM-method",
+        "PSM",
+        "PSM,character",
+        "PSM,data.frame",
+        "PSM,PSM",
+        "PSM-class",
+        "psmVariables",
+        "readPSMs",
+        "reduced",
+        "reduced<-",
+        "reducePSMs"
+      ]
+    },
+    {
+      "page": "PSMatch",
+      "title": "PSMatch: Handling and Managing Peptide Spectrum Matches",
+      "topics": [
+        "PSMatch-package",
+        "PSMatch"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/PSMatch/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationFilter",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocParallel",
+    "bslib",
+    "cachem",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "MetaboCoreUtils",
+    "mime",
+    "MsCoreUtils",
+    "MultiAssayExperiment",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "promises",
+    "ProtGenerics",
+    "purrr",
+    "QFeatures",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "Spectra",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "Fragments.Rmd",
+      "filename": "Fragments.html",
+      "title": "MS2 fragment ions",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Calculating fragment ions",
+        "Visualising fragment ions",
+        "Session information"
+      ],
+      "created": "2022-02-14 12:01:25",
+      "modified": "2025-08-01 08:29:54",
+      "commits": 4
+    },
+    {
+      "source": "AdjacencyMatrix.Rmd",
+      "filename": "AdjacencyMatrix.html",
+      "title": "Understanding protein groups with adjacency matrices",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Peptide-protein relation",
+        "Visualising adjacency matrices",
+        "Colouring the graph nodes",
+        "Colouring protein nodes",
+        "Colouring peptide nodes",
+        "Using quantitative data",
+        "Prioritising connected components",
+        "Session information"
+      ],
+      "created": "2022-02-09 09:07:54",
+      "modified": "2025-08-01 08:29:54",
+      "commits": 11
+    },
+    {
+      "source": "PSM.Rmd",
+      "filename": "PSM.html",
+      "title": "Working with PSM data",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation instructions",
+        "Introduction",
+        "Handling and processing identification data",
+        "Loading PSM data",
+        "Keeping all matches",
+        "Filtering data",
+        "Remove decoy hits",
+        "Keep first rank matches",
+        "Remove shared peptides",
+        "All filters in one function",
+        "The mzR and mzID parsers",
+        "Session information"
+      ],
+      "created": "2020-10-28 21:57:03",
+      "modified": "2022-03-20 18:21:47",
+      "commits": 10
+    }
+  ],
+  "_score": 9.271793074319557,
+  "_indexed": true,
+  "_nocasepkg": "psmatch",
+  "_universes": [
+    "bioc",
+    "lgatto",
+    "rformassspectrometry"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:47:43.000Z",
+      "distro": "noble",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "0a8619943b8c0091d1fa35ff0bf9d5c3a79c1b27cbaf96ef4c434fbd60fcc884",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:47:25.000Z",
+      "distro": "noble",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "5fb577da13453fb8f7167598ad82b97a738ef45d0f1eec2c948e128b77959012",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:45:43.000Z",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "2e510a7054627bf7487faf8784e72c6d455f6c94fd8dc8d25f5819aeaf278c56",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:45:04.000Z",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "4627751ddc310d423adf9544cf10cb51fd9dc444bee28f2f0e0a8b8a2e5c7f01",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:46:59.000Z",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "a1538451709cfce949a040656897b2b8ed677514960199eb203931918e060e8f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:45:28.000Z",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "3060de1fc8b4b10e4f4ca5ea73bc14b15689d4aaa98125b9e2039a68d51e2c1f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:46:16.000Z",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "11472355c00709bd1bf932b76577d43215e67eeb720957de5d4d8478f23c1353",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.15.1",
+      "date": "2026-03-03T08:45:25.000Z",
+      "commit": "f5d3f6931aa85045106345194ed9a39378208e02",
+      "fileid": "3989c9adcfdb9be41d40bc9782ea820669a645ca478d100b2eb116bf32be52a3",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22614954253"
+    }
+  ]
+}

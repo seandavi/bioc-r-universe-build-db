@@ -1,0 +1,759 @@
+{
+  "Package": "HiCPotts",
+  "Type": "Package",
+  "Title": "HiCPotts: Hierarchical Modeling to Identify and Correct Genomic\nBiases in Hi-C",
+  "Version": "1.1.0",
+  "Authors@R": "c(person(given = \"Itunu. Godwin\", family = \"Osuntoki\", email = \"hitunes4@gmail.com\", role = c(\"aut\", \"cre\"), \ncomment = c(ORCID = \"0009-0005-1037-9346\")),\nperson(given = \"Nicolae. Radu\", family = \"Zabet\", email = \"r.zabet@qmul.ac.uk\", role = \"aut\"))",
+  "Description": "The HiCPotts package provides a comprehensive Bayesian\nframework for analyzing Hi-C interaction data, integrating both\nspatial and genomic biases within a probabilistic modeling\nframework. At its core, HiCPotts leverages the Potts model (Wu,\n1982)\u2014a well-established graphical model\u2014to capture and\nquantify spatial dependencies across interaction loci arranged\non a genomic lattice. By treating each interaction as a\nspatially correlated random variable, the Potts model enables\nrobust segmentation of the genomic landscape into meaningful\ncomponents, such as noise, true signals, and false signals. To\nmodel the influence of various genomic biases, HiCPotts employs\na regression-based approach incorporating multiple covariates:\nGenomic distance (D): The distance between interacting loci,\nrecognized as a fundamental driver of contact frequency.\nGC-content (GC): The local GC composition around the\ninteracting loci, which can influence chromatin structure and\ninteraction patterns. Transposable elements (TEs): The presence\nand abundance of repetitive elements that may shape contact\nprobability through chromatin organization. Accessibility score\n(Acc): A measure of chromatin openness, informing how\naccessible certain genomic regions are to interaction. By\nembedding these covariates into a hierarchical mixture model,\nHiCPotts characterizes each interaction\u2019s probability of\nbelonging to one of several latent components. The model\nparameters, including regression coefficients, zero-inflation\nparameters (for ZIP/ZINB distributions), and dispersion terms\n(for NB/ZINB distributions), are inferred via a MCMC sampler.\nThis algorithm draws samples from the joint posterior\ndistribution, allowing for flexible posterior inference on\nmodel parameters and hidden states. From these posterior\nsamples, HiCPotts computes posterior means of regression\nparameters and other quantities of interest. These posterior\nestimates are then used to calculate the posterior\nprobabilities that assign each interaction to a specific\ncomponent. The resulting classification sheds light on the\nunderlying structure: distinguishing genuine high-confidence\ninteractions (signal) from background noise and potential false\nsignals, while simultaneously quantifying the impact of genomic\nbiases on observed interaction frequencies. In summary,\nHiCPotts seamlessly integrates spatial modeling, bias\ncorrection, and probabilistic classification into a unified\nBayesian inference framework. It provides rich posterior\nsummaries and interpretable, model-based assignments of\ninteraction states, enabling researchers to better understand\nthe interplay between genomic organization, biases, and spatial\ncorrelation in Hi-C data.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-21 07:00:29 UTC",
+    "User": "root"
+  },
+  "Config/testthat/edition": "3",
+  "VignetteBuilder": "knitr",
+  "biocViews": "StatisticalMethod, FunctionalGenomics, GenomeAnnotation,\nGenomeWideAssociation, PeakDetection, DataImport, Spatial,\nBayesian, Classification, HiddenMarkovModel, Regression",
+  "URL": "https://github.com/igosungithub/HiCPotts",
+  "BugReports": "https://github.com/igosungithub/HiCPotts/issues",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:37:09 UTC",
+  "RemoteUrl": "https://github.com/bioc/HiCPotts",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+  "Author": "Itunu. Godwin Osuntoki [aut, cre] (ORCID:\n<https://orcid.org/0009-0005-1037-9346>),\nNicolae. Radu Zabet [aut]",
+  "Maintainer": "Itunu. Godwin Osuntoki <hitunes4@gmail.com>",
+  "MD5sum": "52ab84ecbca2e2baf142caff2191de74",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "HiCPotts_1.1.0.tar.gz",
+  "_fileid": "a8cc2a0c919a9e2821cc2f4ff0bfa5cdfa4f44e88e522d6fb3580e7215713999",
+  "_filesize": 1812298,
+  "_sha256": "a8cc2a0c919a9e2821cc2f4ff0bfa5cdfa4f44e88e522d6fb3580e7215713999",
+  "_created": "2026-02-21T07:00:29.000Z",
+  "_published": "2026-02-21T07:11:56.082Z",
+  "_jobs": [
+    {
+      "job": 64378246247,
+      "time": 217,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600129041"
+    },
+    {
+      "job": 64378246263,
+      "time": 380,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600138545"
+    },
+    {
+      "job": 64378246264,
+      "time": 442,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600141764"
+    },
+    {
+      "job": 64378246258,
+      "time": 373,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600138111"
+    },
+    {
+      "job": 64378246261,
+      "time": 468,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600143136"
+    },
+    {
+      "job": 64378246254,
+      "time": 277,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600138363"
+    },
+    {
+      "job": 64378246252,
+      "time": 506,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5600149329"
+    },
+    {
+      "job": 64378246259,
+      "time": 243,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600137195"
+    },
+    {
+      "job": 64378246257,
+      "time": 489,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600150234"
+    },
+    {
+      "job": 64378037754,
+      "time": 363,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600115849"
+    },
+    {
+      "job": 64378246244,
+      "time": 190,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600127477"
+    },
+    {
+      "job": 64378246243,
+      "time": 408,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600139938"
+    },
+    {
+      "job": 64378246245,
+      "time": 399,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5600139361"
+    },
+    {
+      "job": 64378246248,
+      "time": 400,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600139487"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 5
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/HiCPotts",
+  "_commit": {
+    "id": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752229
+  },
+  "_maintainer": {
+    "name": "Itunu. Godwin Osuntoki",
+    "email": "hitunes4@gmail.com",
+    "login": "igosungithub",
+    "uuid": 85625734
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.11.0",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "strawr",
+      "role": "Imports"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Dmelanogaster.UCSC.dm6",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.30",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "version": ">= 2.10",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 3.5.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "reshape2",
+      "version": ">= 1.4.4",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-18",
+      "n": 4
+    },
+    {
+      "week": "2025-20",
+      "n": 5
+    },
+    {
+      "week": "2025-21",
+      "n": 5
+    },
+    {
+      "week": "2025-22",
+      "n": 10
+    },
+    {
+      "week": "2025-24",
+      "n": 7
+    },
+    {
+      "week": "2025-27",
+      "n": 3
+    },
+    {
+      "week": "2025-32",
+      "n": 1
+    },
+    {
+      "week": "2025-33",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "statisticalmethod",
+    "functionalgenomics",
+    "genomeannotation",
+    "genomewideassociation",
+    "peakdetection",
+    "dataimport",
+    "spatial",
+    "bayesian",
+    "classification",
+    "hiddenmarkovmodel",
+    "regression",
+    "cpp"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "igosungithub",
+      "count": 51,
+      "uuid": 85625734
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 161,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/HiCPotts"
+  },
+  "_devurl": "https://github.com/igosungithub/hicpotts",
+  "_searchresults": 0,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/HiCPotts.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/igosungithub/hicpotts",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "compute_HMRFHiC_probabilities",
+    "gamma_prior_value",
+    "get_data",
+    "likelihood_combined",
+    "likelihood_gamma",
+    "Neighbours_combined",
+    "posterior_combined",
+    "pred_combined",
+    "prior_combined",
+    "process_data",
+    "proposaldensity_combined",
+    "proposalfunction",
+    "pz_123",
+    "run_chain_betas",
+    "run_metropolis_MCMC_betas",
+    "size_prior"
+  ],
+  "_help": [
+    {
+      "page": "compute_HMRFHiC_probabilities",
+      "title": "Compute HMRFHiC Probabilities of Assigning an Interaction to Each Component",
+      "topics": [
+        "compute_HMRFHiC_probabilities"
+      ]
+    },
+    {
+      "page": "gamma_prior_value",
+      "title": "Prior Value for the Potts Model Interaction Parameter",
+      "topics": [
+        "gamma_prior_value"
+      ]
+    },
+    {
+      "page": "get_data",
+      "title": "Extract Hi-C Bin Interactions with GC, Accessibility, and TE Counts",
+      "topics": [
+        "get_data"
+      ]
+    },
+    {
+      "page": "likelihood_combined",
+      "title": "Likelihood Function for a Specified Model Component and Distribution",
+      "topics": [
+        "likelihood_combined"
+      ]
+    },
+    {
+      "page": "likelihood_gamma",
+      "title": "Likelihood Function for the Interaction Parameter in a Potts Model",
+      "topics": [
+        "likelihood_gamma"
+      ]
+    },
+    {
+      "page": "posterior_combined",
+      "title": "Compute the Posterior for the Model Components",
+      "topics": [
+        "posterior_combined"
+      ]
+    },
+    {
+      "page": "pred_combined",
+      "title": "Prediction Function for Combined Model",
+      "topics": [
+        "pred_combined"
+      ]
+    },
+    {
+      "page": "prior_combined",
+      "title": "Prior Function for Model Components",
+      "topics": [
+        "prior_combined"
+      ]
+    },
+    {
+      "page": "process_data",
+      "title": "CSV file Data Processing for Hi-C Interaction Matrices and Covariates",
+      "topics": [
+        "process_data"
+      ]
+    },
+    {
+      "page": "proposaldensity_combined",
+      "title": "Proposal Density Function for Model Components",
+      "topics": [
+        "proposaldensity_combined"
+      ]
+    },
+    {
+      "page": "proposalfunction",
+      "title": "Proposal Function for the Potts Model Interaction Parameter",
+      "topics": [
+        "proposalfunction"
+      ]
+    },
+    {
+      "page": "pz_123",
+      "title": "Posterior Function for the Potts Model",
+      "topics": [
+        "pz_123"
+      ]
+    },
+    {
+      "page": "run_chain_betas",
+      "title": "MCMC Chain Execution for HiCPotts Simulations",
+      "topics": [
+        "run_chain_betas"
+      ]
+    },
+    {
+      "page": "run_metropolis_MCMC_betas",
+      "title": "Run Metropolis-Hastings MCMC for HMRFHiC Model",
+      "topics": [
+        "run_metropolis_MCMC_betas"
+      ]
+    },
+    {
+      "page": "size_prior",
+      "title": "Size Prior for the Negative Binomial-Type Distributions",
+      "topics": [
+        "size_prior"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/HiCPotts/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "BSgenome",
+    "BSgenome.Dmelanogaster.UCSC.dm6",
+    "cigarillo",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "lambda.r",
+    "lattice",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "openssl",
+    "R6",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "restfulr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "strawr",
+    "SummarizedExperiment",
+    "sys",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "HiCPotts_vignette.Rmd",
+      "filename": "HiCPotts_vignette.html",
+      "title": "Bayesian Analysis of Hi-C Interactions with HiCPotts",
+      "author": "Itunu Godwin Osuntoki, Nicolae Radu Zabet",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Motivation",
+        "Comparison with Existing Packages",
+        "Features of HiCPotts",
+        "Installation",
+        "Workflow Overview",
+        "Step 1: Loading Hi-C Data",
+        "Step 2: Processing Data",
+        "Step 3: Running MCMC Simulations",
+        "Step 4: Computing Posterior Probabilities",
+        "Advanced Usage",
+        "Custom Priors",
+        "Parallel Processing",
+        "Other Distributions",
+        "Technical Notes",
+        "Conclusion"
+      ],
+      "created": "2025-05-27 19:33:54",
+      "modified": "2025-08-07 15:21:31",
+      "commits": 3
+    }
+  ],
+  "_score": 4.653212513775344,
+  "_indexed": true,
+  "_nocasepkg": "hicpotts",
+  "_universes": [
+    "bioc",
+    "igosungithub"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:04:25.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "56873ba581c541369fc9bf2f3f6dce0bf932d7fad04d50554b1d7b836b41cfe6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:04:46.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "9a92368b5d3e0ed391f0e6c1bfdc312a9e030095d9216c8b93b06cd14767c9b5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:04:19.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "d8d9cbb70c82a0b4da999beef6895c62e5ce9a09e7235dd0e06249a2c8868200",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:05:23.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "1616827be1f0327d6bd6810fab7340827a03f5d9ec978781ac81d4a81a97d2bd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:05:04.000Z",
+      "arch": "aarch64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "4f120d9e4b35fec9a5a45901a3c2e59902c4a410a279b6f3cfa6b63b6286d804",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:06:08.000Z",
+      "arch": "x86_64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "e37df61962f03cf3479369471819c0963e217dceedcf7d513c09ec52b0c411c9",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:05:01.000Z",
+      "arch": "aarch64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "15290c34d58ccbab97c2a9c14fa4c34ee3dc25a09b97e2dc059b4e6d1bc8e4c8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:06:39.000Z",
+      "arch": "x86_64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "8f2b97360996dae9baca73708b4fd5f7bfadd8ca676c6973fe3f08601c630a84",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:04:25.000Z",
+      "arch": "emscripten",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "8cc61c6a8feff9e640d66f4c0b463ee57be3a647140610eb4f04a167622ebc37",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:03:26.000Z",
+      "arch": "x86_64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "cc35aa3f3148a59594a600646e0c7cfa6d9501a87a135014faaf5eba92bfd194",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:03:26.000Z",
+      "arch": "x86_64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "98f5375571f02658c2e95be0128f3ff8bdcbfe2d09380124192395bf1e32f9e0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-21T07:03:25.000Z",
+      "arch": "x86_64",
+      "commit": "a37a5fa5f20fb6f4858483eb8345941ee3853d4a",
+      "fileid": "c82447bb45c7aefd1bb5455744e37f4006795350b43a72120812ab1460fd02b6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252347606"
+    }
+  ]
+}

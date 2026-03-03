@@ -1,0 +1,759 @@
+{
+  "Package": "SPOTlight",
+  "Version": "1.14.0",
+  "Type": "Package",
+  "Title": "`SPOTlight`: Spatial Transcriptomics Deconvolution",
+  "Description": "`SPOTlight` provides a method to deconvolute spatial\ntranscriptomics spots using a seeded NMF approach along with\nvisualization tools to assess the results. Spatially resolved\ngene expression profiles are key to understand tissue\norganization and function. However, novel spatial\ntranscriptomics (ST) profiling techniques lack single-cell\nresolution and require a combination with single-cell RNA\nsequencing (scRNA-seq) information to deconvolute the spatially\nindexed datasets. Leveraging the strengths of both data types,\nwe developed SPOTlight, a computational tool that enables the\nintegration of ST with scRNA-seq data to infer the location of\ncell types and states within a complex tissue. SPOTlight is\ncentered around a seeded non-negative matrix factorization\n(NMF) regression, initialized using cell-type marker genes and\nnon-negative least squares (NNLS) to subsequently deconvolute\nST capture locations (spots).",
+  "Authors@R": "c(\nperson(\"Marc\", \"Elosua-Bayes\", email=\"elosua.marc@gmail.com\", role=c(\"aut\", \"cre\")),\nperson(\"Zachary\", \"DeBruine\", email=\"zacharydebruine@gmail.com\", role=\"aut\"),\nperson(\"Helena L.\", \"Crowell\", email=\"helena@crowell.eu\", role=\"aut\"))",
+  "biocViews": "SingleCell, Spatial, StatisticalMethod",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/MarcElosua/SPOTlight",
+  "BugReports": "https://github.com/MarcElosua/SPOTlight/issues",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:16:14 UTC",
+  "RemoteUrl": "https://github.com/bioc/SPOTlight",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-25 08:41:53 UTC",
+    "User": "root"
+  },
+  "Author": "Marc Elosua-Bayes [aut, cre],\nZachary DeBruine [aut],\nHelena L. Crowell [aut]",
+  "Maintainer": "Marc Elosua-Bayes <elosua.marc@gmail.com>",
+  "MD5sum": "3512fbd57d4b8d70b3d504725ea5c7e5",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "SPOTlight_1.14.0.tar.gz",
+  "_fileid": "033126f4d05e857988ae89894d50a303afe98c02c09e77a7a8e93f750d352398",
+  "_filesize": 4152764,
+  "_sha256": "033126f4d05e857988ae89894d50a303afe98c02c09e77a7a8e93f750d352398",
+  "_created": "2026-02-25T08:41:53.000Z",
+  "_published": "2026-02-25T08:52:16.629Z",
+  "_jobs": [
+    {
+      "job": 64806183917,
+      "time": 252,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650153168"
+    },
+    {
+      "job": 64806183938,
+      "time": 377,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650180610"
+    },
+    {
+      "job": 64806183932,
+      "time": 452,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650195730"
+    },
+    {
+      "job": 64806183977,
+      "time": 358,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650176131"
+    },
+    {
+      "job": 64806183950,
+      "time": 478,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650201606"
+    },
+    {
+      "job": 64806183979,
+      "time": 401,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650184846"
+    },
+    {
+      "job": 64806183974,
+      "time": 549,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650217275"
+    },
+    {
+      "job": 64806183989,
+      "time": 326,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650168367"
+    },
+    {
+      "job": 64806183939,
+      "time": 457,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650196847"
+    },
+    {
+      "job": 64805369870,
+      "time": 452,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5650100680"
+    },
+    {
+      "job": 64806183905,
+      "time": 223,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5650147238"
+    },
+    {
+      "job": 64806184061,
+      "time": 357,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650175862"
+    },
+    {
+      "job": 64806184025,
+      "time": 347,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5650173685"
+    },
+    {
+      "job": 64806184001,
+      "time": 323,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650168885"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/SPOTlight",
+  "_commit": {
+    "id": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750974
+  },
+  "_maintainer": {
+    "name": "Marc Elosua-Bayes",
+    "email": "elosua.marc@gmail.com",
+    "login": "marcelosua",
+    "twitter": "@elosua_bayes",
+    "uuid": 16361091
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppEigen",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "sparseMatrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "colorBlindness",
+      "role": "Suggests"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Suggests"
+    },
+    {
+      "package": "DropletUtils",
+      "role": "Suggests"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggcorrplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "grDevices",
+      "role": "Suggests"
+    },
+    {
+      "package": "grid",
+      "role": "Suggests"
+    },
+    {
+      "package": "igraph",
+      "role": "Suggests"
+    },
+    {
+      "package": "jpeg",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "methods",
+      "role": "Suggests"
+    },
+    {
+      "package": "png",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "scatterpie",
+      "role": "Suggests"
+    },
+    {
+      "package": "scran",
+      "role": "Suggests"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Suggests"
+    },
+    {
+      "package": "TabulaMurisSenisData",
+      "role": "Suggests"
+    },
+    {
+      "package": "TENxVisiumData",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 1
+    },
+    {
+      "week": "2025-22",
+      "n": 2
+    },
+    {
+      "week": "2025-39",
+      "n": 3
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "singlecell",
+    "spatial",
+    "statisticalmethod",
+    "cpp",
+    "openmp"
+  ],
+  "_stars": 201,
+  "_contributors": [
+    {
+      "user": "marcelosua",
+      "count": 583,
+      "uuid": 16361091
+    },
+    {
+      "user": "catalyst-project",
+      "count": 13,
+      "uuid": 31732326
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "zdebruine",
+      "count": 11,
+      "uuid": 2014816
+    },
+    {
+      "user": "federicomarini",
+      "count": 4,
+      "uuid": 7447478
+    },
+    {
+      "user": "nturaga",
+      "count": 2,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 612,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/SPOTlight"
+  },
+  "_devurl": "https://github.com/marcelosua/spotlight",
+  "_searchresults": 226,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/SPOTlight.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/marcelosua/spotlight",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "getMGS",
+    "mockSC",
+    "mockSP",
+    "plotCorrelationMatrix",
+    "plotImage",
+    "plotInteractions",
+    "plotSpatialScatterpie",
+    "plotTopicProfiles",
+    "runDeconvolution",
+    "SPOTlight",
+    "trainNMF"
+  ],
+  "_help": [
+    {
+      "page": "dot-filter",
+      "title": ".init_nmf <- function(x, groups, mgs, n_top = NULL, gene_id = \"gene\", group_id = \"cluster\", weight_id = \"weight\") # check validity of input arguments if (is.null(n_top)) n_top <- max(table(mgs[[group_id]])) stopifnot( is.character(gene_id), length(gene_id) == 1, is.character(group_id), length(group_id) == 1, is.character(weight_id), length(weight_id) == 1, c(gene_id, group_id, weight_id) is.numeric(n_top), length(n_top) == 1, round(n_top) == n_top) ng <- nrow(x) nc <- ncol(x) names(ks) <- ks <- unique(groups) # subset 'n_top' features mgs <- split(mgs, mgs[[group_id]]) mgs <- lapply(mgs, function(df) o <- order(df[[weight_id]], decreasing = TRUE) n <- ifelse(nrow(df) < n_top, nrow(df), n_top) df[o, ][seq_len(n), ] ) # subset unique features mgs <- lapply(ks, function(k) g1 <- mgs[[k]][[gene_id]] g2 <- unlist(lapply(mgs[ks != k], `[[`, gene_id)) mgs[[k]][!g1 ) # W is of dimension (#groups)x(#features) with W(i,j) # equal to weight if j is marker for i, and ~0 otherwise W <- vapply(ks, function(k) w <- numeric(ng) + 1e-12 names(w) <- rownames(x) ws <- mgs[[k]][[weight_id]] w[mgs[[k]][[gene_id]]] <- ws return(w) , numeric(ng)) # there is no need to initialize H tp <- paste0(\"topic_\", seq_len(length(ks))) dimnames(W) <- list(rownames(x), tp) return(W) Filter features from expression matrix",
+      "topics": [
+        ".filter"
+      ]
+    },
+    {
+      "page": "data",
+      "title": "Synthetic single-cell, mixture and marker data",
+      "topics": [
+        "data",
+        "getMGS",
+        "mockSC",
+        "mockSP"
+      ]
+    },
+    {
+      "page": "plotCorrelationMatrix",
+      "title": "Plot Correlation Matrix",
+      "topics": [
+        "plotCorrelationMatrix"
+      ]
+    },
+    {
+      "page": "plotImage",
+      "title": "Plot JP(E)G/PNG/Raster/RGB images",
+      "topics": [
+        "plotImage"
+      ]
+    },
+    {
+      "page": "plotInteractions",
+      "title": "Plot group interactions",
+      "topics": [
+        "plotHeatmap",
+        "plotInteractions",
+        "plotNetwork"
+      ]
+    },
+    {
+      "page": "plotSpatialScatterpie",
+      "title": "Spatial scatterpie",
+      "topics": [
+        "plotSpatialScatterpie"
+      ]
+    },
+    {
+      "page": "plotTopicProfiles",
+      "title": "Plot NMF topic profiles",
+      "topics": [
+        "plotTopicProfiles"
+      ]
+    },
+    {
+      "page": "runDeconvolution",
+      "title": "Run Deconvolution using NNLS model",
+      "topics": [
+        "runDeconvolution"
+      ]
+    },
+    {
+      "page": "SPOTlight",
+      "title": "Deconvolution of mixture using single-cell data",
+      "topics": [
+        "SPOTlight"
+      ]
+    },
+    {
+      "page": "trainNMF",
+      "title": "train NMF model",
+      "topics": [
+        "trainNMF"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/SPOTlight/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocGenerics",
+    "cli",
+    "cpp11",
+    "DelayedArray",
+    "farver",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "IRanges",
+    "isoband",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "SparseArray",
+    "sparseMatrixStats",
+    "SummarizedExperiment",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04.1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    },
+    {
+      "shlib": "libgomp",
+      "package": "libgomp1",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04.1",
+      "name": "openmp",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GCC OpenMP (GOMP) support library"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "SPOTlight_kidney.Rmd",
+      "filename": "SPOTlight_kidney.html",
+      "title": "Spatial Transcriptomics Deconvolution with SPOTlight",
+      "author": "Marc Elosua-Bayes, Helena L. Crowell, Zach DeBruine",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Load packages",
+        "Introduction",
+        "What is SPOTlight?",
+        "Starting point",
+        "Getting started",
+        "Data description",
+        "Loading the data",
+        "Workflow",
+        "Preprocessing",
+        "Feature selection",
+        "Variance modelling",
+        "Cell Downsampling",
+        "Deconvolution",
+        "Visualization",
+        "Topic profiles",
+        "Spatial Correlation Matrix",
+        "Co-localization",
+        "Scatterpie",
+        "Residuals",
+        "Session information"
+      ],
+      "created": "2022-01-26 17:04:13",
+      "modified": "2025-05-26 18:04:27",
+      "commits": 12
+    }
+  ],
+  "_score": 8.900342545254183,
+  "_indexed": false,
+  "_nocasepkg": "spotlight",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/SPOTlight",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:46:13.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "b02b66943ac7ed8fc7a22f5fb256417b145f60f4d0779f3cdd6d257c4c420115",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:47:15.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "e7caf5c823ba2772e548a9f3204e2c839e1b2c6d7c0f31968508e3ca2d074a26",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:46:03.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "cf13bbba08652c486e9e2e2dc39334e1974e42d518f2d6a7ec0b17fc03fe791c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:47:26.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "6418e679947eec5d60e8be7e4dde7e275af605f6f18a71cf5978145472c39490",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:45:20.000Z",
+      "arch": "aarch64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "4a21f0463e17f0701b9be8bd4a830a9b392352223b3b04de828d6aa5f4483cd2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:47:26.000Z",
+      "arch": "x86_64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "276afea3d788f63f2e0f796600ce24dde86b757b7467a58ba9932ceb33d85f03",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:44:59.000Z",
+      "arch": "aarch64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "6b5cff5343255e750a5277ce0eb8508d0222cfd8add8fd39187fafff18abb91e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:46:42.000Z",
+      "arch": "x86_64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "ddee64cf645b6c5281b6db36b2a9f8f8e66b7c78e7575910a2ef4bc6cffd561b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:46:18.000Z",
+      "arch": "emscripten",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "df67762beadba614cf71a6218982f8c164c1dcf39b57b0d0688596978a54fcbe",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:44:48.000Z",
+      "arch": "x86_64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "4737c62c3967ce5d40068bed278076a52339e764417b37f7ca268ce9874685cd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:44:49.000Z",
+      "arch": "x86_64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "7ccd590e393b70c1270375795a139e7aaa4cde9db41696268aebed99073e981e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.14.0",
+      "date": "2026-02-25T08:44:39.000Z",
+      "arch": "x86_64",
+      "commit": "fb783eb6f77ff1eac00c5885bd6b79c5ffd1f7bd",
+      "fileid": "3535c92beac6ea71c083203772c30589b07bd4cbeae79d8bd7107e907dda5ba7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388801130"
+    }
+  ]
+}

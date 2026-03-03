@@ -1,0 +1,813 @@
+{
+  "Package": "dandelionR",
+  "Title": "Single-cell Immune Repertoire Trajectory Analysis in R",
+  "Version": "1.2.0",
+  "Authors@R": "c(person(given=\"Jiawei\", family=\"Yu\", email = \"jiawei.yu@uq.edu.au\", role = c(\"aut\"), comment = c(ORCID = \"0009-0005-9170-7881\")),\nperson(given=\"Nicholas\", family=\"Borcherding\", email = \"borcherding@wustl.edu\", role = c(\"aut\"), comment = c(ORCID = \"0000-0003-1427-6342\")),\nperson(given=\"Kelvin\", family=\"Tuong\", email = \"z.tuong@uq.edu.au\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6735-6808\")))",
+  "Description": "dandelionR is an R package for performing single-cell\nimmune repertoire trajectory analysis, based on the original\npython implementation. It provides the necessary functions to\ninterface with scRepertoire and a custom implementation of an\nabsorbing Markov chain for pseudotime inference, inspired by\nthe Palantir Python package.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "Software, ImmunoOncology, SingleCell",
+  "Collate": "'check.R' 'constructMarkovChain.R' 'dandelionR.R' 'data.R'\n'determMultiscaleSpace.R' 'terminalStateFromMarkovChain.R'\n'differentiationProbabilities.R' 'filterCells.R' 'getPbs.R'\n'projectProbability.R' 'maxMinSampling.R' 'minMaxScale.R'\n'markovProbability.R' 'miloUmap.R' 'projectPseudotimeToCell.R'\n'setupVdjPseudobulk.R' 'splitCTgene.R' 'vdjPseudobulk.R'",
+  "VignetteBuilder": "knitr",
+  "URL": "https://www.github.com/tuonglab/dandelionR/",
+  "BugReports": "https://www.github.com/tuonglab/dandelionR/issues",
+  "Config/pak/sysreqs": "cmake libfontconfig1-dev libfreetype6-dev\nlibglpk-dev make libicu-dev libxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:34:23 UTC",
+  "RemoteUrl": "https://github.com/bioc/dandelionR",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "da413e463ba0efe4d3eb81a629e4f19055cb481d",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-01-03 21:45:49 UTC",
+    "User": "root"
+  },
+  "Author": "Jiawei Yu [aut] (ORCID: <https://orcid.org/0009-0005-9170-7881>),\nNicholas Borcherding [aut] (ORCID:\n<https://orcid.org/0000-0003-1427-6342>),\nKelvin Tuong [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-6735-6808>)",
+  "Maintainer": "Kelvin Tuong <z.tuong@uq.edu.au>",
+  "MD5sum": "d442ab217cf3423dd633dcdf13d86c77",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "dandelionR_1.2.0.tar.gz",
+  "_fileid": "d6d90dd0e52877206461911100e9ee1451d7e6aac411d6ea9317912f0ccbbc78",
+  "_filesize": 11114253,
+  "_sha256": "d6d90dd0e52877206461911100e9ee1451d7e6aac411d6ea9317912f0ccbbc78",
+  "_created": "2026-01-03T21:45:49.000Z",
+  "_jobs": [
+    {
+      "job": 62047832685,
+      "time": 235,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5015050056"
+    },
+    {
+      "job": 62047832669,
+      "time": 418,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5015056488"
+    },
+    {
+      "job": 62047832664,
+      "time": 396,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5015055417"
+    },
+    {
+      "job": 62047832277,
+      "time": 104,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62047832294,
+      "time": 87,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62047832367,
+      "time": 412,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5015022633"
+    },
+    {
+      "job": 62047832520,
+      "time": 208,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5015049134"
+    },
+    {
+      "job": 62047832312,
+      "time": 86,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62047832291,
+      "time": 131,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62047832330,
+      "time": 105,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "FAIL",
+      "artifact": ""
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/20683126056",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/dandelionR",
+  "_commit": {
+    "id": "da413e463ba0efe4d3eb81a629e4f19055cb481d",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761752063
+  },
+  "_maintainer": {
+    "name": "Kelvin Tuong",
+    "email": "z.tuong@uq.edu.au",
+    "login": "zktuong",
+    "orcid": "0000-0002-6735-6808",
+    "twitter": "@KelvinTuong",
+    "uuid": 26215587
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "bluster",
+      "role": "Imports"
+    },
+    {
+      "package": "destiny",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "miloR",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "spam",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "uwot",
+      "role": "Imports"
+    },
+    {
+      "package": "RANN",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "fields",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "scRepertoire",
+      "role": "Suggests"
+    },
+    {
+      "package": "DelayedMatrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "slingshot",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-01",
+      "n": 5
+    },
+    {
+      "week": "2025-06",
+      "n": 6
+    },
+    {
+      "week": "2025-07",
+      "n": 1
+    },
+    {
+      "week": "2025-09",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-25",
+      "n": 2
+    },
+    {
+      "week": "2025-27",
+      "n": 1
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-32",
+      "n": 1
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "immunooncology",
+    "singlecell"
+  ],
+  "_stars": 11,
+  "_contributors": [
+    {
+      "user": "zktuong",
+      "count": 51,
+      "uuid": 26215587
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 234,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/dandelionR"
+  },
+  "_devurl": "https://github.com/tuonglab/dandelionr",
+  "_searchresults": 10,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/dandelionR.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/tuonglab/dandelionr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "markovProbability",
+    "miloUmap",
+    "projectPseudotimeToCell",
+    "setupVdjPseudobulk",
+    "vdjPseudobulk"
+  ],
+  "_datasets": [
+    {
+      "name": "demo_airr",
+      "title": "Example AIRR Dataset for V(D)J Analysis",
+      "object": "demo_airr",
+      "file": "demo_airr.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "demo_sce",
+      "title": "Example SCE Dataset that does not contain V(D)J information",
+      "object": "demo_sce",
+      "file": "demo_sce.rda",
+      "class": [
+        "SingleCellExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "sce_vdj",
+      "title": "Example Dataset for V(D)J Analysis",
+      "object": "sce_vdj",
+      "file": "sce_vdj.rda",
+      "class": [
+        "SingleCellExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "demo_airr",
+      "title": "Example AIRR Dataset for V(D)J Analysis",
+      "topics": [
+        "demo_airr"
+      ]
+    },
+    {
+      "page": "demo_sce",
+      "title": "Example SCE Dataset that does not contain V(D)J information",
+      "topics": [
+        "demo_sce"
+      ]
+    },
+    {
+      "page": "differentiationProbabilities",
+      "title": "Compute Branch Probabilities Using Markov Chain",
+      "topics": [
+        "differentiationProbabilities"
+      ]
+    },
+    {
+      "page": "markovProbability",
+      "title": "Markov Chain Construction and Probability Calculation",
+      "topics": [
+        "markovProbability"
+      ]
+    },
+    {
+      "page": "miloUmap",
+      "title": "Perform UMAP on the Adjacency Matrix of a Milo Object",
+      "topics": [
+        "miloUmap"
+      ]
+    },
+    {
+      "page": "project_single_value",
+      "title": "Function to project pseudobulk-level values to single-cell level",
+      "topics": [
+        "project_single_value"
+      ]
+    },
+    {
+      "page": "projectProbability",
+      "title": "Project Probabilities from Markov Chain to Pseudobulks",
+      "topics": [
+        "projectProbability"
+      ]
+    },
+    {
+      "page": "projectPseudotimeToCell",
+      "title": "Project Pseudotime and Branch Probabilities to Single Cells",
+      "topics": [
+        "projectPseudotimeToCell"
+      ]
+    },
+    {
+      "page": "sce_vdj",
+      "title": "Example Dataset for V(D)J Analysis",
+      "topics": [
+        "sce_vdj"
+      ]
+    },
+    {
+      "page": "setupVdjPseudobulk",
+      "title": "Preprocess V(D)J Data for Pseudobulk Analysis",
+      "topics": [
+        "setupVdjPseudobulk"
+      ]
+    },
+    {
+      "page": "vdjPseudobulk",
+      "title": "Generate Pseudobulk V(D)J Feature Space",
+      "topics": [
+        "vdjPseudobulk"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/dandelionR/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "bluster",
+    "boot",
+    "broom",
+    "cachem",
+    "car",
+    "carData",
+    "class",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cowplot",
+    "cpp11",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "DEoptimR",
+    "Deriv",
+    "destiny",
+    "doBy",
+    "dotCall64",
+    "dplyr",
+    "dqrng",
+    "e1071",
+    "edgeR",
+    "farver",
+    "fastmap",
+    "FNN",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggforce",
+    "ggplot.multistats",
+    "ggplot2",
+    "ggraph",
+    "ggrepel",
+    "ggthemes",
+    "glue",
+    "graphlayouts",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "hexbin",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jsonlite",
+    "knn.covertree",
+    "labeling",
+    "laeken",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "lme4",
+    "lmtest",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "microbenchmark",
+    "miloR",
+    "minqa",
+    "modelr",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "patchwork",
+    "pbkrtest",
+    "pcaMethods",
+    "pillar",
+    "pkgconfig",
+    "polyclip",
+    "pracma",
+    "proxy",
+    "purrr",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "R6",
+    "ranger",
+    "RANN",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppHNSW",
+    "RcppML",
+    "RcppProgress",
+    "Rdpack",
+    "reformulas",
+    "rlang",
+    "robustbase",
+    "RSpectra",
+    "rsvd",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "ScaledMatrix",
+    "scales",
+    "scatterplot3d",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "sitmo",
+    "smoother",
+    "snow",
+    "sp",
+    "spam",
+    "SparseArray",
+    "SparseM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "systemfonts",
+    "tibble",
+    "tidygraph",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tseries",
+    "TTR",
+    "tweenr",
+    "urca",
+    "utf8",
+    "uwot",
+    "vcd",
+    "vctrs",
+    "VIM",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xgboost",
+    "xts",
+    "XVector",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "vignette_reproduce_original.rmd",
+      "filename": "vignette_reproduce_original.html",
+      "title": "Reproducing the original dandelion method/paper",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Load the required libraries",
+        "Load data",
+        "Filter the data",
+        "Milo object and neighbourhood graph construction",
+        "Construct UMAP on milo neighbor graph",
+        "Construct pseudobulked VDJ feature space",
+        "TCR trajectory inference using Absorbing Markov Chain",
+        "Define root and branch tips",
+        "Construct diffusion map",
+        "Compute diffussion pseudotime on diffusion map",
+        "Markov chain construction on the pseudobulk VDJ feature space",
+        "Visualising branch probabilities",
+        "Transfer",
+        "Project pseudobulk data to each cell",
+        "Visualise the trajectory data on a per cell basis",
+        "Session info"
+      ],
+      "created": "2024-12-13 05:11:19",
+      "modified": "2025-08-08 01:12:57",
+      "commits": 8
+    },
+    {
+      "source": "dandelionR.Rmd",
+      "filename": "dandelionR.html",
+      "title": "Single-cell immune repertoire trajectory analysis with dandelionR",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Foreword",
+        "Installation",
+        "Bioconductor",
+        "Development version (GitHub)",
+        "Usage",
+        "Load the required libraries",
+        "Load the demo data",
+        "Use scRepertoire to load the VDJ data",
+        "Merging VDJ data with gene expression data",
+        "Initiate dandelionR workflow",
+        "Milo object and neighbourhood graph construction",
+        "Construct UMAP on milo neighbor graph",
+        "Construct pseudobulked VDJ feature space",
+        "TCR trajectory inference using Absorbing Markov Chain",
+        "Define root and branch tips",
+        "Construct diffusion map",
+        "Compute diffusion pseudotime on diffusion map",
+        "Markov chain construction on the pseudobulk VDJ feature space",
+        "Visualising branch probabilities",
+        "Transfer",
+        "Project pseudobulk data to each cell",
+        "Visualise the trajectory data on a per cell basis",
+        "Session info"
+      ],
+      "created": "2025-02-07 09:13:28",
+      "modified": "2025-08-08 01:12:57",
+      "commits": 8
+    },
+    {
+      "source": "dandelionR_with_slingshot.Rmd",
+      "filename": "dandelionR_with_slingshot.html",
+      "title": "Single-cell immune repertoire trajectory analysis with dandelionR and slingshot",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Foreword",
+        "Installing slinshot",
+        "Load the required libraries and data",
+        "Setup the data as per the other vignettes",
+        "Milo object and neighbourhood graph construction",
+        "Construct UMAP on milo neighbor graph",
+        "Construct pseudobulked VDJ feature space",
+        "TCR trajectory inference using Slingshot",
+        "input",
+        "run slingshot",
+        "Visualization",
+        "Transfer",
+        "Project pseudobulk data to each cell",
+        "Visualise the trajectory data on a per cell basis",
+        "Session info"
+      ],
+      "created": "2025-08-08 01:12:57",
+      "modified": "2025-08-08 01:12:57",
+      "commits": 1
+    }
+  ],
+  "_score": 6.25887662937213,
+  "_indexed": false,
+  "_nocasepkg": "dandelionr",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/dandelionR",
+  "_failure": {
+    "version": "1.2.0",
+    "commit": {
+      "id": "da413e463ba0efe4d3eb81a629e4f19055cb481d",
+      "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+      "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+      "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+      "time": 1761752063
+    },
+    "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585196451",
+    "date": "2026-02-05T04:00:45.688Z",
+    "job": {
+      "job": 62572630279,
+      "time": 281,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5384780177"
+    }
+  },
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.2.0",
+      "date": "2026-01-03T21:57:32.000Z",
+      "distro": "noble",
+      "commit": "da413e463ba0efe4d3eb81a629e4f19055cb481d",
+      "fileid": "ebb9f419a914cf02e4a97ce3afb53856dc38cd1eebab1afcf47cdf76cb0dcaba",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/20683126056"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.2.0",
+      "date": "2026-01-03T21:57:10.000Z",
+      "distro": "noble",
+      "commit": "da413e463ba0efe4d3eb81a629e4f19055cb481d",
+      "fileid": "0ba53872be8580b4d66439b97f7d3b88a14b52571316dc7053c34701f3b9174e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/20683126056"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.2.0",
+      "date": "2026-01-03T21:57:40.000Z",
+      "commit": "da413e463ba0efe4d3eb81a629e4f19055cb481d",
+      "fileid": "2ac932814b9770eb7d99a39b2c2b262804435658543188a53d76beb965c67f48",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/20683126056"
+    }
+  ]
+}

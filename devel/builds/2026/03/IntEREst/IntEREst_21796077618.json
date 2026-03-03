@@ -1,0 +1,964 @@
+{
+  "Package": "IntEREst",
+  "Title": "Intron-Exon Retention Estimator",
+  "Version": "1.35.0",
+  "Date": "2024-03-19",
+  "Author": "Ali Oghabian <Ali.Oghabian@Helsinki.Fi>, Dario Greco\n<dario.greco@helsinki.fi>, Mikko Frilander\n<Mikko.Frilander@helsinki.fi>",
+  "Maintainer": "Ali Oghabian <Ali.Oghabian@Helsinki.Fi>",
+  "Description": "This package performs Intron-Exon Retention analysis on\nRNA-seq data (.bam files).",
+  "VignetteBuilder": "knitr",
+  "LazyData": "true",
+  "biocViews": "Software, AlternativeSplicing, Coverage,\nDifferentialSplicing, Sequencing, RNASeq, Alignment,\nNormalization, DifferentialExpression, ImmunoOncology",
+  "License": "GPL-2",
+  "NeedsCompilation": "no",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev\nlibmysqlclient-dev libpng-dev libxml2-dev libssl-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:37:18 UTC",
+  "RemoteUrl": "https://github.com/bioc/IntEREst",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "0e454ed05902ccfce137012037bcc2d38fc84839",
+  "Packaged": {
+    "Date": "2026-02-08 09:50:09 UTC",
+    "User": "root"
+  },
+  "MD5sum": "b4167d68fe257185c1e60cc87743e387",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "IntEREst_1.35.0.tar.gz",
+  "_fileid": "cd16558d009d6836bc85671245c6d93f38daec8bc0fc518d221c10605b0f8787",
+  "_filesize": 1166738,
+  "_sha256": "cd16558d009d6836bc85671245c6d93f38daec8bc0fc518d221c10605b0f8787",
+  "_created": "2026-02-08T09:50:09.000Z",
+  "_published": "2026-02-08T10:24:47.024Z",
+  "_jobs": [
+    {
+      "job": 62884002856,
+      "time": 275,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5421851716"
+    },
+    {
+      "job": 62884002869,
+      "time": 526,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5421866618"
+    },
+    {
+      "job": 62884002865,
+      "time": 506,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5421865524"
+    },
+    {
+      "job": 62884002857,
+      "time": 574,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5421963582"
+    },
+    {
+      "job": 62884002859,
+      "time": 331,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5421948741"
+    },
+    {
+      "job": 62883788328,
+      "time": 392,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5421834172"
+    },
+    {
+      "job": 62884002854,
+      "time": 196,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421846822"
+    },
+    {
+      "job": 62884002875,
+      "time": 451,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5421862421"
+    },
+    {
+      "job": 62884002863,
+      "time": 512,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5421865779"
+    },
+    {
+      "job": 62884002876,
+      "time": 563,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5421868791"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 20
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/IntEREst",
+  "_commit": {
+    "id": "0e454ed05902ccfce137012037bcc2d38fc84839",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748638
+  },
+  "_maintainer": {
+    "name": "Ali Oghabian",
+    "email": "ali.oghabian@helsinki.fi",
+    "login": "gacatag",
+    "uuid": 22315725
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "edgeR",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicFiles",
+      "role": "Depends"
+    },
+    {
+      "package": "seqLogo",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "version": ">= 1.39.4",
+      "role": "Imports"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "seqinr",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "RMariaDB",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "DEXSeq",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "clinfun",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-07",
+      "n": 1
+    },
+    {
+      "week": "2025-11",
+      "n": 1
+    },
+    {
+      "week": "2025-13",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.35.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.34.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "alternativesplicing",
+    "coverage",
+    "differentialsplicing",
+    "sequencing",
+    "rnaseq",
+    "alignment",
+    "normalization",
+    "differentialexpression",
+    "immunooncology"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 318,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/IntEREst"
+  },
+  "_mentions": 2,
+  "_searchresults": 18,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/IntEREst.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "addAnnotation",
+    "annotateU12",
+    "applyOverlap",
+    "buildSsTypePwms",
+    "counts",
+    "counts.InterestResults",
+    "deseqInterest",
+    "DEXSeqIntEREst",
+    "exactTestInterest",
+    "getAnnotation",
+    "getRepeatTable",
+    "glmInterest",
+    "interest",
+    "interest.sequential",
+    "InterestResult",
+    "interestResultIntEx",
+    "intexBoxplot",
+    "intexIndex",
+    "lfc",
+    "mergeInterestResult",
+    "psi",
+    "qlfInterest",
+    "readInterestResults",
+    "referencePrepare",
+    "scaledRetention",
+    "subInterestResult",
+    "treatInterest",
+    "u12Boxplot",
+    "u12BoxplotNb",
+    "u12DensityPlot",
+    "u12DensityPlotIntron",
+    "u12Index",
+    "u12NbIndex",
+    "unionRefTr",
+    "updateRowDataCol"
+  ],
+  "_datasets": [
+    {
+      "name": "mdsChr22ExObj",
+      "title": "Object of SummarizedExperiment type for exon-exon junction of MDS data",
+      "object": "mdsChr22ExObj",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "mdsChr22IntSpObj",
+      "title": "Object of SummarizedExperiment type for intron spanning reads of MDS data",
+      "object": "mdsChr22IntSpObj",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "mdsChr22Obj",
+      "title": "Object of SummarizedExperiment type for intron retention MDS data",
+      "object": "mdsChr22Obj",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "pwmU12db",
+      "title": "PWM of U12 and U2-type introns splice sites",
+      "object": "pwmU12db",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "u12",
+      "title": "U12 data",
+      "object": "u12",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "id",
+        "int_ex_id",
+        "chr",
+        "begin",
+        "end",
+        "strand",
+        "int_ex",
+        "trans_type",
+        "ens_gene_id",
+        "ens_trans_id",
+        "int_ex_num",
+        "gene_name",
+        "trans_name",
+        "overlap_no",
+        "int_type",
+        "int_subtype"
+      ],
+      "rows": 22713,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "IntEREst-package",
+      "title": "IntEREst",
+      "topics": [
+        "IntEREst-package",
+        "IntEREst"
+      ]
+    },
+    {
+      "page": "addAnnotation",
+      "title": "Adding sample annotations to a 'SummarizedExperiment' object",
+      "topics": [
+        "addAnnotation"
+      ]
+    },
+    {
+      "page": "annotateU12",
+      "title": "Annotate the U12 (and U2) type introns",
+      "topics": [
+        "annotateU12"
+      ]
+    },
+    {
+      "page": "applyOverlap",
+      "title": "Apply function over counts",
+      "topics": [
+        "applyOverlap"
+      ]
+    },
+    {
+      "page": "attributes",
+      "title": "Extracting values of useful attributes of SummarizedExperiment objects",
+      "topics": [
+        "attributes",
+        "getAnnotation",
+        "scaledRetention"
+      ]
+    },
+    {
+      "page": "boxplot-method",
+      "title": "boxplot - method",
+      "topics": [
+        "boxplot,SummarizedExperiment-method",
+        "boxplot-method",
+        "intexBoxplot"
+      ]
+    },
+    {
+      "page": "buildSsTypePwms",
+      "title": "Building Position Weight Matrices for Splice Sites of U12 and U2 type introns.",
+      "topics": [
+        "buildSsTypePwms"
+      ]
+    },
+    {
+      "page": "counts-method",
+      "title": "Counts - method",
+      "topics": [
+        "counts,SummarizedExperiment-method",
+        "counts-method",
+        "counts.InterestResults"
+      ]
+    },
+    {
+      "page": "deseqInterest",
+      "title": "DESeq2 analysis for IntEREst object",
+      "topics": [
+        "deseqInterest"
+      ]
+    },
+    {
+      "page": "DEXSeqIntEREst",
+      "title": "DEXSeq test for IntEREst object",
+      "topics": [
+        "DEXSeqIntEREst"
+      ]
+    },
+    {
+      "page": "exactTestInterest",
+      "title": "Exact test",
+      "topics": [
+        "exactTestInterest"
+      ]
+    },
+    {
+      "page": "getRepeatTable",
+      "title": "Get table of regions with repetetive DNA sequences",
+      "topics": [
+        "getRepeatTable"
+      ]
+    },
+    {
+      "page": "glmInterest",
+      "title": "generalized linear model likelihood ratio tests",
+      "topics": [
+        "glmInterest"
+      ]
+    },
+    {
+      "page": "interest",
+      "title": "Wrapper function: Parallel run",
+      "topics": [
+        "interest"
+      ]
+    },
+    {
+      "page": "interest.sequential",
+      "title": "Wrapup function: Sequential running",
+      "topics": [
+        "interest.sequential"
+      ]
+    },
+    {
+      "page": "interestResult",
+      "title": "Building SummarizedExperiment object from results in IntEREst.",
+      "topics": [
+        "InterestResult"
+      ]
+    },
+    {
+      "page": "interestResultIntEx",
+      "title": "Building results object that contains Intron-retention and exon-exon junction information",
+      "topics": [
+        "interestResultIntEx"
+      ]
+    },
+    {
+      "page": "intexIndex",
+      "title": "Extract index of intron or exon rows",
+      "topics": [
+        "intexIndex"
+      ]
+    },
+    {
+      "page": "lfc",
+      "title": "Log fold change",
+      "topics": [
+        "lfc"
+      ]
+    },
+    {
+      "page": "mdsChr22ExObj",
+      "title": "Object of SummarizedExperiment type for exon-exon junction of MDS data",
+      "topics": [
+        "mdsChr22ExObj"
+      ]
+    },
+    {
+      "page": "mdsChr22IntSpObj",
+      "title": "Object of SummarizedExperiment type for intron spanning reads of MDS data",
+      "topics": [
+        "mdsChr22IntSpObj"
+      ]
+    },
+    {
+      "page": "mdsChr22Obj",
+      "title": "Object of SummarizedExperiment type for intron retention MDS data",
+      "topics": [
+        "mdsChr22Obj"
+      ]
+    },
+    {
+      "page": "mergeInterestResult",
+      "title": "merge two SummarizedExperiment objects into one",
+      "topics": [
+        "mergeInterestResult"
+      ]
+    },
+    {
+      "page": "plot-method",
+      "title": "plot - method",
+      "topics": [
+        "plot,SummarizedExperiment,ANY-method",
+        "plot-method",
+        "plot.InterestResult"
+      ]
+    },
+    {
+      "page": "psi",
+      "title": "Psi values estimation",
+      "topics": [
+        "psi"
+      ]
+    },
+    {
+      "page": "pwmU12db",
+      "title": "PWM of U12 and U2-type introns splice sites",
+      "topics": [
+        "pwmU12db"
+      ]
+    },
+    {
+      "page": "qlfInterest",
+      "title": "quasi-likelihood F-test",
+      "topics": [
+        "qlfInterest"
+      ]
+    },
+    {
+      "page": "readInterestResults",
+      "title": "Read interest/interest.sequential results text files",
+      "topics": [
+        "readInterestResults"
+      ]
+    },
+    {
+      "page": "referencePrepare",
+      "title": "Creates reference file",
+      "topics": [
+        "referencePrepare"
+      ]
+    },
+    {
+      "page": "subInterestResult",
+      "title": "Extract subset of object",
+      "topics": [
+        "subInterestResult"
+      ]
+    },
+    {
+      "page": "treatInterest",
+      "title": "Differential retention test relative to a threshold",
+      "topics": [
+        "treatInterest"
+      ]
+    },
+    {
+      "page": "u12",
+      "title": "U12 data",
+      "topics": [
+        "u12"
+      ]
+    },
+    {
+      "page": "u12Boxplot",
+      "title": "U12 boxplot",
+      "topics": [
+        "u12Boxplot"
+      ]
+    },
+    {
+      "page": "u12BoxplotNb",
+      "title": "boxplot U12 introns retention levels (or flanking exons junction levels) and (up/down)stream U2 introns (or exons junction levels)",
+      "topics": [
+        "u12BoxplotNb"
+      ]
+    },
+    {
+      "page": "u12DensityPlot",
+      "title": "Density plot of fld changes of intron retention and exon-exon junction levels",
+      "topics": [
+        "u12DensityPlot",
+        "u12DensityPlotIntron"
+      ]
+    },
+    {
+      "page": "u12Index",
+      "title": "Extract index of U12 introns rows",
+      "topics": [
+        "u12Index"
+      ]
+    },
+    {
+      "page": "u12NbIndex",
+      "title": "Extract index of U2 introns (up/down)stream of U12 introns rows",
+      "topics": [
+        "u12NbIndex"
+      ]
+    },
+    {
+      "page": "unionRefTr",
+      "title": "Union introns/exons of transcripts",
+      "topics": [
+        "unionRefTr"
+      ]
+    },
+    {
+      "page": "updateRowDataCol",
+      "title": "Updating contents of 'rowData' of 'SummarizedExperiment' objects",
+      "topics": [
+        "updateRowDataCol"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "annotate",
+    "AnnotationDbi",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DESeq2",
+    "DEXSeq",
+    "dplyr",
+    "edgeR",
+    "farver",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "genefilter",
+    "geneplotter",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicFiles",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "hms",
+    "httr",
+    "httr2",
+    "hwriter",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "lubridate",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nlme",
+    "openssl",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "png",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "RMariaDB",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "segmented",
+    "Seqinfo",
+    "seqinr",
+    "seqLogo",
+    "snow",
+    "sp",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timechange",
+    "txdbmaker",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_score": 3.255272505103306,
+  "_indexed": true,
+  "_nocasepkg": "interest",
+  "_universes": [
+    "bioc",
+    "gacatag"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-02-08T09:55:23.000Z",
+      "distro": "noble",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "deba60c3c13ad9e1f7dd91da426530e2cb1db8dac6c21645de5ba374ff39ca34",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-02-08T09:55:04.000Z",
+      "distro": "noble",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "4d1ff500eb2dd6c80cf6d9d66687b85cb0f297d1e4990108843bc3e0f24409ae",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-02-08T10:17:59.000Z",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "c8ffe68c917d543001239ad475f02b8cf7c03cc9dc7a76dea2e17516a83f535d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-02-08T10:16:57.000Z",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "eb574a614ee0d1de841971026983e96c5bd4fcf1ca758373b27b130fe6e2acd8",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.35.0",
+      "date": "2026-02-08T09:54:21.000Z",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "f9e59ae70fc46540e3edc01b360722b5acdd566cc1261ead0e1ae754e8b5a800",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-08T09:53:28.000Z",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "1cfa7ba4ae3ae52ea558a70286a21ae87993a313eeb32775fff0e666edb1b91b",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-08T09:54:43.000Z",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "2a29065a6c986876c3feef502e6e78417d29d502e22dadcbad8a2821b1dbea04",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-08T09:55:37.000Z",
+      "commit": "0e454ed05902ccfce137012037bcc2d38fc84839",
+      "fileid": "912081c61fb490a3ab9c1ec30c08bd13ffef875a34a7866338d27f8e73f7f538",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796077618"
+    }
+  ]
+}

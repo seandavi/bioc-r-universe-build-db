@@ -1,0 +1,538 @@
+{
+  "Package": "TrajectoryUtils",
+  "Version": "1.19.0",
+  "Date": "2024-02-03",
+  "Title": "Single-Cell Trajectory Analysis Utilities",
+  "Description": "Implements low-level utilities for single-cell trajectory\nanalysis, primarily intended for re-use inside higher-level\npackages. Include a function to create a cluster-level minimum\nspanning tree and data structures to hold pseudotime inference\nresults.",
+  "Authors@R": "c(\nperson(\"Aaron\", \"Lun\", role=c(\"aut\", \"cre\"), email=\"infinite.monkeys.with.keyboards@gmail.com\"),\nperson(\"Kelly\", \"Street\", role=\"aut\")\n)",
+  "License": "GPL-3",
+  "biocViews": "GeneExpression, SingleCell",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.1.1",
+  "BugReports": "https://github.com/LTLA/TrajectoryUtils/issues",
+  "URL": "https://bioconductor.org/packages/TrajectoryUtils",
+  "Config/pak/sysreqs": "libglpk-dev libxml2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:06:03 UTC",
+  "RemoteUrl": "https://github.com/bioc/TrajectoryUtils",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "5806e2515bb5e0e03050d563f5f613087149b913",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-21 07:55:13 UTC",
+    "User": "root"
+  },
+  "Author": "Aaron Lun [aut, cre],\nKelly Street [aut]",
+  "Maintainer": "Aaron Lun <infinite.monkeys.with.keyboards@gmail.com>",
+  "MD5sum": "ceaabea50d4149e6232428e416312bd5",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "TrajectoryUtils_1.19.0.tar.gz",
+  "_fileid": "af3aea90d6545abcc6e580102431a8d8351b439ef8cc5afd34a9c309e08bd4f4",
+  "_filesize": 209999,
+  "_sha256": "af3aea90d6545abcc6e580102431a8d8351b439ef8cc5afd34a9c309e08bd4f4",
+  "_created": "2026-02-21T07:55:13.000Z",
+  "_published": "2026-02-21T08:00:56.394Z",
+  "_jobs": [
+    {
+      "job": 64380044659,
+      "time": 166,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5600313854"
+    },
+    {
+      "job": 64380044660,
+      "time": 243,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600317552"
+    },
+    {
+      "job": 64380044658,
+      "time": 290,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600319845"
+    },
+    {
+      "job": 64380044665,
+      "time": 193,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600315153"
+    },
+    {
+      "job": 64380044664,
+      "time": 193,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600315116"
+    },
+    {
+      "job": 64379917731,
+      "time": 251,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600304616"
+    },
+    {
+      "job": 64380044655,
+      "time": 136,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600312354"
+    },
+    {
+      "job": 64380044671,
+      "time": 227,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5600316715"
+    },
+    {
+      "job": 64380044666,
+      "time": 259,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5600318162"
+    },
+    {
+      "job": 64380044663,
+      "time": 223,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600316536"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/TrajectoryUtils",
+  "_commit": {
+    "id": "5806e2515bb5e0e03050d563f5f613087149b913",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750363
+  },
+  "_maintainer": {
+    "name": "Aaron Lun",
+    "email": "infinite.monkeys.with.keyboards@gmail.com",
+    "login": "ltla",
+    "twitter": "@realAaronLun",
+    "uuid": 8166669
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "SingleCellExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocNeighbors",
+      "role": "Suggests"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Suggests"
+    },
+    {
+      "package": "DelayedMatrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 8,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.19.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.18.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "geneexpression",
+    "singlecell"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "ltla",
+      "count": 36,
+      "uuid": 8166669
+    },
+    {
+      "user": "nturaga",
+      "count": 6,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    },
+    {
+      "user": "kstreet13",
+      "count": 1,
+      "uuid": 11052277
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 3686,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/TrajectoryUtils"
+  },
+  "_devurl": "https://github.com/ltla/trajectoryutils",
+  "_searchresults": 18,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/TrajectoryUtils.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ltla/trajectoryutils",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "averagePseudotime",
+    "cellData",
+    "cellData<-",
+    "cellnames",
+    "cellnames<-",
+    "createClusterMST",
+    "defineMSTPaths",
+    "guessMSTRoots",
+    "ncells",
+    "npaths",
+    "pathData",
+    "pathData<-",
+    "pathnames",
+    "pathnames<-",
+    "pathStat",
+    "pathStat<-",
+    "pathStatNames",
+    "pathStatNames<-",
+    "pathStats",
+    "pathStats<-",
+    "PseudotimeOrdering",
+    "rowmean",
+    "rowmedian",
+    "show",
+    "splitByBranches"
+  ],
+  "_help": [
+    {
+      "page": "averagePseudotime",
+      "title": "Compute the average pseudotime",
+      "topics": [
+        "averagePseudotime"
+      ]
+    },
+    {
+      "page": "createClusterMST",
+      "title": "Minimum spanning trees on cluster centroids",
+      "topics": [
+        "createClusterMST",
+        "createClusterMST,ANY-method",
+        "createClusterMST,SingleCellExperiment-method",
+        "createClusterMST,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "defineMSTPaths",
+      "title": "Define paths through the MST",
+      "topics": [
+        "defineMSTPaths"
+      ]
+    },
+    {
+      "page": "guessMSTRoots",
+      "title": "Guess the roots of a MST",
+      "topics": [
+        "guessMSTRoots"
+      ]
+    },
+    {
+      "page": "PseudotimeOrdering",
+      "title": "The PseudotimeOrdering class",
+      "topics": [
+        "$,PseudotimeOrdering-method",
+        "$<-,PseudotimeOrdering-method",
+        "cellData",
+        "cellData<-",
+        "cellData<-,PseudotimeOrdering-method",
+        "cellnames",
+        "cellnames<-",
+        "cellnames<-,PseudotimeOrdering-method",
+        "ncells",
+        "npaths",
+        "pathData",
+        "pathData<-",
+        "pathData<-,PseudotimeOrdering-method",
+        "pathnames",
+        "pathnames<-",
+        "pathnames<-,PseudotimeOrdering-method",
+        "pathStat",
+        "pathStat<-",
+        "pathStat<-,PseudotimeOrdering-method",
+        "pathStatNames",
+        "pathStatNames<-",
+        "pathStatNames<-,PseudotimeOrdering-method",
+        "pathStats",
+        "pathStats<-",
+        "pathStats<-,PseudotimeOrdering-method",
+        "PseudotimeOrdering",
+        "PseudotimeOrdering-class",
+        "show,PseudotimeOrdering-method"
+      ]
+    },
+    {
+      "page": "rowmean",
+      "title": "Compute column means based on a grouping variable",
+      "topics": [
+        "rowmean",
+        "rowmedian"
+      ]
+    },
+    {
+      "page": "splitByBranches",
+      "title": "Split a graph into branch-free paths",
+      "topics": [
+        "splitByBranches"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocGenerics",
+    "cli",
+    "cpp11",
+    "DelayedArray",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "igraph",
+    "IRanges",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "pkgconfig",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "SparseArray",
+    "SummarizedExperiment",
+    "vctrs",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "overview.Rmd",
+      "filename": "overview.html",
+      "title": "Trajectory utilities for package developers",
+      "author": "Aaron Lun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "MST construction",
+        "Operations on the MST",
+        "The PseudotimeOrdering class",
+        "Session information"
+      ],
+      "created": "2020-11-09 06:49:17",
+      "modified": "2020-11-30 02:28:32",
+      "commits": 3
+    }
+  ],
+  "_score": 5.980190328081611,
+  "_indexed": true,
+  "_nocasepkg": "trajectoryutils",
+  "_universes": [
+    "bioc",
+    "ltla"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:58:02.000Z",
+      "distro": "noble",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "5c9b9b3acdc45d520dba4b7d14a070ccb15730a0a04f9ea7846b03eb8a8f5a9d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:58:42.000Z",
+      "distro": "noble",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "ec2105e1711c7136b12b1aa4d52a12968fb9f41c0f68fb0903917f42a10f72d5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:57:34.000Z",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "2556da7ff7f3e74705ebd56ef2d4ca20f050151a5c2b3fc0e67a1637f5ead382",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:57:28.000Z",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "21c69410455d96615fce1d8b8d0c9d3f0ad6919a58106c2861d5b78a82dc65b7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:58:04.000Z",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "09352bb49d98c80d7d229c30a274bae5f1dc13a63d7694ae315f4281f64016e0",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:57:31.000Z",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "c4b569b0eae261b4a982d9a153111f8d304de639d0e579ac69b48f2af49a204a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:57:51.000Z",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "37c866b628fa8284b421324319604a70f3ff2a888fe4c3ad272463f1631dd4b7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-21T07:57:31.000Z",
+      "commit": "5806e2515bb5e0e03050d563f5f613087149b913",
+      "fileid": "60445cf0854a3cdb40860ece1b7e708df26771cb8fde4d00adf6c14fcbb728b1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253102727"
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "Package": "EpiTxDb",
+  "Type": "Package",
+  "Title": "Storing and accessing epitranscriptomic information using the\nAnnotationDbi interface",
+  "Version": "1.23.0",
+  "Date": "2025-09-23",
+  "Authors@R": "person(\"Felix G.M.\", \n\"Ernst\",\nemail = \"felix.gm.ernst@outlook.com\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0001-5064-0928\"))",
+  "Description": "EpiTxDb facilitates the storage of epitranscriptomic\ninformation. More specifically, it can keep track of\nmodification identity, position, the enzyme for introducing it\non the RNA, a specifier which determines the position on the\nRNA to be modified and the literature references each\nmodification is associated with.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "biocViews": "Software, Epitranscriptomics",
+  "Collate": "'AllGenerics.R' 'EpiTxDb-SELECT-helpers.R' 'EpiTxDb-schema.R'\n'EpiTxDb.R' 'EpiTxDb-class.R' 'makeEpiTxDb.R'\n'makeEpiTxDbFromGRanges.R' 'shiftGenomicToTranscript.R'\n'makeEpiTxDbFromRMBase.R' 'makeEpiTxDbFromtRNAdb.R'\n'modifications.R' 'modificationsBy.R' 'ranges-helpers.R'\n'select-methods.R'",
+  "RoxygenNote": "7.3.3",
+  "BugReports": "https://github.com/FelixErnst/EpiTxDb/issues",
+  "URL": "https://github.com/FelixErnst/EpiTxDb",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:57:35 UTC",
+  "RemoteUrl": "https://github.com/bioc/EpiTxDb",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "23585ca057eabeed68d06a1affbfdadee433eb07",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-02 09:02:45 UTC",
+    "User": "root"
+  },
+  "Author": "Felix G.M. Ernst [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-5064-0928>)",
+  "Maintainer": "Felix G.M. Ernst <felix.gm.ernst@outlook.com>",
+  "MD5sum": "71b430dcf3c67ca5d19949897f2799d7",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "EpiTxDb_1.23.0.tar.gz",
+  "_fileid": "cd63687105b4cbd7390af0abae6d39ddbad25c853abced9790f058738d0138b0",
+  "_filesize": 329019,
+  "_sha256": "cd63687105b4cbd7390af0abae6d39ddbad25c853abced9790f058738d0138b0",
+  "_created": "2026-02-02T09:02:45.000Z",
+  "_published": "2026-02-02T09:15:52.682Z",
+  "_jobs": [
+    {
+      "job": 62186781151,
+      "time": 358,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5340417170"
+    },
+    {
+      "job": 62186780967,
+      "time": 547,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5340455817"
+    },
+    {
+      "job": 62186780943,
+      "time": 536,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340453055"
+    },
+    {
+      "job": 62186780980,
+      "time": 443,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5340489976"
+    },
+    {
+      "job": 62186780985,
+      "time": 374,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340491541"
+    },
+    {
+      "job": 62185931460,
+      "time": 519,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340347949"
+    },
+    {
+      "job": 62186781045,
+      "time": 286,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5340402627"
+    },
+    {
+      "job": 62186781014,
+      "time": 414,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5340428870"
+    },
+    {
+      "job": 62186781046,
+      "time": 406,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5340427572"
+    },
+    {
+      "job": 62186781035,
+      "time": 405,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340427118"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 1,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/EpiTxDb",
+  "_commit": {
+    "id": "23585ca057eabeed68d06a1affbfdadee433eb07",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749855
+  },
+  "_maintainer": {
+    "name": "Felix G.M. Ernst",
+    "email": "felix.gm.ernst@outlook.com",
+    "login": "felixernst",
+    "uuid": 17824332,
+    "orcid": "0000-0001-5064-0928"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Depends"
+    },
+    {
+      "package": "Modstrings",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "httr",
+      "role": "Imports"
+    },
+    {
+      "package": "xml2",
+      "role": "Imports"
+    },
+    {
+      "package": "curl",
+      "role": "Imports"
+    },
+    {
+      "package": "rex",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "tRNAdbImport",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "httptest",
+      "role": "Suggests"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "EpiTxDb.Hs.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Scerevisiae.UCSC.sacCer3",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg38.knownGene",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-39",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.23.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.22.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "epitranscriptomics"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "felixernst",
+      "count": 109,
+      "uuid": 17824332
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 10,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 304,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/EpiTxDb"
+  },
+  "_devurl": "https://github.com/felixernst/epitxdb",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/EpiTxDb.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/felixernst/epitxdb",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "as.list",
+    "columns",
+    "downloadRMBaseFiles",
+    "EPITXDB_RMBASE_URL",
+    "getRMBaseDataAsGRanges",
+    "gettRNAdbDataAsGRanges",
+    "keys",
+    "keytypes",
+    "listAvailableGenomesFromRMBase",
+    "listAvailableModFromRMBase",
+    "listAvailableOrganismsFromRMBase",
+    "listAvailableOrganismsFromtRNAdb",
+    "makeEpiTxDb",
+    "makeEpiTxDbFromGRanges",
+    "makeEpiTxDbFromRMBase",
+    "makeEpiTxDbFromRMBaseFiles",
+    "makeEpiTxDbFromtRNAdb",
+    "modifications",
+    "modificationsBy",
+    "modifiedSeqsByTranscript",
+    "organism",
+    "positionSequence",
+    "rescale",
+    "select",
+    "seqinfo",
+    "seqlevels",
+    "shiftGenomicToTranscript",
+    "shiftTranscriptToGenomic"
+  ],
+  "_datasets": [
+    {
+      "name": "rmbase_data",
+      "title": "EpiTxDb internal data",
+      "object": "rmbase_data",
+      "file": "rmbase_data.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "species",
+        "mod",
+        "dataSet",
+        "organism",
+        "genome",
+        "file"
+      ],
+      "rows": 38,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "EpiTxDb-class",
+      "title": "EpiTxDb objects",
+      "topics": [
+        ".EpiTxDb",
+        "as.list,EpiTxDb-method",
+        "EpiTxDb",
+        "EpiTxDb-class",
+        "organism,EpiTxDb-method",
+        "seqinfo,EpiTxDb-method",
+        "seqlevels,EpiTxDb-method"
+      ]
+    },
+    {
+      "page": "EpiTxDb-data",
+      "title": "EpiTxDb internal data",
+      "topics": [
+        "EpiTxDb-data",
+        "rmbase_data"
+      ]
+    },
+    {
+      "page": "EpiTxDb-package-hash-single-quote",
+      "title": "'EpiTxDb' - Storing and accessing epitranscriptomic information using the AnnotationDbi interface",
+      "topics": [
+        "EpiTxDb-package#'"
+      ]
+    },
+    {
+      "page": "makeEpiTxDb",
+      "title": "Creating a 'EpiTxDb' from user supplied annotations as 'data.frame's",
+      "topics": [
+        "makeEpiTxDb"
+      ]
+    },
+    {
+      "page": "makeEpiTxDbFromGRanges",
+      "title": "Create a 'EpiTxDb' object from a 'GRanges' object",
+      "topics": [
+        "makeEpiTxDbFromGRanges"
+      ]
+    },
+    {
+      "page": "makeEpiTxDbFromRMBase",
+      "title": "Create a 'EpiTxDb' object from RMBase v2.0 online resources",
+      "topics": [
+        "downloadRMBaseFiles",
+        "EPITXDB_RMBASE_URL",
+        "getRMBaseDataAsGRanges",
+        "listAvailableGenomesFromRMBase",
+        "listAvailableModFromRMBase",
+        "listAvailableOrganismsFromRMBase",
+        "makeEpiTxDbFromRMBase",
+        "makeEpiTxDbFromRMBaseFiles"
+      ]
+    },
+    {
+      "page": "makeEpiTxDbFromtRNAdb",
+      "title": "Create a 'EpiTxDb' object from tRNAdb resources",
+      "topics": [
+        "gettRNAdbDataAsGRanges",
+        "listAvailableOrganismsFromtRNAdb",
+        "makeEpiTxDbFromtRNAdb"
+      ]
+    },
+    {
+      "page": "modifications",
+      "title": "Getting modification data from a 'EpiTxDb-object'",
+      "topics": [
+        "modifications",
+        "modifications,EpiTxDb-method",
+        "modificationsBy",
+        "modificationsBy,EpiTxDb-method",
+        "modifiedSeqsByTranscript",
+        "modifiedSeqsByTranscript,EpiTxDb,DNAStringSet-method"
+      ]
+    },
+    {
+      "page": "positionSequence",
+      "title": "Generate integer sequences from position information of 'Ranges'",
+      "topics": [
+        "as.integer,Ranges-method",
+        "positionSequence",
+        "positionSequence,Ranges-method",
+        "positionSequence,RangesList-method"
+      ]
+    },
+    {
+      "page": "rescale",
+      "title": "Rescaling 'Ranges' object",
+      "topics": [
+        "rescale",
+        "rescale,GRanges-method",
+        "rescale,GRangesList-method",
+        "rescale,IRanges-method",
+        "rescale,IRangesList-method"
+      ]
+    },
+    {
+      "page": "select",
+      "title": "Using the \"select\" interface on 'EpiTxDb' objects",
+      "topics": [
+        "columns",
+        "columns,EpiTxDb-method",
+        "keys",
+        "keys,EpiTxDb-method",
+        "keytypes",
+        "keytypes,EpiTxDb-method",
+        "select",
+        "select,EpiTxDb-method"
+      ]
+    },
+    {
+      "page": "shiftGenomicToTranscript",
+      "title": "Shift 'GRanges' coordinates based on another 'GRanges' object",
+      "topics": [
+        "shiftGenomicToTranscript",
+        "shiftGenomicToTranscript,GRanges,GRangesList-method",
+        "shiftGenomicToTranscript,GRangesList,GRangesList-method",
+        "shiftTranscriptToGenomic",
+        "shiftTranscriptToGenomic,GRanges,GRangesList-method",
+        "shiftTranscriptToGenomic,GRangesList,GRangesList-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/EpiTxDb/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "hms",
+    "httr",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "Modstrings",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "RCurl",
+    "restfulr",
+    "rex",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "Structstrings",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tRNA",
+    "tRNAdbImport",
+    "txdbmaker",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "EpiTxDb.Rmd",
+      "filename": "EpiTxDb.html",
+      "title": "EpiTxDb: Storing and accessing epitranscriptomic information using the AnnotationDbi interface",
+      "author": "Felix G.M. Ernst",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Introduction",
+        "Getting started",
+        "Accessing RNA modifications",
+        "Shifting coordinates from genomic to transcriptomic",
+        "Session info",
+        "References"
+      ],
+      "created": "2020-02-06 15:33:45",
+      "modified": "2021-03-25 10:01:39",
+      "commits": 10
+    },
+    {
+      "source": "EpiTxDb-creation.Rmd",
+      "filename": "EpiTxDb-creation.html",
+      "title": "EpiTxDb: creating an EpiTxDb object",
+      "author": "Felix G.M. Ernst",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "makeEpiTxDb and makeEpiTxDbFromGRanges",
+        "makeEpiTxDbFromtRNAdb",
+        "makeEpiTxDbFromRMBase",
+        "Session info",
+        "References"
+      ],
+      "created": "2020-02-26 13:45:49",
+      "modified": "2024-03-24 00:48:14",
+      "commits": 3
+    }
+  ],
+  "_score": 4.778151250383644,
+  "_indexed": true,
+  "_nocasepkg": "epitxdb",
+  "_universes": [
+    "bioc",
+    "felixernst"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:09:06.000Z",
+      "distro": "noble",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "36351f39bfc61e5b0acbe84fac385671f2eca43e3fb2cd73e46924cd2a96abd4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:08:41.000Z",
+      "distro": "noble",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "dad85a052bf23cbf7af1a81d84b8d1f505376711228a21517fd315cc89e8a972",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:11:54.000Z",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "e191d48032019eb9dceb8837660358882b564ed2ec54a4379bd8d9c3f341a5a0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:12:25.000Z",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "d2879948e6ad4f1c60c33eb556303b82f4db4228d747e227c16749ef14413221",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:08:16.000Z",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "bb4aa6fdfed2bd01820d41201660bca282f9902ff9ae199dd8e2e16b4dba7614",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:06:24.000Z",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "e729e1070b404fa99d8ba7185dea2ef7781d7641ca07044a1a4d19351d08236b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:06:30.000Z",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "cfdd6720e2539cbfab2ed57fad0ba42e581e4b813cd895186c229bd0f1421d25",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-02T09:06:29.000Z",
+      "commit": "23585ca057eabeed68d06a1affbfdadee433eb07",
+      "fileid": "0cd9a0004bf0719bdd2250db560e5cff4aa6dae92403c56ea126ecf9d3ae3f4a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583493663"
+    }
+  ]
+}

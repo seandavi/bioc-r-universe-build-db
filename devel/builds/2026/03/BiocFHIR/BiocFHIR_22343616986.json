@@ -1,0 +1,782 @@
+{
+  "Package": "BiocFHIR",
+  "Title": "Illustration of FHIR ingestion and transformation using R",
+  "Version": "1.13.0",
+  "Date": "2022-11-29",
+  "Authors@R": "c(person(\n\"Vincent\", \"Carey\", role = c(\"aut\", \"cre\"),\nemail = \"stvjc@channing.harvard.edu\",\ncomment = c(ORCID = \"0000-0003-4046-0063\")\n))",
+  "Description": "FHIR R4 bundles in JSON format are derived from\nhttps://synthea.mitre.org/downloads. Transformation inspired by\na kaggle notebook published by Dr Alexander Scarlat,\nhttps://www.kaggle.com/code/drscarlat/fhir-starter-parse-healthcare-bundles-into-tables.\nThis is a very limited illustration of some basic parsing and\nreorganization processes.  Additional tooling will be required\nto move beyond the Synthea data illustrations.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Infrastructure, DataImport, DataRepresentation",
+  "RoxygenNote": "7.3.2",
+  "URL": "https://github.com/vjcitn/BiocFHIR",
+  "BugReports": "https://github.com/vjcitn/BiocFHIR/issues",
+  "Config/pak/sysreqs": "make libicu-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:19:42 UTC",
+  "RemoteUrl": "https://github.com/bioc/BiocFHIR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-24 09:00:54 UTC",
+    "User": "root"
+  },
+  "Author": "Vincent Carey [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-4046-0063>)",
+  "Maintainer": "Vincent Carey <stvjc@channing.harvard.edu>",
+  "MD5sum": "e8d37aedb27812ed43c2bc97a2d35ca2",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "BiocFHIR_1.13.0.tar.gz",
+  "_fileid": "1db7e30ab86287eb481425945688132a2c956a8f0750030cc9bb635623e12489",
+  "_filesize": 3060705,
+  "_sha256": "1db7e30ab86287eb481425945688132a2c956a8f0750030cc9bb635623e12489",
+  "_created": "2026-02-24T09:00:54.000Z",
+  "_published": "2026-02-24T09:05:38.003Z",
+  "_jobs": [
+    {
+      "job": 64653049690,
+      "time": 169,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5631765841"
+    },
+    {
+      "job": 64653049666,
+      "time": 237,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5631781094"
+    },
+    {
+      "job": 64653049709,
+      "time": 225,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631778755"
+    },
+    {
+      "job": 64653049691,
+      "time": 107,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5631751859"
+    },
+    {
+      "job": 64653049683,
+      "time": 139,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631759120"
+    },
+    {
+      "job": 64652555883,
+      "time": 259,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631725458"
+    },
+    {
+      "job": 64653049652,
+      "time": 146,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5631760803"
+    },
+    {
+      "job": 64653049682,
+      "time": 142,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5631760149"
+    },
+    {
+      "job": 64653049695,
+      "time": 134,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5631758026"
+    },
+    {
+      "job": 64653049702,
+      "time": 138,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631759228"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/BiocFHIR",
+  "_commit": {
+    "id": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751182
+  },
+  "_maintainer": {
+    "name": "Vincent Carey",
+    "email": "stvjc@channing.harvard.edu",
+    "login": "vjcitn",
+    "uuid": 4624066,
+    "orcid": "0000-0003-4046-0063"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.2",
+      "role": "Depends"
+    },
+    {
+      "package": "DT",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "graph",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "visNetwork",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocBaseUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "rjsoncons",
+      "role": "Suggests"
+    },
+    {
+      "package": "igraph",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-18",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.12.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "dataimport",
+    "datarepresentation",
+    "fhir"
+  ],
+  "_stars": 4,
+  "_contributors": [
+    {
+      "user": "vjcitn",
+      "count": 78,
+      "uuid": 4624066
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    },
+    {
+      "user": "almahmoud",
+      "count": 5,
+      "uuid": 14061824
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 256,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/BiocFHIR"
+  },
+  "_devurl": "https://github.com/vjcitn/biocfhir",
+  "_searchresults": 15,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/BiocFHIR.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/vjcitn/biocfhir",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "add_procedures",
+    "available_retention_schemas",
+    "build_proccond_igraph",
+    "display_proccond_igraph",
+    "FHIR_ResourceTypes",
+    "FHIR_retention_schemas",
+    "FHIRtabs",
+    "freq_app",
+    "getHumanName",
+    "make_condition_graph",
+    "make_test_json_set",
+    "process_AllergyIntolerance",
+    "process_CarePlan",
+    "process_Claim",
+    "process_Condition",
+    "process_Encounter",
+    "process_fhir_bundle",
+    "process_Immunization",
+    "process_MedicationRequest",
+    "process_Observation",
+    "process_Patient",
+    "process_Procedure",
+    "stack_fhir",
+    "summarise_bundles",
+    "summary_selections"
+  ],
+  "_datasets": [
+    {
+      "name": "allin",
+      "title": "collection of synthea FHIR documents ingested",
+      "object": "allin",
+      "file": "allin.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "add_procedures",
+      "title": "update a fhir graph on patients and conditions with procedures",
+      "topics": [
+        "add_procedures"
+      ]
+    },
+    {
+      "page": "allin",
+      "title": "collection of synthea FHIR documents ingested",
+      "topics": [
+        "allin"
+      ]
+    },
+    {
+      "page": "available_retention_schemas",
+      "title": "list available 'retention schemas'",
+      "topics": [
+        "available_retention_schemas"
+      ]
+    },
+    {
+      "page": "build_proccond_igraph",
+      "title": "build graph with patients, conditions and procedures",
+      "topics": [
+        "build_proccond_igraph"
+      ]
+    },
+    {
+      "page": "display_proccond_igraph",
+      "title": "make network visualization",
+      "topics": [
+        "display_proccond_igraph"
+      ]
+    },
+    {
+      "page": "FHIR_ResourceTypes",
+      "title": "FHIR Resource types recognized in package",
+      "topics": [
+        "FHIR_ResourceTypes"
+      ]
+    },
+    {
+      "page": "FHIR_retention_schemas",
+      "title": "collection of FHIR Resource components to be retained",
+      "topics": [
+        "FHIR_retention_schemas"
+      ]
+    },
+    {
+      "page": "FHIRtabs",
+      "title": "table app",
+      "topics": [
+        "FHIRtabs"
+      ]
+    },
+    {
+      "page": "freq_app",
+      "title": "produce interactive tables with FHIR resources from a list of ingested bundles",
+      "topics": [
+        "freq_app"
+      ]
+    },
+    {
+      "page": "getHumanName",
+      "title": "get human name from a BiocFHIR.Patient instance",
+      "topics": [
+        "getHumanName"
+      ]
+    },
+    {
+      "page": "make_condition_graph",
+      "title": "create graph with links from patients to conditions",
+      "topics": [
+        "make_condition_graph"
+      ]
+    },
+    {
+      "page": "make_test_json_set",
+      "title": "produce 50 json FHIR files in a folder",
+      "topics": [
+        "make_test_json_set"
+      ]
+    },
+    {
+      "page": "print.BiocFHIR.FHIRgraph",
+      "title": "show a combination of graph and patient attributes",
+      "topics": [
+        "print.BiocFHIR.FHIRgraph"
+      ]
+    },
+    {
+      "page": "print.FHIR.bundle",
+      "title": "print method",
+      "topics": [
+        "print.FHIR.bundle"
+      ]
+    },
+    {
+      "page": "process_AllergyIntolerance",
+      "title": "extract information from retained fields in AllergyIntolerance component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_AllergyIntolerance"
+      ]
+    },
+    {
+      "page": "process_CarePlan",
+      "title": "extract information from retained fields in CarePlan component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_CarePlan"
+      ]
+    },
+    {
+      "page": "process_Claim",
+      "title": "extract information from retained fields in Claim component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_Claim"
+      ]
+    },
+    {
+      "page": "process_Condition",
+      "title": "extract information from retained fields in Condition component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_Condition"
+      ]
+    },
+    {
+      "page": "process_Encounter",
+      "title": "extract information from retained fields in Encounter component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_Encounter"
+      ]
+    },
+    {
+      "page": "process_fhir_bundle",
+      "title": "process a bundle of FHIR R4 JSON",
+      "topics": [
+        "process_fhir_bundle"
+      ]
+    },
+    {
+      "page": "process_Immunization",
+      "title": "extract information from retained fields in Immunization component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_Immunization"
+      ]
+    },
+    {
+      "page": "process_MedicationRequest",
+      "title": "extract information from retained fields in MedicationRequest component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_MedicationRequest"
+      ]
+    },
+    {
+      "page": "process_Observation",
+      "title": "extract information from retained fields in Observation component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_Observation"
+      ]
+    },
+    {
+      "page": "process_Patient",
+      "title": "flatten information in Patient component of a bundle to a one-line data.frame",
+      "topics": [
+        "process_Patient"
+      ]
+    },
+    {
+      "page": "process_Procedure",
+      "title": "extract information from retained fields in Procedure component of FHIR Bundle, produce simple data.frame",
+      "topics": [
+        "process_Procedure"
+      ]
+    },
+    {
+      "page": "stack_fhir",
+      "title": "convert data of a given FHIR type in a list of bundles to a data.frame",
+      "topics": [
+        "stack_fhir"
+      ]
+    },
+    {
+      "page": "summarise_bundles",
+      "title": "produce tables summarizing FHIR data",
+      "topics": [
+        "summarise_bundles"
+      ]
+    },
+    {
+      "page": "summary_selections",
+      "title": "vector of fields to be selected for summarization",
+      "topics": [
+        "summary_selections"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/BiocFHIR/raw/HEAD/README.md",
+  "_rundeps": [
+    "base64enc",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "bslib",
+    "cachem",
+    "cli",
+    "commonmark",
+    "cpp11",
+    "crosstalk",
+    "digest",
+    "dplyr",
+    "DT",
+    "evaluate",
+    "fastmap",
+    "fontawesome",
+    "fs",
+    "generics",
+    "glue",
+    "graph",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "later",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "memoise",
+    "mime",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "promises",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "Rcpp",
+    "rlang",
+    "rmarkdown",
+    "sass",
+    "shiny",
+    "sourcetools",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "visNetwork",
+    "withr",
+    "xfun",
+    "xtable",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "BiocFHIR.Rmd",
+      "filename": "BiocFHIR.html",
+      "title": "BiocFHIR -- infrastructure for parsing and analyzing FHIR data",
+      "author": "Vincent J. Carey, stvjc at channing.harvard.edu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "The basic structure of FHIR R4 JSON",
+        "Example: a table on Conditions recorded on the patient.",
+        "A family of documents",
+        "Session information"
+      ],
+      "created": "2022-10-02 20:14:28",
+      "modified": "2022-10-14 23:58:44",
+      "commits": 4
+    },
+    {
+      "source": "B_handling.Rmd",
+      "filename": "B_handling.html",
+      "title": "Handling FHIR documents with BiocFHIR",
+      "author": "Vincent J. Carey, stvjc at channing.harvard.edu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Examining sample data, again",
+        "Choosing an approach to FHIR JSON ingestion",
+        "Working with a specific type",
+        "List-based operations",
+        "Processing with BiocFHIR",
+        "Direct querying of FHIR JSON",
+        "Session information"
+      ],
+      "created": "2022-10-05 13:39:52",
+      "modified": "2022-10-15 10:09:45",
+      "commits": 3
+    },
+    {
+      "source": "D_linking.Rmd",
+      "filename": "D_linking.html",
+      "title": "Linking information between FHIR resources",
+      "author": "Vincent J. Carey, stvjc at channing.harvard.edu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Examining sample data, again",
+        "A graph relating patients to conditions",
+        "Adding procedures to the graph",
+        "Interactive visualization of the graph",
+        "Conclusions",
+        "Session information"
+      ],
+      "created": "2022-10-06 20:48:55",
+      "modified": "2022-11-14 21:31:40",
+      "commits": 4
+    },
+    {
+      "source": "C_tables.Rmd",
+      "filename": "C_tables.html",
+      "title": "Transforming FHIR documents to tables with BiocFHIR",
+      "author": "Vincent J. Carey, stvjc at channing.harvard.edu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Examining sample data, again",
+        "Bundle to data frames",
+        "Filtering FHIR elements",
+        "The resources extracted from a bundle",
+        "Accumulating resources across bundles",
+        "Session information"
+      ],
+      "created": "2022-10-06 10:54:00",
+      "modified": "2022-10-13 16:36:16",
+      "commits": 2
+    },
+    {
+      "source": "A_upper.Rmd",
+      "filename": "A_upper.html",
+      "title": "Upper level FHIR concepts",
+      "author": "Vincent J. Carey, stvjc at channing.harvard.edu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Some comments from hl7.org/fhir Executive Summary",
+        "FHIR JSON documents in BiocFHIR",
+        "Examining sample data",
+        "Session information"
+      ],
+      "created": "2022-10-05 13:39:52",
+      "modified": "2022-10-13 16:36:16",
+      "commits": 2
+    }
+  ],
+  "_score": 5.778151250383644,
+  "_indexed": true,
+  "_nocasepkg": "biocfhir",
+  "_universes": [
+    "bioc",
+    "vjcitn"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:04:29.000Z",
+      "distro": "noble",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "c668c1461230459242d1492a0c4820a944bdefe2eee01a36a9d3e493251cc46d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:04:18.000Z",
+      "distro": "noble",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "5efb3596f4e417d1d7d9c2f856e6237accc0adbdc7a7c481140e991ef1e6c047",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:02:35.000Z",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "87d90a46bcd126032c59cd49a330c9127849d4c80d92d11a5d1e761a753aab70",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:03:00.000Z",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "d7456dd31a04589be29b674967b5c3c14823a8546a39d0d5cc42def93202405a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:03:48.000Z",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "3e399ee10074ade3a04ac66acf9e8c56eef6127c79630c89647ce400eb6c8f12",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:02:47.000Z",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "5ce2be9a49c51c7b4f49173d566c171bdda397f27efb9507debb1d1b8a88f0dc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:02:40.000Z",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "c12b171ef8f5213a815b93ab8d8efa9dd62474bf639476de07382ef05ab5de4b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-24T09:02:42.000Z",
+      "commit": "4c84357190aeccd3ccf8badfd106b8e483545c15",
+      "fileid": "68e1c3e14fd5a6b260dc9bd81b53b7b2f86f01f98271b61a151cdc13df9b2106",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22343616986"
+    }
+  ]
+}

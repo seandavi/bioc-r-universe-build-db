@@ -1,0 +1,595 @@
+{
+  "Package": "ADAPT",
+  "Title": "Analysis of Microbiome Differential Abundance by Pooling Tobit\nModels",
+  "Version": "1.4.0",
+  "Authors@R": "c(person(given=\"Mukai\", family=\"Wang\", email=\"wangmk@umich.edu\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-1413-1904\")),\nperson(given=\"Simon\", family=\"Fontaine\", email=\"simfont@umich.edu\", role = \"ctb\"),\nperson(given=\"Hui\", family=\"Jiang\", email=\"jianghui@umich.edu\", role=\"ctb\"),\nperson(given=\"Gen\", family=\"Li\", email=\"ligen@umich.edu\", role=c(\"aut\", \"ctb\")))",
+  "Description": "ADAPT carries out differential abundance analysis for\nmicrobiome metagenomics data in phyloseq format. It has two\ninnovations. One is to treat zero counts as left censored and\nuse Tobit models for log count ratios. The other is an\ninnovative way to find non-differentially abundant taxa as\nreference, then use the reference taxa to find the\ndifferentially abundant ones.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "Config/testthat/edition": "3",
+  "biocViews": "DifferentialExpression, Microbiome, Normalization,\nSequencing, Metagenomics, Software, MultipleComparison",
+  "LazyData": "false",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "libglpk-dev make libicu-dev libxml2-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:32:05 UTC",
+  "RemoteUrl": "https://github.com/bioc/ADAPT",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-02 09:57:16 UTC",
+    "User": "root"
+  },
+  "Author": "Mukai Wang [aut, cre] (ORCID: <https://orcid.org/0000-0002-1413-1904>),\nSimon Fontaine [ctb],\nHui Jiang [ctb],\nGen Li [aut, ctb]",
+  "Maintainer": "Mukai Wang <wangmk@umich.edu>",
+  "MD5sum": "aac06946546cfbf0cfcbef5e5859da69",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "ADAPT_1.4.0.tar.gz",
+  "_fileid": "f78db99d09886246e78674a8ae72bde01d28441e271e505de7c5a5bd354826ef",
+  "_filesize": 529485,
+  "_sha256": "f78db99d09886246e78674a8ae72bde01d28441e271e505de7c5a5bd354826ef",
+  "_created": "2026-02-02T09:57:16.000Z",
+  "_published": "2026-02-04T04:03:45.305Z",
+  "_jobs": [
+    {
+      "job": 62436123937,
+      "time": 177,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341056240"
+    },
+    {
+      "job": 62436124034,
+      "time": 223,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5341066739"
+    },
+    {
+      "job": 62436124050,
+      "time": 243,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5341070227"
+    },
+    {
+      "job": 62436123967,
+      "time": 221,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5341066583"
+    },
+    {
+      "job": 62436124083,
+      "time": 264,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5341074905"
+    },
+    {
+      "job": 62436123831,
+      "time": 130,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62436123829,
+      "time": 191,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62436123832,
+      "time": 125,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62436123838,
+      "time": 226,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62436123801,
+      "time": 268,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5341017120"
+    },
+    {
+      "job": 62436123822,
+      "time": 153,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62436124075,
+      "time": 246,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5341071017"
+    },
+    {
+      "job": 62436124062,
+      "time": 226,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5341066721"
+    },
+    {
+      "job": 62436124048,
+      "time": 221,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5341065670"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ADAPT",
+  "_commit": {
+    "id": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751925
+  },
+  "_maintainer": {
+    "name": "Mukai Wang",
+    "email": "wangmk@umich.edu",
+    "login": "mkbwang",
+    "uuid": 31811109,
+    "orcid": "0000-0002-1413-1904"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppParallel",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 1.0.8",
+      "role": "Imports"
+    },
+    {
+      "package": "RcppArmadillo",
+      "version": ">= 0.10.8",
+      "role": "Imports"
+    },
+    {
+      "package": "RcppParallel",
+      "version": ">= 5.1.5",
+      "role": "Imports"
+    },
+    {
+      "package": "phyloseq",
+      "version": ">= 1.39.0",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 3.4.1",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "version": ">= 0.9.1",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "version": ">= 2.11",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.37",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.5.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.4.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "differentialexpression",
+    "microbiome",
+    "normalization",
+    "sequencing",
+    "metagenomics",
+    "software",
+    "multiplecomparison",
+    "openblas",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 188,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ADAPT"
+  },
+  "_searchresults": 40,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/ADAPT.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "adapt",
+    "plot",
+    "summary"
+  ],
+  "_datasets": [
+    {
+      "name": "ecc_plaque",
+      "title": "Plaque samples from early childhood dental caries studies",
+      "object": "ecc_plaque",
+      "file": "ecc_plaque.rda",
+      "class": [
+        "phyloseq"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ecc_saliva",
+      "title": "Saliva samples from early childhood dental caries studies",
+      "object": "ecc_saliva",
+      "file": "ecc_saliva.rda",
+      "class": [
+        "phyloseq"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "adapt",
+      "title": "ADAPT",
+      "topics": [
+        "adapt"
+      ]
+    },
+    {
+      "page": "DAresult-class",
+      "title": "Differential abundance analysis result",
+      "topics": [
+        "DAresult-class"
+      ]
+    },
+    {
+      "page": "ecc_plaque",
+      "title": "Plaque samples from early childhood dental caries studies",
+      "topics": [
+        "ecc_plaque"
+      ]
+    },
+    {
+      "page": "ecc_saliva",
+      "title": "Saliva samples from early childhood dental caries studies",
+      "topics": [
+        "ecc_saliva"
+      ]
+    },
+    {
+      "page": "plot-DAresult-ANY-method",
+      "title": "Plotting differential abundance analysis results",
+      "topics": [
+        "plot,DAresult,ANY-method"
+      ]
+    },
+    {
+      "page": "summary-DAresult-method",
+      "title": "Summary of differential abundance analysis",
+      "topics": [
+        "summary,DAresult-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ADAPT/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "ade4",
+    "ape",
+    "Biobase",
+    "BiocGenerics",
+    "biomformat",
+    "Biostrings",
+    "cli",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "digest",
+    "farver",
+    "foreach",
+    "generics",
+    "ggplot2",
+    "ggrepel",
+    "glue",
+    "gtable",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "mgcv",
+    "multtest",
+    "nlme",
+    "permute",
+    "phyloseq",
+    "pixmap",
+    "pkgconfig",
+    "plyr",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppParallel",
+    "reshape2",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rlang",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "sp",
+    "stringi",
+    "stringr",
+    "survival",
+    "vctrs",
+    "vegan",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "liblapack",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libblas",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "ADAPT-manual.Rmd",
+      "filename": "ADAPT-manual.html",
+      "title": "ADAPT Tutorial",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Main function adapt",
+        "Explore Analysis Results",
+        "Session Information and References"
+      ],
+      "created": "2024-04-14 02:11:27",
+      "modified": "2024-08-21 18:53:00",
+      "commits": 2
+    }
+  ],
+  "_score": 4.6020599913279625,
+  "_indexed": false,
+  "_nocasepkg": "adapt",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/ADAPT",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.4.0",
+      "date": "2026-02-02T10:00:05.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+      "fileid": "bf610fcaae0e9683781d567a72bcb64f60d0679773d96dad12816bbc0a238b25",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.4.0",
+      "date": "2026-02-02T10:00:10.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+      "fileid": "c679ba267acffd28c4bcc7fd69ee02fff4eddb5419f1034425d3c436d264cfd3",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.4.0",
+      "date": "2026-02-02T10:00:00.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+      "fileid": "1152e8e8ab18f66804c7df0521bceff20712ac1b55f0619d06a9c179c578fdb4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.4.0",
+      "date": "2026-02-02T10:00:26.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+      "fileid": "bd6604e61bcdd3a3068a636f685934d3c85f89d5a073630ffc0a8edcf245966b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.4.0",
+      "date": "2026-02-02T09:59:13.000Z",
+      "arch": "x86_64",
+      "commit": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+      "fileid": "2de1aa7704e27250aee18c00bf90ea5db1dac333c7d54a43530697bc80b00eea",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.4.0",
+      "date": "2026-02-02T09:59:07.000Z",
+      "arch": "x86_64",
+      "commit": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+      "fileid": "f3de3b36eaf9d2566d5736d936b470c66fcfdc81d284e528631d2a401b10ba3f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.4.0",
+      "date": "2026-02-02T09:59:08.000Z",
+      "arch": "x86_64",
+      "commit": "f9fd0d96b97e9d819eea9de80832cf07eb4d5e51",
+      "fileid": "4633f3fbed822392534af080859bcb2027b74f55402f0f9af61d64c9fb86bf34",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585327150"
+    }
+  ]
+}

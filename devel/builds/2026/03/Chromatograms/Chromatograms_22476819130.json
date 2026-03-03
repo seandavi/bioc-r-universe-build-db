@@ -1,0 +1,853 @@
+{
+  "Package": "Chromatograms",
+  "Title": "Infrastructure for Chromatographic Mass Spectrometry Data",
+  "Version": "1.1.1",
+  "Description": "The Chromatograms packages defines an efficient\ninfrastructure for storing and handling of chromatographic mass\nspectrometry data. It provides different implementations of\n*backends* to store and represent the data. Such backends can\nbe optimized for small memory footprint or fast data\naccess/processing. A lazy evaluation queue and chunk-wise\nprocessing capabilities ensure efficient analysis of also very\nlarge data sets.",
+  "Authors@R": "c(person(given = \"Johannes\", family = \"Rainer\",\nemail = \"Johannes.Rainer@eurac.edu\",\nrole = c(\"aut\"),\ncomment = c(ORCID = \"0000-0002-6977-7147\")),\nperson(given = \"Laurent\", family = \"Gatto\",\ncomment = c(ORCID = \"0000-0002-1520-2268\"),\nemail = \"laurent.gatto@uclouvain.be\",\nrole = c(\"aut\")),\nperson(given = \"Philippine\", family = \"Louail\",\nemail = \"philippine.louail@outlook.com\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0009-0007-5429-6846\",\nfnd = \"European Union HORIZON-MSCA-2021 project\nGrant No. 101073062: HUMAN \u2013 Harmonising and Unifying Blood\nMetabolic Analysis Networks\")))",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/RforMassSpectrometry/Chromatograms/issues",
+  "URL": "https://github.com/RforMassSpectrometry/Chromatograms",
+  "biocViews": "Infrastructure, Metabolomics, MassSpectrometry, Proteomics",
+  "Roxygen": "list(markdown=TRUE)",
+  "RoxygenNote": "7.3.3",
+  "Collate": "'AllGenerics.R' 'ChromBackend-functions.R' 'ChromBackend.R'\n'hidden_aliases.R' 'helpers.R' 'ChromBackendMemory.R'\n'ChromBackendMzR.R' 'ChromBackendSpectra.R' 'Chromatograms.R'\n'Chromatograms-chromData.R' 'Chromatograms-peaksData.R'\n'Chromatograms-plot.R' 'Chromatograms-processingQueue.R'",
+  "Config/pak/sysreqs": "make",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-22 18:24:50 UTC",
+  "RemoteUrl": "https://github.com/bioc/Chromatograms",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "42480ad12fffe4c02c561d92952383c4541bb392",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-27 07:24:08 UTC",
+    "User": "root"
+  },
+  "Author": "Johannes Rainer [aut] (ORCID: <https://orcid.org/0000-0002-6977-7147>),\nLaurent Gatto [aut] (ORCID: <https://orcid.org/0000-0002-1520-2268>),\nPhilippine Louail [aut, cre] (ORCID:\n<https://orcid.org/0009-0007-5429-6846>, fnd: European Union\nHORIZON-MSCA-2021 project Grant No. 101073062: HUMAN \u2013 Harmonising\nand Unifying Blood Metabolic Analysis Networks)",
+  "Maintainer": "Philippine Louail <philippine.louail@outlook.com>",
+  "MD5sum": "e69350918b501a7375b515bb172aad0c",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "Chromatograms_1.1.1.tar.gz",
+  "_fileid": "237a3ec4c7b66373d3aab21adcc1a627b0811ab5423a618e12f25f83125a0aae",
+  "_filesize": 530060,
+  "_sha256": "237a3ec4c7b66373d3aab21adcc1a627b0811ab5423a618e12f25f83125a0aae",
+  "_created": "2026-02-27T07:24:08.000Z",
+  "_published": "2026-02-27T07:29:58.717Z",
+  "_jobs": [
+    {
+      "job": 65105824239,
+      "time": 201,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5686294893"
+    },
+    {
+      "job": 65105824220,
+      "time": 307,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5686311519"
+    },
+    {
+      "job": 65105824225,
+      "time": 309,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5686311839"
+    },
+    {
+      "job": 65105824221,
+      "time": 202,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5686308566"
+    },
+    {
+      "job": 65105824241,
+      "time": 191,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5686293411"
+    },
+    {
+      "job": 65105473438,
+      "time": 253,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5686262148"
+    },
+    {
+      "job": 65105824231,
+      "time": 165,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5686289287"
+    },
+    {
+      "job": 65105824278,
+      "time": 267,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5686305443"
+    },
+    {
+      "job": 65105824271,
+      "time": 288,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5686308747"
+    },
+    {
+      "job": 65105824283,
+      "time": 258,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5686304194"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/Chromatograms",
+  "_commit": {
+    "id": "42480ad12fffe4c02c561d92952383c4541bb392",
+    "author": "Philippine Louail <philippine.louail@outlook.com>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Merge pull request #44 from rformassspectrometry/phili\n\nfix vignettes, refactor chromBackendSpectra",
+    "time": 1769106290
+  },
+  "_maintainer": {
+    "name": "Philippine Louail",
+    "email": "philippine.louail@outlook.com",
+    "login": "philouail",
+    "uuid": 127301965
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "BiocParallel",
+      "role": "Depends"
+    },
+    {
+      "package": "ProtGenerics",
+      "version": ">= 1.39.2",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "MsCoreUtils",
+      "version": ">= 1.7.5",
+      "role": "Imports"
+    },
+    {
+      "package": "Spectra",
+      "role": "Imports"
+    },
+    {
+      "package": "msdata",
+      "version": ">= 0.19.3",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "version": ">= 2.5.19",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.1.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "mzR",
+      "version": ">= 2.41.4",
+      "role": "Suggests"
+    },
+    {
+      "package": "MsBackendMetaboLights",
+      "version": ">= 1.3.1",
+      "role": "Suggests"
+    },
+    {
+      "package": "vdiffr",
+      "role": "Suggests"
+    },
+    {
+      "package": "IRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-14",
+      "n": 1
+    },
+    {
+      "week": "2025-19",
+      "n": 2
+    },
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-29",
+      "n": 2
+    },
+    {
+      "week": "2025-38",
+      "n": 1
+    },
+    {
+      "week": "2025-39",
+      "n": 1
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 1
+    },
+    {
+      "week": "2026-04",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "metabolomics",
+    "massspectrometry",
+    "proteomics"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "philouail",
+      "count": 90,
+      "uuid": 127301965
+    },
+    {
+      "user": "jorainer",
+      "count": 58,
+      "uuid": 5506112
+    },
+    {
+      "user": "lgatto",
+      "count": 15,
+      "uuid": 384198
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 186,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/Chromatograms"
+  },
+  "_devurl": "https://github.com/rformassspectrometry/chromatograms",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/Chromatograms.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/rformassspectrometry/chromatograms",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "applyProcessing",
+    "backendBpparam",
+    "backendInitialize",
+    "backendMerge",
+    "backendParallelFactor",
+    "Chromatograms",
+    "ChromBackendMemory",
+    "ChromBackendMzR",
+    "ChromBackendSpectra",
+    "chromData",
+    "chromData<-",
+    "chromExtract",
+    "chromIndex",
+    "chromIndex<-",
+    "chromSpectraIndex",
+    "chromVariables",
+    "collisionEnergy",
+    "collisionEnergy<-",
+    "coreChromVariables",
+    "corePeaksVariables",
+    "dataOrigin",
+    "dataOrigin<-",
+    "extractByIndex",
+    "factorize",
+    "fillCoreChromVariables",
+    "filterChromData",
+    "filterPeaksData",
+    "imputePeaksData",
+    "intensity",
+    "intensity<-",
+    "isEmpty",
+    "isReadOnly",
+    "msLevel",
+    "msLevel<-",
+    "mz",
+    "mz<-",
+    "mzMax",
+    "mzMax<-",
+    "mzMin",
+    "mzMin<-",
+    "peaksData",
+    "peaksData<-",
+    "plotChromatograms",
+    "plotChromatogramsOverlay",
+    "precursorMz",
+    "precursorMz<-",
+    "precursorMzMax",
+    "precursorMzMax<-",
+    "precursorMzMin",
+    "precursorMzMin<-",
+    "processingChunkFactor",
+    "processingChunkSize",
+    "processingChunkSize<-",
+    "productMz",
+    "productMz<-",
+    "productMzMax",
+    "productMzMax<-",
+    "productMzMin",
+    "productMzMin<-",
+    "reset",
+    "rtime",
+    "rtime<-",
+    "setBackend",
+    "show",
+    "split",
+    "supportsSetBackend",
+    "validChromData",
+    "validPeaksData"
+  ],
+  "_help": [
+    {
+      "page": "Chromatograms",
+      "title": "The Chromatograms class to manage and access chromatographic data",
+      "topics": [
+        "$,Chromatograms-method",
+        "$<-,Chromatograms-method",
+        "Chromatograms",
+        "Chromatograms,ChromBackendOrMissing-method",
+        "Chromatograms,Spectra-method",
+        "Chromatograms-class",
+        "chromExtract",
+        "chromExtract,Chromatograms-method",
+        "factorize,Chromatograms-method",
+        "setBackend,Chromatograms,ChromBackend-method",
+        "[,Chromatograms-method",
+        "[<-,Chromatograms-method",
+        "[[,Chromatograms-method",
+        "[[<-,Chromatograms-method"
+      ]
+    },
+    {
+      "page": "ChromBackendMemory",
+      "title": "Improved in-memory Chromatographic data backend",
+      "topics": [
+        "backendInitialize,ChromBackendMemory-method",
+        "ChromBackendMemory"
+      ]
+    },
+    {
+      "page": "ChromBackendMzR",
+      "title": "Chromatographic Data Backend for Reading mzML Files",
+      "topics": [
+        "backendInitialize,ChromBackendMzR-method",
+        "ChromBackendMzR"
+      ]
+    },
+    {
+      "page": "ChromBackendSpectra",
+      "title": "Chromatographic Data Backend for Spectra Objects",
+      "topics": [
+        "backendInitialize,ChromBackendSpectra-method",
+        "ChromBackendSpectra",
+        "chromSpectraIndex"
+      ]
+    },
+    {
+      "page": "chromData",
+      "title": "Chromatographic Peaks Metadata.",
+      "topics": [
+        "chromData",
+        "chromData,Chromatograms-method",
+        "chromData<-",
+        "chromData<-,Chromatograms-method",
+        "chromIndex",
+        "chromIndex,Chromatograms-method",
+        "chromIndex<-",
+        "chromIndex<-,Chromatograms-method",
+        "chromVariables",
+        "chromVariables,Chromatograms-method",
+        "chromVariables<-",
+        "collisionEnergy",
+        "collisionEnergy,Chromatograms-method",
+        "collisionEnergy<-",
+        "collisionEnergy<-,Chromatograms-method",
+        "dataOrigin",
+        "dataOrigin,Chromatograms-method",
+        "dataOrigin<-",
+        "dataOrigin<-,Chromatograms-method",
+        "filterChromData",
+        "filterChromData,Chromatograms-method",
+        "length,Chromatograms-method",
+        "msLevel",
+        "msLevel,Chromatograms-method",
+        "msLevel<-",
+        "msLevel<-,Chromatograms-method",
+        "mz",
+        "mz,Chromatograms-method",
+        "mz<-",
+        "mz<-,Chromatograms-method",
+        "mzMax",
+        "mzMax,Chromatograms-method",
+        "mzMax<-",
+        "mzMax<-,Chromatograms-method",
+        "mzMin",
+        "mzMin,Chromatograms-method",
+        "mzMin<-",
+        "mzMin<-,Chromatograms-method",
+        "precursorMz",
+        "precursorMz,Chromatograms-method",
+        "precursorMz<-",
+        "precursorMz<-,Chromatograms-method",
+        "precursorMzMax",
+        "precursorMzMax,Chromatograms-method",
+        "precursorMzMax<-",
+        "precursorMzMax<-,Chromatograms-method",
+        "precursorMzMin",
+        "precursorMzMin,Chromatograms-method",
+        "precursorMzMin<-",
+        "precursorMzMin<-,Chromatograms-method",
+        "productMz",
+        "productMz,Chromatograms-method",
+        "productMz<-",
+        "productMz<-,Chromatograms-method",
+        "productMzMax",
+        "productMzMax,Chromatograms-method",
+        "productMzMax<-",
+        "productMzMax<-,Chromatograms-method",
+        "productMzMin",
+        "productMzMin,Chromatograms-method",
+        "productMzMin<-",
+        "productMzMin<-,Chromatograms-method"
+      ]
+    },
+    {
+      "page": "ChromBackend",
+      "title": "Chromatographic MS Data Backends",
+      "topics": [
+        "$,ChromBackend-method",
+        "$<-,ChromBackend-method",
+        "backendBpparam,ChromBackend-method",
+        "backendInitialize,ChromBackend-method",
+        "backendMerge,ChromBackend-method",
+        "backendMerge,list-method",
+        "backendParallelFactor,ChromBackend-method",
+        "ChromBackend",
+        "ChromBackend-class",
+        "ChromBackendMemory-class",
+        "ChromBackendMzR-class",
+        "ChromBackendSpectra-class",
+        "chromData,ChromBackend-method",
+        "chromData<-,ChromBackend-method",
+        "chromExtract,ChromBackend-method",
+        "chromIndex,ChromBackend-method",
+        "chromIndex<-,ChromBackend-method",
+        "chromVariables,ChromBackend-method",
+        "collisionEnergy,ChromBackend-method",
+        "collisionEnergy<-,ChromBackend-method",
+        "coreChromVariables",
+        "corePeaksVariables",
+        "dataOrigin,ChromBackend-method",
+        "dataOrigin<-,ChromBackend-method",
+        "extractByIndex",
+        "extractByIndex,ChromBackend,ANY-method",
+        "extractByIndex,ChromBackend,missing-method",
+        "factorize",
+        "factorize,ChromBackend-method",
+        "filterChromData,ChromBackend-method",
+        "filterPeaksData,ChromBackend-method",
+        "imputePeaksData,ChromBackend-method",
+        "intensity,ChromBackend-method",
+        "intensity<-,ChromBackend-method",
+        "isEmpty,ChromBackend-method",
+        "isReadOnly,ChromBackend-method",
+        "length,ChromBackend-method",
+        "lengths,ChromBackend-method",
+        "msLevel,ChromBackend-method",
+        "msLevel<-,ChromBackend-method",
+        "mz,ChromBackend-method",
+        "mz<-,ChromBackend-method",
+        "mzMax,ChromBackend-method",
+        "mzMax<-,ChromBackend-method",
+        "mzMin,ChromBackend-method",
+        "mzMin<-,ChromBackend-method",
+        "peaksData,ChromBackend-method",
+        "peaksData<-,ChromBackend-method",
+        "peaksVariables,ChromBackend-method",
+        "precursorMz,ChromBackend-method",
+        "precursorMz<-,ChromBackend-method",
+        "precursorMzMax,ChromBackend-method",
+        "precursorMzMax<-,ChromBackend-method",
+        "precursorMzMin,ChromBackend-method",
+        "precursorMzMin<-,ChromBackend-method",
+        "productMz,ChromBackend-method",
+        "productMz<-,ChromBackend-method",
+        "productMzMax,ChromBackend-method",
+        "productMzMax<-,ChromBackend-method",
+        "productMzMin,ChromBackend-method",
+        "productMzMin<-,ChromBackend-method",
+        "reset,ChromBackend-method",
+        "rtime,ChromBackend-method",
+        "rtime<-,ChromBackend-method",
+        "split,ChromBackend,ANY-method",
+        "supportsSetBackend,ChromBackend-method",
+        "[,ChromBackend-method",
+        "[[,ChromBackend-method",
+        "[[<-,ChromBackend-method"
+      ]
+    },
+    {
+      "page": "peaksData",
+      "title": "Chromatographic peaks data",
+      "topics": [
+        "filterPeaksData",
+        "filterPeaksData,Chromatograms-method",
+        "imputePeaksData",
+        "imputePeaksData,Chromatograms-method",
+        "intensity,Chromatograms-method",
+        "intensity<-,Chromatograms-method",
+        "lengths,Chromatograms-method",
+        "peaksData",
+        "peaksData,Chromatograms-method",
+        "peaksData<-,Chromatograms-method",
+        "peaksVariables",
+        "peaksVariables,Chromatograms-method",
+        "rtime,Chromatograms-method",
+        "rtime<-,Chromatograms-method"
+      ]
+    },
+    {
+      "page": "plotChromatograms",
+      "title": "Plot chromatograms",
+      "topics": [
+        "plotChromatograms",
+        "plotChromatogramsOverlay"
+      ]
+    },
+    {
+      "page": "processingQueue",
+      "title": "Efficiently processing 'Chromatograms' objects.",
+      "topics": [
+        "addProcessing,Chromatograms-method",
+        "applyProcessing,Chromatograms-method",
+        "processingChunkFactor,Chromatograms-method",
+        "processingChunkSize,Chromatograms-method",
+        "processingChunkSize<-,Chromatograms-method",
+        "processingQueue"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/Chromatograms/raw/HEAD/README.md",
+  "_rundeps": [
+    "BH",
+    "BiocGenerics",
+    "BiocParallel",
+    "clue",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "IRanges",
+    "lambda.r",
+    "MASS",
+    "MetaboCoreUtils",
+    "MsCoreUtils",
+    "ProtGenerics",
+    "Rcpp",
+    "S4Vectors",
+    "snow",
+    "Spectra"
+  ],
+  "_vignettes": [
+    {
+      "source": "creating-backend-classes.Rmd",
+      "filename": "creating-backend-classes.html",
+      "title": "Creating new ChromBackend classes for Chromatograms",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "What is a ChromBackend?",
+        "Conventions and definitions",
+        "Notes on parallel and chunk-wise processing",
+        "API",
+        "Required methods",
+        "dataStorage()",
+        "length()",
+        "backendInitialize()",
+        "chromVariables()",
+        "chromData()",
+        "peaksVariables()",
+        "peaksData()",
+        "[",
+        "$",
+        "backendMerge()",
+        "Data replacement methods",
+        "chromData<-",
+        "$<-",
+        "peaksData<-",
+        "Methods with available default implementations",
+        "backendParallelFactor()",
+        "chromIndex()",
+        "collisionEnergy()",
+        "dataOrigin(), dataOrigin<-",
+        "intensity(), intensity<-",
+        "isEmpty()",
+        "isReadOnly()",
+        "lengths()",
+        "msLevel(), msLevel<-",
+        "mz(), mz<-",
+        "mzMax(), mzMax<-",
+        "mzMin(), mzMin<-`",
+        "precursorMz(), precursorMz<-",
+        "precursorMzMax(), precursorMzMax<-",
+        "precursorMzMin(), precursorMzMin<-",
+        "productMz(), productMz<-",
+        "productMzMax(), productMzMax<-",
+        "productMzMin(), productMzMin<-",
+        "rtime(), rtime<-",
+        "split()",
+        "Session information"
+      ],
+      "created": "2024-03-27 07:29:10",
+      "modified": "2025-07-14 12:10:13",
+      "commits": 6
+    },
+    {
+      "source": "using-a-chromatograms-object.Rmd",
+      "filename": "using-a-chromatograms-object.html",
+      "title": "Using and understanding a Chromatograms object",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "The Chromatograms object",
+        "Available backends",
+        "Chromatographic peaks data",
+        "Chromatograms metadata",
+        "Creating Chromatograms objects",
+        "Access data from a Chromatograms object",
+        "peaksData",
+        "chromData",
+        "Re-factorizing after metadata changes",
+        "Lazy Processing and Parallelization",
+        "Processing queue",
+        "Parallelization",
+        "Changing backend type",
+        "Choosing the right backend",
+        "Plotting chromatograms from a Spectra object",
+        "Understanding Factorization",
+        "Extracting chromatographic regions of interest",
+        "Basic extraction by retention time",
+        "Extraction with m/z filtering (ChromBackendSpectra only)",
+        "Imputing missing values in chromatograms",
+        "Available imputation methods",
+        "Example: Imputing an extracted ion chromatogram (EIC)",
+        "Selecting the right imputation method",
+        "Imputation in lazy evaluation pipelines",
+        "Session information"
+      ],
+      "created": "2025-02-18 08:10:12",
+      "modified": "2026-01-22 18:24:50",
+      "commits": 7
+    }
+  ],
+  "_score": 5.732393759822968,
+  "_indexed": true,
+  "_nocasepkg": "chromatograms",
+  "_universes": [
+    "bioc",
+    "philouail",
+    "rformassspectrometry"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:27:57.000Z",
+      "distro": "noble",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "f64215c136817fa688f92e445cd5e51814d181a912775d9f38c7ea10385133b9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:28:03.000Z",
+      "distro": "noble",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "e51a5a6b176c848fc297ea7ed9abb883ee7abffa3fac9ede0845019e0d4586c2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:27:59.000Z",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "498636343422a422bd7c5ba2ef8c09837d399491bfa9a2f233b5f4445033537d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:26:16.000Z",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "ceceae1695664b899ae81b9e070b0b6e19292444ebcacb60ea3ac1ab294850a0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:27:16.000Z",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "e2920252a74895e78efb4b8907463da0133dae32dd2dea49fb3b4b6307a7576f",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:26:12.000Z",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "906cf9c1784be9e90350e011484b25a76c5611a989b9d96a33e36b49da2bbcc7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:26:57.000Z",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "a00f83a88fe08d55078e1161178516e27392c77fbbe411db099acb4259c3151c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.1",
+      "date": "2026-02-27T07:26:25.000Z",
+      "commit": "42480ad12fffe4c02c561d92952383c4541bb392",
+      "fileid": "ee8d5978c2897f792fe8438597f6267c89da75a6f749bf305b8787c5797e4593",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22476819130"
+    }
+  ]
+}

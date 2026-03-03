@@ -1,0 +1,854 @@
+{
+  "Package": "AnnotationHub",
+  "Type": "Package",
+  "Title": "Client to access AnnotationHub resources",
+  "Version": "4.1.0",
+  "Authors@R": "c(person(\"Bioconductor Package\", \"Maintainer\", email=\"maintainer@bioconductor.org\",\nrole=\"cre\"),\nperson(\"Martin\", \"Morgan\", role=\"aut\"),\nperson(\"Marc\", \"Carlson\", role=\"ctb\"),\nperson(\"Dan\", \"Tenenbaum\", role=\"ctb\"),\nperson(\"Sonali\", \"Arora\", role=\"ctb\"),\nperson(\"Valerie\", \"Oberchain\", role=\"ctb\"),\nperson(\"Kayla\", \"Morrell\", role=\"ctb\"),\nperson(\"Lori\", \"Shepherd\", role=\"aut\"))",
+  "biocViews": "Infrastructure, DataImport, GUI, ThirdPartyClient",
+  "Description": "This package provides a client for the Bioconductor\nAnnotationHub web resource. The AnnotationHub web resource\nprovides a central location where genomic files (e.g., VCF,\nbed, wig) and other resources from standard locations (e.g.,\nUCSC, Ensembl) can be discovered. The resource includes\nmetadata about each resource, e.g., a textual description,\ntags, and date of modification. The client creates and manages\na local cache of files retrieved by the user, helping with\nquick and reproducible access.",
+  "License": "Artistic-2.0",
+  "Collate": "AnnotationHubOption.R AllGenerics.R Hub-class.R db-utils.R\nAnnotationHub-class.R AnnotationHubResource-class.R\nBEDResource-class.R ProteomicsResource-class.R\nEpigenomeResource-class.R EnsDbResource-class.R utilities.R\nsql-utils.R Hub-utils.R cache-utils.R zzz.R",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/Bioconductor/AnnotationHub/issues",
+  "NeedsCompilation": "yes",
+  "RoxygenNote": "7.3.2",
+  "Config/pak/sysreqs": "libicu-dev libpng-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:14:23 UTC",
+  "RemoteUrl": "https://github.com/bioc/AnnotationHub",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+  "Packaged": {
+    "Date": "2026-02-23 06:19:56 UTC",
+    "User": "root"
+  },
+  "Author": "Bioconductor Package Maintainer [cre],\nMartin Morgan [aut],\nMarc Carlson [ctb],\nDan Tenenbaum [ctb],\nSonali Arora [ctb],\nValerie Oberchain [ctb],\nKayla Morrell [ctb],\nLori Shepherd [aut]",
+  "Maintainer": "Bioconductor Package Maintainer <maintainer@bioconductor.org>",
+  "MD5sum": "63c57e121132150474a9fd0b6ffe8aa6",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "AnnotationHub_4.1.0.tar.gz",
+  "_fileid": "4cb2c7f44183148df092a94d34a6872f69995d913c3b09c2f70874ea6da56172",
+  "_filesize": 500942,
+  "_sha256": "4cb2c7f44183148df092a94d34a6872f69995d913c3b09c2f70874ea6da56172",
+  "_created": "2026-02-23T06:19:56.000Z",
+  "_published": "2026-02-23T06:26:56.408Z",
+  "_jobs": [
+    {
+      "job": 64490167654,
+      "time": 223,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5612416955"
+    },
+    {
+      "job": 64490167702,
+      "time": 378,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5612437547"
+    },
+    {
+      "job": 64490167664,
+      "time": 380,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5612437751"
+    },
+    {
+      "job": 64490167670,
+      "time": 251,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5612420457"
+    },
+    {
+      "job": 64490167687,
+      "time": 196,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5612413851"
+    },
+    {
+      "job": 64489782094,
+      "time": 360,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5612389422"
+    },
+    {
+      "job": 64490167669,
+      "time": 196,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5612413641"
+    },
+    {
+      "job": 64490167692,
+      "time": 279,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5612424274"
+    },
+    {
+      "job": 64490167694,
+      "time": 284,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5612425278"
+    },
+    {
+      "job": 64490167695,
+      "time": 261,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5612422124"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 3,
+    "note": 18
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/AnnotationHub",
+  "_commit": {
+    "id": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761747263
+  },
+  "_maintainer": {
+    "name": "Bioconductor Package Maintainer",
+    "email": "maintainer@bioconductor.org",
+    "login": "bioconductor-bot",
+    "uuid": 11681645
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "BiocGenerics",
+      "version": ">= 0.15.10",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocFileCache",
+      "version": ">= 2.99.3",
+      "role": "Depends"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocVersion",
+      "role": "Imports"
+    },
+    {
+      "package": "curl",
+      "role": "Imports"
+    },
+    {
+      "package": "rappdirs",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationDbi",
+      "version": ">= 1.31.19",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "httr2",
+      "role": "Imports"
+    },
+    {
+      "package": "yaml",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocBaseUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Suggests"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "AnnotationForge",
+      "role": "Suggests"
+    },
+    {
+      "package": "rBiopaxParser",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Suggests"
+    },
+    {
+      "package": "MSnbase",
+      "role": "Suggests"
+    },
+    {
+      "package": "mzR",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Suggests"
+    },
+    {
+      "package": "CompoundDb",
+      "role": "Suggests"
+    },
+    {
+      "package": "keras",
+      "role": "Suggests"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "gdsfmt",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "HubPub",
+      "role": "Suggests"
+    },
+    {
+      "package": "AnnotationHubData",
+      "role": "Enhances"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 112,
+  "_updates": [
+    {
+      "week": "2025-17",
+      "n": 2
+    },
+    {
+      "week": "2025-19",
+      "n": 1
+    },
+    {
+      "week": "2025-20",
+      "n": 1
+    },
+    {
+      "week": "2025-25",
+      "n": 1
+    },
+    {
+      "week": "2025-29",
+      "n": 1
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "4.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "4.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "dataimport",
+    "gui",
+    "thirdpartyclient",
+    "core-package",
+    "u24ca289073"
+  ],
+  "_stars": 20,
+  "_contributors": [
+    {
+      "user": "lshep",
+      "count": 202,
+      "uuid": 18724380
+    },
+    {
+      "user": "sonali-bioc",
+      "count": 55,
+      "uuid": 6373953
+    },
+    {
+      "user": "dtenenba",
+      "count": 48,
+      "uuid": 2286826
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "mtmorgan",
+      "count": 13,
+      "uuid": 118552
+    },
+    {
+      "user": "hpages",
+      "count": 13,
+      "uuid": 8810451
+    },
+    {
+      "user": "csoneson",
+      "count": 4,
+      "uuid": 5628952
+    },
+    {
+      "user": "link-ny",
+      "count": 4,
+      "uuid": 4392950
+    },
+    {
+      "user": "kayla-morrell",
+      "count": 3,
+      "uuid": 32339524
+    },
+    {
+      "user": "nhayden",
+      "count": 2,
+      "uuid": 6475155
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "mikelove",
+      "count": 2,
+      "uuid": 69203
+    },
+    {
+      "user": "mjsteinbaugh",
+      "count": 1,
+      "uuid": 1760218
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 19531,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/AnnotationHub"
+  },
+  "_mentions": 39,
+  "_devurl": "https://github.com/bioconductor/annotationhub",
+  "_searchresults": 3600,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/AnnotationHub.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioconductor/annotationhub",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ".db_close",
+    ".DollarNames.Hub",
+    ".getProxyValue",
+    ".Hub",
+    ".hub_option_key",
+    "AnnotationHub",
+    "as.list",
+    "as.list.Hub",
+    "cache",
+    "cache<-",
+    "convertHub",
+    "dbconn",
+    "dbfile",
+    "DispatchClassList",
+    "fileName",
+    "getAnnotationHubOption",
+    "getHub",
+    "getInfoOnIds",
+    "hubCache",
+    "hubDate",
+    "hubUrl",
+    "isLocalHub",
+    "isLocalHub<-",
+    "listResources",
+    "loadResources",
+    "mcols",
+    "package",
+    "possibleDates",
+    "query",
+    "recordStatus",
+    "refreshHub",
+    "removeCache",
+    "removeResources",
+    "setAnnotationHubOption",
+    "show",
+    "snapshotDate",
+    "snapshotDate<-",
+    "subset"
+  ],
+  "_help": [
+    {
+      "page": "AnnotationHub-package",
+      "title": "Light-weight AnnotationHub 3.0 Client",
+      "topics": [
+        "AnnotationHub-package"
+      ]
+    },
+    {
+      "page": "AnnotationHub-class",
+      "title": "AnnotationHub objects and their related methods and functions",
+      "topics": [
+        "$,Hub-method",
+        ".db_close",
+        ".Hub",
+        "AnnotationHub",
+        "AnnotationHub-class",
+        "as.list,Hub-method",
+        "as.list.Hub",
+        "c,Hub-method",
+        "cache",
+        "cache,AnnotationHub-method",
+        "cache,Hub-method",
+        "cache<-",
+        "cache<-,Hub-method",
+        "class:AnnotationHub",
+        "class:Hub",
+        "dbconn,Hub-method",
+        "dbfile,Hub-method",
+        "fileName,Hub-method",
+        "Hub-class",
+        "hubCache",
+        "hubCache,Hub-method",
+        "hubDate",
+        "hubDate,Hub-method",
+        "hubUrl",
+        "hubUrl,Hub-method",
+        "isLocalHub",
+        "isLocalHub,Hub-method",
+        "isLocalHub<-",
+        "isLocalHub<-,Hub-method",
+        "length,Hub-method",
+        "mcols,Hub-method",
+        "names,Hub-method",
+        "package",
+        "package,Hub-method",
+        "possibleDates",
+        "query",
+        "query,Hub-method",
+        "recordStatus",
+        "recordStatus,Hub-method",
+        "refreshHub",
+        "removeCache",
+        "removeResources",
+        "removeResources,character-method",
+        "removeResources,missing-method",
+        "show,AnnotationHubResource-method",
+        "show,Hub-method",
+        "snapshotDate",
+        "snapshotDate,Hub-method",
+        "snapshotDate<-",
+        "snapshotDate<-,Hub-method",
+        "subset,Hub-method",
+        "[,Hub,character,missing-method",
+        "[,Hub,logical,missing-method",
+        "[,Hub,numeric,missing-method",
+        "[<-,Hub,character,missing,Hub-method",
+        "[<-,Hub,logical,missing,Hub-method",
+        "[<-,Hub,numeric,missing,Hub-method",
+        "[[,Hub,character,missing-method",
+        "[[,Hub,numeric,missing-method"
+      ]
+    },
+    {
+      "page": "convertHub",
+      "title": "Convert old Hub to new Hub structure",
+      "topics": [
+        "convertHub"
+      ]
+    },
+    {
+      "page": "getAnnotationHubOption",
+      "title": "Get and set options for default AnnotationHub behavior.",
+      "topics": [
+        "getAnnotationHubOption",
+        "setAnnotationHubOption"
+      ]
+    },
+    {
+      "page": "Hub-utils",
+      "title": "Get information for selected ids",
+      "topics": [
+        "getInfoOnIds",
+        "getInfoOnIds,character-method",
+        "getInfoOnIds,missing-method",
+        "getInfoOnIds,numeric-method",
+        "Hub-utils"
+      ]
+    },
+    {
+      "page": "listResources",
+      "title": "Utility functions for discovering package-specific Hub resources.",
+      "topics": [
+        "listResources",
+        "loadResources",
+        "utilities"
+      ]
+    },
+    {
+      "page": "utils",
+      "title": "Utility function to list currently available dispatchClass.",
+      "topics": [
+        "DispatchClassList",
+        "utils"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "AnnotationDbi",
+    "askpass",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocManager",
+    "BiocVersion",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "dplyr",
+    "fastmap",
+    "filelock",
+    "generics",
+    "glue",
+    "httr",
+    "httr2",
+    "IRanges",
+    "jsonlite",
+    "KEGGREST",
+    "lifecycle",
+    "magrittr",
+    "memoise",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "rlang",
+    "RSQLite",
+    "S4Vectors",
+    "Seqinfo",
+    "stringi",
+    "stringr",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "withr",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "AnnotationHub.Rmd",
+      "filename": "AnnotationHub.html",
+      "title": "AnnotationHub: Access the AnnotationHub Web Service",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "AnnotationHub objects",
+        "Interactive retrieval of resources with BiocHubsShiny",
+        "Using AnnotationHub to retrieve data",
+        "Configuring AnnotationHub objects",
+        "AnnotationHub objects in a cluster environment",
+        "Creating an AnnotationHub Package or Converting to an AnnotationHub Package",
+        "Troubleshooting",
+        "Accessing Behind A Proxy",
+        "Other configuration options for resource downloading",
+        "Session info"
+      ],
+      "created": "2014-10-30 18:40:26",
+      "modified": "2025-05-15 17:05:30",
+      "commits": 20
+    },
+    {
+      "source": "AnnotationHub-HOWTO.Rmd",
+      "filename": "AnnotationHub-HOWTO.html",
+      "title": "AnnotationHub How-To's",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Accessing Genome-Scale Data",
+        "Non-model organism gene annotations",
+        "Roadmap Epigenomics Project",
+        "Ensembl GTF and FASTA files for TxDb gene models and sequence queries",
+        "liftOver to map between genome builds",
+        "Working with dbSNP Variants",
+        "sessionInfo"
+      ],
+      "created": "2015-05-20 23:45:12",
+      "modified": "2025-06-20 23:18:03",
+      "commits": 19
+    },
+    {
+      "source": "TroubleshootingTheHubs.Rmd",
+      "filename": "TroubleshootingTheHubs.html",
+      "title": "Troubleshoot The Hubs",
+      "author": "Lori Shepherd",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Troubleshooting",
+        "Accessing Behind A Proxy",
+        "Other configuration options for resource downloading",
+        "Invalid Cache",
+        "Corrupt Cache",
+        "sqlite file",
+        "redownload of sqlite file",
+        "index file",
+        "resource path",
+        "resource id",
+        "Corrupt Database",
+        "Cannot retrieve resource",
+        "Offline localHub usage",
+        "Group Hub/Cache Access",
+        "Lock file Troubleshooting",
+        "Permissions",
+        "Cannot lock file / no lock available",
+        "Default Caching Location Update",
+        "Option 1: Move cache and files to new location",
+        "Option 2:  Create a system environment variable",
+        "Option 3: Delete the old cache"
+      ],
+      "created": "2023-12-11 16:07:47",
+      "modified": "2025-05-15 17:05:30",
+      "commits": 3
+    }
+  ],
+  "_score": 14.110558900881093,
+  "_indexed": true,
+  "_nocasepkg": "annotationhub",
+  "_universes": [
+    "bioc",
+    "bioconductor-bot",
+    "bioconductor"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:24:03.000Z",
+      "distro": "noble",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "40f7aa700dd80dbd6e0b604fd51a2ac848651c254a19bd4b8db6f7a04494fe00",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:23:56.000Z",
+      "distro": "noble",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "7445580fc07eeb954303a5d4c67aab6fe4a2ac342749329d67422dd8ef1c579f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:22:02.000Z",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "cc056f140d417a3e9c7b7f2d59513498daea3a76cdee8af1066bbede341cd69a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:21:43.000Z",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "9de080587e981ab3a5d0933b0b5a8a18e2d1640cdbdbbb7bdf8b3749e7cfd79e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:23:34.000Z",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "98480689296a00dbc65f3fbc8f4c9e77f586fed5aa3cfdbe14b5c6515bd1b946",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:21:52.000Z",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "9702c57a011b9a2ac8d095f765806acc0212ac3f7f3053f04a806e94f0b56352",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:22:05.000Z",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "351371f2b139e46ab1be0212bbccab962d4748036b1725799cc902a83067877b",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "4.1.0",
+      "date": "2026-02-23T06:21:49.000Z",
+      "commit": "027c4b7f91789d6b9ea17df1db07e7d86a5b5416",
+      "fileid": "7d8750b59597de2b14e772a4a7dce08c0781013141dadb41562eafc2ff2a81c1",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22295017735"
+    }
+  ]
+}

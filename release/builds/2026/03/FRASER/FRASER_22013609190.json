@@ -1,0 +1,1365 @@
+{
+  "Package": "FRASER",
+  "Type": "Package",
+  "Title": "Find RAre Splicing Events in RNA-Seq Data",
+  "Version": "2.6.1",
+  "Date": "2026-02-10",
+  "Authors@R": "c(\nperson(\"Christian\", \"Mertes\", role=c(\"aut\", \"cre\"),\nemail=\"mertes@in.tum.de\", comment=c(ORCID=\"0000-0002-1091-205X\")),\nperson(\"Ines\", \"Scheller\", role=c(\"aut\"), email=\"scheller@in.tum.de\",\ncomment=c(ORCID=\"0000-0003-4533-7857\")),\nperson(\"Karoline\", \"Lutz\", role=c(\"ctb\"), email=\"lutzk@in.tum.de\"),\nperson(\"Ata\", \"Jadid Ahari\", role=c(\"ctb\"),\ncomment=c(ORCID=\"0009-0004-1577-7733\")),\nperson(\"Vicente\", \"Yepez\", role=c(\"aut\"), email=\"yepez@in.tum.de\",\ncomment=c(ORCID=\"0000-0001-7916-3643\")),\nperson(\"Julien\", \"Gagneur\", role=c(\"aut\"), email=\"gagneur@in.tum.de\",\ncomment=c(ORCID=\"0000-0002-8924-8365\")))",
+  "Description": "Detection of rare aberrant splicing events in\ntranscriptome profiles. Read count ratio expectations are\nmodeled by an autoencoder to control for confounding factors in\nthe data. Given these expectations, the ratios are assumed to\nfollow a beta-binomial distribution with a junction specific\ndispersion. Outlier events are then identified as read-count\nratios that deviate significantly from this distribution.\nFRASER is able to detect alternative splicing, but also intron\nretention. The package aims to support diagnostics in the field\nof rare diseases where RNA-seq is performed to identify\naberrant splicing defects.",
+  "biocViews": "RNASeq, AlternativeSplicing, Sequencing, Software, Genetics,\nCoverage",
+  "License": "file LICENSE",
+  "URL": "https://github.com/gagneurlab/FRASER",
+  "BugReports": "https://github.com/gagneurlab/FRASER/issues",
+  "RoxygenNote": "7.3.3",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "Collate": "variables.R getNSetterFuns.R FRASER-package.R\nFraserDataSet-class.R AllGenerics-definitions.R AllGenerics.R\nFraser-pipeline.R annotationOfRanges.R beta-binomial-testing.R\ncalculatePSIValue.R countRNAseqData.R example_functions.R\nfilterExpression.R find_encoding_dimensions.R getURLs.R\nhelper-functions.R mergeExternalData.R saveHDF5Objects.R\nRcppExports.R autoencoder.R updateD.R updateE.R updateRho.R\npvalsNzscore.R makeSimulatedDataset.R fitCorrectionMethods.R\nplotMethods.R resultAnnotations.R zzz.R",
+  "Config/pak/sysreqs": "make libmagick++-dev gsfonts libbz2-dev libicu-dev\nliblzma-dev libpng-dev libxml2-dev libssl-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2026-02-10 12:40:58 UTC",
+  "RemoteUrl": "https://github.com/bioc/FRASER",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "08062989605b73298e2d88f95895b756f3ddb377",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-14 07:50:54 UTC",
+    "User": "root"
+  },
+  "Author": "Christian Mertes [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-1091-205X>),\nInes Scheller [aut] (ORCID: <https://orcid.org/0000-0003-4533-7857>),\nKaroline Lutz [ctb],\nAta Jadid Ahari [ctb] (ORCID: <https://orcid.org/0009-0004-1577-7733>),\nVicente Yepez [aut] (ORCID: <https://orcid.org/0000-0001-7916-3643>),\nJulien Gagneur [aut] (ORCID: <https://orcid.org/0000-0002-8924-8365>)",
+  "Maintainer": "Christian Mertes <mertes@in.tum.de>",
+  "MD5sum": "d056c8cd254d7f2c69997fe7b7fdf0f1",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "FRASER_2.6.1.tar.gz",
+  "_fileid": "0a81a4760edf10fea1b3f8b85b9a7f26ea1639144ef62a9ca5536ee3092821c0",
+  "_filesize": 3019718,
+  "_sha256": "0a81a4760edf10fea1b3f8b85b9a7f26ea1639144ef62a9ca5536ee3092821c0",
+  "_created": "2026-02-14T07:50:54.000Z",
+  "_published": "2026-02-14T08:24:29.139Z",
+  "_jobs": [
+    {
+      "job": 63612201427,
+      "time": 478,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5509909070"
+    },
+    {
+      "job": 63612201457,
+      "time": 1151,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5509951781"
+    },
+    {
+      "job": 63612201447,
+      "time": 1267,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5509959795"
+    },
+    {
+      "job": 63612201439,
+      "time": 1112,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5509949033"
+    },
+    {
+      "job": 63612201441,
+      "time": 1181,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5509953575"
+    },
+    {
+      "job": 63612201450,
+      "time": 746,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5509924222"
+    },
+    {
+      "job": 63612201459,
+      "time": 1911,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5510002040"
+    },
+    {
+      "job": 63612201449,
+      "time": 859,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5509931861"
+    },
+    {
+      "job": 63612201436,
+      "time": 1298,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5509962076"
+    },
+    {
+      "job": 63611757555,
+      "time": 850,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5509882505"
+    },
+    {
+      "job": 63612201422,
+      "time": 459,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5509908101"
+    },
+    {
+      "job": 63612201432,
+      "time": 1182,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5509953683"
+    },
+    {
+      "job": 63612201434,
+      "time": 1305,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5509962707"
+    },
+    {
+      "job": 63612201438,
+      "time": 1150,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5509951672"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/FRASER",
+  "_commit": {
+    "id": "08062989605b73298e2d88f95895b756f3ddb377",
+    "author": "Christian Mertes <mertes@in.tum.de>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Use txdbmaker (#119)\n\n* import makeTxDbFromGFF from txdbmaker\n* bump version to 2.6.1\n* bump bioconductor version\n",
+    "time": 1770727258
+  },
+  "_maintainer": {
+    "name": "Christian Mertes",
+    "email": "mertes@in.tum.de",
+    "login": "c-mertes",
+    "uuid": 22544249,
+    "orcid": "0000-0002-1091-205X"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "BiocParallel",
+      "role": "Depends"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "BBmisc",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "biomaRt",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "cowplot",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedArray",
+      "version": ">= 0.5.11",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedMatrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "extraDistr",
+      "role": "Imports"
+    },
+    {
+      "package": "generics",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "HDF5Array",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "OUTRIDER",
+      "role": "Imports"
+    },
+    {
+      "package": "pcaMethods",
+      "role": "Imports"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "PRROC",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsubread",
+      "role": "Imports"
+    },
+    {
+      "package": "R.utils",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "VGAM",
+      "role": "Imports"
+    },
+    {
+      "package": "RMTstat",
+      "role": "Imports"
+    },
+    {
+      "package": "pracma",
+      "role": "Imports"
+    },
+    {
+      "package": "magick",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    },
+    {
+      "package": "SGSeq",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggbio",
+      "role": "Suggests"
+    },
+    {
+      "package": "biovizBase",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.NCBI.GRCh38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.1000genomes.hs37d5",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-08",
+      "n": 2
+    },
+    {
+      "week": "2025-21",
+      "n": 2
+    },
+    {
+      "week": "2025-22",
+      "n": 2
+    },
+    {
+      "week": "2025-23",
+      "n": 2
+    },
+    {
+      "week": "2025-27",
+      "n": 2
+    },
+    {
+      "week": "2025-32",
+      "n": 4
+    },
+    {
+      "week": "2025-33",
+      "n": 2
+    },
+    {
+      "week": "2025-34",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 10
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    },
+    {
+      "week": "2026-07",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.7.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.6.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "rnaseq",
+    "alternativesplicing",
+    "sequencing",
+    "software",
+    "genetics",
+    "coverage",
+    "aberrant-splicing",
+    "diagnostics",
+    "outlier-detection",
+    "rare-disease",
+    "rna-seq",
+    "splicing",
+    "openblas",
+    "cpp"
+  ],
+  "_stars": 53,
+  "_contributors": [
+    {
+      "user": "c-mertes",
+      "count": 725,
+      "uuid": 22544249
+    },
+    {
+      "user": "ischeller",
+      "count": 383,
+      "uuid": 56256384
+    },
+    {
+      "user": "vyepez88",
+      "count": 23,
+      "uuid": 30469316
+    },
+    {
+      "user": "atajadidahari",
+      "count": 21,
+      "uuid": 24277411
+    },
+    {
+      "user": "andrearaithel",
+      "count": 13,
+      "uuid": 133764907
+    },
+    {
+      "user": "jwokaty",
+      "count": 13,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 10,
+      "uuid": 2746443
+    },
+    {
+      "user": "mumichae",
+      "count": 6,
+      "uuid": 51025211
+    },
+    {
+      "user": "brechtmann",
+      "count": 5,
+      "uuid": 37140213
+    },
+    {
+      "user": "lu96",
+      "count": 4,
+      "uuid": 26002150
+    },
+    {
+      "user": "drewjbeh",
+      "count": 3,
+      "uuid": 11058365
+    },
+    {
+      "user": "nickhsmith",
+      "count": 2,
+      "uuid": 7143411
+    },
+    {
+      "user": "kant",
+      "count": 1,
+      "uuid": 32717
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 392,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/FRASER"
+  },
+  "_mentions": 3,
+  "_devurl": "https://github.com/gagneurlab/fraser",
+  "_searchresults": 174,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/FRASER.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/gagneurlab/fraser",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "aberrant",
+    "addCountsToFraserDataSet",
+    "annotateIntronReferenceOverlap",
+    "annotatePotentialImpact",
+    "annotateRanges",
+    "annotateRangesWithTxDb",
+    "assayNames",
+    "assays",
+    "assays<-",
+    "availableFDRsubsets",
+    "bamFile",
+    "bamFile<-",
+    "bestQ",
+    "calculatePadjValues",
+    "calculatePadjValuesOnSubset",
+    "calculatePSIValues",
+    "calculatePvalues",
+    "calculateZscore",
+    "condition",
+    "condition<-",
+    "countNonSplicedReads",
+    "countRNAData",
+    "countSplitReads",
+    "createTestFraserDataSet",
+    "createTestFraserSettings",
+    "currentType",
+    "currentType<-",
+    "deltaPsiValue",
+    "dontWriteHDF5",
+    "dontWriteHDF5<-",
+    "estimateBestQ",
+    "featureExclusionMask",
+    "featureExclusionMask<-",
+    "filterExpression",
+    "filterExpressionAndVariability",
+    "filterVariability",
+    "fit",
+    "fitMetrics",
+    "fitMetrics<-",
+    "flagBlacklistRegions",
+    "FRASER",
+    "FRASER.mcols.get",
+    "FRASER.rowRanges.get",
+    "FraserDataSet",
+    "getNonSplitReadCountsForAllSamples",
+    "getSplitReadCountsForAllSamples",
+    "hyperParams",
+    "injectOutliers",
+    "K",
+    "loadFraserDataSet",
+    "makeSimulatedFraserDataSet",
+    "mapSeqlevels",
+    "mergeCounts",
+    "mergeExternalData",
+    "N",
+    "name",
+    "name<-",
+    "nonSplicedReads",
+    "nonSplicedReads<-",
+    "padjVals",
+    "pairedEnd",
+    "pairedEnd<-",
+    "plotAberrantPerSample",
+    "plotBamCoverage",
+    "plotBamCoverageFromResultTable",
+    "plotCountCorHeatmap",
+    "plotEncDimSearch",
+    "plotExpectedVsObservedPsi",
+    "plotExpression",
+    "plotFilterExpression",
+    "plotFilterVariability",
+    "plotManhattan",
+    "plotQQ",
+    "plotSpliceMetricRank",
+    "plotVolcano",
+    "predictedMeans",
+    "pseudocount",
+    "psiTypes",
+    "pVals",
+    "results",
+    "rho",
+    "samples",
+    "samples<-",
+    "saveFraserDataSet",
+    "scanBamParam",
+    "scanBamParam<-",
+    "strandSpecific",
+    "strandSpecific<-",
+    "verbose",
+    "verbose<-",
+    "workingDir",
+    "workingDir<-",
+    "zScores"
+  ],
+  "_help": [
+    {
+      "page": "annotateRanges",
+      "title": "Annotates the given FraserDataSet with the HGNC symbol with biomaRt",
+      "topics": [
+        "annotateRanges",
+        "annotateRangesWithTxDb"
+      ]
+    },
+    {
+      "page": "assayNames-FraserDataSet-method",
+      "title": "Returns the assayNames of FRASER",
+      "topics": [
+        "assayNames,FraserDataSet-method"
+      ]
+    },
+    {
+      "page": "assays-FraserDataSet-method",
+      "title": "Returns the assay for the given name/index of the FraserDataSet",
+      "topics": [
+        "assays,FraserDataSet-method",
+        "assays<-,FraserDataSet,DelayedMatrix-method",
+        "assays<-,FraserDataSet,list-method",
+        "assays<-,FraserDataSet,SimpleList-method"
+      ]
+    },
+    {
+      "page": "calculatePSIValues",
+      "title": "PSI value calculation",
+      "topics": [
+        "calculatePSIValues"
+      ]
+    },
+    {
+      "page": "countRNA",
+      "title": "Count RNA-seq data",
+      "topics": [
+        "addCountsToFraserDataSet",
+        "countNonSplicedReads",
+        "countRNA",
+        "countRNAData",
+        "countSplitReads",
+        "getNonSplitReadCountsForAllSamples",
+        "getSplitReadCountsForAllSamples",
+        "mergeCounts"
+      ]
+    },
+    {
+      "page": "createTestFraserDataSet",
+      "title": "Create a test dataset",
+      "topics": [
+        "createTestFraserDataSet",
+        "createTestFraserSettings"
+      ]
+    },
+    {
+      "page": "estimateBestQ",
+      "title": "Find optimal encoding dimension",
+      "topics": [
+        "estimateBestQ"
+      ]
+    },
+    {
+      "page": "filtering",
+      "title": "Filtering FraserDataSets",
+      "topics": [
+        "filterExpression,FraserDataSet-method",
+        "filterExpressionAndVariability",
+        "filtering",
+        "filterVariability",
+        "filterVariability,FraserDataSet-method"
+      ]
+    },
+    {
+      "page": "fit",
+      "title": "Fitting the denoising autoencoder",
+      "topics": [
+        "fit",
+        "fit.FraserDataSet"
+      ]
+    },
+    {
+      "page": "FRASER",
+      "title": "FRASER: Find RAre Splicing Events in RNA-seq data",
+      "topics": [
+        "calculatePadjValues",
+        "calculatePadjValuesOnSubset",
+        "calculatePvalues",
+        "calculateZscore",
+        "FRASER"
+      ]
+    },
+    {
+      "page": "FraserDataSet",
+      "title": "The FRASER dataset object",
+      "topics": [
+        "FraserDataSet"
+      ]
+    },
+    {
+      "page": "FraserDataSet-class",
+      "title": "FraserDataSet",
+      "topics": [
+        "FraserDataSet-class"
+      ]
+    },
+    {
+      "page": "getter_setter_functions",
+      "title": "Getter/Setter functions",
+      "topics": [
+        "availableFDRsubsets",
+        "bestQ",
+        "currentType",
+        "currentType<-",
+        "deltaPsiValue",
+        "dontWriteHDF5",
+        "dontWriteHDF5<-",
+        "featureExclusionMask",
+        "featureExclusionMask,",
+        "featureExclusionMask<-",
+        "fitMetrics",
+        "fitMetrics<-",
+        "getter_setter_functions",
+        "hyperParams",
+        "padjVals",
+        "padjVals,",
+        "predictedMeans",
+        "pseudocount",
+        "pVals",
+        "pVals,",
+        "rho",
+        "rho,",
+        "verbose",
+        "verbose<-",
+        "zScore,",
+        "zScores",
+        "`featureExclusionMask<-`"
+      ]
+    },
+    {
+      "page": "injectOutliers",
+      "title": "Inject artificial outliers in an existing fds",
+      "topics": [
+        "injectOutliers"
+      ]
+    },
+    {
+      "page": "counts",
+      "title": "Getter/setter for count data",
+      "topics": [
+        "counts,FraserDataSet-method",
+        "counts<-,FraserDataSet,ANY-method",
+        "K",
+        "N"
+      ]
+    },
+    {
+      "page": "length-FraserDataSet-method",
+      "title": "retrieve the length of the object (aka number of junctions)",
+      "topics": [
+        "length,FraserDataSet-method"
+      ]
+    },
+    {
+      "page": "loadFraserDataSet",
+      "title": "Loading/Saving FraserDataSets",
+      "topics": [
+        "loadFraserDataSet",
+        "saveFraserDataSet"
+      ]
+    },
+    {
+      "page": "makeSimulatedFraserDataSet",
+      "title": "Create an simulated example data set for FRASER",
+      "topics": [
+        "makeSimulatedFraserDataSet"
+      ]
+    },
+    {
+      "page": "mergeExternalData",
+      "title": "Merge external data",
+      "topics": [
+        "mergeExternalData"
+      ]
+    },
+    {
+      "page": "plotFunctions",
+      "title": "Visualization functions for FRASER",
+      "topics": [
+        "plotAberrantPerSample",
+        "plotAberrantPerSample,FraserDataSet-method",
+        "plotBamCoverage",
+        "plotBamCoverageFromResultTable",
+        "plotCountCorHeatmap",
+        "plotCountCorHeatmap,FraserDataSet-method",
+        "plotEncDimSearch",
+        "plotEncDimSearch,FraserDataSet-method",
+        "plotExpectedVsObservedPsi",
+        "plotExpression",
+        "plotFilterExpression",
+        "plotFilterVariability",
+        "plotFunctions",
+        "plotManhattan",
+        "plotManhattan,FraserDataSet-method",
+        "plotQQ",
+        "plotQQ,FraserDataSet-method",
+        "plotSpliceMetricRank",
+        "plotVolcano",
+        "plotVolcano,FraserDataSet-method"
+      ]
+    },
+    {
+      "page": "potentialImpactAnnotations",
+      "title": "Additional result annotations",
+      "topics": [
+        "annotateIntronReferenceOverlap",
+        "annotatePotentialImpact",
+        "flagBlacklistRegions",
+        "potentialImpactAnnotations"
+      ]
+    },
+    {
+      "page": "psiTypes",
+      "title": "Available splice metrics",
+      "topics": [
+        "psiTypes"
+      ]
+    },
+    {
+      "page": "results",
+      "title": "Extracting results and aberrant splicing events",
+      "topics": [
+        "aberrant,FraserDataSet-method",
+        "results,FraserDataSet-method"
+      ]
+    },
+    {
+      "page": "fds-methods",
+      "title": "Getter/Setter methods for the FraserDataSet",
+      "topics": [
+        "bamFile",
+        "bamFile,FraserDataSet-method",
+        "bamFile<-",
+        "bamFile<-,FraserDataSet-method",
+        "condition",
+        "condition,FraserDataSet-method",
+        "condition<-",
+        "condition<-,FraserDataSet-method",
+        "fds-methods",
+        "FRASER.mcols.get",
+        "FRASER.rowRanges.get",
+        "mapSeqlevels",
+        "name",
+        "name,FraserDataSet-method",
+        "name<-",
+        "name<-,FraserDataSet-method",
+        "nonSplicedReads",
+        "nonSplicedReads,FraserDataSet-method",
+        "nonSplicedReads<-",
+        "nonSplicedReads<-,FraserDataSet-method",
+        "pairedEnd",
+        "pairedEnd,FraserDataSet-method",
+        "pairedEnd<-",
+        "pairedEnd<-,FraserDataSet-method",
+        "samples",
+        "samples,FraserDataSet-method",
+        "samples<-",
+        "samples<-,FraserDataSet-method",
+        "scanBamParam",
+        "scanBamParam,FraserDataSet-method",
+        "scanBamParam<-",
+        "scanBamParam<-,FraserDataSet-method",
+        "strandSpecific",
+        "strandSpecific,FraserDataSet-method",
+        "strandSpecific<-",
+        "strandSpecific<-,FraserDataSet-method",
+        "workingDir",
+        "workingDir,FraserDataSet-method",
+        "workingDir<-",
+        "workingDir<-,FraserDataSet-method"
+      ]
+    },
+    {
+      "page": "subset",
+      "title": "Subsetting by indices for junctions",
+      "topics": [
+        "subset.FRASER",
+        "[,FraserDataSet,ANY,ANY,ANY-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/FRASER/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "assertthat",
+    "backports",
+    "base64enc",
+    "BBmisc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bslib",
+    "ca",
+    "cachem",
+    "callr",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "dendextend",
+    "DESeq2",
+    "digest",
+    "dplyr",
+    "egg",
+    "evaluate",
+    "extraDistr",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gclus",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "ggrepel",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "h5mread",
+    "HDF5Array",
+    "heatmaply",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mime",
+    "nlme",
+    "openssl",
+    "otel",
+    "OUTRIDER",
+    "pcaMethods",
+    "permute",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "pracma",
+    "prettyunits",
+    "processx",
+    "progress",
+    "promises",
+    "PRROC",
+    "ps",
+    "purrr",
+    "qap",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RCurl",
+    "registry",
+    "reshape2",
+    "restfulr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RMTstat",
+    "Rsamtools",
+    "RSQLite",
+    "Rsubread",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "seriation",
+    "snow",
+    "SparseArray",
+    "sparseMatrixStats",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "TSP",
+    "txdbmaker",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "vegan",
+    "VGAM",
+    "viridis",
+    "viridisLite",
+    "webshot",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libblas",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "FRASER.Rnw",
+      "filename": "FRASER.pdf",
+      "title": "FRASER: Find RAre Splicing Events in RNA-seq Data",
+      "engine": "knitr::knitr",
+      "headings": [],
+      "created": "2020-04-21 07:42:54",
+      "modified": "2025-10-25 23:09:07",
+      "commits": 11
+    }
+  ],
+  "_score": 9.296252414404131,
+  "_indexed": false,
+  "_nocasepkg": "fraser",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/FRASER",
+  "_previous": "2.6.0",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:58:53.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "3dda7a2a26615d475f9e0b59c09263b3d7fd9e5b6a544d1e6a1bf0a922019082",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.6.1",
+      "date": "2026-02-14T08:00:00.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "3ea99d02d5ebba0abd6f4e7b68327edb0778e34b085424f8cbf325d9806a896a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:58:36.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "9c58f2b65dc90c604161a6bcd248113a9a107118292b147d2f0dfb3e74808dda",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:59:10.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "4926e91865676c44af2e52452092017a17333849ed226dce0a50abe686ab58ce",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:55:47.000Z",
+      "arch": "aarch64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "e6abd5e4f3a472f66a25bfb6d25caa952efddc5da0f32e05586fa52be03b3947",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.6.1",
+      "date": "2026-02-14T08:03:06.000Z",
+      "arch": "x86_64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "bee11c7fcbe9a865c262273b08fe516210410b53470637369435099bb8449d59",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:56:12.000Z",
+      "arch": "aarch64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "ee0e215f1f2c5e8a5563e933034443cfc968ea37cfdfba59d085678b56407cd2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:58:14.000Z",
+      "arch": "x86_64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "3b657d7a2d491d3ae196750a13e72e348f49a92394c0001438b524a61842926b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:59:34.000Z",
+      "arch": "emscripten",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "7d5b7ccdc13d7032ddb094136367d9dc9747f4d89f0e6c734dbc844e73f7144d",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:57:41.000Z",
+      "arch": "x86_64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "c8768628de3cc8c9e414f9b21aa0610547c9acaf6d9c07ec8252cdb2d4336abc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:58:01.000Z",
+      "arch": "x86_64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "85080142cbee06d476d960f37f4a6545d689f0cf76445a6e97ad3e34fe47c5e7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.6.1",
+      "date": "2026-02-14T07:56:39.000Z",
+      "arch": "x86_64",
+      "commit": "08062989605b73298e2d88f95895b756f3ddb377",
+      "fileid": "cac300d9b232ad7bdb97bda53adf57a640a9299c245dfe2081017ec044ec5b9b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22013609190"
+    }
+  ]
+}

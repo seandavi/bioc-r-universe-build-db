@@ -1,0 +1,901 @@
+{
+  "Package": "geneXtendeR",
+  "Type": "Package",
+  "Version": "1.37.0",
+  "Title": "Optimized Functional Annotation Of ChIP-seq Data",
+  "Description": "geneXtendeR optimizes the functional annotation of\nChIP-seq peaks by exploring relative differences in annotating\nChIP-seq peak sets to variable-length gene bodies.  In contrast\nto prior techniques, geneXtendeR considers peak annotations\nbeyond just the closest gene, allowing users to see peak\nsummary statistics for the first-closest gene, second-closest\ngene, ..., n-closest gene whilst ranking the output according\nto biologically relevant events and iteratively comparing the\nfidelity of peak-to-gene overlap across a user-defined range of\nupstream and downstream extensions on the original boundaries\nof each gene's coordinates.  Since different ChIP-seq peak\ncallers produce different differentially enriched peaks with a\nlarge variance in peak length distribution and total peak\ncount, annotating peak lists with their nearest genes can often\nbe a noisy process.  As such, the goal of geneXtendeR is to\nrobustly link differentially enriched peaks with their\nrespective genes, thereby aiding experimental follow-up and\nvalidation in designing primers for a set of prospective gene\ncandidates during qPCR.",
+  "Authors@R": "c(\nperson(\"Bohdan\", \"Khomtchouk\", email = \"khomtchoukmed@gmail.com\", role = c(\"aut\", \"cre\")),\nperson(\"William\", \"Koehler\", email = \"williamk03hler@gmail.com\", role = c(\"aut\"))\n)",
+  "Maintainer": "Bohdan Khomtchouk <khomtchoukmed@gmail.com>",
+  "URL": "https://github.com/Bohdan-Khomtchouk/geneXtendeR",
+  "BugReports": "https://github.com/Bohdan-Khomtchouk/geneXtendeR/issues",
+  "VignetteBuilder": "knitr",
+  "License": "GPL (>= 3)",
+  "LazyData": "TRUE",
+  "biocViews": "ChIPSeq, Genetics, Annotation, GenomeAnnotation,\nDifferentialPeakCalling, Coverage, PeakDetection, ChipOnChip,\nHistoneModification, DataImport, NaturalLanguageProcessing,\nVisualization, GO, Software",
+  "RoxygenNote": "6.1.0",
+  "NeedsCompilation": "yes",
+  "Encoding": "UTF-8",
+  "Config/pak/sysreqs": "libglpk-dev make libbz2-dev libicu-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:34:47 UTC",
+  "RemoteUrl": "https://github.com/bioc/geneXtendeR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "3751da653382e927f3ceb8f2b8335c3572f69621",
+  "Packaged": {
+    "Date": "2026-01-09 21:18:41 UTC",
+    "User": "root"
+  },
+  "Author": "Bohdan Khomtchouk [aut, cre],\nWilliam Koehler [aut]",
+  "MD5sum": "5240f9ebbf974409cce97524e74f3902",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "geneXtendeR_1.37.0.tar.gz",
+  "_fileid": "e294c3100886eec30f12416fe64c6733aa335effe168547611452b8df73539f1",
+  "_filesize": 12463918,
+  "_sha256": "e294c3100886eec30f12416fe64c6733aa335effe168547611452b8df73539f1",
+  "_created": "2026-01-09T21:18:41.000Z",
+  "_jobs": [
+    {
+      "job": 60016247828,
+      "time": 422,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081281238"
+    },
+    {
+      "job": 60016247818,
+      "time": 708,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081292843"
+    },
+    {
+      "job": 60016247837,
+      "time": 838,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081345156"
+    },
+    {
+      "job": 60016247889,
+      "time": 799,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081306271"
+    },
+    {
+      "job": 60016247891,
+      "time": 796,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081339115"
+    },
+    {
+      "job": 60016247825,
+      "time": 619,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081579004"
+    },
+    {
+      "job": 60016247826,
+      "time": 328,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 60016247821,
+      "time": 772,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081602285"
+    },
+    {
+      "job": 60016247885,
+      "time": 854,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081546670"
+    },
+    {
+      "job": 60016247750,
+      "time": 474,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5081181648"
+    },
+    {
+      "job": 60016247793,
+      "time": 367,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5081272872"
+    },
+    {
+      "job": 60016247819,
+      "time": 828,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5081344996"
+    },
+    {
+      "job": 60016247820,
+      "time": 956,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5081363615"
+    },
+    {
+      "job": 60016247858,
+      "time": 872,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5081351254"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 3,
+    "note": 18
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/geneXtendeR",
+  "_commit": {
+    "id": "3751da653382e927f3ceb8f2b8335c3572f69621",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748487
+  },
+  "_maintainer": {
+    "name": "Bohdan Khomtchouk",
+    "email": "khomtchoukmed@gmail.com",
+    "login": "bohdan-khomtchouk",
+    "linkedin": "in/bohdankhomtchouk",
+    "twitter": "@bohdanome",
+    "uuid": 9893806
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "rtracklayer",
+      "role": "Depends"
+    },
+    {
+      "package": "GO.db",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "networkD3",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "SnowballC",
+      "role": "Imports"
+    },
+    {
+      "package": "tm",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "wordcloud",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Rn.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Ag.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Bt.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Ce.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Cf.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Dm.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Dr.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Gg.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Mm.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Pt.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Sc.sgd.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Ss.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Xl.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.37.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.36.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "chipseq",
+    "genetics",
+    "annotation",
+    "genomeannotation",
+    "differentialpeakcalling",
+    "coverage",
+    "peakdetection",
+    "chiponchip",
+    "histonemodification",
+    "dataimport",
+    "naturallanguageprocessing",
+    "visualization",
+    "go",
+    "software",
+    "bioconductor",
+    "bioinformatics",
+    "c",
+    "chip-seq",
+    "computational-biology",
+    "epigenetics",
+    "functional-annotation"
+  ],
+  "_stars": 9,
+  "_contributors": [
+    {
+      "user": "bohdan-khomtchouk",
+      "count": 210,
+      "uuid": 9893806
+    },
+    {
+      "user": "rockonrob",
+      "count": 32,
+      "uuid": 3783192
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 317,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/geneXtendeR"
+  },
+  "_devurl": "https://github.com/bohdan-khomtchouk/genextender",
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/geneXtendeR.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bohdan-khomtchouk/genextender",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "allPeakLengths",
+    "annotate",
+    "annotate_n",
+    "barChart",
+    "cumlinePlot",
+    "diffGO",
+    "distinct",
+    "gene_annotate",
+    "gene_lookup",
+    "hotspotPlot",
+    "linePlot",
+    "makeNetwork",
+    "makeWordCloud",
+    "meanPeakLength",
+    "meanPeakLengthPlot",
+    "peakLengthBoxplot",
+    "peaksInput",
+    "peaksMerge",
+    "plotWordFreq"
+  ],
+  "_datasets": [
+    {
+      "name": "rat",
+      "title": "Gene transfer format (GTF) file for rat (Rattus_norvegicus.Rnor_6.0.84)",
+      "object": "rat",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "seqid",
+        "source",
+        "type",
+        "start",
+        "end",
+        "score",
+        "strand",
+        "phase",
+        "gene_id",
+        "gene_version",
+        "gene_name",
+        "gene_source",
+        "gene_biotype",
+        "transcript_id",
+        "transcript_version",
+        "transcript_name",
+        "transcript_source",
+        "transcript_biotype",
+        "exon_number",
+        "exon_id",
+        "exon_version",
+        "protein_id",
+        "protein_version",
+        "havana_gene",
+        "havana_gene_version",
+        "havana_transcript",
+        "havana_transcript_version",
+        "tag"
+      ],
+      "rows": 748514,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "samplepeaksinput",
+      "title": "Sample peaks list to be used as input to geneXtendeR",
+      "object": "samplepeaksinput",
+      "class": [
+        "data.table",
+        "data.frame"
+      ],
+      "fields": [
+        "chr",
+        "start",
+        "end"
+      ],
+      "rows": 25089,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "allPeakLengths",
+      "title": "Produces box-and-whisker plot showing distribution of peak lengths across a peaks input file.",
+      "topics": [
+        "allPeakLengths"
+      ]
+    },
+    {
+      "page": "annotate",
+      "title": "Annotate peaks file.",
+      "topics": [
+        "annotate"
+      ]
+    },
+    {
+      "page": "annotate_n",
+      "title": "Annotate peaks file.",
+      "topics": [
+        "annotate_n"
+      ]
+    },
+    {
+      "page": "barChart",
+      "title": "Produces bar charts.",
+      "topics": [
+        "barChart"
+      ]
+    },
+    {
+      "page": "cumlinePlot",
+      "title": "Produces cumulative line plots.",
+      "topics": [
+        "cumlinePlot"
+      ]
+    },
+    {
+      "page": "diffGO",
+      "title": "Finds differential gene ontologies",
+      "topics": [
+        "diffGO"
+      ]
+    },
+    {
+      "page": "distinct",
+      "title": "Finds unique genes under peaks.",
+      "topics": [
+        "distinct"
+      ]
+    },
+    {
+      "page": "gene_annotate",
+      "title": "Annotate peak file based on gene.",
+      "topics": [
+        "gene_annotate"
+      ]
+    },
+    {
+      "page": "gene_lookup",
+      "title": "Looks up specific gene and closest peaks",
+      "topics": [
+        "gene_lookup"
+      ]
+    },
+    {
+      "page": "hotspotPlot",
+      "title": "Graphs hotspots of statistically significant peak activity.",
+      "topics": [
+        "hotspotPlot"
+      ]
+    },
+    {
+      "page": "linePlot",
+      "title": "Produces line plots.",
+      "topics": [
+        "linePlot"
+      ]
+    },
+    {
+      "page": "makeNetwork",
+      "title": "Makes gene-GO networks",
+      "topics": [
+        "makeNetwork"
+      ]
+    },
+    {
+      "page": "makeWordCloud",
+      "title": "Makes word cloud from gene ontology terms",
+      "topics": [
+        "makeWordCloud"
+      ]
+    },
+    {
+      "page": "meanPeakLength",
+      "title": "Calculates mean (average) peak length for any genomic region.",
+      "topics": [
+        "meanPeakLength"
+      ]
+    },
+    {
+      "page": "meanPeakLengthPlot",
+      "title": "Produces line plots of mean (average) peak length within any genomic interval.",
+      "topics": [
+        "meanPeakLengthPlot"
+      ]
+    },
+    {
+      "page": "peakLengthBoxplot",
+      "title": "Produces box-and-whisker plot of peak lengths within any genomic interval.",
+      "topics": [
+        "peakLengthBoxplot"
+      ]
+    },
+    {
+      "page": "peaksInput",
+      "title": "Preprocesses a peaks input file.",
+      "topics": [
+        "peaksInput"
+      ]
+    },
+    {
+      "page": "peaksMerge",
+      "title": "Transform peaks into merged peaks.",
+      "topics": [
+        "peaksMerge"
+      ]
+    },
+    {
+      "page": "plotWordFreq",
+      "title": "Plots word frequencies found within gene ontology terms",
+      "topics": [
+        "plotWordFreq"
+      ]
+    },
+    {
+      "page": "rat",
+      "title": "Gene transfer format (GTF) file for rat (Rattus_norvegicus.Rnor_6.0.84)",
+      "topics": [
+        "rat"
+      ]
+    },
+    {
+      "page": "samplepeaksinput",
+      "title": "Sample peaks list to be used as input to geneXtendeR",
+      "topics": [
+        "samplepeaksinput"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/geneXtendeR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocStyle",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bookdown",
+    "bslib",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "data.tree",
+    "DBI",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "evaluate",
+    "fastmap",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "glue",
+    "GO.db",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "IRanges",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "networkD3",
+    "NLP",
+    "openssl",
+    "org.Rn.eg.db",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "sass",
+    "Seqinfo",
+    "slam",
+    "snow",
+    "SnowballC",
+    "SparseArray",
+    "stringi",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "tinytex",
+    "tm",
+    "utf8",
+    "vctrs",
+    "withr",
+    "wordcloud",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_score": 3.9542425094393248,
+  "_indexed": true,
+  "_nocasepkg": "genextender",
+  "_universes": [
+    "bioc",
+    "bohdan-khomtchouk"
+  ],
+  "_failure": {
+    "version": "1.37.0",
+    "commit": {
+      "id": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+      "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+      "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+      "time": 1761748487
+    },
+    "buildurl": "https://github.com/r-universe/bioc/actions/runs/21796244167",
+    "date": "2026-02-11T04:17:56.933Z",
+    "job": {
+      "job": 63200948198,
+      "time": 423,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5460009573"
+    }
+  },
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:24:50.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "85a774e36e9686e4a15f7e7496cbcc98679b67d1573788c9c141be030475f47a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:29:15.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "9e7dc0161cdc56a489b8c1f992c0e7c7bdf172fb292b91e1f7ec6626cb9c6425",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:25:42.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "45997856aac31adbab119538f6925d569e284725184f996a27875bc08edbf428",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:29:11.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "89d414c04c9648d2d732d8c178f8eb36cb65bb0aa41afa711c6e5f47d5c3fbb4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:57:24.000Z",
+      "arch": "aarch64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "b66202ea053ed2c92e39708641256daf17a8a7869b5645dcac4e07f52f2509de",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:58:32.000Z",
+      "arch": "aarch64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "5d8b7a7479685cacdf9ae3cb8b907e43fa471c964b5beb03ed891c5caf08fbf0",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:51:18.000Z",
+      "arch": "x86_64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "3f1c7181935af21266a79ed5c34b14293bcf48b9da69d4a67a35ddec4ce71d5f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:29:21.000Z",
+      "arch": "emscripten",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "154d8d25df7808feae3d8e4d46b4ddf981cf0f6038fce0dd8b78d3d4531d8c0c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:26:54.000Z",
+      "arch": "x86_64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "1ac35b5a0bcd593dc82128c73541fd6eb3583c0801fb326c4c2aaed9998a6a8b",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:27:04.000Z",
+      "arch": "x86_64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "167415cabd33533ffc88da64aefadb4a00dd5f789b24a80ea0db899896d311c4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-01-09T21:27:01.000Z",
+      "arch": "x86_64",
+      "commit": "3751da653382e927f3ceb8f2b8335c3572f69621",
+      "fileid": "18cce2d53909d44339c09b33d0dad2658d7ecefe8bf51396ece8308c0cf38ae4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/20865683956"
+    }
+  ]
+}

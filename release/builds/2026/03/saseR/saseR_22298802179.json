@@ -1,0 +1,763 @@
+{
+  "Package": "saseR",
+  "Type": "Package",
+  "Title": "Scalable Aberrant Splicing and Expression Retrieval",
+  "Date": "2023-06-01",
+  "Version": "1.6.0",
+  "Description": "saseR is a highly performant and fast framework for\naberrant expression and splicing analyses. The main functions\nare: \\itemize{ \\item \\code{\\link{BamtoAspliCounts}} - Process\nBAM files to ASpli counts \\item \\code{\\link{convertASpli}} -\nGet gene, bin or junction counts from ASpli\nSummarizedExperiment \\item \\code{\\link{calculateOffsets}} -\nCreate an offsets assays for aberrant expression or splicing\nanalysis \\item \\code{\\link{saseRfindEncodingDim}} - Estimate\nthe optimal number of latent factors to include when estimating\nthe mean expression \\item \\code{\\link{saseRfit}} - Parameter\nestimation of the negative binomial distribution and compute\np-values for aberrant expression and splicing } For information\nupon how to use these functions, check out our vignette at\n\\url{https://github.com/statOmics/saseR/blob/main/vignettes/Vignette.Rmd}\nand the saseR paper: Segers, A. et al. (2023). Juggling offsets\nunlocks RNA-seq tools for fast scalable differential usage,\naberrant splicing and expression analyses. bioRxiv.\n\\url{https://doi.org/10.1101/2023.06.29.547014}.",
+  "Authors@R": "c(person(\"Alexandre\", \"Segers\", role = c(\"aut\",\"cre\"),\nemail = \"Alexandre.segers@ugent.be\"),\nperson(\"Jeroen\",\"Gilis\", role=\"ctb\",\nemail = \"Jeroen.Gilis@ugent.be\"),\nperson(\"Mattias\",\"Van Heetvelde\", role=\"ctb\",\nemail = \"Mattias.Vanheetvelde@ugent.be\"),\nperson(\"Elfride\",\"De Baere\", role=\"ctb\",\nemail = \"Elfride.Debaere@ugent.be\"),\nperson(\"Lieven\",\"Clement\", role=\"ctb\",\nemail = \"Lieven.Clement@ugent.be\"))",
+  "VignetteBuilder": "knitr",
+  "License": "Artistic-2.0",
+  "URL": "https://github.com/statOmics/saseR,\nhttps://doi.org/10.1101/2023.06.29.547014",
+  "Encoding": "UTF-8",
+  "LazyData": "FALSE",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "DifferentialExpression, DifferentialSplicing, Regression,\nGeneExpression, AlternativeSplicing, RNASeq, Sequencing,\nSoftware",
+  "BugReports": "https://github.com/statOmics/saseR/issues",
+  "Config/pak/sysreqs": "libglpk-dev make libbz2-dev libicu-dev libjpeg-dev\nliblzma-dev libpng-dev libxml2-dev libssl-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:27:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/saseR",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-23 08:52:55 UTC",
+    "User": "root"
+  },
+  "Author": "Alexandre Segers [aut, cre],\nJeroen Gilis [ctb],\nMattias Van Heetvelde [ctb],\nElfride De Baere [ctb],\nLieven Clement [ctb]",
+  "Maintainer": "Alexandre Segers <Alexandre.segers@ugent.be>",
+  "MD5sum": "9ae35df542499918f7d3736a90025e08",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "saseR_1.6.0.tar.gz",
+  "_fileid": "235f0e943af76a6488bd464eb2deffe3de90159857465f006f584cdff4f94439",
+  "_filesize": 1167505,
+  "_sha256": "235f0e943af76a6488bd464eb2deffe3de90159857465f006f584cdff4f94439",
+  "_created": "2026-02-23T08:52:55.000Z",
+  "_published": "2026-02-23T09:06:44.568Z",
+  "_jobs": [
+    {
+      "job": 64502109321,
+      "time": 219,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613806893"
+    },
+    {
+      "job": 64502109317,
+      "time": 558,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613870685"
+    },
+    {
+      "job": 64502109306,
+      "time": 534,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613865744"
+    },
+    {
+      "job": 64502109297,
+      "time": 442,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613907292"
+    },
+    {
+      "job": 64502109331,
+      "time": 306,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613881681"
+    },
+    {
+      "job": 64501350275,
+      "time": 465,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613765287"
+    },
+    {
+      "job": 64502109364,
+      "time": 187,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5613800894"
+    },
+    {
+      "job": 64502109367,
+      "time": 476,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613855044"
+    },
+    {
+      "job": 64502109390,
+      "time": 515,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5613862034"
+    },
+    {
+      "job": 64502109382,
+      "time": 498,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613858861"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/saseR",
+  "_commit": {
+    "id": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751632
+  },
+  "_maintainer": {
+    "name": "Alexandre Segers",
+    "email": "alexandre.segers@ugent.be",
+    "login": "alexandresegers",
+    "uuid": 91479262
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ASpli",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "PRROC",
+      "role": "Imports"
+    },
+    {
+      "package": "rrcov",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-26",
+      "n": 5
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "differentialexpression",
+    "differentialsplicing",
+    "regression",
+    "geneexpression",
+    "alternativesplicing",
+    "rnaseq",
+    "sequencing",
+    "software"
+  ],
+  "_stars": 3,
+  "_contributors": [
+    {
+      "user": "alexandresegers",
+      "count": 35,
+      "uuid": 91479262
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 204,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/saseR"
+  },
+  "_devurl": "https://github.com/statomics/saser",
+  "_searchresults": 1,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/saseR.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/statomics/saser",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "BamtoAspliCounts",
+    "calculateOffsets",
+    "convertASpli",
+    "saseRfindEncodingDim",
+    "saseRfit"
+  ],
+  "_datasets": [
+    {
+      "name": "ASpliSE",
+      "title": "ASpliSE",
+      "object": "saseRExample",
+      "file": "saseRExample.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "SEbins",
+      "title": "SEbins",
+      "object": "saseRExample",
+      "file": "saseRExample.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "SEgenes",
+      "title": "SEgenes",
+      "object": "saseRExample",
+      "file": "saseRExample.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "SEjunctions",
+      "title": "SEjunctions",
+      "object": "saseRExample",
+      "file": "saseRExample.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "features",
+      "title": "features",
+      "object": "saseRExample",
+      "file": "saseRExample.rda",
+      "class": [
+        "ASpliFeatures"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "ASpliSE",
+      "title": "ASpliSE",
+      "topics": [
+        "ASpliSE"
+      ]
+    },
+    {
+      "page": "BamtoAspliCounts",
+      "title": "Converting BAM files to an ASpli-SummarizedExperiment, which contains gene, bin and junction counts.",
+      "topics": [
+        "BamtoAspliCounts"
+      ]
+    },
+    {
+      "page": "calculateOffsets",
+      "title": "calculating the offsets to perform aberrant expression or splicing analysis.",
+      "topics": [
+        "calculateOffsets"
+      ]
+    },
+    {
+      "page": "convertASpli",
+      "title": "Converting SummarizedExperiment with different ASpli-counts to gene, bin or junction level counts.",
+      "topics": [
+        "convertASpli"
+      ]
+    },
+    {
+      "page": "features",
+      "title": "features",
+      "topics": [
+        "features"
+      ]
+    },
+    {
+      "page": "saseRExample",
+      "title": "saseRExample",
+      "topics": [
+        "saseRExample"
+      ]
+    },
+    {
+      "page": "saseRfindEncodingDim",
+      "title": "Determine the optimal number of latent factors to detect outlier gene expression or splicing",
+      "topics": [
+        "saseRfindEncodingDim"
+      ]
+    },
+    {
+      "page": "saseRfit",
+      "title": "Searching for aberrant expression or splicing.",
+      "topics": [
+        "saseRfit"
+      ]
+    },
+    {
+      "page": "SEbins",
+      "title": "SEbins",
+      "topics": [
+        "SEbins"
+      ]
+    },
+    {
+      "page": "SEgenes",
+      "title": "SEgenes",
+      "topics": [
+        "SEgenes"
+      ]
+    },
+    {
+      "page": "SEjunctions",
+      "title": "SEjunctions",
+      "topics": [
+        "SEjunctions"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/saseR/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "ASpli",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocStyle",
+    "biomaRt",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bookdown",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "DESeq2",
+    "dichromat",
+    "digest",
+    "dplyr",
+    "DT",
+    "edgeR",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "Gviz",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "igraph",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nnet",
+    "openssl",
+    "otel",
+    "pbmcapply",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "prettyunits",
+    "progress",
+    "promises",
+    "ProtGenerics",
+    "PRROC",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "txdbmaker",
+    "UCSC.utils",
+    "UpSetR",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "saseR-vignette.Rmd",
+      "filename": "saseR-vignette.html",
+      "title": "Main vignette: Aberrant expression and splicing analysis",
+      "author": "Alexandre Segers, Jeroen Gilis, Mattias Van Heetvelde, Elfride De Baere, Lieven Clement",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Aberrant expression and splicing workflow",
+        "Package installation",
+        "Load libraries",
+        "Transforming BAM to count matrices.",
+        "Aberrant expression analysis",
+        "Aberrant splicing analysis",
+        "Differential usage/splicing using adapted offsets in DESeq2 and edgeR",
+        "Load example data",
+        "Session info",
+        "References"
+      ],
+      "created": "2023-10-10 11:20:24",
+      "modified": "2025-06-24 15:43:58",
+      "commits": 6
+    }
+  ],
+  "_score": 4.477121254719663,
+  "_indexed": false,
+  "_nocasepkg": "saser",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/saseR",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:57:15.000Z",
+      "distro": "noble",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "240905b434ed19ad633fa80efbcada725a26e702f30bf7b65a227f7e3e256cb7",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:56:59.000Z",
+      "distro": "noble",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "e0e206d871c02cee637966ee442ed14d60783b8cfc7398a03f5dd6406b029831",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.6.0",
+      "date": "2026-02-23T09:00:34.000Z",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "704262d0023bb6b80f9bf379654d93ee1dbad858ec71cdb68ceb108a150e15f7",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.6.0",
+      "date": "2026-02-23T09:00:23.000Z",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "d6cec472314f89c006c5cea0380fc68e33303c5ef4cc36811e167f8d97ee4278",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:56:52.000Z",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "f17269d5d672dc4d398fb6fb1bd6870ee12255fb8d7501f4d90a980888dcd225",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:55:15.000Z",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "4af24cac85baa2ccebef96072529d43bddecdabf7d05b5df644af86897d2b3f7",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:55:51.000Z",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "e1c42d7aa15e78977a04a915d929cd6bb3e69d8f110bd0d0aab838595280d762",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-23T08:55:28.000Z",
+      "commit": "8ee3ecc8652a4a0ad37f1265eb2f7677dd94ce50",
+      "fileid": "db180f811f39b9f1ed75d2b5d6262c00f34d7a075a0ad2837aeebb68eb0b9f91",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298802179"
+    }
+  ]
+}

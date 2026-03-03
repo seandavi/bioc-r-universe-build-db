@@ -1,0 +1,931 @@
+{
+  "Package": "multicrispr",
+  "Title": "Multi-locus multi-purpose Crispr/Cas design",
+  "Version": "1.21.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(person(\"Aditya\",   \"Bhagwat\",    NULL, \"aditya.bhagwat@uni-marburg.de\",   c(\"aut\", \"cre\")),\nperson( \"Richie\",   \"\u00b4Cotton\",    NULL, \"richierocks@gmail.com\",            \"aut\"),\nperson( \"Rene\",     \"Wiegandt\",   NULL, \"rene.wiegandt@mpi-bn.mpg.de\",      \"ctb\"),\nperson( \"Mette\",    \"Bentsen\",    NULL, \"mette.bentsen@mpi-bn.mpg.de\",      \"ctb\"),\nperson( \"Jens\",     \"Preussner\",  NULL, \"jens.preussner@mpi-bn.mpg.de\",     \"ctb\"),\nperson( \"Michael\",  \"Lawrence\",   NULL, \"lawrence.michael@gene.com\",        \"ctb\"),\nperson( \"Herv\u00e9\",    \"Pag\u00e8s\",      NULL, \"hpages.on.github@gmail.com\",       \"ctb\"),\nperson( \"Johannes\", \"Graumann\",   NULL, 'johannes.graumann@uni-marburg.de', \"sad\"),\nperson( \"Mario\",    \"Looso\",      NULL, \"mario.looso@mpi-bn.mpg.de\",        c(\"sad\",\"rth\")))",
+  "Description": "This package is for designing Crispr/Cas9 and Prime\nEditing experiments. It contains functions to (1) define and\ntransform genomic targets, (2) find spacers (4) count offtarget\n(mis)matches, and (5) compute Doench2016/2014 targeting\nefficiency. Care has been taken for multicrispr to scale well\ntowards large target sets, enabling the design of large\nCrispr/Cas9 libraries.",
+  "License": "GPL-2",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "biocViews": "CRISPR, Software",
+  "BugReports": "https://github.com/bhagwataditya/multicrispr/issues",
+  "URL": "https://github.com/bhagwataditya/multicrispr",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev python3 libx11-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:59:55 UTC",
+  "RemoteUrl": "https://github.com/bioc/multicrispr",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-08 09:45:25 UTC",
+    "User": "root"
+  },
+  "Author": "Aditya Bhagwat [aut, cre],\nRichie \u00b4Cotton [aut],\nRene Wiegandt [ctb],\nMette Bentsen [ctb],\nJens Preussner [ctb],\nMichael Lawrence [ctb],\nHerv\u00e9 Pag\u00e8s [ctb],\nJohannes Graumann [sad],\nMario Looso [sad, rth]",
+  "Maintainer": "Aditya Bhagwat <aditya.bhagwat@uni-marburg.de>",
+  "MD5sum": "dffbf6b07e17d1d015b8e93baac38839",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "multicrispr_1.21.0.tar.gz",
+  "_fileid": "31640117610f34ca362e2b588a38895f5db006e8d7294517c4278b0afd4cc287",
+  "_filesize": 2209563,
+  "_sha256": "31640117610f34ca362e2b588a38895f5db006e8d7294517c4278b0afd4cc287",
+  "_created": "2026-02-08T09:45:25.000Z",
+  "_published": "2026-02-08T10:16:21.084Z",
+  "_jobs": [
+    {
+      "job": 62883842965,
+      "time": 370,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421838816"
+    },
+    {
+      "job": 62883842986,
+      "time": 644,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421856027"
+    },
+    {
+      "job": 62883842980,
+      "time": 547,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421849923"
+    },
+    {
+      "job": 62883842978,
+      "time": 360,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421920800"
+    },
+    {
+      "job": 62883842979,
+      "time": 515,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421931775"
+    },
+    {
+      "job": 62883567184,
+      "time": 509,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5421815577"
+    },
+    {
+      "job": 62883842963,
+      "time": 332,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421836483"
+    },
+    {
+      "job": 62883842975,
+      "time": 467,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421845175"
+    },
+    {
+      "job": 62883842982,
+      "time": 497,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5421846903"
+    },
+    {
+      "job": 62883842968,
+      "time": 542,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421849633"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/multicrispr",
+  "_commit": {
+    "id": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749995
+  },
+  "_maintainer": {
+    "name": "Aditya Bhagwat",
+    "email": "aditya.bhagwat@uni-marburg.de",
+    "login": "bhagwataditya",
+    "uuid": 5953568
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "CRISPRseek",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "karyoploteR",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "plyranges",
+      "role": "Imports"
+    },
+    {
+      "package": "Rbowtie",
+      "role": "Imports"
+    },
+    {
+      "package": "reticulate",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "stringi",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm10",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Scerevisiae.UCSC.sacCer1",
+      "role": "Suggests"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Suggests"
+    },
+    {
+      "package": "IRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "magick",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm10.knownGene",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "crispr",
+    "software"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "nturaga",
+      "count": 8,
+      "uuid": 2746443
+    },
+    {
+      "user": "jenzopr",
+      "count": 4,
+      "uuid": 8362850
+    },
+    {
+      "user": "rwiegan",
+      "count": 3,
+      "uuid": 36538452
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    },
+    {
+      "user": "jwokaty",
+      "count": 1,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 288,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/multicrispr"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/bhagwataditya/multicrispr",
+  "_searchresults": 3,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/multicrispr.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bhagwataditya/multicrispr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "add_genome_matches",
+    "add_inverse_strand",
+    "add_seq",
+    "add_target_matches",
+    "bed_to_granges",
+    "char_to_granges",
+    "double_flank",
+    "down_flank",
+    "dt2gr",
+    "extend",
+    "extend_for_pe",
+    "extend_pe_to_gg",
+    "extract_matchranges",
+    "extract_subranges",
+    "find_gg",
+    "find_primespacers",
+    "find_spacers",
+    "genefile_to_granges",
+    "genes_to_granges",
+    "gr2dt",
+    "has_been_indexed",
+    "index_genome",
+    "index_targets",
+    "plot_intervals",
+    "plot_karyogram",
+    "read_ranges",
+    "score_ontargets",
+    "up_flank",
+    "write_ranges"
+  ],
+  "_help": [
+    {
+      "page": "add_genome_matches",
+      "title": "Add genome matches",
+      "topics": [
+        "add_genome_matches"
+      ]
+    },
+    {
+      "page": "add_inverse_strand",
+      "title": "Add inverse strand",
+      "topics": [
+        "add_inverse_strand"
+      ]
+    },
+    {
+      "page": "add_seq",
+      "title": "Add sequence to GRanges",
+      "topics": [
+        "add_seq"
+      ]
+    },
+    {
+      "page": "add_target_matches",
+      "title": "Add target matches",
+      "topics": [
+        "add_target_matches"
+      ]
+    },
+    {
+      "page": "bed_to_granges",
+      "title": "Read bedfile into GRanges",
+      "topics": [
+        "bed_to_granges"
+      ]
+    },
+    {
+      "page": "char_to_granges",
+      "title": "Convert character vector into GRanges",
+      "topics": [
+        "char_to_granges"
+      ]
+    },
+    {
+      "page": "double_flank",
+      "title": "Double flank",
+      "topics": [
+        "double_flank"
+      ]
+    },
+    {
+      "page": "extend_for_pe",
+      "title": "Extend ranges for prime editing",
+      "topics": [
+        "extend_for_pe"
+      ]
+    },
+    {
+      "page": "extend_pe_to_gg",
+      "title": "Extend prime editing target to find GG sites",
+      "topics": [
+        "extend_pe_to_gg"
+      ]
+    },
+    {
+      "page": "extract_matchranges",
+      "title": "Extract matching subranges",
+      "topics": [
+        "extract_matchranges"
+      ]
+    },
+    {
+      "page": "extract_subranges",
+      "title": "Extract subranges",
+      "topics": [
+        "extract_subranges"
+      ]
+    },
+    {
+      "page": "find_gg",
+      "title": "Find GG",
+      "topics": [
+        "find_gg"
+      ]
+    },
+    {
+      "page": "find_primespacers",
+      "title": "Find prime editing spacers",
+      "topics": [
+        "find_primespacers"
+      ]
+    },
+    {
+      "page": "find_spacers",
+      "title": "Find crispr spacers in targetranges",
+      "topics": [
+        "find_spacers"
+      ]
+    },
+    {
+      "page": "genes_to_granges",
+      "title": "Convert geneids into GRanges",
+      "topics": [
+        "genefile_to_granges",
+        "genes_to_granges"
+      ]
+    },
+    {
+      "page": "gr2dt",
+      "title": "GRanges <-> data.table",
+      "topics": [
+        "dt2gr",
+        "gr2dt"
+      ]
+    },
+    {
+      "page": "has_been_indexed",
+      "title": "Has been indexed?",
+      "topics": [
+        "has_been_indexed"
+      ]
+    },
+    {
+      "page": "index_genome",
+      "title": "Index genome",
+      "topics": [
+        "index_genome"
+      ]
+    },
+    {
+      "page": "index_targets",
+      "title": "Index targets",
+      "topics": [
+        "index_targets"
+      ]
+    },
+    {
+      "page": "plot_intervals",
+      "title": "Interval plot GRanges",
+      "topics": [
+        "plot_intervals"
+      ]
+    },
+    {
+      "page": "plot_karyogram",
+      "title": "Karyo/Interval Plot GRanges(List)",
+      "topics": [
+        "plot_karyogram"
+      ]
+    },
+    {
+      "page": "score_ontargets",
+      "title": "Add on-target efficiency scores",
+      "topics": [
+        "score_ontargets"
+      ]
+    },
+    {
+      "page": "up_flank",
+      "title": "Extend or Flank GRanges",
+      "topics": [
+        "down_flank",
+        "extend",
+        "up_flank"
+      ]
+    },
+    {
+      "page": "write_ranges",
+      "title": "Write GRanges to file",
+      "topics": [
+        "read_ranges",
+        "write_ranges"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/multicrispr/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "backports",
+    "bamsignals",
+    "base64enc",
+    "bezier",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "cellranger",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "clipr",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "config",
+    "cpp11",
+    "crayon",
+    "CRISPRseek",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "dichromat",
+    "digest",
+    "dplyr",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "forcats",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "hash",
+    "haven",
+    "here",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "karyoploteR",
+    "KEGGREST",
+    "keras",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "mltools",
+    "nlme",
+    "nnet",
+    "openssl",
+    "openxlsx",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "plyranges",
+    "png",
+    "prettyunits",
+    "processx",
+    "progress",
+    "ProtGenerics",
+    "ps",
+    "purrr",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "Rbowtie",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppTOML",
+    "RCurl",
+    "readr",
+    "readxl",
+    "regioneR",
+    "rematch",
+    "restfulr",
+    "reticulate",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rio",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "rprojroot",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "segmented",
+    "Seqinfo",
+    "seqinr",
+    "snow",
+    "sp",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tensorflow",
+    "tfautograph",
+    "tfruns",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "tzdb",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "whisker",
+    "withr",
+    "writexl",
+    "xfun",
+    "XML",
+    "XVector",
+    "yaml",
+    "zeallot",
+    "zip"
+  ],
+  "_vignettes": [
+    {
+      "source": "genome_arithmetics.Rmd",
+      "filename": "genome_arithmetics.html",
+      "title": "Genome arithmetics",
+      "author": "Aditya M Bhagwat",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Genome arithmetics",
+        "Extend",
+        "Up flank",
+        "Down flank",
+        "Double flank",
+        "References"
+      ],
+      "created": "2020-07-21 13:59:59",
+      "modified": "2020-09-06 20:41:21",
+      "commits": 2
+    },
+    {
+      "source": "crispr_grna_design.Rmd",
+      "filename": "crispr_grna_design.html",
+      "title": "Crispr/Cas9 gRNA design",
+      "author": "Aditya M Bhagwat",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Background",
+        "Multicrispr",
+        "Install",
+        "Define targets",
+        "Transform",
+        "Find spacers, count off-targets, score on-targets",
+        "Return/Write",
+        "References"
+      ],
+      "created": "2020-09-06 19:57:39",
+      "modified": "2021-12-23 10:54:39",
+      "commits": 3
+    },
+    {
+      "source": "prime_editing.Rmd",
+      "filename": "prime_editing.html",
+      "title": "Prime Editing",
+      "author": "Aditya M Bhagwat",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Background",
+        "Multicrispr",
+        "Install",
+        "Define targets",
+        "Find prime editing spacers and nicking spacers",
+        "Return spacer GRanges",
+        "References"
+      ],
+      "created": "2020-09-06 19:57:39",
+      "modified": "2020-09-06 20:41:21",
+      "commits": 2
+    }
+  ],
+  "_score": 5.556302500767288,
+  "_indexed": true,
+  "_nocasepkg": "multicrispr",
+  "_universes": [
+    "bioc",
+    "bhagwataditya"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:52:14.000Z",
+      "distro": "noble",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "7065cd36a123ae9a81808d3f65fdd26e9746dff340f958d17a68beed51f16da9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:51:09.000Z",
+      "distro": "noble",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "b1041cdef18e1052e563b69898c0168b7b8861fd5463f73f050e156f94338616",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-02-08T10:10:06.000Z",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "e2a144b0c4e8fabb8660f447dfb680cab61815bead315a7ea13cf2b1970ed314",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-02-08T10:11:10.000Z",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "1d8fea5f9d8e7d52de526f1d4d5906faf46d83445961eb2882ac7450c4bc0ebe",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:51:40.000Z",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "efd6d26211bed09367cdf6c5e7a1166e11c8087eca9452e58b6e123dfc4940eb",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:49:03.000Z",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "e6ad4842bccbbee61eda35ea1c62d2d57cc1eaff04a35bf2540f1ddfdf7fc105",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:49:44.000Z",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "7f88e2c3d050f7f030da2702c9ec6b2f0932b9cd53bdb72bcde8883b5d6e97ce",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:50:10.000Z",
+      "commit": "67e223f1e3d0ef7a790ef5a86f41d944244de371",
+      "fileid": "04ae6b573c8c73ac4b4494c8a1787a99581423c258943a079e470b986e9df11a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795990515"
+    }
+  ]
+}

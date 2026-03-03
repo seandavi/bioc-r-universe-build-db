@@ -1,0 +1,864 @@
+{
+  "Package": "RVS",
+  "Type": "Package",
+  "Title": "Computes estimates of the probability of related individuals\nsharing a rare variant",
+  "Version": "1.33.0",
+  "Date": "2024-02-14",
+  "Author": "Alexandre Bureau, Ingo Ruczinski, Samuel Younkin, Thomas\nSherman",
+  "Maintainer": "Alexandre Bureau <alexandre.bureau@fmed.ulaval.ca>",
+  "Description": "Rare Variant Sharing (RVS) implements tests of association\nand linkage between rare genetic variant genotypes and a\ndichotomous phenotype, e.g. a disease status, in family\nsamples. The tests are based on probabilities of rare variant\nsharing by relatives under the null hypothesis of absence of\nlinkage and association between the rare variants and the\nphenotype and apply to single variants or multiple variants in\na region (e.g. gene-based test).",
+  "License": "GPL-2",
+  "VignetteBuilder": "knitr",
+  "LazyData": "true",
+  "RoxygenNote": "7.1.0",
+  "Encoding": "UTF-8",
+  "biocViews": "ImmunoOncology, Genetics, GenomeWideAssociation,\nVariantDetection, ExomeSeq, WholeGenome",
+  "Collate": "'RVgene.R' 'pedigree-methods.R' 'RVsharing.R'\n'documentation.R' 'grainNetworkHelper.R' 'monteCarloMethods.R'\n'multipleFamilyCalculations.R'\n'multipleFamilyCalculationsBackend.R'\n'relatedFoundersCorrection.R'\n'sharingProbabilityCalculations.R'\n'sharingProbabilityCalculationsSplitting.R'",
+  "Config/pak/sysreqs": "libglpk-dev libicu-dev libxml2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:39:58 UTC",
+  "RemoteUrl": "https://github.com/bioc/RVS",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "67a6d751f16be1854429272e8431bb794ec86366",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-21 08:27:22 UTC",
+    "User": "root"
+  },
+  "MD5sum": "8718daee78dcac74421120366059440c",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "RVS_1.33.0.tar.gz",
+  "_fileid": "e9d598079ad433a735dae630b5bbd644e8f0a4b2e53118017f9797ea50e31663",
+  "_filesize": 564279,
+  "_sha256": "e9d598079ad433a735dae630b5bbd644e8f0a4b2e53118017f9797ea50e31663",
+  "_created": "2026-02-21T08:27:22.000Z",
+  "_published": "2026-02-21T08:33:53.372Z",
+  "_jobs": [
+    {
+      "job": 64381139577,
+      "time": 159,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5600434887"
+    },
+    {
+      "job": 64381139580,
+      "time": 350,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5600447305"
+    },
+    {
+      "job": 64381139579,
+      "time": 338,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5600446619"
+    },
+    {
+      "job": 64381139570,
+      "time": 172,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5600435753"
+    },
+    {
+      "job": 64381139571,
+      "time": 148,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5600434211"
+    },
+    {
+      "job": 64380959671,
+      "time": 331,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600425078"
+    },
+    {
+      "job": 64381139569,
+      "time": 165,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600435261"
+    },
+    {
+      "job": 64381139575,
+      "time": 243,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5600440462"
+    },
+    {
+      "job": 64381139574,
+      "time": 285,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5600443623"
+    },
+    {
+      "job": 64381139584,
+      "time": 250,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5600440935"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/RVS",
+  "_commit": {
+    "id": "67a6d751f16be1854429272e8431bb794ec86366",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748798
+  },
+  "_maintainer": {
+    "name": "Alexandre Bureau",
+    "email": "alexandre.bureau@fmed.ulaval.ca"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "GENLIB",
+      "role": "Imports"
+    },
+    {
+      "package": "gRain",
+      "role": "Imports"
+    },
+    {
+      "package": "snpStats",
+      "role": "Imports"
+    },
+    {
+      "package": "kinship2",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "R.utils",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.33.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.32.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "genetics",
+    "genomewideassociation",
+    "variantdetection",
+    "exomeseq",
+    "wholegenome"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 270,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/RVS"
+  },
+  "_mentions": 6,
+  "_searchresults": 11,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/RVS.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "ComputeKinshipPropCoef",
+    "enrichmentPValue",
+    "GeneDrop",
+    "GeneDropSim.allsubsets.fn",
+    "GeneDropSim.fn",
+    "GeneDropSimExcessSharing.fn",
+    "get.psubset",
+    "multipleFamilyPValue",
+    "multipleVariantPValue",
+    "ped2trio",
+    "processPedigree",
+    "RVgene",
+    "RVsharing",
+    "SnpMatrixToCount"
+  ],
+  "_datasets": [
+    {
+      "name": "ex.ped.mat",
+      "title": "matrix of pedigree information and genotype data from famVCF stored in the LINKAGE format",
+      "object": "ex.ped.mat",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": {},
+      "rows": 32,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "fam15157.vcf",
+      "title": "VCF objects containing genotype data for two families: fam15157 and fam28003 (corresponding to the secondCousinTriple and firstAndSecondCousinsTriple families in samplePedigrees)",
+      "object": "famVCF",
+      "class": [
+        "CollapsedVCF"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "fam28003.vcf",
+      "title": "VCF objects containing genotype data for two families: fam15157 and fam28003 (corresponding to the secondCousinTriple and firstAndSecondCousinsTriple families in samplePedigrees)",
+      "object": "famVCF",
+      "class": [
+        "CollapsedVCF"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "samplePedigrees",
+      "title": "list of 8 sample pedigree objects",
+      "object": "samplePedigrees",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "snpMat",
+      "title": "SnpMatrix with genotype information from famVCF for fam15157",
+      "object": "snpMat",
+      "class": [
+        "SnpMatrix"
+      ],
+      "fields": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63",
+        "64",
+        "65",
+        "66",
+        "67",
+        "68",
+        "69",
+        "70",
+        "71",
+        "72",
+        "73",
+        "74",
+        "75",
+        "76",
+        "77",
+        "78",
+        "79",
+        "80",
+        "81",
+        "82",
+        "83",
+        "84",
+        "85",
+        "86",
+        "87",
+        "88",
+        "89",
+        "90",
+        "91",
+        "92",
+        "93",
+        "94",
+        "95",
+        "96",
+        "97",
+        "98",
+        "99",
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "109",
+        "110",
+        "111",
+        "112",
+        "113",
+        "114",
+        "115",
+        "116",
+        "117",
+        "118",
+        "119",
+        "120",
+        "121",
+        "122",
+        "123",
+        "124",
+        "125",
+        "126",
+        "127",
+        "128",
+        "129",
+        "130",
+        "131",
+        "132",
+        "133",
+        "134",
+        "135",
+        "136",
+        "137",
+        "138",
+        "139",
+        "140",
+        "141",
+        "142",
+        "143",
+        "144",
+        "145",
+        "146",
+        "147",
+        "148",
+        "149",
+        "150",
+        "151",
+        "152",
+        "153",
+        "154",
+        "155",
+        "156",
+        "157",
+        "158",
+        "159",
+        "160",
+        "161",
+        "162",
+        "163",
+        "164",
+        "165",
+        "166",
+        "167",
+        "168",
+        "169",
+        "170",
+        "171",
+        "172",
+        "173",
+        "174",
+        "175",
+        "176",
+        "177",
+        "178",
+        "179"
+      ],
+      "rows": 17,
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "ComputeKinshipPropCoef-methods",
+      "title": "ratio of excess kinship among descendants over mean kinship among founders",
+      "topics": [
+        "ComputeKinshipPropCeof",
+        "ComputeKinshipPropCoef",
+        "ComputeKinshipPropCoef,pedigree-method"
+      ]
+    },
+    {
+      "page": "convertMatrix",
+      "title": "convert snpMatrix to a list of vectors of sharing",
+      "topics": [
+        "convertMatrix"
+      ]
+    },
+    {
+      "page": "enrichmentPValue",
+      "title": "enrichment p-value across multiple families and variants",
+      "topics": [
+        "enrichmentPValue"
+      ]
+    },
+    {
+      "page": "enrichmentPValue_R_Backend",
+      "title": "R backend for enrichmentPValue calculation",
+      "topics": [
+        "enrichmentPValue_R_Backend"
+      ]
+    },
+    {
+      "page": "ex.ped.mat",
+      "title": "matrix of pedigree information and genotype data from famVCF stored in the LINKAGE format",
+      "topics": [
+        "ex.ped.mat"
+      ]
+    },
+    {
+      "page": "fam15157.vcf",
+      "title": "VCF objects containing genotype data for two families: fam15157 and fam28003 (corresponding to the secondCousinTriple and firstAndSecondCousinsTriple families in samplePedigrees)",
+      "topics": [
+        "fam15157.vcf"
+      ]
+    },
+    {
+      "page": "fam28003.vcf",
+      "title": "VCF objects containing genotype data for two families: fam15157 and fam28003 (corresponding to the secondCousinTriple and firstAndSecondCousinsTriple families in samplePedigrees)",
+      "topics": [
+        "fam28003.vcf"
+      ]
+    },
+    {
+      "page": "GeneDrop",
+      "title": "deprecated function",
+      "topics": [
+        "GeneDrop",
+        "GeneDropSim.allsubsets.fn",
+        "GeneDropSim.fn",
+        "GeneDropSimExcessSharing.fn"
+      ]
+    },
+    {
+      "page": "get.psubset",
+      "title": "deprecated function",
+      "topics": [
+        "get.psubset"
+      ]
+    },
+    {
+      "page": "multipleFamilyPValue",
+      "title": "probability of sharing of rare variants in a subset of families",
+      "topics": [
+        "multipleFamilyPValue"
+      ]
+    },
+    {
+      "page": "multipleFamilyPValue_R_Backend",
+      "title": "R backend for multipleFamilyPValue calculation",
+      "topics": [
+        "multipleFamilyPValue_R_Backend"
+      ]
+    },
+    {
+      "page": "multipleVariantPValue",
+      "title": "generalization of multipleFamilyPValue to multiple variants",
+      "topics": [
+        "multipleVariantPValue"
+      ]
+    },
+    {
+      "page": "multipleVariantPValue_R_Backend",
+      "title": "R backend for multipleVariantPValue calculation",
+      "topics": [
+        "multipleVariantPValue_R_Backend"
+      ]
+    },
+    {
+      "page": "ped2trio",
+      "title": "deprecated function",
+      "topics": [
+        "ped2trio"
+      ]
+    },
+    {
+      "page": "processPedigree-methods",
+      "title": "extract useful information from a pedigree",
+      "topics": [
+        "processPedigree",
+        "processPedigree,pedigree-method"
+      ]
+    },
+    {
+      "page": "RVgene",
+      "title": "Probability of sharing of rare variants in a family sample within a gene",
+      "topics": [
+        "RVgene"
+      ]
+    },
+    {
+      "page": "RVS",
+      "title": "RVS",
+      "topics": [
+        "RVS"
+      ]
+    },
+    {
+      "page": "RVsharing-methods",
+      "title": "probability of sharing a rare variant among relatives",
+      "topics": [
+        "RVsharing",
+        "RVsharing,list-method",
+        "RVsharing,pedigree-method"
+      ]
+    },
+    {
+      "page": "samplePedigrees",
+      "title": "list of 8 sample pedigree objects",
+      "topics": [
+        "samplePedigrees"
+      ]
+    },
+    {
+      "page": "snpMat",
+      "title": "SnpMatrix with genotype information from famVCF for fam15157",
+      "topics": [
+        "snpMat"
+      ]
+    },
+    {
+      "page": "SnpMatrixToCount",
+      "title": "convert a list of SnpMatrices to a single matrix in a similiar format as LINKAGE except with minor allele counts",
+      "topics": [
+        "SnpMatrixToCount"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/RVS/raw/HEAD/README.md",
+  "_rundeps": [
+    "backports",
+    "BH",
+    "BiocGenerics",
+    "bootstrap",
+    "broom",
+    "cli",
+    "codetools",
+    "cpp11",
+    "doParallel",
+    "dplyr",
+    "evaluate",
+    "foreach",
+    "generics",
+    "GENLIB",
+    "glue",
+    "gRain",
+    "gRbase",
+    "highr",
+    "igraph",
+    "iterators",
+    "kinship2",
+    "knitr",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "quadprog",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "rlang",
+    "snpStats",
+    "stringi",
+    "stringr",
+    "survival",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "withr",
+    "xfun",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "RVS.Rmd",
+      "filename": "RVS.html",
+      "title": "The RVS (Rare Variant Sharing) Package",
+      "author": "Alexandre Bureau, Ingo Ruczinski, Samuel Younkin, Thomas Sherman",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Setting up Pedigree Data",
+        "Loading a Pedigree",
+        "Plotting a Pedigree",
+        "Calculating Sharing Probabilities",
+        "Sharing Probability for One Family, One Variant",
+        "P-Value for Multiple Families, One Variant",
+        "P-Value for Multiple Families, Multiple Variants",
+        "Correcting for Multiple Testing Using Potential P-values",
+        "Minor Allele Frequency Sensitivity Analysis",
+        "Related Founders Correction",
+        "Joint analysis of multiple variants",
+        "Enrichment Test",
+        "Gene-based analysis",
+        "Partial sharing test",
+        "Precomputing Sharing Probabilities and Number of Carriers for all Possible Carrier Subsets",
+        "Example of Analysis of the Rare Variants in the Genomic Sequence of a Gene",
+        "Appendix",
+        "Rare Variant Sharing Probability Assuming One Founder Introduces the Variant",
+        "Rare Variant Sharing Probabilities for a Subset of Affected Pedigree Members",
+        "Using Monte Carlo Simulation",
+        "Correcting for Related Founders",
+        "Computation of Approximate Correction Based on Kinship Coefficient",
+        "Estimating Mean Kinship Coefficient Among Founders",
+        "References"
+      ],
+      "created": "2017-07-12 04:27:41",
+      "modified": "2019-04-01 18:48:00",
+      "commits": 26
+    }
+  ],
+  "_score": 4.819543935541869,
+  "_indexed": true,
+  "_nocasepkg": "rvs",
+  "_universes": [
+    "bioc"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:31:12.000Z",
+      "distro": "noble",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "a9f7c6e214d313c6739a3e29aab86633082330c55c273c89c8363d046fefc17a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:31:01.000Z",
+      "distro": "noble",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "cb2bc0b86d1430c6f7b2082da56318b4714ec6ae4dd0e1b95bc49c19d0a84637",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:29:06.000Z",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "17da3a9c2aa387a82a1d9c3f6d25f473ca97e5bb73a23a2e8d596c030f1f44ac",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:28:57.000Z",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "9966b7e32b39b86e9bcd99b80b7161d2a8c4d812e578fcc95fa5d32d1649fdb8",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:30:31.000Z",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "7cb13290272a920f731d64a17c39fe07cc60c84cd76e3ce9bf83654d33ff0e17",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:29:03.000Z",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "bd527d78dcb59cb893394ebba6f919315309ddb1fb6570570558c593586e00ea",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:29:55.000Z",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "37b53cb7f043ddd5f96e876b6cfc06de62ae1a695457449fd688982f593eeb37",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.33.0",
+      "date": "2026-02-21T08:29:03.000Z",
+      "commit": "67a6d751f16be1854429272e8431bb794ec86366",
+      "fileid": "15e569c9b5bf57a3e033be0398dd018a444115dc1fd6b177d6e6c8f08beb0d9b",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253516144"
+    }
+  ]
+}

@@ -1,0 +1,967 @@
+{
+  "Package": "ELViS",
+  "Title": "An R Package for Estimating Copy Number Levels of Viral Genome\nSegments Using Base-Resolution Read Depth Profile",
+  "Version": "1.3.0",
+  "Authors@R": "c(\nperson(\"Hyo Young\", \"Choi\", , \"hyoyoung.choi@uthsc.edu\", role = c(\"aut\", \"cph\"),\ncomment = c(ORCID = \"0000-0002-7627-8493\")),\nperson(\"Jin-Young\", \"Lee\", , \"jlee307@uthsc.edu\", role = c(\"aut\", \"cre\", \"cph\"),\ncomment = c(ORCID = \"0000-0002-5366-7488\")),\nperson(\"Xiaobei\", \"Zhao\", , \"xiaobei_zhao@uthsc.edu\", role = \"ctb\",\ncomment = c(ORCID = \"0000-0002-5277-0846\")),\nperson(\"Jeremiah R.\", \"Holt\", , \"jholt41@uthsc.edu\", role = \"ctb\",\ncomment = c(ORCID = \"0000-0002-5201-5015\")),\nperson(\"Katherine A.\", \"Hoadley\", , \"hoadley@med.unc.edu\", role = \"aut\",\ncomment = c(ORCID = \"0000-0002-1216-477X\")),\nperson(\"D. Neil\", \"Hayes\", , \"Neil.Hayes@uthsc.edu\", role = c(\"aut\", \"fnd\", \"cph\"),\ncomment = c(ORCID = \"0000-0001-6203-7771\"))\n)",
+  "Description": "Base-resolution copy number analysis of viral genome.\nUtilizes base-resolution read depth data over viral genome to\nfind copy number segments with two-dimensional segmentation\napproach. Provides publish-ready figures, including histograms\nof read depths, coverage line plots over viral genome annotated\nwith copy number change events and viral genes, and heatmaps\nshowing multiple types of data with integrative clustering of\nsamples.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "biocViews": "CopyNumberVariation, Coverage, GenomicVariation,\nBiomedicalInformatics, Sequencing, Normalization,\nVisualization, Clustering",
+  "LazyData": "false",
+  "BugReports": "https://github.com/hyochoi/ELViS/issues",
+  "URL": "https://github.com/hyochoi/ELViS",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libglpk-dev make libbz2-dev libicu-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev perl python3 xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:34:26 UTC",
+  "RemoteUrl": "https://github.com/bioc/ELViS",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-24 08:32:21 UTC",
+    "User": "root"
+  },
+  "Author": "Hyo Young Choi [aut, cph] (ORCID:\n<https://orcid.org/0000-0002-7627-8493>),\nJin-Young Lee [aut, cre, cph] (ORCID:\n<https://orcid.org/0000-0002-5366-7488>),\nXiaobei Zhao [ctb] (ORCID: <https://orcid.org/0000-0002-5277-0846>),\nJeremiah R. Holt [ctb] (ORCID: <https://orcid.org/0000-0002-5201-5015>),\nKatherine A. Hoadley [aut] (ORCID:\n<https://orcid.org/0000-0002-1216-477X>),\nD. Neil Hayes [aut, fnd, cph] (ORCID:\n<https://orcid.org/0000-0001-6203-7771>)",
+  "Maintainer": "Jin-Young Lee <jlee307@uthsc.edu>",
+  "MD5sum": "201833cdc284ca4f106cc750b6dd7fb8",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "ELViS_1.3.0.tar.gz",
+  "_fileid": "d789f2ee5935e7492dc7d63ecac9a16a9d502f6da511edfb90c061b2264fd5c3",
+  "_filesize": 2351613,
+  "_sha256": "d789f2ee5935e7492dc7d63ecac9a16a9d502f6da511edfb90c061b2264fd5c3",
+  "_created": "2026-02-24T08:32:21.000Z",
+  "_published": "2026-02-24T08:41:59.234Z",
+  "_jobs": [
+    {
+      "job": 64649988663,
+      "time": 211,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5631407149"
+    },
+    {
+      "job": 64649988645,
+      "time": 511,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5631468747"
+    },
+    {
+      "job": 64649988652,
+      "time": 468,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631459775"
+    },
+    {
+      "job": 64649988668,
+      "time": 303,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5631425792"
+    },
+    {
+      "job": 64649988640,
+      "time": 501,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631466097"
+    },
+    {
+      "job": 64649380501,
+      "time": 341,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631362170"
+    },
+    {
+      "job": 64649988665,
+      "time": 172,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5631399036"
+    },
+    {
+      "job": 64649988711,
+      "time": 442,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5631455089"
+    },
+    {
+      "job": 64649988670,
+      "time": 463,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5631461905"
+    },
+    {
+      "job": 64649988651,
+      "time": 436,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631453381"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 4
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ELViS",
+  "_commit": {
+    "id": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752066
+  },
+  "_maintainer": {
+    "name": "Jin-Young Lee",
+    "email": "jlee307@uthsc.edu",
+    "login": "jyleebioinfo",
+    "uuid": 13775022,
+    "orcid": "0000-0002-5366-7488"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "reticulate",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "glue",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "memoise",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "segclust2d",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "uuid",
+      "role": "Imports"
+    },
+    {
+      "package": "zoo",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-09",
+      "n": 2
+    },
+    {
+      "week": "2025-10",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-24",
+      "n": 1
+    },
+    {
+      "week": "2025-26",
+      "n": 2
+    },
+    {
+      "week": "2025-27",
+      "n": 1
+    },
+    {
+      "week": "2025-28",
+      "n": 1
+    },
+    {
+      "week": "2025-29",
+      "n": 1
+    },
+    {
+      "week": "2025-31",
+      "n": 1
+    },
+    {
+      "week": "2025-32",
+      "n": 1
+    },
+    {
+      "week": "2025-33",
+      "n": 1
+    },
+    {
+      "week": "2025-36",
+      "n": 1
+    },
+    {
+      "week": "2025-37",
+      "n": 1
+    },
+    {
+      "week": "2025-38",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "copynumbervariation",
+    "coverage",
+    "genomicvariation",
+    "biomedicalinformatics",
+    "sequencing",
+    "normalization",
+    "visualization",
+    "clustering"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "jyleebioinfo",
+      "count": 69,
+      "uuid": 13775022
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 208,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ELViS"
+  },
+  "_devurl": "https://github.com/hyochoi/elvis",
+  "_searchresults": 8,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/ELViS.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/hyochoi/elvis",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "coord_to_grng",
+    "coord_to_lst",
+    "depth_hist",
+    "filt_samples",
+    "gene_cn_heatmaps",
+    "get_depth_matrix",
+    "get_new_baseline",
+    "integrative_heatmap",
+    "norm_fun",
+    "plot_pileUp_multisample",
+    "run_ELViS"
+  ],
+  "_datasets": [
+    {
+      "name": "ELViS_toy_run_result",
+      "title": "ELViS Toy Example - Run Result",
+      "object": "ELViS_toy_run_result",
+      "file": "ELViS_toy_run_result.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "mtrx_samtools_reticulate",
+      "title": "ELViS Toy Example - Base-Resolution Raw Read Depth",
+      "object": "mtrx_samtools_reticulate",
+      "file": "mtrx_samtools_reticulate.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "Control_100X_58.bam",
+        "Control_100X_61.bam",
+        "Control_100X_64.bam",
+        "Control_100X_83.bam",
+        "Control_100X_87.bam",
+        "Control_100X_100.bam",
+        "Control_100X_225.bam",
+        "Control_100X_384.bam",
+        "Control_100X_386.bam",
+        "Control_100X_391.bam",
+        "Control_100X_398.bam",
+        "Control_100X_501.bam",
+        "Control_100X_509.bam",
+        "Control_100X_513.bam",
+        "Control_100X_518.bam",
+        "Control_100X_531.bam",
+        "Control_100X_542.bam",
+        "Control_100X_674.bam",
+        "Control_100X_675.bam",
+        "Control_100X_696.bam",
+        "Control_100X_700.bam",
+        "Control_100X_809.bam",
+        "Control_100X_814.bam",
+        "Control_100X_820.bam",
+        "Control_100X_822.bam",
+        "Control_100X_843.bam",
+        "Control_100X_955.bam",
+        "Control_100X_960.bam",
+        "Control_100X_965.bam",
+        "Control_100X_978.bam",
+        "Control_100X_984.bam",
+        "Control_100X_990.bam",
+        "Control_100X_1102.bam",
+        "Control_100X_1119.bam",
+        "Control_100X_1254.bam",
+        "Control_100X_1261.bam",
+        "Control_100X_1268.bam",
+        "Control_100X_1278.bam",
+        "Control_100X_1279.bam",
+        "Control_100X_1285.bam",
+        "Control_100X_1288.bam",
+        "Control_100X_1290.bam",
+        "Control_100X_1410.bam",
+        "Control_100X_1411.bam",
+        "Control_100X_1423.bam",
+        "Control_100X_1564.bam",
+        "Control_100X_1568.bam",
+        "Control_100X_1578.bam",
+        "Control_100X_1594.bam",
+        "Control_100X_1597.bam",
+        "Control_100X_1600.bam",
+        "Control_100X_1709.bam",
+        "Control_100X_1717.bam",
+        "Control_100X_1722.bam",
+        "Control_100X_1734.bam",
+        "Control_100X_1735.bam",
+        "Control_100X_1858.bam",
+        "Control_100X_1865.bam",
+        "Control_100X_1868.bam",
+        "Control_100X_1878.bam",
+        "Control_100X_2002.bam",
+        "Control_100X_2030.bam",
+        "Control_100X_2046.bam",
+        "Control_100X_2050.bam",
+        "Control_100X_2153.bam",
+        "Control_100X_2160.bam",
+        "Control_100X_2167.bam",
+        "Control_100X_2179.bam",
+        "Control_100X_2190.bam",
+        "Control_100X_2191.bam",
+        "Control_100X_2328.bam",
+        "Control_100X_2451.bam",
+        "Control_100X_2476.bam",
+        "Control_100X_2485.bam",
+        "Control_100X_2487.bam",
+        "Control_100X_2603.bam",
+        "Control_100X_2610.bam",
+        "Control_100X_2611.bam",
+        "Control_100X_2621.bam",
+        "Control_100X_2622.bam",
+        "Deletion_100X_100bp_CN-0.5_2912.bam",
+        "Deletion_100X_100bp_CN-0.5_2933.bam",
+        "Deletion_100X_200bp_CN-0.5_3079.bam",
+        "Deletion_100X_200bp_CN-0.5_3098.bam",
+        "Deletion_100X_500bp_CN-0.5_3225.bam",
+        "Deletion_100X_500bp_CN-0.5_3226.bam",
+        "Deletion_100X_1000bp_CN-0.5_3356.bam",
+        "Deletion_100X_1000bp_CN-0.5_3366.bam",
+        "Deletion_100X_2000bp_CN-0.5_3523.bam",
+        "Deletion_100X_2000bp_CN-0.5_3535.bam",
+        "Deletion_100X_100bp_CN-0.9_3819.bam",
+        "Deletion_100X_100bp_CN-0.9_3830.bam",
+        "Deletion_100X_200bp_CN-0.9_3953.bam",
+        "Deletion_100X_200bp_CN-0.9_3982.bam",
+        "Deletion_100X_500bp_CN-0.9_4135.bam",
+        "Deletion_100X_500bp_CN-0.9_4148.bam",
+        "Deletion_100X_1000bp_CN-0.9_4257.bam",
+        "Deletion_100X_1000bp_CN-0.9_4280.bam",
+        "Deletion_100X_2000bp_CN-0.9_4404.bam",
+        "Deletion_100X_2000bp_CN-0.9_4409.bam",
+        "Duplication_100X_100bp_CN2_6517.bam",
+        "Duplication_100X_100bp_CN2_6541.bam",
+        "Duplication_100X_200bp_CN2_6662.bam",
+        "Duplication_100X_200bp_CN2_6676.bam",
+        "Duplication_100X_500bp_CN2_6810.bam",
+        "Duplication_100X_500bp_CN2_6829.bam",
+        "Duplication_100X_1000bp_CN2_6953.bam",
+        "Duplication_100X_1000bp_CN2_6954.bam",
+        "Duplication_100X_2000bp_CN2_7131.bam",
+        "Duplication_100X_2000bp_CN2_7132.bam",
+        "Duplication_100X_100bp_CN4_7408.bam",
+        "Duplication_100X_100bp_CN4_7430.bam",
+        "Duplication_100X_200bp_CN4_7560.bam",
+        "Duplication_100X_200bp_CN4_7571.bam",
+        "Duplication_100X_500bp_CN4_7722.bam",
+        "Duplication_100X_500bp_CN4_7749.bam",
+        "Duplication_100X_1000bp_CN4_7889.bam",
+        "Duplication_100X_1000bp_CN4_7894.bam",
+        "Duplication_100X_2000bp_CN4_8021.bam",
+        "Duplication_100X_2000bp_CN4_8047.bam"
+      ],
+      "rows": 7906,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "total_aligned_base__host_and_virus",
+      "title": "ELViS Toy Example - Total Aligned Base",
+      "object": "total_aligned_base__host_and_virus",
+      "file": "total_aligned_base__host_and_virus.rda",
+      "class": [
+        "numeric"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "toy_example",
+      "title": "ELViS Toy Example - Metadata",
+      "object": "toy_example",
+      "file": "toy_example.rda",
+      "class": [
+        "tbl_df",
+        "tbl",
+        "data.frame"
+      ],
+      "fields": [
+        "VarType",
+        "Copies_Altered",
+        "Event_Size",
+        "Mean_Depth",
+        "filename",
+        "column_names"
+      ],
+      "rows": 120,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "coord_to_grng",
+      "title": "Convert coordinate string to grng object",
+      "topics": [
+        "coord_to_grng"
+      ]
+    },
+    {
+      "page": "coord_to_lst",
+      "title": "Convert coordinate string to list of chr,start and end",
+      "topics": [
+        "coord_to_lst"
+      ]
+    },
+    {
+      "page": "depth_hist",
+      "title": "Sample filtering threshold examination plot.",
+      "topics": [
+        "depth_hist"
+      ]
+    },
+    {
+      "page": "ELViS",
+      "title": "ELViS : An R Package for Estimating Copy Number Levels of Viral Genome Segments Using Base-Resolution Read Depth Profile.",
+      "topics": [
+        "ELViS-package",
+        "ELViS"
+      ]
+    },
+    {
+      "page": "ELViS_toy_run_result",
+      "title": "ELViS Toy Example - Run Result",
+      "topics": [
+        "ELViS_toy_run_result"
+      ]
+    },
+    {
+      "page": "filt_samples",
+      "title": "Filtering samples based on summary statistic",
+      "topics": [
+        "filt_samples"
+      ]
+    },
+    {
+      "page": "gene_cn_heatmaps",
+      "title": "Gene Copy Number Heatmap",
+      "topics": [
+        "gene_cn_heatmaps"
+      ]
+    },
+    {
+      "page": "get_depth_matrix",
+      "title": "Generate a read depth matrix of positions x samples from input BAM files list",
+      "topics": [
+        "get_depth_matrix"
+      ]
+    },
+    {
+      "page": "get_new_baseline",
+      "title": "Get new baselines according to criteria user designates",
+      "topics": [
+        "get_new_baseline"
+      ]
+    },
+    {
+      "page": "integrative_heatmap",
+      "title": "Plot heatmaps based on simple integrative clustering of multiple matrices",
+      "topics": [
+        "integrative_heatmap"
+      ]
+    },
+    {
+      "page": "mtrx_samtools_reticulate",
+      "title": "ELViS Toy Example - Base-Resolution Raw Read Depth",
+      "topics": [
+        "mtrx_samtools_reticulate"
+      ]
+    },
+    {
+      "page": "norm_fun",
+      "title": "Normalization - scaling by certain quantile",
+      "topics": [
+        "norm_fun"
+      ]
+    },
+    {
+      "page": "plot_pileUp_multisample",
+      "title": "Get a list of pile-up plots over multiple samples",
+      "topics": [
+        "plot_pileUp_multisample"
+      ]
+    },
+    {
+      "page": "run_ELViS",
+      "title": "Run ELViS using input raw depth matrix",
+      "topics": [
+        "run_ELViS"
+      ]
+    },
+    {
+      "page": "total_aligned_base__host_and_virus",
+      "title": "ELViS Toy Example - Total Aligned Base",
+      "topics": [
+        "total_aligned_base__host_and_virus"
+      ]
+    },
+    {
+      "page": "toy_example",
+      "title": "ELViS Toy Example - Metadata",
+      "topics": [
+        "toy_example"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ELViS/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "cigarillo",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "filelock",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggplot2",
+    "GlobalOptions",
+    "glue",
+    "gtable",
+    "here",
+    "hms",
+    "httr",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppTOML",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "reticulate",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rprojroot",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "segclust2d",
+    "Seqinfo",
+    "shape",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "txdbmaker",
+    "UCSC.utils",
+    "utf8",
+    "uuid",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "ELViS_Toy_Example.Rmd",
+      "filename": "ELViS_Toy_Example.html",
+      "title": "ELViS Vignette",
+      "author": "Hyo Young Choi, Jin-Young Lee, Jeremiah R. Holt, Katherine A. Hoadley, D. Neil Hayes",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Motivation for submitting to Bioconductor",
+        "Installation",
+        "Run Example",
+        "Data preparation",
+        "Virus Reference Genome File",
+        "BAM Files",
+        "Generate Raw Read Depth Matrix with Toy Examples",
+        "Filtering Out Low Depth Samples",
+        "Run ELViS using the Filtered Depth Matrix",
+        "Plotting Figures",
+        "sessionInfo"
+      ],
+      "created": "2025-02-28 21:54:08",
+      "modified": "2025-09-05 16:38:12",
+      "commits": 8
+    }
+  ],
+  "_score": 4.8750612633917,
+  "_indexed": true,
+  "_nocasepkg": "elvis",
+  "_universes": [
+    "bioc",
+    "jyleebioinfo",
+    "hyochoi"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:36:38.000Z",
+      "distro": "noble",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "01d02a730141949996301a97173703bcf0b7a818069fb8932bbc9d610941299e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:36:21.000Z",
+      "distro": "noble",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "2aee9544238ad83af5849a2f3bdc1ebf1ec06f719c8a6a34960a62e986a8b594",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:34:38.000Z",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "f15d1cdd10c4c4ffaeb127ff40d0f5ad45d5382c51c0d2be7d564038bddf57ea",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:34:57.000Z",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "66c65e3a60bcfcaaeaf3f136215bc9a74ebe2a132bc7fe7e497a03394cd6beea",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:35:57.000Z",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "68a6eda4ffbc55df4b0afbe0ebb70107cb12d8169fcfffe4712158d17a62be88",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:34:42.000Z",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "d19fc13ec1212feefe9cda955ae12e0f399640f56cc72f76a6d7e609032d29be",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:35:26.000Z",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "4551ce01682044fefab95d5eda58b8bfc6e35fb9e6d2867385f8699a107349b8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-24T08:34:44.000Z",
+      "commit": "7ceb6968e0156d82984cc2d43741165ce3b36914",
+      "fileid": "f018b0b5e5b220d6beccec40359b6178780eb9d284d398cd9817e858b4874c4f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22342660408"
+    }
+  ]
+}

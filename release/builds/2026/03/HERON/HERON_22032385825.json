@@ -1,0 +1,845 @@
+{
+  "Package": "HERON",
+  "Type": "Package",
+  "Date": "2024-08-22",
+  "Title": "Hierarchical Epitope pROtein biNding",
+  "Version": "1.8.0",
+  "Authors@R": "c(\nperson(given=\"Sean\",\nfamily = \"McIlwain\",\nrole = c(\"aut\", \"cre\"),\nemail = \"sean.mcilwain@wisc.edu\",\ncomment = c(ORCID=\"0000-0002-3820-8400\")),\nperson(given=\"Irene\",\nfamily = \"Ong\",\nrole = c(\"aut\"),\nemail = \"irene.ong@wisc.edu\",\ncomment = c(ORCID=\"0000-0002-9353-6941\"))\n)",
+  "Description": "HERON is a software package for analyzing peptide binding\narray data. In addition to identifying significant binding\nprobes, HERON also provides functions for finding epitopes\n(string of consecutive peptides within a protein). HERON also\ncalculates significance on the probe, epitope, and protein\nlevel by employing meta p-value methods.  HERON is designed for\nobtaining calls on the sample level and calculates fractions of\nhits for different conditions.",
+  "License": "GPL (>= 3)",
+  "URL": "https://github.com/Ong-Research/HERON",
+  "BugReports": "https://github.com/Ong-Research/HERON/issues",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "RoxygenNote": "7.3.1",
+  "biocViews": "Microarray, Software",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libabsl-dev cmake libfftw3-dev libgdal-dev gdal-bin\nlibgeos-dev libssl-dev libproj-dev libsqlite3-dev\nlibudunits2-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:24:33 UTC",
+  "RemoteUrl": "https://github.com/bioc/HERON",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "571b710fafa64bf8633a8552b522290904d7497d",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-15 08:22:18 UTC",
+    "User": "root"
+  },
+  "Author": "Sean McIlwain [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-3820-8400>),\nIrene Ong [aut] (ORCID: <https://orcid.org/0000-0002-9353-6941>)",
+  "Maintainer": "Sean McIlwain <sean.mcilwain@wisc.edu>",
+  "MD5sum": "c139b3267fdbc32728429f3c9864aeb3",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "HERON_1.8.0.tar.gz",
+  "_fileid": "9f229aeedda58d615e849782b547f4b5fa384145aff24b08cb657989d20f6f43",
+  "_filesize": 1134027,
+  "_sha256": "9f229aeedda58d615e849782b547f4b5fa384145aff24b08cb657989d20f6f43",
+  "_created": "2026-02-15T08:22:18.000Z",
+  "_published": "2026-02-15T08:29:50.581Z",
+  "_jobs": [
+    {
+      "job": 63659751854,
+      "time": 176,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515329611"
+    },
+    {
+      "job": 63659751867,
+      "time": 402,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5515342181"
+    },
+    {
+      "job": 63659751862,
+      "time": 344,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5515338941"
+    },
+    {
+      "job": 63659751869,
+      "time": 209,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5515331307"
+    },
+    {
+      "job": 63659751856,
+      "time": 213,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5515331504"
+    },
+    {
+      "job": 63659600352,
+      "time": 275,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5515319249"
+    },
+    {
+      "job": 63659751857,
+      "time": 162,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5515328759"
+    },
+    {
+      "job": 63659751863,
+      "time": 314,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5515337424"
+    },
+    {
+      "job": 63659751874,
+      "time": 361,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5515339865"
+    },
+    {
+      "job": 63659751861,
+      "time": 321,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5515337712"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 3
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/HERON",
+  "_commit": {
+    "id": "571b710fafa64bf8633a8552b522290904d7497d",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751473
+  },
+  "_maintainer": {
+    "name": "Sean McIlwain",
+    "email": "sean.mcilwain@wisc.edu",
+    "login": "mcilwain",
+    "uuid": 69368836,
+    "orcid": "0000-0002-3820-8400"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "version": ">= 1.1.6",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "IRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Depends"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "harmonicmeanp",
+      "role": "Imports"
+    },
+    {
+      "package": "metap",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "spdep",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.9.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.8.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "microarray",
+    "software"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "mcilwain",
+      "count": 171,
+      "uuid": 69368836
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 236,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/HERON"
+  },
+  "_devurl": "https://github.com/ong-research/heron",
+  "_searchresults": 4,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/HERON.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ong-research/heron",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ".HERONEpitopeDataSet",
+    ".HERONProbeDataSet",
+    ".HERONProteinDataSet",
+    ".HERONSequenceDataSet",
+    "addSequenceAnnotations",
+    "calcCombPValues",
+    "calcEpitopePValues",
+    "calcProbePValuesTPaired",
+    "calcProbePValuesTUnpaired",
+    "calcProbePValuesWUnpaired",
+    "calcProteinPValues",
+    "catSequences",
+    "convertSequenceDSToProbeDS",
+    "findBlocksProbeT",
+    "findBlocksT",
+    "findEpitopeSegments",
+    "getEpitopeID",
+    "getEpitopeIDsToProbeIDs",
+    "getEpitopeProbeIDs",
+    "getEpitopeProtein",
+    "getEpitopeStart",
+    "getEpitopeStop",
+    "getKofN",
+    "getProteinLabel",
+    "getProteinStart",
+    "getProteinTiling",
+    "HERONEpitopeDataSet",
+    "HERONProbeDataSet",
+    "HERONProteinDataSet",
+    "HERONSequenceDataSet",
+    "log2Transform",
+    "makeEpitopeCalls",
+    "makeProbeCalls",
+    "makeProteinCalls",
+    "min_max",
+    "oneHitEpitopes",
+    "oneHitProbes",
+    "oneProbeEpitopes",
+    "pvalue_to_zscore",
+    "quantileNormalize",
+    "smoothProbeDS"
+  ],
+  "_datasets": [
+    {
+      "name": "heffron2021_wuhan",
+      "title": "SARS CoV-2 Wuhan Peptide Binding Array Data",
+      "object": "heffron2021_wuhan",
+      "file": "heffron2021_wuhan.rda",
+      "class": [
+        "HERONSequenceDataSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "addSequenceAnnotations",
+      "title": "Add Sequence Annotations for Epitopes",
+      "topics": [
+        "addSequenceAnnotations"
+      ]
+    },
+    {
+      "page": "calcCombPValues",
+      "title": "Calculate p-values using the \"exprs\" assay",
+      "topics": [
+        "calcCombPValues"
+      ]
+    },
+    {
+      "page": "calcEpitopePValues",
+      "title": "Calculate epitope-level p-values",
+      "topics": [
+        "calcEpitopePValues"
+      ]
+    },
+    {
+      "page": "calcProbePValuesTPaired",
+      "title": "Calculate Probe p-values using a differential paired t-test",
+      "topics": [
+        "calcProbePValuesTPaired"
+      ]
+    },
+    {
+      "page": "calcProbePValuesTUnpaired",
+      "title": "Calculate Probe p-values using a differential unpaired t-test",
+      "topics": [
+        "calcProbePValuesTUnpaired"
+      ]
+    },
+    {
+      "page": "calcProbePValuesWUnpaired",
+      "title": "Calculate Probe p-values using a two-sample wilcoxon test",
+      "topics": [
+        "calcProbePValuesWUnpaired"
+      ]
+    },
+    {
+      "page": "calcProteinPValues",
+      "title": "Calculate protein-level p-values",
+      "topics": [
+        "calcProteinPValues"
+      ]
+    },
+    {
+      "page": "catSequences",
+      "title": "Concatenate sequences together based upon their start positions. Assumes the probe sequences have an overlap.",
+      "topics": [
+        "catSequences"
+      ]
+    },
+    {
+      "page": "convertSequenceDSToProbeDS",
+      "title": "Convert HERONSequenceDataSet to HERONProbeDataSet",
+      "topics": [
+        "convertSequenceDSToProbeDS"
+      ]
+    },
+    {
+      "page": "findBlocksProbeT",
+      "title": "Find Blocks of consecutive probes",
+      "topics": [
+        "findBlocksProbeT"
+      ]
+    },
+    {
+      "page": "findBlocksT",
+      "title": "Find consecutive probes",
+      "topics": [
+        "findBlocksT"
+      ]
+    },
+    {
+      "page": "findEpitopeSegments",
+      "title": "Find Epitopes from probe stats and calls.",
+      "topics": [
+        "findEpitopeSegments"
+      ]
+    },
+    {
+      "page": "getEpitopeID",
+      "title": "Create EpitopeID from protein, first and last probes",
+      "topics": [
+        "getEpitopeID"
+      ]
+    },
+    {
+      "page": "getEpitopeIDsToProbeIDs",
+      "title": "Get probe ids from a vector of epitope ids",
+      "topics": [
+        "getEpitopeIDsToProbeIDs"
+      ]
+    },
+    {
+      "page": "getEpitopeProbeIDs",
+      "title": "Get the vector of probes from an epitope id",
+      "topics": [
+        "getEpitopeProbeIDs"
+      ]
+    },
+    {
+      "page": "getEpitopeProtein",
+      "title": "Obtain Protein Id from Epitope ID",
+      "topics": [
+        "getEpitopeProtein"
+      ]
+    },
+    {
+      "page": "getEpitopeStart",
+      "title": "Obtain first probe's protein start position from Epitope ID",
+      "topics": [
+        "getEpitopeStart"
+      ]
+    },
+    {
+      "page": "getEpitopeStop",
+      "title": "Obtain last probe's protein start position from EpitopeID",
+      "topics": [
+        "getEpitopeStop"
+      ]
+    },
+    {
+      "page": "getKofN",
+      "title": "Get K of N statistics from an experiment with padj and calls",
+      "topics": [
+        "getKofN"
+      ]
+    },
+    {
+      "page": "getProteinLabel",
+      "title": "Get Protein Label from Probe",
+      "topics": [
+        "getProteinLabel"
+      ]
+    },
+    {
+      "page": "getProteinStart",
+      "title": "Get the amino-acid starting position of the probe within the protein.",
+      "topics": [
+        "getProteinStart"
+      ]
+    },
+    {
+      "page": "getProteinTiling",
+      "title": "Get Protein Tiling",
+      "topics": [
+        "getProteinTiling"
+      ]
+    },
+    {
+      "page": "heffron2021_wuhan",
+      "title": "SARS CoV-2 Wuhan Peptide Binding Array Data",
+      "topics": [
+        "heffron2021_wuhan"
+      ]
+    },
+    {
+      "page": "HERONEpitopeDataSet",
+      "title": "HERONEpitopeDataSet object and constructors",
+      "topics": [
+        ".HERONEpitopeDataSet",
+        "HERONEpitopeDataSet",
+        "HERONEpitopeDataSet-class"
+      ]
+    },
+    {
+      "page": "HERONProbeDataSet",
+      "title": "HERONProbeDataSet object and constructors",
+      "topics": [
+        ".HERONProbeDataSet",
+        "HERONProbeDataSet",
+        "HERONProbeDataSet-class"
+      ]
+    },
+    {
+      "page": "HERONProteinDataSet",
+      "title": "HERONProteinDataSet object and constructors",
+      "topics": [
+        ".HERONProteinDataSet",
+        "HERONProteinDataSet",
+        "HERONProteinDataSet-class"
+      ]
+    },
+    {
+      "page": "HERONSequenceDataSet",
+      "title": "HERONSequenceDataSet object and constructors",
+      "topics": [
+        ".HERONSequenceDataSet",
+        "HERONSequenceDataSet",
+        "HERONSequenceDataSet-class"
+      ]
+    },
+    {
+      "page": "log2Transform",
+      "title": "log2 transform the \"exprs\" assay",
+      "topics": [
+        "log2Transform"
+      ]
+    },
+    {
+      "page": "makeEpitopeCalls",
+      "title": "Make Epitope Calls",
+      "topics": [
+        "makeEpitopeCalls"
+      ]
+    },
+    {
+      "page": "makeProbeCalls",
+      "title": "Making Probe-level Calls",
+      "topics": [
+        "makeProbeCalls"
+      ]
+    },
+    {
+      "page": "makeProteinCalls",
+      "title": "Make Protein-level Calls",
+      "topics": [
+        "makeProteinCalls"
+      ]
+    },
+    {
+      "page": "min_max",
+      "title": "Cap vector at minimum/maximum values",
+      "topics": [
+        "min_max"
+      ]
+    },
+    {
+      "page": "oneHitEpitopes",
+      "title": "Find One-hit epitopes",
+      "topics": [
+        "oneHitEpitopes"
+      ]
+    },
+    {
+      "page": "oneHitProbes",
+      "title": "Find one hit probes",
+      "topics": [
+        "oneHitProbes"
+      ]
+    },
+    {
+      "page": "oneProbeEpitopes",
+      "title": "Indicate which epitopes are just one probe.",
+      "topics": [
+        "oneProbeEpitopes"
+      ]
+    },
+    {
+      "page": "probeHitSupported",
+      "title": "Find probe hits with a consecutive probe or another sample",
+      "topics": [
+        "probeHitSupported"
+      ]
+    },
+    {
+      "page": "pvalue_to_zscore",
+      "title": "Convert p-value matrix to a z-score matrix",
+      "topics": [
+        "pvalue_to_zscore"
+      ]
+    },
+    {
+      "page": "quantileNormalize",
+      "title": "Normalize the exprs assay using quantile normalization",
+      "topics": [
+        "quantileNormalize"
+      ]
+    },
+    {
+      "page": "smoothProbeDS",
+      "title": "Smooth probes across protein tiling",
+      "topics": [
+        "smoothProbeDS"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/HERON/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocGenerics",
+    "boot",
+    "class",
+    "classInt",
+    "cluster",
+    "codetools",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "deldir",
+    "DEoptimR",
+    "e1071",
+    "FMStable",
+    "generics",
+    "GenomicRanges",
+    "harmonicmeanp",
+    "IRanges",
+    "KernSmooth",
+    "lattice",
+    "limma",
+    "magrittr",
+    "MASS",
+    "mathjaxr",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "metap",
+    "mnormt",
+    "multcomp",
+    "multtest",
+    "mutoss",
+    "mvtnorm",
+    "numDeriv",
+    "plotrix",
+    "proxy",
+    "qqconf",
+    "quantreg",
+    "rbibutils",
+    "Rcpp",
+    "Rdpack",
+    "robustbase",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "sandwich",
+    "Seqinfo",
+    "sf",
+    "sn",
+    "sp",
+    "SparseArray",
+    "SparseM",
+    "spData",
+    "spdep",
+    "statmod",
+    "SummarizedExperiment",
+    "survival",
+    "TFisher",
+    "TH.data",
+    "units",
+    "wk",
+    "XVector",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "full_analysis.Rmd",
+      "filename": "full_analysis.html",
+      "title": "Analyzing High Density Peptide Array Data using HERON",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "HERON",
+        "Installation",
+        "Example",
+        "The HERONSequenceData object",
+        "Sequence matrix",
+        "colData",
+        "Probe metadata",
+        "Creating the HERONSequenceData object",
+        "Pre-process data",
+        "Calculate probe-level p-values",
+        "Obtain probe-level calls",
+        "Find Epitope Segments using the unique method",
+        "Calculate Epitope-level p-values",
+        "Obtain Epitope-level calls",
+        "Calculate Protein-level p-values",
+        "Obtain Protein-level calls",
+        "Other",
+        "Find Epitope Segments using the hclust method",
+        "binary calls with hamming distance",
+        "z-scores with euclidean distance",
+        "Find Epitope Segments using the skater method",
+        "Other meta p-value methods",
+        "Making z-score cutoff calls",
+        "Smoothing across probes",
+        "Calculate paired t-tests",
+        "Use the wilcox test for probe-level p-values",
+        "Use of the condition column",
+        "Funding",
+        "Acknowledgments",
+        "Session Info"
+      ],
+      "created": "2022-10-11 14:29:47",
+      "modified": "2024-08-22 20:09:24",
+      "commits": 36
+    }
+  ],
+  "_score": 4,
+  "_indexed": false,
+  "_nocasepkg": "heron",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/HERON",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:25:47.000Z",
+      "distro": "noble",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "596154eb0f375bcf59f8061ef994e4350449ba43828b7c219c9d401b09f06a7c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:25:23.000Z",
+      "distro": "noble",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "4afe174b55948b55ffc20fa0fe68d34d204c73a50837b1a6302094e3ca59890f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:24:00.000Z",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "92a7317874e75a7f58b6c06fa90ef712557277e1e1a0d5acb69dbff38b3e7159",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:24:09.000Z",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "f6d34effcc7aac520dff276f12bcad9c767c9506f8a299908ea992c673c8f4cd",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:25:27.000Z",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "e13480210f0fbc0880574f836017879d618d172f6997f644a1a52db73eeb527a",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:23:59.000Z",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "5e26355ced363114c36fe6905846789f76228d2c95c02fd070f8d0f1eb1616d5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:24:41.000Z",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "c72bcc5610821a5a52bf173584d30382291c418cc30fa8275cb274533a8693db",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-15T08:23:54.000Z",
+      "commit": "571b710fafa64bf8633a8552b522290904d7497d",
+      "fileid": "efac666b9d37c1a6c0ee5b042d4992317edfc6e4734f9ea2d4e58597122c272f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22032385825"
+    }
+  ]
+}

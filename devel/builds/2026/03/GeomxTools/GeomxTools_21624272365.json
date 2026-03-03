@@ -1,0 +1,943 @@
+{
+  "Package": "GeomxTools",
+  "Title": "NanoString GeoMx Tools",
+  "Description": "Tools for NanoString Technologies GeoMx Technology.\nPackage provides functions for reading in DCC and PKC files\nbased on an ExpressionSet derived object.  Normalization and QC\nfunctions are also included.",
+  "Version": "3.15.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(person(\"Maddy\", \"Griswold\", email = \"mgriswold@nanostring.com\", role = c(\"cre\", \"aut\")),\nperson(\"Nicole\", \"Ortogero\", email = \"nortogero@nanostring.com\", role = c(\"aut\")),\nperson(\"Zhi\", \"Yang\", role = c(\"aut\")),\nperson(\"Ronalyn\", \"Vitancol\", email = \"rvitancol@nanostring.com\", role = c(\"aut\")),\nperson(\"David\", \"Henderson\", role = c(\"aut\")))",
+  "License": "MIT",
+  "Collate": "DccMetadata.R NanoStringGeoMxSet-class.R\nNanoStringGeoMxSet-validity.R NanoStringGeoMxSet-accessors.R\nNanoStringGeoMxSet-qc.R NanoStringGeoMxSet-autoplot.R\nNanoStringGeoMxSet-aggregate.R NanoStringGeoMxSet-signatures.R\nNanoStringGeoMxSet-normalize.R NanoStringGeoMxSet-de.R\ncoercions.R readDccFile.R readPKCFile.R\nreadNanoStringGeoMxSet.R writeNanoStringGeoMxSet.R utils.R\noutliersFunctions.R",
+  "biocViews": "GeneExpression, Transcription, CellBasedAssays, DataImport,\nTranscriptomics, Proteomics, mRNAMicroarray,\nProprietaryPlatforms, RNASeq, Sequencing, ExperimentalDesign,\nNormalization, Spatial",
+  "VignetteEngine": "knitr::rmarkdown",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.1",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev make libicu-dev libpng-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:05:52 UTC",
+  "RemoteUrl": "https://github.com/bioc/GeomxTools",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 09:24:54 UTC",
+    "User": "root"
+  },
+  "Author": "Maddy Griswold [cre, aut],\nNicole Ortogero [aut],\nZhi Yang [aut],\nRonalyn Vitancol [aut],\nDavid Henderson [aut]",
+  "Maintainer": "Maddy Griswold <mgriswold@nanostring.com>",
+  "MD5sum": "9efed9959cefe8fd54346a271619a6e7",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "GeomxTools_3.15.0.tar.gz",
+  "_fileid": "89b5eed3894b0cca851de5b8b814f5062ec6ec9fca0a5213d6ab18b6099341e8",
+  "_filesize": 16009862,
+  "_sha256": "89b5eed3894b0cca851de5b8b814f5062ec6ec9fca0a5213d6ab18b6099341e8",
+  "_created": "2026-02-03T09:24:54.000Z",
+  "_published": "2026-02-03T10:18:52.817Z",
+  "_jobs": [
+    {
+      "job": 62321354006,
+      "time": 242,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5355000460"
+    },
+    {
+      "job": 62321354013,
+      "time": 940,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5355149205"
+    },
+    {
+      "job": 62321353994,
+      "time": 920,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355145204"
+    },
+    {
+      "job": 62321354015,
+      "time": 1411,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5355622226"
+    },
+    {
+      "job": 62321354016,
+      "time": 1060,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355546426"
+    },
+    {
+      "job": 62320420937,
+      "time": 501,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354946942"
+    },
+    {
+      "job": 62321354133,
+      "time": 205,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5354992120"
+    },
+    {
+      "job": 62321354017,
+      "time": 897,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5355140594"
+    },
+    {
+      "job": 62321353962,
+      "time": 870,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5355133894"
+    },
+    {
+      "job": 62321354046,
+      "time": 824,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355124473"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/GeomxTools",
+  "_commit": {
+    "id": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750352
+  },
+  "_maintainer": {
+    "name": "Maddy Griswold",
+    "email": "mgriswold@nanostring.com",
+    "login": "maddygriz",
+    "uuid": 40255151
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Depends"
+    },
+    {
+      "package": "NanoStringNCTools",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "rjson",
+      "role": "Imports"
+    },
+    {
+      "package": "readxl",
+      "role": "Imports"
+    },
+    {
+      "package": "EnvStats",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "lmerTest",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "GGally",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "SeuratObject",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "parallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggiraph",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seurat",
+      "role": "Suggests"
+    },
+    {
+      "package": "SpatialExperiment",
+      "version": ">= 1.4.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "SpatialDecon",
+      "role": "Suggests"
+    },
+    {
+      "package": "patchwork",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 3,
+  "_updates": [
+    {
+      "week": "2025-21",
+      "n": 1
+    },
+    {
+      "week": "2025-29",
+      "n": 1
+    },
+    {
+      "week": "2025-37",
+      "n": 3
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "3.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "3.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "geneexpression",
+    "transcription",
+    "cellbasedassays",
+    "dataimport",
+    "transcriptomics",
+    "proteomics",
+    "mrnamicroarray",
+    "proprietaryplatforms",
+    "rnaseq",
+    "sequencing",
+    "experimentaldesign",
+    "normalization",
+    "spatial"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 778,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/GeomxTools"
+  },
+  "_searchresults": 360,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/GeomxTools.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "aggregateCounts",
+    "analyte",
+    "as.Seurat",
+    "as.SpatialExperiment",
+    "checkQCFlags",
+    "computeNormalizationFactors",
+    "countsShiftedByOne",
+    "design",
+    "design<-",
+    "dimLabels",
+    "dimLabels<-",
+    "featureType",
+    "featureType<-",
+    "hkNames",
+    "iggNames",
+    "logtBase",
+    "mixedModelDE",
+    "NanoStringGeoMxSet",
+    "ngeoMean",
+    "ngeoSD",
+    "normalize",
+    "plotConcordance",
+    "plotNormFactorConcordance",
+    "qcProteinSignal",
+    "qcProteinSignalNames",
+    "readDccFile",
+    "readNanoStringGeoMxSet",
+    "readPKCFile",
+    "sData",
+    "setBackgroundQCFlags",
+    "setBioProbeQCFlags",
+    "setGeoMxQCFlags",
+    "setSegmentQCFlags",
+    "setSeqQCFlags",
+    "shiftCountsOne",
+    "show",
+    "signatureGroups",
+    "signatures",
+    "signatures<-",
+    "signatureScores",
+    "summarizeNegatives",
+    "svarLabels",
+    "updateGeoMxSet",
+    "writeNanoStringGeoMxSet"
+  ],
+  "_help": [
+    {
+      "page": "aggregateCounts",
+      "title": "Aggregate probe counts to target level for feature data",
+      "topics": [
+        "aggregateCounts"
+      ]
+    },
+    {
+      "page": "as.Seurat",
+      "title": "Convert GeoMxSet Object to SeuratObject",
+      "topics": [
+        "as.Seurat",
+        "as.Seurat.NanoStringGeoMxSet"
+      ]
+    },
+    {
+      "page": "as.SpatialExperiment",
+      "title": "Convert Object to SpatialExperiment",
+      "topics": [
+        "as.SpatialExperiment",
+        "as.SpatialExperiment.NanoStringGeoMxSet"
+      ]
+    },
+    {
+      "page": "checkQCFlags",
+      "title": "Check QC Flags in the GeoMxSet and removes the probe or sample from the object",
+      "topics": [
+        "checkQCFlags"
+      ]
+    },
+    {
+      "page": "checkQCFlags-NanoStringGeoMxSet-method",
+      "title": "checkQCFlags",
+      "topics": [
+        "checkQCFlags,NanoStringGeoMxSet-method"
+      ]
+    },
+    {
+      "page": "compareToConfig",
+      "title": "Compare given PKC probes to probes in config file",
+      "topics": [
+        "compareToConfig"
+      ]
+    },
+    {
+      "page": "computeNormalizationFactors",
+      "title": "Generate normalization factors",
+      "topics": [
+        "computeNormalizationFactors"
+      ]
+    },
+    {
+      "page": "countsShiftedByOne",
+      "title": "Accessor to check if \"exprs\" 'assDataElement' was shifted by one",
+      "topics": [
+        "countsShiftedByOne"
+      ]
+    },
+    {
+      "page": "hkNames",
+      "title": "Return the House Keeper positive controls for protein",
+      "topics": [
+        "hkNames"
+      ]
+    },
+    {
+      "page": "iggNames",
+      "title": "Return the IgG negative controls for protein",
+      "topics": [
+        "iggNames"
+      ]
+    },
+    {
+      "page": "logtBase",
+      "title": "Get take the log of a numeric vector",
+      "topics": [
+        "logtBase"
+      ]
+    },
+    {
+      "page": "mixedModelDE",
+      "title": "Run a mixed model on GeoMxSet",
+      "topics": [
+        "mixedModelDE"
+      ]
+    },
+    {
+      "page": "NanoStringGeoMxSet-class",
+      "title": "Class to Contain NanoString Spatial Expression Level Assays",
+      "topics": [
+        "analyte",
+        "analyte,NanoStringGeoMxSet-method",
+        "class:NanoStringGeoMxSet",
+        "coerce,ExpressionSet,NanoStringGeoMxSet-method",
+        "design,NanoStringGeoMxSet-method",
+        "design<-,NanoStringGeoMxSet,ANY-method",
+        "design<-,NanoStringGeoMxSet,formula-method",
+        "design<-,NanoStringGeoMxSet,NULL-method",
+        "dimLabels,NanoStringGeoMxSet-method",
+        "dimLabels<-,NanoStringGeoMxSet,character-method",
+        "featureType",
+        "featureType,NanoStringGeoMxSet-method",
+        "featureType<-",
+        "featureType<-,NanoStringGeoMxSet,character-method",
+        "NanoStringGeoMxSet",
+        "NanoStringGeoMxSet,environment-method",
+        "NanoStringGeoMxSet,ExpressionSet-method",
+        "NanoStringGeoMxSet,matrix-method",
+        "NanoStringGeoMxSet,missing-method",
+        "NanoStringGeoMxSet,NanoStringGeoMxSet-method",
+        "NanoStringGeoMxSet-class",
+        "sData",
+        "sData,NanoStringGeoMxSet-method",
+        "show,NanoStringGeoMxSet-method",
+        "signatureGroups",
+        "signatureGroups,NanoStringGeoMxSet-method",
+        "signatures",
+        "signatures,NanoStringGeoMxSet-method",
+        "signatures<-",
+        "signatures<-,NanoStringGeoMxSet,SignatureSet-method",
+        "signatureScores",
+        "signatureScores,NanoStringGeoMxSet-method",
+        "svarLabels",
+        "svarLabels,NanoStringGeoMxSet-method",
+        "updateObject,NanoStringGeoMxSet-method"
+      ]
+    },
+    {
+      "page": "ngeoMean",
+      "title": "Get the geometric mean of a vector",
+      "topics": [
+        "ngeoMean"
+      ]
+    },
+    {
+      "page": "ngeoSD",
+      "title": "Get the geometric standard deviation of a vector",
+      "topics": [
+        "ngeoSD"
+      ]
+    },
+    {
+      "page": "normalize-NanoStringGeoMxSet-method",
+      "title": "normalize",
+      "topics": [
+        "normalize,NanoStringGeoMxSet-method"
+      ]
+    },
+    {
+      "page": "plotConcordance",
+      "title": "Generate concordance figure of targets based on user provided factors",
+      "topics": [
+        "plotConcordance"
+      ]
+    },
+    {
+      "page": "plotNormFactorConcordance",
+      "title": "Generate concordance figure of normalization factors based on user provided factors",
+      "topics": [
+        "plotNormFactorConcordance"
+      ]
+    },
+    {
+      "page": "qcProteinSignal",
+      "title": "Generate Protein QC signal boxplot figure",
+      "topics": [
+        "qcProteinSignal"
+      ]
+    },
+    {
+      "page": "qcProteinSignalNames",
+      "title": "Generate list of proteins ordered by SNR",
+      "topics": [
+        "qcProteinSignalNames"
+      ]
+    },
+    {
+      "page": "readDccFile",
+      "title": "Read DCC File",
+      "topics": [
+        "readDccFile"
+      ]
+    },
+    {
+      "page": "readNanoStringGeoMxSet",
+      "title": "Read 'NanoStringGeoMxSet'",
+      "topics": [
+        "readNanoStringGeoMxSet"
+      ]
+    },
+    {
+      "page": "readPKCFile",
+      "title": "Read PKC File",
+      "topics": [
+        "readPKCFile"
+      ]
+    },
+    {
+      "page": "setBackgroundQCFlags",
+      "title": "Add background QC flags to NanoStringGeoMxSet object protocol data",
+      "topics": [
+        "setBackgroundQCFlags"
+      ]
+    },
+    {
+      "page": "setBioProbeQCFlags",
+      "title": "Add probe QC flags to NanoStringGeoMxSet object feature data",
+      "topics": [
+        "setBioProbeQCFlags"
+      ]
+    },
+    {
+      "page": "setGeoMxQCFlags",
+      "title": "Add GeoMx segment QC flags to NanoStringGeoMxSet object protocol data",
+      "topics": [
+        "setGeoMxQCFlags"
+      ]
+    },
+    {
+      "page": "setQCFlags-NanoStringGeoMxSet-method",
+      "title": "Add QC flags to feature and protocol data simultaneously",
+      "topics": [
+        "setQCFlags,NanoStringGeoMxSet-method"
+      ]
+    },
+    {
+      "page": "setSegmentQCFlags",
+      "title": "Add segment QC flags to protocol data",
+      "topics": [
+        "setSegmentQCFlags"
+      ]
+    },
+    {
+      "page": "setSeqQCFlags",
+      "title": "Add sequencing QC flags to NanoStringGeoMxSet object protocol data",
+      "topics": [
+        "setSeqQCFlags"
+      ]
+    },
+    {
+      "page": "shiftCountsOne",
+      "title": "Add one to all counts in an expression matrix",
+      "topics": [
+        "shiftCountsOne"
+      ]
+    },
+    {
+      "page": "summarizeNegatives",
+      "title": "Calculate negative probe summary stats",
+      "topics": [
+        "summarizeNegatives"
+      ]
+    },
+    {
+      "page": "updateGeoMxSet",
+      "title": "Update GeoMxSet object to current version",
+      "topics": [
+        "updateGeoMxSet"
+      ]
+    },
+    {
+      "page": "writeNanoStringGeoMxSet",
+      "title": "write 'NanoStringGeoMxSet'",
+      "topics": [
+        "writeNanoStringGeoMxSet"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/GeomxTools/raw/HEAD/README.md",
+  "_rundeps": [
+    "base64enc",
+    "beeswarm",
+    "Biobase",
+    "BiocGenerics",
+    "Biostrings",
+    "boot",
+    "bslib",
+    "cachem",
+    "cellranger",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "digest",
+    "dotCall64",
+    "dplyr",
+    "EnvStats",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "forcats",
+    "fs",
+    "future",
+    "future.apply",
+    "gdtools",
+    "generics",
+    "GGally",
+    "ggbeeswarm",
+    "ggiraph",
+    "ggplot2",
+    "ggstats",
+    "ggthemes",
+    "globals",
+    "glue",
+    "gtable",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "listenv",
+    "lme4",
+    "lmerTest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "memoise",
+    "mime",
+    "minqa",
+    "NanoStringNCTools",
+    "nlme",
+    "nloptr",
+    "nortest",
+    "numDeriv",
+    "parallelly",
+    "patchwork",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "prettyunits",
+    "progress",
+    "progressr",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "Rdpack",
+    "readxl",
+    "reformulas",
+    "rematch",
+    "reshape2",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "SeuratObject",
+    "sp",
+    "spam",
+    "stringi",
+    "stringr",
+    "systemfonts",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "vipor",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "GeomxSet_coercions.Rmd",
+      "filename": "GeomxSet_coercions.html",
+      "title": "Coercion of GeoMxSet to Seurat and SpatialExperiment Objects",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Data Processing",
+        "Seurat",
+        "Seurat Coercion",
+        "Simple GeoMx data workflow",
+        "In-depth GeoMx data workflow",
+        "Spatial Graphing",
+        "SpatialExperiment",
+        "SpatialExperiment Coercion",
+        "Image Overlays"
+      ],
+      "created": "2022-02-04 00:36:53",
+      "modified": "2025-09-12 17:02:50",
+      "commits": 11
+    },
+    {
+      "source": "Developer_Introduction_to_the_NanoStringGeoMxSet.Rmd",
+      "filename": "Developer_Introduction_to_the_NanoStringGeoMxSet.html",
+      "title": "Developer Introduction to the NanoStringGeoMxSet",
+      "author": "David Henderson, Patrick Aboyoun, Nicole Ortogero, Zhi Yang, Jason Reeves, Kara Gorman, Rona Vitancol, Thomas Smith, Maddy Griswold",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Loading Packages",
+        "Building a NanoStringGeoMxSet from .DCC files",
+        "How is the DSP data stored in the NanoStringGeoMxSet object?",
+        "Accessing and Assigning NanoStringGeoMxSet Data Members",
+        "Access annotations",
+        "Summarizing NanoString GeoMx Data",
+        "Subsetting NanoStringGeoMxSet Objects",
+        "Apply Functions Across Assay Data",
+        "Built-in Quality Control Assessment",
+        "Normalization",
+        "Transforming NanoStringRCCSet Data to Data Frames",
+        "Transforming NanoSetRccSet assayData matrices"
+      ],
+      "created": "2021-06-25 21:15:36",
+      "modified": "2022-04-11 22:11:36",
+      "commits": 4
+    },
+    {
+      "source": "Protein_in_GeomxTools.Rmd",
+      "filename": "Protein_in_GeomxTools.html",
+      "title": "Protein data using GeomxTools",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Data Processing",
+        "RNA",
+        "Protein",
+        "Segment QC",
+        "Target QC",
+        "Normalization"
+      ],
+      "created": "2022-04-11 22:11:36",
+      "modified": "2024-02-09 18:17:54",
+      "commits": 2
+    }
+  ],
+  "_score": 7.288696260590256,
+  "_indexed": true,
+  "_nocasepkg": "geomxtools",
+  "_universes": [
+    "bioc",
+    "maddygriz"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:29:32.000Z",
+      "distro": "noble",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "c3d6d3a43ba797c510f2dbd93d7359ecb083260413cfd6c8628951c2a2081741",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:29:47.000Z",
+      "distro": "noble",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "a2ca74387f6e8ff4bc53d95df9a95b0efb039e36d731ddc9ae0ae5dcbbf592f8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:57:55.000Z",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "b873123023a3968a1453ccf8b19f33d16d365342f3c522aadc248b144ac1b3c3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:57:02.000Z",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "0b5aad2cab4788b564a3a27ea7217e5c55a4fb3e0043f1d23ffe6cb4d1064768",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:28:56.000Z",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "2b540b542579f25f72f37cc8a61640a98d5d43118f14f54fcfec6a71902d9c95",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:27:22.000Z",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "5b809df11ea33f40e140d896950bb6b0b67dd6b7a0fc63498a5a3cc56987510e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:27:38.000Z",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "943cf12056685135b190f31b33d51cc441b20461b3e72b9a8e24999dadbc86d6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "3.15.0",
+      "date": "2026-02-03T09:27:31.000Z",
+      "commit": "2ccee05935a3c902d590cb163f1094f6e20a9878",
+      "fileid": "3eb94916d330bd57e8408423ab7501fdd73d96d31c5f95317d75457a80c65028",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21624272365"
+    }
+  ]
+}
