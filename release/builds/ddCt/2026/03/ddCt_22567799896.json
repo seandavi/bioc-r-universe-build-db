@@ -1,0 +1,689 @@
+{
+  "Package": "ddCt",
+  "Title": "The ddCt Algorithm for the Analysis of Quantitative Real-Time\nPCR (qRT-PCR)",
+  "Version": "1.66.0",
+  "Date": "2021-07-30",
+  "Author": "Jitao David Zhang, Rudolf Biczok, and Markus Ruschhaupt",
+  "Description": "The Delta-Delta-Ct (ddCt) Algorithm is an approximation\nmethod to determine relative gene expression with quantitative\nreal-time PCR (qRT-PCR) experiments. Compared to other\napproaches, it requires no standard curve for each\nprimer-target pair, therefore reducing the working load and yet\nreturning accurate enough results as long as the assumptions of\nthe amplification efficiency hold. The ddCt package implements\na pipeline to collect, analyse and visualize qRT-PCR results,\nfor example those from TaqMan SDM software, mainly using the\nddCt method. The pipeline can be either invoked by a script in\ncommand-line or through the API consisting of S4-Classes,\nmethods and functions.",
+  "Maintainer": "Jitao David Zhang <jitao_david.zhang@roche.com>",
+  "biocViews": "GeneExpression, DifferentialExpression,\nMicrotitrePlateAssay, qPCR",
+  "License": "LGPL-3",
+  "Collate": "AllGlobals.R AllClasses.R AllGenerics.R AllFunctions.R\nAllMethods.R absoluteQ.R ddCtSplit.R output.R visualization.R",
+  "Config/testthat/edition": "3",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:03:15 UTC",
+  "RemoteUrl": "https://github.com/bioc/ddCt",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-03-02 08:36:46 UTC",
+    "User": "root"
+  },
+  "MD5sum": "90bb8646942c31a2d27b47c89d95bca7",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "ddCt_1.66.0.tar.gz",
+  "_fileid": "379c989e6295451f4d42fcc79374df70a38f3fbb7482b16040c5356f43be50e9",
+  "_filesize": 947503,
+  "_sha256": "379c989e6295451f4d42fcc79374df70a38f3fbb7482b16040c5356f43be50e9",
+  "_created": "2026-03-02T08:36:46.000Z",
+  "_published": "2026-03-02T08:40:15.880Z",
+  "_jobs": [
+    {
+      "job": 65368115901,
+      "time": 175,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5717653574"
+    },
+    {
+      "job": 65368115867,
+      "time": 173,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5717653196"
+    },
+    {
+      "job": 65368115870,
+      "time": 173,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5717653579"
+    },
+    {
+      "job": 65368115897,
+      "time": 99,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5717639023"
+    },
+    {
+      "job": 65368115872,
+      "time": 109,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5717640904"
+    },
+    {
+      "job": 65367811835,
+      "time": 172,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5717618262"
+    },
+    {
+      "job": 65368115889,
+      "time": 100,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5717639269"
+    },
+    {
+      "job": 65368115939,
+      "time": 90,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5717637113"
+    },
+    {
+      "job": 65368115873,
+      "time": 74,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5717634108"
+    },
+    {
+      "job": 65368115918,
+      "time": 75,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5717634213"
+    }
+  ],
+  "_bioccheck": {
+    "error": 2,
+    "warning": 3,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ddCt",
+  "_commit": {
+    "id": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761746595
+  },
+  "_maintainer": {
+    "name": "Jitao David Zhang",
+    "email": "jitao_david.zhang@roche.com",
+    "login": "accio",
+    "uuid": 1397024
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 2.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "version": ">= 1.10.0",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "version": ">= 0.1-3",
+      "role": "Imports"
+    },
+    {
+      "package": "xtable",
+      "role": "Imports"
+    },
+    {
+      "package": "lattice",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.67.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.66.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "geneexpression",
+    "differentialexpression",
+    "microtitreplateassay",
+    "qpcr"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 452,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ddCt"
+  },
+  "_mentions": 4,
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/ddCt.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "assayData",
+    "barchart",
+    "barploterrbar",
+    "brewer.pal",
+    "brewer.pal.info",
+    "ColMap",
+    "coreData",
+    "coreData<-",
+    "Ct",
+    "Ct<-",
+    "CtErr",
+    "dCt",
+    "dCtErr",
+    "ddCt",
+    "ddCtAbsolute",
+    "ddCtErr",
+    "ddCtExpression",
+    "DEFAULT.CT.COLNAME",
+    "DEFAULT.FEATURE.COLNAME",
+    "DEFAULT.SAMPLE.COLNAME",
+    "detectorNames",
+    "detectorNames<-",
+    "elist",
+    "elistWrite",
+    "errBarchart",
+    "exprs",
+    "fData",
+    "fData<-",
+    "featureData",
+    "featureData<-",
+    "featureNames",
+    "featureNames<-",
+    "fileNames",
+    "getDir",
+    "InputFrame",
+    "level",
+    "levelErr",
+    "numberCt",
+    "numberNA",
+    "panel.abline",
+    "panel.barchart",
+    "panel.grid",
+    "panel.segments",
+    "panel.text",
+    "pData",
+    "pData<-",
+    "phenoData",
+    "phenoData<-",
+    "QuantStudioFrame",
+    "readQuantStudio",
+    "readSDM",
+    "removeDetector",
+    "removeNTC",
+    "removeSample",
+    "replaceDetector",
+    "replaceSample",
+    "replaceVectorByEquality",
+    "rightCensoring",
+    "sampleNames",
+    "sampleNames<-",
+    "SDMFrame",
+    "TSVFrame",
+    "uniqueDetectorNames",
+    "uniqueDetectorNames<-",
+    "uniqueSampleNames",
+    "uniqueSampleNames<-",
+    "varLabels",
+    "varMetadata",
+    "varMetadata<-",
+    "write.htmltable",
+    "writeSimpleTabCsv",
+    "xtable"
+  ],
+  "_help": [
+    {
+      "page": "barploterrbar",
+      "title": "Barplot with error bars.",
+      "topics": [
+        "barploterrbar"
+      ]
+    },
+    {
+      "page": "ddCtAbsolute",
+      "title": "absolute quantification for Taqman data",
+      "topics": [
+        "ddCtAbsolute"
+      ]
+    },
+    {
+      "page": "ddCtExpression-class",
+      "title": "ddCt Expression",
+      "topics": [
+        "\"fData<-\"",
+        "\"featureData<-\"",
+        "\"featureNames<-\"",
+        "\"pData<-\"",
+        "\"phenoData<-\"",
+        "\"varMetadata<-\"",
+        "assayData",
+        "barchart",
+        "brewer.pal",
+        "brewer.pal.info",
+        "Ct",
+        "Ct,ddCtExpression-method",
+        "CtErr",
+        "CtErr,ddCtExpression-method",
+        "dCt",
+        "dCt,ddCtExpression-method",
+        "dCtErr",
+        "dCtErr,ddCtExpression-method",
+        "ddCt",
+        "ddCt,ddCtExpression-method",
+        "ddCtErr",
+        "ddCtErr,ddCtExpression-method",
+        "ddCtExpression-class",
+        "elist,ddCtExpression-method",
+        "elistWrite,ddCtExpression,character-method",
+        "exprs",
+        "fData",
+        "featureData",
+        "featureNames",
+        "level",
+        "level,ddCtExpression-method",
+        "levelErr",
+        "levelErr,ddCtExpression-method",
+        "numberCt",
+        "numberCt,ddCtExpression-method",
+        "numberNA",
+        "numberNA,ddCtExpression-method",
+        "panel.abline",
+        "panel.barchart",
+        "panel.grid",
+        "panel.segments",
+        "panel.text",
+        "pData",
+        "phenoData",
+        "varLabels",
+        "varMetadata",
+        "xtable"
+      ]
+    },
+    {
+      "page": "ddCtExpression-methods",
+      "title": "Apply the ddCt algorithm for a given data set",
+      "topics": [
+        "ddCtExpression",
+        "ddCtExpression,InputFrame-method",
+        "ddCtExpression,SDMFrame-method",
+        "ddCtExpression-methods"
+      ]
+    },
+    {
+      "page": "elistWrite-methods",
+      "title": "Write ddCtExpression object into data frame or files",
+      "topics": [
+        "elist",
+        "elistWrite",
+        "summary"
+      ]
+    },
+    {
+      "page": "errBarchart-methods",
+      "title": "Draw barchart of relative expression level with error-bars",
+      "topics": [
+        "errBarchart",
+        "errBarchart,ddCtExpression,character-method",
+        "errBarchart,ddCtExpression,missing-method",
+        "errBarchart-methods"
+      ]
+    },
+    {
+      "page": "errBarchartParameter-class",
+      "title": "Class \"errBarchartParameter\"",
+      "topics": [
+        "errBarchartParameter-class",
+        "exprsUndeterminedLabel,errBarchartParameter-method",
+        "show,errBarchartParameter-method"
+      ]
+    },
+    {
+      "page": "getDir",
+      "title": "Auxillary functions for the executive scripts",
+      "topics": [
+        "getDir"
+      ]
+    },
+    {
+      "page": "InputFrame",
+      "title": "Build an InputFrame from a ReaderClass or a data frame",
+      "topics": [
+        "InputFrame",
+        "InputFrame,data.frame-method"
+      ]
+    },
+    {
+      "page": "SDMFrame-class",
+      "title": "Working with SDM files",
+      "topics": [
+        "$,InputFrame-method",
+        "ColMap-class",
+        "coreData",
+        "coreData,InputFrame-method",
+        "coreData<-",
+        "coreData<-,InputFrame,data.frame-method",
+        "Ct,InputFrame-method",
+        "Ct<-",
+        "Ct<-,InputFrame,numeric-method",
+        "DEFAULT.CT.COLNAME",
+        "DEFAULT.FEATURE.COLNAME",
+        "DEFAULT.SAMPLE.COLNAME",
+        "detectorNames",
+        "detectorNames,InputFrame-method",
+        "detectorNames<-",
+        "detectorNames<-,InputFrame,character-method",
+        "fileNames",
+        "fileNames,InputFrame-method",
+        "InputFrame-class",
+        "names,InputFrame-method",
+        "removeDetector",
+        "removeDetector,InputFrame,character-method",
+        "removeDetector-methods",
+        "removeSample",
+        "removeSample,InputFrame,character-method",
+        "removeSample-methods",
+        "replaceDetector",
+        "replaceDetector,InputFrame,character,character-method",
+        "replaceDetector-methods",
+        "replaceSample",
+        "replaceSample,InputFrame,character,character-method",
+        "replaceSample-methods",
+        "rightCensoring",
+        "rightCensoring,SDMFrame,numeric-method",
+        "sampleNames",
+        "sampleNames,InputFrame-method",
+        "sampleNames<-",
+        "sampleNames<-,InputFrame,character-method",
+        "SDMFrame-class",
+        "show,InputFrame-method",
+        "uniqueDetectorNames",
+        "uniqueDetectorNames,InputFrame-method",
+        "uniqueDetectorNames<-",
+        "uniqueDetectorNames<-,InputFrame,character,character-method",
+        "uniqueDetectorNames<-,InputFrame,missing,character-method",
+        "uniqueSampleNames",
+        "uniqueSampleNames,InputFrame-method",
+        "uniqueSampleNames<-",
+        "uniqueSampleNames<-,InputFrame,character,character-method",
+        "uniqueSampleNames<-,InputFrame,missing,character-method",
+        "[,InputFrame-method",
+        "[[,InputFrame-method"
+      ]
+    },
+    {
+      "page": "InputReader-class",
+      "title": "Class \"InputReader\"",
+      "topics": [
+        "ColMap",
+        "InputReader-class",
+        "QuantStudioReader-class",
+        "SDMReader-class",
+        "TSVFrame",
+        "TSVReader-class"
+      ]
+    },
+    {
+      "page": "QuantStudioFrame",
+      "title": "Read QuantStudio file(s)",
+      "topics": [
+        "QuantStudioFrame",
+        "readQuantStudio"
+      ]
+    },
+    {
+      "page": "removeNTC-methods",
+      "title": "Remove NTC samples",
+      "topics": [
+        "removeNTC",
+        "removeNTC,ddCtExpression-method",
+        "removeNTC,InputFrame-method",
+        "removeNTC-methods"
+      ]
+    },
+    {
+      "page": "replaceVectorByEquality",
+      "title": "REPLACE ITEMS OF VECTOR BY EQUALITY",
+      "topics": [
+        "replaceVectorByEquality"
+      ]
+    },
+    {
+      "page": "SDMFrame",
+      "title": "Read an SDM file",
+      "topics": [
+        "InputFrame,InputReader-method",
+        "readSDM",
+        "rightCensoring,InputFrame,numeric-method",
+        "SDMFrame"
+      ]
+    },
+    {
+      "page": "write.htmltable",
+      "title": "Write a data frame into an html table within a html page",
+      "topics": [
+        "write.htmltable"
+      ]
+    },
+    {
+      "page": "writeSimpleTabCsv",
+      "title": "Write a data frame into a tab delimited file",
+      "topics": [
+        "writeSimpleTabCsv"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "Biobase",
+    "BiocGenerics",
+    "generics",
+    "lattice",
+    "RColorBrewer",
+    "xtable"
+  ],
+  "_vignettes": [
+    {
+      "source": "rtPCR-usage.Rnw",
+      "filename": "rtPCR-usage.pdf",
+      "title": "Analyse RT-PCR data with the end-to-end script in ddCt package",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2013-11-01 20:09:24",
+      "modified": "2013-11-01 20:09:24",
+      "commits": 1
+    },
+    {
+      "source": "RT-PCR-Script-ddCt.Rnw",
+      "filename": "RT-PCR-Script-ddCt.pdf",
+      "title": "How to apply the ddCt method",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2013-11-01 20:09:24",
+      "modified": "2018-08-30 17:47:25",
+      "commits": 3
+    },
+    {
+      "source": "rtPCR.Rnw",
+      "filename": "rtPCR.pdf",
+      "title": "Introduction to the ddCt method for qRT-PCR data analysis: background, algorithm and example",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2013-11-01 20:09:24",
+      "modified": "2016-03-09 14:25:17",
+      "commits": 3
+    }
+  ],
+  "_score": 4.380211241711606,
+  "_indexed": false,
+  "_nocasepkg": "ddct",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/ddCt",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:39:29.000Z",
+      "distro": "noble",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "6542cb6c0c4452a163f7df2b382840ffc8e78d3a9013f5f04f52a3a4bde9ecf9",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:39:33.000Z",
+      "distro": "noble",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "e6beb8fe1be01a94a09957e8e0ff5328cdff94e26de8ae402f33c9d3f0d4fc7f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:38:24.000Z",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "5d68e360d3f8d6f235e1e3495efb329f29ba8816f93edb8897d50c445d025eb1",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:38:32.000Z",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "78b109d69191790b03373f015d000b2c8cf2b513dc1e41c8be91ef810f80f988",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:38:41.000Z",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "7127fb9d3fc4df9f07ba1d3e7883b4c04dcb51d11c2fa55e922433cec6837f1d",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:38:04.000Z",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "f99ad8d10aa658a718d2ee273cb3911bf583437cb66963c791ffc67c032f16be",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:37:51.000Z",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "137a93ea085597409264ff157172f50824c278150ad86bf332ac27c9b45088cf",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.66.0",
+      "date": "2026-03-02T08:37:50.000Z",
+      "commit": "7d1f599d244723e00e2e531ffe93b9a16b187007",
+      "fileid": "1b87bcf12efb50a10e1ca0fa958caabde0c4046b9164b90551f75088c6800b70",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22567799896"
+    }
+  ]
+}

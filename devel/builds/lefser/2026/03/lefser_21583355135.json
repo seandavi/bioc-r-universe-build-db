@@ -1,0 +1,805 @@
+{
+  "Package": "lefser",
+  "Type": "Package",
+  "Title": "R implementation of the LEfSE method for microbiome biomarker\ndiscovery",
+  "Description": "lefser is the R implementation of the popular microbiome\nbiomarker discovery too, LEfSe. It uses the Kruskal-Wallis\ntest, Wilcoxon-Rank Sum test, and Linear Discriminant Analysis\nto find biomarkers from two-level classes (and optional\nsub-classes).",
+  "Version": "1.21.7",
+  "Date": "2025-11-17",
+  "Authors@R": "c(\nperson(\"Sehyun\", \"Oh\", , \"shbrief@gmail.com\", c(\"cre\", \"ctb\"), c(ORCID = \"0000-0002-9490-3061\")),\nperson(\"Asya\", \"Khleborodova\", , \"asya.bioconductor@gmail.com\", \"aut\"),\nperson(\"Samuel\", \"Gamboa-Tuz\", , \"Samuel.Gamboa.Tuz@gmail.com\", \"ctb\"),\nperson(\"Marcel\", \"Ramos\", , \"marcel.ramos@sph.cuny.edu\", \"ctb\", c(ORCID = \"0000-0002-3242-0582\")),\nperson(\"Ludwig\", \"Geistlinger\", , \"Ludwig.Geistlinger@sph.cuny.edu\", \"ctb\", c(ORCID = \"0000-0002-2495-5464\")),\nperson(\"Levi\", \"Waldron\", , \"levi.waldron@sph.cuny.edu\", \"ctb\", c(ORCID = \"0000-0003-2725-0694\"))\n)",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "BugReports": "https://github.com/waldronlab/lefser/issues",
+  "URL": "https://github.com/waldronlab/lefser",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, Sequencing, DifferentialExpression, Microbiome,\nStatisticalMethod, Classification",
+  "RoxygenNote": "7.3.3",
+  "Roxygen": "list(markdown = TRUE)",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev libglpk-dev make libgsl0-dev libharfbuzz-dev\nlibicu-dev libjpeg-dev libpng-dev libtiff-dev libwebp-dev\nlibxml2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-11-17 22:51:54 UTC",
+  "RemoteUrl": "https://github.com/bioc/lefser",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-02 08:56:06 UTC",
+    "User": "root"
+  },
+  "Author": "Sehyun Oh [cre, ctb] (ORCID: <https://orcid.org/0000-0002-9490-3061>),\nAsya Khleborodova [aut],\nSamuel Gamboa-Tuz [ctb],\nMarcel Ramos [ctb] (ORCID: <https://orcid.org/0000-0002-3242-0582>),\nLudwig Geistlinger [ctb] (ORCID:\n<https://orcid.org/0000-0002-2495-5464>),\nLevi Waldron [ctb] (ORCID: <https://orcid.org/0000-0003-2725-0694>)",
+  "Maintainer": "Sehyun Oh <shbrief@gmail.com>",
+  "MD5sum": "ba75c128f05127cfdf626ea8b67817d5",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "lefser_1.21.7.tar.gz",
+  "_fileid": "bf7d631a6c06897312037303cda580ef6893cdfaf061de22e9940662016d42c9",
+  "_filesize": 741929,
+  "_sha256": "bf7d631a6c06897312037303cda580ef6893cdfaf061de22e9940662016d42c9",
+  "_created": "2026-02-02T08:56:06.000Z",
+  "_published": "2026-02-02T09:06:29.793Z",
+  "_jobs": [
+    {
+      "job": 62186100451,
+      "time": 230,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340312062"
+    },
+    {
+      "job": 62186100432,
+      "time": 458,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5340356529"
+    },
+    {
+      "job": 62186100374,
+      "time": 421,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340349358"
+    },
+    {
+      "job": 62186100462,
+      "time": 211,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5340377733"
+    },
+    {
+      "job": 62186100403,
+      "time": 258,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5340375513"
+    },
+    {
+      "job": 62185492394,
+      "time": 389,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340270194"
+    },
+    {
+      "job": 62186100409,
+      "time": 232,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5340312098"
+    },
+    {
+      "job": 62186100431,
+      "time": 337,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5340333243"
+    },
+    {
+      "job": 62186100401,
+      "time": 338,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5340333435"
+    },
+    {
+      "job": 62186100429,
+      "time": 326,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5340331011"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/lefser",
+  "_commit": {
+    "id": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+    "author": "LiNk-NY <marcel.ramos@sph.cuny.edu>",
+    "committer": "LiNk-NY <marcel.ramos@sph.cuny.edu>",
+    "message": "version bump 1.21.7\n",
+    "time": 1763419914
+  },
+  "_maintainer": {
+    "name": "Sehyun Oh",
+    "email": "shbrief@gmail.com",
+    "login": "shbrief",
+    "linkedin": "in/sehyunoh",
+    "twitter": "@drsehyun",
+    "uuid": 15724490,
+    "orcid": "0000-0002-9490-3061"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "coin",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "forcats",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggtree",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "ape",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "mia",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "treeio",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "curatedMetagenomicData",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "phyloseq",
+      "role": "Suggests"
+    },
+    {
+      "package": "pkgdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "withr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-08",
+      "n": 2
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-17",
+      "n": 6
+    },
+    {
+      "week": "2025-43",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2025-45",
+      "n": 7
+    },
+    {
+      "week": "2025-46",
+      "n": 15
+    },
+    {
+      "week": "2025-47",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.7",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.2",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "sequencing",
+    "differentialexpression",
+    "microbiome",
+    "statisticalmethod",
+    "classification",
+    "bioconductor-package",
+    "r01ca230551"
+  ],
+  "_stars": 63,
+  "_contributors": [
+    {
+      "user": "shbrief",
+      "count": 76,
+      "uuid": 15724490
+    },
+    {
+      "user": "link-ny",
+      "count": 65,
+      "uuid": 4392950
+    },
+    {
+      "user": "asyakhl",
+      "count": 61,
+      "uuid": 11823839
+    },
+    {
+      "user": "lwaldron",
+      "count": 51,
+      "uuid": 639942
+    },
+    {
+      "user": "sdgamboa",
+      "count": 33,
+      "uuid": 53412049
+    },
+    {
+      "user": "jwokaty",
+      "count": 16,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 8,
+      "uuid": 2746443
+    },
+    {
+      "user": "cafferychen777",
+      "count": 1,
+      "uuid": 82987086
+    },
+    {
+      "user": "copilot",
+      "count": 1,
+      "uuid": 198982749
+    },
+    {
+      "user": "peacesandy",
+      "count": 1,
+      "uuid": 78281826
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 1142,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/lefser"
+  },
+  "_devurl": "https://github.com/waldronlab/lefser",
+  "_searchresults": 80,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/lefser.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/waldronlab/lefser",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "get_terminal_nodes",
+    "lefser",
+    "lefserClades",
+    "lefserPlot",
+    "lefserPlotClad",
+    "lefserPlotFeat",
+    "relativeAb",
+    "rowNames2RowData"
+  ],
+  "_datasets": [
+    {
+      "name": "zeller14",
+      "title": "Example dataset for lefser",
+      "object": "zeller14",
+      "file": "zeller14.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "get_terminal_nodes",
+      "title": "Identify which elements of a string are terminal nodes",
+      "topics": [
+        "get_terminal_nodes"
+      ]
+    },
+    {
+      "page": "lefser",
+      "title": "R implementation of the LEfSe method",
+      "topics": [
+        "lefser"
+      ]
+    },
+    {
+      "page": "lefserClades",
+      "title": "Run lefser at different clades",
+      "topics": [
+        "lefserClades"
+      ]
+    },
+    {
+      "page": "lefserPlot",
+      "title": "Plots results from 'lefser' function",
+      "topics": [
+        "lefserPlot"
+      ]
+    },
+    {
+      "page": "lefserPlotClad",
+      "title": "LEfSer plot cladogram",
+      "topics": [
+        "lefserPlotClad"
+      ]
+    },
+    {
+      "page": "lefserPlotFeat",
+      "title": "Plot Feature",
+      "topics": [
+        "lefserPlotFeat"
+      ]
+    },
+    {
+      "page": "relativeAb",
+      "title": "Utility function to calculate relative abundances",
+      "topics": [
+        "relativeAb"
+      ]
+    },
+    {
+      "page": "rowNames2RowData",
+      "title": "RowNames to RowData",
+      "topics": [
+        "rowNames2RowData"
+      ]
+    },
+    {
+      "page": "zeller14",
+      "title": "Example dataset for lefser",
+      "topics": [
+        "zeller14"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/lefser/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ape",
+    "aplot",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "Biostrings",
+    "bluster",
+    "brio",
+    "bslib",
+    "cachem",
+    "Cairo",
+    "callr",
+    "cli",
+    "cluster",
+    "codetools",
+    "coin",
+    "cpp11",
+    "crayon",
+    "DBI",
+    "DECIPHER",
+    "decontam",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "desc",
+    "diffobj",
+    "digest",
+    "DirichletMultinomial",
+    "dplyr",
+    "dqrng",
+    "ecodive",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "FNN",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "forcats",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdtools",
+    "generics",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggfun",
+    "ggiraph",
+    "ggplot2",
+    "ggplotify",
+    "ggrastr",
+    "ggrepel",
+    "ggtree",
+    "glue",
+    "gridExtra",
+    "gridGraphics",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "libcoin",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mia",
+    "mime",
+    "modeltools",
+    "multcomp",
+    "MultiAssayExperiment",
+    "mvtnorm",
+    "nlme",
+    "patchwork",
+    "permute",
+    "pheatmap",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "pkgload",
+    "plyr",
+    "png",
+    "praise",
+    "processx",
+    "ps",
+    "purrr",
+    "R6",
+    "ragg",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "rprojroot",
+    "RSpectra",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sandwich",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "sparseMatrixStats",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "systemfonts",
+    "testthat",
+    "textshaping",
+    "TH.data",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tinytex",
+    "treeio",
+    "TreeSummarizedExperiment",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vegan",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "waldo",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml",
+    "yulab.utils",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "lefser.Rmd",
+      "filename": "lefser.html",
+      "title": "lefser: a metagenomic biomarker discovery tool",
+      "author": "Asya Khleborodova, Sehyun Oh, Ludwig Geistlinger, and Levi Waldron",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Background",
+        "Install and load pacakge",
+        "Citing lefser",
+        "Analysis example",
+        "Prepare input",
+        "Terminal node",
+        "Relative abundance",
+        "Run lefser",
+        "Visualization using lefserPlot",
+        "Benchmarking against other tools",
+        "Interoperating with phyloseq",
+        "Session Info"
+      ],
+      "created": "2020-07-23 03:00:44",
+      "modified": "2025-11-07 20:45:53",
+      "commits": 22
+    }
+  ],
+  "_score": 8.316399141122643,
+  "_indexed": true,
+  "_nocasepkg": "lefser",
+  "_universes": [
+    "bioc",
+    "shbrief",
+    "waldronlab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.21.7",
+      "date": "2026-02-02T09:01:10.000Z",
+      "distro": "noble",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "affe26310bb44206d5ead3b7cb98983584c36490de9990f6f3204fae38d6c246",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.21.7",
+      "date": "2026-02-02T09:00:32.000Z",
+      "distro": "noble",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "3eb3b4f0b36810b9adbbed4839ec1df0502c5a4d162910780154c38e0cbbc899",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.21.7",
+      "date": "2026-02-02T09:04:20.000Z",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "99bf90d1cfd077b3eb4a8b93f72498f76499205cda5d928558bf80797da2e77f",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.21.7",
+      "date": "2026-02-02T09:03:40.000Z",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "6427093855c80ccb8ede6a1c95620eb6e5b700f07de19c3c5607b1f631abb388",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.21.7",
+      "date": "2026-02-02T09:00:28.000Z",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "c27e2fdda5125ffa37609fe92ca9f79a2d6df236a9c7f38865bde719b6078643",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.21.7",
+      "date": "2026-02-02T08:58:51.000Z",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "659a257cedee56db68f1ecc4345d73ac1639bc0b98daf3d292881994c8d85bf1",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.21.7",
+      "date": "2026-02-02T08:59:00.000Z",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "d3c126b9aaf4d81d6e36aed37eeb98a99ef6d10462750cb8c301d8c85e828c90",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.21.7",
+      "date": "2026-02-02T08:58:44.000Z",
+      "commit": "333fd2411085100ddc70fdbffbf1cbebb735df8d",
+      "fileid": "ae84e05726e369b10ae713c007deedb4eebd8778049ba9da651946b24695a85b",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21583355135"
+    }
+  ]
+}

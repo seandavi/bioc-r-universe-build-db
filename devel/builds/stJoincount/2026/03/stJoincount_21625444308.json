@@ -1,0 +1,691 @@
+{
+  "Package": "stJoincount",
+  "Type": "Package",
+  "Title": "stJoincount - Join count statistic for quantifying spatial\ncorrelation between clusters",
+  "Version": "1.13.0",
+  "Authors@R": "c(\nperson(\"Jiarong\", \"Song\", email=\"songjiar@usc.edu\",role=c(\"cre\",\"aut\"), comment = c('ORCID' = \"0000-0002-3673-4853\")),\nperson(\"Rania\", \"Bassiouni\", email=\"rbassiou@usc.edu\", role=c(\"aut\")),\nperson(\"David\",\"Craig\",email=\"davidwcr@usc.edu\", role=c(\"aut\"))\n)",
+  "Description": "stJoincount facilitates the application of join count\nanalysis to spatial transcriptomic data generated from the 10x\nGenomics Visium platform. This tool first converts a labeled\nspatial tissue map into a raster object, in which each spatial\nfeature is represented by a pixel coded by label assignment.\nThis process includes automatic calculation of optimal raster\nresolution and extent for the sample. A neighbors list is then\ncreated from the rasterized sample, in which adjacent and\ndiagonal neighbors for each pixel are identified. After adding\nbinary spatial weights to the neighbors list, a\nmulti-categorical join count analysis is performed to tabulate\n\"joins\" between all possible combinations of label pairs. The\nfunction returns the observed join counts, the expected count\nunder conditions of spatial randomness, and the variance\ncalculated under non-free sampling. The z-score is then\ncalculated as the difference between observed and expected\ncounts, divided by the square root of the variance.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.2.1",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Transcriptomics, Clustering, Spatial, BiocViews, Software",
+  "Bugreports": "https://github.com/Nina-Song/stJoincount/issues",
+  "URL": "https://github.com/Nina-Song/stJoincount",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libabsl-dev cmake libgdal-dev gdal-bin libgeos-dev\nlibglpk-dev make libmagick++-dev gsfonts libicu-dev libpng-dev\nlibxml2-dev libssl-dev libproj-dev python3 libsqlite3-dev\nlibudunits2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:19:39 UTC",
+  "RemoteUrl": "https://github.com/bioc/stJoincount",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 09:58:35 UTC",
+    "User": "root"
+  },
+  "Author": "Jiarong Song [cre, aut] (ORCID:\n<https://orcid.org/0000-0002-3673-4853>),\nRania Bassiouni [aut],\nDavid Craig [aut]",
+  "Maintainer": "Jiarong Song <songjiar@usc.edu>",
+  "MD5sum": "d8cffb8dbd18621180174c0dc277b7a8",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "stJoincount_1.13.0.tar.gz",
+  "_fileid": "113d749c88882ffe7ec9acfd94dbe95e00f35abb44c72527c6425fc90c6da92b",
+  "_filesize": 2689353,
+  "_sha256": "113d749c88882ffe7ec9acfd94dbe95e00f35abb44c72527c6425fc90c6da92b",
+  "_created": "2026-02-03T09:58:35.000Z",
+  "_published": "2026-02-03T10:43:05.105Z",
+  "_jobs": [
+    {
+      "job": 62325022680,
+      "time": 233,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355432598"
+    },
+    {
+      "job": 62325022718,
+      "time": 535,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5355495443"
+    },
+    {
+      "job": 62325022692,
+      "time": 510,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355490163"
+    },
+    {
+      "job": 62325022703,
+      "time": 389,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5355938371"
+    },
+    {
+      "job": 62325022687,
+      "time": 423,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355944545"
+    },
+    {
+      "job": 62324361001,
+      "time": 363,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355382877"
+    },
+    {
+      "job": 62325022678,
+      "time": 213,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5355427991"
+    },
+    {
+      "job": 62325022720,
+      "time": 442,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5355477111"
+    },
+    {
+      "job": 62325022750,
+      "time": 496,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5355487439"
+    },
+    {
+      "job": 62325022712,
+      "time": 442,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355476041"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/stJoincount",
+  "_commit": {
+    "id": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751179
+  },
+  "_maintainer": {
+    "name": "Jiarong Song",
+    "email": "songjiar@usc.edu",
+    "login": "nina-song",
+    "uuid": 69836560,
+    "orcid": "0000-0002-3673-4853"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "sp",
+      "role": "Imports"
+    },
+    {
+      "package": "raster",
+      "role": "Imports"
+    },
+    {
+      "package": "spdep",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "Seurat",
+      "role": "Imports"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.12.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "transcriptomics",
+    "clustering",
+    "spatial",
+    "biocviews",
+    "software"
+  ],
+  "_stars": 4,
+  "_contributors": [
+    {
+      "user": "nina-song",
+      "count": 46,
+      "uuid": 69836560
+    },
+    {
+      "user": "rania-bassi",
+      "count": 3,
+      "uuid": 104520420
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 264,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/stJoincount"
+  },
+  "_devurl": "https://github.com/nina-song/stjoincount",
+  "_searchresults": 3,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/stJoincount.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/cohccc/stjoincount",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "customDict",
+    "dataPrepFromSeurat",
+    "dataPrepFromSpE",
+    "extentBuffer",
+    "joincountAnalysis",
+    "mosaicIntPlot",
+    "rasterizeEachCluster",
+    "rasterPrep",
+    "resolutionCalc",
+    "zscoreMatrix",
+    "zscorePlot"
+  ],
+  "_help": [
+    {
+      "page": "customDict",
+      "title": "Generate dict of cluster names",
+      "topics": [
+        "customDict"
+      ]
+    },
+    {
+      "page": "dataPrepFromSeurat",
+      "title": "Data Preparation from Seurat Object",
+      "topics": [
+        "dataPrepFromSeurat"
+      ]
+    },
+    {
+      "page": "dataPrepFromSpE",
+      "title": "Data Preparation from SpatialExperiment Object",
+      "topics": [
+        "dataPrepFromSpE"
+      ]
+    },
+    {
+      "page": "extentBuffer",
+      "title": "Find optimal number of buffer for extent",
+      "topics": [
+        "extentBuffer"
+      ]
+    },
+    {
+      "page": "joincountAnalysis",
+      "title": "Join count analysis",
+      "topics": [
+        "joincountAnalysis"
+      ]
+    },
+    {
+      "page": "mosaicIntPlot",
+      "title": "Mosaic plot",
+      "topics": [
+        "mosaicIntPlot"
+      ]
+    },
+    {
+      "page": "rasterizeEachCluster",
+      "title": "Create a raster object from a labeled sample",
+      "topics": [
+        "rasterizeEachCluster"
+      ]
+    },
+    {
+      "page": "rasterPrep",
+      "title": "Raster layer preparation",
+      "topics": [
+        "rasterPrep"
+      ]
+    },
+    {
+      "page": "resolutionCalc",
+      "title": "Resolution calculation",
+      "topics": [
+        "resolutionCalc"
+      ]
+    },
+    {
+      "page": "zscoreMatrix",
+      "title": "Generate Z-score matrix",
+      "topics": [
+        "zscoreMatrix"
+      ]
+    },
+    {
+      "page": "zscorePlot",
+      "title": "Visulization of Z-score heatmap.",
+      "topics": [
+        "zscorePlot"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/stJoincount/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "bslib",
+    "cachem",
+    "caTools",
+    "class",
+    "classInt",
+    "cli",
+    "cluster",
+    "codetools",
+    "commonmark",
+    "cowplot",
+    "cpp11",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "digest",
+    "dotCall64",
+    "dplyr",
+    "dqrng",
+    "e1071",
+    "evaluate",
+    "farver",
+    "fastDummies",
+    "fastmap",
+    "filelock",
+    "fitdistrplus",
+    "FNN",
+    "fontawesome",
+    "fs",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "ggrepel",
+    "ggridges",
+    "globals",
+    "glue",
+    "goftest",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "here",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "ica",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "listenv",
+    "lmtest",
+    "magick",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "miniUI",
+    "nlme",
+    "openssl",
+    "otel",
+    "parallelly",
+    "patchwork",
+    "pbapply",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plotly",
+    "plyr",
+    "png",
+    "polyclip",
+    "progressr",
+    "promises",
+    "proxy",
+    "purrr",
+    "R6",
+    "RANN",
+    "rappdirs",
+    "raster",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppHNSW",
+    "RcppProgress",
+    "RcppTOML",
+    "reshape2",
+    "reticulate",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "ROCR",
+    "rprojroot",
+    "RSpectra",
+    "RSQLite",
+    "Rtsne",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scattermore",
+    "sctransform",
+    "Seqinfo",
+    "Seurat",
+    "SeuratObject",
+    "sf",
+    "shiny",
+    "SingleCellExperiment",
+    "sitmo",
+    "sourcetools",
+    "sp",
+    "spam",
+    "SparseArray",
+    "SpatialExperiment",
+    "spatstat.data",
+    "spatstat.explore",
+    "spatstat.geom",
+    "spatstat.random",
+    "spatstat.sparse",
+    "spatstat.univar",
+    "spatstat.utils",
+    "spData",
+    "spdep",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tensor",
+    "terra",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "units",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "wk",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "stJoincount-vignette.Rmd",
+      "filename": "stJoincount-vignette.html",
+      "title": "Introduction to stJoincount",
+      "author": "Jiarong Song",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Preprocessing",
+        "Raster processing",
+        "Visualization",
+        "Join count analysis"
+      ],
+      "created": "2022-04-03 17:52:01",
+      "modified": "2023-04-18 00:44:38",
+      "commits": 22
+    }
+  ],
+  "_score": 4.6020599913279625,
+  "_indexed": true,
+  "_nocasepkg": "stjoincount",
+  "_universes": [
+    "bioc",
+    "nina-song"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:03:31.000Z",
+      "distro": "noble",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "9ab8226745c1230bbfa5a7356d133dce1c8cfdc72852dbccd80c1411295d398d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:02:57.000Z",
+      "distro": "noble",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "6c4901f6f0b825d3a86558d7a3c81eef18e6756b84eafeb8af7155f4cc702740",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:37:41.000Z",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "778c355a9c197038697fedefa4e49ab9d4fb998bc64b3b1b2b828e27bc0204c8",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:38:01.000Z",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "a95e8c0b011b521d05ec4851d721bd00e192a28e3949e57e6b8cc29712e0c00f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:02:59.000Z",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "a0c45c9bbace960db51e8ed8cf2e923b149406f5c4e22d60afd337c8729fffaa",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:01:54.000Z",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "d94d54cac5ac8278ed1d06b13c9584a8d4706e2154fd85de3be2ff5a93882fa2",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:02:10.000Z",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "02da3ccd656d4bd415e69accdff0d2d31da36fbe3a932b7ba152fc6d1516312b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:01:45.000Z",
+      "commit": "0d545fd4f59f28bf345e8a82a17abfb5b43d4b99",
+      "fileid": "9451821970eab5202cd2c85d7551804d5f8df653f1a6845e0259f1270a40cc7d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625444308"
+    }
+  ]
+}

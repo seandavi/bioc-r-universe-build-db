@@ -1,0 +1,631 @@
+{
+  "Package": "cigarillo",
+  "Title": "Efficient manipulation of CIGAR strings",
+  "Description": "CIGAR stands for Concise Idiosyncratic Gapped Alignment\nReport. CIGAR strings are found in the BAM files produced by\nmost aligners and in the AIRR-formatted output produced by\nIgBLAST. The cigarillo package provides functions to parse and\ninspect CIGAR strings, trim them, turn them into ranges of\npositions relative to the \"query space\" or \"reference space\",\nand project positions or sequences from one space to the other.\nNote that these operations are low-level operations that the\nuser rarely needs to perform directly. More typically, they are\nperformed behind the scene by higher-level functionality\nimplemented in other packages like Bioconductor packages\nGenomicAlignments and igblastr.",
+  "biocViews": "Infrastructure, Alignment, SequenceMatching, Sequencing",
+  "URL": "https://bioconductor.org/packages/cigarillo",
+  "BugReports": "https://github.com/Bioconductor/cigarillo/issues",
+  "Version": "1.0.0",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(\nperson(\"Herv\u00e9\", \"Pag\u00e8s\", role=c(\"aut\", \"cre\"),\nemail=\"hpages.on.github@gmail.com\",\ncomment=c(ORCID=\"0009-0002-8272-4522\")),\nperson(\"Valerie\", \"Obenchain\", role=\"aut\"),\nperson(\"Michael\", \"Lawrence\", role=\"aut\",\nemail=\"lawremi@gmail.com\"),\nperson(\"Patrick\", \"Aboyoun\", role=\"ctb\"),\nperson(\"Fedor\", \"Bezrukov\", role=\"ctb\"),\nperson(\"Martin\", \"Morgan\", role=\"ctb\"))",
+  "VignetteBuilder": "knitr",
+  "Collate": "utils.R cigar_ops_visibility.R explode_cigars.R\ntabulate_cigar_ops.R cigar_extent.R trim_cigars.R\ncigars_as_ranges.R project_positions.R project_sequences.R\nmap_ref_ranges_to_query.R",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:39:18 UTC",
+  "RemoteUrl": "https://github.com/bioc/cigarillo",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-23 08:43:48 UTC",
+    "User": "root"
+  },
+  "Author": "Herv\u00e9 Pag\u00e8s [aut, cre] (ORCID: <https://orcid.org/0009-0002-8272-4522>),\nValerie Obenchain [aut],\nMichael Lawrence [aut],\nPatrick Aboyoun [ctb],\nFedor Bezrukov [ctb],\nMartin Morgan [ctb]",
+  "Maintainer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+  "MD5sum": "2f0daab6837cfd07986a23bfc402f94a",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "cigarillo_1.0.0.tar.gz",
+  "_fileid": "6cac6614f3a73c83c35d1bcbffeca12e8f6e7cdd8e403388a823915710184f57",
+  "_filesize": 209163,
+  "_sha256": "6cac6614f3a73c83c35d1bcbffeca12e8f6e7cdd8e403388a823915710184f57",
+  "_created": "2026-02-23T08:43:48.000Z",
+  "_published": "2026-02-23T08:50:16.788Z",
+  "_jobs": [
+    {
+      "job": 64501168716,
+      "time": 230,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5613699065"
+    },
+    {
+      "job": 64501168728,
+      "time": 258,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5613704583"
+    },
+    {
+      "job": 64501168751,
+      "time": 289,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5613709930"
+    },
+    {
+      "job": 64501168757,
+      "time": 249,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5613702930"
+    },
+    {
+      "job": 64501168759,
+      "time": 275,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5613707436"
+    },
+    {
+      "job": 64501168754,
+      "time": 282,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5613708373"
+    },
+    {
+      "job": 64501168798,
+      "time": 345,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5613720470"
+    },
+    {
+      "job": 64501168806,
+      "time": 165,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5613686506"
+    },
+    {
+      "job": 64501168786,
+      "time": 301,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5613712423"
+    },
+    {
+      "job": 64500694077,
+      "time": 299,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613655776"
+    },
+    {
+      "job": 64501168723,
+      "time": 180,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5613689510"
+    },
+    {
+      "job": 64501168802,
+      "time": 208,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613694843"
+    },
+    {
+      "job": 64501168779,
+      "time": 243,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5613701472"
+    },
+    {
+      "job": 64501168781,
+      "time": 222,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613698159"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 3
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/cigarillo",
+  "_commit": {
+    "id": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761752358
+  },
+  "_maintainer": {
+    "name": "Herv\u00e9 Pag\u00e8s",
+    "email": "hpages.on.github@gmail.com",
+    "login": "hpages",
+    "linkedin": "in/herv\u00e9-pag\u00e8s-5038527",
+    "uuid": 8810451
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.47.2",
+      "role": "Depends"
+    },
+    {
+      "package": "IRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "IRanges",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Suggests"
+    },
+    {
+      "package": "RNAseqData.HNRNPC.bam.chr14",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 541,
+  "_updates": [
+    {
+      "week": "2025-37",
+      "n": 6
+    },
+    {
+      "week": "2025-38",
+      "n": 8
+    },
+    {
+      "week": "2025-43",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "alignment",
+    "sequencematching",
+    "sequencing",
+    "bioconductor-package",
+    "core-package"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "hpages",
+      "count": 16,
+      "uuid": 8810451
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 21317,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/cigarillo"
+  },
+  "_devurl": "https://github.com/bioconductor/cigarillo",
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/cigarillo.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioconductor/cigarillo",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "cigar_extent_along_pwa",
+    "cigar_extent_along_query",
+    "cigar_extent_along_ref",
+    "CIGAR_OPS",
+    "cigar_ops_visibility",
+    "cigars_as_ranges_along_pwa",
+    "cigars_as_ranges_along_query",
+    "cigars_as_ranges_along_ref",
+    "cigars_as_RleList",
+    "explode_cigar_oplens",
+    "explode_cigar_ops",
+    "fast_map_ref_ranges_to_query",
+    "map_ref_ranges_to_query",
+    "narrow_cigars_along_query",
+    "narrow_cigars_along_ref",
+    "project_sequences",
+    "query_pos_as_ref_pos",
+    "ref_pos_as_query_pos",
+    "tabulate_cigar_ops",
+    "trim_cigars_along_query",
+    "trim_cigars_along_ref",
+    "validate_cigars"
+  ],
+  "_help": [
+    {
+      "page": "cigarillo-package",
+      "title": "Efficient manipulation of CIGAR strings",
+      "topics": [
+        "cigarillo-package",
+        "cigarillo"
+      ]
+    },
+    {
+      "page": "cigar_extent",
+      "title": "Calculate the number of positions spanned by a CIGAR string",
+      "topics": [
+        "cigar_extent",
+        "cigar_extent_along_pwa",
+        "cigar_extent_along_query",
+        "cigar_extent_along_ref"
+      ]
+    },
+    {
+      "page": "cigar_ops_visibility",
+      "title": "Visibility of CIGAR operations",
+      "topics": [
+        "CIGAR_OPS",
+        "cigar_ops_visibility"
+      ]
+    },
+    {
+      "page": "cigars_as_ranges",
+      "title": "Turn CIGAR strings into ranges of positions",
+      "topics": [
+        "cigars_as_ranges",
+        "cigars_as_ranges_along_pwa",
+        "cigars_as_ranges_along_query",
+        "cigars_as_ranges_along_ref"
+      ]
+    },
+    {
+      "page": "explode_cigars",
+      "title": "Explode CIGAR strings",
+      "topics": [
+        "cigars_as_RleList",
+        "explode_cigars",
+        "explode_cigar_oplens",
+        "explode_cigar_ops",
+        "validate_cigars"
+      ]
+    },
+    {
+      "page": "map_ref_ranges_to_query",
+      "title": "Map ranges relative to reference space to query space",
+      "topics": [
+        "fast_map_ref_ranges_to_query",
+        "map_ref_ranges_to_query"
+      ]
+    },
+    {
+      "page": "project_positions",
+      "title": "Project positions from query to reference space and vice versa",
+      "topics": [
+        "project_positions",
+        "query_pos_as_ref_pos",
+        "ref_pos_as_query_pos"
+      ]
+    },
+    {
+      "page": "project_sequences",
+      "title": "Project sequences from one space to the other",
+      "topics": [
+        "project_sequences"
+      ]
+    },
+    {
+      "page": "tabulate_cigar_ops",
+      "title": "Tabulate CIGAR operations",
+      "topics": [
+        "tabulate_cigar_ops"
+      ]
+    },
+    {
+      "page": "trim_cigars",
+      "title": "Trim CIGAR strings along the reference or query space",
+      "topics": [
+        "narrow_cigars_along_query",
+        "narrow_cigars_along_ref",
+        "trim_cigars",
+        "trim_cigars_along_query",
+        "trim_cigars_along_ref"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/cigarillo/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "BiocGenerics",
+    "Biostrings",
+    "crayon",
+    "generics",
+    "IRanges",
+    "S4Vectors",
+    "Seqinfo",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "cigarillo.Rmd",
+      "filename": "cigarillo.html",
+      "title": "The cigarillo package",
+      "author": "Herv\u00e9 Pag\u00e8s",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Install and load the package",
+        "A quick overview of the functionality available in the package",
+        "Explode CIGAR strings",
+        "Tabulate CIGAR operations",
+        "Calculate the number of positions spanned by a CIGAR",
+        "Trim CIGAR strings along the reference or query space",
+        "Turn CIGAR strings into ranges of positions",
+        "Project positions from query to reference space and vice versa",
+        "Project sequences from one space to the other",
+        "Session information"
+      ],
+      "created": "2025-09-20 21:25:44",
+      "modified": "2025-09-21 08:49:09",
+      "commits": 3
+    }
+  ],
+  "_score": 8.840074600688997,
+  "_indexed": false,
+  "_nocasepkg": "cigarillo",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/cigarillo",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:47:38.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "b6c69512690a3169c4631eec620026390a79c9caf633edf80b27eab6c93a1ea1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:47:56.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "83f9cd9e78b6ec45517b572145375a209699f2c2b3256a3aba4386ae2c292f36",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:47:28.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "b32b52e93de15b73f6952a8c877823923a96844caefeb16071f627b5e553ba73",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:47:48.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "3526a36313fc2d15a06c8740cdb8710dda31edb9d2f23a8eb73411cee1b09a30",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:47:20.000Z",
+      "arch": "aarch64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "09fb0ba86b4e7febd36d1f45c5eeeafb87dd77e2a023a6546036827e2f7cc036",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:48:34.000Z",
+      "arch": "x86_64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "31f722c6b9ae7a78ee4a5821a4f3d0f978bea58a72ce4ce6d32603d7487b56b0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:46:10.000Z",
+      "arch": "aarch64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "d2b6dfd1fe1a7fa5e964166abe1311acf67478a22dc96ed015eef88b4481804e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:47:55.000Z",
+      "arch": "x86_64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "4f9a9afff2062d580a2d7c20c21aa971282c4fe0030c20c82ffdf5ad8ae268bd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:47:12.000Z",
+      "arch": "emscripten",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "d2a6ef273694e96e92c6d2576ddf15aa3a7e8a3e3d27416a45b98252c2cf84f5",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:46:23.000Z",
+      "arch": "x86_64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "e6b5fcc6b9e36ab488e7732a83fd83a28bd3b28f02d8c225aacbadfcbbe286f7",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:46:43.000Z",
+      "arch": "x86_64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "ca239629d11b1bac664b935ecc87448fd2c56803f62b5000f2b1dd6946212a2f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.0.0",
+      "date": "2026-02-23T08:46:24.000Z",
+      "arch": "x86_64",
+      "commit": "8775adf6c85995de7c778f0a0b4311c9c6a82068",
+      "fileid": "870ca22f7062de9c4caa9015d3f383f85b1a6833b0bc11822667530d19616675",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298592983"
+    }
+  ]
+}

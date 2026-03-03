@@ -1,0 +1,1388 @@
+{
+  "Package": "twoddpcr",
+  "Title": "Classify 2-d Droplet Digital PCR (ddPCR) data and quantify the\nnumber of starting molecules",
+  "Version": "1.35.0",
+  "Authors@R": "person(\"Anthony\", \"Chiu\",\nemail=\"anthony@achiu.me\",\nrole=c(\"aut\", \"cre\"))",
+  "Author": "Anthony Chiu [aut, cre]",
+  "Maintainer": "Anthony Chiu <anthony@achiu.me>",
+  "URL": "http://github.com/CRUKMI-ComputationalBiology/twoddpcr/",
+  "BugReports": "http://github.com/CRUKMI-ComputationalBiology/twoddpcr/issues/",
+  "Description": "The twoddpcr package takes Droplet Digital PCR (ddPCR)\ndroplet amplitude data from Bio-Rad's QuantaSoft and can\nclassify the droplets. A summary of the positive/negative\ndroplet counts can be generated, which can then be used to\nestimate the number of molecules using the Poisson\ndistribution. This is the first open source package that\nfacilitates the automatic classification of general two channel\nddPCR data. Previous work includes 'definetherain' (Jones et\nal., 2014) and 'ddpcRquant' (Trypsteen et al., 2015) which both\nhandle one channel ddPCR experiments only. The 'ddpcr' package\navailable on CRAN (Attali et al., 2016) supports automatic\ngating of a specific class of two channel ddPCR experiments\nonly.",
+  "License": "GPL-3",
+  "LazyData": "true",
+  "RoxygenNote": "7.1.1",
+  "Collate": "'KRAScounts.R' 'KRASdata.R' 'global.R' 'ddpcrWell.R'\n'ddpcrPlate.R' 'clusterCentres.R' 'clusterStats.R' 'themes.R'\n'dropletPlot.R' 'exportTable.R' 'facetPlot.R' 'flatPlot.R'\n'ggplot.R' 'gridClassify.R' 'heatPlot.R' 'isTwoDimDataFrame.R'\n'kmeansClassify.R' 'knnClassify.R' 'mahRain.R' 'normalise.R'\n'numDroplets.R' 'parseCounts.R' 'plateSummary.R'\n'readCSVDataFrame.R' 'relabelClasses.R'\n'removeDropletClasses.R' 'sdRain.R' 'shinyVisApp.R'\n'shinyVisGlobal.R' 'shinyVisServer.R' 'shinyVisUI.R'\n'summaries.R' 'twoddpcr.R' 'wellNameSort.R'",
+  "VignetteBuilder": "knitr",
+  "biocViews": "ddPCR, Software, Classification",
+  "Config/pak/sysreqs": "make zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:37:06 UTC",
+  "RemoteUrl": "https://github.com/bioc/twoddpcr",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "a5af7295bfc795704f82de20502788183a792376",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-15 09:19:13 UTC",
+    "User": "root"
+  },
+  "MD5sum": "022d4d153fb1a650e4ab0e4d4cffd1e7",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "twoddpcr_1.35.0.tar.gz",
+  "_fileid": "657b960b748ea74328406ed4887f848cc90d18760edc9daa2afdbdf22c192e59",
+  "_filesize": 4989340,
+  "_sha256": "657b960b748ea74328406ed4887f848cc90d18760edc9daa2afdbdf22c192e59",
+  "_created": "2026-02-15T09:19:13.000Z",
+  "_published": "2026-02-15T09:24:11.325Z",
+  "_jobs": [
+    {
+      "job": 63661692549,
+      "time": 157,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515533357"
+    },
+    {
+      "job": 63661692548,
+      "time": 243,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515538770"
+    },
+    {
+      "job": 63661692558,
+      "time": 252,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515539219"
+    },
+    {
+      "job": 63661692556,
+      "time": 166,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515533988"
+    },
+    {
+      "job": 63661692566,
+      "time": 123,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515531352"
+    },
+    {
+      "job": 63661526048,
+      "time": 298,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5515523284"
+    },
+    {
+      "job": 63661692551,
+      "time": 118,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5515531004"
+    },
+    {
+      "job": 63661692580,
+      "time": 159,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515533592"
+    },
+    {
+      "job": 63661692586,
+      "time": 179,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5515534695"
+    },
+    {
+      "job": 63661692564,
+      "time": 163,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515533780"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/twoddpcr",
+  "_commit": {
+    "id": "a5af7295bfc795704f82de20502788183a792376",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748626
+  },
+  "_maintainer": {
+    "name": "Anthony Chiu",
+    "email": "anthony@achiu.me"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.4",
+      "role": "Depends"
+    },
+    {
+      "package": "class",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "hexbin",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "reshape2",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.35.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.34.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "ddpcr",
+    "software",
+    "classification"
+  ],
+  "_stars": 9,
+  "_contributors": [
+    {
+      "user": "nturaga",
+      "count": 8,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "idno0001",
+      "count": 1,
+      "uuid": 441218
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 312,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/twoddpcr"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/crukmi-computationalbiology/twoddpcr",
+  "_searchresults": 4,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/twoddpcr.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/crukmi-computationalbiology/twoddpcr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "amplitudes",
+    "basicsSummary",
+    "castSummary",
+    "classCov",
+    "classMeans",
+    "classStats",
+    "clusterCentres",
+    "combinedCentres",
+    "commonClassificationMethod",
+    "copiesSummary",
+    "ddpcr",
+    "ddpcrPlate",
+    "ddpcrWell",
+    "dropletPlot",
+    "elementType",
+    "exportTable",
+    "exportZip",
+    "extractPlateName",
+    "extractWellNames",
+    "facetPlot",
+    "flatPlot",
+    "fullCopiesSummary",
+    "fullCountsSummary",
+    "ggplot.plate",
+    "ggplot.well",
+    "gridClassify",
+    "heatPlot",
+    "isEmpty",
+    "kmeansClassify",
+    "knnClassify",
+    "mahalanobisRain",
+    "mutantCopiesSummary",
+    "numDroplets",
+    "parseClusterCounts",
+    "plateClassification",
+    "plateClassification<-",
+    "plateClassificationMethod",
+    "plateClassificationMethod<-",
+    "plateSummary",
+    "positiveCounts",
+    "readCSVDataFrame",
+    "relabelClasses",
+    "removeDropletClasses",
+    "renormalisePlate",
+    "sdRain",
+    "setChannelNames",
+    "setDropletVolume",
+    "shinyVis",
+    "shinyVisApp",
+    "shinyVisServer",
+    "shinyVisUI",
+    "sortDataFrame",
+    "sortWells",
+    "thresholdClassify",
+    "wellClassification",
+    "wellClassification<-",
+    "wellClassificationMethod",
+    "wellClassificationMethod<-",
+    "whiteTheme",
+    "wildTypeCopiesSummary"
+  ],
+  "_datasets": [
+    {
+      "name": "KRAScounts",
+      "title": "KRAS mutant and wild type droplet counts and Poisson estimates.",
+      "object": "KRAScounts",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "PP",
+        "PN",
+        "NP",
+        "NN",
+        "AcceptedDroplets",
+        "MtPositives",
+        "MtNegatives",
+        "WtPositives",
+        "WtNegatives",
+        "MtConcentration",
+        "WtConcentration",
+        "MtCopiesPer20uLWell",
+        "WtCopiesPer20uLWell",
+        "TotalCopiesPer20uLWell",
+        "Ratio",
+        "FracAbun",
+        "InputAmount"
+      ],
+      "rows": 12,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "KRAScountsQS",
+      "title": "KRAS mutant and wild type droplet counts and Poisson estimates.",
+      "object": "KRAScountsQS",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Well",
+        "ExptType",
+        "Experiment",
+        "Sample",
+        "TargetType",
+        "Target",
+        "Status",
+        "Concentration",
+        "Supermix",
+        "CopiesPer20uLWell",
+        "TotalConfMax",
+        "TotalConfMin",
+        "PoissonConfMax",
+        "PoissonConfMin",
+        "Positives",
+        "Negatives",
+        "Ch1.Ch2.",
+        "Ch1.Ch2..1",
+        "Ch1.Ch2..2",
+        "Ch1.Ch2..3",
+        "Linkage",
+        "AcceptedDroplets",
+        "CNV",
+        "TotalCNVMax",
+        "TotalCNVMin",
+        "PoissonCNVMax",
+        "PoissonCNVMin",
+        "ReferenceCopies",
+        "UnknownCopies",
+        "Ratio",
+        "TotalRatioMax",
+        "TotalRatioMin",
+        "PoissonRatioMax",
+        "PoissonRatioMin",
+        "FractionalAbundance",
+        "TotalFractionalAbundanceMax",
+        "TotalFractionalAbundanceMin",
+        "PoissonFractionalAbundanceMax",
+        "PoissonFractionalAbundanceMin",
+        "ReferenceAssayNumber",
+        "TargetAssayNumber",
+        "Threshold",
+        "MeanAmplitudeofPositives",
+        "MeanAmplitudeofNegatives",
+        "MeanAmplitudeTotal",
+        "ExperimentComments",
+        "MergedWells",
+        "TotalConfMax68",
+        "TotalConfMin68",
+        "PoissonConfMax68",
+        "PoissonConfMin68",
+        "TotalCNVMax68",
+        "TotalCNVMin68",
+        "PoissonCNVMax68",
+        "PoissonCNVMin68",
+        "TotalRatioMax68",
+        "TotalRatioMin68",
+        "PoissonRatioMax68",
+        "PoissonRatioMin68",
+        "TotalFractionalAbundanceMax68",
+        "TotalFractionalAbundanceMin68",
+        "PoissonFractionalAbundanceMax68",
+        "PoissonFractionalAbundanceMin68"
+      ],
+      "rows": 24,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "KRAScountsWellCol",
+      "title": "KRAS mutant and wild type droplet counts and Poisson estimates.",
+      "object": "KRAScountsWellCol",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Well",
+        "PP",
+        "PN",
+        "NP",
+        "NN",
+        "AcceptedDroplets",
+        "MtPositives",
+        "MtNegatives",
+        "WtPositives",
+        "WtNegatives",
+        "MtConcentration",
+        "WtConcentration",
+        "MtCopiesPer20uLWell",
+        "WtCopiesPer20uLWell",
+        "TotalCopiesPer20uLWell",
+        "Ratio",
+        "FracAbun",
+        "InputAmount"
+      ],
+      "rows": 12,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "KRASdata",
+      "title": "Droplet amplitude data for KRAS mutant and wild type molecules.",
+      "object": "KRASdata",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "twoddpcr-package",
+      "title": "Classifying and summarising 2-d droplet digitial PCR (ddPCR) data.",
+      "topics": [
+        "twoddpcr-package",
+        "twoddpcr"
+      ]
+    },
+    {
+      "page": "dot-classifyDfOnChannel",
+      "title": "K-means classify a data frame where the droplets are negative in the same channels only.",
+      "topics": [
+        ".classifyDfOnChannel"
+      ]
+    },
+    {
+      "page": "dot-classifyOnChannel",
+      "title": "K-means classify a list of data frames individually, where each data frame comprises droplets that are negative in the same channels only.",
+      "topics": [
+        ".classifyOnChannel"
+      ]
+    },
+    {
+      "page": "dot-classwiseMahalanobisRain",
+      "title": "Fuzzy clusters by bivariate normal distributions.",
+      "topics": [
+        ".classwiseMahalanobisRain"
+      ]
+    },
+    {
+      "page": "dot-cov",
+      "title": "Get the covariance of a cluster.",
+      "topics": [
+        ".cov"
+      ]
+    },
+    {
+      "page": "dot-dependentCols",
+      "title": "Get a vector of all dependent columns.",
+      "topics": [
+        ".dependentCols"
+      ]
+    },
+    {
+      "page": "dot-essentialDependentCols",
+      "title": "Get a vector of essential dependent columns.",
+      "topics": [
+        ".essentialDependentCols"
+      ]
+    },
+    {
+      "page": "dot-extractWellNames",
+      "title": "Retrieve the well names to use from a given list.",
+      "topics": [
+        ".extractWellNames"
+      ]
+    },
+    {
+      "page": "dot-getAllSummary",
+      "title": "Get a summary of the number of molecules in 20ul.",
+      "topics": [
+        ".getAllSummary"
+      ]
+    },
+    {
+      "page": "dot-getChannelCentres",
+      "title": "Find the centres of each of the wells in a given channel.",
+      "topics": [
+        ".getChannelCentres"
+      ]
+    },
+    {
+      "page": "dot-getClassificationData",
+      "title": "Extract a classification from a data frame.",
+      "topics": [
+        ".getClassificationData"
+      ]
+    },
+    {
+      "page": "dot-getMutCopies",
+      "title": "Get the mutant copies per 20ul of a data frame.",
+      "topics": [
+        ".getMutCopies"
+      ]
+    },
+    {
+      "page": "dot-getWellNames",
+      "title": "Extract the well names from a data frame.",
+      "topics": [
+        ".getWellNames"
+      ]
+    },
+    {
+      "page": "dot-getWtCopies",
+      "title": "Get the wild type copies per 20ul of a data frame.",
+      "topics": [
+        ".getWtCopies"
+      ]
+    },
+    {
+      "page": "dot-isTwoDimDataFrame",
+      "title": "Checks whether an object is a data frame with two leading double columns.",
+      "topics": [
+        ".isTwoDimDataFrame"
+      ]
+    },
+    {
+      "page": "dot-isWideForm",
+      "title": "Checks a data frame is a wide-form table.",
+      "topics": [
+        ".isWideForm"
+      ]
+    },
+    {
+      "page": "dot-mahDist",
+      "title": "Mahalanobis distance of droplets from a distribution.",
+      "topics": [
+        ".mahDist"
+      ]
+    },
+    {
+      "page": "dot-matrixInverse",
+      "title": "Get the inverse of a matrix",
+      "topics": [
+        ".matrixInverse"
+      ]
+    },
+    {
+      "page": "dot-numberOfWells",
+      "title": "Find the number of wells in the data frame.",
+      "topics": [
+        ".numberOfWells"
+      ]
+    },
+    {
+      "page": "dot-renormaliseByChannel",
+      "title": "Normalise a well on one channel only and then transform it back to the original (combined) scale.",
+      "topics": [
+        ".renormaliseByChannel"
+      ]
+    },
+    {
+      "page": "dot-renormaliseWell",
+      "title": "Normalise a well in both channels and then transform it back to the original (combined) scale.",
+      "topics": [
+        ".renormaliseWell"
+      ]
+    },
+    {
+      "page": "dot-roundIt",
+      "title": "Round to at least n decimal places.",
+      "topics": [
+        ".roundIt"
+      ]
+    },
+    {
+      "page": "dot-slice",
+      "title": "Splits a long vector and according to a vector of sizes.",
+      "topics": [
+        ".slice"
+      ]
+    },
+    {
+      "page": "dot-totalCopies",
+      "title": "Get the total number of molecules in 20ul.",
+      "topics": [
+        ".totalCopies"
+      ]
+    },
+    {
+      "page": "amplitudes",
+      "title": "Retrieve droplet amplitudes.",
+      "topics": [
+        "amplitudes",
+        "amplitudes,ddpcrPlate-method",
+        "amplitudes,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "basicsSummary",
+      "title": "Get the very basic columns of a data frame.",
+      "topics": [
+        "basicsSummary"
+      ]
+    },
+    {
+      "page": "castSummary",
+      "title": "Makes a long form data frame into wide form.",
+      "topics": [
+        "castSummary"
+      ]
+    },
+    {
+      "page": "classCov",
+      "title": "Get the covariance of each cluster.",
+      "topics": [
+        "classCov"
+      ]
+    },
+    {
+      "page": "classMeans",
+      "title": "Get the mean of each cluster.",
+      "topics": [
+        "classMeans"
+      ]
+    },
+    {
+      "page": "classStats",
+      "title": "Get some basic statistical properties for each class.",
+      "topics": [
+        "classStats"
+      ]
+    },
+    {
+      "page": "clusterCentres",
+      "title": "Retrieve the cluster centres.",
+      "topics": [
+        "clusterCenters",
+        "clusterCentres",
+        "clusterCentres,ddpcrPlate-method",
+        "clusterCentres,ddpcrWell-method",
+        "combinedCenters",
+        "combinedCentres",
+        "combinedCentres,ddpcrPlate-method",
+        "combinedPlateCenters",
+        "combinedPlateCentres",
+        "plateCenters",
+        "plateCentres",
+        "wellCenters",
+        "wellCentres"
+      ]
+    },
+    {
+      "page": "copiesSummary",
+      "title": "Get the total copies per 20ul of a data frame in the context of the basic counts.",
+      "topics": [
+        "copiesSummary"
+      ]
+    },
+    {
+      "page": "ddpcr",
+      "title": "An environment for package variables.",
+      "topics": [
+        "ddpcr"
+      ]
+    },
+    {
+      "page": "ddpcrPlate-class",
+      "title": "An S4 class for multiple wells in a ddPCR experiment.",
+      "topics": [
+        ".ddpcrPlate",
+        "ddpcrPlate",
+        "ddpcrPlate,character-method",
+        "ddpcrPlate,ddpcrPlate-method",
+        "ddpcrPlate,list-method",
+        "ddpcrPlate,missing-method",
+        "ddpcrPlate-class",
+        "show,ddpcrPlate-method"
+      ]
+    },
+    {
+      "page": "ddpcrWell-class",
+      "title": "An S4 class for the classification of a single well in a ddPCR experiment.",
+      "topics": [
+        ".ddpcrWell",
+        "ddpcrWell",
+        "ddpcrWell,character-method",
+        "ddpcrWell,data.frame-method",
+        "ddpcrWell,ddpcrWell-method",
+        "ddpcrWell,missing-method",
+        "ddpcrWell-class",
+        "show,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "drawBlank",
+      "title": "Plot nothing.",
+      "topics": [
+        "drawBlank"
+      ]
+    },
+    {
+      "page": "dropletPlot",
+      "title": "Plot a droplet classification with a colour-blind palette, optional cluster centres and fixed axes.",
+      "topics": [
+        "dropletPlot",
+        "dropletPlot,data.frame-method",
+        "dropletPlot,ddpcrPlate-method",
+        "dropletPlot,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "elementType-SimpleList-method",
+      "title": "Check the types of the elements in a 'SimpleList'.",
+      "topics": [
+        "elementType,SimpleList-method"
+      ]
+    },
+    {
+      "page": "exportTable",
+      "title": "Exports an object to file.",
+      "topics": [
+        "exportTable",
+        "exportTable,data.frame-method",
+        "exportTable,ddpcrPlate-method",
+        "exportTable,ddpcrWell-method",
+        "exportZip",
+        "exportZip,ddpcrPlate-method"
+      ]
+    },
+    {
+      "page": "extractPlateName",
+      "title": "Try to get plate name from a filename.",
+      "topics": [
+        "extractPlateName"
+      ]
+    },
+    {
+      "page": "extractWellNames",
+      "title": "Try to get well names from a vector of filenames.",
+      "topics": [
+        "extractWellNames"
+      ]
+    },
+    {
+      "page": "facetPlot",
+      "title": "Draw each of the individual wells in a ddPCR experiment.",
+      "topics": [
+        "allPlot",
+        "facetPlot",
+        "facetPlot,data.frame-method",
+        "facetPlot,ddpcrPlate-method",
+        "plotAll"
+      ]
+    },
+    {
+      "page": "flatPlot",
+      "title": "Plot droplet amplitudes with all droplets classified as \"N/A\" (or a chosen class).",
+      "topics": [
+        "flatPlot",
+        "flatPlot,data.frame-method",
+        "flatPlot,ddpcrPlate-method",
+        "flatPlot,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "fullCopiesSummary",
+      "title": "Get all of the counts data in a summarised data frame.",
+      "topics": [
+        "fullCopiesSummary"
+      ]
+    },
+    {
+      "page": "fullCountsSummary",
+      "title": "Take a data frame and compute the abundance of molecules.",
+      "topics": [
+        "fullCountsSummary"
+      ]
+    },
+    {
+      "page": "getCutOff",
+      "title": "Find the standard deviation of droplets (in a given class) multipied by a given constant.",
+      "topics": [
+        "getCutOff"
+      ]
+    },
+    {
+      "page": "ggplot.well",
+      "title": "ggplot methods for the 'ddpcrWell' and 'ddpcrPlate' classes.",
+      "topics": [
+        "ggplot.multiwell",
+        "ggplot.plate",
+        "ggplot.plate,ddpcrPlate-method",
+        "ggplot.well",
+        "ggplot.well,ddpcrWell-method",
+        "ggplot.wells"
+      ]
+    },
+    {
+      "page": "gridClassify",
+      "title": "Use a 'grid' to create training data for classification algorithms.",
+      "topics": [
+        "gridClassify",
+        "gridClassify,data.frame-method",
+        "gridClassify,ddpcrPlate-method",
+        "gridClassify,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "heatPlot",
+      "title": "Draw a heat plot of the droplets.",
+      "topics": [
+        "densityPlot",
+        "heatPlot",
+        "heatPlot,data.frame-method",
+        "heatPlot,ddpcrPlate-method",
+        "heatPlot,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "ddpcrWell-methods",
+      "title": "Is a 'ddpcrWell' object empty?",
+      "topics": [
+        "isEmpty,ddpcrPlate-method",
+        "isEmpty,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "kmeansClassify",
+      "title": "K-means classify the wells in a 'ddpcrWell' or 'ddpcrPlate' object, or in a data frame.",
+      "topics": [
+        "kmeansClassify",
+        "kmeansClassify,data.frame-method",
+        "kmeansClassify,ddpcrPlate-method",
+        "kmeansClassify,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "knnClassify",
+      "title": "Use the k-nearest neighbour algorithm to classify the wells in a 'ddpcrWell' or 'ddpcrPlate' object, or in a data frame.",
+      "topics": [
+        "knnClassify",
+        "knnClassify,data.frame-method",
+        "knnClassify,ddpcrPlate-method",
+        "knnClassify,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "KRAScounts",
+      "title": "KRAS mutant and wild type droplet counts and Poisson estimates.",
+      "topics": [
+        "KRAScounts",
+        "KRAScountsQS",
+        "KRAScountsWellCol"
+      ]
+    },
+    {
+      "page": "KRASdata",
+      "title": "Droplet amplitude data for KRAS mutant and wild type molecules.",
+      "topics": [
+        "KRASdata"
+      ]
+    },
+    {
+      "page": "mahalanobisRain",
+      "title": "Define 'rain' (unclassified) droplets by fitting the clusters to bivariate normal distributions.",
+      "topics": [
+        "mahalanobisRain",
+        "mahalanobisRain,data.frame-method",
+        "mahalanobisRain,ddpcrPlate-method",
+        "mahalanobisRain,ddpcrWell-method",
+        "multivariateNormalRain",
+        "multivariateRain",
+        "mvNormalRain",
+        "mvnRain"
+      ]
+    },
+    {
+      "page": "mutantCopiesSummary",
+      "title": "Get the mutant copies per 20ul of a data frame in the context of the basic counts.",
+      "topics": [
+        "mutantCopiesSummary"
+      ]
+    },
+    {
+      "page": "numDroplets",
+      "title": "Retrieve the number of droplets.",
+      "topics": [
+        "numberDroplets",
+        "numberDrops",
+        "numberOfDroplets",
+        "numberOfDrops",
+        "numDroplets",
+        "numDroplets,ddpcrPlate-method",
+        "numDroplets,ddpcrWell-method",
+        "numDrops",
+        "numOfDroplets"
+      ]
+    },
+    {
+      "page": "numericInputRow",
+      "title": "Inline 'numericInputs'.",
+      "topics": [
+        "numericInputRow"
+      ]
+    },
+    {
+      "page": "parseClusterCounts",
+      "title": "Retain cluster counts and user-specified columns in data frames.",
+      "topics": [
+        "parseClusterCounts"
+      ]
+    },
+    {
+      "page": "plateClassification",
+      "title": "Set and retrieve classifications for multiple wells.",
+      "topics": [
+        "plateClassification",
+        "plateClassification,ddpcrPlate-method",
+        "plateClassification<-",
+        "plateClassification<-,ddpcrPlate,character,factor-method",
+        "plateClassification<-,ddpcrPlate,character,list-method"
+      ]
+    },
+    {
+      "page": "plateClassificationMethod",
+      "title": "Set or retrieve the classification method strings for multiple wells.",
+      "topics": [
+        "commonClassificationMethod",
+        "commonClassificationMethod,ddpcrPlate-method",
+        "plateClassificationMethod",
+        "plateClassificationMethod,ddpcrPlate-method",
+        "plateClassificationMethod<-",
+        "plateClassificationMethod<-,ddpcrPlate-method",
+        "plateClassificationName",
+        "plateClassMethod",
+        "plateClassName"
+      ]
+    },
+    {
+      "page": "plateSummary",
+      "title": "Counts the number of positives and negatives in an experiment and produces estimates for the number of molecules.",
+      "topics": [
+        "plateSummary",
+        "plateSummary,ddpcrPlate-method",
+        "plateSummary,list-method"
+      ]
+    },
+    {
+      "page": "positiveCounts",
+      "title": "Get a vector of droplet positive and negative counts.",
+      "topics": [
+        "positiveCounts"
+      ]
+    },
+    {
+      "page": "readCSVDataFrame",
+      "title": "Read all given CSV files into a list.",
+      "topics": [
+        "readCSVDataFrame"
+      ]
+    },
+    {
+      "page": "relabelClasses",
+      "title": "Re-label clusters.",
+      "topics": [
+        "relabelClasses"
+      ]
+    },
+    {
+      "page": "removeDropletClasses",
+      "title": "Retrieve a data frame of droplet amplitudes with droplets of a given class removed.",
+      "topics": [
+        "removeDropletClasses",
+        "removeDropletClasses,data.frame-method",
+        "removeDropletClasses,ddpcrPlate-method",
+        "removeDropletClasses,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "renormalisePlate",
+      "title": "Normalise all wells in a plate to the overall/average cluster positions.",
+      "topics": [
+        "renormalisePlate"
+      ]
+    },
+    {
+      "page": "sdRain",
+      "title": "Add rain to a classification by using a chosen multiple of standard deviation.",
+      "topics": [
+        "sdRain",
+        "sdRain,data.frame-method",
+        "sdRain,ddpcrPlate-method",
+        "sdRain,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "setChannelNames",
+      "title": "Rename the channels.",
+      "topics": [
+        "setChannelNames",
+        "setChannelNames,data.frame-method",
+        "setChannelNames,list-method"
+      ]
+    },
+    {
+      "page": "setDropletVolume",
+      "title": "Set the droplet volume in microlitres (ul).",
+      "topics": [
+        "setDropletVol",
+        "setDropletVolume",
+        "setDropVol",
+        "setDropVolume"
+      ]
+    },
+    {
+      "page": "shinyVis",
+      "title": "A Shiny environment.",
+      "topics": [
+        "shinyVis"
+      ]
+    },
+    {
+      "page": "shinyVisApp",
+      "title": "Shiny app.",
+      "topics": [
+        "shinyVisApp"
+      ]
+    },
+    {
+      "page": "shinyVisServer",
+      "title": "Shiny visualisation server.",
+      "topics": [
+        "shinyVisServer"
+      ]
+    },
+    {
+      "page": "shinyVisUI",
+      "title": "Shiny visualisation UI.",
+      "topics": [
+        "shinyVisUI"
+      ]
+    },
+    {
+      "page": "sortDataFrame",
+      "title": "Sorts a data frame according to the well names.",
+      "topics": [
+        "sortDataFrame"
+      ]
+    },
+    {
+      "page": "sortWells",
+      "title": "Return given well names sorted.",
+      "topics": [
+        "sortWells"
+      ]
+    },
+    {
+      "page": "textInputRow",
+      "title": "Inline 'textInputs'.",
+      "topics": [
+        "textInputRow"
+      ]
+    },
+    {
+      "page": "thresholdClassify",
+      "title": "Set thresholds to classify droplets.",
+      "topics": [
+        "thresholdClassify",
+        "thresholdClassify,data.frame-method",
+        "thresholdClassify,ddpcrPlate-method",
+        "thresholdClassify,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "wellClassification",
+      "title": "Retrieve a classification vector.",
+      "topics": [
+        "wellClassification",
+        "wellClassification,ddpcrWell-method",
+        "wellClassification<-",
+        "wellClassification<-,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "wellClassificationMethod",
+      "title": "Retrieve the classification method.",
+      "topics": [
+        "wellClassificationMethod",
+        "wellClassificationMethod,ddpcrWell-method",
+        "wellClassificationMethod<-",
+        "wellClassificationMethod<-,ddpcrWell-method"
+      ]
+    },
+    {
+      "page": "whiteTheme",
+      "title": "Use a theme with a white background and grey lines.",
+      "topics": [
+        "whiteTheme"
+      ]
+    },
+    {
+      "page": "wildTypeCopiesSummary",
+      "title": "Get the wild type copies per 20ul of a data frame in the context of the basic counts.",
+      "topics": [
+        "wildTypeCopiesSummary"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/twoddpcr/raw/HEAD/README.md",
+  "_rundeps": [
+    "base64enc",
+    "BiocGenerics",
+    "bslib",
+    "cachem",
+    "class",
+    "cli",
+    "commonmark",
+    "cpp11",
+    "digest",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fs",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "hexbin",
+    "htmltools",
+    "httpuv",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "labeling",
+    "later",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "memoise",
+    "mime",
+    "otel",
+    "promises",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "rlang",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "shiny",
+    "sourcetools",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xtable"
+  ],
+  "_vignettes": [
+    {
+      "source": "twoddpcr.Rmd",
+      "filename": "twoddpcr.html",
+      "title": "twoddpcr: A package for Droplet Digital PCR analysis",
+      "author": "Anthony Chiu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installing the twoddpcr package",
+        "Loading the twoddpcr package",
+        "Using the in-built dataset",
+        "Basic plots",
+        "Plotting the droplets and existing classifications",
+        "Independent linear gating on the channels (thresholdClassify)",
+        "Classifying using the k-means algorithm (kmeansClassify)",
+        "Adding \"rain\"",
+        "Creating a summary",
+        "Analysis of the data",
+        "Comparison of classification methods",
+        "Discussion",
+        "Other classification tools",
+        "Classifying using the k-NN algorithm (knnClassify)",
+        "Classifying the four 'corners' of a plot (gridClassify)",
+        "Adding rain with sdRain",
+        "Custom classifications",
+        "Appendix",
+        "Shiny-based GUI for non-R users",
+        "Exporting droplet amplitudes from QuantaSoft to CSV files",
+        "Using other datasets",
+        "Problems reading files",
+        "Citing twoddpcr",
+        "Further reading",
+        "Session information",
+        "References"
+      ],
+      "created": "2017-02-17 22:42:51",
+      "modified": "2018-08-13 18:26:58",
+      "commits": 6
+    }
+  ],
+  "_score": 5.732393759822969,
+  "_indexed": true,
+  "_nocasepkg": "twoddpcr",
+  "_universes": [
+    "bioc",
+    "crukmi-computationalbiology"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:22:24.000Z",
+      "distro": "noble",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "47fcc99b1e64e489054c80265375b7a734cc50120b665e104d22773ac9d826ff",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:22:31.000Z",
+      "distro": "noble",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "32ab23343cd8799f055e99df10ab1068a20754ddabccd5d64b576049c74a7f1d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:21:18.000Z",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "7213d530b0ae7413cdc2c176a3797775718a8722b555b8a7657b1053dd9fbade",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:20:48.000Z",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "d12a7c33b01c8b725dbdfb2a396056cfa70b032ff5686c3b6ee8607786d8ae2e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:21:34.000Z",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "62c99e20ef0b72a50ee2e8276465ad0a501e6c88b4dbc1fdd9e1a383f2c955ac",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:20:42.000Z",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "42654230c8fe782c8ccae802df852e8fcab2c8b79acae5839f827b795a45d13a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:20:51.000Z",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "eb51e40affcab8e5951ff4c232d4292011c7af3b11eabde0af5ac18c16ead9f0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-02-15T09:20:44.000Z",
+      "commit": "a5af7295bfc795704f82de20502788183a792376",
+      "fileid": "0659e92fc07787d4605c3b417f5d38db297bd0c057003ecf71e2fe3593a5b745",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033118175"
+    }
+  ]
+}

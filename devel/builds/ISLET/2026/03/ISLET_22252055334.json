@@ -1,0 +1,560 @@
+{
+  "Package": "ISLET",
+  "Type": "Package",
+  "Title": "Individual-Specific ceLl typE referencing Tool",
+  "Version": "1.13.0",
+  "Date": "2023-09-15",
+  "Authors@R": "c(person(\"Hao\", \"Feng\", role = c(\"aut\", \"cre\"),email = \"hxf155@case.edu\",comment=c(ORCID=\"0000-0003-2243-9949\")),\nperson(\"Qian\", \"Li\", role = \"aut\",email = \"Qian.Li@STJUDE.ORG\"),\nperson(\"Guanqun\", \"Meng\", role = \"aut\",email = \"gxm324@case.edu\"))",
+  "Description": "ISLET is a method to conduct signal deconvolution for\ngeneral -omics data. It can estimate the individual-specific\nand cell-type-specific reference panels, when there are\nmultiple samples observed from each subject. It takes the input\nof the observed mixture data (feature by sample matrix), and\nthe cell type mixture proportions (sample by cell type matrix),\nand the sample-to-subject information. It can solve for the\nreference panel on the individual-basis and conduct test to\nidentify cell-type-specific differential expression (csDE)\ngenes. It also improves estimated cell type mixture proportions\nby integrating personalized reference panels.",
+  "License": "GPL-2",
+  "Collate": "utils.R dataprep.R dataprep_slope.R islet.est.R islet.solve.R\nislet.test.R AllClasses.R show-methods.R imply_prep.R imply.R",
+  "biocViews": "Software, RNASeq, Transcriptomics, Transcription,\nSequencing, GeneExpression, DifferentialExpression,\nDifferentialMethylation",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "cmake make zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:18:35 UTC",
+  "RemoteUrl": "https://github.com/bioc/ISLET",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-21 06:39:34 UTC",
+    "User": "root"
+  },
+  "Author": "Hao Feng [aut, cre] (ORCID: <https://orcid.org/0000-0003-2243-9949>),\nQian Li [aut],\nGuanqun Meng [aut]",
+  "Maintainer": "Hao Feng <hxf155@case.edu>",
+  "MD5sum": "6ba64382fe9d71c17dcae5d30bad89e3",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "ISLET_1.13.0.tar.gz",
+  "_fileid": "bbb5fea2aca20964c9d1b81320279dfc9a3d3d22160e88242167e87524bd6ce6",
+  "_filesize": 2197628,
+  "_sha256": "bbb5fea2aca20964c9d1b81320279dfc9a3d3d22160e88242167e87524bd6ce6",
+  "_created": "2026-02-21T06:39:34.000Z",
+  "_published": "2026-02-21T06:51:22.221Z",
+  "_jobs": [
+    {
+      "job": 64377521915,
+      "time": 201,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600051081"
+    },
+    {
+      "job": 64377521895,
+      "time": 491,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600068968"
+    },
+    {
+      "job": 64377521914,
+      "time": 453,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600066359"
+    },
+    {
+      "job": 64377521905,
+      "time": 348,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600059681"
+    },
+    {
+      "job": 64377521893,
+      "time": 378,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600061542"
+    },
+    {
+      "job": 64377317419,
+      "time": 360,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600038482"
+    },
+    {
+      "job": 64377521881,
+      "time": 132,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600046929"
+    },
+    {
+      "job": 64377521921,
+      "time": 619,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600077218"
+    },
+    {
+      "job": 64377521929,
+      "time": 651,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5600079232"
+    },
+    {
+      "job": 64377521918,
+      "time": 621,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600077384"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ISLET",
+  "_commit": {
+    "id": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751115
+  },
+  "_maintainer": {
+    "name": "Hao Feng",
+    "email": "hxf155@case.edu",
+    "orcid": "0000-0003-2243-9949"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Matrix",
+      "role": "Depends"
+    },
+    {
+      "package": "parallel",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "lme4",
+      "role": "Depends"
+    },
+    {
+      "package": "nnls",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "abind",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "htmltools",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.12.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "rnaseq",
+    "transcriptomics",
+    "transcription",
+    "sequencing",
+    "geneexpression",
+    "differentialexpression",
+    "differentialmethylation"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 270,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ISLET"
+  },
+  "_searchresults": 14,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/ISLET.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "caseEst",
+    "ctrlEst",
+    "dataPrep",
+    "dataPrepSlope",
+    "imply",
+    "implyDataPrep",
+    "isletSolve",
+    "isletTest"
+  ],
+  "_datasets": [
+    {
+      "name": "GE600_se",
+      "title": "ISLET deconvolution example raw input data",
+      "object": "GE600",
+      "file": "GE600.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "GE600age_se",
+      "title": "ISLET example datasets for slope variable testing in csDE",
+      "object": "GE600age",
+      "file": "GE600age.rda",
+      "class": [
+        "SummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "caseEst",
+      "title": "ISLET reference estimation results extraction",
+      "topics": [
+        "caseEst"
+      ]
+    },
+    {
+      "page": "ctrlEst",
+      "title": "ISLET reference estimation results extraction",
+      "topics": [
+        "ctrlEst"
+      ]
+    },
+    {
+      "page": "dataprep",
+      "title": "Data preparation step utility function before using ISLET",
+      "topics": [
+        "dataPrep"
+      ]
+    },
+    {
+      "page": "dataprep_slope",
+      "title": "Data preparation function specifically for slope effect testing",
+      "topics": [
+        "dataPrepSlope"
+      ]
+    },
+    {
+      "page": "GE600",
+      "title": "ISLET deconvolution example raw input data",
+      "topics": [
+        "GE600",
+        "GE600_se"
+      ]
+    },
+    {
+      "page": "GE600age",
+      "title": "ISLET example datasets for slope variable testing in csDE",
+      "topics": [
+        "GE600age",
+        "GE600age_se"
+      ]
+    },
+    {
+      "page": "imply",
+      "title": "_*imply*_: _*imp*_roving ce_*l*_l-t_*y*_pe deconvolution using personalized reference",
+      "topics": [
+        "imply"
+      ]
+    },
+    {
+      "page": "imply.dataprep",
+      "title": "Data preparation step utility function before using imply",
+      "topics": [
+        "implyDataPrep"
+      ]
+    },
+    {
+      "page": "islet.solve",
+      "title": "Solving individual-specific and cell-type-specific reference panels",
+      "topics": [
+        "isletSolve"
+      ]
+    },
+    {
+      "page": "islet.test",
+      "title": "Testing for cell-type-specific Differential Expression (csDE) genes",
+      "topics": [
+        "isletTest"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ISLET/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "boot",
+    "cli",
+    "codetools",
+    "cpp11",
+    "DelayedArray",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "IRanges",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "minqa",
+    "nlme",
+    "nloptr",
+    "nnls",
+    "purrr",
+    "rbibutils",
+    "Rcpp",
+    "RcppEigen",
+    "Rdpack",
+    "reformulas",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "vctrs",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "ISLET.Rmd",
+      "filename": "ISLET.html",
+      "title": "Individual-specific and cell-type-specific deconvolution using ISLET",
+      "author": "Hao Feng, Qian Li, Guanqun Meng",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Install and help",
+        "Install ISLET",
+        "How to get help",
+        "Introduction",
+        "ISLET input files",
+        "Data preparation",
+        "Deconvolve individual-specific reference panel",
+        "Test cell-type-specific differential expression (csDE) in mean (intercept)",
+        "Test csDE in change-rate (slope)",
+        "imply: improving cell-type deconvolution accuracy using personalized reference profiles",
+        "Session info"
+      ],
+      "created": "2022-06-15 17:01:06",
+      "modified": "2023-09-15 03:46:52",
+      "commits": 10
+    }
+  ],
+  "_score": 4.146128035678238,
+  "_indexed": true,
+  "_nocasepkg": "islet",
+  "_universes": [
+    "bioc"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:43:12.000Z",
+      "distro": "noble",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "fd9485ec8f202f5a4c6a7c82a8380d7f3be4f42ba1f201bbad2dfb696699b2bb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:42:44.000Z",
+      "distro": "noble",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "42d90221b74aa131c691f14f7903a409430af69795aa6e9aafb1e062d19aae80",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:41:25.000Z",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "6d732d5703937442585261cfd192025166897245c626f56da646af8776102ab5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:41:50.000Z",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "673fd3d071c3d8e9318b048793b530f695a3b00c35006e98b8a8b361a4ea8f0c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:42:18.000Z",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "1bcaaaccf7b1e88ce5ee8a258936a04c6c02a7b5d4102fbc6bf3c2fb34582fed",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:41:25.000Z",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "40d2bf3753a01b2cb6da51a21b6bd71ddee07b6914b6d888f1a0d01a8696b363",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:41:24.000Z",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "c6a7ec90732c68fffd5a8d511b2fea8fc3da42adc063107914b2cf466be5145b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-21T06:41:33.000Z",
+      "commit": "6b4e816d9a3c0c5fa4ffbbd92316f71852f488b3",
+      "fileid": "a3b8a3009f837ea011cc00791666224c7ccc418b313a47a45688a40a6da45703",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22252055334"
+    }
+  ]
+}

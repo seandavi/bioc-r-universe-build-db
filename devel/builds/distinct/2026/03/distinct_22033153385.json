@@ -1,0 +1,753 @@
+{
+  "Package": "distinct",
+  "Type": "Package",
+  "Title": "distinct: a method for differential analyses via hierarchical\npermutation tests",
+  "Version": "1.23.0",
+  "Author": "Simone Tiberi [aut, cre].",
+  "Maintainer": "Simone Tiberi <simone.tiberi@uzh.ch>",
+  "Description": "distinct is a statistical method to perform differential\ntesting between two or more groups of distributions;\ndifferential testing is performed via hierarchical\nnon-parametric permutation tests on the cumulative distribution\nfunctions (cdfs) of each sample. While most methods for\ndifferential expression target differences in the mean\nabundance between conditions, distinct, by comparing full cdfs,\nidentifies, both, differential patterns involving changes in\nthe mean, as well as more subtle variations that do not involve\nthe mean (e.g., unimodal vs. bi-modal distributions with the\nsame mean). distinct is a general and flexible tool: due to its\nfully non-parametric nature, which makes no assumptions on how\nthe data was generated, it can be applied to a variety of\ndatasets. It is particularly suitable to perform differential\nstate analyses on single cell data (i.e., differential analyses\nwithin sub-populations of cells), such as single cell RNA\nsequencing (scRNA-seq) and high-dimensional flow or mass\ncytometry (HDCyto) data. To use distinct one needs data from\ntwo or more groups of samples (i.e., experimental conditions),\nwith at least 2 samples (i.e., biological replicates) per\ngroup.",
+  "biocViews": "Genetics, RNASeq, Sequencing, DifferentialExpression,\nGeneExpression, MultipleComparison, Software, Transcription,\nStatisticalMethod, Visualization, SingleCell, FlowCytometry,\nGeneTarget",
+  "License": "GPL (>= 3)",
+  "SystemRequirements": "C++17",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.2.3",
+  "ByteCompile": "true",
+  "URL": "https://github.com/SimoneTiberi/distinct",
+  "BugReports": "https://github.com/SimoneTiberi/distinct/issues",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev libharfbuzz-dev libicu-dev libjpeg-dev\nlibpng-dev libtiff-dev libwebp-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:58:17 UTC",
+  "RemoteUrl": "https://github.com/bioc/distinct",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-15 09:23:02 UTC",
+    "User": "root"
+  },
+  "MD5sum": "d1eb2a4f73d2a3f1879cf16981e6c3e9",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "distinct_1.23.0.tar.gz",
+  "_fileid": "2fab049f7cd3d927f30cf73970279065fd62490bbef9b5f92bab63cc0a965808",
+  "_filesize": 1814553,
+  "_sha256": "2fab049f7cd3d927f30cf73970279065fd62490bbef9b5f92bab63cc0a965808",
+  "_created": "2026-02-15T09:23:02.000Z",
+  "_published": "2026-02-15T09:33:09.708Z",
+  "_jobs": [
+    {
+      "job": 63661835132,
+      "time": 204,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5515551901"
+    },
+    {
+      "job": 63661835161,
+      "time": 362,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515561276"
+    },
+    {
+      "job": 63661835152,
+      "time": 414,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515564294"
+    },
+    {
+      "job": 63661835171,
+      "time": 353,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515560679"
+    },
+    {
+      "job": 63661835170,
+      "time": 455,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515566912"
+    },
+    {
+      "job": 63661835150,
+      "time": 389,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515562786"
+    },
+    {
+      "job": 63661835155,
+      "time": 531,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515571374"
+    },
+    {
+      "job": 63661835157,
+      "time": 296,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515557253"
+    },
+    {
+      "job": 63661835141,
+      "time": 516,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515570557"
+    },
+    {
+      "job": 63661618027,
+      "time": 400,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5515539778"
+    },
+    {
+      "job": 63661835148,
+      "time": 154,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5515549029"
+    },
+    {
+      "job": 63661835154,
+      "time": 377,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5515562035"
+    },
+    {
+      "job": 63661835151,
+      "time": 419,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5515564835"
+    },
+    {
+      "job": 63661835145,
+      "time": 372,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5515561804"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 1,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/distinct",
+  "_commit": {
+    "id": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749897
+  },
+  "_maintainer": {
+    "name": "Simone Tiberi",
+    "email": "simone.tiberi@uzh.ch"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "doRNG",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "scater",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "UpSetR",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.23.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.22.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "genetics",
+    "rnaseq",
+    "sequencing",
+    "differentialexpression",
+    "geneexpression",
+    "multiplecomparison",
+    "software",
+    "transcription",
+    "statisticalmethod",
+    "visualization",
+    "singlecell",
+    "flowcytometry",
+    "genetarget",
+    "openblas",
+    "cpp"
+  ],
+  "_stars": 11,
+  "_contributors": [
+    {
+      "user": "nturaga",
+      "count": 8,
+      "uuid": 2746443
+    },
+    {
+      "user": "simonetiberi",
+      "count": 4,
+      "uuid": 24696388
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 428,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/distinct"
+  },
+  "_devurl": "https://github.com/simonetiberi/distinct",
+  "_searchresults": 32,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/distinct.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/simonetiberi/distinct",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "distinct_test",
+    "log2_FC",
+    "plot_cdfs",
+    "plot_densities",
+    "top_results"
+  ],
+  "_datasets": [
+    {
+      "name": "Kang_subset",
+      "title": "Subset from the 'Kang18_8vs8()' object of the 'muscData' package.",
+      "object": "Kang_subset",
+      "file": "Kang_subset.RData",
+      "class": [
+        "SingleCellExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "res",
+      "title": "Results from 'distinct_test' function",
+      "object": "res",
+      "file": "res.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "gene",
+        "cluster_id",
+        "p_val",
+        "p_adj.loc",
+        "p_adj.glb",
+        "filtered"
+      ],
+      "rows": 800,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "distinct-package",
+      "title": "distinct: a method for differential analyses via hierarchical permutation tests",
+      "topics": [
+        "distinct-package",
+        "distinct"
+      ]
+    },
+    {
+      "page": "distinct_test",
+      "title": "Test for differential state between two groups of samples, based on scRNA-seq data.",
+      "topics": [
+        "distinct_test"
+      ]
+    },
+    {
+      "page": "Kang_subset",
+      "title": "Subset from the `Kang18_8vs8()` object of the 'muscData' package.",
+      "topics": [
+        "Kang_subset"
+      ]
+    },
+    {
+      "page": "log2_FC",
+      "title": "Compute FCs and log2-FCs.",
+      "topics": [
+        "log2_FC"
+      ]
+    },
+    {
+      "page": "plot_cdfs",
+      "title": "Plot sample-specific CDFs.",
+      "topics": [
+        "plot_cdfs"
+      ]
+    },
+    {
+      "page": "plot_densities",
+      "title": "Plot sample-specific densities.",
+      "topics": [
+        "plot_densities"
+      ]
+    },
+    {
+      "page": "res",
+      "title": "Results from 'distinct_test' function",
+      "topics": [
+        "res"
+      ]
+    },
+    {
+      "page": "top_results",
+      "title": "Filter significant results.",
+      "topics": [
+        "top_results"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/distinct/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "Cairo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "doRNG",
+    "dqrng",
+    "farver",
+    "FNN",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggplot2",
+    "ggrastr",
+    "ggrepel",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "pheatmap",
+    "png",
+    "R6",
+    "ragg",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "rlang",
+    "rngtools",
+    "RSpectra",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "SummarizedExperiment",
+    "systemfonts",
+    "textshaping",
+    "uwot",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "liblapack",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libblas",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.26+ds-1ubuntu0.1",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "distinct.Rmd",
+      "filename": "distinct.html",
+      "title": "distinct: a method for differential analyses via hierarchical permutation tests",
+      "author": "Simone Tiberi",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Bioconductor installation",
+        "Differential State analysis",
+        "Input data",
+        "Differential analyses within sub-populations of cells",
+        "Handling covariates and batch effects",
+        "Visualizing results",
+        "Plotting significant results",
+        "Session info"
+      ],
+      "created": "2020-04-03 11:43:40",
+      "modified": "2023-05-15 09:06:53",
+      "commits": 10
+    }
+  ],
+  "_score": 6.500785172917456,
+  "_indexed": true,
+  "_nocasepkg": "distinct",
+  "_universes": [
+    "bioc",
+    "simonetiberi"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:26:31.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "c04530a12b0fb70a79e1787e7b74fe3d068d2e539a1c9d1d753fd3941cf933de",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:26:39.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "e3bd5a12f27eb3e711124663aed1ed1cf00c62710836018c36cfb62c8f2ca7c8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:26:29.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "b700eec9138b5b6f5044faaeee46322ef758c874281e375c51eee0af39d9a071",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:27:21.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "afa97a89e6caf5143a8c69c78e0fce7f2a509eca59c71cbffdc48554d2858dea",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:25:35.000Z",
+      "arch": "aarch64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "c0d71b743b94bdb0bb7cd98e88da9c94ea8cdd45c068b9ef2e8f1163ed81fabd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:26:59.000Z",
+      "arch": "x86_64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "cdbb3775ae6cd061b86f83d8a27a69360756aa25741cdb00e60b524b4ac7a8de",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:25:24.000Z",
+      "arch": "aarch64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "39c1ae58f6bbdcf60f121e11a61b845a77d143f741319c746d6b715bdf79942f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:26:45.000Z",
+      "arch": "x86_64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "87b2f2d69012035997739a43ceb75bcacea6d0908876d0f05abef8970d17f14a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:26:13.000Z",
+      "arch": "emscripten",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "392a9f5ef0023adbeea3ce578db86e06be26872083f2041abf9a64d7aa444dd9",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:25:18.000Z",
+      "arch": "x86_64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "55f85d13c196c1e3709933cca94f42b58441215e577f95657ff81b6b4656511a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:25:45.000Z",
+      "arch": "x86_64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "0c6850d4eabfafb32c2715f862179e0dfeb5432fe3fef67cc8a0c296481d5cc5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-15T09:25:23.000Z",
+      "arch": "x86_64",
+      "commit": "fecbaaceb8e6d8a6f5b9ae29459ea03f4a674fc5",
+      "fileid": "6cc1bcd2eac910ef7bbd168227c812143963d2db8d51fcb97f6278c0f9ba11c0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22033153385"
+    }
+  ]
+}

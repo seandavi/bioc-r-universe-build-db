@@ -1,0 +1,1623 @@
+{
+  "Package": "DspikeIn",
+  "Type": "Package",
+  "Title": "Estimating Absolute Abundance from Microbial Spike-in Controls",
+  "Version": "1.1.0",
+  "Authors@R": "c(\nperson(\"Mitra\", \"Ghotbi\", , \"mitra.ghotbi@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0001-9185-9993\")),\nperson(\"Marjan\", \"Ghotbi\", , \"ghotbi.marjan@gmail.com\", role = \"ctb\",\ncomment = c(ORCID = \"0000-0003-4655-6445\"))\n)",
+  "Description": "Provides a reproducible and modular workflow for absolute\nmicrobial quantification using spike-in controls. Supports both\nsingle spike-in taxa and synthetic microbial communities with\nuser-defined spike-in volumes and genome copy numbers.\nCompatible with 'phyloseq' and 'TreeSummarizedExperiment' (TSE)\ndata structures. The package implements methods for spike-in\nvalidation, preprocessing, scaling factor estimation, absolute\nabundance conversion, bias correction, and normalization.\nFacilitates downstream statistical analyses with 'DESeq2',\n'edgeR', and other Bioconductor-compatible methods.\nVisualization tools are provided via 'ggplot2', 'ggtree', and\nrelated packages. Includes detailed vignettes, case studies,\nand function-level documentation to guide users through\nexperimental design, quantification, and interpretation.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "LazyDataCompression": "xz",
+  "biocViews": "Microbiome, Preprocessing, QualityControl,\nDifferentialExpression, Normalization, Sequencing,\nVisualization, Phylogenetics, ExperimentalDesign, DataImport,\nSoftware",
+  "URL": "https://github.com/mghotbi/DspikeIn",
+  "BugReports": "https://github.com/mghotbi/DspikeIn/issues",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "NeedsCompilation": "no",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libfribidi-dev libglpk-dev make\nlibharfbuzz-dev libicu-dev libjpeg-dev libpng-dev libtiff-dev\nlibwebp-dev libxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:39:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/DspikeIn",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "18fc5b8c005665f1dae65a5239edb145359671f7",
+  "Packaged": {
+    "Date": "2026-02-03 07:59:24 UTC",
+    "User": "root"
+  },
+  "Author": "Mitra Ghotbi [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-9185-9993>),\nMarjan Ghotbi [ctb] (ORCID: <https://orcid.org/0000-0003-4655-6445>)",
+  "Maintainer": "Mitra Ghotbi <mitra.ghotbi@gmail.com>",
+  "MD5sum": "af21ea53d421c5ac90bd090cb04ecafb",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "DspikeIn_1.1.0.tar.gz",
+  "_fileid": "aa9914b28ddf2a34984ce0374de35ec5760b4b403d73bef0907f5b3f8637fb83",
+  "_filesize": 6886324,
+  "_sha256": "aa9914b28ddf2a34984ce0374de35ec5760b4b403d73bef0907f5b3f8637fb83",
+  "_created": "2026-02-03T07:59:24.000Z",
+  "_published": "2026-02-03T08:16:19.483Z",
+  "_jobs": [
+    {
+      "job": 62312838684,
+      "time": 296,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5354042228"
+    },
+    {
+      "job": 62312838661,
+      "time": 917,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5354146088"
+    },
+    {
+      "job": 62312838754,
+      "time": 821,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354129327"
+    },
+    {
+      "job": 62312838669,
+      "time": 639,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5354124308"
+    },
+    {
+      "job": 62312838668,
+      "time": 658,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354124864"
+    },
+    {
+      "job": 62312062006,
+      "time": 563,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5353995832"
+    },
+    {
+      "job": 62312838657,
+      "time": 259,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5354036752"
+    },
+    {
+      "job": 62312838753,
+      "time": 829,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5354130348"
+    },
+    {
+      "job": 62312838735,
+      "time": 840,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5354132636"
+    },
+    {
+      "job": 62312838699,
+      "time": 837,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5354133440"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 16
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/DspikeIn",
+  "_commit": {
+    "id": "18fc5b8c005665f1dae65a5239edb145359671f7",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752352
+  },
+  "_maintainer": {
+    "name": "Mitra Ghotbi",
+    "email": "mitra.ghotbi@gmail.com",
+    "login": "mghotbi",
+    "linkedin": "in/mitra-ghotbi-78b34030",
+    "orcid": "0000-0001-9185-9993",
+    "twitter": "@GhotbiMitra",
+    "uuid": 29090547
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ape",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "DECIPHER",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "flextable",
+      "role": "Imports"
+    },
+    {
+      "package": "ggalluvial",
+      "role": "Imports"
+    },
+    {
+      "package": "ggnewscale",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggraph",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "ggridges",
+      "role": "Imports"
+    },
+    {
+      "package": "ggtree",
+      "role": "Imports"
+    },
+    {
+      "package": "ggtreeExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "microbiome",
+      "role": "Imports"
+    },
+    {
+      "package": "officer",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "phangorn",
+      "role": "Imports"
+    },
+    {
+      "package": "phyloseq",
+      "role": "Imports"
+    },
+    {
+      "package": "randomForest",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "TreeSummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "msa",
+      "role": "Imports"
+    },
+    {
+      "package": "xml2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggstar",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Suggests"
+    },
+    {
+      "package": "mia",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "magrittr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "cluster",
+      "role": "Suggests"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "DT",
+      "role": "Suggests"
+    },
+    {
+      "package": "e1071",
+      "role": "Suggests"
+    },
+    {
+      "package": "foreach",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggtext",
+      "role": "Suggests"
+    },
+    {
+      "package": "intergraph",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "optparse",
+      "role": "Suggests"
+    },
+    {
+      "package": "plyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "preprocessCore",
+      "role": "Suggests"
+    },
+    {
+      "package": "qpdf",
+      "role": "Suggests"
+    },
+    {
+      "package": "remotes",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "ShortRead",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "vegan",
+      "role": "Suggests"
+    },
+    {
+      "package": "viridis",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-22",
+      "n": 8
+    },
+    {
+      "week": "2025-25",
+      "n": 16
+    },
+    {
+      "week": "2025-26",
+      "n": 3
+    },
+    {
+      "week": "2025-30",
+      "n": 6
+    },
+    {
+      "week": "2025-33",
+      "n": 7
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 13
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "microbiome",
+    "preprocessing",
+    "qualitycontrol",
+    "differentialexpression",
+    "normalization",
+    "sequencing",
+    "visualization",
+    "phylogenetics",
+    "experimentaldesign",
+    "dataimport",
+    "software",
+    "absolute-abundances",
+    "amplicon-sequencing",
+    "gene-copies",
+    "phylogenetic-trees",
+    "qiime2",
+    "quantifying",
+    "spike-ins",
+    "transformation",
+    "whole-cell"
+  ],
+  "_stars": 17,
+  "_contributors": [
+    {
+      "user": "mghotbi",
+      "count": 684,
+      "uuid": 29090547
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 174,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/DspikeIn"
+  },
+  "_devurl": "https://github.com/mghotbi/dspikein",
+  "_searchresults": 36,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/DspikeIn.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/mghotbi/dspikein",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "adjust_abundance_by_factor",
+    "adjust_abundance_one_third",
+    "adjusted_prevalence",
+    "alluvial_plot",
+    "calculate_list_average_scaling_factors",
+    "calculate_spike_percentage",
+    "calculate_spike_percentage_list",
+    "calculate_spikeIn_factors",
+    "calculate_summary_stats_table",
+    "color_palette",
+    "conclusion",
+    "convert_categorical_to_factors",
+    "convert_phyloseq_to_tse",
+    "convert_to_absolute_counts",
+    "convert_tse_to_phyloseq",
+    "create_directory",
+    "degree_network",
+    "detect_common_asvs_taxa",
+    "extract_neighbors",
+    "filter_and_split_abundance",
+    "get_long_format_data",
+    "get_otu_table",
+    "get_phy_tree",
+    "get_reference_seq",
+    "get_sample_data",
+    "get_sample_sums",
+    "get_tax_table",
+    "gm_mean",
+    "imbalance_calculate_list_average_scaling_factors",
+    "label",
+    "load_graphml",
+    "MG_shapes",
+    "my_custom_theme",
+    "node_level_metrics",
+    "norm.DESeq",
+    "normalization_set",
+    "perform_and_visualize_DA",
+    "plot_core_microbiome_custom",
+    "plot_spikein_tree_diagnostic",
+    "plotbar_abundance",
+    "Pre_processing_hashcodes",
+    "Pre_processing_species",
+    "Pre_processing_species_list",
+    "proportion_adj",
+    "quadrant_plot",
+    "random_subsample_WithReductionFactor",
+    "RandomForest_selected",
+    "randomsubsample_Trimmed_evenDepth",
+    "regression_plot",
+    "relativized_filtered_taxa",
+    "remove_zero_negative_count_samples",
+    "ridge_plot_it",
+    "set_nf",
+    "simulate_network_robustness",
+    "summ_ASV_OTUID",
+    "summ_count_phyloseq",
+    "summ_phyloseq_sampleID",
+    "taxa_barplot",
+    "tidy_phyloseq_tse",
+    "validate_spikein_clade",
+    "weight_Network"
+  ],
+  "_datasets": [
+    {
+      "name": "AcceptableRange",
+      "title": "Acceptable Range Data",
+      "object": "AcceptableRange",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "X",
+        "Phylum",
+        "Genus",
+        "Range",
+        "Percentage",
+        "Total_Reads_total",
+        "mean_abundance",
+        "Total_Reads_spiked",
+        "Host_genus",
+        "Ecoregion_III"
+      ],
+      "rows": 113631,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "metadata_full",
+      "title": "Metadata for Microbiome Samples",
+      "object": "metadata_full",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "sample.id",
+        "Total_Reads_total",
+        "Total_Reads_spiked",
+        "Percentage",
+        "Result",
+        "beta.distances",
+        "Observed",
+        "Chao1",
+        "ACE",
+        "se.ACE",
+        "Shannon",
+        "Simpson",
+        "InvSimpson",
+        "X16S.biosample",
+        "dna.biosample",
+        "data.type",
+        "ampliconlibrary.quantification.ng.ul",
+        "plate.ID",
+        "well.location",
+        "Env.broad.scale",
+        "Host.taxon",
+        "Host.genus",
+        "Host.species",
+        "Animal.type",
+        "Animal.ecomode",
+        "Clade.Order",
+        "Family",
+        "Diet",
+        "Diet.Detailed",
+        "Habitat",
+        "Metamorphosis",
+        "Reproduction",
+        "Ecoregion.III",
+        "Ecoregion.IV",
+        "Site",
+        "sample.name",
+        "biosample.parent",
+        "data.type.1",
+        "ampliconlibrary.quantification.ng.ul.1",
+        "plate.ID.1",
+        "well.location.1",
+        "sample.or.blank",
+        "sample.spiked.blank",
+        "spiked.volume",
+        "swab.presence",
+        "MK.spike"
+      ],
+      "rows": 312,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "physeq",
+      "title": "Example Phyloseq Object with Tree and Reference Sequences",
+      "object": "physeq",
+      "class": [
+        "phyloseq"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "physeq_16SOTU",
+      "title": "Example Phyloseq Object for 16S OTUs",
+      "object": "physeq_16SOTU",
+      "class": [
+        "phyloseq"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "physeq_ITSOTU",
+      "title": "Example Phyloseq Object for ITS OTUs",
+      "object": "physeq_ITSOTU",
+      "class": [
+        "phyloseq"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "tse",
+      "title": "Example TreeSummarizedExperiment (TSE) Object with Tree and Reference Sequences",
+      "object": "tse",
+      "class": [
+        "TreeSummarizedExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "AcceptableRange",
+      "title": "Acceptable Range Data",
+      "topics": [
+        "AcceptableRange"
+      ]
+    },
+    {
+      "page": "adjust_abundance_one_third",
+      "title": "Adjust Abundance by a Custom Factor",
+      "topics": [
+        "adjust_abundance_by_factor",
+        "adjust_abundance_one_third"
+      ]
+    },
+    {
+      "page": "adjusted_prevalence",
+      "title": "Adjust Prevalence in a Microbiome Object",
+      "topics": [
+        "adjusted_prevalence"
+      ]
+    },
+    {
+      "page": "alluvial_plot",
+      "title": "Generate an Alluvial Plot for Microbiome Data",
+      "topics": [
+        "alluvial_plot"
+      ]
+    },
+    {
+      "page": "calculate_list_average_scaling_factors",
+      "title": "Calculate Sample-specific Average Scaling Factors for Multiple Spike-in Groups",
+      "topics": [
+        "calculate_list_average_scaling_factors"
+      ]
+    },
+    {
+      "page": "calculate_spike_percentage",
+      "title": "Calculate Spike Percentage for Specified Taxa in a Phyloseq or TSE Object",
+      "topics": [
+        "calculate_spike_percentage"
+      ]
+    },
+    {
+      "page": "calculate_spike_percentage_list",
+      "title": "Calculate Spike-in Percentage for Specified Taxa",
+      "topics": [
+        "calculate_spike_percentage_list"
+      ]
+    },
+    {
+      "page": "calculate_spikeIn_factors",
+      "title": "Calculate Scaling Factors for Spiked Species in Phyloseq or TSE Object",
+      "topics": [
+        "calculate_spikeIn_factors"
+      ]
+    },
+    {
+      "page": "calculate_summary_stats_table",
+      "title": "Calculate Summary Statistics Table",
+      "topics": [
+        "calculate_summary_stats_table"
+      ]
+    },
+    {
+      "page": "color_palette",
+      "title": "Original, Extended, and Nature-Inspired Color Palette Sequence",
+      "topics": [
+        "color_palette"
+      ]
+    },
+    {
+      "page": "conclusion",
+      "title": "Compute Summary Statistics for Spiked Species",
+      "topics": [
+        "conclusion"
+      ]
+    },
+    {
+      "page": "convert_categorical_to_factors",
+      "title": "Convert Categorical Columns to Factors in Sample Data",
+      "topics": [
+        "convert_categorical_to_factors"
+      ]
+    },
+    {
+      "page": "convert_phyloseq_to_tse",
+      "title": "Convert a 'phyloseq' Object to a 'TreeSummarizedExperiment'",
+      "topics": [
+        "convert_phyloseq_to_tse"
+      ]
+    },
+    {
+      "page": "convert_to_absolute_counts",
+      "title": "Convert Relative ASV/OTU Counts to Absolute Counts",
+      "topics": [
+        "convert_to_absolute_counts"
+      ]
+    },
+    {
+      "page": "convert_tse_to_phyloseq",
+      "title": "Convert a 'TreeSummarizedExperiment' to a 'phyloseq' Object",
+      "topics": [
+        "convert_tse_to_phyloseq"
+      ]
+    },
+    {
+      "page": "create_directory",
+      "title": "Create a Directory and Optionally Set as Working Directory",
+      "topics": [
+        "create_directory"
+      ]
+    },
+    {
+      "page": "create_list",
+      "title": "Create a List from a Phyloseq or TSE Object",
+      "topics": [
+        "create_list"
+      ]
+    },
+    {
+      "page": "degree_network",
+      "title": "Analyze and Visualize a Microbial Network",
+      "topics": [
+        "degree_network"
+      ]
+    },
+    {
+      "page": "detect_common_asvs_taxa",
+      "title": "Detect Common ASVs and Taxa from Multiple Phyloseq or TSE Objects",
+      "topics": [
+        "detect_common_asvs_taxa"
+      ]
+    },
+    {
+      "page": "extract_neighbors",
+      "title": "Extract First and Second Neighbors of a Target Node",
+      "topics": [
+        "extract_neighbors"
+      ]
+    },
+    {
+      "page": "filter_and_split_abundance",
+      "title": "Filter and Split Abundance Data by Threshold",
+      "topics": [
+        "filter_and_split_abundance"
+      ]
+    },
+    {
+      "page": "get_long_format_data",
+      "title": "Convert a Phyloseq or TSE Object into a Long-Format Data Frame",
+      "topics": [
+        "get_long_format_data"
+      ]
+    },
+    {
+      "page": "get_otu_table",
+      "title": "Extract OTU Tax Metadata from Object",
+      "topics": [
+        "get_otu_table"
+      ]
+    },
+    {
+      "page": "get_phy_tree",
+      "title": "Extract Phylogenetic Tree",
+      "topics": [
+        "get_phy_tree"
+      ]
+    },
+    {
+      "page": "get_reference_seq",
+      "title": "Extract Reference Sequences",
+      "topics": [
+        "get_reference_seq"
+      ]
+    },
+    {
+      "page": "get_sample_data",
+      "title": "Extract Sample Data",
+      "topics": [
+        "get_sample_data"
+      ]
+    },
+    {
+      "page": "get_sample_sums",
+      "title": "Extract Sample Sums from Object",
+      "topics": [
+        "get_sample_sums"
+      ]
+    },
+    {
+      "page": "get_tax_table",
+      "title": "Extract Taxonomy Table",
+      "topics": [
+        "get_tax_table"
+      ]
+    },
+    {
+      "page": "gm_mean",
+      "title": "Calculate Geometric Mean",
+      "topics": [
+        "gm_mean"
+      ]
+    },
+    {
+      "page": "imbalance_calculate_list_average_scaling_factors",
+      "title": "Calculate Per-Sample Scaling Factors for Multiple Spike-in Groups",
+      "topics": [
+        "imbalance_calculate_list_average_scaling_factors"
+      ]
+    },
+    {
+      "page": "label",
+      "title": "Label Taxonomic Ranks by Hashcode",
+      "topics": [
+        "label"
+      ]
+    },
+    {
+      "page": "load_graphml",
+      "title": "Load GraphML Without 'id' Conflicts",
+      "topics": [
+        "load_graphml"
+      ]
+    },
+    {
+      "page": "metadata_full",
+      "title": "Metadata for Microbiome Samples",
+      "topics": [
+        "metadata_full"
+      ]
+    },
+    {
+      "page": "MG_shapes",
+      "title": "Predefined Shape Vector for Plot Styling",
+      "topics": [
+        "MG_shapes"
+      ]
+    },
+    {
+      "page": "my_custom_theme",
+      "title": "Custom ggplot2 Theme with Consistent Aesthetics",
+      "topics": [
+        "my_custom_theme"
+      ]
+    },
+    {
+      "page": "node_level_metrics",
+      "title": "Compute and Visualize Node-Level Network Metrics",
+      "topics": [
+        "node_level_metrics"
+      ]
+    },
+    {
+      "page": "norm.clr",
+      "title": "CLR Normalization (Centered Log-Ratio Transformation)",
+      "topics": [
+        "norm.clr"
+      ]
+    },
+    {
+      "page": "norm.css",
+      "title": "CSS Normalization (Cumulative Sum Scaling)",
+      "topics": [
+        "norm.css"
+      ]
+    },
+    {
+      "page": "norm.DESeq",
+      "title": "DESeq Normalization with Pseudocount and Integer Conversion",
+      "topics": [
+        "norm.DESeq"
+      ]
+    },
+    {
+      "page": "norm.med",
+      "title": "Median Normalization",
+      "topics": [
+        "norm.med"
+      ]
+    },
+    {
+      "page": "norm.Poisson",
+      "title": "Poisson Normalization and Differential Abundance Function",
+      "topics": [
+        "norm.Poisson"
+      ]
+    },
+    {
+      "page": "norm.QN",
+      "title": "Quantile Normalization (QN) for phyloseq object",
+      "topics": [
+        "norm.QN"
+      ]
+    },
+    {
+      "page": "norm.rar",
+      "title": "Rarefying",
+      "topics": [
+        "norm.rar"
+      ]
+    },
+    {
+      "page": "norm.rle",
+      "title": "RLE Normalization (Relative Log Expression)",
+      "topics": [
+        "norm.rle"
+      ]
+    },
+    {
+      "page": "norm.TC",
+      "title": "TC Normalization (Total Count Scaling)",
+      "topics": [
+        "norm.TC"
+      ]
+    },
+    {
+      "page": "norm.TMM",
+      "title": "TMM Normalization (Trimmed Mean of M component)",
+      "topics": [
+        "norm.TMM"
+      ]
+    },
+    {
+      "page": "norm.tss",
+      "title": "TSS Normalization (Total Sum Scaling)",
+      "topics": [
+        "norm.tss"
+      ]
+    },
+    {
+      "page": "norm.UQ",
+      "title": "UQ Normalization (Upper Quartile)",
+      "topics": [
+        "norm.UQ"
+      ]
+    },
+    {
+      "page": "normalization_set",
+      "title": "Apply the Selected Normalization Method to the Phyloseq and TSE Objects",
+      "topics": [
+        "normalization_set"
+      ]
+    },
+    {
+      "page": "perform_and_visualize_DA",
+      "title": "Perform and Visualize Differential Abundance Analysis with edgeR or DESeq2",
+      "topics": [
+        "perform_and_visualize_DA"
+      ]
+    },
+    {
+      "page": "physeq",
+      "title": "Example Phyloseq Object with Tree and Reference Sequences",
+      "topics": [
+        "physeq"
+      ]
+    },
+    {
+      "page": "physeq_16SOTU",
+      "title": "Example Phyloseq Object for 16S OTUs",
+      "topics": [
+        "physeq_16SOTU"
+      ]
+    },
+    {
+      "page": "physeq_ITSOTU",
+      "title": "Example Phyloseq Object for ITS OTUs",
+      "topics": [
+        "physeq_ITSOTU"
+      ]
+    },
+    {
+      "page": "plot_core_microbiome_custom",
+      "title": "Plot Core Microbiome Prevalence Heatmap (Phyloseq & TSE Compatible)",
+      "topics": [
+        "plot_core_microbiome_custom"
+      ]
+    },
+    {
+      "page": "plot_spikein_tree_diagnostic",
+      "title": "Spike-in Tree Diagnostic Plot",
+      "topics": [
+        "plot_spikein_tree_diagnostic"
+      ]
+    },
+    {
+      "page": "plotbar_abundance",
+      "title": "Taxa Bar Plot Without Aggregation (Relative or Absolute Abundance)",
+      "topics": [
+        "plotbar_abundance"
+      ]
+    },
+    {
+      "page": "Pre_processing_hashcodes",
+      "title": "Pre-process phyloseq or TSE object based on hashcodes",
+      "topics": [
+        "Pre_processing_hashcodes"
+      ]
+    },
+    {
+      "page": "Pre_processing_species",
+      "title": "Pre-process taxa in a phyloseq or TSE object by merging ASVs/OTUs",
+      "topics": [
+        "Pre_processing_species"
+      ]
+    },
+    {
+      "page": "Pre_processing_species_list",
+      "title": "Preprocess and Merge Spike-in Species in a Phyloseq or TSE Object",
+      "topics": [
+        "Pre_processing_species_list"
+      ]
+    },
+    {
+      "page": "proportion_adj",
+      "title": "Proportionally Adjust Abundance",
+      "topics": [
+        "proportion_adj"
+      ]
+    },
+    {
+      "page": "quadrant_plot",
+      "title": "Generate Custom Quadrant Plots for Node Metrics",
+      "topics": [
+        "quadrant_plot"
+      ]
+    },
+    {
+      "page": "random_subsample_WithReductionFactor",
+      "title": "Random Subsampling with Reduction Factor",
+      "topics": [
+        "random_subsample_WithReductionFactor"
+      ]
+    },
+    {
+      "page": "RandomForest_selected",
+      "title": "Select Important ASVs/OTUs Using Random Forest",
+      "topics": [
+        "RandomForest_selected"
+      ]
+    },
+    {
+      "page": "randomsubsample_Trimmed_evenDepth",
+      "title": "Subsampling to an Equal Sequencing Depth",
+      "topics": [
+        "randomsubsample_Trimmed_evenDepth"
+      ]
+    },
+    {
+      "page": "regression_plot",
+      "title": "Create a Regression Plot with Faceting by Range",
+      "topics": [
+        "regression_plot"
+      ]
+    },
+    {
+      "page": "relativized_filtered_taxa",
+      "title": "Filter Taxa from a Phyloseq or TSE Object Based on Custom Thresholds",
+      "topics": [
+        "relativized_filtered_taxa"
+      ]
+    },
+    {
+      "page": "remove_zero_negative_count_samples",
+      "title": "Remove Samples with Zero, Negative Counts, or NA Values and Add Pseudocount",
+      "topics": [
+        "remove_zero_negative_count_samples"
+      ]
+    },
+    {
+      "page": "ridge_plot_it",
+      "title": "Generate Ridge Plots for Taxonomic Abundance Distribution",
+      "topics": [
+        "ridge_plot_it"
+      ]
+    },
+    {
+      "page": "set_nf",
+      "title": "Set Normalization Factors in the Sample Data of the Phyloseq Object",
+      "topics": [
+        "set_nf"
+      ]
+    },
+    {
+      "page": "simulate_network_robustness",
+      "title": "Simulate Network Robustness under Node Removal",
+      "topics": [
+        "simulate_network_robustness"
+      ]
+    },
+    {
+      "page": "summ_ASV_OTUID",
+      "title": "Summarize ASV Data Based on ASV_ID",
+      "topics": [
+        "summ_ASV_OTUID"
+      ]
+    },
+    {
+      "page": "summ_count_phyloseq",
+      "title": "Summary Statistics of a Phyloseq or TSE Object",
+      "topics": [
+        "summ_count_phyloseq"
+      ]
+    },
+    {
+      "page": "summ_phyloseq_sampleID",
+      "title": "Generate Summary Statistics for Each Sample",
+      "topics": [
+        "summ_phyloseq_sampleID"
+      ]
+    },
+    {
+      "page": "taxa_barplot",
+      "title": "Generate a Taxa Barplot with Relative or Absolute Abundance",
+      "topics": [
+        "taxa_barplot"
+      ]
+    },
+    {
+      "page": "tidy_phyloseq_tse",
+      "title": "Tidy a Phyloseq or TreeSummarizedExperiment Object",
+      "topics": [
+        "tidy_phyloseq_tse"
+      ]
+    },
+    {
+      "page": "tse",
+      "title": "Example TreeSummarizedExperiment (TSE) Object with Tree and Reference Sequences",
+      "topics": [
+        "tse"
+      ]
+    },
+    {
+      "page": "validate_spikein_clade",
+      "title": "Validate Spike-In Clade Consistency with NJ Tree and Bootstrap",
+      "topics": [
+        "validate_spikein_clade"
+      ]
+    },
+    {
+      "page": "weight_Network",
+      "title": "Analyze and Visualize a Microbial Network",
+      "topics": [
+        "weight_Network"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/DspikeIn/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "ape",
+    "aplot",
+    "askpass",
+    "backports",
+    "base64enc",
+    "bayesm",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "biomformat",
+    "Biostrings",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "car",
+    "carData",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "compositions",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "DECIPHER",
+    "DelayedArray",
+    "DEoptimR",
+    "Deriv",
+    "DESeq2",
+    "digest",
+    "doBy",
+    "dplyr",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fastmatch",
+    "flextable",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "foreach",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdtools",
+    "generics",
+    "GenomicRanges",
+    "ggalluvial",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggpubr",
+    "ggraph",
+    "ggrepel",
+    "ggridges",
+    "ggsci",
+    "ggsignif",
+    "ggstar",
+    "ggtree",
+    "ggtreeExtra",
+    "glue",
+    "graphlayouts",
+    "gridExtra",
+    "gridGraphics",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "lme4",
+    "lmtest",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "microbenchmark",
+    "microbiome",
+    "mime",
+    "minqa",
+    "modelr",
+    "msa",
+    "multtest",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "officer",
+    "openssl",
+    "patchwork",
+    "pbkrtest",
+    "permute",
+    "phangorn",
+    "phyloseq",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "plyr",
+    "polyclip",
+    "polynom",
+    "purrr",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "R6",
+    "ragg",
+    "randomForest",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "reformulas",
+    "reshape2",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rlang",
+    "rmarkdown",
+    "robustbase",
+    "rstatix",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "sp",
+    "SparseArray",
+    "SparseM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemfonts",
+    "tensorA",
+    "textshaping",
+    "tibble",
+    "tidygraph",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "timeDate",
+    "tinytex",
+    "treeio",
+    "TreeSummarizedExperiment",
+    "tseries",
+    "TTR",
+    "tweenr",
+    "urca",
+    "utf8",
+    "uuid",
+    "vctrs",
+    "vegan",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xml2",
+    "xts",
+    "XVector",
+    "yaml",
+    "yulab.utils",
+    "zip",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "DspikeIn-with-TSE.Rmd",
+      "filename": "DspikeIn-with-TSE.html",
+      "title": "DspikeIn with TSE",
+      "author": "Mitra Ghotbi",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Acknowledgments",
+        "DspikeIn",
+        "DspikeIn requirements",
+        "To build TreeSummarizedExperiment file please refer to",
+        "spike-in validation",
+        "Did spike-ins behave as expected across all samples?",
+        "Pre_processing",
+        "Spiked species and related parameters should be defined",
+        "Calculate the percentage of spiked species retrieval",
+        "spiked species retrieval is system-dependent",
+        "Spiked species and related parameters for ITS",
+        "Calculating Scaling Factors",
+        "Convert relative counts to absolute counts",
+        "Summary Stat",
+        "Conclusion",
+        "Abundance-based Core microbiome",
+        "Data transform & Normalization",
+        "Ridge plot",
+        "Differential abundance (Single Pairwise)",
+        "Differential abundance (Multilayer Pairwise)",
+        "Turnover (Presence/absence analysis)",
+        "Visualization",
+        "Microbial dynamics & NetWork comparision",
+        "Visualizes pairwise relationships between node-level metrics using a quadrant-based plot",
+        "Comparision of node-level metrics",
+        "To find neighbors of the target node",
+        "Compute degree metrics and visualize the network",
+        "Small-World Index Analysis",
+        "DspikeIn volume protocol"
+      ],
+      "created": "2025-06-18 15:46:47",
+      "modified": "2025-10-22 16:25:31",
+      "commits": 4
+    }
+  ],
+  "_score": 6.388811413473523,
+  "_indexed": true,
+  "_nocasepkg": "dspikein",
+  "_universes": [
+    "bioc",
+    "mghotbi"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:05:40.000Z",
+      "distro": "noble",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "47f7a5c6e112db0b1850a865db60f0a1a0ddae9eabcdc1e145291a338938fa11",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:04:24.000Z",
+      "distro": "noble",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "eab91d912b0fa538b5af09ecb614a6214432336b2d88562ad49febcf4421039e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:04:43.000Z",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "584c1004c9a246008043319579c5b49f930b24b5bb38320d74579451fafee4c5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:04:31.000Z",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "7d609df63d5ad3ffd3d533aa0dbc7b71081ebbf73f0f47d0e5b7f094d5d61a45",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:04:37.000Z",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "59575719e4dba4dfc6bad8f21264acc5c1ebf4bb55918385e53de8d02284b4b9",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:02:25.000Z",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "e053be662f7d93f0ff975025baabda2d39117bbc418ad5d9502e48fa6ec42de1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:02:50.000Z",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "4c0be5a3e1ca4d5223b7fd19613abb7ebdba167865293d04933f6f3e83c4b6c1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.0",
+      "date": "2026-02-03T08:02:37.000Z",
+      "commit": "18fc5b8c005665f1dae65a5239edb145359671f7",
+      "fileid": "1f27879b652b259036d3ad7f1c12191e501532ea325ecc63381f401a4eeb8f7d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21621710758"
+    }
+  ]
+}

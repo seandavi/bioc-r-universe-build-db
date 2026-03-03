@@ -1,0 +1,957 @@
+{
+  "Type": "Package",
+  "Package": "spatzie",
+  "Title": "Identification of enriched motif pairs from chromatin\ninteraction data",
+  "Version": "1.16.0",
+  "Authors@R": "c(person(given = \"Jennifer\",\nfamily = \"Hammelman\",\nrole = c(\"aut\", \"cre\", \"cph\"),\nemail = \"jhammelm@mit.edu\",\ncomment = c(ORCID = \"0000-0002-1008-2666\")),\nperson(given = \"Konstantin\",\nfamily = \"Krismer\",\nrole = \"aut\",\nemail = \"krismer@mit.edu\",\ncomment = c(ORCID = \"0000-0001-8994-3416\")),\nperson(given = \"David\",\nfamily = \"Gifford\",\nrole = c(\"ths\", \"cph\"),\nemail = \"gifford@mit.edu\",\ncomment = c(ORCID = \"0000-0003-1709-4034\")))",
+  "Description": "Identifies motifs that are significantly co-enriched from\nenhancer-promoter interaction data. While enhancer-promoter\nannotation is commonly used to define groups of interaction\nanchors, spatzie also supports co-enrichment analysis between\npreprocessed interaction anchors.  Supports BEDPE interaction\ndata derived from genome-wide assays such as HiC, ChIA-PET, and\nHiChIP. Can also be used to look for differentially enriched\nmotif pairs between two interaction experiments.",
+  "License": "GPL-3",
+  "URL": "https://spatzie.mit.edu",
+  "VignetteBuilder": "knitr",
+  "biocViews": "DNA3DStructure, GeneRegulation, PeakDetection, Epigenetics,\nFunctionalGenomics, Classification, HiC, Transcription",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "RoxygenNote": "7.2.3",
+  "Config/pak/sysreqs": "libglpk-dev make libgsl0-dev libbz2-dev libicu-dev\nlibjpeg-dev liblzma-dev libpng-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:11:08 UTC",
+  "RemoteUrl": "https://github.com/bioc/spatzie",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "789231056e63c5fa5e08b28bf69cce925183697d",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-22 09:31:19 UTC",
+    "User": "root"
+  },
+  "Author": "Jennifer Hammelman [aut, cre, cph] (ORCID:\n<https://orcid.org/0000-0002-1008-2666>),\nKonstantin Krismer [aut] (ORCID:\n<https://orcid.org/0000-0001-8994-3416>),\nDavid Gifford [ths, cph] (ORCID:\n<https://orcid.org/0000-0003-1709-4034>)",
+  "Maintainer": "Jennifer Hammelman <jhammelm@mit.edu>",
+  "MD5sum": "a6a49b5a6d3ae49a16a69e68409ac649",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "spatzie_1.16.0.tar.gz",
+  "_fileid": "c39c5d01f57f028fab5a8881215bb270278c8d9917ee5f84029da25fabb66ec5",
+  "_filesize": 2194348,
+  "_sha256": "c39c5d01f57f028fab5a8881215bb270278c8d9917ee5f84029da25fabb66ec5",
+  "_created": "2026-02-22T09:31:19.000Z",
+  "_published": "2026-02-24T04:09:48.381Z",
+  "_jobs": [
+    {
+      "job": 64628517121,
+      "time": 308,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5606281742"
+    },
+    {
+      "job": 64628516923,
+      "time": 610,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5628944396"
+    },
+    {
+      "job": 64628516918,
+      "time": 610,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5628944280"
+    },
+    {
+      "job": 64628516906,
+      "time": 537,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5628934140"
+    },
+    {
+      "job": 64628516929,
+      "time": 395,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5628914964"
+    },
+    {
+      "job": 64628516943,
+      "time": 455,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5606263044"
+    },
+    {
+      "job": 64628516988,
+      "time": 285,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5606280339"
+    },
+    {
+      "job": 64628516935,
+      "time": 471,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5628925122"
+    },
+    {
+      "job": 64628516905,
+      "time": 166,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 64628516920,
+      "time": 471,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5628925160"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/spatzie",
+  "_commit": {
+    "id": "789231056e63c5fa5e08b28bf69cce925183697d",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750668
+  },
+  "_maintainer": {
+    "name": "Jennifer Hammelman",
+    "email": "jhammelm@mit.edu",
+    "orcid": "0000-0002-1008-2666"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicInteractions",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "motifmatchr",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "TFBSTools",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocManager",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg38.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm10.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm9.knownGene",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.17.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.15.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dna3dstructure",
+    "generegulation",
+    "peakdetection",
+    "epigenetics",
+    "functionalgenomics",
+    "classification",
+    "hic",
+    "transcription"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 248,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/spatzie"
+  },
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/spatzie.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "anchor_pair_enrich",
+    "compare_motif_pairs",
+    "filter_motifs",
+    "filter_pair_motifs",
+    "find_ep_coenrichment",
+    "get_specific_interactions",
+    "plot_motif_occurrence",
+    "scan_motifs"
+  ],
+  "_datasets": [
+    {
+      "name": "anchor_pair_example_count",
+      "title": "spatzie count correlation data set",
+      "object": "anchor_pair_example_count",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "anchor_pair_example_match",
+      "title": "spatzie match association data set",
+      "object": "anchor_pair_example_match",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "anchor_pair_example_score",
+      "title": "spatzie score correlation data set",
+      "object": "anchor_pair_example_score",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "compare_pairs_example",
+      "title": "compare_motif_pairs example",
+      "object": "compare_pairs_example",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "Paired-related-HD.1",
+        "AP2.1",
+        "NK.1",
+        "DMRT.1",
+        "NR-ERR.1"
+      ],
+      "rows": 5,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "filter_pairs_example",
+      "title": "spatzie score correlation filtered data set",
+      "object": "filter_pairs_example",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "int_data_k562",
+      "title": "K562 Enhancer - Promoter Interactions Data Set",
+      "object": "int_data_k562",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "int_data_mslcl",
+      "title": "MSLCL Enhancer - Promoter Interactions Data Set",
+      "object": "int_data_mslcl",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "int_data_yy1",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set",
+      "object": "int_data_yy1",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "interactions_yy1",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set",
+      "object": "interactions_yy1",
+      "class": [
+        "GenomicInteractions"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "interactions_yy1_enhancer",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set - YY1 enhancers",
+      "object": "interactions_yy1_enhancer",
+      "class": [
+        "GenomicInteractions"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "interactions_yy1_ep",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set - YY1 enhancers/promoters",
+      "object": "interactions_yy1_ep",
+      "class": [
+        "GenomicInteractions"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "interactions_yy1_promoter",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set - YY1 promoters",
+      "object": "interactions_yy1_promoter",
+      "class": [
+        "GenomicInteractions"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "scan_interactions_example",
+      "title": "Interactions scanned for motifs - interactionData object",
+      "object": "scan_interactions_example",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "scan_interactions_example_filtered",
+      "title": "Interactions with motifs filtered for significance - interactionData object",
+      "object": "scan_interactions_example_filtered",
+      "class": [
+        "interactionData"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "anchor_pair_enrich",
+      "title": "Determine enriched motifs in anchors",
+      "topics": [
+        "anchor_pair_enrich"
+      ]
+    },
+    {
+      "page": "anchor_pair_example_count",
+      "title": "spatzie count correlation data set",
+      "topics": [
+        "anchor_pair_example_count"
+      ]
+    },
+    {
+      "page": "anchor_pair_example_match",
+      "title": "spatzie match association data set",
+      "topics": [
+        "anchor_pair_example_match"
+      ]
+    },
+    {
+      "page": "anchor_pair_example_score",
+      "title": "spatzie score correlation data set",
+      "topics": [
+        "anchor_pair_example_score"
+      ]
+    },
+    {
+      "page": "compare_motif_pairs",
+      "title": "Compare pairs of motifs between two interaction datasets",
+      "topics": [
+        "compare_motif_pairs"
+      ]
+    },
+    {
+      "page": "compare_pairs_example",
+      "title": "compare_motif_pairs example",
+      "topics": [
+        "compare_pairs_example"
+      ]
+    },
+    {
+      "page": "filter_motifs",
+      "title": "Filter motifs based on occurrence within interaction data",
+      "topics": [
+        "filter_motifs"
+      ]
+    },
+    {
+      "page": "filter_pair_motifs",
+      "title": "Filter significant motif interactions",
+      "topics": [
+        "filter_pair_motifs"
+      ]
+    },
+    {
+      "page": "filter_pairs_example",
+      "title": "spatzie score correlation filtered data set",
+      "topics": [
+        "filter_pairs_example"
+      ]
+    },
+    {
+      "page": "find_ep_coenrichment",
+      "title": "Find co-enriched motif pairs in enhancer-promoter interactions",
+      "topics": [
+        "find_ep_coenrichment"
+      ]
+    },
+    {
+      "page": "get_specific_interactions",
+      "title": "Get interactions that contain a specific motif pair",
+      "topics": [
+        "get_specific_interactions"
+      ]
+    },
+    {
+      "page": "int_data_k562",
+      "title": "K562 Enhancer - Promoter Interactions Data Set",
+      "topics": [
+        "int_data_k562"
+      ]
+    },
+    {
+      "page": "int_data_mslcl",
+      "title": "MSLCL Enhancer - Promoter Interactions Data Set",
+      "topics": [
+        "int_data_mslcl"
+      ]
+    },
+    {
+      "page": "int_data_yy1",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set",
+      "topics": [
+        "int_data_yy1"
+      ]
+    },
+    {
+      "page": "interactions_yy1",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set",
+      "topics": [
+        "interactions_yy1"
+      ]
+    },
+    {
+      "page": "interactions_yy1_enhancer",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set - YY1 enhancers",
+      "topics": [
+        "interactions_yy1_enhancer"
+      ]
+    },
+    {
+      "page": "interactions_yy1_ep",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set - YY1 enhancers/promoters",
+      "topics": [
+        "interactions_yy1_ep"
+      ]
+    },
+    {
+      "page": "interactions_yy1_promoter",
+      "title": "Mouse YY1 Enhancer - Promoter Interactions Data Set - YY1 promoters",
+      "topics": [
+        "interactions_yy1_promoter"
+      ]
+    },
+    {
+      "page": "plot_motif_occurrence",
+      "title": "Plot motif occurrence",
+      "topics": [
+        "plot_motif_occurrence"
+      ]
+    },
+    {
+      "page": "scan_interactions_example",
+      "title": "Interactions scanned for motifs - interactionData object",
+      "topics": [
+        "scan_interactions_example"
+      ]
+    },
+    {
+      "page": "scan_interactions_example_filtered",
+      "title": "Interactions with motifs filtered for significance - interactionData object",
+      "topics": [
+        "scan_interactions_example_filtered"
+      ]
+    },
+    {
+      "page": "scan_motifs",
+      "title": "Scans interaction file for motif instances",
+      "topics": [
+        "scan_motifs"
+      ]
+    },
+    {
+      "page": "spatzie",
+      "title": "spatzie",
+      "topics": [
+        "spatzie"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/spatzie/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "caTools",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "dichromat",
+    "digest",
+    "DirichletMultinomial",
+    "dplyr",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicInteractions",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "Gviz",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "igraph",
+    "InteractionSet",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "motifmatchr",
+    "nnet",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "purrr",
+    "pwalign",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "seqLogo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "TFBSTools",
+    "TFMPvalue",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "single-call.Rmd",
+      "filename": "single-call.html",
+      "title": "YY1 ChIA-PET motif analysis (single call)",
+      "author": "Jennifer Hammelman, Konstantin Krismer",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Load data",
+        "Run spatzie enhancer-promoter motif co-enrichment analysis",
+        "Results",
+        "Interaction type pie chart",
+        "Motif co-enrichment matrix",
+        "Additional information",
+        "Session info",
+        "References"
+      ],
+      "created": "2021-05-20 21:23:32",
+      "modified": "2025-07-23 22:03:34",
+      "commits": 9
+    },
+    {
+      "source": "individual-steps.Rmd",
+      "filename": "individual-steps.html",
+      "title": "YY1 ChIA-PET motif analysis (step-by-step)",
+      "author": "Jennifer Hammelman, Konstantin Krismer",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Genome assembly specific configuration",
+        "Load data",
+        "Load mouse promoter information",
+        "Annotate interactions with promoters",
+        "Limit and sort interactions to enhancer:promoter",
+        "Scan motifs",
+        "Compute motif co-significance",
+        "Correlation between motif counts",
+        "Correlation between max motif scores",
+        "Additional information",
+        "Session info",
+        "References"
+      ],
+      "created": "2021-05-20 21:23:32",
+      "modified": "2025-07-23 22:03:34",
+      "commits": 10
+    }
+  ],
+  "_score": 4.477121254719663,
+  "_indexed": false,
+  "_nocasepkg": "spatzie",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_binaries": [
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.16.0",
+      "date": "2025-12-24T08:36:17.000Z",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "b6f294f0bf45d8099b8292a4ea1296142ca5fa108535860258de52f39dd2310b",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/20481967213"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.16.0",
+      "date": "2026-02-24T04:04:26.000Z",
+      "distro": "noble",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "3957910923135e7ac8633ee0fa64cac86b616480a2d2d041920229e0a2eefe84",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.16.0",
+      "date": "2026-02-24T04:04:25.000Z",
+      "distro": "noble",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "f7d2e0201a0b8b5bf4a18173049a01ec5e10e08ad887a857b9a362cd3b7a96ba",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.16.0",
+      "date": "2026-02-24T04:02:44.000Z",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "dd2e8b9d547938f4c240936051e42aad13f4ffbb14c53a5e05f6d7da0c93617f",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.16.0",
+      "date": "2026-02-24T04:02:05.000Z",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "0065d3e50983606c0b541f1cb7c9aac9e0385d09dd5dd1ed197dcd6421914ce2",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.16.0",
+      "date": "2026-02-22T09:36:56.000Z",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "d2c1f50d3cd22f83705bc3d6ab6b280013ab2c69573583ae167b8b0324e15053",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.16.0",
+      "date": "2026-02-24T04:01:42.000Z",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "fab11a6e253785e19de96a6685dc3f6f408e878790453ca1597c2e43526ad0bd",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.16.0",
+      "date": "2026-02-24T04:01:48.000Z",
+      "commit": "789231056e63c5fa5e08b28bf69cce925183697d",
+      "fileid": "63de5021154ad5dd32ea1b5cc4219008dc2535e90ad6d45c9df35afe12d7c120",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22274454184"
+    }
+  ]
+}

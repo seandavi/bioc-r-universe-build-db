@@ -1,0 +1,975 @@
+{
+  "Package": "ALDEx2",
+  "Type": "Package",
+  "Title": "Analysis Of Differential Abundance Taking Sample and Scale\nVariation Into Account",
+  "Version": "1.42.0",
+  "Date": "2023-02-09",
+  "Author": "Greg Gloor, Andrew Fernandes, Jean Macklaim, Arianne Albert,\nMatt Links, Thomas Quinn, Jia Rong Wu, Ruth Grace Wong, Brandon\nLieng, Michelle Nixon",
+  "Maintainer": "Greg Gloor <ggloor@uwo.ca>",
+  "biocViews": "DifferentialExpression, RNASeq, Transcriptomics,\nGeneExpression, DNASeq, ChIPSeq, Bayesian, Sequencing,\nSoftware, Microbiome, Metagenomics, ImmunoOncology, Scale\nsimulation, Posterior p-value",
+  "Description": "A differential abundance analysis for the comparison of\ntwo or more conditions. Useful for analyzing data from standard\nRNA-seq or meta-RNA-seq assays as well as selected and\nunselected values from in-vitro sequence selections. Uses a\nDirichlet-multinomial model to infer abundance from counts,\noptimized for three or more experimental replicates. The method\ninfers biological and sampling variation to calculate the\nexpected false discovery rate, given the variation, based on a\nWilcoxon Rank Sum test and Welch's t-test (via aldex.ttest), a\nKruskal-Wallis test (via aldex.kw), a generalized linear model\n(via aldex.glm), or a correlation test (via aldex.corr). All\ntests report predicted p-values and posterior\nBenjamini-Hochberg corrected p-values. ALDEx2 also calculates\nexpected standardized effect sizes for paired or unpaired study\ndesigns. ALDEx2 can now be used to estimate the effect of scale\non the results and report on the scale-dependent robustness of\nresults.",
+  "License": "GPL (>=3)",
+  "URL": "https://github.com/ggloor/ALDEx_bioc",
+  "BugReports": "https://github.com/ggloor/ALDEx_bioc/issues",
+  "RoxygenNote": "7.2.3",
+  "VignetteBuilder": "knitr",
+  "Remotes": [
+    "coolbutuseless/ggpattern"
+  ],
+  "Config/pak/sysreqs": "make libjpeg-dev libpng-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:21:46 UTC",
+  "RemoteUrl": "https://github.com/bioc/ALDEx2",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-23 09:43:30 UTC",
+    "User": "root"
+  },
+  "MD5sum": "7d7416d0f475ef5ebeb9487097a58306",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "ALDEx2_1.42.0.tar.gz",
+  "_fileid": "a3f2f822a3057af2b827961d38a19de1f474f280f903860855d5236b1b9c9288",
+  "_filesize": 2766452,
+  "_sha256": "a3f2f822a3057af2b827961d38a19de1f474f280f903860855d5236b1b9c9288",
+  "_created": "2026-02-23T09:43:30.000Z",
+  "_published": "2026-02-23T10:01:04.084Z",
+  "_jobs": [
+    {
+      "job": 64507537669,
+      "time": 200,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5614448902"
+    },
+    {
+      "job": 64507537680,
+      "time": 366,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614486525"
+    },
+    {
+      "job": 64507537684,
+      "time": 341,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614480830"
+    },
+    {
+      "job": 64507537659,
+      "time": 213,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614623211"
+    },
+    {
+      "job": 64507537670,
+      "time": 196,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614629442"
+    },
+    {
+      "job": 64506923983,
+      "time": 325,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5614402435"
+    },
+    {
+      "job": 64507537651,
+      "time": 163,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5614440588"
+    },
+    {
+      "job": 64507537645,
+      "time": 250,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5614460294"
+    },
+    {
+      "job": 64507537653,
+      "time": 287,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5614468642"
+    },
+    {
+      "job": 64507537674,
+      "time": 269,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5614463122"
+    }
+  ],
+  "_bioccheck": {
+    "error": 2,
+    "warning": 5,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ALDEx2",
+  "_commit": {
+    "id": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761747706
+  },
+  "_maintainer": {
+    "name": "Greg Gloor",
+    "email": "ggloor@uwo.ca",
+    "login": "ggloor",
+    "twitter": "@gbgloor",
+    "uuid": 6034128
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Depends"
+    },
+    {
+      "package": "zCompositions",
+      "role": "Depends"
+    },
+    {
+      "package": "lattice",
+      "role": "Depends"
+    },
+    {
+      "package": "latticeExtra",
+      "role": "Depends"
+    },
+    {
+      "package": "Rfast",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "multtest",
+      "role": "Imports"
+    },
+    {
+      "package": "directlabels",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "purrr",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggpattern",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "cowplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Suggests"
+    },
+    {
+      "package": "magick",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 3,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.43.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.42.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "differentialexpression",
+    "rnaseq",
+    "transcriptomics",
+    "geneexpression",
+    "dnaseq",
+    "chipseq",
+    "bayesian",
+    "sequencing",
+    "software",
+    "microbiome",
+    "metagenomics",
+    "immunooncology",
+    "scale\nsimulation",
+    "posterior p-value"
+  ],
+  "_stars": 30,
+  "_contributors": [
+    {
+      "user": "ggloor",
+      "count": 170,
+      "uuid": 6034128
+    },
+    {
+      "user": "michellepistner",
+      "count": 68,
+      "uuid": 22450494
+    },
+    {
+      "user": "tpq",
+      "count": 23,
+      "uuid": 13802096
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "brandonlieng",
+      "count": 12,
+      "uuid": 23667816
+    },
+    {
+      "user": "dtenenba",
+      "count": 8,
+      "uuid": 2286826
+    },
+    {
+      "user": "jwokaty",
+      "count": 6,
+      "uuid": 1744257
+    },
+    {
+      "user": "jmmack",
+      "count": 3,
+      "uuid": 6088607
+    },
+    {
+      "user": "boopalaarul",
+      "count": 3,
+      "uuid": 36045464
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "vmikk",
+      "count": 2,
+      "uuid": 7162120
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "pooranibcbb",
+      "count": 1,
+      "uuid": 42645335
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 2235,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ALDEx2"
+  },
+  "_mentions": 136,
+  "_devurl": "https://github.com/ggloor/aldex_bioc",
+  "_searchresults": 620,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/ALDEx2.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ggloor/aldex_bioc",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "aldex",
+    "aldex.clr",
+    "aldex.clr.function",
+    "aldex.corr",
+    "aldex.effect",
+    "aldex.expectedDistance",
+    "aldex.glm",
+    "aldex.glm.effect",
+    "aldex.glm.plot",
+    "aldex.kw",
+    "aldex.makeScaleMatrix",
+    "aldex.plot",
+    "aldex.plotFeature",
+    "aldex.senAnalysis",
+    "aldex.set.mode",
+    "aldex.ttest",
+    "getConditions",
+    "getDenom",
+    "getDirichletInstances",
+    "getDirichletReplicate",
+    "getDirichletSample",
+    "getFeatureNames",
+    "getFeatures",
+    "getMonteCarloInstances",
+    "getMonteCarloReplicate",
+    "getMonteCarloSample",
+    "getReads",
+    "getSampleIDs",
+    "getScaleSamples",
+    "interpretGamma",
+    "numConditions",
+    "numFeatures",
+    "numMCInstances",
+    "plotGamma"
+  ],
+  "_datasets": [
+    {
+      "name": "selex",
+      "title": "Selection-based differential sequence variant abundance dataset",
+      "object": "selex",
+      "file": "selex.txt.gz",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "X1_ANS",
+        "X1_BNS",
+        "X1_CNS",
+        "X1_DNS",
+        "X2_ANS",
+        "X2_CNS",
+        "X2_DNS",
+        "X1_AS",
+        "X1_BS",
+        "X1_CS",
+        "X1_DS",
+        "X2_AS",
+        "X2_CS",
+        "X2_DS"
+      ],
+      "rows": 1600,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "synth2",
+      "title": "Synthetic asymmetric dataset",
+      "object": "synth2",
+      "file": "synth2.txt.gz",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "s_1",
+        "s_2",
+        "s_3",
+        "s_4",
+        "s_5",
+        "s_6",
+        "s_7",
+        "s_8",
+        "s_9",
+        "s_10",
+        "s_11",
+        "s_12",
+        "s_13",
+        "s_14",
+        "s_15",
+        "s_16",
+        "s_17",
+        "s_18",
+        "s_19",
+        "s_20"
+      ],
+      "rows": 1000,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "ALDEx2m-package",
+      "title": "Analysis of differential abundance taking sample variation into account",
+      "topics": [
+        "ALDEx2m-package",
+        "ALDEx2m"
+      ]
+    },
+    {
+      "page": "aldex",
+      "title": "Compute an 'aldex' Object",
+      "topics": [
+        "aldex"
+      ]
+    },
+    {
+      "page": "aldex.clr-class",
+      "title": "The aldex.clr class",
+      "topics": [
+        "aldex.clr-class"
+      ]
+    },
+    {
+      "page": "aldex.clr.function",
+      "title": "Compute an 'aldex.clr' Object Generate Monte Carlo samples of the Dirichlet distribution for each sample. Convert each instance using a centered log-ratio transform. This is the input for all further analyses.",
+      "topics": [
+        "aldex.clr",
+        "aldex.clr,data.frame-method",
+        "aldex.clr,matrix-method",
+        "aldex.clr,RangedSummarizedExperiment-method",
+        "aldex.clr.function"
+      ]
+    },
+    {
+      "page": "aldex.corr",
+      "title": "Calculate correlation with a continuous variable",
+      "topics": [
+        "aldex.corr"
+      ]
+    },
+    {
+      "page": "aldex.effect",
+      "title": "Calculate effect sizes and differences between conditions",
+      "topics": [
+        "aldex.effect"
+      ]
+    },
+    {
+      "page": "aldex.expectedDistance",
+      "title": "Calculate the expected values of distances between samples, given an 'aldex' Object",
+      "topics": [
+        "aldex.expectedDistance"
+      ]
+    },
+    {
+      "page": "aldex.glm",
+      "title": "Calculate glm test statistics using a 'model.matrix'",
+      "topics": [
+        "aldex.glm"
+      ]
+    },
+    {
+      "page": "aldex.glm.effect",
+      "title": "calculate effect sizes and differences between all contrasts for the aldex.glm model matrix",
+      "topics": [
+        "aldex.glm.effect"
+      ]
+    },
+    {
+      "page": "aldex.glm.plot",
+      "title": "Plot an 'aldex' Object",
+      "topics": [
+        "aldex.glm.plot"
+      ]
+    },
+    {
+      "page": "aldex.kw",
+      "title": "Calculate the Kruskal-Wallis test and glm statistics",
+      "topics": [
+        "aldex.kw"
+      ]
+    },
+    {
+      "page": "aldex.makeScaleMatrix",
+      "title": "Generate a differential scale matrix by group",
+      "topics": [
+        "aldex.makeScaleMatrix"
+      ]
+    },
+    {
+      "page": "aldex.plot",
+      "title": "Plot an 'aldex' Object",
+      "topics": [
+        "aldex.plot"
+      ]
+    },
+    {
+      "page": "aldex.plotFeature",
+      "title": "Show dispersion of the expected values returned by 'aldex.effect'",
+      "topics": [
+        "aldex.plotFeature"
+      ]
+    },
+    {
+      "page": "aldex.senAnalysis",
+      "title": "Sensitivity analysis using scale simulation",
+      "topics": [
+        "aldex.senAnalysis"
+      ]
+    },
+    {
+      "page": "aldex.set.mode",
+      "title": "identify set of denominator features for log-ratio calculation",
+      "topics": [
+        "aldex.set.mode"
+      ]
+    },
+    {
+      "page": "aldex.ttest",
+      "title": "Calculate Wilcoxon Rank Sum test and Welch's t-test statistics",
+      "topics": [
+        "aldex.ttest"
+      ]
+    },
+    {
+      "page": "getConditions-method",
+      "title": "getConditions",
+      "topics": [
+        "getConditions",
+        "getConditions,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getDenom-method",
+      "title": "getDenom",
+      "topics": [
+        "getDenom",
+        "getDenom,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getDirichletInstances-method",
+      "title": "getDirichletInstances",
+      "topics": [
+        "getDirichletInstances",
+        "getDirichletInstances,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getDirichletReplicate-method",
+      "title": "getDirichletReplicate",
+      "topics": [
+        "getDirichletReplicate",
+        "getDirichletReplicate,aldex.clr,numeric-method"
+      ]
+    },
+    {
+      "page": "getDirichletSample-method",
+      "title": "getDirichletSample",
+      "topics": [
+        "getDirichletSample",
+        "getDirichletSample,aldex.clr,numeric-method"
+      ]
+    },
+    {
+      "page": "getFeatureNames-method",
+      "title": "getFeatureNames",
+      "topics": [
+        "getFeatureNames",
+        "getFeatureNames,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getFeatures-method",
+      "title": "getFeatures",
+      "topics": [
+        "getFeatures",
+        "getFeatures,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getMonteCarloInstances-method",
+      "title": "getMonteCarloInstances",
+      "topics": [
+        "getMonteCarloInstances",
+        "getMonteCarloInstances,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getMonteCarloReplicate-method",
+      "title": "getMonteCarloReplicate",
+      "topics": [
+        "getMonteCarloReplicate",
+        "getMonteCarloReplicate,aldex.clr,numeric-method"
+      ]
+    },
+    {
+      "page": "getMonteCarloSample-method",
+      "title": "getMonteCarloSample",
+      "topics": [
+        "getMonteCarloSample",
+        "getMonteCarloSample,aldex.clr,numeric-method"
+      ]
+    },
+    {
+      "page": "getReads-method",
+      "title": "getReads",
+      "topics": [
+        "getReads",
+        "getReads,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getSampleIDs-method",
+      "title": "getSampleIDs",
+      "topics": [
+        "getSampleIDs",
+        "getSampleIDs,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "getScaleSamples-method",
+      "title": "getScaleSamples",
+      "topics": [
+        "getScaleSamples",
+        "getScaleSamples,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "interpretGamma",
+      "title": "Interpret the scale model implied by a certain level of gamma or scale model",
+      "topics": [
+        "interpretGamma"
+      ]
+    },
+    {
+      "page": "numConditions-method",
+      "title": "numConditions",
+      "topics": [
+        "numConditions",
+        "numConditions,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "numFeatures-method",
+      "title": "numFeatures",
+      "topics": [
+        "numFeatures",
+        "numFeatures,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "numMCInstances-method",
+      "title": "numMCInstances",
+      "topics": [
+        "numMCInstances",
+        "numMCInstances,aldex.clr-method"
+      ]
+    },
+    {
+      "page": "plotGamma",
+      "title": "Create gamma diagram for scale simulation sensitivity result",
+      "topics": [
+        "plotGamma"
+      ]
+    },
+    {
+      "page": "selex",
+      "title": "Selection-based differential sequence variant abundance dataset",
+      "topics": [
+        "selex"
+      ]
+    },
+    {
+      "page": "synth2",
+      "title": "Synthetic asymmetric dataset",
+      "topics": [
+        "synth2"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ALDEx2/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "codetools",
+    "cpp11",
+    "DelayedArray",
+    "deldir",
+    "directlabels",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "interp",
+    "IRanges",
+    "jpeg",
+    "lambda.r",
+    "lattice",
+    "latticeExtra",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "multtest",
+    "png",
+    "quadprog",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppParallel",
+    "Rfast",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "survival",
+    "truncnorm",
+    "XVector",
+    "zCompositions",
+    "zigg"
+  ],
+  "_vignettes": [
+    {
+      "source": "ALDEx2_vignette.Rmd",
+      "filename": "ALDEx2_vignette.html",
+      "title": "ANOVA-Like Differential Expression tool for high throughput sequencing data",
+      "author": "Greg Gloor",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction to r Biocpkg(\"ALDEx2\")",
+        "Installation",
+        "What r Biocpkg(\"ALDEx2\") does differently",
+        "Quick Start: aldex with 2 groups:",
+        "Modular r Biocpkg(\"ALDEx2\") is way more informative",
+        "The aldex.clr module",
+        "The aldex.ttest module",
+        "The aldex.effect module",
+        "The aldex.plot module",
+        "The effect confidence interval",
+        "Complex study designs and the aldex.glm module",
+        "The aldex.kw module",
+        "Adding scale to ALDEx2",
+        "ALDEx2 outputs",
+        "Expected values",
+        "Explaining the outputs",
+        "aldex.effect(x)",
+        "aldex.ttest(x)",
+        "aldex.glm(x)",
+        "A word about effect size and overlap",
+        "Alternative plotting of outputs",
+        "Troubleshooting datasets",
+        "Using scale to correct for asymmetric datasets",
+        "Subsetting features to correct for asymmetric datasets",
+        "Parameter values for denom",
+        "Very large datasets",
+        "Contributors",
+        "Version information"
+      ],
+      "created": "2018-07-27 17:19:01",
+      "modified": "2023-10-05 15:29:37",
+      "commits": 22
+    },
+    {
+      "source": "scaleSim_vignette.Rmd",
+      "filename": "scaleSim_vignette.html",
+      "title": "Incorporating Scale Uncertainty into ALDEx2",
+      "author": "Michelle Nixon",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction to Scale Simulation using ALDEx2",
+        "From Normalizations to Scale Models",
+        "Using Scale Simulation in ALDEx2",
+        "Installing ALDEx2 with Scale Simulation",
+        "Simulation Setup",
+        "Incorporating Scale in ALDEx2",
+        "Default Scale Model",
+        "Measurement-Based Scale Model",
+        "Knowledge-Based Scale Model",
+        "Comparing the Models",
+        "Sensitivity Analyses",
+        "Session Info",
+        "References"
+      ],
+      "created": "2023-04-26 14:20:33",
+      "modified": "2023-10-01 19:43:18",
+      "commits": 5
+    }
+  ],
+  "_score": 10.953244222836801,
+  "_indexed": false,
+  "_nocasepkg": "aldex2",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/ALDEx2",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:47:34.000Z",
+      "distro": "noble",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "de87372240f757896251c852cda6464a949019c6759977c1e1b01d7e02fed5fb",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:47:08.000Z",
+      "distro": "noble",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "3f6ebcddff574781815e173408d86c1de54c3d5b54ceb1f0e686a1e19b2c3eb7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:58:20.000Z",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "c40ae2a2e06da102b6fc158b5a45de31f463232a45f289a52b6efcc5fc21117f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:58:57.000Z",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "b0abb9215abe08356f90aceccbb97baec65ce98f4f44e18636f829b74e76b4f3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:46:48.000Z",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "0cc855fa1d89f47b8810f87304a644a42155a1f377bbc0d72349ed5958d59715",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:45:24.000Z",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "04ab37d308e37c19707b074b2c070d9319fca72b366150c0871c1682be62571c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:46:01.000Z",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "c6da57d1226b2e59b93613f48fa1f1d8fbcf55081210604111e9817426bdc84a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.42.0",
+      "date": "2026-02-23T09:45:26.000Z",
+      "commit": "4f9241417d12122a603cdbe89e75413e24ab5f01",
+      "fileid": "edd4282d9d2ee5ba2d690ed229058e810e5c0f33af9f95ab692f534b1a69459b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22300480974"
+    }
+  ]
+}

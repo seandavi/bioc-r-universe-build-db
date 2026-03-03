@@ -1,0 +1,974 @@
+{
+  "Package": "decontX",
+  "Title": "Decontamination of single cell genomics data",
+  "Version": "1.8.0",
+  "Authors@R": "c(person(\"Yuan\", \"Yin\", , \"yuan_yin@outlook.com\", role = c(\"aut\"),\ncomment = c(ORCID = \"0000-0001-9261-6061\")),\nperson(\"Masanao\", \"Yajima\", , \"yajima@bu.edu\", role = c(\"aut\"),\ncomment = c(ORCID = \"0000-0002-7583-3707\")),\nperson(\"Joshua\", \"Campbell\", , \"camp@bu.edu\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0003-0780-8662\")))",
+  "Description": "This package contains implementation of DecontX (Yang et\nal. 2020), a decontamination algorithm for single-cell RNA-seq,\nand DecontPro (Yin et al. 2023), a decontamination algorithm\nfor single cell protein expression data. DecontX is a novel\nBayesian method to computationally estimate and remove RNA\ncontamination in individual cells without empty droplet\ninformation. DecontPro is a Bayesian method that estimates the\nlevel of contamination from ambient and background sources in\nCITE-seq ADT dataset and decontaminate the dataset.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "Config/testthat/edition": "3",
+  "Biarch": "true",
+  "SystemRequirements": "GNU make",
+  "VignetteBuilder": "knitr",
+  "biocViews": "SingleCell, Bayesian",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev libglpk-dev make libharfbuzz-dev libicu-dev\nlibjpeg-dev libpng-dev libtiff-dev libwebp-dev libxml2-dev\nlibssl-dev perl python3 zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:26:26 UTC",
+  "RemoteUrl": "https://github.com/bioc/decontX",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-10 16:15:07 UTC",
+    "User": "root"
+  },
+  "Author": "Yuan Yin [aut] (ORCID: <https://orcid.org/0000-0001-9261-6061>),\nMasanao Yajima [aut] (ORCID: <https://orcid.org/0000-0002-7583-3707>),\nJoshua Campbell [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-0780-8662>)",
+  "Maintainer": "Joshua Campbell <camp@bu.edu>",
+  "MD5sum": "02bde761400700869dcad1a0a24a1f27",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "decontX_1.8.0.tar.gz",
+  "_fileid": "55e548db2efd5b01f90c973b50618277ffb074fc1645af869463d2265b7accc9",
+  "_filesize": 1794444,
+  "_sha256": "55e548db2efd5b01f90c973b50618277ffb074fc1645af869463d2265b7accc9",
+  "_created": "2026-02-10T16:15:07.000Z",
+  "_published": "2026-02-10T16:50:41.983Z",
+  "_jobs": [
+    {
+      "job": 63133149364,
+      "time": 350,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5451765675"
+    },
+    {
+      "job": 63133149494,
+      "time": 607,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5451839991"
+    },
+    {
+      "job": 63133149331,
+      "time": 665,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5451856238"
+    },
+    {
+      "job": 63133149398,
+      "time": 565,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5451827503"
+    },
+    {
+      "job": 63133149350,
+      "time": 680,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5451860779"
+    },
+    {
+      "job": 63133149318,
+      "time": 534,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5452175564"
+    },
+    {
+      "job": 63133149314,
+      "time": 712,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5452222535"
+    },
+    {
+      "job": 63133149453,
+      "time": 615,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5451985542"
+    },
+    {
+      "job": 63133149346,
+      "time": 742,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5452247050"
+    },
+    {
+      "job": 63131678295,
+      "time": 630,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5451665798"
+    },
+    {
+      "job": 63133149291,
+      "time": 312,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 63133149405,
+      "time": 674,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5451859288"
+    },
+    {
+      "job": 63133149579,
+      "time": 652,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5451852611"
+    },
+    {
+      "job": 63133149279,
+      "time": 630,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5451846036"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/decontX",
+  "_commit": {
+    "id": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751586
+  },
+  "_maintainer": {
+    "name": "Joshua Campbell",
+    "email": "camp@bu.edu",
+    "login": "camplab",
+    "uuid": 43044384,
+    "orcid": "0000-0003-0780-8662"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BH",
+      "version": ">= 1.66.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppEigen",
+      "version": ">= 0.3.3.3.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppParallel",
+      "version": ">= 5.0.1",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "rstan",
+      "version": ">= 2.18.1",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "StanHeaders",
+      "version": ">= 2.18.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "celda",
+      "role": "Imports"
+    },
+    {
+      "package": "dbscan",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "version": ">= 1.5.3",
+      "role": "Imports"
+    },
+    {
+      "package": "MCMCprecision",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.0",
+      "role": "Imports"
+    },
+    {
+      "package": "RcppParallel",
+      "version": ">= 5.0.1",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "rstan",
+      "version": ">= 2.18.1",
+      "role": "Imports"
+    },
+    {
+      "package": "rstantools",
+      "version": ">= 2.2.0",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "scater",
+      "role": "Imports"
+    },
+    {
+      "package": "Seurat",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "withr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "scran",
+      "role": "Suggests"
+    },
+    {
+      "package": "SingleCellMultiModal",
+      "role": "Suggests"
+    },
+    {
+      "package": "TENxPBMCData",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-07",
+      "n": 6
+    },
+    {
+      "week": "2025-08",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.9.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.8.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "singlecell",
+    "bayesian",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 753,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/decontX"
+  },
+  "_searchresults": 67,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/decontX.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "decontPro",
+    "decontX",
+    "decontXcounts",
+    "decontXcounts<-",
+    "plotBoxByCluster",
+    "plotDecontXContamination",
+    "plotDecontXMarkerExpression",
+    "plotDecontXMarkerPercentage",
+    "plotDensity",
+    "retrieveFeatureIndex",
+    "simulateContamination"
+  ],
+  "_help": [
+    {
+      "page": "decontX-package",
+      "title": "The 'decontX' package.",
+      "topics": [
+        "decontX-package"
+      ]
+    },
+    {
+      "page": "dot-call_stan_vb",
+      "title": "Call Stan variational bayes for inference",
+      "topics": [
+        ".call_stan_vb"
+      ]
+    },
+    {
+      "page": "dot-process_stan_vb_out",
+      "title": "Process Stan output.",
+      "topics": [
+        ".process_stan_vb_out"
+      ]
+    },
+    {
+      "page": "decontPro",
+      "title": "Decontaminate using decontPro",
+      "topics": [
+        "decontPro",
+        "decontPro,ANY-method",
+        "decontPro,Seurat-method",
+        "decontPro,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "decontX",
+      "title": "Contamination estimation with decontX",
+      "topics": [
+        "decontX",
+        "decontX,ANY-method",
+        "decontX,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "decontXcounts",
+      "title": "Get or set decontaminated counts matrix",
+      "topics": [
+        "decontXcounts",
+        "decontXcounts,SingleCellExperiment-method",
+        "decontXcounts<-",
+        "decontXcounts<-,SingleCellExperiment-method"
+      ]
+    },
+    {
+      "page": "fastNormProp",
+      "title": "Fast normalization for numeric matrix",
+      "topics": [
+        "fastNormProp"
+      ]
+    },
+    {
+      "page": "fastNormPropLog",
+      "title": "Fast normalization for numeric matrix",
+      "topics": [
+        "fastNormPropLog"
+      ]
+    },
+    {
+      "page": "fastNormPropSqrt",
+      "title": "Fast normalization for numeric matrix",
+      "topics": [
+        "fastNormPropSqrt"
+      ]
+    },
+    {
+      "page": "nonzero",
+      "title": "get row and column indices of none zero elements in the matrix",
+      "topics": [
+        "nonzero"
+      ]
+    },
+    {
+      "page": "plotBoxByCluster",
+      "title": "Boxplot of features grouped by cell type",
+      "topics": [
+        "plotBoxByCluster"
+      ]
+    },
+    {
+      "page": "plotDecontXContamination",
+      "title": "Plots contamination on UMAP coordinates",
+      "topics": [
+        "plotDecontXContamination"
+      ]
+    },
+    {
+      "page": "plotDecontXMarkerExpression",
+      "title": "Plots expression of marker genes before and after decontamination",
+      "topics": [
+        "plotDecontXMarkerExpression"
+      ]
+    },
+    {
+      "page": "plotDecontXMarkerPercentage",
+      "title": "Plots percentage of cells cell types expressing markers",
+      "topics": [
+        "plotDecontXMarkerPercentage"
+      ]
+    },
+    {
+      "page": "plotDensity",
+      "title": "Density of each ADT, raw counts overlapped with decontaminated counts",
+      "topics": [
+        "plotDensity"
+      ]
+    },
+    {
+      "page": "retrieveFeatureIndex",
+      "title": "Retrieve row index for a set of features",
+      "topics": [
+        "retrieveFeatureIndex"
+      ]
+    },
+    {
+      "page": "simulateContamination",
+      "title": "Simulate contaminated count matrix",
+      "topics": [
+        "simulateContamination"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/decontX/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "bitops",
+    "bluster",
+    "bslib",
+    "cachem",
+    "Cairo",
+    "callr",
+    "caTools",
+    "celda",
+    "checkmate",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "combinat",
+    "commonmark",
+    "ComplexHeatmap",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "dbscan",
+    "DelayedArray",
+    "deldir",
+    "dendextend",
+    "desc",
+    "digest",
+    "distributional",
+    "doParallel",
+    "dotCall64",
+    "dplyr",
+    "dqrng",
+    "edgeR",
+    "enrichR",
+    "evaluate",
+    "farver",
+    "fastDummies",
+    "fastmap",
+    "fitdistrplus",
+    "FNN",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggbeeswarm",
+    "ggdendro",
+    "ggplot2",
+    "ggrastr",
+    "ggrepel",
+    "ggridges",
+    "GlobalOptions",
+    "globals",
+    "glue",
+    "goftest",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "here",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "ica",
+    "igraph",
+    "inline",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "listenv",
+    "lmtest",
+    "locfit",
+    "loo",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "MCMCprecision",
+    "memoise",
+    "metapod",
+    "mime",
+    "miniUI",
+    "nlme",
+    "numDeriv",
+    "openssl",
+    "otel",
+    "parallelly",
+    "patchwork",
+    "pbapply",
+    "pheatmap",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "polyclip",
+    "posterior",
+    "pROC",
+    "processx",
+    "progressr",
+    "promises",
+    "ps",
+    "purrr",
+    "QuickJSR",
+    "R6",
+    "ragg",
+    "RANN",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppHNSW",
+    "RcppML",
+    "RcppParallel",
+    "RcppProgress",
+    "RcppTOML",
+    "reshape2",
+    "reticulate",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "ROCR",
+    "rprojroot",
+    "RSpectra",
+    "rstan",
+    "rstantools",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scattermore",
+    "scran",
+    "sctransform",
+    "scuttle",
+    "Seqinfo",
+    "Seurat",
+    "SeuratObject",
+    "shape",
+    "shiny",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "sourcetools",
+    "sp",
+    "spam",
+    "SparseArray",
+    "spatstat.data",
+    "spatstat.explore",
+    "spatstat.geom",
+    "spatstat.random",
+    "spatstat.sparse",
+    "spatstat.univar",
+    "spatstat.utils",
+    "StanHeaders",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemfonts",
+    "tensor",
+    "tensorA",
+    "textshaping",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "WriteXLS",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "decontPro.Rmd",
+      "filename": "decontPro.html",
+      "title": "Decontamination of single cell protein expression data with DecontPro",
+      "author": "Yuan Yin, Joshua Campbell",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Importing data",
+        "Generate cell clusters",
+        "Run DecontPro",
+        "Plot Results",
+        "Session Information"
+      ],
+      "created": "2023-02-22 21:34:44",
+      "modified": "2025-02-16 22:13:35",
+      "commits": 10
+    },
+    {
+      "source": "decontX.Rmd",
+      "filename": "decontX.html",
+      "title": "Decontamination of ambient RNA in single-cell genomic data with DecontX",
+      "author": "Shiyi (Iris) Yang, Zhe Wang, Yuan Yin, Joshua Campbell",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Importing data",
+        "Load PBMC4k data from 10X",
+        "Running decontX",
+        "Plotting DecontX results",
+        "Cluster labels on UMAP",
+        "Contamination on UMAP",
+        "Expression of markers on UMAP",
+        "Barplot of markers detected in cell clusters",
+        "Violin plot to compare the distributions of original and decontaminated counts",
+        "Other important notes",
+        "Choosing appropriate cell clusters",
+        "Adjusting the priors to influence contamination estimates",
+        "Working with Seurat",
+        "Session Information"
+      ],
+      "created": "2023-03-01 16:18:01",
+      "modified": "2023-10-21 15:04:41",
+      "commits": 2
+    }
+  ],
+  "_score": 5.428134794028789,
+  "_indexed": false,
+  "_nocasepkg": "decontx",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/decontX",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:20:56.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "a667c7f2985c6dc1023d6bbef99336093d9aa3282c8869a3e8470e6117d6f975",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:21:33.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "70fddc578da704f209f2cbaf89d0e9bf92616abf065b3a68db5939b0e1590da4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:20:34.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "b883986abf5fb5f5c3fe03a014156aed3d5647f400b63625b01d7b67d76cf413",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:21:46.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "b47df64f9ed0e56f2a3bcfc8972f95d8145d7b6bd45e7fe614bf16cbbef702d3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:40:01.000Z",
+      "arch": "aarch64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "b22483249b0d4dea6dc068661a239cf78acd5d77658d93d9da0f8fa6f6428811",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:41:02.000Z",
+      "arch": "x86_64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "0e9ba58f6c7eae4a0bb0b622882aca28abed4727ad13dc5cd892920fca20aade",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:27:42.000Z",
+      "arch": "aarch64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "a9d3beeeae16c84f7cc92c6f5dae8965869ef41331a2e4b13fab81d34d616822",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:41:34.000Z",
+      "arch": "x86_64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "28201106dc1605a00ec1c3afebbe95a8184e4043ddc2a2a2649e3d300c14f798",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:19:26.000Z",
+      "arch": "x86_64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "2f964ba1b8c2e65cb953878ec51d8defed3f5efcf48fecaf469aa32c463377d5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:19:28.000Z",
+      "arch": "x86_64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "087baa63932494f67797162a38412f23737ce34efe334389fac139308bbacd97",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-10T16:19:12.000Z",
+      "arch": "x86_64",
+      "commit": "e98b38cdfd6286b03c49d6c371a560de1d5ac451",
+      "fileid": "437e7f5aebb1e1e5fb0ce696b8fba966c94607f1f12143c322b2ad14756fb9d5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21872502950"
+    }
+  ]
+}

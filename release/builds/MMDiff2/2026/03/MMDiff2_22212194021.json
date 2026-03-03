@@ -1,0 +1,675 @@
+{
+  "Package": "MMDiff2",
+  "Description": "This package detects statistically significant differences\nbetween read enrichment profiles in different ChIP-Seq samples.\nTo take advantage of shape differences it uses Kernel methods\n(Maximum Mean Discrepancy, MMD).",
+  "Type": "Package",
+  "Title": "Statistical Testing for ChIP-Seq data sets",
+  "Version": "1.38.0",
+  "Authors@R": "c(\nperson(\"Gabriele\", \"Schweikert\", role = c(\"cre\", \"aut\"), email = \"gschweik@staffmail.ed.ac.uk\"),\nperson(\"David\", \"Kuo\", role = \"aut\", email = \"dkuo@cbio.mskcc.org\"))",
+  "biocViews": "ChIPSeq, DifferentialPeakCalling, Sequencing, Software",
+  "License": "Artistic-2.0",
+  "ImportFrom": "utils txtProgressBar setTxtProgressBar read.csv",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "5.0.1",
+  "Collate": "'DBAmmd-Class.R' 'AllGenerics.R' 'DBAmmd-Accessors.R'\n'DBAmmd-Showmethods.R' 'DBAmmd-internal.R' 'MMDiff2_data.R'\n'compDists.R' 'compHists.R' 'compPvals.R' 'createPeakMatrix.R'\n'estimateFragmentCenters.R' 'getPeakReads.R' 'helperFcts.R'\n'plotDISTS4Peak.R' 'plotDists.R' 'plotPeak.R' 'reportResults.R'\n'runShinyMMDiff2.R' 'server.R' 'ui.R'",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:32:14 UTC",
+  "RemoteUrl": "https://github.com/bioc/MMDiff2",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "37123130732967f2b3a0662af06174741ea00ac6",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-20 05:16:55 UTC",
+    "User": "root"
+  },
+  "Author": "Gabriele Schweikert [cre, aut],\nDavid Kuo [aut]",
+  "Maintainer": "Gabriele Schweikert <gschweik@staffmail.ed.ac.uk>",
+  "MD5sum": "193a53afe3bdf0091061d8d5ce977219",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "MMDiff2_1.38.0.tar.gz",
+  "_fileid": "f2507ed293ccf41fadebad1b26575374c2a8942547fc3a419c08133fccc5b68d",
+  "_filesize": 3131093,
+  "_sha256": "f2507ed293ccf41fadebad1b26575374c2a8942547fc3a419c08133fccc5b68d",
+  "_created": "2026-02-20T05:16:55.000Z",
+  "_published": "2026-02-20T05:29:35.768Z",
+  "_jobs": [
+    {
+      "job": 64249113121,
+      "time": 249,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5584823283"
+    },
+    {
+      "job": 64249113092,
+      "time": 693,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5584879556"
+    },
+    {
+      "job": 64249113097,
+      "time": 486,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5584852302"
+    },
+    {
+      "job": 64249113100,
+      "time": 284,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5584827145"
+    },
+    {
+      "job": 64249113102,
+      "time": 481,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5584851235"
+    },
+    {
+      "job": 64248664230,
+      "time": 442,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5584795035"
+    },
+    {
+      "job": 64249113135,
+      "time": 215,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5584819480"
+    },
+    {
+      "job": 64249113104,
+      "time": 644,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5584873071"
+    },
+    {
+      "job": 64249113109,
+      "time": 363,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5584836634"
+    },
+    {
+      "job": 64249113108,
+      "time": 370,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5584837293"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 5,
+    "note": 19
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/MMDiff2",
+  "_commit": {
+    "id": "37123130732967f2b3a0662af06174741ea00ac6",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761748334
+  },
+  "_maintainer": {
+    "name": "Gabriele Schweikert",
+    "email": "gschweik@staffmail.ed.ac.uk"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "locfit",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "MMDiffBamSubset",
+      "role": "Suggests"
+    },
+    {
+      "package": "MotifDb",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Mmusculus.UCSC.mm9",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-26",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.39.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.38.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "chipseq",
+    "differentialpeakcalling",
+    "sequencing",
+    "software"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 344,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MMDiff2"
+  },
+  "_searchresults": 0,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/MMDiff2.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "compDists",
+    "compHists",
+    "compPvals",
+    "Contrast",
+    "Counts",
+    "DBAmmd",
+    "Dists",
+    "estimateFragmentCenters",
+    "Genome",
+    "getPeakReads",
+    "Hists",
+    "metaData",
+    "numPeaks",
+    "numSamples",
+    "plotDists",
+    "plotDISTS4Peak",
+    "plotPeak",
+    "Reads",
+    "Regions",
+    "reportResults",
+    "runShinyMMDiff2",
+    "Samples",
+    "setContrast",
+    "setRegions"
+  ],
+  "_datasets": [
+    {
+      "name": "MMD",
+      "title": "DBAmmd Object for Cfp1 example",
+      "object": "MMD",
+      "file": "MMD.RData",
+      "class": [
+        "DBAmmd"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "Cfp1-Peaks",
+      "title": "Peaks for Cfp1-data set",
+      "topics": [
+        "Cfp1-Peaks"
+      ]
+    },
+    {
+      "page": "compDists",
+      "title": "Compute distances between Peaks",
+      "topics": [
+        "compDists"
+      ]
+    },
+    {
+      "page": "compHists",
+      "title": "Compute Peak histograms",
+      "topics": [
+        "compHists"
+      ]
+    },
+    {
+      "page": "compPvals",
+      "title": "compute p-values",
+      "topics": [
+        "compPvals"
+      ]
+    },
+    {
+      "page": "DBAmmd-Accessors",
+      "title": "Extract data from DBAmmd objects",
+      "topics": [
+        "Contrast,DBAmmd-method",
+        "Counts,DBAmmd-method",
+        "DBAmmd-Accessors",
+        "Dists,DBAmmd-method",
+        "Genome,DBAmmd-method",
+        "Hists,DBAmmd-method",
+        "metaData,DBAmmd-method",
+        "numPeaks,DBAmmd-method",
+        "numSamples,DBAmmd-method",
+        "Reads,DBAmmd-method",
+        "Regions,DBAmmd-method",
+        "Samples,DBAmmd-method",
+        "setContrast,DBAmmd-method",
+        "setRegions,DBAmmd-method"
+      ]
+    },
+    {
+      "page": "DBAmmd-class",
+      "title": "Class DBAmmd",
+      "topics": [
+        "DBAmmd",
+        "DBAmmd-class"
+      ]
+    },
+    {
+      "page": "estimateFragmentCenters",
+      "title": "estimate center of fragments",
+      "topics": [
+        "estimateFragmentCenters"
+      ]
+    },
+    {
+      "page": "getPeakReads",
+      "title": "Get reads from indexed bam files for defined regions",
+      "topics": [
+        "getPeakReads"
+      ]
+    },
+    {
+      "page": "myGeneric",
+      "title": "Generics for DBAmmd-Class",
+      "topics": [
+        "Contrast",
+        "Counts",
+        "Dists",
+        "Genome",
+        "Hists",
+        "metaData",
+        "numPeaks",
+        "numSamples",
+        "Reads",
+        "Regions",
+        "Samples",
+        "setContrast",
+        "setRegions"
+      ]
+    },
+    {
+      "page": "mm9-Genes",
+      "title": "mm9-Genes",
+      "topics": [
+        "mm9-Genes"
+      ]
+    },
+    {
+      "page": "MMD",
+      "title": "DBAmmd Object for Cfp1 example",
+      "topics": [
+        "MMD"
+      ]
+    },
+    {
+      "page": "plotDists",
+      "title": "plotDists",
+      "topics": [
+        "plotDists"
+      ]
+    },
+    {
+      "page": "plotDISTS4Peak",
+      "title": "plotDISTS4Peak",
+      "topics": [
+        "plotDISTS4Peak"
+      ]
+    },
+    {
+      "page": "plotPeak",
+      "title": "plot Peak",
+      "topics": [
+        "plotPeak"
+      ]
+    },
+    {
+      "page": "reportResults",
+      "title": "report results",
+      "topics": [
+        "reportResults"
+      ]
+    },
+    {
+      "page": "runShinyMMDiff2",
+      "title": "Shiny Application for interactive visualization of MMD,GMD and Pearson Difference as well as plotting peaks",
+      "topics": [
+        "runShinyMMDiff2"
+      ]
+    },
+    {
+      "page": "server.MMDiff2",
+      "title": "Shiny server code for interactive visualization of MMD distances, peak plots, and MMD distances by sample.",
+      "topics": [
+        "server.MMDiff2"
+      ]
+    },
+    {
+      "page": "ui.MMDiff2",
+      "title": "ui component for interactive visualization of MMD,GMD and Pearson Difference as well as plotting peaks",
+      "topics": [
+        "ui.MMDiff2"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "commonmark",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "digest",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "htmltools",
+    "httpuv",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lifecycle",
+    "locfit",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "otel",
+    "promises",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "shiny",
+    "snow",
+    "sourcetools",
+    "SparseArray",
+    "SummarizedExperiment",
+    "sys",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "MMDiff2.Rnw",
+      "filename": "MMDiff2.pdf",
+      "title": "An Introduction to the MMDiff2 method",
+      "engine": "knitr::knitr",
+      "headings": [],
+      "created": "2016-04-25 09:23:22",
+      "modified": "2016-04-26 23:20:43",
+      "commits": 2
+    }
+  ],
+  "_score": 3.4771212547196626,
+  "_indexed": false,
+  "_nocasepkg": "mmdiff2",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/MMDiff2",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:26:11.000Z",
+      "distro": "noble",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "115b8218e46466e4f6aec27a745754f28299c48cc372fff5e2b829756a08d154",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:22:03.000Z",
+      "distro": "noble",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "285486302e3ec3f485a3cff9fc57c46f7712d7e281f57aec926844fb7595bea6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:20:06.000Z",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "1cd0420bd24042901baf304da005c7573cfe1b3aad355ae2cab7a844f7a1bce4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:22:02.000Z",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "2c22404078bd02e483fc39288d97ec29473d2a6f2c3ffc531aa818b72d58ea99",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:21:10.000Z",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "995b019bc9c59529be15ff46f6ecf05f0f64bebb12f1326e2dec28bc19ee44fa",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:24:53.000Z",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "e36d0ff50b44172caf8e2a96224e4135e95a283e8e74cca8837056a00cf58b84",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:19:55.000Z",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "a6bb722a37613d975a62fc348ac4b3ca75fb6ac8fe6fdab7c6a67b2f4aba87d6",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.38.0",
+      "date": "2026-02-20T05:19:56.000Z",
+      "commit": "37123130732967f2b3a0662af06174741ea00ac6",
+      "fileid": "40c442c1c39916077d156e80371b966695e74ec71a4f6ce9b9d9aa22faa06088",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22212194021"
+    }
+  ]
+}

@@ -1,0 +1,1679 @@
+{
+  "Package": "SpatialFeatureExperiment",
+  "Type": "Package",
+  "Title": "Integrating SpatialExperiment with Simple Features in sf",
+  "Version": "1.13.0",
+  "Authors@R": "c(person(\"Lambda\", \"Moses\", email = \"dl3764@columbia.edu\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-7092-9427\")),\nperson(\"Alik\", \"Huseynov\",\ncomment = c(ORCID = \"0000-0002-1438-4389\"),\nrole = \"aut\"),\nperson(\"Lior\", \"Pachter\", email = \"lpachter@caltech.edu\",\nrole = c(\"aut\", \"ths\"),\ncomment = c(ORCID = \"0000-0002-9164-6231\")))",
+  "Description": "A new S4 class integrating Simple Features with the R\npackage sf to bring geospatial data analysis methods based on\nvector data to spatial transcriptomics. Also implements\nmanagement of spatial neighborhood graphs and geometric\noperations. This pakage builds upon SpatialExperiment and\nSingleCellExperiment, hence methods for these parent classes\ncan still be used.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.3",
+  "Collate": "'AllGenerics.R' 'utils.R' 'SFE-class.R' 'aggregate.R'\n'align.R' 'annotGeometries.R' 'cbind.R' 'changeSampleIDs.R'\n'coerce.R' 'data.R' 'debris.R' 'df2sf.R' 'dimGeometries.R'\n'featureData.R' 'formatTxSpots.R' 'geometry_operation.R'\n'graph_wrappers.R' 'image.R' 'int_dimData.R'\n'internal-Voyager.R' 'listw2sparse.R' 'localResults.R' 'read.R'\n'reexports.R' 'saveRDS.R' 'spatialGraphs.R' 'split.R'\n'subset.R' 'tissue_boundary.R' 'transformation.R'\n'updateObject.R' 'validity.R' 'zzz.R'",
+  "Remotes": [
+    "Voyager=github::pachterlab/voyager@devel"
+  ],
+  "Config/testthat/edition": "3",
+  "VignetteBuilder": "knitr",
+  "biocViews": "DataRepresentation, Transcriptomics, Spatial",
+  "URL": "https://github.com/pachterlab/SpatialFeatureExperiment",
+  "BugReports": "https://github.com/pachterlab/SpatialFeatureExperiment/issues",
+  "Config/pak/sysreqs": "libabsl-dev cmake libfftw3-dev libgdal-dev gdal-bin\nlibgeos-dev make libmagick++-dev gsfonts libicu-dev libjpeg-dev\nlibpng-dev libtiff-dev libssl-dev libproj-dev libsqlite3-dev\nlibudunits2-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:19:11 UTC",
+  "RemoteUrl": "https://github.com/bioc/SpatialFeatureExperiment",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-03 09:47:21 UTC",
+    "User": "root"
+  },
+  "Author": "Lambda Moses [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-7092-9427>),\nAlik Huseynov [aut] (ORCID: <https://orcid.org/0000-0002-1438-4389>),\nLior Pachter [aut, ths] (ORCID:\n<https://orcid.org/0000-0002-9164-6231>)",
+  "Maintainer": "Lambda Moses <dl3764@columbia.edu>",
+  "MD5sum": "5165d5837a3c1810016d1fa8235ede9c",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "SpatialFeatureExperiment_1.13.0.tar.gz",
+  "_fileid": "fb0882beeaaf5b57af0ef908b9c9709d6964594a0e260c295468900284399114",
+  "_filesize": 2037874,
+  "_sha256": "fb0882beeaaf5b57af0ef908b9c9709d6964594a0e260c295468900284399114",
+  "_created": "2026-02-03T09:47:21.000Z",
+  "_published": "2026-02-03T10:52:19.051Z",
+  "_jobs": [
+    {
+      "job": 62323815484,
+      "time": 286,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5355300446"
+    },
+    {
+      "job": 62323815459,
+      "time": 1103,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5355474953"
+    },
+    {
+      "job": 62323815467,
+      "time": 1102,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355474580"
+    },
+    {
+      "job": 62323815498,
+      "time": 943,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5355923074"
+    },
+    {
+      "job": 62323815473,
+      "time": 1588,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5356059564"
+    },
+    {
+      "job": 62322984806,
+      "time": 459,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5355237096"
+    },
+    {
+      "job": 62323815559,
+      "time": 254,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5355293281"
+    },
+    {
+      "job": 62323815594,
+      "time": 1105,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5355475805"
+    },
+    {
+      "job": 62323815513,
+      "time": 1119,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5355478296"
+    },
+    {
+      "job": 62323815528,
+      "time": 1069,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5355468305"
+    }
+  ],
+  "_bioccheck": {
+    "error": 2,
+    "warning": 2,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/SpatialFeatureExperiment",
+  "_commit": {
+    "id": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751151
+  },
+  "_maintainer": {
+    "name": "Lambda Moses",
+    "email": "dl3764@columbia.edu",
+    "login": "lambdamoses",
+    "orcid": "0000-0002-7092-9427",
+    "uuid": 32186361
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "version": ">= 0.51.2",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocNeighbors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "DropletUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "EBImage",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "lifecycle",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "rjson",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "sf",
+      "role": "Imports"
+    },
+    {
+      "package": "sfheaders",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "spatialreg",
+      "role": "Imports"
+    },
+    {
+      "package": "spdep",
+      "version": ">= 1.1-7",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "terra",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "zeallot",
+      "role": "Imports"
+    },
+    {
+      "package": "arrow",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "gmp",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "RBioFormats",
+      "role": "Suggests"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "sfarrow",
+      "role": "Suggests"
+    },
+    {
+      "package": "SFEData",
+      "version": ">= 1.5.3",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seurat",
+      "role": "Suggests"
+    },
+    {
+      "package": "SeuratObject",
+      "role": "Suggests"
+    },
+    {
+      "package": "sparseMatrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "VisiumIO",
+      "role": "Suggests"
+    },
+    {
+      "package": "Voyager",
+      "version": ">= 1.7.2",
+      "role": "Suggests"
+    },
+    {
+      "package": "withr",
+      "role": "Suggests"
+    },
+    {
+      "package": "xml2",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 2,
+  "_updates": [
+    {
+      "week": "2025-06",
+      "n": 6
+    },
+    {
+      "week": "2025-07",
+      "n": 8
+    },
+    {
+      "week": "2025-24",
+      "n": 4
+    },
+    {
+      "week": "2025-26",
+      "n": 5
+    },
+    {
+      "week": "2025-34",
+      "n": 2
+    },
+    {
+      "week": "2025-39",
+      "n": 4
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.13.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.12.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "datarepresentation",
+    "transcriptomics",
+    "spatial"
+  ],
+  "_stars": 57,
+  "_contributors": [
+    {
+      "user": "lambdamoses",
+      "count": 637,
+      "uuid": 32186361
+    },
+    {
+      "user": "alikhuseynov",
+      "count": 80,
+      "uuid": 52053807
+    },
+    {
+      "user": "jwokaty",
+      "count": 10,
+      "uuid": 1744257
+    },
+    {
+      "user": "efreckmann",
+      "count": 4,
+      "uuid": 20070312
+    },
+    {
+      "user": "lakigigar",
+      "count": 3,
+      "uuid": 2963672
+    },
+    {
+      "user": "hou",
+      "count": 1,
+      "uuid": 658522
+    },
+    {
+      "user": "estellad",
+      "count": 1,
+      "uuid": 29610938
+    },
+    {
+      "user": "mariiabilous",
+      "count": 1,
+      "uuid": 38460599
+    },
+    {
+      "user": "mingqizh",
+      "count": 1,
+      "uuid": 61282630
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 665,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/SpatialFeatureExperiment"
+  },
+  "_devurl": "https://github.com/pachterlab/spatialfeatureexperiment",
+  "_searchresults": 424,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/SpatialFeatureExperiment.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/pachterlab/spatialfeatureexperiment",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ".check_features",
+    ".check_rg",
+    ".check_sample_id",
+    ".ext_",
+    ".rm_empty_geometries",
+    ".symbol2id",
+    ".value2df",
+    ".warn_symbol_duplicate",
+    "addImg",
+    "addSelectTx",
+    "addTxSpots",
+    "addTxTech",
+    "addVisiumSpotPoly",
+    "affine",
+    "affineImg",
+    "aggBboxes",
+    "aggregate",
+    "aggregateTx",
+    "aggregateTxTech",
+    "annotGeometries",
+    "annotGeometries<-",
+    "annotGeometry",
+    "annotGeometry<-",
+    "annotGeometryNames",
+    "annotGeometryNames<-",
+    "annotGraph",
+    "annotGraph<-",
+    "annotGraphNames",
+    "annotGraphNames<-",
+    "annotGraphs",
+    "annotGraphs<-",
+    "annotNPred",
+    "annotOp",
+    "annotPred",
+    "annotSummary",
+    "bbox",
+    "bbox_center",
+    "BioFormatsImage",
+    "cbind",
+    "cellSeg",
+    "cellSeg<-",
+    "centroids",
+    "centroids<-",
+    "changeSampleIDs",
+    "colData",
+    "colData<-",
+    "colFeatureData",
+    "colGeometries",
+    "colGeometries<-",
+    "colGeometry",
+    "colGeometry<-",
+    "colGeometryNames",
+    "colGeometryNames<-",
+    "colGraph",
+    "colGraph<-",
+    "colGraphNames",
+    "colGraphNames<-",
+    "colGraphs",
+    "colGraphs<-",
+    "containsOutOfMemoryData",
+    "counts",
+    "crop",
+    "cropImg",
+    "df2sf",
+    "dimGeometries",
+    "dimGeometries<-",
+    "dimGeometry",
+    "dimGeometry<-",
+    "dimGeometryNames",
+    "dimGeometryNames<-",
+    "ext",
+    "ext<-",
+    "ExtImage",
+    "findDebrisCells",
+    "findSpatialNeighbors",
+    "findVisiumGraph",
+    "findVisiumHDGraph",
+    "formatTxSpots",
+    "formatTxTech",
+    "gdalParquetAvailable",
+    "geometryFeatureData",
+    "getImg",
+    "getParams",
+    "getPixelSize",
+    "getTechTxFields",
+    "getTissueBoundaryConcave",
+    "getTissueBoundaryImg",
+    "imageIDs",
+    "Img<-",
+    "imgData",
+    "imgRaster",
+    "imgSource",
+    "isFull",
+    "localResult",
+    "localResult<-",
+    "localResultAttrs",
+    "localResultFeatures",
+    "localResultNames",
+    "localResultNames<-",
+    "localResults",
+    "localResults<-",
+    "logcounts",
+    "mirror",
+    "mirrorImg",
+    "multi_listw2sparse",
+    "nucSeg",
+    "nucSeg<-",
+    "origin",
+    "read10xVisiumSFE",
+    "readCosMX",
+    "readSelectTx",
+    "readVisiumHD",
+    "readVizgen",
+    "readXenium",
+    "reducedDim",
+    "reducedDimFeatureData",
+    "removeEmptySpace",
+    "rmvImg",
+    "ROIPoly",
+    "ROIPoly<-",
+    "rotate",
+    "rotateImg",
+    "rowData",
+    "rowFeatureData",
+    "rowGeometries",
+    "rowGeometries<-",
+    "rowGeometry",
+    "rowGeometry<-",
+    "rowGeometryNames",
+    "rowGeometryNames<-",
+    "rowGraph",
+    "rowGraph<-",
+    "rowGraphNames",
+    "rowGraphNames<-",
+    "rowGraphs",
+    "rowGraphs<-",
+    "sampleIDs",
+    "saveRDS",
+    "scale",
+    "scaleImg",
+    "SFEVersion",
+    "show",
+    "spatialCoords",
+    "spatialCoords<-",
+    "spatialCoordsNames",
+    "SpatialFeatureExperiment",
+    "spatialGraph",
+    "spatialGraph<-",
+    "spatialGraphNames",
+    "spatialGraphNames<-",
+    "spatialGraphs",
+    "spatialGraphs<-",
+    "SpatRasterImage",
+    "splitByCol",
+    "splitComponent",
+    "splitContiguity",
+    "splitSamples",
+    "spotPoly",
+    "spotPoly<-",
+    "st_any_intersects",
+    "st_any_pred",
+    "st_n_intersects",
+    "st_n_pred",
+    "tissueBoundary",
+    "tissueBoundary<-",
+    "toExtImage",
+    "toSpatialFeatureExperiment",
+    "toSpatRasterImage",
+    "transformation",
+    "translate",
+    "translateImg",
+    "transpose",
+    "transposeImg",
+    "txSpots",
+    "txSpots<-",
+    "unit",
+    "updateObject"
+  ],
+  "_datasets": [
+    {
+      "name": "visium_row_col",
+      "title": "Row and columns of Visium barcodes on the slide",
+      "object": "visium_row_col",
+      "file": "visium_row_col.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "barcode",
+        "col",
+        "row"
+      ],
+      "rows": 4992,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "addVisiumSpotPoly",
+      "title": "Add Visium spot polygons to colGeometry",
+      "topics": [
+        "addVisiumSpotPoly"
+      ]
+    },
+    {
+      "page": "affineImg",
+      "title": "Affine transformation of images",
+      "topics": [
+        "affineImg",
+        "affineImg,BioFormatsImage-method",
+        "affineImg,ExtImage-method",
+        "affineImg,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "aggBboxes",
+      "title": "Aggregate bounding boxes",
+      "topics": [
+        "aggBboxes"
+      ]
+    },
+    {
+      "page": "aggregate-SpatialFeatureExperiment-method",
+      "title": "Aggregate data in SFE using geometry",
+      "topics": [
+        "aggregate,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "aggregateTx",
+      "title": "Aggregate transcript spots from file",
+      "topics": [
+        "aggregateTx",
+        "aggregateTxTech"
+      ]
+    },
+    {
+      "page": "annotGeometries",
+      "title": "Annotation geometry methods",
+      "topics": [
+        "annotGeometries",
+        "annotGeometries,SpatialFeatureExperiment-method",
+        "annotGeometries<-",
+        "annotGeometries<-,SpatialFeatureExperiment-method",
+        "annotGeometry",
+        "annotGeometry,SpatialFeatureExperiment-method",
+        "annotGeometry<-",
+        "annotGeometry<-,SpatialFeatureExperiment-method",
+        "annotGeometryNames",
+        "annotGeometryNames,SpatialFeatureExperiment-method",
+        "annotGeometryNames<-",
+        "annotGeometryNames<-,SpatialFeatureExperiment,character-method",
+        "tissueBoundary",
+        "tissueBoundary<-"
+      ]
+    },
+    {
+      "page": "annotOp",
+      "title": "Binary operations for geometry of each cell/spot and annotation",
+      "topics": [
+        "annotOp"
+      ]
+    },
+    {
+      "page": "annotPred",
+      "title": "Binary predicates for geometry of each cell/spot and annotation",
+      "topics": [
+        "annotNPred",
+        "annotPred"
+      ]
+    },
+    {
+      "page": "annotSummary",
+      "title": "Summarize attributes of an annotGeometry for each cell/spot",
+      "topics": [
+        "annotSummary"
+      ]
+    },
+    {
+      "page": "bbox_center",
+      "title": "Find center of bounding box",
+      "topics": [
+        "bbox_center"
+      ]
+    },
+    {
+      "page": "bbox-SpatialFeatureExperiment-method",
+      "title": "Find bounding box of SFE objects",
+      "topics": [
+        "bbox",
+        "bbox,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "BioFormatsImage",
+      "title": "On disk representation of BioFormats images in SFE object",
+      "topics": [
+        "BioFormatsImage",
+        "BioFormatsImage-class",
+        "show,BioFormatsImage-method"
+      ]
+    },
+    {
+      "page": "BioFormatsImage-getters",
+      "title": "Other 'BioFormatsImage' getters",
+      "topics": [
+        "BioFormatsImage-getters",
+        "isFull",
+        "isFull,BioFormatsImage-method",
+        "origin",
+        "origin,BioFormatsImage-method",
+        "transformation",
+        "transformation,BioFormatsImage-method"
+      ]
+    },
+    {
+      "page": "cbind-SpatialFeatureExperiment-method",
+      "title": "Concatenate SpatialFeatureExperiment objects",
+      "topics": [
+        "cbind,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "changeSampleIDs",
+      "title": "Change sample IDs",
+      "topics": [
+        "changeSampleIDs"
+      ]
+    },
+    {
+      "page": "colFeatureData",
+      "title": "Get global spatial analysis results and metadata of colData, rowData, and geometries",
+      "topics": [
+        "colFeatureData",
+        "geometryFeatureData",
+        "reducedDimFeatureData",
+        "rowFeatureData"
+      ]
+    },
+    {
+      "page": "colGeometries",
+      "title": "Column geometry getters and setters",
+      "topics": [
+        "cellSeg",
+        "cellSeg<-",
+        "centroids",
+        "centroids<-",
+        "colGeometries",
+        "colGeometries<-",
+        "colGeometry",
+        "colGeometry<-",
+        "colGeometryNames",
+        "colGeometryNames<-",
+        "nucSeg",
+        "nucSeg<-",
+        "ROIPoly",
+        "ROIPoly<-",
+        "spotPoly",
+        "spotPoly<-"
+      ]
+    },
+    {
+      "page": "containsOutOfMemoryData-SpatialFeatureExperiment-method",
+      "title": "Whether an SFE object contains out of memory data",
+      "topics": [
+        "containsOutOfMemoryData,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "crop",
+      "title": "Crop an SFE object with a geometry",
+      "topics": [
+        "crop"
+      ]
+    },
+    {
+      "page": "cropImg",
+      "title": "Crop images",
+      "topics": [
+        "cropImg",
+        "cropImg,BioFormatsImage-method",
+        "cropImg,ExtImage-method",
+        "cropImg,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "df2sf",
+      "title": "From ordinary data frame to sf to construct SFE object",
+      "topics": [
+        "df2sf"
+      ]
+    },
+    {
+      "page": "dim-BioFormatsImage-method",
+      "title": "Find dimension of BioFormatsImage",
+      "topics": [
+        "dim,BioFormatsImage-method"
+      ]
+    },
+    {
+      "page": "dim-ExtImage-method",
+      "title": "Find dimensions of ExtImage",
+      "topics": [
+        "dim,ExtImage-method"
+      ]
+    },
+    {
+      "page": "dimGeometries",
+      "title": "Dimension geometry methods",
+      "topics": [
+        "dimGeometries",
+        "dimGeometries,SpatialFeatureExperiment-method",
+        "dimGeometries<-",
+        "dimGeometries<-,SpatialFeatureExperiment-method",
+        "dimGeometry",
+        "dimGeometry,SpatialFeatureExperiment-method",
+        "dimGeometry<-",
+        "dimGeometry<-,SpatialFeatureExperiment-method",
+        "dimGeometryNames",
+        "dimGeometryNames,SpatialFeatureExperiment-method",
+        "dimGeometryNames<-",
+        "dimGeometryNames<-,SpatialFeatureExperiment,numeric,character-method"
+      ]
+    },
+    {
+      "page": "ext",
+      "title": "Get and set extent of image objects",
+      "topics": [
+        "ext",
+        "ext,BioFormatsImage-method",
+        "ext,ExtImage-method",
+        "ext,SpatRasterImage-method",
+        "ext<-,BioFormatsImage,numeric-method",
+        "ext<-,ExtImage,numeric-method",
+        "ext<-,SpatRasterImage,numeric-method"
+      ]
+    },
+    {
+      "page": "ExtImage",
+      "title": "Use the EBImage 'Image' class in SFE objects",
+      "topics": [
+        "ExtImage",
+        "ExtImage-class",
+        "show,ExtImage-method"
+      ]
+    },
+    {
+      "page": "findDebrisCells",
+      "title": "Identify cells in small bits outside the main piece of tissue",
+      "topics": [
+        "findDebrisCells",
+        "findDebrisCells,matrix-method",
+        "findDebrisCells,sf-method",
+        "findDebrisCells,sfc-method",
+        "findDebrisCells,SpatialExperiment-method"
+      ]
+    },
+    {
+      "page": "findSpatialNeighbors",
+      "title": "Find spatial neighborhood graph",
+      "topics": [
+        "findSpatialNeighbors",
+        "findSpatialNeighbors,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "findVisiumGraph",
+      "title": "Find spatial neighborhood graphs for Visium spots",
+      "topics": [
+        "findVisiumGraph"
+      ]
+    },
+    {
+      "page": "findVisiumHDGraph",
+      "title": "Find Visium HD spatial neighborhood graph",
+      "topics": [
+        "findVisiumHDGraph"
+      ]
+    },
+    {
+      "page": "formatTxSpots",
+      "title": "Read and process transcript spots geometry for SFE",
+      "topics": [
+        "addTxSpots",
+        "formatTxSpots"
+      ]
+    },
+    {
+      "page": "formatTxTech",
+      "title": "Read and process transcript spots for specific commercial technologies",
+      "topics": [
+        "addTxTech",
+        "formatTxTech"
+      ]
+    },
+    {
+      "page": "gdalParquetAvailable",
+      "title": "Check if Parquet GDAL driver is available",
+      "topics": [
+        "gdalParquetAvailable"
+      ]
+    },
+    {
+      "page": "getParams",
+      "title": "Get parameters used in spatial methods",
+      "topics": [
+        "getParams"
+      ]
+    },
+    {
+      "page": "getPixelSize",
+      "title": "Get physical size of pixels",
+      "topics": [
+        "getPixelSize"
+      ]
+    },
+    {
+      "page": "getTechTxFields",
+      "title": "Get relevant fields and file paths for transcript spots",
+      "topics": [
+        "getTechTxFields"
+      ]
+    },
+    {
+      "page": "getTissueBoundaryConcave",
+      "title": "Get tissue boundary from concave hull of cell geometries",
+      "topics": [
+        "getTissueBoundaryConcave"
+      ]
+    },
+    {
+      "page": "getTissueBoundaryImg",
+      "title": "Get tissue boundary from histology image",
+      "topics": [
+        "getTissueBoundaryImg"
+      ]
+    },
+    {
+      "page": "imageIDs",
+      "title": "Show all image_ids in the SFE object",
+      "topics": [
+        "imageIDs"
+      ]
+    },
+    {
+      "page": "Img-set-SpatialExperiment-method",
+      "title": "Image setter",
+      "topics": [
+        "Img<-",
+        "Img<-,SpatialExperiment-method"
+      ]
+    },
+    {
+      "page": "imgRaster",
+      "title": "Get the image from *Image class",
+      "topics": [
+        "imgRaster",
+        "imgRaster,BioFormatsImage-method",
+        "imgRaster,ExtImage-method",
+        "imgRaster,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "imgSource",
+      "title": "Source of images that are on disk",
+      "topics": [
+        "imgSource",
+        "imgSource,BioFormatsImage-method",
+        "imgSource,ExtImage-method",
+        "imgSource,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "localResults",
+      "title": "Get and set results from local spatial statistics",
+      "topics": [
+        "localResult",
+        "localResult,SpatialFeatureExperiment-method",
+        "localResult<-",
+        "localResult<-,SpatialFeatureExperiment-method",
+        "localResultAttrs",
+        "localResultAttrs,SpatialFeatureExperiment-method",
+        "localResultFeatures",
+        "localResultFeatures,SpatialFeatureExperiment-method",
+        "localResultNames",
+        "localResultNames,SpatialFeatureExperiment-method",
+        "localResultNames<-",
+        "localResultNames<-,SpatialFeatureExperiment,character-method",
+        "localResults",
+        "localResults,SpatialFeatureExperiment-method",
+        "localResults<-",
+        "localResults<-,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "mirrorImg",
+      "title": "Mirror/flip images",
+      "topics": [
+        "mirrorImg",
+        "mirrorImg,BioFormatsImage-method",
+        "mirrorImg,ExtImage-method",
+        "mirrorImg,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "multi_listw2sparse",
+      "title": "Convert multiple listw graphs into a single sparse adjacency matrix",
+      "topics": [
+        "multi_listw2sparse"
+      ]
+    },
+    {
+      "page": "read10xVisiumSFE",
+      "title": "Read 10X Visium data as SpatialFeatureExperiment",
+      "topics": [
+        "read10xVisiumSFE"
+      ]
+    },
+    {
+      "page": "readCosMX",
+      "title": "Read CosMX data into SFE",
+      "topics": [
+        "readCosMX"
+      ]
+    },
+    {
+      "page": "readSelectTx",
+      "title": "Read transcript spots of select genes",
+      "topics": [
+        "addSelectTx",
+        "readSelectTx"
+      ]
+    },
+    {
+      "page": "readVisiumHD",
+      "title": "Read Visium HD data",
+      "topics": [
+        "readVisiumHD"
+      ]
+    },
+    {
+      "page": "readVizgen",
+      "title": "Read Vizgen MERFISH output as SpatialFeatureExperiment",
+      "topics": [
+        "readVizgen"
+      ]
+    },
+    {
+      "page": "readXenium",
+      "title": "Read 10X Xenium output as SpatialFeatureExperiment",
+      "topics": [
+        "readXenium"
+      ]
+    },
+    {
+      "page": "reexports",
+      "title": "Functions re-exported from other packages",
+      "topics": [
+        "colData",
+        "colData<-",
+        "counts",
+        "getImg",
+        "imgData",
+        "logcounts",
+        "reducedDim",
+        "reexports",
+        "rmvImg",
+        "rowData",
+        "spatialCoords",
+        "spatialCoords<-",
+        "spatialCoordsNames"
+      ]
+    },
+    {
+      "page": "removeEmptySpace",
+      "title": "Remove empty space",
+      "topics": [
+        "removeEmptySpace"
+      ]
+    },
+    {
+      "page": "rotateImg",
+      "title": "Rotate image",
+      "topics": [
+        "rotateImg",
+        "rotateImg,BioFormatsImage-method",
+        "rotateImg,ExtImage-method",
+        "rotateImg,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "rowGeometries",
+      "title": "Row geometry getters and setters",
+      "topics": [
+        "rowGeometries",
+        "rowGeometries<-",
+        "rowGeometry",
+        "rowGeometry<-",
+        "rowGeometryNames",
+        "rowGeometryNames<-",
+        "txSpots",
+        "txSpots<-"
+      ]
+    },
+    {
+      "page": "sampleIDs",
+      "title": "Get all unique sample IDs",
+      "topics": [
+        "sampleIDs"
+      ]
+    },
+    {
+      "page": "saveRDS-SpatialFeatureExperiment-method",
+      "title": "Save SpatialFeatureExperiment as RDS file",
+      "topics": [
+        "saveRDS,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "scaleImg",
+      "title": "Scale image",
+      "topics": [
+        "scaleImg",
+        "scaleImg,AlignedSpatialImage-method",
+        "scaleImg,BioFormatsImage-method"
+      ]
+    },
+    {
+      "page": "SFE-image",
+      "title": "Methods for handling image-related data",
+      "topics": [
+        "addImg,SpatialFeatureExperiment-method",
+        "affineImg,SpatialFeatureExperiment-method",
+        "mirrorImg,SpatialFeatureExperiment-method",
+        "rotateImg,SpatialFeatureExperiment-method",
+        "scaleImg,SpatialFeatureExperiment-method",
+        "SFE-image",
+        "translateImg,SpatialFeatureExperiment-method",
+        "transposeImg,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "SFE-transform",
+      "title": "Affine transfortaion of SFE object in histological space",
+      "topics": [
+        "affine",
+        "mirror",
+        "rotate",
+        "scale",
+        "SFE-transform",
+        "translate",
+        "transpose"
+      ]
+    },
+    {
+      "page": "show-SpatialFeatureExperiment-method",
+      "title": "Print method for SpatialFeatureExperiment",
+      "topics": [
+        "show,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "SpatialFeatureExperiment",
+      "title": "Constructor of SpatialFeatureExperiment object",
+      "topics": [
+        "SpatialFeatureExperiment"
+      ]
+    },
+    {
+      "page": "SpatialFeatureExperiment-class",
+      "title": "The SpatialFeatureExperiment class",
+      "topics": [
+        "SpatialFeatureExperiment-class"
+      ]
+    },
+    {
+      "page": "SpatialFeatureExperiment-coercion",
+      "title": "SpatialFeatureExperiment coercion methods",
+      "topics": [
+        "SpatialFeatureExperiment-coercion",
+        "toSpatialFeatureExperiment",
+        "toSpatialFeatureExperiment,Seurat-method",
+        "toSpatialFeatureExperiment,SingleCellExperiment-method",
+        "toSpatialFeatureExperiment,SpatialExperiment-method"
+      ]
+    },
+    {
+      "page": "SpatialFeatureExperiment-subset",
+      "title": "Subsetting SpatialFeatureExperiment objects",
+      "topics": [
+        "SpatialFeatureExperiment-subset",
+        "[,SpatialFeatureExperiment,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "spatialGraphs",
+      "title": "Spatial graph methods",
+      "topics": [
+        "annotGraph",
+        "annotGraph<-",
+        "annotGraphNames",
+        "annotGraphNames<-",
+        "annotGraphs",
+        "annotGraphs<-",
+        "colGraph",
+        "colGraph<-",
+        "colGraphNames",
+        "colGraphNames<-",
+        "colGraphs",
+        "colGraphs<-",
+        "rowGraph",
+        "rowGraph<-",
+        "rowGraphNames",
+        "rowGraphNames<-",
+        "rowGraphs",
+        "rowGraphs<-",
+        "spatialGraph",
+        "spatialGraph,SpatialFeatureExperiment-method",
+        "spatialGraph<-",
+        "spatialGraph<-,SpatialFeatureExperiment-method",
+        "spatialGraphNames",
+        "spatialGraphNames,SpatialFeatureExperiment,numeric-method",
+        "spatialGraphNames<-",
+        "spatialGraphNames<-,SpatialFeatureExperiment,numeric,ANY,character-method",
+        "spatialGraphs",
+        "spatialGraphs,SpatialFeatureExperiment-method",
+        "spatialGraphs<-",
+        "spatialGraphs<-,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "SpatRasterImage",
+      "title": "SpatRaster representation of images in SFE objects",
+      "topics": [
+        "show,SpatRasterImage-method",
+        "SpatRasterImage",
+        "SpatRasterImage-class"
+      ]
+    },
+    {
+      "page": "splitByCol",
+      "title": "Split SFE object with categorical vector or geometry",
+      "topics": [
+        "splitByCol",
+        "splitByCol,SpatialFeatureExperiment,list-method",
+        "splitByCol,SpatialFeatureExperiment,sf-method",
+        "splitByCol,SpatialFeatureExperiment,sfc-method",
+        "splitComponent",
+        "splitContiguity",
+        "splitSamples"
+      ]
+    },
+    {
+      "page": "st_any_pred",
+      "title": "Simple geometry predicates",
+      "topics": [
+        "st_any_intersects",
+        "st_any_pred",
+        "st_n_intersects",
+        "st_n_pred"
+      ]
+    },
+    {
+      "page": "toExtImage",
+      "title": "Convert images to ExtImage",
+      "topics": [
+        "toExtImage",
+        "toExtImage,BioFormatsImage-method",
+        "toExtImage,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "toSpatRasterImage",
+      "title": "Convert images to SpatRasterImage",
+      "topics": [
+        "toSpatRasterImage",
+        "toSpatRasterImage,BioFormatsImage-method",
+        "toSpatRasterImage,ExtImage-method"
+      ]
+    },
+    {
+      "page": "translateImg",
+      "title": "Translate/shift image in space",
+      "topics": [
+        "translateImg",
+        "translateImg,BioFormatsImage-method",
+        "translateImg,ExtImage-method",
+        "translateImg,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "transposeImg",
+      "title": "Transpose images",
+      "topics": [
+        "transposeImg",
+        "transposeImg,BioFormatsImage-method",
+        "transposeImg,ExtImage-method",
+        "transposeImg,SpatRasterImage-method"
+      ]
+    },
+    {
+      "page": "unit-SpatialFeatureExperiment-method",
+      "title": "Get unit of a SpatialFeatureExperiment",
+      "topics": [
+        "unit",
+        "unit,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "updateObject",
+      "title": "Update a SpatialFeatureExperiment object",
+      "topics": [
+        "SFEVersion",
+        "updateObject",
+        "updateObject,SpatialFeatureExperiment-method"
+      ]
+    },
+    {
+      "page": "visium_row_col",
+      "title": "Row and columns of Visium barcodes on the slide",
+      "topics": [
+        "visium_row_col"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/SpatialFeatureExperiment/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "bslib",
+    "cachem",
+    "class",
+    "classInt",
+    "cli",
+    "coda",
+    "codetools",
+    "cpp11",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "deldir",
+    "digest",
+    "dplyr",
+    "dqrng",
+    "DropletUtils",
+    "e1071",
+    "EBImage",
+    "edgeR",
+    "evaluate",
+    "fastmap",
+    "fftwtools",
+    "filelock",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "geometries",
+    "glue",
+    "h5mread",
+    "HDF5Array",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr2",
+    "IRanges",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "lambda.r",
+    "lattice",
+    "LearnBayes",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magick",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "multcomp",
+    "mvtnorm",
+    "nlme",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "png",
+    "proxy",
+    "purrr",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "Rcpp",
+    "RCurl",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "sandwich",
+    "sass",
+    "scuttle",
+    "Seqinfo",
+    "sf",
+    "sfheaders",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "sp",
+    "SparseArray",
+    "sparseMatrixStats",
+    "SpatialExperiment",
+    "spatialreg",
+    "spData",
+    "spdep",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "terra",
+    "TH.data",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tiff",
+    "tinytex",
+    "units",
+    "utf8",
+    "vctrs",
+    "withr",
+    "wk",
+    "xfun",
+    "XVector",
+    "yaml",
+    "zeallot",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "SFE.Rmd",
+      "filename": "SFE.html",
+      "title": "Introduction to the SpatialFeatureExperiment class",
+      "author": "Lambda Moses, Lior Pachter",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Class structure",
+        "Introduction",
+        "Geometries",
+        "Column and row",
+        "Annotation",
+        "Spatial graphs",
+        "Multiple samples",
+        "Object construction",
+        "From scratch",
+        "Space Ranger output",
+        "Vizgen MERFISH output",
+        "10X Xenium output",
+        "Nanostring CosMX output",
+        "Other technologies",
+        "Coercion from SpatialExperiment",
+        "Coercion from Seurat",
+        "Operations",
+        "Non-geometric",
+        "Geometric",
+        "Crop",
+        "Transform",
+        "Limitations and future directions",
+        "Session info"
+      ],
+      "created": "2022-03-30 02:56:05",
+      "modified": "2025-09-26 01:36:28",
+      "commits": 18
+    }
+  ],
+  "_score": 9.608549993991087,
+  "_indexed": true,
+  "_nocasepkg": "spatialfeatureexperiment",
+  "_universes": [
+    "bioc",
+    "lambdamoses",
+    "pachterlab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T09:53:07.000Z",
+      "distro": "noble",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "64cc184fe7bbe143e79419aaf73949a76cdb8774b69e5b9937cac4fa8efd1153",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.13.0",
+      "date": "2026-02-03T09:53:11.000Z",
+      "distro": "noble",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "c4561b609fdd886ba5f99a03cca75ec970517cbac2182c22c88d0b503cc8f17d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:27:15.000Z",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "ada081e7c6577863cf28f7f3ca711ba155cdedaea143419abf5ca1de35d9d5c9",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.13.0",
+      "date": "2026-02-03T10:31:06.000Z",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "1a56a3bc051010e3d1b79ce85f2b5bda570d487c54ecd8918a1f588222e0b740",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.13.0",
+      "date": "2026-02-03T09:52:34.000Z",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "dea11c685769d4af0ec44f2682d68fc4816fa061298715ea1ba6440c2b470500",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T09:51:01.000Z",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "1683dcb8dade1ea06df530f6f85524c73f1bdb5734c6a439dff6892c46b15e66",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T09:51:40.000Z",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "56f4feeb2e1a8295a2b1fdc3d81e6b56c8143a5cc393e87c9bad6ca76435aa46",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.13.0",
+      "date": "2026-02-03T09:50:49.000Z",
+      "commit": "06f0dbf32e82642affdc8b7fd025a1e8728ad18d",
+      "fileid": "790efc9825fc07ff1b90f4d64c50016f32454f1b5ece4c958b7077894abeaa52",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21625032758"
+    }
+  ]
+}

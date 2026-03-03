@@ -1,0 +1,946 @@
+{
+  "Package": "nipalsMCIA",
+  "Title": "Multiple Co-Inertia Analysis via the NIPALS Method",
+  "Version": "1.9.1",
+  "Authors@R": "c(\nperson(\"Maximilian\", \"Mattessich\",\nemail = \"maximilian.mattessich@northwestern.edu\",\nrole = \"cre\", comment = c(ORCID = \"0000-0002-1233-1240\")),\nperson(\"Joaquin\", \"Reyna\", email = \"joreyna@live.com\",\nrole = \"aut\", comment = c(ORCID = \"0000-0002-8468-2840\")),\nperson(\"Edel\", \"Aron\", email = \"edel.aron@yale.edu\",\nrole = \"aut\", comment = c(ORCID = \"0000-0002-8683-4772\")),\nperson(\"Ferhat\", \"Ay\", email = \"ferhatay@lji.org\",\nrole = \"aut\", comment = c(ORCID = \"0000-0002-0708-6914\")),\nperson(\"Steven\", \"Kleinstein\", email = \"steven.kleinstein@yale.edu\",\nrole = \"aut\", comment = c(ORCID = \"0000-0003-4957-1544\")),\nperson(\"Anna\", \"Konstorum\", email = \"konstorum.anna@gmail.com\",\nrole = \"aut\", comment = c(ORCID = \"0000-0003-4024-2058\")))",
+  "Description": "Computes Multiple Co-Inertia Analysis (MCIA), a\ndimensionality reduction (jDR) algorithm, for a multi-block\ndataset using a modification to the Nonlinear Iterative Partial\nLeast Squares method (NIPALS) proposed in (Hanafi et. al,\n2010). Allows multiple options for row- and table-level\npreprocessing, and speeds up computation of variance explained.\nVignettes detail application to bulk- and single cell-\nmulti-omics studies.",
+  "License": "GPL-3",
+  "URL": "https://github.com/Muunraker/nipalsMCIA",
+  "BugReports": "https://github.com/Muunraker/nipalsMCIA/issues",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, Clustering, Classification, MultipleComparison,\nNormalization, Preprocessing, SingleCell",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.2",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libicu-dev libpng-dev perl zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-19 18:00:54 UTC",
+  "RemoteUrl": "https://github.com/bioc/nipalsMCIA",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-19 04:38:52 UTC",
+    "User": "root"
+  },
+  "Author": "Maximilian Mattessich [cre] (ORCID:\n<https://orcid.org/0000-0002-1233-1240>),\nJoaquin Reyna [aut] (ORCID: <https://orcid.org/0000-0002-8468-2840>),\nEdel Aron [aut] (ORCID: <https://orcid.org/0000-0002-8683-4772>),\nFerhat Ay [aut] (ORCID: <https://orcid.org/0000-0002-0708-6914>),\nSteven Kleinstein [aut] (ORCID:\n<https://orcid.org/0000-0003-4957-1544>),\nAnna Konstorum [aut] (ORCID: <https://orcid.org/0000-0003-4024-2058>)",
+  "Maintainer": "Maximilian Mattessich <maximilian.mattessich@northwestern.edu>",
+  "MD5sum": "f46afaa74241e59d7ba1fd18a159d946",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "nipalsMCIA_1.9.1.tar.gz",
+  "_fileid": "ed56ec47cab67a4a8ccc80b4f9f13cd9a96f72c1a1cd3da98157237b0e4ed0f3",
+  "_filesize": 6493023,
+  "_sha256": "ed56ec47cab67a4a8ccc80b4f9f13cd9a96f72c1a1cd3da98157237b0e4ed0f3",
+  "_created": "2026-02-19T04:38:52.000Z",
+  "_published": "2026-02-19T04:47:28.706Z",
+  "_jobs": [
+    {
+      "job": 64101940965,
+      "time": 190,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5567271651"
+    },
+    {
+      "job": 64101941002,
+      "time": 359,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5567295459"
+    },
+    {
+      "job": 64101940967,
+      "time": 455,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5567308446"
+    },
+    {
+      "job": 64101940970,
+      "time": 226,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5567276828"
+    },
+    {
+      "job": 64101940959,
+      "time": 210,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5567274609"
+    },
+    {
+      "job": 64101458313,
+      "time": 469,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5567242020"
+    },
+    {
+      "job": 64101940976,
+      "time": 183,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5567270594"
+    },
+    {
+      "job": 64101940990,
+      "time": 312,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5567288924"
+    },
+    {
+      "job": 64101940962,
+      "time": 326,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5567290861"
+    },
+    {
+      "job": 64101940995,
+      "time": 324,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5567290654"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/nipalsMCIA",
+  "_commit": {
+    "id": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+    "author": "muunraker <24959832+Muunraker@users.noreply.github.com>",
+    "committer": "muunraker <24959832+Muunraker@users.noreply.github.com>",
+    "message": "fixing SeuratObject deprecated function in single cell vignette.\n",
+    "time": 1768845654
+  },
+  "_maintainer": {
+    "name": "Maximilian Mattessich",
+    "email": "maximilian.mattessich@northwestern.edu",
+    "login": "muunraker",
+    "orcid": "0000-0002-1233-1240",
+    "uuid": 24959832
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "fgsea",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 3.0.0",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "pracma",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "RSpectra",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "circlize",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Suggests"
+    },
+    {
+      "package": "KernSmooth",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "piggyback",
+      "role": "Suggests"
+    },
+    {
+      "package": "reshape2",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "rpart",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seurat",
+      "version": ">= 4.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "spatstat.explore",
+      "role": "Suggests"
+    },
+    {
+      "package": "stringr",
+      "role": "Suggests"
+    },
+    {
+      "package": "survival",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-08",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-04",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.9.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.8.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "clustering",
+    "classification",
+    "multiplecomparison",
+    "normalization",
+    "preprocessing",
+    "singlecell"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "muunraker",
+      "count": 226,
+      "uuid": 24959832
+    },
+    {
+      "user": "eba28",
+      "count": 124,
+      "uuid": 43794704
+    },
+    {
+      "user": "akonstodata",
+      "count": 81,
+      "uuid": 62700366
+    },
+    {
+      "user": "joreynajr",
+      "count": 15,
+      "uuid": 14253227
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 279,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/nipalsMCIA"
+  },
+  "_devurl": "https://github.com/muunraker/nipalsmcia",
+  "_searchresults": 9,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/nipalsMCIA.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/muunraker/nipalsmcia",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "block_preproc",
+    "block_weights_heatmap",
+    "cc_preproc",
+    "col_preproc",
+    "deflate_block_bl",
+    "deflate_block_gs",
+    "extract_from_mae",
+    "get_colors",
+    "get_metadata_colors",
+    "get_tv",
+    "global_scores_eigenvalues_plot",
+    "global_scores_heatmap",
+    "gsea_report",
+    "nipals_iter",
+    "nipals_multiblock",
+    "nmb_get_bl",
+    "nmb_get_bs",
+    "nmb_get_bs_weights",
+    "nmb_get_eigs",
+    "nmb_get_gl",
+    "nmb_get_gs",
+    "nmb_get_metadata",
+    "ord_loadings",
+    "predict_gs",
+    "projection_plot",
+    "simple_mae",
+    "vis_load_ord",
+    "vis_load_plot"
+  ],
+  "_datasets": [
+    {
+      "name": "data_blocks",
+      "title": "NCI-60 Multi-Omics Data",
+      "object": "NCI60",
+      "file": "NCI60.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "metadata_NCI60",
+      "title": "NCI-60 Multi-Omics Metadata",
+      "object": "NCI60",
+      "file": "NCI60.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "cancerType"
+      ],
+      "rows": 21,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "block_preproc",
+      "title": "Block-level preprocessing",
+      "topics": [
+        "block_preproc"
+      ]
+    },
+    {
+      "page": "block_weights_heatmap",
+      "title": "block_weights_heatmap",
+      "topics": [
+        "block_weights_heatmap"
+      ]
+    },
+    {
+      "page": "cc_preproc",
+      "title": "Centered Column Profile Pre-processing",
+      "topics": [
+        "cc_preproc"
+      ]
+    },
+    {
+      "page": "col_preproc",
+      "title": "Centered Column Profile Pre-processing",
+      "topics": [
+        "col_preproc"
+      ]
+    },
+    {
+      "page": "data_blocks",
+      "title": "NCI-60 Multi-Omics Data",
+      "topics": [
+        "data_blocks"
+      ]
+    },
+    {
+      "page": "deflate_block_bl",
+      "title": "Deflation via block loadings",
+      "topics": [
+        "deflate_block_bl"
+      ]
+    },
+    {
+      "page": "deflate_block_gs",
+      "title": "Deflation via global scores",
+      "topics": [
+        "deflate_block_gs"
+      ]
+    },
+    {
+      "page": "extract_from_mae",
+      "title": "Extract a list of harmonized data matrices from an MAE object",
+      "topics": [
+        "extract_from_mae"
+      ]
+    },
+    {
+      "page": "get_colors",
+      "title": "Assigning colors to different omics",
+      "topics": [
+        "get_colors"
+      ]
+    },
+    {
+      "page": "get_metadata_colors",
+      "title": "Assigning colors to different values of a metadata column",
+      "topics": [
+        "get_metadata_colors"
+      ]
+    },
+    {
+      "page": "get_tv",
+      "title": "Computes the total variance of a multi-omics dataset",
+      "topics": [
+        "get_tv"
+      ]
+    },
+    {
+      "page": "global_scores_eigenvalues_plot",
+      "title": "global_scores_eigenvalues_plot",
+      "topics": [
+        "global_scores_eigenvalues_plot"
+      ]
+    },
+    {
+      "page": "global_scores_heatmap",
+      "title": "Plotting a heatmap of global factors scores (sample v. factors)",
+      "topics": [
+        "global_scores_heatmap"
+      ]
+    },
+    {
+      "page": "gsea_report",
+      "title": "Perform biological annotation-based comparison",
+      "topics": [
+        "gsea_report"
+      ]
+    },
+    {
+      "page": "metadata_NCI60",
+      "title": "NCI-60 Multi-Omics Metadata",
+      "topics": [
+        "metadata_NCI60"
+      ]
+    },
+    {
+      "page": "nipals_iter",
+      "title": "NIPALS Iteration",
+      "topics": [
+        "nipals_iter"
+      ]
+    },
+    {
+      "page": "nipals_multiblock",
+      "title": "Main NIPALS computation loop",
+      "topics": [
+        "nipals_multiblock"
+      ]
+    },
+    {
+      "page": "NipalsResult-class",
+      "title": "An S4 class to contain results computed with `nipals_multiblock()`",
+      "topics": [
+        "NipalsResult",
+        "NipalsResult-class"
+      ]
+    },
+    {
+      "page": "nmb_get_bl",
+      "title": "Accessor function for block loadings",
+      "topics": [
+        "nmb_get_bl"
+      ]
+    },
+    {
+      "page": "nmb_get_bs",
+      "title": "Accessor function for block scores",
+      "topics": [
+        "nmb_get_bs"
+      ]
+    },
+    {
+      "page": "nmb_get_bs_weights",
+      "title": "Accessor function for block score weights",
+      "topics": [
+        "nmb_get_bs_weights"
+      ]
+    },
+    {
+      "page": "nmb_get_eigs",
+      "title": "Accessor function for eigenvalues",
+      "topics": [
+        "nmb_get_eigs"
+      ]
+    },
+    {
+      "page": "nmb_get_gl",
+      "title": "Accessor function for global loadings",
+      "topics": [
+        "nmb_get_gl"
+      ]
+    },
+    {
+      "page": "nmb_get_gs",
+      "title": "Accessor function for global scores",
+      "topics": [
+        "nmb_get_gs"
+      ]
+    },
+    {
+      "page": "nmb_get_metadata",
+      "title": "Accessor function for metadata",
+      "topics": [
+        "nmb_get_metadata"
+      ]
+    },
+    {
+      "page": "ord_loadings",
+      "title": "Ranked global loadings dataframe",
+      "topics": [
+        "ord_loadings"
+      ]
+    },
+    {
+      "page": "predict_gs",
+      "title": "Prediction of new global scores based on block loadings and weights",
+      "topics": [
+        "predict_gs"
+      ]
+    },
+    {
+      "page": "projection_plot",
+      "title": "projection_plot",
+      "topics": [
+        "projection_plot"
+      ]
+    },
+    {
+      "page": "simple_mae",
+      "title": "Create an MAE object from a list of data matrices and column data",
+      "topics": [
+        "simple_mae"
+      ]
+    },
+    {
+      "page": "vis_load_ord",
+      "title": "Visualize ranked loadings",
+      "topics": [
+        "vis_load_ord"
+      ]
+    },
+    {
+      "page": "vis_load_plot",
+      "title": "Visualize all loadings on two factor axes",
+      "topics": [
+        "vis_load_plot"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/nipalsMCIA/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocParallel",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "farver",
+    "fastmatch",
+    "fgsea",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggplot2",
+    "GlobalOptions",
+    "glue",
+    "gtable",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "MultiAssayExperiment",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "pracma",
+    "purrr",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "rjson",
+    "rlang",
+    "RSpectra",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "shape",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "Analysis-of-MCIA-Decomposition.Rmd",
+      "filename": "Analysis-of-MCIA-Decomposition.html",
+      "title": "Analysis of MCIA Decomposition",
+      "author": "Max Mattessich, Joaquin Reyna, Edel Aron, Anna Konstorum",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Motivation",
+        "Overview",
+        "Installation",
+        "Preview of the NCI-60 dataset",
+        "Running and reviewing the MCIA output",
+        "Brief overview of the Global Scores Matrix ($F$)",
+        "Brief overview of the Global Loadings Matrix ($A$)",
+        "Part 1: Interpreting Global Factor Scores",
+        "nipals_multiblock() Generates Basic Visualizations",
+        "Visualizing a Factor Plot with Only Global Factor Scores",
+        "Visualizing the Clustering of Samples by Factor Scores",
+        "Part 2: Interpreting Global Loadings",
+        "Pseudoeigenvalues Representing the Contribution of Each Omic to the Global Factor Score",
+        "Visualize All Feature Loadings on Two Axes",
+        "Scree Plot: Visualizing the Top Features per Factor",
+        "Factor 1",
+        "Factor 2",
+        "Factor 4",
+        "Pathway Analysis for the Top Factors using Data from Gene-Centric Omics Blocks",
+        "Gather Data and Generate the Report",
+        "Investigating the GSEA Summary Table",
+        "Session Info"
+      ],
+      "created": "2024-08-31 07:35:36",
+      "modified": "2026-01-19 18:00:54",
+      "commits": 2
+    },
+    {
+      "source": "Predicting-New-Scores.Rmd",
+      "filename": "Predicting-New-Scores.html",
+      "title": "Predicting New MCIA scores",
+      "author": "Max Mattessich, Joaquin Reyna, Edel Aron, Anna Konstorum",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Predicting MCIA global (factor) scores for new test samples",
+        "Installation",
+        "Split the data",
+        "Run nipalsMCIA on training data",
+        "Visualize model on training data using metadata on cancer type",
+        "Generate factor scores for test data using the MCIA_train model",
+        "Visualize new scores with old",
+        "Session Info"
+      ],
+      "created": "2024-08-31 07:35:36",
+      "modified": "2024-08-31 07:35:36",
+      "commits": 1
+    },
+    {
+      "source": "Single-Cell-Analysis.Rmd",
+      "filename": "Single-Cell-Analysis.html",
+      "title": "Single Cell Analysis",
+      "author": "Max Mattessich, Joaquin Reyna, Edel Aron, Anna Konstorum",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Vignette Pipeline",
+        "Data",
+        "All Sources",
+        "Bioconductor",
+        "10x Genomics and Seurat",
+        "MCIA",
+        "Metadata",
+        "Running the decomposition",
+        "Visualization",
+        "Define colors",
+        "Eigenvalue scree plot",
+        "Projection plot",
+        "Global scores heatmap",
+        "Block weights heatmap",
+        "Loadings",
+        "Top features",
+        "Factor 1",
+        "Factor 4",
+        "Deep dive: Seurat analysis",
+        "Read in and process the data",
+        "Quality control",
+        "Metrics summary",
+        "GEX QC metrics",
+        "Before filtering",
+        "After filtering",
+        "Standard Seurat pipeline",
+        "Dimensionality reduction",
+        "Load in the processed object",
+        "PCA",
+        "UMAP",
+        "Marker overlays",
+        "Load marker genes",
+        "Dot plots",
+        "GEX",
+        "ADT",
+        "Feature plots",
+        "Violin plots",
+        "Annotate cell clusters",
+        "Annotations",
+        "UMAPs",
+        "Check the annotations",
+        "Save for MCIA",
+        "Session Info"
+      ],
+      "created": "2024-08-31 07:35:36",
+      "modified": "2026-01-19 18:00:54",
+      "commits": 2
+    }
+  ],
+  "_score": 6.225309281725863,
+  "_indexed": true,
+  "_nocasepkg": "nipalsmcia",
+  "_universes": [
+    "bioc",
+    "muunraker"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:42:23.000Z",
+      "distro": "noble",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "389c54b09ec0b44c35912ea09068996e9e0cfbc4745b9a9150891aa1a8a7d0bb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:43:33.000Z",
+      "distro": "noble",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "179a5747977da2684d91f9febd8caa601e6442e40a4d0d80c8e85cf61e72ad91",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:41:05.000Z",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "61aa6f6b2725b643ce5bcac5b90432c4d02d4a39edecc04fe2273c3b508d9d5a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:41:06.000Z",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "3baeb5b7c35d61e7a438d675a5d1ce507da021d3dbb84dfc351d283786487571",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:42:35.000Z",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "70806d9a8666006fdab807e2a10a2a4fdb7dbdbe0d1629761acc6b09d69669a0",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:41:09.000Z",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "bf40ee695eb8aa63a4f30c0f44e26517f280163b46f12c916af7f0d595cc886f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:41:16.000Z",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "4787c0c556af84741729d96126b5f4a06dc16baa7e35f2c44b927f3d3b038337",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.9.1",
+      "date": "2026-02-19T04:41:12.000Z",
+      "commit": "cd033e54cacd597b2121732ff8f6a2234373b2d1",
+      "fileid": "a2dd68499965d3918c43fa50d16aa5d5680d5598896cb313d1ffadf97733d179",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22168598136"
+    }
+  ]
+}

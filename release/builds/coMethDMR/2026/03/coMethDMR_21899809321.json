@@ -1,0 +1,975 @@
+{
+  "Package": "coMethDMR",
+  "Title": "Accurate identification of co-methylated and differentially\nmethylated regions in epigenome-wide association studies",
+  "Version": "1.14.0",
+  "Authors@R": "c(\nperson(\"Fernanda\", \"Veitzman\", email = \"fveit001@fiu.edu\", role = c(\"cre\")),\nperson(\"Lissette\", \"Gomez\", email = \"lxg255@miami.edu\", role = c(\"aut\")),\nperson(\"Tiago\", \"Silva\", email = \"txs902@med.miami.edu\", role = c(\"aut\")),\nperson(\"Ning\", \"Lijiao\", role = c(\"ctb\")),\nperson(\"Boissel\", \"Mathilde\", role = c(\"ctb\")),\nperson(\"Lily\", \"Wang\", email = \"lily.wang@med.miami.edu\", role = c(\"aut\")),\nperson(\"Gabriel\", \"Odom\", email = \"gabriel.odom@fiu.edu\", role = c(\"aut\"))\n)",
+  "Description": "coMethDMR identifies genomic regions associated with\ncontinuous phenotypes by optimally leverages covariations among\nCpGs within predefined genomic regions. Instead of testing all\nCpGs within a genomic region, coMethDMR carries out an\nadditional step that selects co-methylated sub-regions first\nwithout using any outcome information. Next, coMethDMR tests\nassociation between methylation within the sub-region and\ncontinuous phenotype using a random coefficient mixed effects\nmodel, which models both variations between CpG sites within\nthe region and differential methylation simultaneously.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "LazyData": "false",
+  "RoxygenNote": "7.1.2",
+  "biocViews": "DNAMethylation, Epigenetics, MethylationArray,\nDifferentialMethylation, GenomeWideAssociation",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/TransBioInfoLab/coMethDMR/issues",
+  "URL": "https://github.com/TransBioInfoLab/coMethDMR",
+  "Config/pak/sysreqs": "cmake make libbz2-dev libicu-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:14:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/coMethDMR",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "052092e077b58694276a5149b2e29e41e9a68450",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-11 09:45:41 UTC",
+    "User": "root"
+  },
+  "Author": "Fernanda Veitzman [cre],\nLissette Gomez [aut],\nTiago Silva [aut],\nNing Lijiao [ctb],\nBoissel Mathilde [ctb],\nLily Wang [aut],\nGabriel Odom [aut]",
+  "Maintainer": "Fernanda Veitzman <fveit001@fiu.edu>",
+  "MD5sum": "9519dee8f80277b53cbffacee70c0daf",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "coMethDMR_1.14.0.tar.gz",
+  "_fileid": "43123a9d77c3728958e490be4a0fde872fa637f28ed322d67ba0e893d146c5a4",
+  "_filesize": 2993265,
+  "_sha256": "43123a9d77c3728958e490be4a0fde872fa637f28ed322d67ba0e893d146c5a4",
+  "_created": "2026-02-11T09:45:41.000Z",
+  "_published": "2026-02-11T10:01:01.993Z",
+  "_jobs": [
+    {
+      "job": 63226053401,
+      "time": 416,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5463014268"
+    },
+    {
+      "job": 63226053352,
+      "time": 785,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5463090232"
+    },
+    {
+      "job": 63226053396,
+      "time": 836,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5463100575"
+    },
+    {
+      "job": 63226053398,
+      "time": 760,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5463084644"
+    },
+    {
+      "job": 63226053380,
+      "time": 695,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5463071698"
+    },
+    {
+      "job": 63224877442,
+      "time": 654,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5462927995"
+    },
+    {
+      "job": 63226053358,
+      "time": 376,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5463005672"
+    },
+    {
+      "job": 63226053375,
+      "time": 690,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5463070856"
+    },
+    {
+      "job": 63226053372,
+      "time": 631,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5463058505"
+    },
+    {
+      "job": 63226053370,
+      "time": 685,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5463069912"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/coMethDMR",
+  "_commit": {
+    "id": "052092e077b58694276a5149b2e29e41e9a68450",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750852
+  },
+  "_maintainer": {
+    "name": "Fernanda Veitzman",
+    "email": "fveit001@fiu.edu",
+    "login": "fveitz",
+    "uuid": 75789234
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "bumphunter",
+      "role": "Imports"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "lmerTest",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "corrplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "IlluminaHumanMethylation450kanno.ilmn12.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "IlluminaHumanMethylationEPICanno.ilm10b4.hg19",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.15.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.14.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dnamethylation",
+    "epigenetics",
+    "methylationarray",
+    "differentialmethylation",
+    "genomewideassociation"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "gabrielodom",
+      "count": 52,
+      "uuid": 24464126
+    },
+    {
+      "user": "tiagochst",
+      "count": 26,
+      "uuid": 145529
+    },
+    {
+      "user": "fveitz",
+      "count": 11,
+      "uuid": 75789234
+    },
+    {
+      "user": "dlukacso",
+      "count": 7,
+      "uuid": 23654243
+    },
+    {
+      "user": "lxw391",
+      "count": 7,
+      "uuid": 27868862
+    },
+    {
+      "user": "ning-l",
+      "count": 7,
+      "uuid": 31008500
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 280,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/coMethDMR"
+  },
+  "_devurl": "https://github.com/transbioinfolab/comethdmr",
+  "_searchresults": 46,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/coMethDMR.html",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/transbioinfolab/comethdmr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "AnnotateResults",
+    "CloseBySingleRegion",
+    "CoMethAllRegions",
+    "CoMethSingleRegion",
+    "CpGsInfoAllRegions",
+    "CpGsInfoOneRegion",
+    "CreateOutputDF",
+    "CreateParallelWorkers",
+    "CreateRdrop",
+    "FindComethylatedRegions",
+    "GetCpGsInRegion",
+    "GetResiduals",
+    "ImportSesameData",
+    "lmmTest",
+    "lmmTestAllRegions",
+    "MarkComethylatedCpGs",
+    "MarkMissing",
+    "NameRegion",
+    "OrderCpGsByLocation",
+    "RegionsToRanges",
+    "SplitCpGDFbyRegion",
+    "WriteCloseByAllRegions"
+  ],
+  "_datasets": [
+    {
+      "name": "betaMatrix_ex1",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "object": "betaMatrix_ex1",
+      "file": "betaMatrix_ex1.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "cg10170214",
+        "cg06518233",
+        "cg18326783",
+        "cg05229649"
+      ],
+      "rows": 110,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "betaMatrix_ex2",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "object": "betaMatrix_ex2",
+      "file": "betaMatrix_ex2.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "cg19957119",
+        "cg02009103",
+        "cg18360825",
+        "cg00496026"
+      ],
+      "rows": 110,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "betaMatrix_ex3",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "object": "betaMatrix_ex3",
+      "file": "betaMatrix_ex3.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "cg14221598",
+        "cg02433884",
+        "cg07372974",
+        "cg13419809",
+        "cg26856676",
+        "cg25246745"
+      ],
+      "rows": 110,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "betaMatrix_ex4",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "object": "betaMatrix_ex4",
+      "file": "betaMatrix_ex4.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "cg05076221",
+        "cg23936031",
+        "cg02248486",
+        "cg25866143",
+        "cg09549073",
+        "cg01370449",
+        "cg04863892",
+        "cg19759481",
+        "cg12128839",
+        "cg02916332",
+        "cg17569124",
+        "cg02005600",
+        "cg25307665",
+        "cg14014955",
+        "cg02646423",
+        "cg20517050",
+        "cg23204968",
+        "cg05835726",
+        "cg14058329",
+        "cg03207666",
+        "cg13512268",
+        "cg23454797",
+        "cg12015737",
+        "cg08070327",
+        "cg25506432",
+        "cg14658493",
+        "cg19196335",
+        "cg09880291",
+        "cg24389585",
+        "cg16997642",
+        "cg20817131",
+        "cg14013695",
+        "cg25390165",
+        "cg01323381",
+        "cg19643053",
+        "cg05774699",
+        "cg26023912",
+        "cg14882265",
+        "cg17432857",
+        "cg00969405",
+        "cg07049592",
+        "cg02106682",
+        "cg03368099",
+        "cg01748892",
+        "cg13694927",
+        "cg03744763",
+        "cg27151303",
+        "cg05579037",
+        "cg21641458",
+        "cg09343092",
+        "cg18931036",
+        "cg24040595"
+      ],
+      "rows": 110,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "betasChr22_df",
+      "title": "Prefrontal Cortex (PFC) Methylation Data from Alzheimer's Disease subjects",
+      "object": "betasChr22_df",
+      "file": "betasChr22_df.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "GSM1443279",
+        "GSM1443663",
+        "GSM1443434",
+        "GSM1443547",
+        "GSM1443577",
+        "GSM1443475",
+        "GSM1443326",
+        "GSM1443640",
+        "GSM1443389",
+        "GSM1443573",
+        "GSM1443364",
+        "GSM1443455",
+        "GSM1443503",
+        "GSM1443643",
+        "GSM1443387",
+        "GSM1443683",
+        "GSM1443251",
+        "GSM1443332",
+        "GSM1443485",
+        "GSM1443685"
+      ],
+      "rows": 8552,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "pheno_df",
+      "title": "Example phenotype data file from Prefrontal Cortex (PFC) Methylation Data of Alzheimer's Disease subjects",
+      "object": "pheno_df",
+      "file": "pheno_df.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "stage",
+        "subject.id",
+        "sex",
+        "Sample",
+        "age.brain",
+        "slide"
+      ],
+      "rows": 114,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "AnnotateResults",
+      "title": "Annotate 'coMethDMR' Pipeline Results",
+      "topics": [
+        "AnnotateResults"
+      ]
+    },
+    {
+      "page": "betaMatrix_ex1",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "topics": [
+        "betaMatrix_ex1"
+      ]
+    },
+    {
+      "page": "betaMatrix_ex2",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "topics": [
+        "betaMatrix_ex2"
+      ]
+    },
+    {
+      "page": "betaMatrix_ex3",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "topics": [
+        "betaMatrix_ex3"
+      ]
+    },
+    {
+      "page": "betaMatrix_ex4",
+      "title": "Alzheimer's Prefrontal Cortex (PFC) Methylation Data",
+      "topics": [
+        "betaMatrix_ex4"
+      ]
+    },
+    {
+      "page": "betasChr22_df",
+      "title": "Prefrontal Cortex (PFC) Methylation Data from Alzheimer's Disease subjects",
+      "topics": [
+        "betasChr22_df"
+      ]
+    },
+    {
+      "page": "CloseBySingleRegion",
+      "title": "Extract clusters of CpGs located closely in a genomic region.",
+      "topics": [
+        "CloseBySingleRegion"
+      ]
+    },
+    {
+      "page": "CoMethAllRegions",
+      "title": "Extract contiguous co-methylated genomic regions from a list of pre-defined genomic regions",
+      "topics": [
+        "CoMethAllRegions"
+      ]
+    },
+    {
+      "page": "CoMethSingleRegion",
+      "title": "Wrapper function to find contiguous and comethyalted sub-regions within a pre-defined genomic region",
+      "topics": [
+        "CoMethSingleRegion"
+      ]
+    },
+    {
+      "page": "CpGsInfoAllRegions",
+      "title": "Test Associations Between Regions and Phenotype",
+      "topics": [
+        "CpGsInfoAllRegions"
+      ]
+    },
+    {
+      "page": "CpGsInfoOneRegion",
+      "title": "Test Associations Between a Region and Phenotype",
+      "topics": [
+        "CpGsInfoOneRegion"
+      ]
+    },
+    {
+      "page": "CreateParallelWorkers",
+      "title": "Create a Parallel Computing Cluster",
+      "topics": [
+        "CreateParallelWorkers"
+      ]
+    },
+    {
+      "page": "CreateRdrop",
+      "title": "Computes leave-one-out correlations (rDrop) for each CpG",
+      "topics": [
+        "CreateRdrop"
+      ]
+    },
+    {
+      "page": "FindComethylatedRegions",
+      "title": "Find Contiguous Co-Methylated Regions",
+      "topics": [
+        "FindComethylatedRegions"
+      ]
+    },
+    {
+      "page": "GetCpGsInRegion",
+      "title": "Extract probe IDs for CpGs located in a genomic region",
+      "topics": [
+        "GetCpGsInRegion"
+      ]
+    },
+    {
+      "page": "GetResiduals",
+      "title": "Get Linear Model Residuals",
+      "topics": [
+        "GetResiduals"
+      ]
+    },
+    {
+      "page": "ImportSesameData",
+      "title": "Import Illumina manifests (sesameData versions)",
+      "topics": [
+        "ImportSesameData"
+      ]
+    },
+    {
+      "page": "lmmTest",
+      "title": "Fit mixed model to methylation values in one genomic region",
+      "topics": [
+        "lmmTest"
+      ]
+    },
+    {
+      "page": "lmmTestAllRegions",
+      "title": "Linear Mixed Models by Region",
+      "topics": [
+        "lmmTestAllRegions"
+      ]
+    },
+    {
+      "page": "MarkComethylatedCpGs",
+      "title": "Mark CpGs in contiguous and co-methylated region",
+      "topics": [
+        "MarkComethylatedCpGs"
+      ]
+    },
+    {
+      "page": "MarkMissing",
+      "title": "Return Column and Row Names of Samples and Probes under the Missingness Theshold",
+      "topics": [
+        "MarkMissing"
+      ]
+    },
+    {
+      "page": "NameRegion",
+      "title": "Name a region with several CpGs based on its genomic location",
+      "topics": [
+        "NameRegion"
+      ]
+    },
+    {
+      "page": "OrderCpGsByLocation",
+      "title": "Order CpGs by genomic location",
+      "topics": [
+        "OrderCpGsByLocation"
+      ]
+    },
+    {
+      "page": "pheno_df",
+      "title": "Example phenotype data file from Prefrontal Cortex (PFC) Methylation Data of Alzheimer's Disease subjects",
+      "topics": [
+        "pheno_df"
+      ]
+    },
+    {
+      "page": "RegionsToRanges",
+      "title": "Convert genomic regions in a data frame to GRanges format",
+      "topics": [
+        "RegionsToRanges"
+      ]
+    },
+    {
+      "page": "WriteCloseByAllRegions",
+      "title": "Extract clusters of CpG probes located closely",
+      "topics": [
+        "WriteCloseByAllRegions"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/coMethDMR/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationHub",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocVersion",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "bumphunter",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "doRNG",
+    "dplyr",
+    "ExperimentHub",
+    "farver",
+    "fastmap",
+    "filelock",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "httr",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "lme4",
+    "lmerTest",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "minqa",
+    "nlme",
+    "nloptr",
+    "numDeriv",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RCurl",
+    "Rdpack",
+    "reformulas",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rngtools",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "vin2_BiocParallel_for_coMethDMR_geneBasedPipeline.Rmd",
+      "filename": "vin2_BiocParallel_for_coMethDMR_geneBasedPipeline.html",
+      "title": "Genome-wide methylation analysis using coMethDMR via parallel computing",
+      "author": "Gabriel J. Odom, Lissette Gomez, Tiago Chedraoui Silva, Lanyu Zhang and Lily Wang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Overview",
+        "Example Dataset",
+        "Analyzing One Type of Genomic Region via BiocParallel",
+        "Compute residuals",
+        "Finding co-methylated regions",
+        "Testing the co-methylated regions",
+        "coMethDMR Analysis Pipeline for 450k Methylation Arrays Datasets via BiocParallel",
+        "A Comment on Using EPIC Methylation Arrays Datasets",
+        "Additional Comments on Computational Time and Resources",
+        "Session Information"
+      ],
+      "created": "2021-04-21 15:57:59",
+      "modified": "2022-01-26 21:05:23",
+      "commits": 9
+    },
+    {
+      "source": "vin1_Introduction_to_coMethDMR_geneBasedPipeline.Rmd",
+      "filename": "vin1_Introduction_to_coMethDMR_geneBasedPipeline.html",
+      "title": "Introduction to coMethDMR",
+      "author": "Lissette Gomez, Gabriel Odom, Tiago Chedraoui Silva, Lanyu Zhang, and Lily Wang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Quick start",
+        "Installation",
+        "Datasets",
+        "Example Methylation Data",
+        "Example Response Data",
+        "A quick work through of coMethDMR",
+        "Details of coMethDMR workflow",
+        "Genomic regions tested in gene based pipeline",
+        "When there are co-variate variables in dataset to consider",
+        "Algorithm for identifying co-methylated regions",
+        "Models for testing genomic regions against a continuous phenotype",
+        "Analyzing a specific gene",
+        "Frequently Asked Questions",
+        "Reference",
+        "Session Information"
+      ],
+      "created": "2021-04-21 15:57:59",
+      "modified": "2022-03-28 23:28:36",
+      "commits": 16
+    }
+  ],
+  "_score": 6.507855871695831,
+  "_indexed": false,
+  "_nocasepkg": "comethdmr",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/coMethDMR",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:52:58.000Z",
+      "distro": "noble",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "f30c2f77f4c83800fb1c94787a7f2d65b043974a2e63f369903c3ba72ea876a8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:53:45.000Z",
+      "distro": "noble",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "cd3176f5719d2b97bef537c2f0457eeb996cdde777219d4f20a59365bdbe2f9c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:51:04.000Z",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "775d0bfa293614c0d0844353a06a5ebdcde6291ca0d32405c33ac774cc84e893",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:51:03.000Z",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "aa97b56195224b818997de232dff473288c9245f7bbda731783d0e2a711763f6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:52:50.000Z",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "9b1de22538c07bfc3402572b6e97f8d317ac4fed1fc3f4a7d93471a693b643ad",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:50:31.000Z",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "dfc7d060dbfdf62641512500494780201323a317451cf73ecdb6129990be3f20",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:50:23.000Z",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "59e19100ec6bb21dd692917415aca24acb45b613dfee5110eb946b0b765af9f1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.14.0",
+      "date": "2026-02-11T09:50:45.000Z",
+      "commit": "052092e077b58694276a5149b2e29e41e9a68450",
+      "fileid": "b43e235f0cec09f804cc804b42fccc42efa3aac6dcd207398bf14cc25d3fd435",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21899809321"
+    }
+  ]
+}

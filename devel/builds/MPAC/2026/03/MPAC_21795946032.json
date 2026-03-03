@@ -1,0 +1,816 @@
+{
+  "Package": "MPAC",
+  "Title": "Multi-omic Pathway Analysis of Cells",
+  "Version": "1.5.0",
+  "Authors@R": "c(\nperson(given=\"Peng\", family=\"Liu\",\nemail=\"pliu55.wisc+bioconductor@gmail.com\",\nrole = c(\"aut\", \"cre\"), comment=c(ORCID=\"0000-0001-5655-2259\")),\nperson(given=\"Paul\",    family=\"Ahlquist\", role = c(\"aut\")),\nperson(given=\"Irene\",   family=\"Ong\",      role = c(\"aut\")),\nperson(given=\"Anthony\", family=\"Gitter\",   role = c(\"aut\")))",
+  "Description": "Multi-omic Pathway Analysis of Cells (MPAC), integrates\nmulti-omic data for understanding cellular mechanisms. It\npredicts novel patient groups with distinct pathway profiles as\nwell as identifying key pathway proteins with potential\nclinical associations. From CNA and RNA-seq data, it determines\ngenes\u2019 DNA and RNA states (i.e., repressed, normal, or\nactivated), which serve as the input for PARADIGM to calculate\nInferred Pathway Levels (IPLs). It also permutes DNA and RNA\nstates to create a background distribution to filter IPLs as a\nway to remove events observed by chance. It provides multiple\nmethods for downstream analysis and visualization.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "URL": "https://github.com/pliu55/MPAC",
+  "BugReports": "https://github.com/pliu55/MPAC/issues",
+  "Config/testthat/edition": "3",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, Technology, Sequencing, RNASeq, Survival,\nClustering, ImmunoOncology",
+  "SystemsRequirements": "The `runPrd()` function requires an external\nsoftware named PARADIGM. For details, please see the 'Required\nexternal software' section in vignette's 'Run PARADIGM:\nrunPrd()'.",
+  "Config/pak/sysreqs": "cmake libfontconfig1-dev libfreetype6-dev\nlibglpk-dev make libicu-dev libjpeg-dev libpng-dev libxml2-dev\nlibssl-dev perl zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:30:37 UTC",
+  "RemoteUrl": "https://github.com/bioc/MPAC",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-08 09:38:35 UTC",
+    "User": "root"
+  },
+  "Author": "Peng Liu [aut, cre] (ORCID: <https://orcid.org/0000-0001-5655-2259>),\nPaul Ahlquist [aut],\nIrene Ong [aut],\nAnthony Gitter [aut]",
+  "Maintainer": "Peng Liu <pliu55.wisc+bioconductor@gmail.com>",
+  "MD5sum": "b5fd83dcd39b001dd280b48b72190e29",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "MPAC_1.5.0.tar.gz",
+  "_fileid": "1e43e5f2d7cce0e4850d2d6362d1c012f44b62f282a06e0e2bc29278815873e1",
+  "_filesize": 572375,
+  "_sha256": "1e43e5f2d7cce0e4850d2d6362d1c012f44b62f282a06e0e2bc29278815873e1",
+  "_created": "2026-02-08T09:38:35.000Z",
+  "_published": "2026-02-08T09:57:02.471Z",
+  "_jobs": [
+    {
+      "job": 62883616934,
+      "time": 225,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421802480"
+    },
+    {
+      "job": 62883616941,
+      "time": 438,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421817120"
+    },
+    {
+      "job": 62883616945,
+      "time": 407,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421815055"
+    },
+    {
+      "job": 62883616936,
+      "time": 275,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421854066"
+    },
+    {
+      "job": 62883616938,
+      "time": 293,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421854964"
+    },
+    {
+      "job": 62883453273,
+      "time": 312,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5421788432"
+    },
+    {
+      "job": 62883616931,
+      "time": 185,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421799934"
+    },
+    {
+      "job": 62883616947,
+      "time": 315,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5421808962"
+    },
+    {
+      "job": 62883616951,
+      "time": 301,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5421808002"
+    },
+    {
+      "job": 62883616942,
+      "time": 288,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5421807084"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/MPAC",
+  "_commit": {
+    "id": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751837
+  },
+  "_maintainer": {
+    "name": "Peng Liu",
+    "email": "pliu55.wisc+bioconductor@gmail.com",
+    "login": "pliu55",
+    "uuid": 8206016,
+    "orcid": "0000-0001-5655-2259"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "data.table",
+      "version": ">= 1.14.2",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "version": ">= 1.30.2",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "version": ">= 1.28.3",
+      "role": "Imports"
+    },
+    {
+      "package": "fitdistrplus",
+      "version": ">= 1.1",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "version": ">= 1.4.3",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocSingular",
+      "version": ">= 1.10.0",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.32.3",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "version": ">= 1.16.0",
+      "role": "Imports"
+    },
+    {
+      "package": "bluster",
+      "version": ">= 1.4.0",
+      "role": "Imports"
+    },
+    {
+      "package": "fgsea",
+      "version": ">= 1.20.0",
+      "role": "Imports"
+    },
+    {
+      "package": "scran",
+      "version": ">= 1.22.1",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "version": ">= 2.16.0",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "version": ">= 0.4.16",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "version": ">= 1.3.0",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "version": ">= 1.5.1",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "version": ">= 0.6.5",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 3.5.1",
+      "role": "Imports"
+    },
+    {
+      "package": "ggraph",
+      "version": ">= 2.2.1",
+      "role": "Imports"
+    },
+    {
+      "package": "survival",
+      "version": ">= 3.7",
+      "role": "Imports"
+    },
+    {
+      "package": "survminer",
+      "version": ">= 0.4.9",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "svglite",
+      "role": "Suggests"
+    },
+    {
+      "package": "bookdown",
+      "version": ">= 0.34",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-10",
+      "n": 2
+    },
+    {
+      "week": "2025-11",
+      "n": 6
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.5.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.4.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "technology",
+    "sequencing",
+    "rnaseq",
+    "survival",
+    "clustering",
+    "immunooncology"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "pliu55",
+      "count": 171,
+      "uuid": 8206016
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    },
+    {
+      "user": "agitter",
+      "count": 2,
+      "uuid": 3532898
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 216,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MPAC"
+  },
+  "_devurl": "https://github.com/pliu55/mpac",
+  "_searchresults": 1,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/MPAC.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/pliu55/mpac",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "clSamp",
+    "colPermIPL",
+    "colRealIPL",
+    "conMtf",
+    "fltByPerm",
+    "getSignifOvrOnCl",
+    "ovrGMT",
+    "pltConMtf",
+    "pltMtfPrtIPL",
+    "pltNeiStt",
+    "pltOvrHm",
+    "pltSttKM",
+    "ppCnInp",
+    "ppPermInp",
+    "ppRealInp",
+    "ppRnaInp",
+    "ppRunPrd",
+    "runPermPrd",
+    "runPrd",
+    "subNtw"
+  ],
+  "_help": [
+    {
+      "page": "clSamp",
+      "title": "Cluster samples by pathway over-representation",
+      "topics": [
+        "clSamp"
+      ]
+    },
+    {
+      "page": "colPermIPL",
+      "title": "Collect Inferred Pathway Levels (IPLs) from PARADIGM runs on permuted data",
+      "topics": [
+        "colPermIPL"
+      ]
+    },
+    {
+      "page": "colRealIPL",
+      "title": "Collect Inferred Pathway Levels (IPLs) from PARADIGM runs on real data",
+      "topics": [
+        "colRealIPL"
+      ]
+    },
+    {
+      "page": "conMtf",
+      "title": "Find consensus pathway motifs from a list of pathways",
+      "topics": [
+        "conMtf"
+      ]
+    },
+    {
+      "page": "fltByPerm",
+      "title": "Filter IPLs from real data by distribution from permuted data",
+      "topics": [
+        "fltByPerm"
+      ]
+    },
+    {
+      "page": "getSignifOvrOnCl",
+      "title": "Get significantly over-represented gene sets for clustered samples",
+      "topics": [
+        "getSignifOvrOnCl"
+      ]
+    },
+    {
+      "page": "ovrGMT",
+      "title": "Calculate over-representation of gene sets in each sample by genes from sample's largest sub-pathway",
+      "topics": [
+        "ovrGMT"
+      ]
+    },
+    {
+      "page": "pltConMtf",
+      "title": "Plot consensus pathway submodules",
+      "topics": [
+        "pltConMtf"
+      ]
+    },
+    {
+      "page": "pltMtfPrtIPL",
+      "title": "Plot a heatmap of IPLs on proteins from consensus pathway submodules",
+      "topics": [
+        "pltMtfPrtIPL"
+      ]
+    },
+    {
+      "page": "pltNeiStt",
+      "title": "Plot a heatmap of pathway and omic states of a protein and its pathway neighbors",
+      "topics": [
+        "pltNeiStt"
+      ]
+    },
+    {
+      "page": "pltOvrHm",
+      "title": "Plot a heatmap of over-represented gene sets for clustered samples",
+      "topics": [
+        "pltOvrHm"
+      ]
+    },
+    {
+      "page": "pltSttKM",
+      "title": "Plot a Kaplan-Meier curve for samples stratified by given protein(s)' pathway states",
+      "topics": [
+        "pltSttKM"
+      ]
+    },
+    {
+      "page": "ppCnInp",
+      "title": "Prepare input copy-number (CN) alteration data to run PARADIGM",
+      "topics": [
+        "ppCnInp"
+      ]
+    },
+    {
+      "page": "ppPermInp",
+      "title": "Permute input genomic state data between genes in the same sample",
+      "topics": [
+        "ppPermInp"
+      ]
+    },
+    {
+      "page": "ppRealInp",
+      "title": "Prepare input copy-number (CN) alteration and RNA data to run PARADIGM",
+      "topics": [
+        "ppRealInp"
+      ]
+    },
+    {
+      "page": "ppRnaInp",
+      "title": "Prepare input RNA data to run PARADIGM",
+      "topics": [
+        "ppRnaInp"
+      ]
+    },
+    {
+      "page": "ppRunPrd",
+      "title": "Prepare required files to run PARADIGM",
+      "topics": [
+        "ppRunPrd"
+      ]
+    },
+    {
+      "page": "runPermPrd",
+      "title": "Run PARADIGM on permuted data",
+      "topics": [
+        "runPermPrd"
+      ]
+    },
+    {
+      "page": "runPrd",
+      "title": "Run PARADIGM on multi-omic data",
+      "topics": [
+        "runPrd"
+      ]
+    },
+    {
+      "page": "subNtw",
+      "title": "Subset pathways by IPL results",
+      "topics": [
+        "subNtw"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/MPAC/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "bluster",
+    "boot",
+    "broom",
+    "cachem",
+    "car",
+    "carData",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "commonmark",
+    "ComplexHeatmap",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "Deriv",
+    "digest",
+    "doBy",
+    "doParallel",
+    "dplyr",
+    "dqrng",
+    "edgeR",
+    "evaluate",
+    "exactRankTests",
+    "farver",
+    "fastmap",
+    "fastmatch",
+    "fgsea",
+    "fitdistrplus",
+    "foreach",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggforce",
+    "ggplot2",
+    "ggpubr",
+    "ggraph",
+    "ggrepel",
+    "ggsci",
+    "ggsignif",
+    "ggtext",
+    "GlobalOptions",
+    "glue",
+    "graphlayouts",
+    "gridExtra",
+    "gridtext",
+    "gtable",
+    "highr",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jpeg",
+    "jsonlite",
+    "km.ci",
+    "KMsurv",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "litedown",
+    "lme4",
+    "lmtest",
+    "locfit",
+    "magrittr",
+    "markdown",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "maxstat",
+    "memoise",
+    "metapod",
+    "mgcv",
+    "microbenchmark",
+    "minqa",
+    "modelr",
+    "mvtnorm",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "pbkrtest",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "polyclip",
+    "polynom",
+    "purrr",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "R6",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "reformulas",
+    "rjson",
+    "rlang",
+    "rstatix",
+    "rsvd",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "ScaledMatrix",
+    "scales",
+    "scran",
+    "scuttle",
+    "Seqinfo",
+    "shape",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "survminer",
+    "survMisc",
+    "systemfonts",
+    "tibble",
+    "tidygraph",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tseries",
+    "TTR",
+    "tweenr",
+    "urca",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xml2",
+    "xtable",
+    "xts",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_score": 3.6989700043360187,
+  "_indexed": true,
+  "_nocasepkg": "mpac",
+  "_universes": [
+    "bioc",
+    "pliu55"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:43:05.000Z",
+      "distro": "noble",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "fb57cd08f65d99e30f6053d111ecee3fa74beffeb1f05dee6db9ebc55bb3c066",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:42:50.000Z",
+      "distro": "noble",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "04817a6c6d2b692978698c0ac4fea09617ea4962b6821fa34bf9fb9ac4a52694",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:53:46.000Z",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "9a18df2560ddbf4b8ad07c01accc52a3752261a21dc1040ec4a0d1de71908280",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:53:55.000Z",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "d1ad5e6940ce46287d867f507a8aa6eb870d09b17b3b31e6b422a6ca8e1b4132",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:42:16.000Z",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "cd332279095d1c77713a8280884f50402ec15b6fcb37378a9bb1b08b3c7afba9",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:40:49.000Z",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "668138577f3ee58a316b43dfba95254ca730c96b866e53c30f12820cd055c8f0",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:40:51.000Z",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "9ff982300b8542ef9c86b84f3ded50072bb4c8ab3149d75d3f67b2fa9fa67322",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.5.0",
+      "date": "2026-02-08T09:40:36.000Z",
+      "commit": "f287ddca2a3bc601859bf32cc05b5aaa2d6f7e6b",
+      "fileid": "a668e87fdb311516686c73210bffb86ff9d75999f729db9dd9a3a516f50c2bd5",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795946032"
+    }
+  ]
+}

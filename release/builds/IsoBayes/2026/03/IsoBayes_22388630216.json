@@ -1,0 +1,659 @@
+{
+  "Package": "IsoBayes",
+  "Type": "Package",
+  "Title": "IsoBayes: Single Isoform protein inference Method via Bayesian\nAnalyses",
+  "Version": "1.8.0",
+  "Description": "IsoBayes is a Bayesian method to perform inference on\nsingle protein isoforms. Our approach infers the\npresence/absence of protein isoforms, and also estimates their\nabundance; additionally, it provides a measure of the\nuncertainty of these estimates, via: i) the posterior\nprobability that a protein isoform is present in the sample;\nii) a posterior credible interval of its abundance. IsoBayes\ninputs liquid cromatography mass spectrometry (MS) data, and\ncan work with both PSM counts, and intensities. When available,\ntrascript isoform abundances (i.e., TPMs) are also\nincorporated: TPMs are used to formulate an informative prior\nfor the respective protein isoform relative abundance. We\nfurther identify isoforms where the relative abundance of\nproteins and transcripts significantly differ. We use a\ntwo-layer latent variable approach to model two sources of\nuncertainty typical of MS data: i) peptides may be erroneously\ndetected (even when absent); ii) many peptides are compatible\nwith multiple protein isoforms. In the first layer, we sample\nthe presence/absence of each peptide based on its estimated\nprobability of being mistakenly detected, also known as PEP\n(i.e., posterior error probability). In the second layer, for\npeptides that were estimated as being present, we allocate\ntheir abundance across the protein isoforms they map to. These\ntwo steps allow us to recover the presence and abundance of\neach protein isoform.",
+  "Authors@R": "c(person(given = \"Jordy\",\nfamily = \"Bollon\",\nrole = c(\"aut\"),\nemail = \"jordy.bollon@iit.it\"),\nperson(given = \"Simone\",\nfamily = \"Tiberi\",\nrole = c(\"aut\", \"cre\"),\nemail = \"simone.tiberi@unibo.it\",\ncomment = c(ORCID = \"0000-0002-3054-9964\")))",
+  "biocViews": "StatisticalMethod, Bayesian, Proteomics, MassSpectrometry,\nAlternativeSplicing, Sequencing, RNASeq, GeneExpression,\nGenetics, Visualization, Software",
+  "License": "GPL-3",
+  "SystemRequirements": "C++17",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.2",
+  "ByteCompile": "true",
+  "URL": "https://github.com/SimoneTiberi/IsoBayes",
+  "BugReports": "https://github.com/SimoneTiberi/IsoBayes/issues",
+  "Config/pak/sysreqs": "zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:26:35 UTC",
+  "RemoteUrl": "https://github.com/bioc/IsoBayes",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "31036f8e183bb986324532ece1113d42fd71c8fa",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-25 08:34:09 UTC",
+    "User": "root"
+  },
+  "Author": "Jordy Bollon [aut],\nSimone Tiberi [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-3054-9964>)",
+  "Maintainer": "Simone Tiberi <simone.tiberi@unibo.it>",
+  "MD5sum": "6ece3838624815af788223157585084c",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "IsoBayes_1.8.0.tar.gz",
+  "_fileid": "15ab5adc080328c3275eaef0f550922050c90b08abb86bcb2f5906a049285c7c",
+  "_filesize": 1757430,
+  "_sha256": "15ab5adc080328c3275eaef0f550922050c90b08abb86bcb2f5906a049285c7c",
+  "_created": "2026-02-25T08:34:09.000Z",
+  "_published": "2026-02-25T08:43:37.842Z",
+  "_jobs": [
+    {
+      "job": 64805345837,
+      "time": 189,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650044533"
+    },
+    {
+      "job": 64805345958,
+      "time": 363,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650080962"
+    },
+    {
+      "job": 64805345931,
+      "time": 421,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650092147"
+    },
+    {
+      "job": 64805345928,
+      "time": 405,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650089150"
+    },
+    {
+      "job": 64805345896,
+      "time": 428,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650093654"
+    },
+    {
+      "job": 64805345923,
+      "time": 286,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650063815"
+    },
+    {
+      "job": 64805345899,
+      "time": 498,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650107959"
+    },
+    {
+      "job": 64805345982,
+      "time": 288,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650064145"
+    },
+    {
+      "job": 64805345917,
+      "time": 429,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650093771"
+    },
+    {
+      "job": 64804814105,
+      "time": 294,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5650004636"
+    },
+    {
+      "job": 64805345983,
+      "time": 152,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5650036425"
+    },
+    {
+      "job": 64805345885,
+      "time": 379,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5650082865"
+    },
+    {
+      "job": 64805345884,
+      "time": 374,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5650081898"
+    },
+    {
+      "job": 64805345895,
+      "time": 394,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5650088612"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/IsoBayes",
+  "_commit": {
+    "id": "31036f8e183bb986324532ece1113d42fd71c8fa",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751595
+  },
+  "_maintainer": {
+    "name": "Simone Tiberi",
+    "email": "simone.tiberi@unibo.it",
+    "login": "simonetiberi",
+    "twitter": "@tiberi_simone",
+    "uuid": 24696388,
+    "orcid": "0000-0002-3054-9964"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "glue",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "doRNG",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "iterators",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "HDInterval",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-23",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.9.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.8.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "statisticalmethod",
+    "bayesian",
+    "proteomics",
+    "massspectrometry",
+    "alternativesplicing",
+    "sequencing",
+    "rnaseq",
+    "geneexpression",
+    "genetics",
+    "visualization",
+    "software",
+    "cpp"
+  ],
+  "_stars": 8,
+  "_contributors": [
+    {
+      "user": "simonetiberi",
+      "count": 26,
+      "uuid": 24696388
+    },
+    {
+      "user": "jbollon",
+      "count": 3,
+      "uuid": 57363636
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 252,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/IsoBayes"
+  },
+  "_devurl": "https://github.com/simonetiberi/isobayes",
+  "_searchresults": 12,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/IsoBayes.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/simonetiberi/isobayes",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "generate_SE",
+    "inference",
+    "input_data",
+    "plot_relative_abundances",
+    "plot_traceplot"
+  ],
+  "_help": [
+    {
+      "page": "IsoBayes-package",
+      "title": "IsoBayes: Single Isoform protein inference Method via Bayesian Analyses",
+      "topics": [
+        "IsoBayes-package",
+        "IsoBayes"
+      ]
+    },
+    {
+      "page": "generate_SE",
+      "title": "Generate SummarizedExperiment object",
+      "topics": [
+        "generate_SE"
+      ]
+    },
+    {
+      "page": "inference",
+      "title": "Run our two-layer latent variable Bayesian model",
+      "topics": [
+        "inference"
+      ]
+    },
+    {
+      "page": "input_data",
+      "title": "Load and process input data",
+      "topics": [
+        "input_data"
+      ]
+    },
+    {
+      "page": "plot_relative_abundances",
+      "title": "Plot isoform results",
+      "topics": [
+        "plot_relative_abundances"
+      ]
+    },
+    {
+      "page": "plot_traceplot",
+      "title": "Traceplot of the (thinned) posterior chain of the relative abundance of each protein isoform (i.e., pi).",
+      "topics": [
+        "plot_traceplot"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/IsoBayes/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocGenerics",
+    "cli",
+    "codetools",
+    "cpp11",
+    "data.table",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "doRNG",
+    "farver",
+    "foreach",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "HDInterval",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "rlang",
+    "rngtools",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SparseArray",
+    "SummarizedExperiment",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04.1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "IsoBayes.Rmd",
+      "filename": "IsoBayes.html",
+      "title": "IsoBayes",
+      "author": "Jordy Bollon, Simone Tiberi",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Bioconductor installation",
+        "Questions, issues and citation",
+        "Load the package",
+        "Key options",
+        "Input data",
+        "PSM counts vs. intensities",
+        "TPMs (optional)",
+        "PEP vs. FDR cutoff",
+        "Generate SummarizedExperiment object",
+        "Input MetaMorpheus data",
+        "Peptide-Spectrum Match (PSM) counts",
+        "Intensities",
+        "Input Percolator data",
+        "Input user provided-data",
+        ".tsv or data.frame format",
+        "SummarizedExperiment format",
+        "Input and pre-process data",
+        "Inference",
+        "Gene Normalization (optional)",
+        "Visualizing results",
+        "Assessing convergence via traceplots",
+        "Session info",
+        "OpenMS and Metamorpheus pipeline",
+        "MetaMorpheus pipeline",
+        "Percolator pipeline",
+        "References"
+      ],
+      "created": "2023-07-19 09:08:02",
+      "modified": "2025-06-04 13:31:00",
+      "commits": 16
+    }
+  ],
+  "_score": 5.15836249209525,
+  "_indexed": false,
+  "_nocasepkg": "isobayes",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/IsoBayes",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:37:19.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "b059871e31a6a841b75f05eab47f693d5e890e07740447d0a3d76b03467cf50c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:37:47.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "9af01eba8c61f6af055e063d46c8a10715f7db0a02562cab816b3d7eb17c5ee7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:37:44.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "2f6a0612e1d1a9325b9f3fc0001a87a553a20cf04cc24e0d91128cba49087e71",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:37:59.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "c0ded9850c23007622c1a940a3a8e7f4e90872b3025038e55cd7740e58873a36",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:36:29.000Z",
+      "arch": "aarch64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "9e247562236d71cd8b814080be076eb35d3a1299ff2abe3d4c4a4207b9c13413",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:37:37.000Z",
+      "arch": "x86_64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "45fd6f0c6a3f152931df4b1bb0c40f65e2d0555f2348f58f766858d1e400253f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:36:29.000Z",
+      "arch": "aarch64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "7207305369ad91aeddc43157aa56bea736e1aa45e0322e5c8e15358229669ad5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:37:03.000Z",
+      "arch": "x86_64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "36800a6d1ac75be9387020c6d3c79d2f168c9e2e325d50d6dc4718c663e47cf2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:37:08.000Z",
+      "arch": "emscripten",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "b4f90a3946adc07b45bdfd350e5cc26d4c2ab03935bf9e1c64b784f5b7452676",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:35:57.000Z",
+      "arch": "x86_64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "4da83fcf5f9963b9f310f317935e5b328f286a37b040bbdbd9a247170644876a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:36:11.000Z",
+      "arch": "x86_64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "e7114e40260cd13a5a892facdc3b5cd249cfe0116e1e7a68d0764c57f08e9161",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-25T08:36:09.000Z",
+      "arch": "x86_64",
+      "commit": "31036f8e183bb986324532ece1113d42fd71c8fa",
+      "fileid": "2368e331dbf0e57cc7ca5d21402ef5b3ac59ea396c7b8048c6ee5d7d535309e1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22388630216"
+    }
+  ]
+}

@@ -1,0 +1,815 @@
+{
+  "Package": "coRdon",
+  "Type": "Package",
+  "Title": "Codon Usage Analysis and Prediction of Gene Expressivity",
+  "Version": "1.29.0",
+  "Authors@R": "c(person(given = \"Anamaria\",\nfamily = \"Elek\",\nrole = c(\"cre\", \"aut\"),\nemail = \"anamariaelek@gmail.com\"),\nperson(given = \"Maja\",\nfamily = \"Kuzman\",\nrole = \"aut\",\nemail = \"mkuzman@mail.bioinfo.hr\"),\nperson(given = \"Kristian\",\nfamily = \"Vlahovicek\",\nrole = \"aut\",\nemail = \"kristian@bioinfo.hr\"))",
+  "Description": "Tool for analysis of codon usage in various unannotated or\nKEGG/COG annotated DNA sequences. Calculates different measures\nof CU bias and CU-based predictors of gene expressivity, and\nperforms gene set enrichment analysis for annotated sequences.\nImplements several methods for visualization of CU and\nenrichment analysis results.",
+  "License": "Artistic-2.0",
+  "LazyData": "TRUE",
+  "biocViews": "Software, Metagenomics, GeneExpression, GeneSetEnrichment,\nGenePrediction, Visualization, KEGG, Pathways, Genetics\nCellBiology, BiomedicalInformatics, ImmunoOncology",
+  "RoxygenNote": "6.1.1",
+  "Collate": "'coRdon.R' 'genCode-class.R' 'codonTable-class.R'\n'functions.R' 'codonUsage.R' 'codonUsage-expressivity.R'\n'codonUsage-visualization.R' 'crossTab-class.R' 'data.R'\n'enrichment-visualization.R' 'enrichment.R' 'readSet.R'",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/BioinfoHR/coRdon",
+  "BugReports": "https://github.com/BioinfoHR/coRdon/issues",
+  "Config/pak/sysreqs": "libicu-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:46:38 UTC",
+  "RemoteUrl": "https://github.com/bioc/coRdon",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-17 08:27:48 UTC",
+    "User": "root"
+  },
+  "Author": "Anamaria Elek [cre, aut],\nMaja Kuzman [aut],\nKristian Vlahovicek [aut]",
+  "Maintainer": "Anamaria Elek <anamariaelek@gmail.com>",
+  "MD5sum": "29eddcde2922e262fba55d3485dc25e6",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "coRdon_1.29.0.tar.gz",
+  "_fileid": "7e0ea1ab0ff3d4b7d0c7d6d756f51de1f72e0b758992a4c232bb3d2947ecddaf",
+  "_filesize": 2123203,
+  "_sha256": "7e0ea1ab0ff3d4b7d0c7d6d756f51de1f72e0b758992a4c232bb3d2947ecddaf",
+  "_created": "2026-02-17T08:27:48.000Z",
+  "_published": "2026-02-17T08:34:34.498Z",
+  "_jobs": [
+    {
+      "job": 63836525536,
+      "time": 145,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5535646523"
+    },
+    {
+      "job": 63836525582,
+      "time": 365,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5535684417"
+    },
+    {
+      "job": 63836525554,
+      "time": 216,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5535658479"
+    },
+    {
+      "job": 63836525549,
+      "time": 131,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5535643899"
+    },
+    {
+      "job": 63836525553,
+      "time": 160,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5535648853"
+    },
+    {
+      "job": 63836205129,
+      "time": 212,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5535621116"
+    },
+    {
+      "job": 63836525548,
+      "time": 105,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5535639155"
+    },
+    {
+      "job": 63836525566,
+      "time": 152,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5535647762"
+    },
+    {
+      "job": 63836525565,
+      "time": 183,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5535653041"
+    },
+    {
+      "job": 63836525593,
+      "time": 160,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5535650064"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/coRdon",
+  "_commit": {
+    "id": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749198
+  },
+  "_maintainer": {
+    "name": "Anamaria Elek",
+    "email": "anamariaelek@gmail.com",
+    "login": "anamariaelek",
+    "uuid": 20280755
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.29.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.28.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "metagenomics",
+    "geneexpression",
+    "genesetenrichment",
+    "geneprediction",
+    "visualization",
+    "kegg",
+    "pathways",
+    "genetics\ncellbiology",
+    "biomedicalinformatics",
+    "immunooncology"
+  ],
+  "_stars": 23,
+  "_contributors": [
+    {
+      "user": "anamariaelek",
+      "count": 83,
+      "uuid": 20280755
+    },
+    {
+      "user": "bioinfohr",
+      "count": 27,
+      "uuid": 13433744
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "makuzman",
+      "count": 1,
+      "uuid": 37149324
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 538,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/coRdon"
+  },
+  "_mentions": 6,
+  "_devurl": "https://github.com/bioinfohr/cordon",
+  "_searchresults": 63,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/coRdon.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioinfohr/cordon",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "B",
+    "Bplot",
+    "CAI",
+    "codonCounts",
+    "codonTable",
+    "contable",
+    "crossTab",
+    "E",
+    "ENC",
+    "ENCprime",
+    "enrichBarplot",
+    "enrichMAplot",
+    "enrichMatrix",
+    "enrichment",
+    "Fop",
+    "GCB",
+    "getCOG",
+    "getID",
+    "getKO",
+    "getlen",
+    "getSeqAnnot",
+    "getVariable",
+    "intraBplot",
+    "MCB",
+    "MELP",
+    "MILC",
+    "readSet",
+    "reduceCrossTab",
+    "SCUO",
+    "setCOG",
+    "setKO",
+    "show"
+  ],
+  "_datasets": [
+    {
+      "name": "HD59",
+      "title": "Codon usage in healthy human gut microbiome.",
+      "object": "HD59",
+      "class": [
+        "codonTable"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "HD59_KO",
+      "title": "Codon usage based KO enrichment analysis results from the healthy human gut microbiome. For more information, see '?HD59'.",
+      "object": "HD59_KO",
+      "class": [
+        "AnnotatedDataFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "HD59_PATHWAYS",
+      "title": "Codon usage based KEGG Pathway enrichment analysis results from a healthy human gut microbiome. For more information, see '?HD59'.",
+      "object": "HD59_PATHWAYS",
+      "class": [
+        "AnnotatedDataFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "LD94",
+      "title": "Codon usage in human gut microbiome in liver cirrhosis.",
+      "object": "LD94",
+      "class": [
+        "codonTable"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "LD94_KO",
+      "title": "Codon usage based KO enrichment analysis results from an gut microbiome of an individual with liver cirrhosis. For more information, see '?LD94'.",
+      "object": "LD94_KO",
+      "class": [
+        "AnnotatedDataFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "LD94_PATHWAYS",
+      "title": "Codon usage based KEGG Pathway enrichment analysis results from an gut microbiome of an individual with liver cirrhosis. For more information, see '?LD94'.",
+      "object": "LD94_PATHWAYS",
+      "class": [
+        "AnnotatedDataFrame"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "subset",
+      "title": "Subset 'codonTable' object.",
+      "topics": [
+        "subset.codonTable",
+        "[,codonTable-method",
+        "[[,codonTable-method"
+      ]
+    },
+    {
+      "page": "bplot",
+      "title": "Karlin B plot",
+      "topics": [
+        "Bplot",
+        "Bplot,character,character,matrix-method",
+        "Bplot,numeric,numeric,missing-method"
+      ]
+    },
+    {
+      "page": "codonTable-class",
+      "title": "An S4 class 'codonTable'",
+      "topics": [
+        "codonCounts",
+        "codonCounts,codonTable-method",
+        "codonTable",
+        "codonTable,data.frame-method",
+        "codonTable,DNAStringSet-method",
+        "codonTable,matrix-method",
+        "codonTable-class",
+        "getCOG",
+        "getCOG,codonTable-method",
+        "getID",
+        "getID,codonTable-method",
+        "getKO",
+        "getKO,codonTable-method",
+        "getlen",
+        "getlen,codonTable-method",
+        "setCOG",
+        "setCOG,codonTable-method",
+        "setKO",
+        "setKO,codonTable-method"
+      ]
+    },
+    {
+      "page": "codonUsage",
+      "title": "Calculate CU measures.",
+      "topics": [
+        "B",
+        "B,codonTable-method",
+        "codonUsage",
+        "ENC",
+        "ENC,codonTable-method",
+        "ENCprime",
+        "ENCprime,codonTable-method",
+        "MCB",
+        "MCB,codonTable-method",
+        "MILC",
+        "MILC,codonTable-method",
+        "SCUO",
+        "SCUO,codonTable-method"
+      ]
+    },
+    {
+      "page": "codonUsage-expressivity",
+      "title": "Calculate CU expressivity measures.",
+      "topics": [
+        "CAI",
+        "CAI,codonTable-method",
+        "codonUsage-expressivity",
+        "E",
+        "E,codonTable-method",
+        "Fop",
+        "Fop,codonTable-method",
+        "GCB",
+        "GCB,codonTable-method",
+        "MELP",
+        "MELP,codonTable-method"
+      ]
+    },
+    {
+      "page": "coRdon",
+      "title": "coRdon: codon usage analysis in R",
+      "topics": [
+        "coRdon-package",
+        "coRdon"
+      ]
+    },
+    {
+      "page": "crossTab-class",
+      "title": "An S4 class 'crossTab'",
+      "topics": [
+        "contable",
+        "contable,crossTab-method",
+        "crossTab",
+        "crossTab,character,numeric-method",
+        "crossTab-class",
+        "getSeqAnnot",
+        "getSeqAnnot,crossTab-method",
+        "getVariable",
+        "getVariable,crossTab-method"
+      ]
+    },
+    {
+      "page": "enrichBarplot",
+      "title": "Barplot of enriched and depleted annotations.",
+      "topics": [
+        "enrichBarplot",
+        "enrichBarplot,AnnotatedDataFrame-method",
+        "enrichBarplot,list-method"
+      ]
+    },
+    {
+      "page": "enrichMAplot",
+      "title": "MA plot of enriched annotations.",
+      "topics": [
+        "enrichMAplot",
+        "enrichMAplot,AnnotatedDataFrame-method",
+        "enrichMAplot,list-method"
+      ]
+    },
+    {
+      "page": "enrichMatrix",
+      "title": "Extract chosen enrichment values to a matrix.",
+      "topics": [
+        "enrichMatrix",
+        "enrichMatrix,list-method"
+      ]
+    },
+    {
+      "page": "enrichment",
+      "title": "Enrichment analysis for codon usage (CU) data.",
+      "topics": [
+        "enrichment",
+        "enrichment,crossTab-method"
+      ]
+    },
+    {
+      "page": "genCode-class",
+      "title": "An S4 class 'genCode'",
+      "topics": [
+        "genCode",
+        "genCode,ANY-method",
+        "genCode-class"
+      ]
+    },
+    {
+      "page": "HD59",
+      "title": "Codon usage in healthy human gut microbiome.",
+      "topics": [
+        "HD59"
+      ]
+    },
+    {
+      "page": "HD59_KO",
+      "title": "Codon usage based KO enrichment analysis results from the healthy human gut microbiome. For more information, see `?HD59`.",
+      "topics": [
+        "HD59_KO"
+      ]
+    },
+    {
+      "page": "HD59_PATHWAYS",
+      "title": "Codon usage based KEGG Pathway enrichment analysis results from a healthy human gut microbiome. For more information, see `?HD59`.",
+      "topics": [
+        "HD59_PATHWAYS"
+      ]
+    },
+    {
+      "page": "intraBplot",
+      "title": "Intra-samples Karlin B plot",
+      "topics": [
+        "intraBplot",
+        "intraBplot,codonTable,codonTable-method"
+      ]
+    },
+    {
+      "page": "LD94",
+      "title": "Codon usage in human gut microbiome in liver cirrhosis.",
+      "topics": [
+        "LD94"
+      ]
+    },
+    {
+      "page": "LD94_KO",
+      "title": "Codon usage based KO enrichment analysis results from an gut microbiome of an individual with liver cirrhosis. For more information, see `?LD94`.",
+      "topics": [
+        "LD94_KO"
+      ]
+    },
+    {
+      "page": "LD94_PATHWAYS",
+      "title": "Codon usage based KEGG Pathway enrichment analysis results from an gut microbiome of an individual with liver cirrhosis. For more information, see `?LD94`.",
+      "topics": [
+        "LD94_PATHWAYS"
+      ]
+    },
+    {
+      "page": "length-codonTable",
+      "title": "Length of 'codonTable' object.",
+      "topics": [
+        "length,codonTable-method",
+        "length-codonTable"
+      ]
+    },
+    {
+      "page": "length-crossTab",
+      "title": "Length of 'crossTab' object.",
+      "topics": [
+        "length,crossTab-method",
+        "length-crossTab"
+      ]
+    },
+    {
+      "page": "readSet",
+      "title": "Read set of sequences.",
+      "topics": [
+        "readSet"
+      ]
+    },
+    {
+      "page": "reduceCrossTab",
+      "title": "Reduce 'crossTab'.",
+      "topics": [
+        "reduceCrossTab",
+        "reduceCrossTab,crossTab,character-method"
+      ]
+    },
+    {
+      "page": "RPKOs",
+      "title": "KEGG Orthology (KO) annotations for ribosomal genes.",
+      "topics": [
+        "RPKOs"
+      ]
+    },
+    {
+      "page": "show-codonTable",
+      "title": "Display the object of 'codonTable' class.",
+      "topics": [
+        "show,codonTable-method",
+        "show-codonTable"
+      ]
+    },
+    {
+      "page": "show-crossTab",
+      "title": "Display the object of 'crossTab' class.",
+      "topics": [
+        "show,crossTab-method",
+        "show-crossTab"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/coRdon/raw/HEAD/README.md",
+  "_rundeps": [
+    "Biobase",
+    "BiocGenerics",
+    "Biostrings",
+    "cli",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "dplyr",
+    "farver",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "IRanges",
+    "isoband",
+    "labeling",
+    "lifecycle",
+    "magrittr",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "R6",
+    "RColorBrewer",
+    "rlang",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "coRdon.Rmd",
+      "filename": "coRdon.html",
+      "title": "Codon usage (CU) analysis in R",
+      "author": "Anamaria Elek",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Loading sequences",
+        "Calculate CU bias",
+        "Visualisation of CU bias",
+        "Predict genes' expressivity",
+        "Functional annotation",
+        "Visualisation of enrichment",
+        "Integration",
+        "Session info"
+      ],
+      "created": "2018-03-26 07:03:57",
+      "modified": "2018-10-18 13:01:59",
+      "commits": 12
+    }
+  ],
+  "_score": 7.893462145294144,
+  "_indexed": true,
+  "_nocasepkg": "cordon",
+  "_universes": [
+    "bioc",
+    "anamariaelek",
+    "bioinfohr"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:32:52.000Z",
+      "distro": "noble",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "113c4192dd80b48c098d4af39c2140191b58d31e79e6b42ab0ebf0746dfa8e09",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:30:24.000Z",
+      "distro": "noble",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "70e87ad35ab2ce1c79c75239957a6401052153e964ea5a74a7331b7eb0e19a64",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:29:30.000Z",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "b0af72a83f7c248fc73cef1353e5c238a86d83544ea88d4290efca19070f0f94",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:29:52.000Z",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "612ae39cf560880e715dc8f797e0125e422a8ac461044094fc919ef3879931d4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:29:57.000Z",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "2d4ca57d054dcf0d74722f2e10d645c89714565b760506657001b1e75d6eb7cf",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:29:12.000Z",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "037d461b8a10984c5356a50725285e6492ca0a83896b164fc61a84fd9db00acc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:29:45.000Z",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "3cf46387188dbab5f696c0d03961e0e1c03fb4e4f35639b45eec285cc456bba6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.29.0",
+      "date": "2026-02-17T08:29:28.000Z",
+      "commit": "f418d09ef8a2ae568641092bccd4d814d1f51c54",
+      "fileid": "5339ea09304554fa687de88616f7d802a17a93ca4c024bea33b35325c2297347",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22091071797"
+    }
+  ]
+}

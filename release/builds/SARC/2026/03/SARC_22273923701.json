@@ -1,0 +1,840 @@
+{
+  "Package": "SARC",
+  "Type": "Package",
+  "Title": "Statistical Analysis of Regions with CNVs",
+  "Version": "1.8.0",
+  "Authors@R": "person(given = \"Krutik\", family = \"Patel\", role = c(\"aut\", \"cre\"), email = \"nkp68@newcastle.ac.uk\", comment=c(ORCID=\"0000-0001-6806-8675\"))",
+  "Description": "Imports a cov/coverage file (normalised read coverages\nfrom BAM files) and a cnv file (list of CNVs - similiar to a\nBED file) from WES/ WGS CNV (copy number variation) detection\npipelines and utilises several metrics to weigh the likelihood\nof a sample containing a detected CNV being a true CNV or a\nfalse positive. Highly useful for diagnostic testing to filter\nout false positives to provide clinicians with fewer variants\nto interpret. SARC uniquely only used cov and csv (similiar to\nBED file) files which are the common CNV pipeline calling\nfiletypes, and can be used as to supplement the Interactive\nGenome Browser (IGV) to generate many figures automatedly,\nwhich can be especially helpful in large cohorts with\n100s-1000s of patients.",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.2.3",
+  "License": "GPL-3",
+  "biocViews": "Software, CopyNumberVariation, Visualization, DNASeq,\nSequencing",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/Krutik6/SARC/",
+  "BugReports": "https://github.com/Krutik6/SARC/issues",
+  "PackageStatus": "Deprecated",
+  "Config/pak/sysreqs": "libfftw3-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev make libharfbuzz-dev libbz2-dev libicu-dev\nlibjpeg-dev liblzma-dev libpng-dev libtiff-dev libwebp-dev\nlibxml2-dev libssl-dev libx11-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:24:25 UTC",
+  "RemoteUrl": "https://github.com/bioc/SARC",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-22 08:56:12 UTC",
+    "User": "root"
+  },
+  "Author": "Krutik Patel [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-6806-8675>)",
+  "Maintainer": "Krutik Patel <nkp68@newcastle.ac.uk>",
+  "MD5sum": "fde50997c1a828cb99869d1689a83d52",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "SARC_1.8.0.tar.gz",
+  "_fileid": "8b5bdef2b4a27763b92a928e565566ec8915d33597a512e1da3eba026da544e2",
+  "_filesize": 3418522,
+  "_sha256": "8b5bdef2b4a27763b92a928e565566ec8915d33597a512e1da3eba026da544e2",
+  "_created": "2026-02-22T08:56:12.000Z",
+  "_published": "2026-02-22T09:08:03.345Z",
+  "_jobs": [
+    {
+      "job": 64433229418,
+      "time": 369,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5606140683"
+    },
+    {
+      "job": 64433229435,
+      "time": 609,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5606157543"
+    },
+    {
+      "job": 64433229436,
+      "time": 645,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606160005"
+    },
+    {
+      "job": 64433229449,
+      "time": 299,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5606135920"
+    },
+    {
+      "job": 64433229480,
+      "time": 399,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606142659"
+    },
+    {
+      "job": 64432903801,
+      "time": 505,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606116276"
+    },
+    {
+      "job": 64433229434,
+      "time": 375,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5606141042"
+    },
+    {
+      "job": 64433229440,
+      "time": 439,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5606145538"
+    },
+    {
+      "job": 64433229442,
+      "time": 488,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5606148823"
+    },
+    {
+      "job": 64433229454,
+      "time": 439,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5606145437"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 11
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/SARC",
+  "_commit": {
+    "id": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751465
+  },
+  "_maintainer": {
+    "name": "Krutik Patel",
+    "email": "nkp68@newcastle.ac.uk",
+    "orcid": "0000-0001-6806-8675"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3",
+      "role": "Depends"
+    },
+    {
+      "package": "RaggedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "DescTools",
+      "role": "Imports"
+    },
+    {
+      "package": "metap",
+      "role": "Imports"
+    },
+    {
+      "package": "multtest",
+      "role": "Imports"
+    },
+    {
+      "package": "plyranges",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "gtable",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "kableExtra",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg38.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "Homo.sapiens",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Mmusculus.UCSC.mm10.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "Mus.musculus",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_topics": [
+    "software",
+    "copynumbervariation",
+    "visualization",
+    "dnaseq",
+    "sequencing"
+  ],
+  "_stars": 0,
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 238,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/SARC"
+  },
+  "_devurl": "https://github.com/krutik6/sarc",
+  "_searchresults": 2,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/SARC.html",
+    "manual.pdf"
+  ],
+  "_cranurl": false,
+  "_exports": [
+    "addExonsGenes",
+    "anovaOnCNV",
+    "cnvConfidence",
+    "pasteExonsGenes",
+    "phDunnetonCNV",
+    "plotCNV",
+    "plotCovPrep",
+    "prepAnova",
+    "regionGrangeMake",
+    "regionMean",
+    "regionQuantiles",
+    "regionSet",
+    "regionSplit",
+    "seeDist",
+    "setQDplot",
+    "setupCNVplot"
+  ],
+  "_datasets": [
+    {
+      "name": "test_cnv",
+      "title": "test cnv",
+      "object": "test_cnv",
+      "file": "test_cnv.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "SAMPLE",
+        "CHROM",
+        "START",
+        "END",
+        "TYPE",
+        "VALUE",
+        "TOOL"
+      ],
+      "rows": 15,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "test_cnv2",
+      "title": "test cnv 2",
+      "object": "test_cnv2",
+      "file": "test_cnv2.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "SAMPLE",
+        "CHROM",
+        "START",
+        "END",
+        "TYPE",
+        "VALUE",
+        "TOOL",
+        "BATCH",
+        "GENE"
+      ],
+      "rows": 15,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "test_cov",
+      "title": "test coverage file",
+      "object": "test_cov",
+      "file": "test_cov.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "ID",
+        "CHROM",
+        "START",
+        "END",
+        "SampleA",
+        "SampleB",
+        "SampleC",
+        "SampleD",
+        "SampleE",
+        "SampleF",
+        "SampleG",
+        "SampleH",
+        "SampleI",
+        "SampleJ",
+        "SampleK",
+        "SampleL",
+        "SampleM",
+        "SampleN",
+        "SampleO",
+        "SampleP",
+        "SampleQ",
+        "SampleR",
+        "SampleS",
+        "SampleT"
+      ],
+      "rows": 34987,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "addExonsGenes",
+      "title": "addExonsGenes",
+      "topics": [
+        "addExonsGenes"
+      ]
+    },
+    {
+      "page": "anovaOnCNV",
+      "title": "anovaOnCNV",
+      "topics": [
+        "anovaOnCNV"
+      ]
+    },
+    {
+      "page": "cnvConfidence",
+      "title": "cnvConfidence",
+      "topics": [
+        "cnvConfidence"
+      ]
+    },
+    {
+      "page": "pasteExonsGenes",
+      "title": "pasteExonsGenes",
+      "topics": [
+        "pasteExonsGenes"
+      ]
+    },
+    {
+      "page": "phDunnetonCNV",
+      "title": "phDunnetonCNV",
+      "topics": [
+        "phDunnetonCNV"
+      ]
+    },
+    {
+      "page": "plotCNV",
+      "title": "plotCNV",
+      "topics": [
+        "plotCNV"
+      ]
+    },
+    {
+      "page": "plotCovPrep",
+      "title": "plotCovPrep",
+      "topics": [
+        "plotCovPrep"
+      ]
+    },
+    {
+      "page": "prepAnova",
+      "title": "prepAnova",
+      "topics": [
+        "prepAnova"
+      ]
+    },
+    {
+      "page": "regionGrangeMake",
+      "title": "regionGrangeMake",
+      "topics": [
+        "regionGrangeMake"
+      ]
+    },
+    {
+      "page": "regionMean",
+      "title": "regionMean",
+      "topics": [
+        "regionMean"
+      ]
+    },
+    {
+      "page": "regionQuantiles",
+      "title": "regionQuantiles",
+      "topics": [
+        "regionQuantiles"
+      ]
+    },
+    {
+      "page": "regionSet",
+      "title": "regionSet",
+      "topics": [
+        "regionSet"
+      ]
+    },
+    {
+      "page": "regionSplit",
+      "title": "regionSplit",
+      "topics": [
+        "regionSplit"
+      ]
+    },
+    {
+      "page": "seeDist",
+      "title": "seeDist",
+      "topics": [
+        "seeDist"
+      ]
+    },
+    {
+      "page": "setQDplot",
+      "title": "setQDPlot",
+      "topics": [
+        "setQDplot"
+      ]
+    },
+    {
+      "page": "setupCNVplot",
+      "title": "setupCNVplot",
+      "topics": [
+        "setupCNVplot"
+      ]
+    },
+    {
+      "page": "test_cnv",
+      "title": "test cnv",
+      "topics": [
+        "test_cnv"
+      ]
+    },
+    {
+      "page": "test_cnv2",
+      "title": "test cnv 2",
+      "topics": [
+        "test_cnv2"
+      ]
+    },
+    {
+      "page": "test_cov",
+      "title": "test coverage file",
+      "topics": [
+        "test_cov"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/SARC/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "callr",
+    "cellranger",
+    "cigarillo",
+    "class",
+    "cli",
+    "clipr",
+    "codetools",
+    "conflicted",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DEoptimR",
+    "DescTools",
+    "digest",
+    "dplyr",
+    "dtplyr",
+    "e1071",
+    "evaluate",
+    "Exact",
+    "expm",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "forcats",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gargle",
+    "generics",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "gld",
+    "glue",
+    "googledrive",
+    "googlesheets4",
+    "gridExtra",
+    "gtable",
+    "haven",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "ids",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "lmom",
+    "lubridate",
+    "magrittr",
+    "MASS",
+    "mathjaxr",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "metap",
+    "mime",
+    "mnormt",
+    "modelr",
+    "multcomp",
+    "multtest",
+    "mutoss",
+    "mvtnorm",
+    "numDeriv",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plotrix",
+    "plyr",
+    "plyranges",
+    "png",
+    "prettyunits",
+    "processx",
+    "progress",
+    "promises",
+    "proxy",
+    "ps",
+    "purrr",
+    "qqconf",
+    "quantreg",
+    "R6",
+    "ragg",
+    "RaggedExperiment",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "Rdpack",
+    "readr",
+    "readxl",
+    "rematch",
+    "rematch2",
+    "reprex",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "robustbase",
+    "rootSolve",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "rvest",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sandwich",
+    "sass",
+    "scales",
+    "selectr",
+    "Seqinfo",
+    "sn",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "TFisher",
+    "TH.data",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidyverse",
+    "timechange",
+    "tinytex",
+    "tzdb",
+    "utf8",
+    "uuid",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_score": 2.1760912590556813,
+  "_indexed": false,
+  "_nocasepkg": "sarc",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-22T09:03:23.000Z",
+      "distro": "noble",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "25e2dc854bf030ccb7ee1feb2a9fa8f43b751921e0dffaf473c5c2b08d70e0cd",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.8.0",
+      "date": "2026-02-22T09:03:56.000Z",
+      "distro": "noble",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "2eea96459271c180568307da9df19e046667869d7215ad20e3ce44b25871c75f",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-22T08:59:19.000Z",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "e075f98cd7c75ef5c426a51d13e2ec9dd492e38d9ebc5acca6a6e3f771d190a4",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.8.0",
+      "date": "2026-02-22T09:00:44.000Z",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "029dc4050ff36aef08ad92bc35cf261c922a76454e6858d26aacb479c788b6bc",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.8.0",
+      "date": "2026-02-22T09:03:07.000Z",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "ff573831cc80305410c5ff6accba0c79563a39e8e079783a663ec502669781e0",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-22T09:00:14.000Z",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "9757c9cd240721c9155de4235ce07929a636dc8b3d37a724a129577bb047734d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-22T09:00:53.000Z",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "6889deeaa732bd16f98db02a3cd28c6e59f562f15b108899e8aaded7288b0fc0",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.8.0",
+      "date": "2026-02-22T09:00:01.000Z",
+      "commit": "5ccc1f55c64ef04d6d4b75dfcbbe85785db7103a",
+      "fileid": "2640eb093f15f31cc44ba4165933ce7c69117847c52a136da8d25fa5b2551567",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22273923701"
+    }
+  ]
+}

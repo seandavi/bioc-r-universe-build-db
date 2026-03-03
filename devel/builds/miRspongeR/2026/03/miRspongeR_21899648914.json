@@ -1,0 +1,941 @@
+{
+  "Package": "miRspongeR",
+  "Type": "Package",
+  "Title": "Identification and analysis of miRNA sponge regulation",
+  "Version": "2.15.2",
+  "Authors@R": "person(given = \"Junpeng\",\nfamily = \"Zhang\",\nrole=c(\"aut\", \"cre\"),\nemail = \"zjp@dali.edu.cn\")",
+  "Description": "This package provides several functions to explore miRNA\nsponge (also called ceRNA or miRNA decoy) regulation from\nputative miRNA-target interactions or/and transcriptomics data\n(including bulk, single-cell and spatial gene expression data).\nIt provides eight popular methods for identifying miRNA sponge\ninteractions, and an integrative method to integrate miRNA\nsponge interactions from different methods, as well as the\nfunctions to validate miRNA sponge interactions, and infer\nmiRNA sponge modules, conduct enrichment analysis of miRNA\nsponge modules, and conduct survival analysis of miRNA sponge\nmodules. By using a sample control variable strategy, it\nprovides a function to infer sample-specific miRNA sponge\ninteractions. In terms of sample-specific miRNA sponge\ninteractions, it implements three similarity methods to\nconstruct sample-sample correlation network.",
+  "License": "GPL-3",
+  "URL": "<https://github.com/zhangjunpeng411/miRspongeR>",
+  "Encoding": "UTF-8",
+  "biocViews": "GeneExpression, BiomedicalInformatics, NetworkEnrichment,\nSurvival, Microarray, Software, SingleCell, Spatial, RNASeq",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/zhangjunpeng411/miRspongeR/issues",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libfribidi-dev libglpk-dev make\nlibharfbuzz-dev libicu-dev libjpeg-dev libpng-dev libtiff-dev\nlibwebp-dev libxml2-dev libssl-dev perl libx11-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-11 12:15:36 UTC",
+  "RemoteUrl": "https://github.com/bioc/miRspongeR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-11 09:39:57 UTC",
+    "User": "root"
+  },
+  "Author": "Junpeng Zhang [aut, cre]",
+  "Maintainer": "Junpeng Zhang <zjp@dali.edu.cn>",
+  "MD5sum": "7df0e4db9275f9c77b4d1b2e610d0276",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "miRspongeR_2.15.2.tar.gz",
+  "_fileid": "9612c2e779a03a16d4ff47ebff0872def9a9f5b8392db79389f6ed2ca60a11b0",
+  "_filesize": 616316,
+  "_sha256": "9612c2e779a03a16d4ff47ebff0872def9a9f5b8392db79389f6ed2ca60a11b0",
+  "_created": "2026-02-11T09:39:57.000Z",
+  "_published": "2026-02-13T04:07:42.109Z",
+  "_jobs": [
+    {
+      "job": 63481961434,
+      "time": 298,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5462919026"
+    },
+    {
+      "job": 63481961426,
+      "time": 468,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5462953830"
+    },
+    {
+      "job": 63481961497,
+      "time": 540,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5462968094"
+    },
+    {
+      "job": 63481961575,
+      "time": 455,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5462951292"
+    },
+    {
+      "job": 63481961531,
+      "time": 499,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5462959703"
+    },
+    {
+      "job": 63481961370,
+      "time": 391,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5462937583"
+    },
+    {
+      "job": 63481961380,
+      "time": 263,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 63481961467,
+      "time": 330,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5462925147"
+    },
+    {
+      "job": 63481961551,
+      "time": 549,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5462969975"
+    },
+    {
+      "job": 63481961336,
+      "time": 614,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5462857193"
+    },
+    {
+      "job": 63481961421,
+      "time": 360,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5462931533"
+    },
+    {
+      "job": 63481961374,
+      "time": 445,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5462948861"
+    },
+    {
+      "job": 63481961546,
+      "time": 495,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5462959001"
+    },
+    {
+      "job": 63481961465,
+      "time": 507,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5462961734"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 17
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/miRspongeR",
+  "_commit": {
+    "id": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+    "author": "zhangjunpeng411 <zhangjunpeng_411@yahoo.com>",
+    "committer": "zhangjunpeng411 <zhangjunpeng_411@yahoo.com>",
+    "message": "Update\n",
+    "time": 1768133736
+  },
+  "_maintainer": {
+    "name": "Junpeng Zhang",
+    "email": "zjp@dali.edu.cn"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "corpcor",
+      "role": "Imports"
+    },
+    {
+      "package": "SPONGE",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "MCL",
+      "role": "Imports"
+    },
+    {
+      "package": "clusterProfiler",
+      "role": "Imports"
+    },
+    {
+      "package": "ReactomePA",
+      "role": "Imports"
+    },
+    {
+      "package": "DOSE",
+      "role": "Imports"
+    },
+    {
+      "package": "survival",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-24",
+      "n": 1
+    },
+    {
+      "week": "2025-25",
+      "n": 3
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2025-52",
+      "n": 2
+    },
+    {
+      "week": "2026-02",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.15.2",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.14.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "geneexpression",
+    "biomedicalinformatics",
+    "networkenrichment",
+    "survival",
+    "microarray",
+    "software",
+    "singlecell",
+    "spatial",
+    "rnaseq",
+    "cerna",
+    "mirna",
+    "sponge",
+    "cpp"
+  ],
+  "_stars": 5,
+  "_contributors": [
+    {
+      "user": "zhangjunpeng411",
+      "count": 197,
+      "uuid": 10843899
+    },
+    {
+      "user": "jwokaty",
+      "count": 15,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 310,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/miRspongeR"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/zhangjunpeng411/mirsponger",
+  "_searchresults": 10,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/miRspongeR.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/zhangjunpeng411/mirsponger",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "integrateMethod",
+    "moduleDEA",
+    "moduleFEA",
+    "moduleSurvival",
+    "netModule",
+    "querymiRTargetbinding",
+    "sample_cor_network",
+    "sponge_sample_specific",
+    "spongeMethod",
+    "spongeValidate"
+  ],
+  "_help": [
+    {
+      "page": "integrateMethod",
+      "title": "Integrate method for identifying miRNA sponge interactions by integrating different methods",
+      "topics": [
+        "integrateMethod"
+      ]
+    },
+    {
+      "page": "moduleDEA",
+      "title": "Disease enrichment analysis of modules",
+      "topics": [
+        "moduleDEA"
+      ]
+    },
+    {
+      "page": "moduleFEA",
+      "title": "Functional GO, KEGG and Reactome enrichment analysis of modules",
+      "topics": [
+        "moduleFEA"
+      ]
+    },
+    {
+      "page": "moduleSurvival",
+      "title": "Survival analysis of modules",
+      "topics": [
+        "moduleSurvival"
+      ]
+    },
+    {
+      "page": "netModule",
+      "title": "Identifying miRNA sponge modules from network",
+      "topics": [
+        "netModule"
+      ]
+    },
+    {
+      "page": "precomputed_null_model",
+      "title": "A null model for testing purposes in SPONGE R package",
+      "topics": [
+        "precomputed_null_model"
+      ]
+    },
+    {
+      "page": "querymiRTargetbinding",
+      "title": "Query miRNA-target interactions by combining expression data and putative miRNA-target interactions",
+      "topics": [
+        "querymiRTargetbinding"
+      ]
+    },
+    {
+      "page": "sample_cor_network",
+      "title": "Identifying sample-sample correlation network",
+      "topics": [
+        "sample_cor_network"
+      ]
+    },
+    {
+      "page": "sponge_sample_specific",
+      "title": "Identifying sample-specific miRNA sponge interactions",
+      "topics": [
+        "sponge_sample_specific"
+      ]
+    },
+    {
+      "page": "spongeMethod",
+      "title": "Identifying miRNA sponge interactions",
+      "topics": [
+        "spongeMethod"
+      ]
+    },
+    {
+      "page": "spongeValidate",
+      "title": "Validation of computationally predicted miRNA sponge interactions",
+      "topics": [
+        "spongeValidate"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/miRspongeR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "ape",
+    "aplot",
+    "askpass",
+    "backports",
+    "base64enc",
+    "bayestestR",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "callr",
+    "car",
+    "carData",
+    "caret",
+    "cellranger",
+    "checkmate",
+    "circlize",
+    "class",
+    "cli",
+    "clipr",
+    "clock",
+    "clue",
+    "cluster",
+    "clusterProfiler",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "conflicted",
+    "corpcor",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "cvms",
+    "data.table",
+    "datawizard",
+    "DBI",
+    "dbplyr",
+    "Deriv",
+    "diagram",
+    "digest",
+    "dir.expiry",
+    "doBy",
+    "doParallel",
+    "doRNG",
+    "DOSE",
+    "dplyr",
+    "dtplyr",
+    "e1071",
+    "enrichit",
+    "enrichplot",
+    "evaluate",
+    "expm",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "forcats",
+    "foreach",
+    "forecast",
+    "Formula",
+    "fracdiff",
+    "fs",
+    "future",
+    "future.apply",
+    "gargle",
+    "gdtools",
+    "generics",
+    "GetoptLong",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggpubr",
+    "ggraph",
+    "ggrepel",
+    "ggridges",
+    "ggsci",
+    "ggsignif",
+    "ggtangle",
+    "ggtree",
+    "glmnet",
+    "GlobalOptions",
+    "globals",
+    "glue",
+    "GO.db",
+    "googledrive",
+    "googlesheets4",
+    "GOSemSim",
+    "gower",
+    "graph",
+    "graphite",
+    "graphlayouts",
+    "gRbase",
+    "gridExtra",
+    "gridGraphics",
+    "groupdata2",
+    "gson",
+    "gtable",
+    "hardhat",
+    "haven",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "ids",
+    "igraph",
+    "insight",
+    "ipred",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lava",
+    "lazyeval",
+    "lifecycle",
+    "listenv",
+    "lme4",
+    "lmtest",
+    "logging",
+    "lubridate",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixModels",
+    "matrixStats",
+    "MCL",
+    "memoise",
+    "MetBrewer",
+    "mgcv",
+    "microbenchmark",
+    "mime",
+    "minqa",
+    "ModelMetrics",
+    "modelr",
+    "MuMIn",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numbers",
+    "numDeriv",
+    "openssl",
+    "org.Hs.eg.db",
+    "parallelly",
+    "parameters",
+    "patchwork",
+    "pbkrtest",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "polyclip",
+    "polynom",
+    "ppcor",
+    "prettyunits",
+    "pROC",
+    "processx",
+    "prodlim",
+    "progress",
+    "progressr",
+    "proxy",
+    "ps",
+    "purrr",
+    "quadprog",
+    "quantmod",
+    "quantreg",
+    "qvalue",
+    "R6",
+    "ragg",
+    "randomForest",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "reactome.db",
+    "ReactomePA",
+    "readr",
+    "readxl",
+    "rearrr",
+    "recipes",
+    "reformulas",
+    "rematch",
+    "rematch2",
+    "reprex",
+    "reshape2",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rngtools",
+    "rpart",
+    "RSQLite",
+    "rstatix",
+    "rstudioapi",
+    "rvest",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scatterpie",
+    "selectr",
+    "Seqinfo",
+    "shape",
+    "SparseM",
+    "sparsevctrs",
+    "SPONGE",
+    "SQUAREM",
+    "stringi",
+    "stringr",
+    "survival",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "tibble",
+    "tidydr",
+    "tidygraph",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tidyverse",
+    "timechange",
+    "timeDate",
+    "tinytex",
+    "tnet",
+    "treeio",
+    "tseries",
+    "TTR",
+    "tweenr",
+    "tzdb",
+    "urca",
+    "utf8",
+    "uuid",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "xml2",
+    "xts",
+    "XVector",
+    "yaml",
+    "yulab.utils",
+    "zoo"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "miRspongeR.Rmd",
+      "filename": "miRspongeR.html",
+      "title": "Identification and analysis of miRNA sponge regulation",
+      "author": " Junpeng Zhang (zjp@dali.edu.cn) School of Engineering, Dali University",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Identification of miRNA sponge interactions",
+        "miRHomology",
+        "pc",
+        "sppc",
+        "hermes",
+        "ppc",
+        "muTaME",
+        "cernia",
+        "SPONGE",
+        "integrateMethod",
+        "Identifying sample-specific miRNA sponge interaction networks",
+        "Identifying sample-sample correlation network",
+        "Validation of miRNA sponge interactions",
+        "Module identification from miRNA sponge network",
+        "Disease and functional enrichment analysis of miRNA sponge modules",
+        "Survival analysis of miRNA sponge modules",
+        "Conclusions",
+        "References",
+        "Session information"
+      ],
+      "created": "2019-03-05 13:50:01",
+      "modified": "2025-12-23 11:53:41",
+      "commits": 10
+    }
+  ],
+  "_score": 6.096910013008056,
+  "_indexed": true,
+  "_nocasepkg": "mirsponger",
+  "_universes": [
+    "bioc",
+    "zhangjunpeng411"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:45:14.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "fe610cf9a83020a227e46bfa3a984b626a2749bcdaf3a64ee8e7c319d1f83d8a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:46:15.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "477196a33683daa8546d61591e77f936cf331d2184c44fb6a079ee215002c6d3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:45:16.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "d717f912aaae306ac02ee8af5c9510632d6410347cda4cd0be079109dfdbdec3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:45:34.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "2f78f359f76fbfc88ca929f6564158be496cc30363095cc61262cd9cae04231e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:43:27.000Z",
+      "arch": "aarch64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "ebdef299670966cb4cb95adc80e46dcc11543fd5fbab4d50cefaacb59fefff83",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:43:39.000Z",
+      "arch": "aarch64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "4815c3c018588e086e9586cddec2c3fd97ad50a3e708a12907fff9cca3b28832",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:45:24.000Z",
+      "arch": "x86_64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "def5ee8c19fd071b508e18bc0248f41e53f9be0d9c2ed651eb7d91f9300ac44c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:45:54.000Z",
+      "arch": "emscripten",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "960312509b0e44148ee006fbc72674b428bc92c6fcaf3e86f0b6b49fb5839d06",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:43:29.000Z",
+      "arch": "x86_64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "5f8408f48167a1c276549e0659faa4e3393431064d028c080952e0cd487eb7a2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:44:13.000Z",
+      "arch": "x86_64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "03b8965d4469d5c4d64d6307f7c74cf5ba9d262d1530e28760f80ce4af1b3671",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.15.2",
+      "date": "2026-02-11T09:43:59.000Z",
+      "arch": "x86_64",
+      "commit": "e0d0fcd0c6f21004ad34e6f25ba78e21f708f59d",
+      "fileid": "8df8c7b21b1f90be59acf371301f946ac0908b1510506a06c3b66861f266a691",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21899648914"
+    }
+  ]
+}

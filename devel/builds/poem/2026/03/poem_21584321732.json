@@ -1,0 +1,960 @@
+{
+  "Package": "poem",
+  "Title": "POpulation-based Evaluation Metrics",
+  "Version": "1.3.0",
+  "Authors@R": "c(\nperson(\"Siyuan\", \"Luo\", email=\"roseluosy@gmail.com\", role=c(\"cre\",\"aut\"), comment=c(ORCID=\"0009-0007-6404-3244\")),\nperson(\"Pierre-Luc\", \"Germain\", email=\"pierre-luc.germain@hest.ethz.ch\", role=c(\"aut\",\"ctb\"),\ncomment=c(ORCID=\"0000-0003-3418-4218\")))",
+  "Description": "This package provides a comprehensive set of external and\ninternal evaluation metrics. It includes metrics for assessing\npartitions or fuzzy partitions derived from clustering results,\nas well as for evaluating subpopulation identification results\nwithin embeddings or graph representations. Additionally, it\nprovides metrics for comparing spatial domain detection results\nagainst ground truth labels, and tools for visualizing spatial\nerrors.",
+  "BugReports": "https://github.com/RoseYuan/poem/issues",
+  "License": "GPL (>= 3)",
+  "URL": "https://roseyuan.github.io/poem/",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "biocViews": "DimensionReduction, Clustering, GraphAndNetwork, Spatial,\nATACSeq, SingleCell, RNASeq, Software, Visualization",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libabsl-dev cmake libgdal-dev gdal-bin libgeos-dev\nlibglpk-dev libmagick++-dev gsfonts libicu-dev libxml2-dev\nlibssl-dev libproj-dev libsqlite3-dev libudunits2-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:34:48 UTC",
+  "RemoteUrl": "https://github.com/bioc/poem",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-02 09:30:16 UTC",
+    "User": "root"
+  },
+  "Author": "Siyuan Luo [cre, aut] (ORCID: <https://orcid.org/0009-0007-6404-3244>),\nPierre-Luc Germain [aut, ctb] (ORCID:\n<https://orcid.org/0000-0003-3418-4218>)",
+  "Maintainer": "Siyuan Luo <roseluosy@gmail.com>",
+  "MD5sum": "54ef624495178ffc0b12c41a263970d9",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "poem_1.3.0.tar.gz",
+  "_fileid": "b53726f4577fd5f2545dc9dcd8d49fd3243f7f694367fac0fdaf01df532878f7",
+  "_filesize": 4076019,
+  "_sha256": "b53726f4577fd5f2545dc9dcd8d49fd3243f7f694367fac0fdaf01df532878f7",
+  "_created": "2026-02-02T09:30:16.000Z",
+  "_published": "2026-02-02T09:51:15.671Z",
+  "_jobs": [
+    {
+      "job": 62189662683,
+      "time": 266,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340743208"
+    },
+    {
+      "job": 62189662681,
+      "time": 450,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5340780991"
+    },
+    {
+      "job": 62189662677,
+      "time": 510,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340793482"
+    },
+    {
+      "job": 62189662728,
+      "time": 389,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5340926888"
+    },
+    {
+      "job": 62189662718,
+      "time": 338,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340916196"
+    },
+    {
+      "job": 62188666030,
+      "time": 548,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340688218"
+    },
+    {
+      "job": 62189662698,
+      "time": 225,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5340735051"
+    },
+    {
+      "job": 62189662747,
+      "time": 439,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5340778755"
+    },
+    {
+      "job": 62189662694,
+      "time": 425,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5340776091"
+    },
+    {
+      "job": 62189662742,
+      "time": 411,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340773251"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/poem",
+  "_commit": {
+    "id": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761752088
+  },
+  "_maintainer": {
+    "name": "Siyuan Luo",
+    "email": "roseluosy@gmail.com",
+    "login": "roseyuan",
+    "uuid": 48224165
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1.0",
+      "role": "Depends"
+    },
+    {
+      "package": "aricode",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocNeighbors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "bluster",
+      "role": "Imports"
+    },
+    {
+      "package": "clevr",
+      "role": "Imports"
+    },
+    {
+      "package": "clue",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "elsa",
+      "role": "Imports"
+    },
+    {
+      "package": "fclust",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "mclustcomp",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "pdist",
+      "role": "Imports"
+    },
+    {
+      "package": "sp",
+      "role": "Imports"
+    },
+    {
+      "package": "spdep",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "DT",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "kableExtra",
+      "role": "Suggests"
+    },
+    {
+      "package": "scico",
+      "role": "Suggests"
+    },
+    {
+      "package": "cowplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggnetwork",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "STexampleData",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-15",
+      "n": 15
+    },
+    {
+      "week": "2025-16",
+      "n": 25
+    },
+    {
+      "week": "2025-23",
+      "n": 5
+    },
+    {
+      "week": "2025-43",
+      "n": 11
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dimensionreduction",
+    "clustering",
+    "graphandnetwork",
+    "spatial",
+    "atacseq",
+    "singlecell",
+    "rnaseq",
+    "software",
+    "visualization"
+  ],
+  "_stars": 11,
+  "_contributors": [
+    {
+      "user": "roseyuan",
+      "count": 249,
+      "uuid": 48224165
+    },
+    {
+      "user": "plger",
+      "count": 159,
+      "uuid": 9786697
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 218,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/poem"
+  },
+  "_devurl": "https://github.com/roseyuan/poem",
+  "_pkgdown": "https://roseyuan.github.io/poem/",
+  "_searchresults": 25,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/poem.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/roseyuan/poem",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "CDbw",
+    "CHAOS",
+    "dbcv",
+    "ELSA",
+    "emb2knn",
+    "emb2snn",
+    "findSpatialKNN",
+    "fuzzyHardMetrics",
+    "fuzzyHardSpotConcordance",
+    "fuzzyPartitionMetrics",
+    "getEmbeddingMetrics",
+    "getFuzzyLabel",
+    "getFuzzyPartitionMetrics",
+    "getGraphMetrics",
+    "getNeighboringPairConcordance",
+    "getPartitionMetrics",
+    "getSpatialExternalMetrics",
+    "getSpatialInternalMetrics",
+    "knnComposition",
+    "matchSets",
+    "mockData",
+    "PAS",
+    "silhouetteWidths",
+    "spatialARI"
+  ],
+  "_datasets": [
+    {
+      "name": "metric_info",
+      "title": "Metrics Information",
+      "object": "metric_info",
+      "file": "metric_info.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "Name",
+        "Levels",
+        "MainFunction",
+        "Description"
+      ],
+      "rows": 65,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "noisy_moon",
+      "title": "The noisy moon dataset",
+      "object": "noisy_moon",
+      "file": "noisy_moon.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "x",
+        "y",
+        "label",
+        "kmeans_label",
+        "hdbscan_label"
+      ],
+      "rows": 100,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "sp_toys",
+      "title": "Toy examples of spatial data",
+      "object": "sp_toys",
+      "file": "sp_toys.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "x",
+        "y",
+        "row",
+        "col",
+        "label",
+        "p2",
+        "p1",
+        "p3",
+        "label2",
+        "p4",
+        "p5"
+      ],
+      "rows": 240,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "toyExamples",
+      "title": "Toy embedding examples",
+      "object": "toyExamples",
+      "file": "toyExamples.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "graph",
+        "x",
+        "y",
+        "class"
+      ],
+      "rows": 880,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "CDbw",
+      "title": "Calculate CDbw index",
+      "topics": [
+        "CDbw"
+      ]
+    },
+    {
+      "page": "CHAOS",
+      "title": "Calculate CHAOS score",
+      "topics": [
+        "CHAOS"
+      ]
+    },
+    {
+      "page": "dbcv",
+      "title": "Calculate DBCV Metric",
+      "topics": [
+        "dbcv"
+      ]
+    },
+    {
+      "page": "ELSA",
+      "title": "Calculate ELSA scores",
+      "topics": [
+        "ELSA"
+      ]
+    },
+    {
+      "page": "emb2knn",
+      "title": "Computes k nearest neighbors from embedding",
+      "topics": [
+        "emb2knn"
+      ]
+    },
+    {
+      "page": "emb2snn",
+      "title": "Computes shared nearest neighbors from embedding",
+      "topics": [
+        "emb2snn"
+      ]
+    },
+    {
+      "page": "findSpatialKNN",
+      "title": "Find the k nearest spatial neighbors",
+      "topics": [
+        "findSpatialKNN"
+      ]
+    },
+    {
+      "page": "fuzzyHardMetrics",
+      "title": "Compute fuzzy-hard versions of pair-sorting partition metrics",
+      "topics": [
+        "fuzzyHardMetrics"
+      ]
+    },
+    {
+      "page": "fuzzyHardSpotConcordance",
+      "title": "Per-element maximal concordance between a hard and a fuzzy partition",
+      "topics": [
+        "fuzzyHardSpotConcordance"
+      ]
+    },
+    {
+      "page": "fuzzyPartitionMetrics",
+      "title": "Compute fuzzy-fuzzy versions of pair-sorting partition metrics",
+      "topics": [
+        "fuzzyPartitionMetrics"
+      ]
+    },
+    {
+      "page": "getEmbeddingMetrics",
+      "title": "Compute embedding-based metrics",
+      "topics": [
+        "getEmbeddingMetrics"
+      ]
+    },
+    {
+      "page": "getFuzzyLabel",
+      "title": "Get fuzzy representation of labels",
+      "topics": [
+        "getFuzzyLabel"
+      ]
+    },
+    {
+      "page": "getFuzzyPartitionMetrics",
+      "title": "Compute external metrics for fuzzy clusterings",
+      "topics": [
+        "getFuzzyPartitionMetrics"
+      ]
+    },
+    {
+      "page": "getGraphMetrics",
+      "title": "Compute graph-based metrics",
+      "topics": [
+        "getGraphMetrics"
+      ]
+    },
+    {
+      "page": "getNeighboringPairConcordance",
+      "title": "Per-element local concordance between a clustering and a ground truth",
+      "topics": [
+        "getNeighboringPairConcordance"
+      ]
+    },
+    {
+      "page": "getPairConcordance",
+      "title": "Per-element pair concordance score",
+      "topics": [
+        "getPairConcordance"
+      ]
+    },
+    {
+      "page": "getPartitionMetrics",
+      "title": "Compute partition-based metrics",
+      "topics": [
+        "getPartitionMetrics"
+      ]
+    },
+    {
+      "page": "getSpatialExternalMetrics",
+      "title": "Calculate Spatial External Metrics",
+      "topics": [
+        "getSpatialExternalMetrics",
+        "getSpatialExternalMetrics,missing-method",
+        "getSpatialExternalMetrics,SpatialExperiment-method"
+      ]
+    },
+    {
+      "page": "getSpatialInternalMetrics",
+      "title": "Compute internal metrics for spatial data",
+      "topics": [
+        "getSpatialInternalMetrics",
+        "getSpatialInternalMetrics,missing-method",
+        "getSpatialInternalMetrics,SpatialExperiment-method"
+      ]
+    },
+    {
+      "page": "knnComposition",
+      "title": "Compute neighborhood composition",
+      "topics": [
+        "knnComposition"
+      ]
+    },
+    {
+      "page": "matchSets",
+      "title": "Match two partitions using Hungarian algorithm",
+      "topics": [
+        "matchSets"
+      ]
+    },
+    {
+      "page": "metric_info",
+      "title": "Metrics Information",
+      "topics": [
+        "metric_info"
+      ]
+    },
+    {
+      "page": "mockData",
+      "title": "Generate mock multidimensional data",
+      "topics": [
+        "mockData"
+      ]
+    },
+    {
+      "page": "noisy_moon",
+      "title": "The noisy moon dataset",
+      "topics": [
+        "noisy_moon"
+      ]
+    },
+    {
+      "page": "PAS",
+      "title": "Calculate PAS score",
+      "topics": [
+        "PAS"
+      ]
+    },
+    {
+      "page": "sp_toys",
+      "title": "Toy examples of spatial data",
+      "topics": [
+        "sp_toys"
+      ]
+    },
+    {
+      "page": "spatialARI",
+      "title": "Spatially aware ARI from Yan, Yinqiao, et al. (2025).",
+      "topics": [
+        "spatialARI"
+      ]
+    },
+    {
+      "page": "toyExamples",
+      "title": "Toy embedding examples",
+      "topics": [
+        "toyExamples"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/poem/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "aricode",
+    "askpass",
+    "assorthead",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "blob",
+    "bluster",
+    "boot",
+    "cachem",
+    "class",
+    "classInt",
+    "clevr",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "dplyr",
+    "e1071",
+    "elsa",
+    "fastmap",
+    "fclust",
+    "filelock",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "KernSmooth",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magick",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mclustcomp",
+    "memoise",
+    "openssl",
+    "pdist",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "proxy",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "raster",
+    "rbibutils",
+    "Rcpp",
+    "RcppArmadillo",
+    "Rdpack",
+    "rjson",
+    "rlang",
+    "RSQLite",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "sf",
+    "SingleCellExperiment",
+    "snow",
+    "sp",
+    "SparseArray",
+    "SpatialExperiment",
+    "spData",
+    "spdep",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "terra",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "units",
+    "utf8",
+    "vctrs",
+    "withr",
+    "wk",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "poem.Rmd",
+      "filename": "poem.html",
+      "title": "Introduction to poem",
+      "author": "Siyuan Luo, Pierre-Luc Germain",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation & loading",
+        "Introduction",
+        "What is this package for?",
+        "Main functions",
+        "Getting started",
+        "Example data",
+        "Embedding evaluation",
+        "Element-level evaluation",
+        "Class-level evaluation",
+        "Dataset-level evaluation",
+        "Graph evaluation",
+        "Partition evaluation",
+        "Fuzzy partition evaluation",
+        "Spatial clustering evaluation",
+        "External metrics",
+        "Internal metrics",
+        "Session info"
+      ],
+      "created": "2024-10-19 15:32:18",
+      "modified": "2025-04-14 13:20:54",
+      "commits": 9
+    },
+    {
+      "source": "MetricsInPoem.rmd",
+      "filename": "MetricsInPoem.html",
+      "title": "Details about each evaluation metrics",
+      "author": "Siyuan Luo, Pierre-Luc Germain",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Partition-based metrics",
+        "Embedding-based metrics",
+        "Graph-based metrics",
+        "Metrics for spatial clusterings",
+        "Session info"
+      ],
+      "created": "2025-04-10 07:53:45",
+      "modified": "2025-06-03 08:15:29",
+      "commits": 4
+    },
+    {
+      "source": "PoemOnSpatialExperiment.Rmd",
+      "filename": "PoemOnSpatialExperiment.html",
+      "title": "Working with SpatialExperiment",
+      "author": "Siyuan Luo, Pierre-Luc Germain",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Prepare dataset",
+        "Calculate external spatial metrics",
+        "Dataset level",
+        "Class/cluster level",
+        "Element level",
+        "Calculate internal spatial metrics",
+        "Session info"
+      ],
+      "created": "2025-04-10 07:53:45",
+      "modified": "2025-04-14 13:20:54",
+      "commits": 3
+    }
+  ],
+  "_score": 6.615423952885943,
+  "_indexed": true,
+  "_nocasepkg": "poem",
+  "_universes": [
+    "bioc",
+    "roseyuan"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:34:44.000Z",
+      "distro": "noble",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "708e5950a8a7454861f824dfb87273e2527ea62d6f3a297a6a1e3db788ef63de",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:35:26.000Z",
+      "distro": "noble",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "9de218ef139b4e9b1dd2e622a526ccab4e0c6b2ba0364ec38b3353cf8a1d02bb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:46:31.000Z",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "740cae7a11f29913d2b21e2dd2f3cd88a800be1db6928ce894f27b5077499f01",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:46:16.000Z",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "54f83e646bf84ac59282c1b1b9f04e24c2302d738b2030830806f2a1ee3188fa",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:34:50.000Z",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "d5d3e413daf5d3bffb0ea34062f9eb400efa3e3fe83910ee48be0949577fb1dd",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:33:56.000Z",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "54afe59d6907cb5fda38cf1d695d029ef1b163f882ea0043ce0fcff8d7c933bb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:34:00.000Z",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "f193e2572a82c8e15c96943f7d86e6bfaa99747ce7bfcee595a41c860fe7ff72",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.3.0",
+      "date": "2026-02-02T09:33:51.000Z",
+      "commit": "e74dd6950e2b21794ebdb20f85339949026a3b61",
+      "fileid": "cf3bafa7eceea6d5d77ed2404da11e458aee9e83233c1fcd4af3acf256e617b6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21584321732"
+    }
+  ]
+}

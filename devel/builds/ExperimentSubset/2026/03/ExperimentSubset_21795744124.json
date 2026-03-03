@@ -1,0 +1,851 @@
+{
+  "Package": "ExperimentSubset",
+  "Type": "Package",
+  "Title": "Manages subsets of data with Bioconductor Experiment objects",
+  "Version": "1.21.0",
+  "Date": "2021-05-09",
+  "Authors@R": "c(person(given=\"Irzam\", family=\"Sarfraz\", email=\"irzam9095@gmail.com\", role=c(\"aut\",\"cre\"),\ncomment = c(ORCID = \"0000-0001-8121-792X\")),\nperson(given=\"Muhammad\", family=\"Asif\", email=\"asif@ntu.edu.pk\", role=c(\"aut\",\"ths\"),\ncomment = c(ORCID = \"0000-0003-1839-2527\")),\nperson(given=c(\"Joshua\",\"D.\"), family=\"Campbell\", email=\"camp@bu.edu\", role=c(\"aut\"),\ncomment = c(ORCID = \"0000-0003-0780-8662\")))",
+  "Description": "Experiment objects such as the SummarizedExperiment or\nSingleCellExperiment are data containers for one or more\nmatrix-like assays along with the associated row and column\ndata. Often only a subset of the original data is needed for\ndown-stream analysis. For example, filtering out poor quality\nsamples will require excluding some columns before analysis.\nThe ExperimentSubset object is a container to efficiently\nmanage different subsets of the same data without having to\nmake separate objects for each new subset.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.1.1",
+  "biocViews": "Infrastructure, Software, DataImport, DataRepresentation",
+  "VignetteBuilder": "knitr",
+  "Collate": "'allClasses.R' 'allGenerics.R' 'ExperimentSubset.R'\n'SubsetRangedSummarizedExperiment.R'\n'SubsetSingleCellExperiment.R' 'SubsetSummarizedExperiment.R'\n'SubsetSpatialExperiment.R' 'SubsetTreeSummarizedExperiment.R'",
+  "Config/pak/sysreqs": "make libmagick++-dev gsfonts libicu-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:03:30 UTC",
+  "RemoteUrl": "https://github.com/bioc/ExperimentSubset",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-08 09:23:37 UTC",
+    "User": "root"
+  },
+  "Author": "Irzam Sarfraz [aut, cre] (ORCID:\n<https://orcid.org/0000-0001-8121-792X>),\nMuhammad Asif [aut, ths] (ORCID:\n<https://orcid.org/0000-0003-1839-2527>),\nJoshua D. Campbell [aut] (ORCID:\n<https://orcid.org/0000-0003-0780-8662>)",
+  "Maintainer": "Irzam Sarfraz <irzam9095@gmail.com>",
+  "MD5sum": "1349cbc56d7aa918dad39fa500461f8e",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "ExperimentSubset_1.21.0.tar.gz",
+  "_fileid": "7c7df939b90ad888e325924fac9c3fe7b21b48d5478cf17a9e092eb698b57147",
+  "_filesize": 239998,
+  "_sha256": "7c7df939b90ad888e325924fac9c3fe7b21b48d5478cf17a9e092eb698b57147",
+  "_created": "2026-02-08T09:23:37.000Z",
+  "_published": "2026-02-08T09:32:18.371Z",
+  "_jobs": [
+    {
+      "job": 62883136611,
+      "time": 231,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421749636"
+    },
+    {
+      "job": 62883136609,
+      "time": 448,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421762439"
+    },
+    {
+      "job": 62883136604,
+      "time": 453,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421762645"
+    },
+    {
+      "job": 62883136610,
+      "time": 292,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421760758"
+    },
+    {
+      "job": 62883136632,
+      "time": 331,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421763151"
+    },
+    {
+      "job": 62882941661,
+      "time": 353,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5421736200"
+    },
+    {
+      "job": 62883136614,
+      "time": 212,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421748662"
+    },
+    {
+      "job": 62883136613,
+      "time": 365,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421757646"
+    },
+    {
+      "job": 62883136616,
+      "time": 353,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5421756883"
+    },
+    {
+      "job": 62883136630,
+      "time": 342,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421756308"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 11
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ExperimentSubset",
+  "_commit": {
+    "id": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750210
+  },
+  "_maintainer": {
+    "name": "Irzam Sarfraz",
+    "email": "irzam9095@gmail.com",
+    "login": "irzamsarfraz",
+    "linkedin": "in/irzam-sarfraz-b1b34810b",
+    "uuid": 33160268,
+    "orcid": "0000-0001-8121-792X"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "TreeSummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "stats",
+      "role": "Suggests"
+    },
+    {
+      "package": "scran",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "scds",
+      "role": "Suggests"
+    },
+    {
+      "package": "TENxPBMCData",
+      "role": "Suggests"
+    },
+    {
+      "package": "airway",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "software",
+    "dataimport",
+    "datarepresentation"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 282,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ExperimentSubset"
+  },
+  "_searchresults": 8,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/ExperimentSubset.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "createSubset",
+    "ExperimentSubset",
+    "getSubsetAssay",
+    "reducedDimNames",
+    "reducedDimNames<-",
+    "reducedDims<-",
+    "setSubsetAssay",
+    "subsetAssayCount",
+    "subsetAssayNames",
+    "subsetColData",
+    "subsetColData<-",
+    "subsetColLinks",
+    "subsetColnames",
+    "subsetColnames<-",
+    "subsetCount",
+    "subsetDim",
+    "subsetNames",
+    "subsetParent",
+    "subsetRowData",
+    "subsetRowData<-",
+    "subsetRowLinks",
+    "subsetRownames",
+    "subsetRownames<-",
+    "subsetSpatialCoords",
+    "subsetSpatialData",
+    "subsetSpatialData<-",
+    "subsetSummary"
+  ],
+  "_help": [
+    {
+      "page": "AssaySubset",
+      "title": "AssaySubset constructor",
+      "topics": [
+        "AssaySubset"
+      ]
+    },
+    {
+      "page": "AssaySubset-class",
+      "title": "An S4 class to manage subset representation.",
+      "topics": [
+        ".AssaySubset",
+        "AssaySubset-class"
+      ]
+    },
+    {
+      "page": "createSubset",
+      "title": "Subset creation method for ExperimentSubset objects",
+      "topics": [
+        "createSubset",
+        "createSubset,SubsetRangedSummarizedExperiment-method",
+        "createSubset,SubsetSingleCellExperiment-method",
+        "createSubset,SubsetSpatialExperiment-method",
+        "createSubset,SubsetSummarizedExperiment-method",
+        "createSubset,SubsetTreeSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "ExperimentSubset",
+      "title": "ExperimentSubset constructor",
+      "topics": [
+        "ExperimentSubset"
+      ]
+    },
+    {
+      "page": "getSubsetAssay",
+      "title": "Get subset assay from an 'ExperimentSubset' object.",
+      "topics": [
+        "getSubsetAssay",
+        "getSubsetAssay,SubsetRangedSummarizedExperiment,character-method",
+        "getSubsetAssay,SubsetSingleCellExperiment,character-method",
+        "getSubsetAssay,SubsetSpatialExperiment,character-method",
+        "getSubsetAssay,SubsetSummarizedExperiment,character-method",
+        "getSubsetAssay,SubsetTreeSummarizedExperiment,character-method"
+      ]
+    },
+    {
+      "page": "reducedDimNames",
+      "title": "reducedDimNames",
+      "topics": [
+        "reducedDimNames",
+        "reducedDimNames,ANY-method"
+      ]
+    },
+    {
+      "page": "reducedDimNames-set",
+      "title": "reducedDimNames<-",
+      "topics": [
+        "reducedDimNames<-",
+        "reducedDimNames<-,ANY-method"
+      ]
+    },
+    {
+      "page": "reducedDims-set",
+      "title": "reducedDims<-",
+      "topics": [
+        "reducedDims<-"
+      ]
+    },
+    {
+      "page": "reducedDims-set-ANY-method",
+      "title": "reducedDims<-",
+      "topics": [
+        "reducedDims<-,ANY-method"
+      ]
+    },
+    {
+      "page": "setSubsetAssay",
+      "title": "Method for storing new assays inside subsets in ExperimentSubset objects",
+      "topics": [
+        "setSubsetAssay",
+        "setSubsetAssay,SubsetRangedSummarizedExperiment,character,ANY,character-method",
+        "setSubsetAssay,SubsetSingleCellExperiment,character,ANY,character-method",
+        "setSubsetAssay,SubsetSpatialExperiment,character,ANY,character-method",
+        "setSubsetAssay,SubsetSummarizedExperiment,character,ANY,character-method",
+        "setSubsetAssay,SubsetTreeSummarizedExperiment,character,ANY,character-method"
+      ]
+    },
+    {
+      "page": "subsetAssayCount",
+      "title": "Count method for subset assays in ExperimentSubset objects",
+      "topics": [
+        "subsetAssayCount",
+        "subsetAssayCount,SubsetRangedSummarizedExperiment-method",
+        "subsetAssayCount,SubsetSingleCellExperiment-method",
+        "subsetAssayCount,SubsetSpatialExperiment-method",
+        "subsetAssayCount,SubsetSummarizedExperiment-method",
+        "subsetAssayCount,SubsetTreeSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "subsetAssayNames",
+      "title": "Name retrieval method for all subset assays in ExperimentSubset objects",
+      "topics": [
+        "subsetAssayNames",
+        "subsetAssayNames,SubsetRangedSummarizedExperiment-method",
+        "subsetAssayNames,SubsetSingleCellExperiment-method",
+        "subsetAssayNames,SubsetSpatialExperiment-method",
+        "subsetAssayNames,SubsetSummarizedExperiment-method",
+        "subsetAssayNames,SubsetTreeSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "subsetColData",
+      "title": "Accessor method for colData from subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetColData",
+        "subsetColData,SubsetRangedSummarizedExperiment,character-method",
+        "subsetColData,SubsetSingleCellExperiment,character-method",
+        "subsetColData,SubsetSpatialExperiment,character-method",
+        "subsetColData,SubsetSummarizedExperiment,character-method",
+        "subsetColData,SubsetTreeSummarizedExperiment,character-method",
+        "subsetColData<-",
+        "subsetColData<-,SubsetRangedSummarizedExperiment,character,DataFrame-method",
+        "subsetColData<-,SubsetSingleCellExperiment,character,DataFrame-method",
+        "subsetColData<-,SubsetSpatialExperiment,character,DataFrame-method",
+        "subsetColData<-,SubsetSummarizedExperiment,character,DataFrame-method",
+        "subsetColData<-,SubsetTreeSummarizedExperiment,character,DataFrame-method"
+      ]
+    },
+    {
+      "page": "subsetColLinks",
+      "title": "Accessor method for colLinks from subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetColLinks",
+        "subsetColLinks,SubsetTreeSummarizedExperiment,character-method"
+      ]
+    },
+    {
+      "page": "subsetColnames",
+      "title": "subsetColnames",
+      "topics": [
+        "subsetColnames",
+        "subsetColnames,SubsetRangedSummarizedExperiment,character-method",
+        "subsetColnames,SubsetSingleCellExperiment,character-method",
+        "subsetColnames,SubsetSpatialExperiment,character-method",
+        "subsetColnames,SubsetSummarizedExperiment,character-method",
+        "subsetColnames,SubsetTreeSummarizedExperiment,character-method",
+        "subsetColnames<-",
+        "subsetColnames<-,SubsetRangedSummarizedExperiment,character-method",
+        "subsetColnames<-,SubsetSingleCellExperiment,character-method",
+        "subsetColnames<-,SubsetSpatialExperiment,character-method",
+        "subsetColnames<-,SubsetSummarizedExperiment,character-method",
+        "subsetColnames<-,SubsetTreeSummarizedExperiment,character-method"
+      ]
+    },
+    {
+      "page": "subsetCount",
+      "title": "Subset count method for ExperimentSubset objects",
+      "topics": [
+        "subsetCount",
+        "subsetCount,SubsetRangedSummarizedExperiment-method",
+        "subsetCount,SubsetSingleCellExperiment-method",
+        "subsetCount,SubsetSpatialExperiment-method",
+        "subsetCount,SubsetSummarizedExperiment-method",
+        "subsetCount,SubsetTreeSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "subsetDim",
+      "title": "Get dimensions of subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetDim",
+        "subsetDim,SubsetRangedSummarizedExperiment,character-method",
+        "subsetDim,SubsetSingleCellExperiment,character-method",
+        "subsetDim,SubsetSpatialExperiment,character-method",
+        "subsetDim,SubsetSummarizedExperiment,character-method",
+        "subsetDim,SubsetTreeSummarizedExperiment,character-method"
+      ]
+    },
+    {
+      "page": "subsetNames",
+      "title": "Get names of only the subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetNames",
+        "subsetNames,SubsetRangedSummarizedExperiment-method",
+        "subsetNames,SubsetSingleCellExperiment-method",
+        "subsetNames,SubsetSpatialExperiment-method",
+        "subsetNames,SubsetSummarizedExperiment-method",
+        "subsetNames,SubsetTreeSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "subsetParent",
+      "title": "Subset parent hierarchy retrieval method for ExperimentSubset objects",
+      "topics": [
+        "subsetParent",
+        "subsetParent,SubsetRangedSummarizedExperiment-method",
+        "subsetParent,SubsetSingleCellExperiment-method",
+        "subsetParent,SubsetSpatialExperiment-method",
+        "subsetParent,SubsetSummarizedExperiment-method",
+        "subsetParent,SubsetTreeSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "SubsetRangedSummarizedExperiment-class",
+      "title": "An S4 class for 'RangedSummarizedExperiment' objects with added support for subsets.",
+      "topics": [
+        ".SubsetRangedSummarizedExperiment",
+        "SubsetRangedSummarizedExperiment-class"
+      ]
+    },
+    {
+      "page": "subsetRowData",
+      "title": "Accessor method for rowData from subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetRowData",
+        "subsetRowData,SubsetRangedSummarizedExperiment,character-method",
+        "subsetRowData,SubsetSingleCellExperiment,character-method",
+        "subsetRowData,SubsetSpatialExperiment,character-method",
+        "subsetRowData,SubsetSummarizedExperiment,character-method",
+        "subsetRowData,SubsetTreeSummarizedExperiment,character-method",
+        "subsetRowData<-",
+        "subsetRowData<-,SubsetRangedSummarizedExperiment,character,DataFrame-method",
+        "subsetRowData<-,SubsetSingleCellExperiment,character,DataFrame-method",
+        "subsetRowData<-,SubsetSpatialExperiment,character,DataFrame-method",
+        "subsetRowData<-,SubsetSummarizedExperiment,character,DataFrame-method",
+        "subsetRowData<-,SubsetTreeSummarizedExperiment,character,DataFrame-method"
+      ]
+    },
+    {
+      "page": "subsetRowLinks",
+      "title": "Accessor method for rowLinks from subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetRowLinks",
+        "subsetRowLinks,SubsetTreeSummarizedExperiment,character-method"
+      ]
+    },
+    {
+      "page": "subsetRownames",
+      "title": "subsetRownames",
+      "topics": [
+        "subsetRownames",
+        "subsetRownames,SubsetRangedSummarizedExperiment,character-method",
+        "subsetRownames,SubsetSingleCellExperiment,character-method",
+        "subsetRownames,SubsetSpatialExperiment,character-method",
+        "subsetRownames,SubsetSummarizedExperiment,character-method",
+        "subsetRownames,SubsetTreeSummarizedExperiment,character-method",
+        "subsetRownames<-",
+        "subsetRownames<-,SubsetRangedSummarizedExperiment,character-method",
+        "subsetRownames<-,SubsetSingleCellExperiment,character-method",
+        "subsetRownames<-,SubsetSpatialExperiment,character-method",
+        "subsetRownames<-,SubsetSummarizedExperiment,character-method",
+        "subsetRownames<-,SubsetTreeSummarizedExperiment,character-method"
+      ]
+    },
+    {
+      "page": "SubsetSingleCellExperiment-class",
+      "title": "An S4 class for 'SingleCellExperiment' objects with added support for subsets.",
+      "topics": [
+        ".SubsetSingleCellExperiment",
+        "SubsetSingleCellExperiment-class"
+      ]
+    },
+    {
+      "page": "subsetSpatialCoords",
+      "title": "Accessor method for spatialCoords from subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetSpatialCoords",
+        "subsetSpatialCoords,SubsetSpatialExperiment,character-method"
+      ]
+    },
+    {
+      "page": "subsetSpatialData",
+      "title": "Accessor method for spatialData from subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetSpatialData",
+        "subsetSpatialData,SubsetSpatialExperiment,character-method",
+        "subsetSpatialData<-",
+        "subsetSpatialData<-,SubsetSpatialExperiment,character,data.frame-method"
+      ]
+    },
+    {
+      "page": "SubsetSpatialExperiment-class",
+      "title": "An S4 class for 'SpatialExperiment' objects with added support for subsets.",
+      "topics": [
+        ".SubsetSpatialExperiment",
+        "SubsetSpatialExperiment-class"
+      ]
+    },
+    {
+      "page": "SubsetSummarizedExperiment-class",
+      "title": "An S4 class for 'SummarizedExperiment' objects with added support for subsets.",
+      "topics": [
+        ".SubsetSummarizedExperiment",
+        "SubsetSummarizedExperiment-class"
+      ]
+    },
+    {
+      "page": "subsetSummary",
+      "title": "Method for displaying 'child-parent' link structure of subsets in ExperimentSubset objects",
+      "topics": [
+        "subsetSummary",
+        "subsetSummary,SubsetRangedSummarizedExperiment-method",
+        "subsetSummary,SubsetSingleCellExperiment-method",
+        "subsetSummary,SubsetSpatialExperiment-method",
+        "subsetSummary,SubsetSummarizedExperiment-method",
+        "subsetSummary,SubsetTreeSummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "SubsetTreeSummarizedExperiment-class",
+      "title": "An S4 class for 'TreeSummarizedExperiment' objects with added support for subsets.",
+      "topics": [
+        ".SubsetTreeSummarizedExperiment",
+        "SubsetTreeSummarizedExperiment-class"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ExperimentSubset/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ape",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "cachem",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "httr2",
+    "IRanges",
+    "jsonlite",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magick",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "nlme",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "Rcpp",
+    "rjson",
+    "rlang",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SpatialExperiment",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "treeio",
+    "TreeSummarizedExperiment",
+    "utf8",
+    "vctrs",
+    "withr",
+    "XVector",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "ExperimentSubset.Rmd",
+      "filename": "ExperimentSubset.html",
+      "title": "ExperimentSubset: Manages subsets of data with Bioconductor Experiment objects",
+      "author": "Irzam Sarfraz, Muhammad Asif, Joshua D. Campbell",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Motivation",
+        "A Brief Description",
+        "Overview of the ExperimentSubset class",
+        "Core methods of ExperimentSubset class",
+        "ExperimentSubset constructor",
+        "createSubset",
+        "setSubsetAssay and getSubsetAssay",
+        "subsetSummary",
+        "Additional helper methods",
+        "subsetColData & subsetRowData",
+        "Overridden methods for ExperimentSubset class",
+        "assay-get & assay-set inherited methods",
+        "Using the ExperimentSubset object: A toy example",
+        "Using the ExperimentSubset object: An example with real single cell RNA-seq data",
+        "Supported Input Object Classes",
+        "Methods for ExperimentSubset",
+        "Implementation Details",
+        "Inherited parent object",
+        "Additional subsets slot",
+        "subsetName",
+        "rowIndices",
+        "colIndices",
+        "parentAssay",
+        "internalAssay",
+        "Session Information"
+      ],
+      "created": "2020-08-17 09:38:43",
+      "modified": "2021-03-06 05:01:11",
+      "commits": 13
+    }
+  ],
+  "_score": 4,
+  "_indexed": true,
+  "_nocasepkg": "experimentsubset",
+  "_universes": [
+    "bioc",
+    "irzamsarfraz"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:28:24.000Z",
+      "distro": "noble",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "f2b3c99119e844b8bbc71559e51e7995b5e88b63f4233d1a2810f949aea3116e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:28:28.000Z",
+      "distro": "noble",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "fbec2ef25ccf63b5a019753753415bea83207fa9a8a82a38481554204c38e012",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:28:35.000Z",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "c3ea2bc7daf0f44d1cb60067ebd298c21aa6c326a48dfb0ec64c98f13b24a120",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:28:54.000Z",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "6f6c65cb600427b1c319b2f45103048c09373a3431aa6d46c6b23707a93b1bc4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:27:48.000Z",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "886a978af2417104557fb5076d0f6f98870cbdbdcbc66416ee7499bdc229b61b",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:26:21.000Z",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "2a480a62b08e4f7b443fa41b13411f2ea7ffb3fc16488c266b03dcd5e716fd83",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:26:39.000Z",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "26b7648ec77a9357f4885c9747b4f420ee758622953244bd992c2eb50ecefe8d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.21.0",
+      "date": "2026-02-08T09:26:15.000Z",
+      "commit": "a61ebd507ba003f1189aea13077f17d9300c5eab",
+      "fileid": "1a103f8d82c98a10cd2231d0bc876b966aadd3dc77e06add8bf4ac90d3740511",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795744124"
+    }
+  ]
+}

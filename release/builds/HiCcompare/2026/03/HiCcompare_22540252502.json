@@ -1,0 +1,995 @@
+{
+  "Package": "HiCcompare",
+  "Title": "HiCcompare: Joint normalization and comparative analysis of\nmultiple Hi-C datasets",
+  "Version": "1.32.0",
+  "Authors@R": "c(\nperson(given = \"Mikhail\",\nfamily = \"Dozmorov\",\nrole = c(\"aut\", \"cre\"),\nemail = \"mikhail.dozmorov@gmail.com\",\ncomment = c(ORCID = \"0000-0002-0086-8358\")),\nperson(given = \"Kellen\",\nfamily = \"Cresswell\",\nrole = c(\"aut\"),\nemail = \"cresswellkg@vcu.edu\"),\nperson(given = \"John\",\nfamily = \"Stansfield\",\nrole = c(\"aut\"),\nemail = \"stansfieldjc@vcu.edu\"))",
+  "Description": "HiCcompare provides functions for joint normalization and\ndifference detection in multiple Hi-C datasets. HiCcompare\noperates on processed Hi-C data in the form of\nchromosome-specific chromatin interaction matrices. It accepts\nthree-column tab-separated text files storing chromatin\ninteraction matrices in a sparse matrix format which are\navailable from several sources. HiCcompare is designed to give\nthe user the ability to perform a comparative analysis on the\n3-Dimensional structure of the genomes of cells in different\nbiological states.`HiCcompare` differs from other packages that\nattempt to compare Hi-C data in that it works on processed data\nin chromatin interaction matrix format instead of pre-processed\nsequencing data. In addition, `HiCcompare` provides a\nnon-parametric method for the joint normalization and removal\nof biases between two Hi-C datasets for the purpose of\ncomparative analysis. `HiCcompare` also provides a simple yet\nrobust method for detecting differences between Hi-C datasets.",
+  "biocViews": "Software, HiC, Sequencing, Normalization",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "LazyDataCompression": "xz",
+  "RoxygenNote": "7.2.3",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/dozmorovlab/HiCcompare/issues",
+  "URL": "https://github.com/dozmorovlab/HiCcompare",
+  "Config/pak/sysreqs": "libssl-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:39:45 UTC",
+  "RemoteUrl": "https://github.com/bioc/HiCcompare",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-03-01 09:19:00 UTC",
+    "User": "root"
+  },
+  "Author": "Mikhail Dozmorov [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-0086-8358>),\nKellen Cresswell [aut],\nJohn Stansfield [aut]",
+  "Maintainer": "Mikhail Dozmorov <mikhail.dozmorov@gmail.com>",
+  "MD5sum": "2a4c4c8b129160c8ea709eb2a233f75b",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "HiCcompare_1.32.0.tar.gz",
+  "_fileid": "4aa29cc473aa4aa1c76d7f182fab5bc908243f44767ea5e7e30ba3aa96b1b9c9",
+  "_filesize": 4536297,
+  "_sha256": "4aa29cc473aa4aa1c76d7f182fab5bc908243f44767ea5e7e30ba3aa96b1b9c9",
+  "_created": "2026-03-01T09:19:00.000Z",
+  "_published": "2026-03-01T09:26:19.948Z",
+  "_jobs": [
+    {
+      "job": 65294559363,
+      "time": 221,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5709009478"
+    },
+    {
+      "job": 65294559356,
+      "time": 372,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5709021252"
+    },
+    {
+      "job": 65294559355,
+      "time": 338,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5709018678"
+    },
+    {
+      "job": 65294559375,
+      "time": 180,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5709006448"
+    },
+    {
+      "job": 65294559376,
+      "time": 168,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5709005551"
+    },
+    {
+      "job": 65294338022,
+      "time": 317,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5708991097"
+    },
+    {
+      "job": 65294559367,
+      "time": 157,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5709004525"
+    },
+    {
+      "job": 65294559401,
+      "time": 265,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5709013068"
+    },
+    {
+      "job": 65294559368,
+      "time": 245,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5709011614"
+    },
+    {
+      "job": 65294559369,
+      "time": 251,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5709012199"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 16
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/HiCcompare",
+  "_commit": {
+    "id": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761748785
+  },
+  "_maintainer": {
+    "name": "Mikhail Dozmorov",
+    "email": "mikhail.dozmorov@gmail.com",
+    "login": "mdozmorov",
+    "twitter": "@mikhaildozmorov",
+    "uuid": 864945,
+    "orcid": "0000-0002-0086-8358"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "dplyr",
+      "role": "Depends"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "gridExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "mgcv",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "InteractionSet",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "KernSmooth",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "multiHiCcompare",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 6,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.33.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.32.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "hic",
+    "sequencing",
+    "normalization",
+    "difference-detection",
+    "hi-c",
+    "visualization"
+  ],
+  "_stars": 23,
+  "_contributors": [
+    {
+      "user": "jstansfield0",
+      "count": 156,
+      "uuid": 20071664
+    },
+    {
+      "user": "mdozmorov",
+      "count": 14,
+      "uuid": 864945
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 4,
+      "uuid": 8810451
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    },
+    {
+      "user": "cresswellkg",
+      "count": 1,
+      "uuid": 24900380
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 722,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/HiCcompare"
+  },
+  "_mentions": 4,
+  "_devurl": "https://github.com/dozmorovlab/hiccompare",
+  "_searchresults": 66,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/HiCcompare.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/dozmorovlab/hiccompare",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_releases": [],
+  "_exports": [
+    "cooler2bedpe",
+    "cooler2sparse",
+    "create.hic.table",
+    "filter_params",
+    "full2sparse",
+    "hic_compare",
+    "hic_diff",
+    "hic_loess",
+    "hic_simulate",
+    "hicpro2bedpe",
+    "KRnorm",
+    "MA_norm",
+    "make_InteractionSet",
+    "manhattan_plot",
+    "MD.plot1",
+    "MD.plot2",
+    "remove_centromere",
+    "SCN",
+    "sim_matrix",
+    "sim.other.methods",
+    "sparse2full",
+    "split_centromere",
+    "total_sum",
+    "visualize_pvals"
+  ],
+  "_datasets": [
+    {
+      "name": "HMEC.chr10",
+      "title": "Hi-C data from HMEC cell line - chromosome 10 at 500kb resolution",
+      "object": "HMEC.chr10",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 35386,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "HMEC.chr22",
+      "title": "Hi-C data from HMEC cell line - chromosome 22 at 500kb resolution",
+      "object": "HMEC.chr22",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "region1",
+        "region2",
+        "IF"
+      ],
+      "rows": 2490,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "NHEK.chr10",
+      "title": "Hi-C data from NHEK cell line - chromosome 10 at 500kb resolution",
+      "object": "NHEK.chr10",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 35510,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "NHEK.chr22",
+      "title": "Hi-C data from NHEK cell line - chromosome 22 at 500kb resolution",
+      "object": "NHEK.chr22",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "region1",
+        "region2",
+        "IF"
+      ],
+      "rows": 2508,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "brain_table",
+      "title": "Hi-C data from two regions of the brain at 100KB resolution",
+      "object": "brain_table",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "centromere_locations",
+      "title": "Locations of the centromeres for hg19",
+      "object": "centromere_locations",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "rows": 24,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "cooler",
+      "title": "Hi-C data in the cooler format",
+      "object": "cooler",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7"
+      ],
+      "rows": 217230,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "hg19_blacklist",
+      "title": "BED file for hg19 blacklisted regions",
+      "object": "hg19_blacklist",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "chr",
+        "start",
+        "end"
+      ],
+      "rows": 1649,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "hg38_blacklist",
+      "title": "BED file for hg38 blacklisted regions",
+      "object": "hg38_blacklist",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "chr",
+        "start",
+        "end"
+      ],
+      "rows": 38,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "hmec.IS",
+      "title": "Hi-C data from HMEC cell line - chromosome 22 at 500kb resolution",
+      "object": "hmec.IS",
+      "class": [
+        "GInteractions"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "nhek.IS",
+      "title": "Hi-C data from NHEK cell line - chromosome 22 at 500kb resolution",
+      "object": "nhek.IS",
+      "class": [
+        "GInteractions"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "HiCcompare-package",
+      "title": "HiCcompare",
+      "topics": [
+        "HiCcompare-package",
+        "HiCcompare"
+      ]
+    },
+    {
+      "page": "brain_table",
+      "title": "Hi-C data from two regions of the brain at 100KB resolution",
+      "topics": [
+        "brain_table"
+      ]
+    },
+    {
+      "page": "centromere_locations",
+      "title": "Locations of the centromeres for hg19",
+      "topics": [
+        "centromere_locations"
+      ]
+    },
+    {
+      "page": "cooler",
+      "title": "Hi-C data in the cooler format",
+      "topics": [
+        "cooler"
+      ]
+    },
+    {
+      "page": "cooler2bedpe",
+      "title": "Read a .cool file into R and output the data in BEDPE format",
+      "topics": [
+        "cooler2bedpe"
+      ]
+    },
+    {
+      "page": "cooler2sparse",
+      "title": "Transform a .cool file to a sparse upper triangular matrix for input into hic_loess",
+      "topics": [
+        "cooler2sparse"
+      ]
+    },
+    {
+      "page": "create.hic.table",
+      "title": "Create hic.table object from a sparse upper triangular Hi-C matrix",
+      "topics": [
+        "create.hic.table"
+      ]
+    },
+    {
+      "page": "filter_params",
+      "title": "Determine the A quantile cutoff to be used",
+      "topics": [
+        "filter_params"
+      ]
+    },
+    {
+      "page": "full2sparse",
+      "title": "Transfrom a full Hi-C contact matrix to a sparse upper triangular matrix",
+      "topics": [
+        "full2sparse"
+      ]
+    },
+    {
+      "page": "hg19_blacklist",
+      "title": "BED file for hg19 blacklisted regions",
+      "topics": [
+        "hg19_blacklist"
+      ]
+    },
+    {
+      "page": "hg38_blacklist",
+      "title": "BED file for hg38 blacklisted regions",
+      "topics": [
+        "hg38_blacklist"
+      ]
+    },
+    {
+      "page": "hic_compare",
+      "title": "Detect differences between two jointly normalized Hi-C datasets.",
+      "topics": [
+        "hic_compare"
+      ]
+    },
+    {
+      "page": "hic_diff",
+      "title": "Detect differences between two jointly normalized Hi-C datasets. OLD METHOD; USE hic_compare() instead",
+      "topics": [
+        "hic_diff"
+      ]
+    },
+    {
+      "page": "hic_loess",
+      "title": "Perform joint loess normalization on two Hi-C datasets",
+      "topics": [
+        "hic_loess"
+      ]
+    },
+    {
+      "page": "hic_simulate",
+      "title": "Simulate a Hi-C matrix and perform HiCcompare analysis on it",
+      "topics": [
+        "hic_simulate"
+      ]
+    },
+    {
+      "page": "hicpro2bedpe",
+      "title": "Convert HiC-Pro results to BEDPE format",
+      "topics": [
+        "hicpro2bedpe"
+      ]
+    },
+    {
+      "page": "HMEC.chr10",
+      "title": "Hi-C data from HMEC cell line - chromosome 10 at 500kb resolution",
+      "topics": [
+        "HMEC.chr10"
+      ]
+    },
+    {
+      "page": "HMEC.chr22",
+      "title": "Hi-C data from HMEC cell line - chromosome 22 at 500kb resolution",
+      "topics": [
+        "HMEC.chr22"
+      ]
+    },
+    {
+      "page": "hmec.IS",
+      "title": "Hi-C data from HMEC cell line - chromosome 22 at 500kb resolution",
+      "topics": [
+        "hmec.IS"
+      ]
+    },
+    {
+      "page": "KRnorm",
+      "title": "Performs KR (Knight-Ruiz) normalization on a Hi-C matrix",
+      "topics": [
+        "KRnorm"
+      ]
+    },
+    {
+      "page": "MA_norm",
+      "title": "Perform MA normalization on a hic.table object",
+      "topics": [
+        "MA_norm"
+      ]
+    },
+    {
+      "page": "make_InteractionSet",
+      "title": "Convert HiCdiff results to InteractionSet object",
+      "topics": [
+        "make_InteractionSet"
+      ]
+    },
+    {
+      "page": "manhattan_plot",
+      "title": "Create a Manhattan plot for the results of HiCcompare",
+      "topics": [
+        "manhattan_plot"
+      ]
+    },
+    {
+      "page": "MD.plot1",
+      "title": "Visualize the MD plot before and after loess normalization",
+      "topics": [
+        "MD.plot1"
+      ]
+    },
+    {
+      "page": "MD.plot2",
+      "title": "Visualize the MD plot.",
+      "topics": [
+        "MD.plot2"
+      ]
+    },
+    {
+      "page": "NHEK.chr10",
+      "title": "Hi-C data from NHEK cell line - chromosome 10 at 500kb resolution",
+      "topics": [
+        "NHEK.chr10"
+      ]
+    },
+    {
+      "page": "NHEK.chr22",
+      "title": "Hi-C data from NHEK cell line - chromosome 22 at 500kb resolution",
+      "topics": [
+        "NHEK.chr22"
+      ]
+    },
+    {
+      "page": "nhek.IS",
+      "title": "Hi-C data from NHEK cell line - chromosome 22 at 500kb resolution",
+      "topics": [
+        "nhek.IS"
+      ]
+    },
+    {
+      "page": "remove_centromere",
+      "title": "Function to remove centromere columns and rows from a full Hi-C contact matrix",
+      "topics": [
+        "remove_centromere"
+      ]
+    },
+    {
+      "page": "SCN",
+      "title": "SCN normalization from Cournac 2012",
+      "topics": [
+        "SCN"
+      ]
+    },
+    {
+      "page": "sim_matrix",
+      "title": "Simulate 2 Hi-C matrices with differences",
+      "topics": [
+        "sim_matrix"
+      ]
+    },
+    {
+      "page": "sim.other.methods",
+      "title": "Compare other normalization methods on simulated data",
+      "topics": [
+        "sim.other.methods"
+      ]
+    },
+    {
+      "page": "sparse2full",
+      "title": "Transform a sparse upper triangular matrix to a full Hi-C contact matrix",
+      "topics": [
+        "sparse2full"
+      ]
+    },
+    {
+      "page": "split_centromere",
+      "title": "Function to split hic.table into 2 subsets at the centromere",
+      "topics": [
+        "split_centromere"
+      ]
+    },
+    {
+      "page": "total_sum",
+      "title": "Total sum normalization for a list of hic.table objects",
+      "topics": [
+        "total_sum"
+      ]
+    },
+    {
+      "page": "visualize_pvals",
+      "title": "Function to visualize p-values from HiCcompare results",
+      "topics": [
+        "visualize_pvals"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/HiCcompare/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "cli",
+    "codetools",
+    "cpp11",
+    "data.table",
+    "DelayedArray",
+    "dplyr",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "InteractionSet",
+    "IRanges",
+    "isoband",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mgcv",
+    "nlme",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "tibble",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "HiCcompare-vignette.Rmd",
+      "filename": "HiCcompare-vignette.html",
+      "title": "HiCcompare Vignette",
+      "author": "John Stansfield, Mikhail Dozmorov",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "How to use HiCcompare",
+        "Installation",
+        "Getting Hi-C Data",
+        "Extracting data from .hic files",
+        "Extracting data from .cool files",
+        "Using data from HiC-Pro",
+        "Detecting Copy Number Variations and Excluding regions",
+        "Creating the hic.table object",
+        "Sparse upper triangular format",
+        "BEDPE format",
+        "HiC-Pro format",
+        "InteractionSet/GRanges format",
+        "Total Sum Scaling",
+        "Joint Normalization",
+        "Difference Detection",
+        "Converting HiCcompare results to InteractionSet objects",
+        "Simulating Hi-C Data",
+        "Additional Functions",
+        "Using HiCcompare on a cluster",
+        "Session Info"
+      ],
+      "created": "2017-07-11 20:14:53",
+      "modified": "2023-06-04 11:32:32",
+      "commits": 23
+    }
+  ],
+  "_score": 8.883702308004988,
+  "_indexed": false,
+  "_nocasepkg": "hiccompare",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/HiCcompare",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:23:24.000Z",
+      "distro": "noble",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "9888df6d5d403c7dc8344447f2f2d24dede8071f1e21da9c0871e6e6cabe2957",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:22:46.000Z",
+      "distro": "noble",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "26264507d066350209a21544e61e71352f7eb2965e3a7e7ac6553831d86f583f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:21:13.000Z",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "dce1313f3d7d79cc9bf110488885a7260a2a594da62d9d10454f56ed3ab6acb5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:21:07.000Z",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "82aff8b1468301c640c38d6715be73eac7bf6d37c966b0c9b483ce9f76660c31",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:22:18.000Z",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "6455659667cff4e80645c60222a8765f89d6c1e2d719bf1d6b2e14682371b3e2",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:21:14.000Z",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "fc8c95c5358d5f12e0012faaf8bbeb9e914388e02d02fd6564b45740c99f151c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:21:16.000Z",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "12a62f00eb8a95244c1e3c59f35bdba63bd8573db77ad6225ad36b9dcde43ea4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.32.0",
+      "date": "2026-03-01T09:21:11.000Z",
+      "commit": "9add1404a4b50d030bd4950e8729c2c33afaccfd",
+      "fileid": "e68aafa1631a88acd0acf6ebd4c7dd87a263bbce54a27f1e7b8748a570a0ccbe",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22540252502"
+    }
+  ]
+}

@@ -1,0 +1,997 @@
+{
+  "Package": "zitools",
+  "Title": "Analysis of zero-inflated count data",
+  "Version": "1.4.0",
+  "Authors@R": "person(\"Carlotta\", \"Meyring\", , \"carlotta.meyring@uniklinik-freiburg.de\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0009-0000-6201-7615\"))",
+  "Description": "zitools allows for zero inflated count data analysis by\neither using down-weighting of excess zeros or by replacing an\nappropriate proportion of excess zeros with NA. Through\noverloading frequently used statistical functions (such as\nmean, median, standard deviation), plotting functions (such as\nboxplots or heatmap) or differential abundance tests, it allows\na wide range of downstream analyses for zero-inflated data in a\nless biased manner. This becomes applicable in the context of\nmicrobiome analyses, where the data is often overdispersed and\nzero-inflated, therefore making data analysis extremly\nchallenging.",
+  "License": "BSD_3_clause + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.2.3",
+  "Config/testthat/edition": "3",
+  "Collate": "'data.R' 'globals.R' 'ziMain.R' 'helper.R'\n'inherited_functions.R' 'plots.R' 'utils.R' 'zitools-package.R'",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, StatisticalMethod, Microbiome",
+  "URL": "https://github.com/kreutz-lab/zitools",
+  "BugReports": "https://github.com/kreutz-lab/zitools/issues",
+  "Config/pak/sysreqs": "libglpk-dev libicu-dev libxml2-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:30:43 UTC",
+  "RemoteUrl": "https://github.com/bioc/zitools",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "c4def985100aa19c27516e5f3825930735b7294f",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-23 08:49:02 UTC",
+    "User": "root"
+  },
+  "Author": "Carlotta Meyring [aut, cre] (ORCID:\n<https://orcid.org/0009-0000-6201-7615>)",
+  "Maintainer": "Carlotta Meyring <carlotta.meyring@uniklinik-freiburg.de>",
+  "MD5sum": "df9f8587e1ea4b6770139443afc2b667",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "zitools_1.4.0.tar.gz",
+  "_fileid": "5d796508d393cf736be3e692de4ac3812dac158251719306806dba4aaef91096",
+  "_filesize": 1343011,
+  "_sha256": "5d796508d393cf736be3e692de4ac3812dac158251719306806dba4aaef91096",
+  "_created": "2026-02-23T08:49:02.000Z",
+  "_published": "2026-02-23T08:58:18.754Z",
+  "_jobs": [
+    {
+      "job": 64501713555,
+      "time": 193,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613755609"
+    },
+    {
+      "job": 64501713568,
+      "time": 494,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613812395"
+    },
+    {
+      "job": 64501713588,
+      "time": 493,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613812103"
+    },
+    {
+      "job": 64501713566,
+      "time": 299,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613801244"
+    },
+    {
+      "job": 64501713580,
+      "time": 300,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613802872"
+    },
+    {
+      "job": 64501149313,
+      "time": 343,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613718098"
+    },
+    {
+      "job": 64501713558,
+      "time": 184,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5613753442"
+    },
+    {
+      "job": 64501713565,
+      "time": 388,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613792777"
+    },
+    {
+      "job": 64501713584,
+      "time": 390,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5613793615"
+    },
+    {
+      "job": 64501713553,
+      "time": 418,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613798314"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 4
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/zitools",
+  "_commit": {
+    "id": "c4def985100aa19c27516e5f3825930735b7294f",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751843
+  },
+  "_maintainer": {
+    "name": "Carlotta Meyring",
+    "email": "carlotta.meyring@uniklinik-freiburg.de",
+    "login": "cmeyring",
+    "uuid": 122982530
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "phyloseq",
+      "role": "Imports"
+    },
+    {
+      "package": "pscl",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "VGAM",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Suggests"
+    },
+    {
+      "package": "microbiome",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.5.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.4.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "statisticalmethod",
+    "microbiome"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "cmeyring",
+      "count": 119,
+      "uuid": 122982530
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 208,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/zitools"
+  },
+  "_devurl": "https://github.com/kreutz-lab/zitools",
+  "_searchresults": 7,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/zitools.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/kreutz-lab/zitools",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "assays",
+    "colData",
+    "colMeans2",
+    "colMedians",
+    "colQuantiles",
+    "colSds",
+    "colVars",
+    "colWeightedMeans",
+    "colWeightedSds",
+    "colWeightedVars",
+    "cor",
+    "cov",
+    "deinflatedcounts",
+    "deinflatedcounts<-",
+    "heatmap",
+    "inputcounts",
+    "inputcounts<-",
+    "inputdata",
+    "inputdata<-",
+    "log2p",
+    "MissingValueHeatmap",
+    "model",
+    "model<-",
+    "otu_table",
+    "plot",
+    "resample_deinflatedcounts",
+    "rowData",
+    "rowMeans2",
+    "rowMedians",
+    "rowQuantiles",
+    "rowSds",
+    "rowVars",
+    "rowWeightedMeans",
+    "rowWeightedSds",
+    "rowWeightedVars",
+    "sample_data",
+    "sd",
+    "show",
+    "subset_feature",
+    "subset_sample",
+    "t",
+    "tax_table",
+    "var",
+    "weighted.mean",
+    "weightedSd",
+    "weightedVar",
+    "weights",
+    "weights<-",
+    "zi2deseq2",
+    "zi2phyloseq",
+    "ziMain"
+  ],
+  "_datasets": [
+    {
+      "name": "mtx",
+      "title": "Matrix Data",
+      "object": "mtx",
+      "file": "mtx.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": {},
+      "rows": 100,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "times",
+      "title": "Arithmetic Operators",
+      "topics": [
+        "*",
+        "*,Zi,ANY-method"
+      ]
+    },
+    {
+      "page": "slash",
+      "title": "Arithmetic Operators",
+      "topics": [
+        "/",
+        "/,Zi,ANY-method"
+      ]
+    },
+    {
+      "page": "plus",
+      "title": "Arithmetic Operators",
+      "topics": [
+        "+",
+        "+,Zi,ANY-method",
+        "-,Zi,ANY-method",
+        "\u00b4-\u00b4"
+      ]
+    },
+    {
+      "page": "assays",
+      "title": "Access assays",
+      "topics": [
+        "assays",
+        "assays,Zi-method"
+      ]
+    },
+    {
+      "page": "boxplot",
+      "title": "Create boxplots of a 'Zi'-class object",
+      "topics": [
+        "boxplot",
+        "boxplot.Zi"
+      ]
+    },
+    {
+      "page": "colData",
+      "title": "Access the col Data",
+      "topics": [
+        "colData",
+        "colData,Zi-method"
+      ]
+    },
+    {
+      "page": "colMeans2",
+      "title": "Calculate the row or column means of zero-inflated count data",
+      "topics": [
+        "colMeans2",
+        "colMeans2,Zi-method",
+        "rowMeans2",
+        "rowMeans2,Zi-method"
+      ]
+    },
+    {
+      "page": "colMedians",
+      "title": "Calculate the row or column median of zero-deinflated count data",
+      "topics": [
+        "colMedians",
+        "colMedians,Zi-method",
+        "rowMedians",
+        "rowMedians,Zi-method"
+      ]
+    },
+    {
+      "page": "cor",
+      "title": "Calculate weighted Pearson Correlation coeffiecients",
+      "topics": [
+        "cor",
+        "cor,Zi,ANY-method"
+      ]
+    },
+    {
+      "page": "cov",
+      "title": "Calculate weighted Covariance",
+      "topics": [
+        "cov",
+        "cov,Zi,ANY-method"
+      ]
+    },
+    {
+      "page": "deinflatedcounts",
+      "title": "Access the model",
+      "topics": [
+        "deinflatedcounts",
+        "deinflatedcounts,Zi-method",
+        "deinflatedcounts<-",
+        "deinflatedcounts<-,Zi-method"
+      ]
+    },
+    {
+      "page": "heatmap",
+      "title": "Draw a Heat Map",
+      "topics": [
+        "heatmap",
+        "heatmap.Zi"
+      ]
+    },
+    {
+      "page": "inputcounts",
+      "title": "Access the inputcounts",
+      "topics": [
+        "inputcounts",
+        "inputcounts,Zi-method",
+        "inputcounts<-",
+        "inputcounts<-,Zi-method"
+      ]
+    },
+    {
+      "page": "inputdata",
+      "title": "Access and Set the inputdata",
+      "topics": [
+        "inputdata",
+        "inputdata,Zi-method",
+        "inputdata<-",
+        "inputdata<-,Zi-method"
+      ]
+    },
+    {
+      "page": "log1p",
+      "title": "log(1+x)",
+      "topics": [
+        "log1p",
+        "log1p,Zi-method"
+      ]
+    },
+    {
+      "page": "log2p",
+      "title": "log2p(x+1)",
+      "topics": [
+        "log2p",
+        "log2p,Zi-method"
+      ]
+    },
+    {
+      "page": "mean",
+      "title": "Arithmetic Mean",
+      "topics": [
+        "mean",
+        "mean.Zi"
+      ]
+    },
+    {
+      "page": "median",
+      "title": "Calculate the median of zero-deinflated count data",
+      "topics": [
+        "median",
+        "median.Zi"
+      ]
+    },
+    {
+      "page": "MissingValueHeatmap",
+      "title": "Missing Value Heatmap",
+      "topics": [
+        "MissingValueHeatmap"
+      ]
+    },
+    {
+      "page": "model",
+      "title": "Access the model",
+      "topics": [
+        "model",
+        "model,Zi-method",
+        "model<-",
+        "model<-,Zi-method"
+      ]
+    },
+    {
+      "page": "mtx",
+      "title": "Matrix Data",
+      "topics": [
+        "mtx"
+      ]
+    },
+    {
+      "page": "otu_table",
+      "title": "Access the otu table",
+      "topics": [
+        "otu_table",
+        "otu_table,Zi-method"
+      ]
+    },
+    {
+      "page": "plot",
+      "title": "Plotting",
+      "topics": [
+        "plot",
+        "plot,Zi,ANY-method"
+      ]
+    },
+    {
+      "page": "quantile",
+      "title": "Calculate the quantiles of zero-deinflated count data",
+      "topics": [
+        "quantile",
+        "quantile.Zi"
+      ]
+    },
+    {
+      "page": "resample_deinflatedcounts",
+      "title": "Resample a 'Zi'-class object",
+      "topics": [
+        "resample_deinflatedcounts"
+      ]
+    },
+    {
+      "page": "rowData",
+      "title": "Access the row data",
+      "topics": [
+        "rowData",
+        "rowData,Zi-method"
+      ]
+    },
+    {
+      "page": "rowQuantiles",
+      "title": "Calculate the row or column quantiles of zero-deinflated count data",
+      "topics": [
+        "colQuantiles",
+        "colQuantiles,Zi-method",
+        "rowQuantiles",
+        "rowQuantiles,Zi-method"
+      ]
+    },
+    {
+      "page": "rowSds",
+      "title": "Row and Column Standard Deviations of zero inflated count data",
+      "topics": [
+        "colSds",
+        "colSds,Zi-method",
+        "rowSds",
+        "rowSds,Zi-method"
+      ]
+    },
+    {
+      "page": "rowVars",
+      "title": "Row and Column Variances of zero inflated count data",
+      "topics": [
+        "colVars",
+        "colVars,Zi-method",
+        "rowVars",
+        "rowVars,Zi-method"
+      ]
+    },
+    {
+      "page": "rowWeightedMeans",
+      "title": "Row and Column weighted means of zero inflated count data",
+      "topics": [
+        "colWeightedMeans",
+        "colWeightedMeans,Zi-method",
+        "rowWeightedMeans",
+        "rowWeightedMeans,Zi-method"
+      ]
+    },
+    {
+      "page": "rowWeightedSds",
+      "title": "Row and column weighted standard deviations or variances of zero inflated count data",
+      "topics": [
+        "colWeightedSds",
+        "colWeightedSds,Zi-method",
+        "colWeightedVars",
+        "colWeightedVars,Zi-method",
+        "rowWeightedSds",
+        "rowWeightedSds,Zi-method",
+        "rowWeightedVars",
+        "rowWeightedVars,Zi-method"
+      ]
+    },
+    {
+      "page": "sample_data",
+      "title": "Access the sample data",
+      "topics": [
+        "sample_data",
+        "sample_data,Zi-method"
+      ]
+    },
+    {
+      "page": "sd",
+      "title": "Standard Deviation of zero inflated count data",
+      "topics": [
+        "sd",
+        "sd,Zi-method"
+      ]
+    },
+    {
+      "page": "show",
+      "title": "Show summary of Zi object",
+      "topics": [
+        "show",
+        "show,Zi-method"
+      ]
+    },
+    {
+      "page": "subset_feature",
+      "title": "Subset a 'Zi'-class object based on feature data",
+      "topics": [
+        "subset_feature"
+      ]
+    },
+    {
+      "page": "subset_sample",
+      "title": "Subset a 'Zi'-class object based on sample data",
+      "topics": [
+        "subset_sample"
+      ]
+    },
+    {
+      "page": "t",
+      "title": "Transpose a 'Zi'-class object",
+      "topics": [
+        "t",
+        "t,Zi-method"
+      ]
+    },
+    {
+      "page": "tax_table",
+      "title": "Access the taxonomy table",
+      "topics": [
+        "tax_table",
+        "tax_table,Zi-method"
+      ]
+    },
+    {
+      "page": "var",
+      "title": "Variance of zero inflated count data",
+      "topics": [
+        "var",
+        "var,Zi,ANY-method"
+      ]
+    },
+    {
+      "page": "weighted.mean",
+      "title": "Weighted Arithmetic Mean of zero inflated count data",
+      "topics": [
+        "weighted.mean",
+        "weighted.mean,Zi-method"
+      ]
+    },
+    {
+      "page": "weightedVar",
+      "title": "Weighted Variance and weighted Standard Deviation",
+      "topics": [
+        "weightedSd",
+        "weightedSd,Zi-method",
+        "weightedVar",
+        "weightedVar,Zi-method"
+      ]
+    },
+    {
+      "page": "weights",
+      "title": "Access the weights",
+      "topics": [
+        "weights",
+        "weights,Zi-method",
+        "weights<-",
+        "weights<-,Zi-method"
+      ]
+    },
+    {
+      "page": "Zi-class",
+      "title": "Class Zi",
+      "topics": [
+        "Zi-class"
+      ]
+    },
+    {
+      "page": "zi2deseq2",
+      "title": "Convert a 'Zi'-class object to a DESeq2 dds object",
+      "topics": [
+        "zi2deseq2"
+      ]
+    },
+    {
+      "page": "zi2phyloseq",
+      "title": "Replace the otu table of a phyloseq object",
+      "topics": [
+        "zi2phyloseq"
+      ]
+    },
+    {
+      "page": "ziMain",
+      "title": "ziMain - main function to fit a zero inflation model and calculate weights for structural zeros",
+      "topics": [
+        "ziMain",
+        "ziMain,phyloseq-method",
+        "ziMain,SummarizedExperiment-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/zitools/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "ape",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "biomformat",
+    "Biostrings",
+    "cli",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "DelayedArray",
+    "DESeq2",
+    "digest",
+    "dplyr",
+    "farver",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mgcv",
+    "multtest",
+    "nlme",
+    "permute",
+    "phyloseq",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "plyr",
+    "pscl",
+    "purrr",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "reshape2",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "sp",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "vegan",
+    "VGAM",
+    "viridisLite",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "zitools_tutorial.Rmd",
+      "filename": "zitools_tutorial.html",
+      "title": "An Introduction to zitools",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Example Dataset",
+        "Analysis using zitools",
+        "Basic Statistic Quantities",
+        "Boxplots",
+        "Differential Abundance Analysis",
+        "Plot Differential Abundance Result",
+        "Missing Value Heatmap",
+        "Principal Component Analysis",
+        "Interaction with the phyloseq package",
+        "Session Info"
+      ],
+      "created": "2023-09-18 09:43:30",
+      "modified": "2024-04-22 08:40:22",
+      "commits": 10
+    }
+  ],
+  "_score": 4,
+  "_indexed": false,
+  "_nocasepkg": "zitools",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/zitools",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:53:41.000Z",
+      "distro": "noble",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "4847659cd5f2ccb1c93f8713445da778931aa66e743dc0aa453a066cf443e7d7",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:53:46.000Z",
+      "distro": "noble",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "4355d3cac3dafa65f7da4fa054530a979c406ebad18a4122a22d86a6999b3aec",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:54:01.000Z",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "a877bb48eabc82b7085dd938a3bed3f9384b234ecf226fdf5a6bc48e2e168c1e",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:54:06.000Z",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "9c52d441e2ad8808036c499130c25a4de2213e7c5875cabfaa9dc209886ae682",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:52:45.000Z",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "162e94d4ea23dece310d99a2da06757f577e4464f386dd25c6dbe46bc993a81c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:51:15.000Z",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "ee3d04f8ff31550dccf1b7d3e2d8a57a45457f81d9e4b89929af5d6752753334",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:51:35.000Z",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "44b9d45a0a584d41fbb153ecf02afa0ed47124508b6c696cea69204b1df60fb2",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.4.0",
+      "date": "2026-02-23T08:51:50.000Z",
+      "commit": "c4def985100aa19c27516e5f3825930735b7294f",
+      "fileid": "35729087e8dd997bd4f95fbc5b9eb7690a2deee9524d27411e310e527d0ed130",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22298737982"
+    }
+  ]
+}

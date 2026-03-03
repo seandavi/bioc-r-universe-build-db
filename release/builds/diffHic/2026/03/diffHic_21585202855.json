@@ -1,0 +1,932 @@
+{
+  "Package": "diffHic",
+  "Version": "1.42.0",
+  "Date": "2024-12-16",
+  "Title": "Differential Analysis of Hi-C Data",
+  "Author": "Aaron Lun, Gordon Smyth",
+  "Maintainer": "Aaron Lun <infinite.monkeys.with.keyboards@gmail.com>,\nGordon Smyth <smyth@wehi.edu.au>, Hannah Coughlin\n<coughlin.h@wehi.edu.au>",
+  "biocViews": "MultipleComparison, Preprocessing, Sequencing, Coverage,\nAlignment, Normalization, Clustering, HiC",
+  "Description": "Detects differential interactions across biological\nconditions in a Hi-C experiment. Methods are provided for read\nalignment and data pre-processing into interaction counts.\nStatistical analysis is based on edgeR and supports\nnormalization and filtering. Several visualization options are\nalso available.",
+  "License": "GPL-3",
+  "NeedsCompilation": "yes",
+  "SystemRequirements": "C++, GNU make",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:25:47 UTC",
+  "RemoteUrl": "https://github.com/bioc/diffHic",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+  "Packaged": {
+    "Date": "2026-02-02 09:54:47 UTC",
+    "User": "root"
+  },
+  "MD5sum": "9bcef620441bbada9b8360d3b99f3842",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "diffHic_1.42.0.tar.gz",
+  "_fileid": "369fd2af0e91654840891be6d311b0789277b3e9f129aa0f748602b1cd59694a",
+  "_filesize": 1815217,
+  "_sha256": "369fd2af0e91654840891be6d311b0789277b3e9f129aa0f748602b1cd59694a",
+  "_created": "2026-02-02T09:54:47.000Z",
+  "_published": "2026-02-02T10:47:15.939Z",
+  "_jobs": [
+    {
+      "job": 62192264619,
+      "time": 223,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5341043710"
+    },
+    {
+      "job": 62192264660,
+      "time": 412,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5341084532"
+    },
+    {
+      "job": 62192264665,
+      "time": 511,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5341103887"
+    },
+    {
+      "job": 62192264683,
+      "time": 396,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341081501"
+    },
+    {
+      "job": 62192264628,
+      "time": 488,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341098953"
+    },
+    {
+      "job": 62192264825,
+      "time": 440,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5341625908"
+    },
+    {
+      "job": 62192264644,
+      "time": 597,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5341524876"
+    },
+    {
+      "job": 62192264648,
+      "time": 460,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341627976"
+    },
+    {
+      "job": 62192264615,
+      "time": 508,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341493951"
+    },
+    {
+      "job": 62191564828,
+      "time": 399,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340995497"
+    },
+    {
+      "job": 62192264645,
+      "time": 233,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 62192264682,
+      "time": 574,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5341116898"
+    },
+    {
+      "job": 62192264605,
+      "time": 525,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5341106688"
+    },
+    {
+      "job": 62192264626,
+      "time": 504,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5341102519"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 12
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/diffHic",
+  "_commit": {
+    "id": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761747947
+  },
+  "_maintainer": {
+    "name": "Aaron Lun",
+    "email": "coughlin.h@wehi.edu.au",
+    "login": "ltla",
+    "orcid": "0000-0002-3564-4813",
+    "twitter": "@realAaronLun",
+    "uuid": 8166669
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "InteractionSet",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "Rhtslib",
+      "version": ">= 1.13.1",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "Rhtslib",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "csaw",
+      "role": "Imports"
+    },
+    {
+      "package": "locfit",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Ecoli.NCBI.20080805",
+      "role": "Suggests"
+    },
+    {
+      "package": "Matrix",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.43.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.42.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "multiplecomparison",
+    "preprocessing",
+    "sequencing",
+    "coverage",
+    "alignment",
+    "normalization",
+    "clustering",
+    "hic",
+    "curl",
+    "bzip2",
+    "xz-utils",
+    "zlib",
+    "cpp"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 464,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/diffHic"
+  },
+  "_mentions": 12,
+  "_searchresults": 47,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/diffHic.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotatePairs",
+    "asDGEList",
+    "boxPairs",
+    "clusterPairs",
+    "compartmentalize",
+    "connectCounts",
+    "consolidatePairs",
+    "correctedContact",
+    "cutGenome",
+    "diClusters",
+    "diffHicUsersGuide",
+    "domainDirections",
+    "emptyGenome",
+    "enrichedPairs",
+    "extractPatch",
+    "filterDiag",
+    "filterDirect",
+    "filterPeaks",
+    "filterTrended",
+    "getArea",
+    "getPairData",
+    "loadChromos",
+    "loadData",
+    "marginCounts",
+    "matchMargins",
+    "mergeCMs",
+    "mergePairs",
+    "neighborCounts",
+    "normalizeCNV",
+    "pairParam",
+    "plotDI",
+    "plotPlaid",
+    "preparePairs",
+    "prepPseudoPairs",
+    "prunePairs",
+    "readMTX2IntSet",
+    "reform",
+    "rotDI",
+    "rotPlaid",
+    "savePairs",
+    "segmentGenome",
+    "squareCounts",
+    "totalCounts"
+  ],
+  "_help": [
+    {
+      "page": "annotatePairs",
+      "title": "Annotate bin pairs",
+      "topics": [
+        "annotatePairs"
+      ]
+    },
+    {
+      "page": "boxPairs",
+      "title": "Put bin pairs into boxes",
+      "topics": [
+        "boxPairs"
+      ]
+    },
+    {
+      "page": "clusterPairs",
+      "title": "Cluster bin pairs",
+      "topics": [
+        "clusterPairs"
+      ]
+    },
+    {
+      "page": "compartmentalize",
+      "title": "Identify genomic compartments",
+      "topics": [
+        "compartmentalize"
+      ]
+    },
+    {
+      "page": "connectCounts",
+      "title": "Count connecting read pairs",
+      "topics": [
+        "connectCounts"
+      ]
+    },
+    {
+      "page": "consolidatePairs",
+      "title": "Consolidate results for interactions",
+      "topics": [
+        "consolidatePairs"
+      ]
+    },
+    {
+      "page": "correctedContact",
+      "title": "Iterative correction of Hi-C counts",
+      "topics": [
+        "correctedContact"
+      ]
+    },
+    {
+      "page": "cutGenome",
+      "title": "Cut up the genome",
+      "topics": [
+        "cutGenome"
+      ]
+    },
+    {
+      "page": "diClusters",
+      "title": "Cluster significant bin pairs to DIs",
+      "topics": [
+        "diClusters"
+      ]
+    },
+    {
+      "page": "diffHicUsersGuide",
+      "title": "View diffHic user's guide",
+      "topics": [
+        "diffHic",
+        "diffHicUsersGuide"
+      ]
+    },
+    {
+      "page": "DNaseHiC",
+      "title": "Methods for processing DNase Hi-C data",
+      "topics": [
+        "emptyGenome",
+        "prepPseudoPairs",
+        "segmentGenome"
+      ]
+    },
+    {
+      "page": "domainDirections",
+      "title": "Calculate domain directionality",
+      "topics": [
+        "domainDirections"
+      ]
+    },
+    {
+      "page": "enrichedPairs",
+      "title": "Collect local enrichment statistics for bin pairs",
+      "topics": [
+        "enrichedPairs"
+      ]
+    },
+    {
+      "page": "extractPatch",
+      "title": "Extract a patch of the interaction space",
+      "topics": [
+        "extractPatch"
+      ]
+    },
+    {
+      "page": "filterDiag",
+      "title": "Filtering of diagonal bin pairs",
+      "topics": [
+        "filterDiag"
+      ]
+    },
+    {
+      "page": "filters",
+      "title": "Filtering strategies for bin pairs",
+      "topics": [
+        "filterDirect",
+        "filterTrended"
+      ]
+    },
+    {
+      "page": "filterPeaks",
+      "title": "Filter bin pairs for likely peaks",
+      "topics": [
+        "filterPeaks"
+      ]
+    },
+    {
+      "page": "getArea",
+      "title": "Get interaction area",
+      "topics": [
+        "getArea"
+      ]
+    },
+    {
+      "page": "getPairData",
+      "title": "Get read pair data",
+      "topics": [
+        "getPairData"
+      ]
+    },
+    {
+      "page": "loadData",
+      "title": "Load data from an index file",
+      "topics": [
+        "loadChromos",
+        "loadData"
+      ]
+    },
+    {
+      "page": "marginCounts",
+      "title": "Collect marginal counts for each bin",
+      "topics": [
+        "marginCounts"
+      ]
+    },
+    {
+      "page": "mergeCMs",
+      "title": "Merge ContactMatrix objects",
+      "topics": [
+        "mergeCMs"
+      ]
+    },
+    {
+      "page": "mergePairs",
+      "title": "Merge read pairs",
+      "topics": [
+        "mergePairs"
+      ]
+    },
+    {
+      "page": "neighborCounts",
+      "title": "Load Hi-C interaction counts",
+      "topics": [
+        "neighborCounts"
+      ]
+    },
+    {
+      "page": "normalizeCNV",
+      "title": "Normalize CNV biases",
+      "topics": [
+        "matchMargins",
+        "normalizeCNV"
+      ]
+    },
+    {
+      "page": "pairParam",
+      "title": "pairParam class and methods",
+      "topics": [
+        "$,pairParam-method",
+        "pairParam",
+        "pairParam-class",
+        "reform",
+        "reform,pairParam-method",
+        "show,pairParam-method"
+      ]
+    },
+    {
+      "page": "plotDI",
+      "title": "Construct a plaid plot of differential interactions",
+      "topics": [
+        "plotDI",
+        "rotDI"
+      ]
+    },
+    {
+      "page": "plotPlaid",
+      "title": "Construct a plaid plot of interactions",
+      "topics": [
+        "plotPlaid",
+        "rotPlaid"
+      ]
+    },
+    {
+      "page": "preparePairs",
+      "title": "Prepare Hi-C pairs",
+      "topics": [
+        "preparePairs"
+      ]
+    },
+    {
+      "page": "prunePairs",
+      "title": "Prune read pairs",
+      "topics": [
+        "prunePairs"
+      ]
+    },
+    {
+      "page": "readMTX2IntSet",
+      "title": "Create an InteractionSet from a BED file and Matrix Market files",
+      "topics": [
+        "readMTX2IntSet"
+      ]
+    },
+    {
+      "page": "savePairs",
+      "title": "Save Hi-C read pairs",
+      "topics": [
+        "savePairs"
+      ]
+    },
+    {
+      "page": "squareCounts",
+      "title": "Load Hi-C interaction counts",
+      "topics": [
+        "squareCounts"
+      ]
+    },
+    {
+      "page": "totalCounts",
+      "title": "Get the total counts",
+      "topics": [
+        "totalCounts"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/diffHic/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "BSgenome",
+    "cigarillo",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "csaw",
+    "curl",
+    "DelayedArray",
+    "edgeR",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "httr",
+    "InteractionSet",
+    "IRanges",
+    "jsonlite",
+    "lambda.r",
+    "lattice",
+    "limma",
+    "locfit",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "metapod",
+    "mime",
+    "openssl",
+    "R6",
+    "Rcpp",
+    "RCurl",
+    "restfulr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "SummarizedExperiment",
+    "sys",
+    "UCSC.utils",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libcurl",
+      "package": "libcurl4t64",
+      "headers": "libcurl4-openssl-dev",
+      "source": "curl",
+      "version": "8.5.0-2ubuntu10.6",
+      "name": "curl",
+      "homepage": "https://curl.se/",
+      "description": "easy-to-use client-side URL transfer library (OpenSSL flavour)"
+    },
+    {
+      "shlib": "libbz2",
+      "package": "libbz2-1.0",
+      "headers": "libbz2-dev",
+      "source": "bzip2",
+      "version": "1.0.8-5.1build0.1",
+      "name": "bzip2",
+      "homepage": "https://sourceware.org/bzip2/",
+      "description": "high-quality block-sorting file compressor library - runtime"
+    },
+    {
+      "shlib": "liblzma",
+      "package": "liblzma5",
+      "headers": "liblzma-dev",
+      "source": "xz-utils",
+      "version": "5.6.1+really5.4.5-1ubuntu0.2",
+      "name": "xz-utils",
+      "homepage": "https://tukaani.org/xz/",
+      "description": "XZ-format compression library"
+    },
+    {
+      "shlib": "libz",
+      "package": "zlib1g",
+      "headers": "zlib1g-dev",
+      "source": "zlib",
+      "version": "1:1.3.dfsg-3.1ubuntu2.1",
+      "name": "zlib",
+      "homepage": "http://zlib.net/",
+      "description": "compression library - runtime"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "diffHic.Rnw",
+      "filename": "diffHic.pdf",
+      "title": "diffHic Vignette",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2015-04-06 23:35:17",
+      "modified": "2015-07-19 01:41:30",
+      "commits": 2
+    }
+  ],
+  "_score": 6.14921911265538,
+  "_indexed": false,
+  "_nocasepkg": "diffhic",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/diffHic",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.42.0",
+      "date": "2026-02-02T09:59:15.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "0b6b98975bbf3d4a2f81ffae63651001fab5dc586329ceca3a52d60d3f9d6820",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.42.0",
+      "date": "2026-02-02T10:00:00.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "9c3281ef5b2779a82579f4bf7d07e6117f0fe071675b8d39809719a67e74a8ed",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.42.0",
+      "date": "2026-02-02T09:59:05.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "88a6f6bc7f17f7e3e9e46698dbb88a2e25b166a29336cce2418a2ea407b0d9ec",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.42.0",
+      "date": "2026-02-02T09:59:31.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "cb7a0b04093f50a34de78bd20346d146b4c863b99d09825c0a609f8dee4b7d56",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.42.0",
+      "date": "2026-02-02T10:41:42.000Z",
+      "arch": "aarch64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "d345667c77f858f1b479553f28108e58cdcc174348d8e79120c7bf769f5438be",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.42.0",
+      "date": "2026-02-02T10:31:52.000Z",
+      "arch": "x86_64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "47988a4078b70cf668b3d21c24904f1d5d9da0675e4e77a7ae7e7c20b56f93ba",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.42.0",
+      "date": "2026-02-02T10:41:16.000Z",
+      "arch": "aarch64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "ecae62ee3298ac5a93b4c3255624f0d2bd1d61d487bf4876a4f4f8db5cf273f7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.42.0",
+      "date": "2026-02-02T10:29:49.000Z",
+      "arch": "x86_64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "b63fbfaee1b790cd7f6a110060dd9a96990deb5d1fdc8a0a38b21ac8d13a4bd3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.42.0",
+      "date": "2026-02-02T09:58:39.000Z",
+      "arch": "x86_64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "25c4b632460d1a334e32064d41a97c9f959266ee3ee24735657126572233c1ac",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.42.0",
+      "date": "2026-02-02T09:58:18.000Z",
+      "arch": "x86_64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "92a7c85c9584da67927cb2b82f2a325b4ec8385732d40c7cc229f362c4a30064",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.42.0",
+      "date": "2026-02-02T09:58:03.000Z",
+      "arch": "x86_64",
+      "commit": "d1e2c99ffa30770f8759410a1776c8ac505a9a79",
+      "fileid": "9939c3e4adcce959db08de50bbb48805cae90d73ed5f3a59258bca0f9e4402b4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/21585202855"
+    }
+  ]
+}

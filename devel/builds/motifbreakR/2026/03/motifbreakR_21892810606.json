@@ -1,0 +1,922 @@
+{
+  "Package": "motifbreakR",
+  "Title": "A Package For Predicting The Disruptiveness Of Single Nucleotide\nPolymorphisms On Transcription Factor Binding Sites",
+  "Version": "2.25.0",
+  "Authors@R": "c(person(given=\"Simon Gert\", family=\"Coetzee\",\nemail=\"coetzee@uthscsa.edu\", role = c(\"aut\", \"cre\"),\ncomment=c(ORCID=\"0000-0003-4267-5930\")),\nperson(given=\"Dennis J.\", family=\"Hazelett\",\nemail=\"dennis.hazelett@cshs.org\", role = c(\"aut\")))",
+  "Description": "We introduce motifbreakR, which allows the biologist to\njudge in the first place whether the sequence surrounding the\npolymorphism is a good match, and in the second place how much\ninformation is gained or lost in one allele of the polymorphism\nrelative to another. MotifbreakR is both flexible and\nextensible over previous offerings; giving a choice of\nalgorithms for interrogation of genomes with motifs from public\nsources that users can choose from; these are 1) a weighted-sum\nprobability matrix, 2) log-probabilities, and 3) weighted by\nrelative entropy. MotifbreakR can predict effects for novel or\npreviously described variants in public databases, making it\nsuitable for tasks beyond the scope of its original design.\nLastly, it can be used to interrogate any genome curated within\nBioconductor (currently there are 32 species, a total of 109\nversions).",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "License": "GPL-2",
+  "BugReports": "https://github.com/Simon-Coetzee/motifbreakR/issues",
+  "biocViews": "ChIPSeq, Visualization, MotifAnnotation, Transcription",
+  "NeedsCompilation": "no",
+  "RoxygenNote": "7.3.2",
+  "Config/pak/sysreqs": "make libgsl0-dev libbz2-dev libicu-dev libjpeg-dev\nliblzma-dev libpng-dev libxml2-dev libssl-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:27:43 UTC",
+  "RemoteUrl": "https://github.com/bioc/motifbreakR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+  "Packaged": {
+    "Date": "2026-02-14 03:52:19 UTC",
+    "User": "root"
+  },
+  "Author": "Simon Gert Coetzee [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-4267-5930>),\nDennis J. Hazelett [aut]",
+  "Maintainer": "Simon Gert Coetzee <coetzee@uthscsa.edu>",
+  "MD5sum": "44a5faffadac8b957064772d884bbb21",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "motifbreakR_2.25.0.tar.gz",
+  "_fileid": "e047232ad3f871ac697f90bc69b059e66a05ca661be3b80d014a2de71ae50c26",
+  "_filesize": 2295233,
+  "_sha256": "e047232ad3f871ac697f90bc69b059e66a05ca661be3b80d014a2de71ae50c26",
+  "_created": "2026-02-14T03:52:19.000Z",
+  "_published": "2026-02-14T04:07:46.779Z",
+  "_jobs": [
+    {
+      "job": 63603650971,
+      "time": 465,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5508900776"
+    },
+    {
+      "job": 63603650985,
+      "time": 819,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5508930887"
+    },
+    {
+      "job": 63603650983,
+      "time": 796,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": ""
+    },
+    {
+      "job": 63603650966,
+      "time": 679,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5508919273"
+    },
+    {
+      "job": 63603650960,
+      "time": 410,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5508896604"
+    },
+    {
+      "job": 63603225974,
+      "time": 637,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5508864240"
+    },
+    {
+      "job": 63603650961,
+      "time": 453,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5508899788"
+    },
+    {
+      "job": 63603650995,
+      "time": 679,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5508919410"
+    },
+    {
+      "job": 63603651013,
+      "time": 784,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 63603650984,
+      "time": 677,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5508919085"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/motifbreakR",
+  "_commit": {
+    "id": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748063
+  },
+  "_maintainer": {
+    "name": "Simon Gert Coetzee",
+    "email": "coetzee@uthscsa.edu",
+    "login": "simon-coetzee",
+    "uuid": 11032613,
+    "orcid": "0000-0003-4267-5930"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "grid",
+      "role": "Depends"
+    },
+    {
+      "package": "MotifDb",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.9.25",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "motifStack",
+      "role": "Imports"
+    },
+    {
+      "package": "Gviz",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "TFMPvalue",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "pwalign",
+      "role": "Imports"
+    },
+    {
+      "package": "DT",
+      "role": "Imports"
+    },
+    {
+      "package": "bsicons",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "biomaRt",
+      "role": "Imports"
+    },
+    {
+      "package": "bslib",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "vroom",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "SNPlocs.Hsapiens.dbSNP155.GRCh37",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Drerio.UCSC.danRer7",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.1000genomes.hs37d5",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg19.masked",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.NCBI.GRCh38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38.masked",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.UCSC.hg38",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.25.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.24.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "chipseq",
+    "visualization",
+    "motifannotation",
+    "transcription"
+  ],
+  "_stars": 32,
+  "_contributors": [
+    {
+      "user": "simon-coetzee",
+      "count": 215,
+      "uuid": 11032613
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 8,
+      "uuid": 1744257
+    },
+    {
+      "user": "dtenenba",
+      "count": 7,
+      "uuid": 2286826
+    },
+    {
+      "user": "hpages",
+      "count": 7,
+      "uuid": 8810451
+    },
+    {
+      "user": "lshep",
+      "count": 2,
+      "uuid": 18724380
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "dennishazelett",
+      "count": 1,
+      "uuid": 6343893
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    },
+    {
+      "user": "sushilashenoy",
+      "count": 1,
+      "uuid": 4238963
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 646,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/motifbreakR"
+  },
+  "_mentions": 13,
+  "_devurl": "https://github.com/simon-coetzee/motifbreakr",
+  "_searchresults": 131,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/motifbreakR.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/simon-coetzee/motifbreakr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "calculatePvalue",
+    "exportMBbed",
+    "exportMBtable",
+    "findSupportingRemapPeaks",
+    "motifbreakR",
+    "plotMB",
+    "shiny_motifbreakR",
+    "snps.from.file",
+    "snps.from.rsid",
+    "variants.from.file"
+  ],
+  "_datasets": [
+    {
+      "name": "encodemotif",
+      "title": "MotifDb object containing motif information from the known and discovered motifs for the ENCODE TF ChIP-seq datasets.",
+      "object": "encodemotif",
+      "file": "encodemotif.rda",
+      "class": [
+        "MotifList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "example.results",
+      "title": "Example Results from motifbreakR",
+      "object": "example.results",
+      "file": "example.results.rda",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "factorbook",
+      "title": "MotifDb object containing motif information from around the genomic regions bound by 119 human transcription factors in Factorbook.",
+      "object": "factorbook",
+      "file": "factorbook.rda",
+      "class": [
+        "MotifList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "hocomoco",
+      "title": "MotifDb object containing motif information from Homo Sapiens Comprehensive Model Collection (HOCOMOCO) of transcription factor (TF) binding models",
+      "object": "hocomoco",
+      "file": "hocomoco.rda",
+      "class": [
+        "MotifList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "homer",
+      "title": "MotifDb object containing motif information from motif databases included in HOMER.",
+      "object": "homer",
+      "file": "homer.rda",
+      "class": [
+        "MotifList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "motifbreakR_motif",
+      "title": "MotifDb object containing motif information from the motif databases of HOCOMOCO, Homer, FactorBook and ENCODE",
+      "object": "motifbreakR_motif",
+      "file": "motifbreakR_motif.rda",
+      "class": [
+        "MotifList"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "calculatePvalue",
+      "title": "Calculate the significance of the matches for the reference and alternate alleles for the for their PWM",
+      "topics": [
+        "calculatePvalue"
+      ]
+    },
+    {
+      "page": "encodemotif",
+      "title": "MotifDb object containing motif information from the known and discovered motifs for the ENCODE TF ChIP-seq datasets.",
+      "topics": [
+        "encodemotif"
+      ]
+    },
+    {
+      "page": "example.results",
+      "title": "Example Results from motifbreakR",
+      "topics": [
+        "example.results"
+      ]
+    },
+    {
+      "page": "exportMBbed",
+      "title": "Export motifbreakR variants to bed file",
+      "topics": [
+        "exportMBbed"
+      ]
+    },
+    {
+      "page": "exportMBtable",
+      "title": "Export motifbreakR results to csv or tsv",
+      "topics": [
+        "exportMBtable"
+      ]
+    },
+    {
+      "page": "factorbook",
+      "title": "MotifDb object containing motif information from around the genomic regions bound by 119 human transcription factors in Factorbook.",
+      "topics": [
+        "factorbook"
+      ]
+    },
+    {
+      "page": "findSupportingRemapPeaks",
+      "title": "Find Corresponding TF Binding From The ReMap2022 Project",
+      "topics": [
+        "findSupportingRemapPeaks"
+      ]
+    },
+    {
+      "page": "hocomoco",
+      "title": "MotifDb object containing motif information from Homo Sapiens Comprehensive Model Collection (HOCOMOCO) of transcription factor (TF) binding models",
+      "topics": [
+        "hocomoco"
+      ]
+    },
+    {
+      "page": "homer",
+      "title": "MotifDb object containing motif information from motif databases included in HOMER.",
+      "topics": [
+        "homer"
+      ]
+    },
+    {
+      "page": "motifbreakR",
+      "title": "Predict The Disruptiveness Of Single Nucleotide Polymorphisms On Transcription Factor Binding Sites.",
+      "topics": [
+        "motifbreakR"
+      ]
+    },
+    {
+      "page": "motifbreakR_motif",
+      "title": "MotifDb object containing motif information from the motif databases of HOCOMOCO, Homer, FactorBook and ENCODE",
+      "topics": [
+        "motifbreakR_motif"
+      ]
+    },
+    {
+      "page": "plotMB",
+      "title": "Plot a genomic region surrounding a genomic variant, and potentially disrupted motifs",
+      "topics": [
+        "plotMB"
+      ]
+    },
+    {
+      "page": "shiny_motifbreakR",
+      "title": "Run Shiny version of the motifbreakR package.",
+      "topics": [
+        "shiny_motifbreakR"
+      ]
+    },
+    {
+      "page": "snps.from.file",
+      "title": "Import SNPs from a BED file or VCF file for use in motifbreakR",
+      "topics": [
+        "snps.from.file",
+        "variants.from.file"
+      ]
+    },
+    {
+      "page": "snps.from.rsid",
+      "title": "Import SNPs from rsid for use in motifbreakR",
+      "topics": [
+        "snps.from.rsid"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/motifbreakR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ade4",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bsicons",
+    "bslib",
+    "cachem",
+    "caTools",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "commonmark",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "dichromat",
+    "digest",
+    "DirichletMultinomial",
+    "dplyr",
+    "DT",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "Gviz",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "MotifDb",
+    "motifStack",
+    "nnet",
+    "openssl",
+    "otel",
+    "pillar",
+    "pixmap",
+    "pkgconfig",
+    "png",
+    "prettyunits",
+    "progress",
+    "promises",
+    "ProtGenerics",
+    "purrr",
+    "pwalign",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "seqLogo",
+    "shiny",
+    "snow",
+    "sourcetools",
+    "sp",
+    "SparseArray",
+    "splitstackshape",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "TFBSTools",
+    "TFMPvalue",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "tzdb",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "motifbreakR-vignette.Rmd",
+      "filename": "motifbreakR-vignette.html",
+      "title": "motifbreakR: an Introduction",
+      "author": "Simon G. Coetzee, Gerhard A. Coetzee and Dennis J. Hazelett",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Processing overview",
+        "Outline of process",
+        "How To Use motifbreakR: A Practical Example",
+        "Step 1 | Read in Single Nucleotide Variants",
+        "SNPs from rsID:",
+        "SNPs from BED formatted file:",
+        "Indels",
+        "Step 2 | Find Broken Motifs",
+        "Parallel Evaluation (an aside)",
+        "Step 3 | Visualize",
+        "Shiny version",
+        "Added functionality | Query Remap 2022 Peaks",
+        "Export Results",
+        "Methods",
+        "Sum of Log Probabilities",
+        "Weighted Sum",
+        "Calculating Scoring Vector $p$",
+        "Calculating $\\omega$ For Weighted Sum",
+        "Calculating $\\omega$ For Relative Entropy",
+        "Calculate P-values for PWM match",
+        "Session Info"
+      ],
+      "created": "2015-04-07 21:44:44",
+      "modified": "2024-07-31 18:25:16",
+      "commits": 40
+    }
+  ],
+  "_score": 8.576663783414997,
+  "_indexed": true,
+  "_nocasepkg": "motifbreakr",
+  "_universes": [
+    "bioc",
+    "simon-coetzee"
+  ],
+  "_binaries": [
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.23.0",
+      "date": "2025-12-01T03:51:53.000Z",
+      "commit": "9bfa08434ee1d992fefd6a6a762f4a266bababc7",
+      "fileid": "a88e9d36e3616d463bc5c44db3ce6aff477a4de11f93ad75ef7bf09c07aff558",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/19780685585"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.25.0",
+      "date": "2026-02-14T04:01:23.000Z",
+      "distro": "noble",
+      "commit": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+      "fileid": "192883aab017f672376d8f55d19e73cf54e9125079519acfa51adff92d3f31ba",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.25.0",
+      "date": "2026-02-14T03:52:20.000Z",
+      "distro": "noble",
+      "commit": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+      "fileid": "59553a9418cc31145394f5bba9ed01dd4796d0f7631bfa73db7707e437117ffb",
+      "status": "failure",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.25.0",
+      "date": "2026-02-14T04:00:05.000Z",
+      "commit": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+      "fileid": "22939823bf499171efa78ca0d105641eedd51158a47813fb80b5e3e0c889d34a",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.25.0",
+      "date": "2026-02-14T03:57:08.000Z",
+      "commit": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+      "fileid": "109b173b551dd4db092efb7be86778c9706062effe7da292f6102dd58ce649eb",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.25.0",
+      "date": "2026-02-14T04:01:00.000Z",
+      "commit": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+      "fileid": "a3bd82c9c131f1575819b11025a57c4c0f893b62cd3058f88ee923e3c1d65c37",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.25.0",
+      "date": "2026-02-14T03:58:39.000Z",
+      "commit": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+      "fileid": "271fe49d214bdcf3136a255633fc81780da8eb5ccb9a348c1ca0d61eb0f409ed",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.25.0",
+      "date": "2026-02-14T03:58:28.000Z",
+      "commit": "21e696592a4c7aae6f9891d2ef70efd3d98943da",
+      "fileid": "26f19364f66951ec0cc777ef89c912868b09f0a90f517a7bd5945a730a0415de",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21892810606"
+    }
+  ]
+}

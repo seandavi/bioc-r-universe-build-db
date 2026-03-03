@@ -1,0 +1,986 @@
+{
+  "Package": "SVMDO",
+  "Title": "Identification of Tumor-Discriminating mRNA Signatures via\nSupport Vector Machines Supported by Disease Ontology",
+  "Version": "1.11.0",
+  "Date": "2024-08-30",
+  "Authors@R": "c(person(given = \"Mustafa Erhan\",\nfamily = \"Ozer\",\nrole = c(\"aut\",\"cre\"),\ncomment = c(ORCID = \"0000-0002-1572-8008\"),\nemail = \"erhanozer19@marun.edu.tr\"),\nperson(given = \"Pemra\",\nfamily = \"Ozbek Sarica\",\nrole = \"aut\",\nemail = \"pemra.ozbek@marmara.edu.tr\"),\nperson(given = \"Kazim Yalcin\",\nfamily = \"Arga\",\nrole = \"aut\",\nemail = \"kazim.arga@marmara.edu.tr\"))",
+  "Description": "It is an easy-to-use GUI using disease information for\ndetecting tumor/normal sample discriminating gene sets from\ndifferentially expressed genes. Our approach is based on an\niterative algorithm filtering genes with disease ontology\nenrichment analysis and wilk and wilks lambda criterion\nconnected to SVM classification model construction. Along with\ngene set extraction, SVMDO also provides individual prognostic\nmarker detection. The algorithm is designed for FPKM and RPKM\nnormalized RNA-Seq transcriptome datasets.",
+  "RoxygenNote": "7.3.2",
+  "biocViews": "GeneSetEnrichment, DifferentialExpression, GUI,\nClassification, RNASeq, Transcriptomics, Survival",
+  "NeedsCompilation": "no",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "BugReports": "https://github.com/robogeno/SVMDO/issues",
+  "Config/pak/sysreqs": "make libicu-dev libpng-dev libssl-dev libx11-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:23:08 UTC",
+  "RemoteUrl": "https://github.com/bioc/SVMDO",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+  "Packaged": {
+    "Date": "2026-02-21 08:51:59 UTC",
+    "User": "root"
+  },
+  "Author": "Mustafa Erhan Ozer [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-1572-8008>),\nPemra Ozbek Sarica [aut],\nKazim Yalcin Arga [aut]",
+  "Maintainer": "Mustafa Erhan Ozer <erhanozer19@marun.edu.tr>",
+  "MD5sum": "2552c80fbce1184c14a91a7b723f5d48",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "SVMDO_1.11.0.tar.gz",
+  "_fileid": "0e878b52d349eb7d25818ab12328cb1bc0d2c55ac4c47379f77faf07f338dd55",
+  "_filesize": 2389242,
+  "_sha256": "0e878b52d349eb7d25818ab12328cb1bc0d2c55ac4c47379f77faf07f338dd55",
+  "_created": "2026-02-21T08:51:59.000Z",
+  "_published": "2026-02-21T09:00:07.840Z",
+  "_jobs": [
+    {
+      "job": 64381983184,
+      "time": 243,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5600531916"
+    },
+    {
+      "job": 64381983205,
+      "time": 414,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5600542587"
+    },
+    {
+      "job": 64381983197,
+      "time": 376,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5600540117"
+    },
+    {
+      "job": 64381983185,
+      "time": 218,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5600531818"
+    },
+    {
+      "job": 64381983201,
+      "time": 193,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5600531547"
+    },
+    {
+      "job": 64381777926,
+      "time": 341,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600516398"
+    },
+    {
+      "job": 64381983181,
+      "time": 197,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600529131"
+    },
+    {
+      "job": 64381983183,
+      "time": 304,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5600535832"
+    },
+    {
+      "job": 64381983182,
+      "time": 325,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "ERROR",
+      "artifact": "5600537054"
+    },
+    {
+      "job": 64381983188,
+      "time": 322,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5600536870"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/SVMDO",
+  "_commit": {
+    "id": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761751388
+  },
+  "_maintainer": {
+    "name": "Mustafa Erhan Ozer",
+    "email": "erhanozer19@marun.edu.tr",
+    "orcid": "0000-0002-1572-8008"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4",
+      "role": "Depends"
+    },
+    {
+      "package": "shiny",
+      "version": ">= 1.7.4",
+      "role": "Depends"
+    },
+    {
+      "package": "shinyFiles",
+      "version": ">= 0.9.3",
+      "role": "Imports"
+    },
+    {
+      "package": "shinytitle",
+      "version": ">= 0.1.0",
+      "role": "Imports"
+    },
+    {
+      "package": "golem",
+      "version": ">= 0.3.5",
+      "role": "Imports"
+    },
+    {
+      "package": "nortest",
+      "version": ">= 1.0-4",
+      "role": "Imports"
+    },
+    {
+      "package": "e1071",
+      "version": ">= 1.7-12",
+      "role": "Imports"
+    },
+    {
+      "package": "BSDA",
+      "version": ">= 1.2.1",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "version": ">= 1.14.6",
+      "role": "Imports"
+    },
+    {
+      "package": "sjmisc",
+      "version": ">= 2.8.9",
+      "role": "Imports"
+    },
+    {
+      "package": "klaR",
+      "version": ">= 1.7-1",
+      "role": "Imports"
+    },
+    {
+      "package": "caTools",
+      "version": ">= 1.18.2",
+      "role": "Imports"
+    },
+    {
+      "package": "caret",
+      "version": ">= 6.0-93",
+      "role": "Imports"
+    },
+    {
+      "package": "survival",
+      "version": ">= 3.4-0",
+      "role": "Imports"
+    },
+    {
+      "package": "DT",
+      "version": ">= 0.33.0",
+      "role": "Imports"
+    },
+    {
+      "package": "DOSE",
+      "version": ">= 3.24.2",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationDbi",
+      "version": ">= 1.60.0",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "version": ">= 3.16.0",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "version": ">= 1.0.10",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "version": ">= 1.28.0",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.1.6",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.11.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.10.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "genesetenrichment",
+    "differentialexpression",
+    "gui",
+    "classification",
+    "rnaseq",
+    "transcriptomics",
+    "survival",
+    "machine-learning",
+    "rna-seq",
+    "shiny"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "robogeno",
+      "count": 155,
+      "uuid": 18894548
+    },
+    {
+      "user": "jwokaty",
+      "count": 7,
+      "uuid": 1744257
+    },
+    {
+      "user": "eozerbio",
+      "count": 2,
+      "uuid": 151609192
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 234,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/SVMDO"
+  },
+  "_devurl": "https://github.com/robogeno/svmdo",
+  "_searchresults": 2,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/SVMDO.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/robogeno/svmdo",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "runGUI"
+  ],
+  "_help": [
+    {
+      "page": "classification_server",
+      "title": "SVMDO",
+      "topics": [
+        "classification_server",
+        "innerServer_7"
+      ]
+    },
+    {
+      "page": "classification_ui",
+      "title": "SVMDO",
+      "topics": [
+        "classification_ui",
+        "innerUI_classification"
+      ]
+    },
+    {
+      "page": "clinic_data_input_server",
+      "title": "SVMDO",
+      "topics": [
+        "clinic_data_input_server",
+        "innerServer_clinic"
+      ]
+    },
+    {
+      "page": "clinic_data_input_ui",
+      "title": "SVMDO",
+      "topics": [
+        "clinic_data_input_ui",
+        "innerUI_clinic_data"
+      ]
+    },
+    {
+      "page": "deg_server",
+      "title": "SVMDO",
+      "topics": [
+        "deg_server",
+        "innerServer_3"
+      ]
+    },
+    {
+      "page": "deg_ui",
+      "title": "SVMDO",
+      "topics": [
+        "deg_ui",
+        "innerUI_deg_analysis"
+      ]
+    },
+    {
+      "page": "disc_gene_download_ui",
+      "title": "SVMDO",
+      "topics": [
+        "disc_gene_download_ui"
+      ]
+    },
+    {
+      "page": "disc_gene_dw_server",
+      "title": "SVMDO",
+      "topics": [
+        "disc_gene_dw_server"
+      ]
+    },
+    {
+      "page": "do_based_gene_filtration_server",
+      "title": "SVMDO",
+      "topics": [
+        "do_based_gene_filtration_server",
+        "innerServer_6"
+      ]
+    },
+    {
+      "page": "do_based_gene_filtration_ui",
+      "title": "SVMDO",
+      "topics": [
+        "do_based_gene_filtration_ui",
+        "innerUI_disease_ont_class"
+      ]
+    },
+    {
+      "page": "expression_dataset_input_server",
+      "title": "SVMDO",
+      "topics": [
+        "expression_dataset_input_server",
+        "innerServer_exp"
+      ]
+    },
+    {
+      "page": "gene_directory_selection_server",
+      "title": "SVMDO",
+      "topics": [
+        "gene_directory_selection_server",
+        "innerServer"
+      ]
+    },
+    {
+      "page": "gene_directory_selection_ui",
+      "title": "SVMDO",
+      "topics": [
+        "gene_directory_selection_ui",
+        "innerUI_path"
+      ]
+    },
+    {
+      "page": "gene_list_name_server",
+      "title": "SVMDO",
+      "topics": [
+        "gene_list_name_server",
+        "innerServer_10"
+      ]
+    },
+    {
+      "page": "gene_list_name_ui",
+      "title": "SVMDO",
+      "topics": [
+        "gene_list_name_ui",
+        "innerUI_gene_names"
+      ]
+    },
+    {
+      "page": "gene_list_table_visualization_ui",
+      "title": "SVMDO",
+      "topics": [
+        "deg_data_table_ui",
+        "gene_list_table_visualization_ui"
+      ]
+    },
+    {
+      "page": "globals",
+      "title": "SVMDO",
+      "topics": [
+        "globals"
+      ]
+    },
+    {
+      "page": "gui_obj_removal_server",
+      "title": "SVMDO",
+      "topics": [
+        "gui_obj_removal_server",
+        "innerServer_9"
+      ]
+    },
+    {
+      "page": "gui_obj_removal_ui",
+      "title": "SVMDO",
+      "topics": [
+        "gui_obj_removal_ui",
+        "innerUI_clear_env"
+      ]
+    },
+    {
+      "page": "innerServer_exp_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerServer_exp_ui",
+        "innerUI_exp_data"
+      ]
+    },
+    {
+      "page": "package_req_list",
+      "title": "SVMDO",
+      "topics": [
+        "package_req_list"
+      ]
+    },
+    {
+      "page": "plot_list_server",
+      "title": "SVMDO",
+      "topics": [
+        "plot_list_server"
+      ]
+    },
+    {
+      "page": "plot_list_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_collect_plot_data",
+        "plot_list_ui"
+      ]
+    },
+    {
+      "page": "plot_push_server",
+      "title": "SVMDO",
+      "topics": [
+        "plot_push_server"
+      ]
+    },
+    {
+      "page": "plot_push_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_plot_inject",
+        "plot_push_ui"
+      ]
+    },
+    {
+      "page": "plot_show_server",
+      "title": "SVMDO",
+      "topics": [
+        "plot_show_server"
+      ]
+    },
+    {
+      "page": "plot_show_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_plot_show",
+        "plot_show_ui"
+      ]
+    },
+    {
+      "page": "runGUI",
+      "title": "SVMDO",
+      "topics": [
+        "linebreaks",
+        "runGUI"
+      ]
+    },
+    {
+      "page": "surv_plot_dw_server",
+      "title": "SVMDO",
+      "topics": [
+        "surv_plot_dw_server"
+      ]
+    },
+    {
+      "page": "surv_plot_dw_ui",
+      "title": "SVMDO",
+      "topics": [
+        "surv_plots_download_ui",
+        "surv_plot_dw_ui"
+      ]
+    },
+    {
+      "page": "survival_analysis_server",
+      "title": "SVMDO",
+      "topics": [
+        "innerServer_8",
+        "survival_analysis_server"
+      ]
+    },
+    {
+      "page": "survival_analysis_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_surv",
+        "survival_analysis_ui"
+      ]
+    },
+    {
+      "page": "table_server",
+      "title": "SVMDO",
+      "topics": [
+        "table_server"
+      ]
+    },
+    {
+      "page": "table_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_table_show",
+        "table_ui"
+      ]
+    },
+    {
+      "page": "test_data_selection_server",
+      "title": "SVMDO",
+      "topics": [
+        "innerServer_rad",
+        "test_data_selection_server"
+      ]
+    },
+    {
+      "page": "test_data_selection_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_test_data",
+        "test_data_selection_ui"
+      ]
+    },
+    {
+      "page": "top_val_based_deg_filtration",
+      "title": "SVMDO",
+      "topics": [
+        "innerServer_5",
+        "top_val_based_deg_filtration"
+      ]
+    },
+    {
+      "page": "top_val_based_deg_filtration_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_top_gene_selection",
+        "top_val_based_deg_filtration_ui"
+      ]
+    },
+    {
+      "page": "top_val_server",
+      "title": "SVMDO",
+      "topics": [
+        "innerServer_4",
+        "top_val_server"
+      ]
+    },
+    {
+      "page": "top_val_ui",
+      "title": "SVMDO",
+      "topics": [
+        "innerUI_top_gene_val",
+        "top_val_ui"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/SVMDO/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "attempt",
+    "base64enc",
+    "Biobase",
+    "BiocGenerics",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSDA",
+    "bslib",
+    "cachem",
+    "caret",
+    "caTools",
+    "class",
+    "classInt",
+    "cli",
+    "clipr",
+    "clock",
+    "codetools",
+    "combinat",
+    "commonmark",
+    "config",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "datawizard",
+    "DBI",
+    "DelayedArray",
+    "diagram",
+    "digest",
+    "DOSE",
+    "dplyr",
+    "DT",
+    "e1071",
+    "enrichit",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "forcats",
+    "foreach",
+    "fs",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "globals",
+    "glue",
+    "GO.db",
+    "golem",
+    "GOSemSim",
+    "gower",
+    "gtable",
+    "hardhat",
+    "haven",
+    "here",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "insight",
+    "ipred",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "klaR",
+    "knitr",
+    "labeling",
+    "labelled",
+    "later",
+    "lattice",
+    "lava",
+    "lazyeval",
+    "lifecycle",
+    "listenv",
+    "lubridate",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "miniUI",
+    "ModelMetrics",
+    "nlme",
+    "nnet",
+    "nortest",
+    "numDeriv",
+    "openssl",
+    "org.Hs.eg.db",
+    "otel",
+    "parallelly",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "prettyunits",
+    "pROC",
+    "prodlim",
+    "progress",
+    "progressr",
+    "promises",
+    "proxy",
+    "purrr",
+    "questionr",
+    "R.cache",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "readr",
+    "recipes",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "rprojroot",
+    "RSQLite",
+    "rstudioapi",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "shape",
+    "shiny",
+    "shinyFiles",
+    "shinytitle",
+    "sjlabelled",
+    "sjmisc",
+    "sourcetools",
+    "SparseArray",
+    "sparsevctrs",
+    "SQUAREM",
+    "stringi",
+    "stringr",
+    "styler",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timechange",
+    "timeDate",
+    "tinytex",
+    "tzdb",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "SVMDO_guide.Rmd",
+      "filename": "SVMDO_guide.html",
+      "title": "SVMDO-Tutorial",
+      "author": "Author: Mustafa Erhan \u00d6zer",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation and Package Loading",
+        "Introduction",
+        "Implementation",
+        "Dataset Preparation",
+        "SVMDO GUI Description",
+        "How to open SVMDO Main Screen",
+        "How to use SVMDO Main Screen",
+        "Steps of Analysis Screen",
+        "Steps of Result Screen",
+        "Application of test datasets",
+        "Workspace Clearance",
+        "Output Files of SVMDO",
+        "References",
+        "How to install R and RStudio GUI",
+        "Windows Operating System",
+        "Ubuntu Operating System",
+        "Session Info"
+      ],
+      "created": "2022-12-20 16:58:12",
+      "modified": "2023-04-19 16:26:25",
+      "commits": 21
+    }
+  ],
+  "_score": 4.301029995663981,
+  "_indexed": true,
+  "_nocasepkg": "svmdo",
+  "_universes": [
+    "bioc",
+    "robogeno"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:56:41.000Z",
+      "distro": "noble",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "84f7de7dcc315f0993d68863d732527f0353167b6c2dd2773373dae8b325d3b4",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:55:54.000Z",
+      "distro": "noble",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "e1d8ebe2d1b74609dac3f14bca07ec6c4d1ab25544862e7994bdd42cd6cd33ff",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:54:45.000Z",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "0314d23e6b04f3171f969a2d05df55896cbd3665fd2d805c6724f7baccb70b13",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:54:53.000Z",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "7c2627cc11598d99be62eec22255d235b2136be736c063b97903cafded0af3c8",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:55:56.000Z",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "67ebcf90978b06cecd14b99d5379cc7650fb3d819734f686576433d3c0185b45",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:54:38.000Z",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "43e6a24680b5cb0b119a165b7471a5e8daeb3cd4adcaf2b7564fc2250ad4c13c",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:54:55.000Z",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "a9f03e79b3fb83174a288f531776d01504e772c1796811140503dd8511fd40d7",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.11.0",
+      "date": "2026-02-21T08:54:56.000Z",
+      "commit": "2bc7e279332c5eae605d2fc16240613e753a7fd9",
+      "fileid": "0b7799740bda4f1edb5341fb0b0587120bf656067bfee09540ec0bf4946f9d90",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253843540"
+    }
+  ]
+}

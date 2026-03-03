@@ -1,0 +1,863 @@
+{
+  "Package": "ILoReg",
+  "Type": "Package",
+  "Title": "ILoReg: a tool for high-resolution cell population\nidentification from scRNA-Seq data",
+  "Version": "1.20.0",
+  "Description": "ILoReg is a tool for identification of cell populations\nfrom scRNA-seq data. In particular, ILoReg is useful for\nfinding cell populations with subtle transcriptomic\ndifferences. The method utilizes a self-supervised learning\nmethod, called Iteratitive Clustering Projection (ICP), to find\ncluster probabilities, which are used in noise reduction prior\nto PCA and the subsequent hierarchical clustering and t-SNE\nsteps. Additionally, functions for differential expression\nanalysis to find gene markers for the populations and gene\nexpression visualization are provided.",
+  "Authors@R": "c(person(\"Johannes\", \"Smolander\",\nemail = \"johannes.smolander@gmail.com\",\nrole=c(\"cre\", \"aut\")),\nperson(\"Sini\", \"Junttila\",\nrole=c(\"aut\")),\nperson(\"Mikko S\", \"Ven\u00e4l\u00e4inen\",\nrole=c(\"aut\")),\nperson(\"Laura L\", \"Elo\",\nrole=c(\"aut\")))",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "LazyData": "TRUE",
+  "RoxygenNote": "7.1.1",
+  "VignetteBuilder": "knitr",
+  "biocViews": "SingleCell, Software, Clustering, DimensionReduction,\nRNASeq, Visualization, Transcriptomics, DataRepresentation,\nDifferentialExpression, Transcription, GeneExpression",
+  "NeedsCompilation": "no",
+  "URL": "https://github.com/elolab/ILoReg",
+  "BugReports": "https://github.com/elolab/ILoReg/issues",
+  "Config/pak/sysreqs": "make libicu-dev libpng-dev libssl-dev python3\nlibx11-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:00:58 UTC",
+  "RemoteUrl": "https://github.com/bioc/ILoReg",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "50b509c560522c66456171de1f760e254e07887a",
+  "Packaged": {
+    "Date": "2026-02-23 09:00:11 UTC",
+    "User": "root"
+  },
+  "Author": "Johannes Smolander [cre, aut],\nSini Junttila [aut],\nMikko S Ven\u00e4l\u00e4inen [aut],\nLaura L Elo [aut]",
+  "Maintainer": "Johannes Smolander <johannes.smolander@gmail.com>",
+  "MD5sum": "f6fed472aa021eb13b51add77bf72012",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "ILoReg_1.20.0.tar.gz",
+  "_fileid": "ea1076eabb59fba56730c767b619ae7fd6d419b8b8371e308fe595f1f62a6c37",
+  "_filesize": 2723626,
+  "_sha256": "ea1076eabb59fba56730c767b619ae7fd6d419b8b8371e308fe595f1f62a6c37",
+  "_created": "2026-02-23T09:00:11.000Z",
+  "_published": "2026-02-23T09:13:45.129Z",
+  "_jobs": [
+    {
+      "job": 64502793779,
+      "time": 189,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5613879724"
+    },
+    {
+      "job": 64502793763,
+      "time": 431,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613927010"
+    },
+    {
+      "job": 64502793794,
+      "time": 384,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613917925"
+    },
+    {
+      "job": 64502793796,
+      "time": 231,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613977421"
+    },
+    {
+      "job": 64502793833,
+      "time": 301,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613994012"
+    },
+    {
+      "job": 64502172625,
+      "time": 373,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5613842662"
+    },
+    {
+      "job": 64502793772,
+      "time": 156,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5613872687"
+    },
+    {
+      "job": 64502793765,
+      "time": 315,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5613904122"
+    },
+    {
+      "job": 64502793810,
+      "time": 308,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5613902977"
+    },
+    {
+      "job": 64502793798,
+      "time": 313,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5613904014"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 13
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ILoReg",
+  "_commit": {
+    "id": "50b509c560522c66456171de1f760e254e07887a",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750058
+  },
+  "_maintainer": {
+    "name": "Johannes Smolander",
+    "email": "johannes.smolander@gmail.com",
+    "login": "j0ntt",
+    "uuid": 15635352
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "aricode",
+      "role": "Imports"
+    },
+    {
+      "package": "LiblineaR",
+      "role": "Imports"
+    },
+    {
+      "package": "SparseM",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "cowplot",
+      "role": "Imports"
+    },
+    {
+      "package": "RSpectra",
+      "role": "Imports"
+    },
+    {
+      "package": "umap",
+      "role": "Imports"
+    },
+    {
+      "package": "Rtsne",
+      "role": "Imports"
+    },
+    {
+      "package": "fastcluster",
+      "role": "Imports"
+    },
+    {
+      "package": "parallelDist",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "dendextend",
+      "role": "Imports"
+    },
+    {
+      "package": "DescTools",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "doRNG",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "doSNOW",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "singlecell",
+    "software",
+    "clustering",
+    "dimensionreduction",
+    "rnaseq",
+    "visualization",
+    "transcriptomics",
+    "datarepresentation",
+    "differentialexpression",
+    "transcription",
+    "geneexpression"
+  ],
+  "_stars": 5,
+  "_contributors": [
+    {
+      "user": "j0ntt",
+      "count": 7,
+      "uuid": 15635352
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 343,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ILoReg"
+  },
+  "_mentions": 1,
+  "_devurl": "https://github.com/elolab/iloreg",
+  "_searchresults": 2,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/ILoReg.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/elolab/iloreg",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "AnnotationScatterPlot",
+    "CalcSilhInfo",
+    "ClusteringScatterPlot",
+    "FindAllGeneMarkers",
+    "FindGeneMarkers",
+    "GeneHeatmap",
+    "GeneScatterPlot",
+    "HierarchicalClustering",
+    "MergeClusters",
+    "PCAElbowPlot",
+    "PrepareILoReg",
+    "RenameAllClusters",
+    "RenameCluster",
+    "RunParallelICP",
+    "RunPCA",
+    "RunTSNE",
+    "RunUMAP",
+    "SelectKClusters",
+    "SelectTopGenes",
+    "SilhouetteCurve",
+    "VlnPlot"
+  ],
+  "_datasets": [
+    {
+      "name": "pbmc3k_500",
+      "title": "A toy dataset with 500 cells downsampled from the pbmc3k dataset.",
+      "object": "pbmc3k_500",
+      "class": [
+        "dgCMatrix"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "AnnotationScatterPlot",
+      "title": "Visualiation of a custom annotation over nonlinear dimensionality reduction",
+      "topics": [
+        "AnnotationScatterPlot",
+        "AnnotationScatterPlot,SingleCellExperiment-method",
+        "AnnotationScatterPlot.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "CalcSilhInfo",
+      "title": "Estimating optimal K using silhouette",
+      "topics": [
+        "CalcSilhInfo",
+        "CalcSilhInfo,SingleCellExperiment-method",
+        "CalcSilhInfo.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "ClusteringScatterPlot",
+      "title": "Visualize the clustering over nonliner dimensionality reduction",
+      "topics": [
+        "ClusteringScatterPlot",
+        "ClusteringScatterPlot,SingleCellExperiment-method",
+        "ClusteringScatterPlot.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "DownOverSampling",
+      "title": "Down- and oversample data",
+      "topics": [
+        "DownOverSampling"
+      ]
+    },
+    {
+      "page": "FindAllGeneMarkers",
+      "title": "identification of gene markers for all clusters",
+      "topics": [
+        "FindAllGeneMarkers",
+        "FindAllGeneMarkers,SingleCellExperiment-method",
+        "FindAllGeneMarkers.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "FindGeneMarkers",
+      "title": "Identification of gene markers for a cluster or two arbitrary combinations of clusters",
+      "topics": [
+        "FindGeneMarkers",
+        "FindGeneMarkers,SingleCellExperiment-method",
+        "FindGeneMarkers.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "GeneHeatmap",
+      "title": "Heatmap visualization of the gene markers identified by FindAllGeneMarkers",
+      "topics": [
+        "GeneHeatmap",
+        "GeneHeatmap,SingleCellExperiment-method",
+        "GeneHeatmap.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "GeneScatterPlot",
+      "title": "Visualize gene expression over nonlinear dimensionality reduction",
+      "topics": [
+        "GeneScatterPlot",
+        "GeneScatterPlot,SingleCellExperiment-method",
+        "GeneScatterPlot.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "HierarchicalClustering",
+      "title": "Hierarchical clustering using the Ward's method",
+      "topics": [
+        "HierarchicalClustering",
+        "HierarchicalClustering,SingleCellExperiment-method",
+        "HierarchicalClustering.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "LogisticRegression",
+      "title": "Clustering projection using logistic regression from the LiblineaR R package",
+      "topics": [
+        "LogisticRegression"
+      ]
+    },
+    {
+      "page": "MergeClusters",
+      "title": "Merge clusters",
+      "topics": [
+        "MergeClusters",
+        "MergeClusters,SingleCellExperiment-method",
+        "MergeClusters.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "pbmc3k_500",
+      "title": "A toy dataset with 500 cells downsampled from the pbmc3k dataset.",
+      "topics": [
+        "pbmc3k_500"
+      ]
+    },
+    {
+      "page": "PCAElbowPlot",
+      "title": "Elbow plot of the standard deviations of the principal components",
+      "topics": [
+        "PCAElbowPlot",
+        "PCAElbowPlot,SingleCellExperiment-method",
+        "PCAElbowPlot.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "PrepareILoReg",
+      "title": "Prepare 'SingleCellExperiment' object for 'ILoReg' analysis",
+      "topics": [
+        "PrepareILoReg",
+        "PrepareILoReg,SingleCellExperiment-method",
+        "PrepareILoReg.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "RenameAllClusters",
+      "title": "Renaming all clusters at once",
+      "topics": [
+        "RenameAllClusters",
+        "RenameAllClusters,SingleCellExperiment-method",
+        "RenameAllClusters.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "RenameCluster",
+      "title": "Renaming one cluster",
+      "topics": [
+        "RenameCluster",
+        "RenameCluster,SingleCellExperiment-method",
+        "RenameCluster.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "RunICP",
+      "title": "Iterative Clustering Projection (ICP) clustering",
+      "topics": [
+        "RunICP"
+      ]
+    },
+    {
+      "page": "RunParallelICP",
+      "title": "Run ICP runs parallerly",
+      "topics": [
+        "RunParallelICP",
+        "RunParallelICP,SingleCellExperiment-method",
+        "RunParallelICP.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "RunPCA",
+      "title": "PCA transformation of the joint probability matrix",
+      "topics": [
+        "RunPCA",
+        "RunPCA,SingleCellExperiment-method",
+        "RunPCA.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "RunTSNE",
+      "title": "Barnes-Hut implementation of t-Distributed Stochastic Neighbor Embedding (t-SNE)",
+      "topics": [
+        "RunTSNE",
+        "RunTSNE,SingleCellExperiment-method",
+        "RunTSNE.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "RunUMAP",
+      "title": "Uniform Manifold Approximation and Projection (UMAP)",
+      "topics": [
+        "RunUMAP",
+        "RunUMAP,SingleCellExperiment-method",
+        "RunUMAP.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "SelectKClusters",
+      "title": "Selecting K clusters from hierarchical clustering",
+      "topics": [
+        "SelectKClusters",
+        "SelectKClusters,SingleCellExperiment-method",
+        "SelectKClusters.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "SelectTopGenes",
+      "title": "Select top or bottom N genes based on a selection criterion",
+      "topics": [
+        "SelectTopGenes"
+      ]
+    },
+    {
+      "page": "SilhouetteCurve",
+      "title": "Silhouette curve",
+      "topics": [
+        "SilhouetteCurve",
+        "SilhouetteCurve,SingleCellExperiment-method",
+        "SilhouetteCurve.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "VlnPlot",
+      "title": "Gene expression visualization using violin plots",
+      "topics": [
+        "VlnPlot",
+        "VlnPlot,SingleCellExperiment-method",
+        "VlnPlot.SingleCellExperiment"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ILoReg/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "aricode",
+    "askpass",
+    "Biobase",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "boot",
+    "cellranger",
+    "class",
+    "cli",
+    "clipr",
+    "cluster",
+    "codetools",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "dendextend",
+    "DescTools",
+    "digest",
+    "doRNG",
+    "doSNOW",
+    "dplyr",
+    "e1071",
+    "Exact",
+    "expm",
+    "farver",
+    "fastcluster",
+    "forcats",
+    "foreach",
+    "fs",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "gld",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "haven",
+    "here",
+    "hms",
+    "httr",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "labeling",
+    "lattice",
+    "LiblineaR",
+    "lifecycle",
+    "lmom",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mime",
+    "mvtnorm",
+    "openssl",
+    "parallelDist",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "prettyunits",
+    "progress",
+    "proxy",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppParallel",
+    "RcppTOML",
+    "readr",
+    "readxl",
+    "rematch",
+    "reshape2",
+    "reticulate",
+    "rlang",
+    "rngtools",
+    "rootSolve",
+    "rprojroot",
+    "RSpectra",
+    "rstudioapi",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyselect",
+    "tzdb",
+    "umap",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "ILoReg.Rmd",
+      "filename": "ILoReg.html",
+      "title": "ILoReg package manual",
+      "author": "Johannes Smolander",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Example: Peripheral Blood Mononuclear Cells",
+        "Setup a SingleCellExperiment object and prepare it for ILoReg analysis",
+        "Run the ICP clustering algorithm $L$ times",
+        "PCA transformation of the joint probability matrix",
+        "Nonlinear dimensionality reduction",
+        "Gene expression visualization",
+        "Hierarchical clustering using the Ward's method",
+        "Extracting a consensus clustering with $K$ clusters",
+        "Identification of gene markers",
+        "Selecting top gene markers",
+        "Gene marker heatmap",
+        "Renaming clusters",
+        "Violin plot visualization",
+        "Additional functionality",
+        "Estimating the optimal number of clusters",
+        "Renaming one cluster",
+        "Visualize with a custom annotation",
+        "Merging clusters",
+        "Identification of differentially expressed genes between two arbitrary sets of clusters",
+        "Session info",
+        "References",
+        "Contact information"
+      ],
+      "created": "2019-10-24 12:43:53",
+      "modified": "2022-03-08 13:41:10",
+      "commits": 26
+    }
+  ],
+  "_score": 4.698970004336019,
+  "_indexed": false,
+  "_nocasepkg": "iloreg",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/ILoReg",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:04:14.000Z",
+      "distro": "noble",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "905e3641fa23420d0765cd2c85896c7063b95ec6d2d39257bbafd8dd4559d446",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:03:24.000Z",
+      "distro": "noble",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "11a60b616fa1d5f71ec6e73a464dcc0709d52a098f086cf4f6f47deebfdb84cf",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:09:36.000Z",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "8ab404b7d05890c3564bcf9e87a9a2bd066096b76aae5ece20bb0f6b57dffbf5",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:10:23.000Z",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "e82d1f024b12afb82066ee174a538e053f90e48e45874d0628e6068cf4ea7e5e",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:03:19.000Z",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "0958ae74aaf7474653323baf49af8ed320d97a305363471570635d932362728d",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:01:57.000Z",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "a126993ae9d545290f5810b997077e25a130dc66c4fc8df9243262193236316b",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:02:02.000Z",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "a7a9d613a36f760ad9335cf38bbe12f628b0a933219b8feb3f44a02c165d05d5",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.20.0",
+      "date": "2026-02-23T09:01:54.000Z",
+      "commit": "50b509c560522c66456171de1f760e254e07887a",
+      "fileid": "a8166673f3db0d2400eb11f95960dc7d73ec7a47d2acc54bf59eada31e6c5b67",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22299054753"
+    }
+  ]
+}

@@ -1,0 +1,920 @@
+{
+  "Package": "FEAST",
+  "Type": "Package",
+  "Title": "FEAture SelcTion (FEAST) for Single-cell clustering",
+  "Version": "1.19.0",
+  "Authors@R": "c(person(\"Kenong\",\"Su\", email =\"kenong.su@emory.edu\", role = c(\"aut\",\"cre\")),person(\"Hao\",\"Wu\", email =\"hao.wu@emory.edu\", role =\"aut\"))",
+  "Description": "Cell clustering is one of the most important and commonly\nperformed tasks in single-cell RNA sequencing (scRNA-seq) data\nanalysis. An important step in cell clustering is to select a\nsubset of genes (referred to as \u201cfeatures\u201d), whose expression\npatterns will then be used for downstream clustering. A good\nset of features should include the ones that distinguish\ndifferent cell types, and the quality of such set could have\nsignificant impact on the clustering accuracy. FEAST is an R\nlibrary for selecting most representative features before\nperforming the core of scRNA-seq clustering. It can be used as\na plug-in for the etablished clustering algorithms such as SC3,\nTSCAN, SHARP, SIMLR, and Seurat. The core of FEAST algorithm\nincludes three steps: 1. consensus clustering; 2. gene-level\nsignificance inference; 3. validation of an optimized feature\nset.",
+  "License": "GPL-2",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "biocViews": "Sequencing, SingleCell, Clustering, FeatureExtraction",
+  "BugReports": "https://github.com/suke18/FEAST/issues",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.1.1",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-08 09:21:22 UTC",
+    "User": "root"
+  },
+  "Author": "Kenong Su [aut, cre], Hao Wu [aut]",
+  "Maintainer": "Kenong Su <kenong.su@emory.edu>",
+  "Config/pak/sysreqs": "libglpk-dev make libxml2-dev perl zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:08:37 UTC",
+  "RemoteUrl": "https://github.com/bioc/FEAST",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+  "MD5sum": "944699f702e7bcf8ca60c9f8e4b9a188",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "FEAST_1.19.0.tar.gz",
+  "_fileid": "183d161870d61e938a4bee01214d6ed8b8a4cf086b29ffd7c8c5acffe098892e",
+  "_filesize": 3529615,
+  "_sha256": "183d161870d61e938a4bee01214d6ed8b8a4cf086b29ffd7c8c5acffe098892e",
+  "_created": "2026-02-08T09:21:22.000Z",
+  "_published": "2026-02-08T09:31:09.631Z",
+  "_jobs": [
+    {
+      "job": 62883060392,
+      "time": 230,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421741723"
+    },
+    {
+      "job": 62883060404,
+      "time": 289,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421745236"
+    },
+    {
+      "job": 62883060406,
+      "time": 358,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421749059"
+    },
+    {
+      "job": 62883060405,
+      "time": 318,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421746909"
+    },
+    {
+      "job": 62883060402,
+      "time": 370,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421749658"
+    },
+    {
+      "job": 62883060407,
+      "time": 260,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421751481"
+    },
+    {
+      "job": 62883060414,
+      "time": 371,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421759277"
+    },
+    {
+      "job": 62883060422,
+      "time": 296,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421754898"
+    },
+    {
+      "job": 62883060413,
+      "time": 367,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421756548"
+    },
+    {
+      "job": 62882877253,
+      "time": 332,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5421727866"
+    },
+    {
+      "job": 62883060411,
+      "time": 197,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5421739766"
+    },
+    {
+      "job": 62883060410,
+      "time": 262,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5421743505"
+    },
+    {
+      "job": 62883060415,
+      "time": 269,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5421743885"
+    },
+    {
+      "job": 62883060401,
+      "time": 277,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5421744390"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/FEAST",
+  "_commit": {
+    "id": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761750517
+  },
+  "_maintainer": {
+    "name": "Kenong Su",
+    "email": "kenong.su@emory.edu"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "mclust",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "irlba",
+      "role": "Imports"
+    },
+    {
+      "package": "TSCAN",
+      "role": "Imports"
+    },
+    {
+      "package": "SC3",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "Seurat",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.19.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.18.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "sequencing",
+    "singlecell",
+    "clustering",
+    "featureextraction"
+  ],
+  "_stars": 10,
+  "_contributors": [
+    {
+      "user": "suke18",
+      "count": 6,
+      "uuid": 12088548
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 444,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/FEAST"
+  },
+  "_devurl": "https://github.com/suke18/feast",
+  "_searchresults": 63,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/FEAST.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/suke18/feast",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "align_CellType",
+    "cal_F2",
+    "cal_MSE",
+    "Consensus",
+    "eval_Cluster",
+    "FEAST",
+    "FEAST_fast",
+    "Norm_Y",
+    "process_Y",
+    "SC3_Clust",
+    "Select_Model_short_SC3",
+    "Select_Model_short_TSCAN",
+    "setUp_BPPARAM",
+    "TSCAN_Clust",
+    "Visual_Rslt"
+  ],
+  "_datasets": [
+    {
+      "name": "Y",
+      "title": "An example single cell count expression matrix (Yan)",
+      "object": "Yan",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "GSM896803",
+        "GSM896804",
+        "GSM896805",
+        "GSM896806",
+        "GSM896807",
+        "GSM896808",
+        "GSM896809",
+        "GSM896810",
+        "GSM896811",
+        "GSM896812",
+        "GSM896813",
+        "GSM896814",
+        "GSM896815",
+        "GSM896816",
+        "GSM922146",
+        "GSM922147",
+        "GSM922148",
+        "GSM922149",
+        "GSM922150",
+        "GSM922151",
+        "GSM922152",
+        "GSM922153",
+        "GSM922154",
+        "GSM922155",
+        "GSM922156",
+        "GSM922157",
+        "GSM922158",
+        "GSM922159",
+        "GSM922160",
+        "GSM922161",
+        "GSM922162",
+        "GSM922163",
+        "GSM922164",
+        "GSM922165",
+        "GSM922166",
+        "GSM922167",
+        "GSM922168",
+        "GSM922169",
+        "GSM922170",
+        "GSM922171",
+        "GSM922172",
+        "GSM922173",
+        "GSM922174",
+        "GSM922175",
+        "GSM922176",
+        "GSM922177",
+        "GSM922178",
+        "GSM922179",
+        "GSM922180",
+        "GSM922181",
+        "GSM922182",
+        "GSM922183",
+        "GSM922184",
+        "GSM922185",
+        "GSM922186",
+        "GSM922187",
+        "GSM922188",
+        "GSM922189",
+        "GSM922190",
+        "GSM922191",
+        "GSM922192",
+        "GSM922193",
+        "GSM922194",
+        "GSM922195",
+        "GSM922196",
+        "GSM922197",
+        "GSM922198",
+        "GSM922199",
+        "GSM922200",
+        "GSM922201",
+        "GSM922202",
+        "GSM922203",
+        "GSM922204",
+        "GSM922205",
+        "GSM922206",
+        "GSM922207",
+        "GSM922208",
+        "GSM922209",
+        "GSM922210",
+        "GSM922211",
+        "GSM922212",
+        "GSM922213",
+        "GSM922214",
+        "GSM922215",
+        "GSM922216",
+        "GSM922217",
+        "GSM922218",
+        "GSM922219",
+        "GSM922220",
+        "GSM922221",
+        "GSM922222",
+        "GSM922223",
+        "GSM922224",
+        "GSM922225",
+        "GSM922226",
+        "GSM922227",
+        "GSM922228",
+        "GSM922230",
+        "GSM922250",
+        "GSM922251",
+        "GSM922252",
+        "GSM922253",
+        "GSM922254",
+        "GSM922255",
+        "GSM922256",
+        "GSM922257",
+        "GSM922258",
+        "GSM922259",
+        "GSM922260",
+        "GSM922261",
+        "GSM922262",
+        "GSM922263",
+        "GSM922264",
+        "GSM922265",
+        "GSM922266",
+        "GSM922267",
+        "GSM922268",
+        "GSM922269",
+        "GSM922270",
+        "GSM922271",
+        "GSM922272",
+        "GSM922273",
+        "GSM922274",
+        "GSM922275"
+      ],
+      "rows": 19304,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "trueclass",
+      "title": "An example single cell dataset for the cell label information (Yan)",
+      "object": "Yan",
+      "class": [
+        "character"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "align_CellType",
+      "title": "Align the cell types from the prediction with the truth.",
+      "topics": [
+        "align_CellType"
+      ]
+    },
+    {
+      "page": "cal_F2",
+      "title": "Calculate the gene-level F score and corresponding significance level.",
+      "topics": [
+        "cal_F2"
+      ]
+    },
+    {
+      "page": "cal_Fisher2",
+      "title": "Calculate the gene-level fisher score.",
+      "topics": [
+        "cal_Fisher2"
+      ]
+    },
+    {
+      "page": "cal_metrics",
+      "title": "Calculate 3 metrics and these methods are exported in C codes. flag = 1 - Rand index, flag = 2 - Fowlkes and Mallows's index, flag = 3 - Jaccard index",
+      "topics": [
+        "cal_metrics"
+      ]
+    },
+    {
+      "page": "cal_MSE",
+      "title": "Standard way to preprocess the count matrix. It is the QC step for the genes.",
+      "topics": [
+        "cal_MSE"
+      ]
+    },
+    {
+      "page": "Consensus",
+      "title": "Consensus Clustering",
+      "topics": [
+        "Consensus"
+      ]
+    },
+    {
+      "page": "eval_Cluster",
+      "title": "Calculate the a series of the evaluation statistics.",
+      "topics": [
+        "eval_Cluster"
+      ]
+    },
+    {
+      "page": "FEAST",
+      "title": "FEAST main function",
+      "topics": [
+        "FEAST"
+      ]
+    },
+    {
+      "page": "FEAST_fast",
+      "title": "FEAST main function (fast version)",
+      "topics": [
+        "FEAST_fast"
+      ]
+    },
+    {
+      "page": "Norm_Y",
+      "title": "Normalize the count expression matrix by the size factor and take the log transformation.",
+      "topics": [
+        "Norm_Y"
+      ]
+    },
+    {
+      "page": "process_Y",
+      "title": "Standard way to preprocess the count matrix. It is the QC step for the genes.",
+      "topics": [
+        "process_Y"
+      ]
+    },
+    {
+      "page": "Purity",
+      "title": "Calculate the purity between two vectors.",
+      "topics": [
+        "Purity"
+      ]
+    },
+    {
+      "page": "SC3_Clust",
+      "title": "SC3 Clustering",
+      "topics": [
+        "SC3_Clust"
+      ]
+    },
+    {
+      "page": "Select_Model_short_SC3",
+      "title": "Using clustering results based on feature selection to perform model selection.",
+      "topics": [
+        "Select_Model_short_SC3"
+      ]
+    },
+    {
+      "page": "Select_Model_short_TSCAN",
+      "title": "Using clustering results (from TSCAN) based on feature selection to perform model selection.",
+      "topics": [
+        "Select_Model_short_TSCAN"
+      ]
+    },
+    {
+      "page": "trueclass",
+      "title": "An example single cell dataset for the cell label information (Yan)",
+      "topics": [
+        "trueclass"
+      ]
+    },
+    {
+      "page": "TSCAN_Clust",
+      "title": "TSCAN Clustering",
+      "topics": [
+        "TSCAN_Clust"
+      ]
+    },
+    {
+      "page": "vector2matrix",
+      "title": "function for convert a vector to a binary matrix",
+      "topics": [
+        "vector2matrix"
+      ]
+    },
+    {
+      "page": "Visual_Rslt",
+      "title": "Using clustering results based on feature selection to perform model selection.",
+      "topics": [
+        "Visual_Rslt"
+      ]
+    },
+    {
+      "page": "Y",
+      "title": "An example single cell count expression matrix (Yan)",
+      "topics": [
+        "Y"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "bitops",
+    "bslib",
+    "cachem",
+    "caTools",
+    "class",
+    "cli",
+    "cluster",
+    "codetools",
+    "combinat",
+    "commonmark",
+    "cpp11",
+    "DelayedArray",
+    "DEoptimR",
+    "digest",
+    "doParallel",
+    "doRNG",
+    "e1071",
+    "farver",
+    "fastICA",
+    "fastmap",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gplots",
+    "gtable",
+    "gtools",
+    "htmltools",
+    "httpuv",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mclust",
+    "memoise",
+    "mgcv",
+    "mime",
+    "mvtnorm",
+    "nlme",
+    "otel",
+    "pcaPP",
+    "pheatmap",
+    "pkgconfig",
+    "plyr",
+    "promises",
+    "proxy",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "rlang",
+    "rngtools",
+    "robustbase",
+    "ROCR",
+    "rrcov",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "SC3",
+    "scales",
+    "Seqinfo",
+    "shiny",
+    "SingleCellExperiment",
+    "snow",
+    "sourcetools",
+    "SparseArray",
+    "SummarizedExperiment",
+    "TrajectoryUtils",
+    "TSCAN",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "WriteXLS",
+    "xtable",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "FEAST.Rmd",
+      "filename": "FEAST.html",
+      "title": "The FEAST User's Guide",
+      "author": "Kenong Su, Hao Wu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation and help",
+        "Install FEAST",
+        "Help for FEAST",
+        "Introduction",
+        "Background",
+        "Citation",
+        "Quick start",
+        "Using FEAST for scRNA-seq clustering analysis",
+        "Load the data",
+        "Consensus clustering",
+        "Calculate the gene-level significance",
+        "Clustering and validation",
+        "Compare to the real cell type labels",
+        "Benchmark with the original SC3",
+        "Show the clustering improvement by using figures",
+        "Quick use step-by-step",
+        "Quick use by the wrapper function",
+        "Session Info",
+        "Reference"
+      ],
+      "created": "2021-03-15 03:15:13",
+      "modified": "2021-09-09 04:49:52",
+      "commits": 5
+    }
+  ],
+  "_score": 5.1003705451175625,
+  "_indexed": true,
+  "_nocasepkg": "feast",
+  "_universes": [
+    "bioc",
+    "suke18"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:24:48.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "fb88a817daae658759448170a9b69cb45d325d485fef78872edd18fe6ed15fa0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:25:26.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "d0b1c7a255d7f820ebab0aca92fc3d156973aa6e3133f9121b11f1fed108a4d7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:25:14.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "d84cafc574a0ca2ca4d0745c9828733672a3473476fb499a7d1d53480608a10b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:25:40.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "0ade2257621a1c4aba94a0d140f55d9fbcceaa3221b835e90f33df9d9c1ea204",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:26:14.000Z",
+      "arch": "aarch64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "c642907612eb689429c973eb5bdddf9bb41d2b1d0e1d975fc49acf13d324ac52",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:27:34.000Z",
+      "arch": "x86_64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "8f6351d564110e7184cb87de52827ad85ad2aff4e0473b29a7673294f7f92cc8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:26:54.000Z",
+      "arch": "aarch64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "191215b82476ec1d195674b73571411bd48cdabd1f7b34d567f561e04776ebb3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:26:30.000Z",
+      "arch": "x86_64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "029523b4d700c742f88372a03dd161c33c258be1dcfcf9b0bc3c00808473c279",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:25:12.000Z",
+      "arch": "emscripten",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "e6ec6010ff593674b3e1a7fcc3d15a92cbffbf149f8b4192b664393e50d9645b",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:23:31.000Z",
+      "arch": "x86_64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "727bd34f59d21494beb3b8faaf82045c93578752919283fbf2b7f3bbb45b368f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:23:42.000Z",
+      "arch": "x86_64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "463c19eab92f3004f54b3a35b2583e57e693acc96d04c62cd0f67e34611680dc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.19.0",
+      "date": "2026-02-08T09:23:36.000Z",
+      "arch": "x86_64",
+      "commit": "56aecc5db132b964a2aa56be4044d261f2560ddf",
+      "fileid": "4708b98b4230606cdf471b2e7eb643107a0e1d863372d9f1c683faf236de75b1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21795720435"
+    }
+  ]
+}

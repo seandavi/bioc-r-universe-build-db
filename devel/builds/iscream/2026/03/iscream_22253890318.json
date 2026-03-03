@@ -1,0 +1,917 @@
+{
+  "Package": "iscream",
+  "Title": "Make fast and memory efficient BED file queries, summaries and\nmatrices",
+  "Version": "1.1.1",
+  "Authors@R": "c(\nperson(\"James\", \"Eapen\", email = \"james.eapen@vai.org\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0001-6016-3598\")),\nperson(\"Jacob\", \"Morrison\", email = \"jacob.morrison@vai.org\", role = c(\"aut\"), comment = c(ORCID = \"0000-0001-8592-4744\")),\nperson(\"Nathan\", \"Spix\", role = c(\"ctb\")),\nperson(\"Hui\", \"Shen\", email = \"hui.shen@vai.org\", role = c(\"aut\", \"ths\", \"fnd\"), comment = c(ORCID = \"0000-0001-9767-4084\")))",
+  "Description": "BED files store ranged genomic data that can be queried\neven when the files are compressed. iscream can query data from\nBED files and return them in muliple formats: parsed records or\ntheir summary statistics as data frames or GenomicRanges\nobjects, and matrices as matrix, GenomicRanges, or\nSummarizedExperiment objects. iscream also provides specialized\nsupport for importing methylation data.",
+  "URL": "https://huishenlab.github.io/iscream/,\nhttps://github.com/huishenlab/iscream/",
+  "BugReports": "https://github.com/huishenlab/iscream/issues/",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "NeedsCompilation": "yes",
+  "SystemRequirements": "htslib: htslib-devel (rpm) or libhts-dev (deb) &\ntabix: htslib-tools (rpm) or tabix (deb) & GNU make",
+  "biocViews": "DataImport, Software, Sequencing, SingleCell, DNAMethylation",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 18:17:23 UTC",
+  "RemoteUrl": "https://github.com/bioc/iscream",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+  "Packaged": {
+    "Date": "2026-02-21 08:55:36 UTC",
+    "User": "root"
+  },
+  "Author": "James Eapen [aut, cre] (ORCID: <https://orcid.org/0000-0001-6016-3598>),\nJacob Morrison [aut] (ORCID: <https://orcid.org/0000-0001-8592-4744>),\nNathan Spix [ctb],\nHui Shen [aut, ths, fnd] (ORCID:\n<https://orcid.org/0000-0001-9767-4084>)",
+  "Maintainer": "James Eapen <james.eapen@vai.org>",
+  "MD5sum": "6defa1e6da994106f46be332433f6eee",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "iscream_1.1.1.tar.gz",
+  "_fileid": "37b36b890aa4fc6d6c7b2fc7eb0942cbf5eff6c70ec7a70d0915121a704903ce",
+  "_filesize": 4105196,
+  "_sha256": "37b36b890aa4fc6d6c7b2fc7eb0942cbf5eff6c70ec7a70d0915121a704903ce",
+  "_created": "2026-02-21T08:55:36.000Z",
+  "_published": "2026-02-21T09:03:31.302Z",
+  "_jobs": [
+    {
+      "job": 64382136308,
+      "time": 245,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5600547657"
+    },
+    {
+      "job": 64382136333,
+      "time": 256,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600548586"
+    },
+    {
+      "job": 64382136328,
+      "time": 309,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600551755"
+    },
+    {
+      "job": 64382136338,
+      "time": 251,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600548239"
+    },
+    {
+      "job": 64382136340,
+      "time": 273,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600549523"
+    },
+    {
+      "job": 64382136341,
+      "time": 174,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600546808"
+    },
+    {
+      "job": 64382136327,
+      "time": 320,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600554259"
+    },
+    {
+      "job": 64382136330,
+      "time": 203,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600548659"
+    },
+    {
+      "job": 64382136329,
+      "time": 302,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600551358"
+    },
+    {
+      "job": 64381898513,
+      "time": 364,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600532220"
+    },
+    {
+      "job": 64382136306,
+      "time": 164,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 64382136310,
+      "time": 373,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600555520"
+    },
+    {
+      "job": 64382136316,
+      "time": 314,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5600552216"
+    },
+    {
+      "job": 64382136321,
+      "time": 316,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600552375"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/iscream",
+  "_commit": {
+    "id": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+    "author": "James Eapen <james.eapen@vai.org>",
+    "committer": "James Eapen <james.eapen@vai.org>",
+    "message": "chore(DESCRIPTION): bump version\n",
+    "time": 1761761843
+  },
+  "_maintainer": {
+    "name": "James Eapen",
+    "email": "james.eapen@vai.org",
+    "login": "jamespeapen",
+    "uuid": 39574560,
+    "orcid": "0000-0001-6016-3598"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppArmadillo",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppProgress",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppSpdlog",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rhtslib",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "stringfish",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "pbapply",
+      "role": "Imports"
+    },
+    {
+      "package": "parallelly",
+      "role": "Imports"
+    },
+    {
+      "package": "stringfish",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "bsseq",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggridges",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "microbenchmark",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "IRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-08",
+      "n": 15
+    },
+    {
+      "week": "2025-09",
+      "n": 8
+    },
+    {
+      "week": "2025-14",
+      "n": 6
+    },
+    {
+      "week": "2025-15",
+      "n": 27
+    },
+    {
+      "week": "2025-16",
+      "n": 19
+    },
+    {
+      "week": "2025-17",
+      "n": 49
+    },
+    {
+      "week": "2025-26",
+      "n": 16
+    },
+    {
+      "week": "2025-27",
+      "n": 7
+    },
+    {
+      "week": "2025-28",
+      "n": 12
+    },
+    {
+      "week": "2025-29",
+      "n": 85
+    },
+    {
+      "week": "2025-30",
+      "n": 5
+    },
+    {
+      "week": "2025-32",
+      "n": 3
+    },
+    {
+      "week": "2025-34",
+      "n": 3
+    },
+    {
+      "week": "2025-35",
+      "n": 1
+    },
+    {
+      "week": "2025-36",
+      "n": 1
+    },
+    {
+      "week": "2025-40",
+      "n": 5
+    },
+    {
+      "week": "2025-41",
+      "n": 34
+    },
+    {
+      "week": "2025-43",
+      "n": 13
+    },
+    {
+      "week": "2025-44",
+      "n": 6
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "dataimport",
+    "software",
+    "sequencing",
+    "singlecell",
+    "dnamethylation",
+    "bed",
+    "rcpp",
+    "tabix",
+    "wgbs",
+    "curl",
+    "bzip2",
+    "xz-utils",
+    "zlib",
+    "cpp",
+    "openmp"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "jamespeapen",
+      "count": 703,
+      "uuid": 39574560
+    },
+    {
+      "user": "jwokaty",
+      "count": 1,
+      "uuid": 1744257
+    },
+    {
+      "user": "njspix",
+      "count": 1,
+      "uuid": 56930974
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 190,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/iscream"
+  },
+  "_devurl": "https://github.com/huishenlab/iscream",
+  "_pkgdown": "https://huishenlab.github.io/iscream/",
+  "_searchresults": 12,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/iscream.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/huishenlab/iscream",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "get_df_string",
+    "get_granges_string",
+    "get_log_level",
+    "get_threads",
+    "htslib_version",
+    "make_mat",
+    "make_mat_bsseq",
+    "make_mat_gr",
+    "make_mat_se",
+    "query_chroms",
+    "set_log_level",
+    "set_threads",
+    "summarize_meth_regions",
+    "summarize_regions",
+    "tabix",
+    "tabix_gr",
+    "tabix_raw"
+  ],
+  "_help": [
+    {
+      "page": "get_df_string",
+      "title": "DataFrame to region strings",
+      "topics": [
+        "get_df_string"
+      ]
+    },
+    {
+      "page": "get_granges_string",
+      "title": "GRanges to region strings",
+      "topics": [
+        "get_granges_string"
+      ]
+    },
+    {
+      "page": "get_threads",
+      "title": "Get the number of available threads",
+      "topics": [
+        "get_threads"
+      ]
+    },
+    {
+      "page": "htslib_version",
+      "title": "Get htslib version and available features",
+      "topics": [
+        "htslib_version"
+      ]
+    },
+    {
+      "page": "make_mat",
+      "title": "Make a matrix from a numeric column of BED files",
+      "topics": [
+        "make_mat",
+        "make_mat_gr",
+        "make_mat_se"
+      ]
+    },
+    {
+      "page": "make_mat_bsseq",
+      "title": "Make M/beta and coverage matrices from WGBS BED files",
+      "topics": [
+        "make_mat_bsseq"
+      ]
+    },
+    {
+      "page": "query_chroms",
+      "title": "Query the chromosomes or seqnames from a vector of BED files",
+      "topics": [
+        "query_chroms"
+      ]
+    },
+    {
+      "page": "set_log_level",
+      "title": "Set and get logging level",
+      "topics": [
+        "get_log_level",
+        "set_log_level"
+      ]
+    },
+    {
+      "page": "set_threads",
+      "title": "Set the number of available threads",
+      "topics": [
+        "set_threads"
+      ]
+    },
+    {
+      "page": "summarize_meth_regions",
+      "title": "Summarize methylation information over genomic regions",
+      "topics": [
+        "summarize_meth_regions"
+      ]
+    },
+    {
+      "page": "summarize_regions",
+      "title": "Summarize information over genomic regions from any BED file",
+      "topics": [
+        "summarize_regions"
+      ]
+    },
+    {
+      "page": "tabix",
+      "title": "Query records from tabixed BED files",
+      "topics": [
+        "tabix",
+        "tabix_gr",
+        "tabix_raw"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/iscream/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/iscream/raw/HEAD/README.md",
+  "_rundeps": [
+    "data.table",
+    "lattice",
+    "Matrix",
+    "parallelly",
+    "pbapply",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppParallel",
+    "RcppProgress",
+    "RcppSpdlog",
+    "Rhtslib",
+    "stringfish"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libcurl",
+      "package": "libcurl4t64",
+      "headers": "libcurl4-openssl-dev",
+      "source": "curl",
+      "version": "8.5.0-2ubuntu10.6",
+      "name": "curl",
+      "homepage": "https://curl.se/",
+      "description": "easy-to-use client-side URL transfer library (OpenSSL flavour)"
+    },
+    {
+      "shlib": "libbz2",
+      "package": "libbz2-1.0",
+      "headers": "libbz2-dev",
+      "source": "bzip2",
+      "version": "1.0.8-5.1build0.1",
+      "name": "bzip2",
+      "homepage": "https://sourceware.org/bzip2/",
+      "description": "high-quality block-sorting file compressor library - runtime"
+    },
+    {
+      "shlib": "liblzma",
+      "package": "liblzma5",
+      "headers": "liblzma-dev",
+      "source": "xz-utils",
+      "version": "5.6.1+really5.4.5-1ubuntu0.2",
+      "name": "xz-utils",
+      "homepage": "https://tukaani.org/xz/",
+      "description": "XZ-format compression library"
+    },
+    {
+      "shlib": "libz",
+      "package": "zlib1g",
+      "headers": "zlib1g-dev",
+      "source": "zlib",
+      "version": "1:1.3.dfsg-3.1ubuntu2.1",
+      "name": "zlib",
+      "homepage": "http://zlib.net/",
+      "description": "compression library - runtime"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    },
+    {
+      "shlib": "libgomp",
+      "package": "libgomp1",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "openmp",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GCC OpenMP (GOMP) support library"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "iscream.Rmd",
+      "filename": "iscream.html",
+      "title": "An introduction to iscream",
+      "author": "James Eapen",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Loading iscream",
+        "tabix()",
+        "Setup",
+        "Making queries",
+        "Using r Biocpkg(\"GenomicRanges\")",
+        "Setting column names",
+        "Rsamtools-style output",
+        "WGBS BED files",
+        "summarize_regions()",
+        "make_mat()",
+        "Further reading",
+        "Session info",
+        "References"
+      ],
+      "created": "2025-01-15 15:11:47",
+      "modified": "2025-10-24 14:05:56",
+      "commits": 24
+    },
+    {
+      "source": "htslib.rmd",
+      "filename": "htslib.html",
+      "title": "Getting htslib headers",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Conda/miniconda/mamba/micromamba",
+        "Pixi",
+        "Session info"
+      ],
+      "created": "2025-04-22 13:19:04",
+      "modified": "2025-10-21 15:30:09",
+      "commits": 6
+    },
+    {
+      "source": "performance.Rmd",
+      "filename": "performance.html",
+      "title": "Improving iscream performance",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Setup",
+        "Input BED files",
+        "Regions",
+        "Multithreading",
+        "tabix()",
+        "summarize_regions",
+        "make_mat",
+        "Session info",
+        "References"
+      ],
+      "created": "2025-07-15 17:35:18",
+      "modified": "2025-10-07 00:35:07",
+      "commits": 6
+    },
+    {
+      "source": "data_structures.Rmd",
+      "filename": "data_structures.html",
+      "title": "iscream compatible data structures",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "r Biocpkg(\"GenomicRanges\")",
+        "From tabix queries",
+        "From summarize_regions()",
+        "From make_mat",
+        "r Biocpkg(\"SummarizedExperiment\")",
+        "Making BSseq objects",
+        "Session info"
+      ],
+      "created": "2025-01-15 16:22:35",
+      "modified": "2025-10-24 14:05:56",
+      "commits": 18
+    },
+    {
+      "source": "tabix.Rmd",
+      "filename": "tabix.html",
+      "title": "iscream vs Rsamtools::scanTabix",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "One file",
+        "Multiple files",
+        "Parsing records into a data frame",
+        "Multiple files as data frame",
+        "All benchmarks",
+        "Runtime",
+        "Session info"
+      ],
+      "created": "2025-06-24 00:37:45",
+      "modified": "2025-10-25 19:43:09",
+      "commits": 10
+    },
+    {
+      "source": "manuscript_data.Rmd",
+      "filename": "manuscript_data.html",
+      "title": "Manuscript data availabiliy",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Datasets",
+        "References"
+      ],
+      "created": "2025-02-12 20:47:02",
+      "modified": "2025-02-12 20:47:02",
+      "commits": 1
+    },
+    {
+      "source": "TSS.Rmd",
+      "filename": "TSS.html",
+      "title": "Plotting TSS methylation profiles",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Setup",
+        "Download the data",
+        "Using tabix()",
+        "Get the Transcription start sites and flanking regions",
+        "Make a tabix query of the TSS flanking regions",
+        "Summarize average methylation profile around TSS",
+        "Plot average methylation profiles around the TSS",
+        "Using summarize_regions",
+        "Session info"
+      ],
+      "created": "2025-01-15 16:22:34",
+      "modified": "2025-10-25 19:43:09",
+      "commits": 18
+    }
+  ],
+  "_score": 6.203032887014711,
+  "_indexed": true,
+  "_nocasepkg": "iscream",
+  "_universes": [
+    "bioc",
+    "jamespeapen",
+    "huishenlab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:59:30.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "99b3fdd85f5e20d71f725dfec517ed7d9eac71361b48b5efe8d01454467c8a73",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.1",
+      "date": "2026-02-21T09:00:20.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "cfcf18f506dd9d3430a6f099fbaafeda736a0e8d8723bb31d4a60f3b6da36a8f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:59:29.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "192616fd564b6ba7d660b37f8fa808c30f244724e6b88436db6211f0b3720b7c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:59:49.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "d15c10ba1dc339418197ac62b8bd4939cb24078e5fc0607806d7f0a997dff048",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:59:31.000Z",
+      "arch": "aarch64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "d0b98a6bda5abef925b46abe8341f4906e64e4d548887538b1e2e9d1e5f41705",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.1",
+      "date": "2026-02-21T09:00:18.000Z",
+      "arch": "x86_64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "f7f0544d06392e8cf9c534885b76dec1825ff647b8522a30e6aa5085774933ae",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:59:47.000Z",
+      "arch": "aarch64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "5d8321328ab3b652fa81f1a048446011b29b51436d7560addb26cacae115690c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:59:39.000Z",
+      "arch": "x86_64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "291f94b9ac950e25bf2b647d7d610974364bbad434475ca45f47fcb62418a71b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:58:22.000Z",
+      "arch": "x86_64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "4a28067006cc17afce3a39b6eb98c3b5566939905cb8bf7aef6bd8854e6163d4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:58:26.000Z",
+      "arch": "x86_64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "69e3650e4ceb07381c28e1aebabf0fccb8d38a3f751f951cff16fa7986de6acb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.1.1",
+      "date": "2026-02-21T08:58:31.000Z",
+      "arch": "x86_64",
+      "commit": "b1bda1ce7d0ecfd506170a0d8e3c510a72fbb323",
+      "fileid": "c4972f2d7bef98c782f09cd3d4493389c3f579ef702396fc93026e4be868b24e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253890318"
+    }
+  ]
+}

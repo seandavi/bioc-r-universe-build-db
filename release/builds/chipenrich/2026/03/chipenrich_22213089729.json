@@ -1,0 +1,920 @@
+{
+  "Package": "chipenrich",
+  "Type": "Package",
+  "Title": "Gene Set Enrichment For ChIP-seq Peak Data",
+  "Version": "2.34.0",
+  "Date": "2025-07-22",
+  "Authors@R": "c(\nperson(c(\"Ryan\",\"P.\"),\"Welch\",role = c(\"aut\",\"cph\"),email = \"welchr@umich.edu\"),\nperson(\"Chee\",\"Lee\",role = c(\"aut\"),email = \"cheelee@umich.edu\"),\nperson(c(\"Raymond\",\"G.\"),\"Cavalcante\",role = c(\"aut\"),email = \"rcavalca@umich.edu\"),\nperson(\"Kai\",\"Wang\",role = c(\"cre\"),email = \"wangdaha@umich.edu\"),\nperson(\"Chris\",\"Lee\",role = c(\"aut\"),email = \"leetaiyi@umich.edu\"),\nperson(c(\"Laura\",\"J.\"),\"Scott\",role = c(\"ths\"), email = \"ljst@umich.edu\"),\nperson(c(\"Maureen\",\"A.\"),\"Sartor\",role = c(\"ths\"),email = \"sartorma@med.umich.edu\"))",
+  "Description": "ChIP-Enrich and Poly-Enrich perform gene set enrichment\ntesting using peaks called from a ChIP-seq experiment. The\nmethod empirically corrects for confounding factors such as the\nlength of genes, and the mappability of the sequence\nsurrounding genes.",
+  "biocViews": "ImmunoOncology, ChIPSeq, Epigenetics, FunctionalGenomics,\nGeneSetEnrichment, HistoneModification, Regression",
+  "License": "GPL-3",
+  "LazyLoad": "yes",
+  "Maintainer": "Kai Wang <wangdaha@umich.edu>",
+  "RoxygenNote": "7.1.1",
+  "VignetteBuilder": "knitr",
+  "Collate": "'assign_peaks.R' 'test_broadenrich.R' 'peaks_per_gene.R'\n'read.R' 'randomize.R' 'setup.R' 'supported.R' 'utils.R'\n'constants.R' 'plot_gene_coverage.R' 'broadenrich.R'\n'test_chipapprox.R' 'test_chipenrich.R'\n'test_chipenrich_slow.R' 'test_fisher.R' 'test_binomial.R'\n'test_approx.R' 'plot_chipenrich_spline.R' 'plot_dist_to_tss.R'\n'chipenrich.R' 'chipenrich_package_doc.R' 'test_polyapprox.R'\n'test_polyenrich_weighted.R' 'test_polyenrich_slow.R'\n'test_polyenrich.R' 'plot_polyenrich_spline.R' 'polyenrich.R'\n'hybrid.R' 'peak_weights.R' 'peaks2genes.R' 'test_proxReg.R'\n'proxReg.R'",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev libjpeg-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev libx11-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:16:16 UTC",
+  "RemoteUrl": "https://github.com/bioc/chipenrich",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-20 05:59:39 UTC",
+    "User": "root"
+  },
+  "Author": "Ryan P. Welch [aut, cph],\nChee Lee [aut],\nRaymond G. Cavalcante [aut],\nKai Wang [cre],\nChris Lee [aut],\nLaura J. Scott [ths],\nMaureen A. Sartor [ths]",
+  "MD5sum": "8e642f85aab5100e38a225f6db22a853",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "chipenrich_2.34.0.tar.gz",
+  "_fileid": "8431016b7de356b315d4064079b365b17d3bacfd34d8786b1d6b662f9572e5fd",
+  "_filesize": 805887,
+  "_sha256": "8431016b7de356b315d4064079b365b17d3bacfd34d8786b1d6b662f9572e5fd",
+  "_created": "2026-02-20T05:59:39.000Z",
+  "_published": "2026-02-20T06:12:45.285Z",
+  "_jobs": [
+    {
+      "job": 64251849677,
+      "time": 362,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5585160999"
+    },
+    {
+      "job": 64251849681,
+      "time": 715,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5585205127"
+    },
+    {
+      "job": 64251849699,
+      "time": 711,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5585204839"
+    },
+    {
+      "job": 64251849706,
+      "time": 361,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5585172022"
+    },
+    {
+      "job": 64251849704,
+      "time": 555,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5585194143"
+    },
+    {
+      "job": 64251289045,
+      "time": 548,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5585116354"
+    },
+    {
+      "job": 64251849672,
+      "time": 363,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5585160977"
+    },
+    {
+      "job": 64251849708,
+      "time": 557,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5585185645"
+    },
+    {
+      "job": 64251849678,
+      "time": 610,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5585192154"
+    },
+    {
+      "job": 64251849691,
+      "time": 556,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5585185532"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 3,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/chipenrich",
+  "_commit": {
+    "id": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761747376
+  },
+  "_maintainer": {
+    "name": "Kai Wang",
+    "email": "wangdaha@umich.edu",
+    "login": "wangk4",
+    "uuid": 15198098
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "chipenrich.data",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "lattice",
+      "role": "Imports"
+    },
+    {
+      "package": "latticeExtra",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "mgcv",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Dm.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Dr.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Mm.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "org.Rn.eg.db",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "rms",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.23.10",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "devtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "roxygen2",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-11",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.35.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "2.34.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "chipseq",
+    "epigenetics",
+    "functionalgenomics",
+    "genesetenrichment",
+    "histonemodification",
+    "regression"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 416,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/chipenrich"
+  },
+  "_mentions": 2,
+  "_searchresults": 33,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/chipenrich.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "assign_peak_segments",
+    "assign_peaks",
+    "broadenrich",
+    "calc_peak_gene_overlap",
+    "chipenrich",
+    "hybridenrich",
+    "load_peaks",
+    "num_peaks_per_gene",
+    "peaks2genes",
+    "plot_chipenrich_spline",
+    "plot_dist_to_tss",
+    "plot_gene_coverage",
+    "plot_polyenrich_spline",
+    "polyenrich",
+    "proxReg",
+    "read_bed",
+    "supported_genesets",
+    "supported_genomes",
+    "supported_locusdefs",
+    "supported_methods",
+    "supported_read_lengths"
+  ],
+  "_help": [
+    {
+      "page": "assign_peak_segments",
+      "title": "Assign whole peaks to all overlapping defined gene loci.",
+      "topics": [
+        "assign_peak_segments"
+      ]
+    },
+    {
+      "page": "assign_peaks",
+      "title": "Assign peak midpoints to defined gene loci.",
+      "topics": [
+        "assign_peaks"
+      ]
+    },
+    {
+      "page": "broadenrich",
+      "title": "Run Broad-Enrich on broad genomic regions",
+      "topics": [
+        "broadenrich"
+      ]
+    },
+    {
+      "page": "calc_peak_gene_overlap",
+      "title": "Add peak overlap and ratio to result of 'num_peaks_per_gene()'",
+      "topics": [
+        "calc_peak_gene_overlap"
+      ]
+    },
+    {
+      "page": "chipenrich",
+      "title": "Run ChIP-Enrich on narrow genomic regions",
+      "topics": [
+        "chipenrich"
+      ]
+    },
+    {
+      "page": "chipenrich_package",
+      "title": "chipenrich: Gene Set Enrichment For ChIP-seq Peak Data and Other Genomic Regions",
+      "topics": [
+        "chipenrich_package"
+      ]
+    },
+    {
+      "page": "filter_genesets",
+      "title": "Function to filter genesets by locus definition and size",
+      "topics": [
+        "filter_genesets"
+      ]
+    },
+    {
+      "page": "genome_to_organism",
+      "title": "Get the correct organism code based on genome",
+      "topics": [
+        "genome_to_organism"
+      ]
+    },
+    {
+      "page": "genome_to_orgdb",
+      "title": "Get Entrez ID to gene symbol mappings for custom locus definitions",
+      "topics": [
+        "genome_to_orgdb"
+      ]
+    },
+    {
+      "page": "get_test_method",
+      "title": "Get the test function name from the method name",
+      "topics": [
+        "get_test_method"
+      ]
+    },
+    {
+      "page": "hybridenrich",
+      "title": "Running Hybrid test, either from scratch or using two results files",
+      "topics": [
+        "hybridenrich"
+      ]
+    },
+    {
+      "page": "load_peaks",
+      "title": "Convert a BEDX+Y data.frame and into GRanges",
+      "topics": [
+        "load_peaks"
+      ]
+    },
+    {
+      "page": "num_peaks_per_gene",
+      "title": "Aggregate peak assignments over the 'gene_id' column",
+      "topics": [
+        "num_peaks_per_gene"
+      ]
+    },
+    {
+      "page": "peaks2genes",
+      "title": "Run the test process up to, but not including the enrichment tests.",
+      "topics": [
+        "peaks2genes"
+      ]
+    },
+    {
+      "page": "plot_chipenrich_spline",
+      "title": "QC plot for ChIP-Enrich",
+      "topics": [
+        "plot_chipenrich_spline"
+      ]
+    },
+    {
+      "page": "plot_dist_to_tss",
+      "title": "Plot histogram of distance from peak to nearest TSS",
+      "topics": [
+        "plot_dist_to_tss"
+      ]
+    },
+    {
+      "page": "plot_gene_coverage",
+      "title": "QC plot for Broad-Enrich",
+      "topics": [
+        "plot_gene_coverage"
+      ]
+    },
+    {
+      "page": "plot_polyenrich_spline",
+      "title": "QC plot for Poly-Enrich",
+      "topics": [
+        "plot_polyenrich_spline"
+      ]
+    },
+    {
+      "page": "polyenrich",
+      "title": "Run Poly-Enrich on narrow genomic regions",
+      "topics": [
+        "polyenrich"
+      ]
+    },
+    {
+      "page": "post_process_enrichments",
+      "title": "Post process the 'data.frame' of enrichment results",
+      "topics": [
+        "post_process_enrichments"
+      ]
+    },
+    {
+      "page": "postprocess_peak_grs",
+      "title": "A helper function to post-process peak GRanges",
+      "topics": [
+        "postprocess_peak_grs"
+      ]
+    },
+    {
+      "page": "proxReg",
+      "title": "Run Proximity Regulation test on a set of narrow genomic regions",
+      "topics": [
+        "proxReg"
+      ]
+    },
+    {
+      "page": "read_bed",
+      "title": "Read files containing peaks or genomic regions",
+      "topics": [
+        "read_bed"
+      ]
+    },
+    {
+      "page": "read_geneset",
+      "title": "Function to read custom gene sets from file",
+      "topics": [
+        "read_geneset"
+      ]
+    },
+    {
+      "page": "read_ldef",
+      "title": "Function to read custom locus definition from file",
+      "topics": [
+        "read_ldef"
+      ]
+    },
+    {
+      "page": "read_mappa",
+      "title": "Function to read custom mappability files",
+      "topics": [
+        "read_mappa"
+      ]
+    },
+    {
+      "page": "recode_peaks",
+      "title": "Recode a vector of number of peaks to binary based on threshold",
+      "topics": [
+        "recode_peaks"
+      ]
+    },
+    {
+      "page": "reset_ncores_for_windows",
+      "title": "Reset n_cores for Windows",
+      "topics": [
+        "reset_ncores_for_windows"
+      ]
+    },
+    {
+      "page": "setup_genesets",
+      "title": "Function to setup genesets",
+      "topics": [
+        "setup_genesets"
+      ]
+    },
+    {
+      "page": "setup_locusdef",
+      "title": "Function to setup locus definitions",
+      "topics": [
+        "setup_locusdef"
+      ]
+    },
+    {
+      "page": "setup_mappa",
+      "title": "Function to setup mappability",
+      "topics": [
+        "setup_mappa"
+      ]
+    },
+    {
+      "page": "supported_genesets",
+      "title": "Display supported genesets for gene set enrichment.",
+      "topics": [
+        "supported_genesets"
+      ]
+    },
+    {
+      "page": "supported_genomes",
+      "title": "Display supported genomes.",
+      "topics": [
+        "supported_genomes"
+      ]
+    },
+    {
+      "page": "supported_locusdefs",
+      "title": "Display supported locus definitions",
+      "topics": [
+        "supported_locusdefs"
+      ]
+    },
+    {
+      "page": "supported_methods",
+      "title": "Display supported gene set enrichment methods.",
+      "topics": [
+        "supported_methods"
+      ]
+    },
+    {
+      "page": "supported_read_lengths",
+      "title": "Display supported read lengths for mappability",
+      "topics": [
+        "supported_read_lengths"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/chipenrich/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "chipenrich.data",
+    "cigarillo",
+    "cli",
+    "clipr",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "deldir",
+    "digest",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "latticeExtra",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mime",
+    "multcomp",
+    "mvtnorm",
+    "nlme",
+    "nnet",
+    "openssl",
+    "org.Dm.eg.db",
+    "org.Dr.eg.db",
+    "org.Hs.eg.db",
+    "org.Mm.eg.db",
+    "org.Rn.eg.db",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "polspline",
+    "prettyunits",
+    "progress",
+    "quantreg",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RCurl",
+    "readr",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rms",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sandwich",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "TH.data",
+    "tibble",
+    "tidyselect",
+    "tinytex",
+    "tzdb",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xfun",
+    "XML",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "chipenrich-vignette.Rmd",
+      "filename": "chipenrich-vignette.html",
+      "title": "chipenrich: Gene Set Enrichment For ChIP-seq Peak Data",
+      "author": "Ryan P. Welch, Chee Lee, Raymond G. Cavalcante, Chris Lee, Kai Wang, Laura J. Scott, Maureen A. Sartor",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Concepts and Usage",
+        "Peaks",
+        "Genomes",
+        "Locus Definitions",
+        "Built-in locus definitions",
+        "Custom locus definitions",
+        "Selecting a locus definition",
+        "Gene Sets",
+        "Built-in gene sets",
+        "Custom gene sets",
+        "Mappability",
+        "Built-in mappability",
+        "Custom mappability",
+        "Testing for enrichment",
+        "broadenrich()",
+        "chipenrich()",
+        "polyenrich()",
+        "hybridenrich()",
+        "proxReg()",
+        "QC Plots",
+        "Peak distance to TSS distribution",
+        "Presence of peak versus locus length",
+        "Number of peaks versus locus length",
+        "Gene coverage versus locus length",
+        "Output",
+        "Assigned peaks",
+        "Peaks-per-gene",
+        "Gene set enrichment results",
+        "Assessing Type I Error with Randomizations",
+        "References"
+      ],
+      "created": "2016-08-26 15:18:54",
+      "modified": "2021-06-03 19:46:52",
+      "commits": 39
+    }
+  ],
+  "_score": 5.1205739312058505,
+  "_indexed": false,
+  "_nocasepkg": "chipenrich",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/chipenrich",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:06:44.000Z",
+      "distro": "noble",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "0ee2e5fb7bd8dc40bb86efb965146a32d72907c296c4e60707bbedb9597200b7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:07:09.000Z",
+      "distro": "noble",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "750dc05197caf1643d71ebb050f1289c92a8f1dfbaac2a0bbb2f1b9780487338",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:04:31.000Z",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "41440bfb20ea94f12a8ac0f58a710753821ae5422e34232e9e2b463914688c97",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:06:06.000Z",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "18c1a4039ed7937a5c940c3f0a2adb56bc5eeb355c569d37a08f840d7b947113",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:06:28.000Z",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "f1143e2fbd33fcc3b041f1ac598860752e05ed1b2e33dc35df801e990690592c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:03:36.000Z",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "b98cbaf4a8a923f6979b99846eb5527315889bbbd48ea4efc928d0faa2289800",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:04:50.000Z",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "ee32c2801ba19f0e8d180b529d378ffb42dafea1521f3545a64348dfa8ac9ebc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "2.34.0",
+      "date": "2026-02-20T06:03:50.000Z",
+      "commit": "a6107872a4401891cf11afb53e37f6b9df171bbf",
+      "fileid": "fa2d186ae21a3676818d0e9428059ec0d65f79352644a3f91872f895636e7ca1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22213089729"
+    }
+  ]
+}

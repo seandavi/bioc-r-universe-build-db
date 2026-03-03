@@ -1,0 +1,969 @@
+{
+  "Package": "CIMICE",
+  "Type": "Package",
+  "Title": "CIMICE-R: (Markov) Chain Method to Inferr Cancer Evolution",
+  "Version": "1.18.0",
+  "Authors@R": "c(\nperson(\"Nicol\u00f2\", \"Rossi\",\nrole=c(\"aut\", \"cre\"), email=\"olocin.issor@gmail.com\",\ncomment = c(\"Lab. of Computational Biology and Bioinformatics, Department of Mathematics, Computer Science and Physics, University of Udine\",ORCID = \"0000-0002-6353-7396\"))\n)",
+  "Description": "CIMICE is a tool in the field of tumor phylogenetics and\nits goal is to build a Markov Chain (called Cancer Progression\nMarkov Chain, CPMC) in order to model tumor subtypes evolution.\nThe input of CIMICE is a Mutational Matrix, so a boolean matrix\nrepresenting altered genes in a collection of samples. These\nsamples are assumed to be obtained with single-cell DNA\nanalysis techniques and the tool is specifically written to use\nthe peculiarities of this data for the CMPC construction.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.1.2",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, BiologicalQuestion, NetworkInference,\nResearchField, Phylogenetics, StatisticalMethod,\nGraphAndNetwork, Technology, SingleCell",
+  "BugReports": "https://github.com/redsnic/CIMICE/issues",
+  "URL": "https://github.com/redsnic/CIMICE",
+  "BiocType": "Software",
+  "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev libglpk-dev\nmake libbz2-dev libicu-dev liblzma-dev libxml2-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:07:23 UTC",
+  "RemoteUrl": "https://github.com/bioc/CIMICE",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-24 08:09:46 UTC",
+    "User": "root"
+  },
+  "Author": "Nicol\u00f2 Rossi [aut, cre] (Lab. of Computational Biology and\nBioinformatics, Department of Mathematics, Computer Science and\nPhysics, University of Udine, ORCID:\n<https://orcid.org/0000-0002-6353-7396>)",
+  "Maintainer": "Nicol\u00f2 Rossi <olocin.issor@gmail.com>",
+  "MD5sum": "da7752f75c9625a1f4661601ee27c61f",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "CIMICE_1.18.0.tar.gz",
+  "_fileid": "73bbd1fc95dc4ebe3cbbfa7917ab306134b8a4120ae39f42ffd3d6cc1f1a05d4",
+  "_filesize": 1201406,
+  "_sha256": "73bbd1fc95dc4ebe3cbbfa7917ab306134b8a4120ae39f42ffd3d6cc1f1a05d4",
+  "_created": "2026-02-24T08:09:46.000Z",
+  "_published": "2026-02-24T08:14:37.923Z",
+  "_jobs": [
+    {
+      "job": 64647589107,
+      "time": 171,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5631114578"
+    },
+    {
+      "job": 64647589153,
+      "time": 234,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5631126623"
+    },
+    {
+      "job": 64647589117,
+      "time": 255,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5631130156"
+    },
+    {
+      "job": 64647589139,
+      "time": 123,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5631105474"
+    },
+    {
+      "job": 64647589126,
+      "time": 121,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5631105272"
+    },
+    {
+      "job": 64647284448,
+      "time": 194,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5631083152"
+    },
+    {
+      "job": 64647589104,
+      "time": 149,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5631110351"
+    },
+    {
+      "job": 64647589142,
+      "time": 150,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5631110881"
+    },
+    {
+      "job": 64647589135,
+      "time": 128,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5631106487"
+    },
+    {
+      "job": 64647589137,
+      "time": 131,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5631107046"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 7
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/CIMICE",
+  "_commit": {
+    "id": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761750443
+  },
+  "_maintainer": {
+    "name": "Nicol\u00f2 Rossi",
+    "email": "olocin.issor@gmail.com",
+    "orcid": "0000-0002-6353-7396"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "glue",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "networkD3",
+      "role": "Imports"
+    },
+    {
+      "package": "visNetwork",
+      "role": "Imports"
+    },
+    {
+      "package": "ggcorrplot",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggraph",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "maftools",
+      "role": "Imports"
+    },
+    {
+      "package": "assertthat",
+      "role": "Imports"
+    },
+    {
+      "package": "tidygraph",
+      "role": "Imports"
+    },
+    {
+      "package": "expm",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "webshot",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.19.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.18.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "biologicalquestion",
+    "networkinference",
+    "researchfield",
+    "phylogenetics",
+    "statisticalmethod",
+    "graphandnetwork",
+    "technology",
+    "singlecell"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "redsnic",
+      "count": 3179,
+      "uuid": 5359908
+    },
+    {
+      "user": "nturaga",
+      "count": 118,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 267,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/CIMICE"
+  },
+  "_devurl": "https://github.com/redsnic/cimice",
+  "_searchresults": 5,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/CIMICE.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/redsnic/cimice",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotate_mutational_matrix",
+    "binary_radix_sort",
+    "build_subset_graph",
+    "build_topology_subset",
+    "chunk_reader",
+    "compact_dataset",
+    "compute_weights_default",
+    "computeDWNW",
+    "computeUPW",
+    "corrplot_from_mutational_matrix",
+    "corrplot_genes",
+    "corrplot_samples",
+    "dataset_preprocessing",
+    "dataset_preprocessing_population",
+    "draw_ggraph",
+    "draw_networkD3",
+    "draw_visNetwork",
+    "example_dataset",
+    "example_dataset_withFreqs",
+    "finalize_generator",
+    "fix_clonal_genotype",
+    "format_labels",
+    "gene_mutations_hist",
+    "get_no_of_children",
+    "graph_non_transitive_subset_topology",
+    "make_dataset",
+    "make_generator_stub",
+    "make_labels",
+    "normalizeDWNW",
+    "normalizeUPW",
+    "perturb_dataset",
+    "plot_generator",
+    "prepare_generator_edge_set_command",
+    "prepare_labels",
+    "quick_run",
+    "read",
+    "read_CAPRI",
+    "read_CAPRI_string",
+    "read_CAPRIpop",
+    "read_CAPRIpop_string",
+    "read_MAF",
+    "read_matrix",
+    "remove_transitive_edges",
+    "sample_mutations_hist",
+    "select_genes_on_mutations",
+    "select_samples_on_mutations",
+    "set_generator_edges",
+    "simulate_generator",
+    "to_dot",
+    "update_df"
+  ],
+  "_help": [
+    {
+      "page": "annotate_mutational_matrix",
+      "title": "Add samples and genes names to a mutational matrix",
+      "topics": [
+        "annotate_mutational_matrix"
+      ]
+    },
+    {
+      "page": "binary_radix_sort",
+      "title": "Radix sort for a binary matrix",
+      "topics": [
+        "binary_radix_sort"
+      ]
+    },
+    {
+      "page": "build_subset_graph",
+      "title": "Remove transitive edges and prepare graph",
+      "topics": [
+        "build_subset_graph"
+      ]
+    },
+    {
+      "page": "build_topology_subset",
+      "title": "Compute subset relation as edge list",
+      "topics": [
+        "build_topology_subset"
+      ]
+    },
+    {
+      "page": "chunk_reader",
+      "title": "Gradually read a file from disk",
+      "topics": [
+        "chunk_reader"
+      ]
+    },
+    {
+      "page": "CIMICE",
+      "title": "CIMICE Package",
+      "topics": [
+        "CIMICE"
+      ]
+    },
+    {
+      "page": "compact_dataset",
+      "title": "Compact dataset rows",
+      "topics": [
+        "compact_dataset"
+      ]
+    },
+    {
+      "page": "compute_weights_default",
+      "title": "Compute default weights",
+      "topics": [
+        "compute_weights_default"
+      ]
+    },
+    {
+      "page": "computeDWNW",
+      "title": "Down weights computation",
+      "topics": [
+        "computeDWNW"
+      ]
+    },
+    {
+      "page": "computeDWNW_aux",
+      "title": "Down weights computation (aux)",
+      "topics": [
+        "computeDWNW_aux"
+      ]
+    },
+    {
+      "page": "computeUPW",
+      "title": "Up weights computation",
+      "topics": [
+        "computeUPW"
+      ]
+    },
+    {
+      "page": "computeUPW_aux",
+      "title": "Up weights computation (aux)",
+      "topics": [
+        "computeUPW_aux"
+      ]
+    },
+    {
+      "page": "corrplot_from_mutational_matrix",
+      "title": "Correlation plot from mutational matrix",
+      "topics": [
+        "corrplot_from_mutational_matrix"
+      ]
+    },
+    {
+      "page": "corrplot_genes",
+      "title": "Gene based correlation plot",
+      "topics": [
+        "corrplot_genes"
+      ]
+    },
+    {
+      "page": "corrplot_samples",
+      "title": "Sample based correlation plot",
+      "topics": [
+        "corrplot_samples"
+      ]
+    },
+    {
+      "page": "dataset_preprocessing",
+      "title": "Run CIMICE preprocessing",
+      "topics": [
+        "dataset_preprocessing"
+      ]
+    },
+    {
+      "page": "dataset_preprocessing_population",
+      "title": "Run CIMICE preprocessing for poulation format dataset",
+      "topics": [
+        "dataset_preprocessing_population"
+      ]
+    },
+    {
+      "page": "draw_ggraph",
+      "title": "ggplot graph output",
+      "topics": [
+        "draw_ggraph"
+      ]
+    },
+    {
+      "page": "draw_networkD3",
+      "title": "NetworkD3 graph output",
+      "topics": [
+        "draw_networkD3"
+      ]
+    },
+    {
+      "page": "draw_visNetwork",
+      "title": "VisNetwork graph output (default)",
+      "topics": [
+        "draw_visNetwork"
+      ]
+    },
+    {
+      "page": "example_dataset",
+      "title": "Creates a simple example dataset",
+      "topics": [
+        "example_dataset"
+      ]
+    },
+    {
+      "page": "example_dataset_withFreqs",
+      "title": "Creates a simple example dataset with frequency column",
+      "topics": [
+        "example_dataset_withFreqs"
+      ]
+    },
+    {
+      "page": "finalize_generator",
+      "title": "Finalize generator normalizing edge weights",
+      "topics": [
+        "finalize_generator"
+      ]
+    },
+    {
+      "page": "fix_clonal_genotype",
+      "title": "Manage Clonal genotype in data",
+      "topics": [
+        "fix_clonal_genotype"
+      ]
+    },
+    {
+      "page": "format_labels",
+      "title": "Format labels for output object",
+      "topics": [
+        "format_labels"
+      ]
+    },
+    {
+      "page": "gene_mutations_hist",
+      "title": "Histogram of genes' frequencies",
+      "topics": [
+        "gene_mutations_hist"
+      ]
+    },
+    {
+      "page": "get_no_of_children",
+      "title": "Get number of children",
+      "topics": [
+        "get_no_of_children"
+      ]
+    },
+    {
+      "page": "graph_non_transitive_subset_topology",
+      "title": "Default preparation of graph topology",
+      "topics": [
+        "graph_non_transitive_subset_topology"
+      ]
+    },
+    {
+      "page": "make_dataset",
+      "title": "Dataset line by line construction: initialization",
+      "topics": [
+        "make_dataset"
+      ]
+    },
+    {
+      "page": "make_generator_stub",
+      "title": "Create a stub for a generator",
+      "topics": [
+        "make_generator_stub"
+      ]
+    },
+    {
+      "page": "make_labels",
+      "title": "Helper function to create labels",
+      "topics": [
+        "make_labels"
+      ]
+    },
+    {
+      "page": "normalizeDWNW",
+      "title": "Down weights normalization",
+      "topics": [
+        "normalizeDWNW"
+      ]
+    },
+    {
+      "page": "normalizeUPW",
+      "title": "Up weights normalization",
+      "topics": [
+        "normalizeUPW"
+      ]
+    },
+    {
+      "page": "perturb_dataset",
+      "title": "Perturbate a boolean matrix",
+      "topics": [
+        "perturb_dataset"
+      ]
+    },
+    {
+      "page": "plot_generator",
+      "title": "Plot a generator",
+      "topics": [
+        "plot_generator"
+      ]
+    },
+    {
+      "page": "prepare_generator_edge_set_command",
+      "title": "Prepare a command to add edge weights to a generator",
+      "topics": [
+        "prepare_generator_edge_set_command"
+      ]
+    },
+    {
+      "page": "prepare_labels",
+      "title": "Prepare node labels based on genotypes",
+      "topics": [
+        "prepare_labels"
+      ]
+    },
+    {
+      "page": "quick_run",
+      "title": "Run CIMICE defaults",
+      "topics": [
+        "quick_run"
+      ]
+    },
+    {
+      "page": "read",
+      "title": "Read a \"CAPRI\" file",
+      "topics": [
+        "read"
+      ]
+    },
+    {
+      "page": "read_CAPRI",
+      "title": "Read a \"CAPRI\" file",
+      "topics": [
+        "read_CAPRI"
+      ]
+    },
+    {
+      "page": "read_CAPRI_string",
+      "title": "Read \"CAPRI\" file from a string",
+      "topics": [
+        "read_CAPRI_string"
+      ]
+    },
+    {
+      "page": "read_CAPRIpop",
+      "title": "Read a \"CAPRIpop\" file",
+      "topics": [
+        "read_CAPRIpop"
+      ]
+    },
+    {
+      "page": "read_CAPRIpop_string",
+      "title": "Read \"CAPRIpop\" file from a string",
+      "topics": [
+        "read_CAPRIpop_string"
+      ]
+    },
+    {
+      "page": "read_MAF",
+      "title": "Create mutational matrix from MAF file",
+      "topics": [
+        "read_MAF"
+      ]
+    },
+    {
+      "page": "read_matrix",
+      "title": "Read dataset from an R matrix",
+      "topics": [
+        "read_matrix"
+      ]
+    },
+    {
+      "page": "remove_transitive_edges",
+      "title": "Remove transitive edges from an edgelist",
+      "topics": [
+        "remove_transitive_edges"
+      ]
+    },
+    {
+      "page": "sample_mutations_hist",
+      "title": "Histogram of samples' frequencies",
+      "topics": [
+        "sample_mutations_hist"
+      ]
+    },
+    {
+      "page": "select_genes_on_mutations",
+      "title": "Filter dataset by genes' mutation count",
+      "topics": [
+        "select_genes_on_mutations"
+      ]
+    },
+    {
+      "page": "select_samples_on_mutations",
+      "title": "Filter dataset by samples' mutation count",
+      "topics": [
+        "select_samples_on_mutations"
+      ]
+    },
+    {
+      "page": "set_generator_edges",
+      "title": "Add edge weights to a generator",
+      "topics": [
+        "set_generator_edges"
+      ]
+    },
+    {
+      "page": "simulate_generator",
+      "title": "Create datasets from generators",
+      "topics": [
+        "simulate_generator"
+      ]
+    },
+    {
+      "page": "to_dot",
+      "title": "Dot graph output",
+      "topics": [
+        "to_dot"
+      ]
+    },
+    {
+      "page": "update_df",
+      "title": "Dataset line by line construction: add a sample",
+      "topics": [
+        "update_df"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/CIMICE/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "assertthat",
+    "base64enc",
+    "bslib",
+    "cachem",
+    "cli",
+    "cpp11",
+    "data.table",
+    "data.tree",
+    "digest",
+    "DNAcopy",
+    "dplyr",
+    "evaluate",
+    "expm",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fs",
+    "generics",
+    "ggcorrplot",
+    "ggforce",
+    "ggplot2",
+    "ggraph",
+    "ggrepel",
+    "glue",
+    "graphlayouts",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "igraph",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "maftools",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "memoise",
+    "mime",
+    "networkD3",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "polyclip",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "reshape2",
+    "Rhtslib",
+    "rlang",
+    "rmarkdown",
+    "S7",
+    "sass",
+    "scales",
+    "stringi",
+    "stringr",
+    "survival",
+    "systemfonts",
+    "tibble",
+    "tidygraph",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "tweenr",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "visNetwork",
+    "withr",
+    "xfun",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "CIMICER.Rmd",
+      "filename": "CIMICER.html",
+      "title": "CIMICE-R: (Markov) Chain Method to Infer Cancer Evolution",
+      "author": "Nicol\u00f2 Rossi",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Used libraries",
+        "Input management",
+        "Preliminary check of mutations distributions",
+        "Simple procedures of feature selection",
+        "By genes",
+        "By samples",
+        "Both selections",
+        "Correlation plot",
+        "Group equal genotypes",
+        "Graph topology construction",
+        "Graph weight computation",
+        "\"UP\" weights",
+        "\"UP\" weights normalization",
+        "\"DOWN\" Weights",
+        "\"DOWN\" weights normalization",
+        "Output presentation",
+        "Session information"
+      ],
+      "created": "2021-08-03 21:19:14",
+      "modified": "2022-03-12 13:42:49",
+      "commits": 3
+    },
+    {
+      "source": "CIMICE_SHORT.Rmd",
+      "filename": "CIMICE_SHORT.html",
+      "title": "Quick guide",
+      "author": "Nicol\u00f2 Rossi",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Reference for quick CIMICE analysis",
+        "Read input",
+        "Preprocess dataset",
+        "Build topology",
+        "Compute Weights",
+        "Visualize output:"
+      ],
+      "created": "2020-11-24 10:54:58",
+      "modified": "2021-07-07 12:04:25",
+      "commits": 4
+    }
+  ],
+  "_score": 4.301029995663981,
+  "_indexed": false,
+  "_nocasepkg": "cimice",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/CIMICE",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:13:09.000Z",
+      "distro": "noble",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "e0be321c44c5cf49509b80861abf954a853501ac68133655f0befc531592552b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:13:28.000Z",
+      "distro": "noble",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "1504aeb9e824851b5627631dbe42808af3d7f4c53327b952cbb69b32eaa569f0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:11:26.000Z",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "a46ac77d9dfc09de8d93550828e357db9df8375dd73e1754ca62e0f56cbe60b0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:11:25.000Z",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "fb97fb6691e0b4e841df7be79b8e0f434b505a1f8c4316012098a3a421bf936d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:12:33.000Z",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "248c61ecc54df2481692dfc87b6f6bf32d0388c51e77871b638cc2c859c5bd94",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:11:36.000Z",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "d962a8c7631737fdd9ce503a5a6cfd04d318bc2861c9a0584b2ad7786cb779e2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:11:15.000Z",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "d097cc6b9fd93de35150cf3619a3c5000e8bccb586ed11e487be824c31b2376a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.18.0",
+      "date": "2026-02-24T08:11:14.000Z",
+      "commit": "4b7030e4b65125a03f8c248a706cd4afbcccdce9",
+      "fileid": "4e861265549e2043827261ef8087001cfcf4a4a4a4de3ed8ef0da124408004b6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22342017562"
+    }
+  ]
+}

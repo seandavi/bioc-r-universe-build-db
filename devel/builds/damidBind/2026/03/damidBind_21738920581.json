@@ -1,0 +1,1001 @@
+{
+  "Package": "damidBind",
+  "Type": "Package",
+  "Title": "Differential Binding and Expression Analysis for DamID-seq Data",
+  "Version": "0.99.12",
+  "Authors@R": "person(\"Owen\", \"Marshall\",\nemail = \"owen.marshall@utas.edu.au\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0003-1605-3871\"))",
+  "Description": "The damidBind package provides a straightforward formal\nanalysis pipeline to analyse and explore differential DamID\nbinding, gene transcription or chromatin accessibility between\ntwo conditions. The package imports processed data from\nDamID-seq experiments, either as external raw files in the form\nof binding bedGraphs and GFF/BED peak calls, or as internal\nlists of GRanges objects. After optionally normalising data,\ncombining peaks across replicates and determining per-replicate\npeak occupancy, the package links bound loci to nearby genes.\nFor RNA Polymerase DamID data, the package calculates occupancy\nover genes, and optionally calcualates the FDR of\nsignificantly-enriched gene occupancy. damidBind then uses\neither limma (for conventional log2 ratio DamID binding data)\nor NOIseq (for counts-based CATaDa chromatin accessibility\ndata) to identify differentially-enriched regions, or\ndifferentially epxressed genes, between two conditions. The\npackage provides a number of visualisation tools (volcano\nplots, Gene Ontology enrichment plots via ClusterProfiler and\nproportional Venn diagrams via BioVenn for downstream data\nexploration and analysis. An powerful, interactive IGV genome\nbrowser interface (powered by Shiny and igvShiny) allows users\nto rapidly and intuitively assess significant\ndifferentially-bound regions in their genomic context.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "biocViews": "DifferentialExpression, GeneExpression, Transcription,\nEpigenetics, Visualization, Sequencing, Software,\nGeneRegulation",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "URL": "https://marshall-lab.org/damidBind",
+  "BugReports": "https://github.com/marshall-lab/damidBind/issues",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev libglpk-dev make libharfbuzz-dev libbz2-dev\nlibicu-dev liblzma-dev libpng-dev libxml2-dev libssl-dev perl\nlibnode-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-01-06 05:50:07 UTC",
+  "RemoteUrl": "https://github.com/bioc/damidBind",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "b185a6daadab3a37508ee2f8a173b529a6227871",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-06 04:46:15 UTC",
+    "User": "root"
+  },
+  "Author": "Owen Marshall [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-1605-3871>)",
+  "Maintainer": "Owen Marshall <owen.marshall@utas.edu.au>",
+  "MD5sum": "27d8d3f6c814e475a14ce2b2aa8713c1",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "damidBind_0.99.12.tar.gz",
+  "_fileid": "08a34cf1e115224e77fe0900695007a111424c112fb3a1beea636b06f0a79ecc",
+  "_filesize": 6016777,
+  "_sha256": "08a34cf1e115224e77fe0900695007a111424c112fb3a1beea636b06f0a79ecc",
+  "_created": "2026-02-06T04:46:15.000Z",
+  "_published": "2026-02-07T03:51:31.988Z",
+  "_jobs": [
+    {
+      "job": 62825730070,
+      "time": 275,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5401330617"
+    },
+    {
+      "job": 62825729980,
+      "time": 640,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5401371576"
+    },
+    {
+      "job": 62825730091,
+      "time": 631,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5401370349"
+    },
+    {
+      "job": 62825729973,
+      "time": 339,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5401338223"
+    },
+    {
+      "job": 62825730014,
+      "time": 491,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5401354812"
+    },
+    {
+      "job": 62825729971,
+      "time": 459,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5401297104"
+    },
+    {
+      "job": 62825729974,
+      "time": 246,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5401327311"
+    },
+    {
+      "job": 62825730035,
+      "time": 668,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5401374709"
+    },
+    {
+      "job": 62825729979,
+      "time": 681,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5401376285"
+    },
+    {
+      "job": 62825729917,
+      "time": 635,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5415023595"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/damidBind",
+  "_commit": {
+    "id": "b185a6daadab3a37508ee2f8a173b529a6227871",
+    "author": "Owen Marshall <owen.marshall@utas.edu.au>",
+    "committer": "Owen Marshall <owen.marshall@utas.edu.au>",
+    "message": "Improved example code\n",
+    "time": 1767678607
+  },
+  "_maintainer": {
+    "name": "Owen Marshall",
+    "email": "owen.marshall@utas.edu.au",
+    "login": "marshall-lab",
+    "uuid": 85987664,
+    "orcid": "0000-0003-1605-3871"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "NOISeq",
+      "role": "Imports"
+    },
+    {
+      "package": "BioVenn",
+      "role": "Imports"
+    },
+    {
+      "package": "clusterProfiler",
+      "role": "Imports"
+    },
+    {
+      "package": "enrichplot",
+      "role": "Imports"
+    },
+    {
+      "package": "forcats",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "colorspace",
+      "role": "Imports"
+    },
+    {
+      "package": "ggnewscale",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "igvShiny",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "DT",
+      "role": "Imports"
+    },
+    {
+      "package": "dbscan",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "splines",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "curl",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "htmltools",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "bookdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Dm.eg.db",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-30",
+      "n": 18
+    },
+    {
+      "week": "2025-31",
+      "n": 11
+    },
+    {
+      "week": "2025-35",
+      "n": 1
+    },
+    {
+      "week": "2025-40",
+      "n": 7
+    },
+    {
+      "week": "2025-41",
+      "n": 15
+    },
+    {
+      "week": "2025-42",
+      "n": 6
+    },
+    {
+      "week": "2025-43",
+      "n": 17
+    },
+    {
+      "week": "2025-45",
+      "n": 8
+    },
+    {
+      "week": "2025-46",
+      "n": 20
+    },
+    {
+      "week": "2025-48",
+      "n": 24
+    },
+    {
+      "week": "2025-49",
+      "n": 4
+    },
+    {
+      "week": "2025-50",
+      "n": 22
+    },
+    {
+      "week": "2026-01",
+      "n": 1
+    },
+    {
+      "week": "2026-02",
+      "n": 19
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.12",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "differentialexpression",
+    "geneexpression",
+    "transcription",
+    "epigenetics",
+    "visualization",
+    "sequencing",
+    "software",
+    "generegulation",
+    "catada",
+    "damid",
+    "differential-binding",
+    "differential-expression-analysis",
+    "gene-expression",
+    "targeted-damid",
+    "transcription-factors"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "marshall-lab",
+      "count": 173,
+      "uuid": 85987664
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 80,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/damidBind"
+  },
+  "_devurl": "https://github.com/marshall-lab/damidbind",
+  "_pkgdown": "https://marshall-lab.org/damidBind",
+  "_searchresults": 16,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/damidBind.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/marshall-lab/damidbind",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "analyse_go_enrichment",
+    "analysisTable",
+    "analyze_go_enrichment",
+    "browse_igv_regions",
+    "calculate_and_add_occupancy_pvals",
+    "calculate_occupancy",
+    "conditionNames",
+    "differential_accessibility",
+    "differential_binding",
+    "enrichedCond1",
+    "enrichedCond2",
+    "expressed",
+    "extract_unique_sample_ids",
+    "filter_genes_by_fdr",
+    "get_ensdb_genes",
+    "inputData",
+    "load_data_genes",
+    "load_data_peaks",
+    "plot_input_diagnostics",
+    "plot_limma_diagnostics",
+    "plot_venn",
+    "plot_volcano",
+    "quantile_normalisation",
+    "quantile_normalization",
+    "reduce_regions",
+    "sample_labels_by_isolation"
+  ],
+  "_help": [
+    {
+      "page": "analyse_go_enrichment",
+      "title": "Perform Gene Ontology (GO) enrichment analysis for differentially bound/expressed regions",
+      "topics": [
+        "analyse_go_enrichment",
+        "analyze_go_enrichment"
+      ]
+    },
+    {
+      "page": "analysisTable",
+      "title": "Access the differential binding analysis results",
+      "topics": [
+        "analysisTable",
+        "analysisTable,DamIDResults-method"
+      ]
+    },
+    {
+      "page": "browse_igv_regions",
+      "title": "Interactive IGV visualisation (Shiny + igvShiny) of differential regions",
+      "topics": [
+        "browse_igv_regions"
+      ]
+    },
+    {
+      "page": "calculate_and_add_occupancy_pvals",
+      "title": "Calculate and add gene occupancy FDR",
+      "topics": [
+        "calculate_and_add_occupancy_pvals"
+      ]
+    },
+    {
+      "page": "calculate_occupancy",
+      "title": "Compute occupancy for genomic regions",
+      "topics": [
+        "calculate_occupancy"
+      ]
+    },
+    {
+      "page": "conditionNames",
+      "title": "Access condition name mapping",
+      "topics": [
+        "conditionNames",
+        "conditionNames,DamIDResults-method"
+      ]
+    },
+    {
+      "page": "DamIDResults-class",
+      "title": "The DamIDResults Class",
+      "topics": [
+        "DamIDResults",
+        "DamIDResults-class"
+      ]
+    },
+    {
+      "page": "differential_accessibility",
+      "title": "Differential accessibility analysis for CATaDa (`NOISeq` based)",
+      "topics": [
+        "differential_accessibility"
+      ]
+    },
+    {
+      "page": "differential_binding",
+      "title": "Differential binding/expression analysis (`limma`)",
+      "topics": [
+        "differential_binding"
+      ]
+    },
+    {
+      "page": "enrichedCond1",
+      "title": "Access Condition 1 enriched regions",
+      "topics": [
+        "enrichedCond1",
+        "enrichedCond1,DamIDResults-method"
+      ]
+    },
+    {
+      "page": "enrichedCond2",
+      "title": "Access Condition 2 enriched regions",
+      "topics": [
+        "enrichedCond2",
+        "enrichedCond2,DamIDResults-method"
+      ]
+    },
+    {
+      "page": "expressed",
+      "title": "Get expressed genes/loci by FDR",
+      "topics": [
+        "expressed",
+        "expressed,DamIDResults-method"
+      ]
+    },
+    {
+      "page": "extract_unique_sample_ids",
+      "title": "Extract unique sample names from complex labels",
+      "topics": [
+        "extract_unique_sample_ids"
+      ]
+    },
+    {
+      "page": "filter_genes_by_fdr",
+      "title": "Filter genes by FDR within a specific condition",
+      "topics": [
+        "filter_genes_by_fdr"
+      ]
+    },
+    {
+      "page": "get_ensdb_genes",
+      "title": "Extract gene annotation from Ensembl via AnnotationHub EnsDb",
+      "topics": [
+        "get_ensdb_genes"
+      ]
+    },
+    {
+      "page": "inputData",
+      "title": "Access original input data and metadata",
+      "topics": [
+        "inputData",
+        "inputData,DamIDResults-method"
+      ]
+    },
+    {
+      "page": "load_data_genes",
+      "title": "Load genome-wide binding data for gene expression (RNA polymerase occupancy)",
+      "topics": [
+        "load_data_genes"
+      ]
+    },
+    {
+      "page": "load_data_peaks",
+      "title": "Load genome-wide binding data and associated peak files or GRanges objects",
+      "topics": [
+        "load_data_peaks"
+      ]
+    },
+    {
+      "page": "plot_input_diagnostics",
+      "title": "Display diagnostic plots for input data",
+      "topics": [
+        "plot_input_diagnostics"
+      ]
+    },
+    {
+      "page": "plot_limma_diagnostics",
+      "title": "Verify Underlying Assumptions for `limma` Analysis",
+      "topics": [
+        "plot_limma_diagnostics"
+      ]
+    },
+    {
+      "page": "plot_venn",
+      "title": "Draw proportional Venn diagrams for differential binding analysis",
+      "topics": [
+        "plot_venn"
+      ]
+    },
+    {
+      "page": "plot_volcano",
+      "title": "Volcano plot of differentially bound/expressed loci",
+      "topics": [
+        "plot_volcano"
+      ]
+    },
+    {
+      "page": "quantile_normalisation",
+      "title": "Quantile normalisation (native R code version)",
+      "topics": [
+        "quantile_normalisation",
+        "quantile_normalization"
+      ]
+    },
+    {
+      "page": "reduce_regions",
+      "title": "Reduce a list of GRanges to unique, non-overlapping regions",
+      "topics": [
+        "reduce_regions"
+      ]
+    },
+    {
+      "page": "sample_labels_by_isolation",
+      "title": "Sample data points based on local isolation",
+      "topics": [
+        "sample_labels_by_isolation"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/damidBind/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "AnnotationHub",
+    "ape",
+    "aplot",
+    "askpass",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocVersion",
+    "biomaRt",
+    "Biostrings",
+    "BioVenn",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "clusterProfiler",
+    "codetools",
+    "colorspace",
+    "commonmark",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "dbscan",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "DOSE",
+    "dplyr",
+    "DT",
+    "enrichit",
+    "enrichplot",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "forcats",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdtools",
+    "generics",
+    "GenomeInfoDb",
+    "GenomeInfoDbData",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggrepel",
+    "ggtangle",
+    "ggtree",
+    "GlobalOptions",
+    "glue",
+    "GO.db",
+    "GOSemSim",
+    "gridGraphics",
+    "gson",
+    "gtable",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "igraph",
+    "igvShiny",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nlme",
+    "NOISeq",
+    "openssl",
+    "otel",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plogr",
+    "plotrix",
+    "plyr",
+    "png",
+    "polyclip",
+    "prettyunits",
+    "progress",
+    "promises",
+    "ProtGenerics",
+    "purrr",
+    "qvalue",
+    "R6",
+    "randomcoloR",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "reshape2",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scatterpie",
+    "Seqinfo",
+    "shape",
+    "shiny",
+    "snow",
+    "sourcetools",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "svglite",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "tibble",
+    "tidydr",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tinytex",
+    "treeio",
+    "tweenr",
+    "UCSC.utils",
+    "utf8",
+    "V8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "damidBind_vignette.Rmd",
+      "filename": "damidBind_vignette.html",
+      "title": "damidBind",
+      "author": "Owen J. Marshall",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Quick start guide",
+        "Sample data examples",
+        "Sample input data (provided within the package)",
+        "Sample input data (provided online through a Zenodo repository)",
+        "Data preparation",
+        "Input data format",
+        "Input data generation",
+        "bedGraph binding / accessibility profiles",
+        "Peak GFF files",
+        "Using damidBind",
+        "Loading data",
+        "Loading data from GRanges objects",
+        "Gene locus assignment to peaks",
+        "Analysing differential binding",
+        "Analysing differential expression",
+        "Visualising data",
+        "Venn diagrams of differentially bound loci",
+        "Volcano plots",
+        "The default volcano plot",
+        "Cleaning up the gene names",
+        "Highlighting gene groups",
+        "Browsing differentially-bound regions",
+        "Gene Ontology (GO) enrichment plots",
+        "Accessor methods and further analysis",
+        "References",
+        "Session info"
+      ],
+      "created": "2025-07-24 23:38:15",
+      "modified": "2026-01-05 13:10:30",
+      "commits": 19
+    }
+  ],
+  "_score": 5.049218022670182,
+  "_indexed": true,
+  "_nocasepkg": "damidbind",
+  "_universes": [
+    "bioc",
+    "marshall-lab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "0.99.12",
+      "date": "2026-02-06T04:51:50.000Z",
+      "distro": "noble",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "853b62430a2fcc8635ecc54f1f44a40d930907fe77291b128276fb3dba31f619",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "0.99.12",
+      "date": "2026-02-06T04:51:57.000Z",
+      "distro": "noble",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "3d5a62d3ebffd0efa3739761b16f6172bd8bbcaa9fc5b8bb69582cec988ed120",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "0.99.12",
+      "date": "2026-02-06T04:48:50.000Z",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "1d0dc8b8c97762d6b5b8bb07da4b80b370cc9142c6d5ff94cf7dee4834868054",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "0.99.12",
+      "date": "2026-02-06T04:49:08.000Z",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "3ab31db5695c8896a0f2560b59587f3a43a561ddd9e8acb62b6ba127744d6efb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "0.99.12",
+      "date": "2026-02-06T04:51:10.000Z",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "29d7ec471bb01629a8d2292b917905ffff67d2b526d710bb1a764babddf2b0fd",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-02-06T04:49:01.000Z",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "b749747868ecf653da45bf3d8e8371bbec271fd9e4f7417c4267c467eeaa8a1e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-02-06T04:49:12.000Z",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "44a734dfdf28da2ed0a50dcce299f65ebfaf3309831826615232a40da75fb2cc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-02-07T03:42:04.000Z",
+      "commit": "b185a6daadab3a37508ee2f8a173b529a6227871",
+      "fileid": "801d0c823ba6d94c2cdcf693419092795743e510c7ba720a27ac24f0ea5bf48a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21738920581"
+    }
+  ]
+}

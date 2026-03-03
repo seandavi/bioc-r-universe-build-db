@@ -1,0 +1,728 @@
+{
+  "Package": "GenomeInfoDb",
+  "Title": "Utilities for manipulating chromosome names, including modifying\nthem to follow a particular naming style",
+  "Description": "Contains data and functions that define and allow\ntranslation between different chromosome sequence naming\nconventions (e.g., \"chr1\" versus \"1\"), including a function\nthat attempts to place sequence names in their natural, rather\nthan lexicographic, order.",
+  "biocViews": "Genetics, DataRepresentation, Annotation, GenomeAnnotation",
+  "URL": "https://bioconductor.org/packages/GenomeInfoDb",
+  "Video": "http://youtu.be/wdEjCYSXa7w",
+  "BugReports": "https://github.com/Bioconductor/GenomeInfoDb/issues",
+  "Version": "1.47.2",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(\nperson(\"Sonali\", \"Arora\", role=\"aut\"),\nperson(\"Martin\", \"Morgan\", role=\"aut\"),\nperson(\"Marc\", \"Carlson\", role=\"aut\"),\nperson(\"Herv\u00e9\", \"Pag\u00e8s\", role=c(\"aut\", \"cre\"),\nemail=\"hpages.on.github@gmail.com\"),\nperson(\"Prisca Chidimma\", \"Maduka\", role=\"ctb\"),\nperson(\"Atuhurira Kirabo\", \"Kakopo\", role=\"ctb\"),\nperson(\"Haleema\", \"Khan\", role=\"ctb\",\ncomment=\"vignette translation from Sweave to Rmarkdown / HTML\"),\nperson(\"Emmanuel Chigozie\", \"Elendu\", role=\"ctb\"))",
+  "VignetteBuilder": "knitr",
+  "Collate": "utils.R fetch_table_dump_from_Ensembl_FTP.R list_ftp_dir.R\nNCBI-utils.R UCSC-utils.R Ensembl-utils.R\ngetChromInfoFromNCBI.R getChromInfoFromUCSC.R\ngetChromInfoFromEnsembl.R loadTaxonomyDb.R mapGenomeBuilds.R\nseqlevelsStyle.R seqlevels-wrappers.R zzz.R",
+  "Config/pak/sysreqs": "libssl-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-12-04 02:04:41 UTC",
+  "RemoteUrl": "https://github.com/bioc/GenomeInfoDb",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-02 08:33:27 UTC",
+    "User": "root"
+  },
+  "Author": "Sonali Arora [aut],\nMartin Morgan [aut],\nMarc Carlson [aut],\nHerv\u00e9 Pag\u00e8s [aut, cre],\nPrisca Chidimma Maduka [ctb],\nAtuhurira Kirabo Kakopo [ctb],\nHaleema Khan [ctb] (vignette translation from Sweave to Rmarkdown /\nHTML),\nEmmanuel Chigozie Elendu [ctb]",
+  "Maintainer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+  "MD5sum": "e14571ffe0f31c254a201f1160cf8d81",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "GenomeInfoDb_1.47.2.tar.gz",
+  "_fileid": "627ed4044faaa305c3751d53a5e5d981e631b41c381069a1f53856c16c5994d9",
+  "_filesize": 3608737,
+  "_sha256": "627ed4044faaa305c3751d53a5e5d981e631b41c381069a1f53856c16c5994d9",
+  "_created": "2026-02-02T08:33:27.000Z",
+  "_published": "2026-02-02T08:46:22.110Z",
+  "_jobs": [
+    {
+      "job": 62183951998,
+      "time": 296,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5340076851"
+    },
+    {
+      "job": 62183952014,
+      "time": 685,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5340145286"
+    },
+    {
+      "job": 62183952058,
+      "time": 679,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340144265"
+    },
+    {
+      "job": 62183952016,
+      "time": 480,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "ERROR",
+      "artifact": "5340111535"
+    },
+    {
+      "job": 62183952025,
+      "time": 654,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5340143647"
+    },
+    {
+      "job": 62183345883,
+      "time": 381,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5340028501"
+    },
+    {
+      "job": 62183952009,
+      "time": 277,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5340073811"
+    },
+    {
+      "job": 62183952006,
+      "time": 725,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5340153154"
+    },
+    {
+      "job": 62183952030,
+      "time": 595,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5340129106"
+    },
+    {
+      "job": 62183952017,
+      "time": 725,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5340153128"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 18
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/GenomeInfoDb",
+  "_commit": {
+    "id": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+    "author": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+    "committer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+    "message": "GenomeInfoDb 1.47.2: Make sure list_ftp_dir() works on an empty FTP dir\n",
+    "time": 1764813881
+  },
+  "_maintainer": {
+    "name": "Herv\u00e9 Pag\u00e8s",
+    "email": "hpages.on.github@gmail.com",
+    "login": "hpages",
+    "linkedin": "in/herv\u00e9-pag\u00e8s-5038527",
+    "uuid": 8810451
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "version": ">= 0.53.2",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.47.6",
+      "role": "Depends"
+    },
+    {
+      "package": "IRanges",
+      "version": ">= 2.41.1",
+      "role": "Depends"
+    },
+    {
+      "package": "Seqinfo",
+      "version": ">= 0.99.2",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "UCSC.utils",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDbData",
+      "role": "Suggests"
+    },
+    {
+      "package": "R.utils",
+      "role": "Suggests"
+    },
+    {
+      "package": "data.table",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Suggests"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Dmelanogaster.UCSC.dm3.ensGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Scerevisiae.UCSC.sacCer2",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Celegans.UCSC.ce2",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.NCBI.GRCh38",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 321,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 3
+    },
+    {
+      "week": "2025-17",
+      "n": 1
+    },
+    {
+      "week": "2025-18",
+      "n": 2
+    },
+    {
+      "week": "2025-22",
+      "n": 3
+    },
+    {
+      "week": "2025-25",
+      "n": 2
+    },
+    {
+      "week": "2025-26",
+      "n": 1
+    },
+    {
+      "week": "2025-27",
+      "n": 1
+    },
+    {
+      "week": "2025-29",
+      "n": 1
+    },
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-34",
+      "n": 1
+    },
+    {
+      "week": "2025-38",
+      "n": 1
+    },
+    {
+      "week": "2025-40",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 3
+    },
+    {
+      "week": "2025-48",
+      "n": 1
+    },
+    {
+      "week": "2025-49",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.47.2",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.46.2",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "genetics",
+    "datarepresentation",
+    "annotation",
+    "genomeannotation",
+    "bioconductor-package",
+    "core-package"
+  ],
+  "_stars": 33,
+  "_contributors": [
+    {
+      "user": "hpages",
+      "count": 273,
+      "uuid": 8810451
+    },
+    {
+      "user": "sonali-bioc",
+      "count": 47,
+      "uuid": 6373953
+    },
+    {
+      "user": "lshep",
+      "count": 25,
+      "uuid": 18724380
+    },
+    {
+      "user": "dtenenba",
+      "count": 16,
+      "uuid": 2286826
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "kakopo",
+      "count": 9,
+      "uuid": 52150109
+    },
+    {
+      "user": "priceless-p",
+      "count": 4,
+      "uuid": 88077456
+    },
+    {
+      "user": "simplecodez",
+      "count": 4,
+      "uuid": 102396467
+    },
+    {
+      "user": "dvantwisk",
+      "count": 3,
+      "uuid": 10927671
+    },
+    {
+      "user": "mtmorgan",
+      "count": 3,
+      "uuid": 118552
+    },
+    {
+      "user": "ivanek",
+      "count": 3,
+      "uuid": 646540
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "hsadia538",
+      "count": 1,
+      "uuid": 24232785
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 118792,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/GenomeInfoDb"
+  },
+  "_mentions": 7,
+  "_devurl": "https://github.com/bioconductor/genomeinfodb",
+  "_searchresults": 2160,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/GenomeInfoDb.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioconductor/genomeinfodb",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "bsgenomeName",
+    "commonName",
+    "DEFAULT_CIRC_SEQS",
+    "dropSeqlevels",
+    "extractSeqlevels",
+    "extractSeqlevelsByGroup",
+    "fetch_assembly_report",
+    "find_NCBI_assembly_ftp_dir",
+    "genome",
+    "genome<-",
+    "genomeBuilds",
+    "GenomeDescription",
+    "genomeStyles",
+    "get_and_fix_chrom_info_from_UCSC",
+    "getChromInfoFromEnsembl",
+    "getChromInfoFromNCBI",
+    "getChromInfoFromUCSC",
+    "isCircular",
+    "isCircular<-",
+    "keepSeqlevels",
+    "keepStandardChromosomes",
+    "list_ftp_dir",
+    "listOrganisms",
+    "loadTaxonomyDb",
+    "mapGenomeBuilds",
+    "mapSeqlevels",
+    "orderSeqlevels",
+    "provider",
+    "providerVersion",
+    "rankSeqlevels",
+    "registered_NCBI_assemblies",
+    "registered_UCSC_genomes",
+    "releaseDate",
+    "renameSeqlevels",
+    "saveChromInfoFromNCBI",
+    "saveChromInfoFromUCSC",
+    "seqinfo",
+    "Seqinfo",
+    "seqinfo<-",
+    "seqlengths",
+    "seqlengths<-",
+    "seqlevels",
+    "seqlevels<-",
+    "seqlevels0",
+    "seqlevelsInGroup",
+    "seqlevelsInUse",
+    "seqlevelsStyle",
+    "seqlevelsStyle<-",
+    "seqnames",
+    "seqnames<-",
+    "sortSeqlevels",
+    "standardChromosomes"
+  ],
+  "_help": [
+    {
+      "page": "getChromInfoFromEnsembl",
+      "title": "Get chromosome information for an Ensembl species",
+      "topics": [
+        "getChromInfoFromEnsembl"
+      ]
+    },
+    {
+      "page": "getChromInfoFromNCBI",
+      "title": "Get chromosome information for an NCBI assembly",
+      "topics": [
+        "getChromInfoFromNCBI",
+        "registered_NCBI_assemblies",
+        "saveChromInfoFromNCBI"
+      ]
+    },
+    {
+      "page": "getChromInfoFromUCSC",
+      "title": "Get chromosome information for a UCSC genome",
+      "topics": [
+        "getChromInfoFromUCSC",
+        "get_and_fix_chrom_info_from_UCSC",
+        "registered_UCSC_genomes",
+        "saveChromInfoFromUCSC"
+      ]
+    },
+    {
+      "page": "loadTaxonomyDb",
+      "title": "Return a data.frame that lists the known taxonomy IDs and their corresponding organisms.",
+      "topics": [
+        "loadTaxonomyDb"
+      ]
+    },
+    {
+      "page": "mapGenomeBuilds",
+      "title": "Mapping between UCSC and Ensembl Genome Builds",
+      "topics": [
+        "genomeBuilds",
+        "listOrganisms",
+        "mapGenomeBuilds"
+      ]
+    },
+    {
+      "page": "NCBI-utils",
+      "title": "Utility functions to access NCBI resources",
+      "topics": [
+        "fetch_assembly_report",
+        "find_NCBI_assembly_ftp_dir",
+        "NCBI-utils"
+      ]
+    },
+    {
+      "page": "seqlevels-wrappers",
+      "title": "Convenience wrappers to the seqlevels() getter and setter",
+      "topics": [
+        "dropSeqlevels",
+        "keepSeqlevels",
+        "keepStandardChromosomes",
+        "renameSeqlevels",
+        "seqlevels-wrappers",
+        "standardChromosomes"
+      ]
+    },
+    {
+      "page": "seqlevelsStyle",
+      "title": "Conveniently rename the seqlevels of an object according to a given style",
+      "topics": [
+        "extractSeqlevels",
+        "extractSeqlevelsByGroup",
+        "genomeStyles",
+        "mapSeqlevels",
+        "seqlevelsInGroup",
+        "seqlevelsStyle",
+        "seqlevelsStyle,ANY-method",
+        "seqlevelsStyle,character-method",
+        "seqlevelsStyle,Seqinfo-method",
+        "seqlevelsStyle<-",
+        "seqlevelsStyle<-,ANY-method",
+        "seqlevelsStyle<-,character-method",
+        "seqlevelsStyle<-,Seqinfo-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/GenomeInfoDb/raw/HEAD/README.md",
+  "_rundeps": [
+    "askpass",
+    "BiocGenerics",
+    "curl",
+    "generics",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "mime",
+    "openssl",
+    "R6",
+    "S4Vectors",
+    "Seqinfo",
+    "sys",
+    "UCSC.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "GenomeInfoDb.Rnw",
+      "filename": "GenomeInfoDb.pdf",
+      "title": "GenomeInfoDb: Introduction to GenomeInfoDb",
+      "engine": "knitr::knitr",
+      "headings": [],
+      "created": "2014-02-14 18:26:59",
+      "modified": "2025-06-20 22:59:02",
+      "commits": 16
+    },
+    {
+      "source": "Accept-organism-for-GenomeInfoDb.Rmd",
+      "filename": "Accept-organism-for-GenomeInfoDb.html",
+      "title": "Submitting your organism to GenomeInfoDb",
+      "author": "Sonali Arora, H. Khan",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Background",
+        "Support for existing organisms",
+        "File format for new organism",
+        "Example File",
+        "Contacting us with your new file"
+      ],
+      "created": "2022-12-13 23:21:33",
+      "modified": "2022-12-13 23:21:33",
+      "commits": 1
+    }
+  ],
+  "_score": 16.106727230742553,
+  "_indexed": true,
+  "_nocasepkg": "genomeinfodb",
+  "_universes": [
+    "bioc",
+    "hpages",
+    "bioconductor"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:38:22.000Z",
+      "distro": "noble",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "fd10bf80a3191eed56868b4fc580fc0514b3aa1f05942eb14dd96d01ddba36e0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:38:28.000Z",
+      "distro": "noble",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "1a6de377e9a164ffdb2f444876a6f949ba06fa43fb7e73d63d07b9f10fae7193",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:36:17.000Z",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "cdcb15d59295b2e5b40cd45883e46737ac51cca9923f2f39d1bde05b86be9c07",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:37:30.000Z",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "416e7b7d018bfe3f72576c430594c6cadb2d5b8affaa23190c4b94139121d69d",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:38:27.000Z",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "58a0720b0e338a5819651d67ce60df071ad9e57413861305088bcbc8b64dbd4a",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:36:27.000Z",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "c09e7a3d84563812dc98aa49982d21d7fdf9a1c3fc87634a037b8c868ee3cce8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:36:25.000Z",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "92903a6a77e0104d4927322213ba8fcdfcc399b9cabcd94aca33f2470ca4990f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.47.2",
+      "date": "2026-02-02T08:36:32.000Z",
+      "commit": "becc410181aabbef4cfff8bb138ccd7003b35f65",
+      "fileid": "d246108d5e4d764988eb977a929330676258ec3e4ddeac2d72a4a5472d2e8598",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21582691963"
+    }
+  ]
+}

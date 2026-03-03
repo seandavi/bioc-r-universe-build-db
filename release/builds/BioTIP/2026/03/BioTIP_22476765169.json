@@ -1,0 +1,956 @@
+{
+  "Package": "BioTIP",
+  "Type": "Package",
+  "Title": "BioTIP: An R package for characterization of Biological\nTipping-Point",
+  "Version": "1.24.0",
+  "Author": "Zhezhen Wang, Andrew Goldstein, Yuxi Sun, Biniam Feleke, Qier\nAn, Antonio Feliciano, Xinan Yang",
+  "Maintainer": "Felix Yu <felixy@uchicago.edu> and X Holly Yang\n<xyang2@uchicago.edu>",
+  "Description": "Adopting tipping-point theory to transcriptome profiles to\nunravel disease regulatory trajectory.",
+  "License": "GPL-2",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.1.0",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Sequencing, RNASeq, GeneExpression, Transcription, Software",
+  "URL": "https://github.com/xyang2uchicago/BioTIP",
+  "Config/pak/sysreqs": "libglpk-dev libicu-dev libxml2-dev zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:54:37 UTC",
+  "RemoteUrl": "https://github.com/bioc/BioTIP",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "34f169dce17f56a085ad1303e3b9292d3514d339",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-27 07:22:05 UTC",
+    "User": "root"
+  },
+  "MD5sum": "29bb040a5cb5f8f5b11425bb241fbf39",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "BioTIP_1.24.0.tar.gz",
+  "_fileid": "ff0a6b4732241eac982c3c0390e9ae6c8fb27bf1492e9e5b491120eed3cf71b4",
+  "_filesize": 9080211,
+  "_sha256": "ff0a6b4732241eac982c3c0390e9ae6c8fb27bf1492e9e5b491120eed3cf71b4",
+  "_created": "2026-02-27T07:22:05.000Z",
+  "_published": "2026-02-27T07:27:24.543Z",
+  "_jobs": [
+    {
+      "job": 65105661482,
+      "time": 181,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5686272585"
+    },
+    {
+      "job": 65105661501,
+      "time": 273,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5686287287"
+    },
+    {
+      "job": 65105661514,
+      "time": 228,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5686280166"
+    },
+    {
+      "job": 65105661556,
+      "time": 168,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5686270290"
+    },
+    {
+      "job": 65105661560,
+      "time": 136,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5686265316"
+    },
+    {
+      "job": 65105295338,
+      "time": 263,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5686242535"
+    },
+    {
+      "job": 65105661499,
+      "time": 142,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5686266227"
+    },
+    {
+      "job": 65105661544,
+      "time": 146,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5686266799"
+    },
+    {
+      "job": 65105661535,
+      "time": 171,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5686270953"
+    },
+    {
+      "job": 65105661550,
+      "time": 157,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5686268580"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 5,
+    "note": 19
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/BioTIP",
+  "_commit": {
+    "id": "34f169dce17f56a085ad1303e3b9292d3514d339",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761749677
+  },
+  "_maintainer": {
+    "name": "Felix Yu",
+    "email": "xyang2@uchicago.edu"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "psych",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "MASS",
+      "role": "Imports"
+    },
+    {
+      "package": "scran",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "markdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "base",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-20",
+      "n": 1
+    },
+    {
+      "week": "2025-22",
+      "n": 1
+    },
+    {
+      "week": "2025-24",
+      "n": 14
+    },
+    {
+      "week": "2025-26",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.25.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.24.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "sequencing",
+    "rnaseq",
+    "geneexpression",
+    "transcription",
+    "software"
+  ],
+  "_stars": 23,
+  "_contributors": [
+    {
+      "user": "zhezhenwang",
+      "count": 78,
+      "uuid": 36493346
+    },
+    {
+      "user": "xyang2uchicago",
+      "count": 54,
+      "uuid": 44039446
+    },
+    {
+      "user": "ysun98",
+      "count": 33,
+      "uuid": 48578028
+    },
+    {
+      "user": "jenniferysun",
+      "count": 16,
+      "uuid": 75714221
+    },
+    {
+      "user": "nturaga",
+      "count": 12,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "runny24",
+      "count": 11,
+      "uuid": 124810986
+    },
+    {
+      "user": "benjkallo",
+      "count": 4,
+      "uuid": 47471264
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 326,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/BioTIP"
+  },
+  "_devurl": "https://github.com/xyang2uchicago/biotip",
+  "_searchresults": 37,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/BioTIP.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/xyang2uchicago/biotip",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "avg.cor.shrink",
+    "cor.shrink",
+    "getBiotypes",
+    "getCluster_methods",
+    "getCTS",
+    "getIc",
+    "getIc.new",
+    "getMaxMCImember",
+    "getMaxStats",
+    "getMCI",
+    "getNetwork",
+    "getNextMaxStats",
+    "getReadthrough",
+    "getTopMCI",
+    "optimize.sd_selection",
+    "plot_Ic_Simulation",
+    "plot_MCI_Simulation",
+    "plot_SS_Simulation",
+    "plotBar_MCI",
+    "plotIc",
+    "plotMaxMCI",
+    "sd_selection",
+    "simulation_Ic",
+    "simulation_Ic_sample",
+    "simulationMCI"
+  ],
+  "_datasets": [
+    {
+      "name": "GSE6136_cli",
+      "title": "GSE6136 cli dataset",
+      "object": "GSE6136_cli",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "V8",
+        "V9",
+        "V10",
+        "V11",
+        "V12",
+        "V13",
+        "V14",
+        "V15",
+        "V16",
+        "V17",
+        "V18",
+        "V19",
+        "V20",
+        "V21",
+        "V22",
+        "V23",
+        "V24",
+        "V25",
+        "V26",
+        "V27"
+      ],
+      "rows": 36,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "GSE6136_matrix",
+      "title": "GSE6136 matrix dataset",
+      "object": "GSE6136_matrix",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "ID_REF",
+        "GSM142398",
+        "GSM142399",
+        "GSM142400",
+        "GSM142401",
+        "GSM142402",
+        "GSM142403",
+        "GSM142404",
+        "GSM142405",
+        "GSM142406",
+        "GSM142407",
+        "GSM142408",
+        "GSM142409",
+        "GSM142410",
+        "GSM142411",
+        "GSM142412",
+        "GSM142413",
+        "GSM142414",
+        "GSM142415",
+        "GSM142416",
+        "GSM142417",
+        "GSM142418",
+        "GSM142419",
+        "GSM142420",
+        "GSM142421",
+        "GSM142422",
+        "GSM142423"
+      ],
+      "rows": 22690,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "ILEF",
+      "title": "Chromosome ranges of chr21 dataset",
+      "object": "ILEF",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "seqnames",
+        "start",
+        "end",
+        "width",
+        "strand",
+        "Row.names"
+      ],
+      "rows": 300,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "cod",
+      "title": "cod dataset",
+      "object": "cod",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "seqnames",
+        "start",
+        "end",
+        "width",
+        "strand",
+        "biotype"
+      ],
+      "rows": 19689,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "gencode",
+      "title": "A chr21 data from GENCODE GRCh37",
+      "object": "gencode",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "intron",
+      "title": "Coding transcriptome in chr21 dataset",
+      "object": "intron",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "membersL",
+      "title": "",
+      "object": "membersL",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "subcounts",
+      "title": "",
+      "object": "subcounts.optimize_80per",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "avg.cor.shrink",
+      "title": "Estimation of average values of correlation",
+      "topics": [
+        "avg.cor.shrink"
+      ]
+    },
+    {
+      "page": "cod",
+      "title": "cod dataset",
+      "topics": [
+        "cod"
+      ]
+    },
+    {
+      "page": "cor.shrink",
+      "title": "Estimation of correlation matrix",
+      "topics": [
+        "cor.shrink"
+      ]
+    },
+    {
+      "page": "gencode",
+      "title": "A chr21 data from GENCODE GRCh37",
+      "topics": [
+        "gencode"
+      ]
+    },
+    {
+      "page": "getBiotypes",
+      "title": "Assigning Transcript Biotypes",
+      "topics": [
+        "getBiotypes"
+      ]
+    },
+    {
+      "page": "getCluster_methods",
+      "title": "Clustering Network Nodes",
+      "topics": [
+        "getCluster_methods"
+      ]
+    },
+    {
+      "page": "getCTS",
+      "title": "Obtain the identified BioTiP and its length",
+      "topics": [
+        "getCTS"
+      ]
+    },
+    {
+      "page": "getIc",
+      "title": "Get Index for Critical transition (Ic score)",
+      "topics": [
+        "getIc"
+      ]
+    },
+    {
+      "page": "getIc.new",
+      "title": "Index of criticality Scoring System with estimated correlation, an updated Ic-score",
+      "topics": [
+        "getIc.new"
+      ]
+    },
+    {
+      "page": "getMaxMCImember",
+      "title": "Identifying the 'Biomodule'",
+      "topics": [
+        "getMaxMCImember"
+      ]
+    },
+    {
+      "page": "getMaxStats",
+      "title": "Get the cluster index and network nodes of biomodule",
+      "topics": [
+        "getMaxStats"
+      ]
+    },
+    {
+      "page": "getMCI",
+      "title": "Calculating MCI Scores",
+      "topics": [
+        "getMCI"
+      ]
+    },
+    {
+      "page": "getMCI_inner",
+      "title": "Calculating MCI Score for randomly selected",
+      "topics": [
+        "getMCI_inner"
+      ]
+    },
+    {
+      "page": "getNetwork",
+      "title": "Building Networks of Nodes",
+      "topics": [
+        "getNetwork"
+      ]
+    },
+    {
+      "page": "getReadthrough",
+      "title": "Overlapping Coding Regions",
+      "topics": [
+        "getReadthrough"
+      ]
+    },
+    {
+      "page": "GSE6136_cli",
+      "title": "GSE6136 cli dataset",
+      "topics": [
+        "GSE6136_cli"
+      ]
+    },
+    {
+      "page": "GSE6136_matrix",
+      "title": "GSE6136 matrix dataset",
+      "topics": [
+        "GSE6136_matrix"
+      ]
+    },
+    {
+      "page": "ILEF",
+      "title": "Chromosome ranges of chr21 dataset",
+      "topics": [
+        "ILEF"
+      ]
+    },
+    {
+      "page": "intron",
+      "title": "Coding transcriptome in chr21 dataset",
+      "topics": [
+        "intron"
+      ]
+    },
+    {
+      "page": "optimize.sd_selection",
+      "title": "Optimization of sd selection",
+      "topics": [
+        "optimize.sd_selection"
+      ]
+    },
+    {
+      "page": "plot_Ic_Simulation",
+      "title": "Line or boxplot of an observed and its simulated scores",
+      "topics": [
+        "plot_Ic_Simulation"
+      ]
+    },
+    {
+      "page": "plot_MCI_Simulation",
+      "title": "Plot observed and simulated MCI Scores",
+      "topics": [
+        "plot_MCI_Simulation"
+      ]
+    },
+    {
+      "page": "plot_SS_Simulation",
+      "title": "Density plot the leading two distance between any two states from random scores of all states in a system.",
+      "topics": [
+        "plot_SS_Simulation"
+      ]
+    },
+    {
+      "page": "plotBar_MCI",
+      "title": "plot MCI barplots",
+      "topics": [
+        "plotBar_MCI"
+      ]
+    },
+    {
+      "page": "plotIc",
+      "title": "plot a line plot of Ic scores for each state.",
+      "topics": [
+        "plotIc"
+      ]
+    },
+    {
+      "page": "plotMaxMCI",
+      "title": "Plot the Maximized MCI per State",
+      "topics": [
+        "plotMaxMCI"
+      ]
+    },
+    {
+      "page": "sd_selection",
+      "title": "Selecting Highly Oscillating Transcripts",
+      "topics": [
+        "sd_selection"
+      ]
+    },
+    {
+      "page": "simulation_Ic",
+      "title": "Calculating random Index of Critical transition (Ic scores) for randomly-selectd genes",
+      "topics": [
+        "simulation_Ic"
+      ]
+    },
+    {
+      "page": "simulation_Ic_sample",
+      "title": "Calculating (and plot) random Ic scores (Mojtahedi et al. 2016) based on shuffling sample labelling.",
+      "topics": [
+        "simulation_Ic_sample"
+      ]
+    },
+    {
+      "page": "simulationMCI",
+      "title": "Get MCI Scores for randomly selected genes",
+      "topics": [
+        "simulationMCI"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/BioTIP/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "assorthead",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "bluster",
+    "cli",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "DelayedArray",
+    "doParallel",
+    "dqrng",
+    "edgeR",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "GPArotation",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "iterators",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "metapod",
+    "mnormt",
+    "nlme",
+    "pkgconfig",
+    "psych",
+    "Rcpp",
+    "rlang",
+    "rsvd",
+    "S4Arrays",
+    "S4Vectors",
+    "ScaledMatrix",
+    "scran",
+    "scuttle",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "vctrs",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "BioTIP.Rmd",
+      "filename": "BioTIP.html",
+      "title": "BioTIP: an R-package for Characterization of Biological Tipping-Points",
+      "author": "Zhezhen Wang, Andrew Goldstein, Yuxi Sun, Biniam Feleke, Qier An, Antonio Feliciano, Ieva Tolkaciovaite, and Xinan H Yang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "[Standard Workflow](#Standard workflow)",
+        "[Data Preprocessing](#Data Preprocessing)",
+        "[Pre-selection Transcript](#Pre-selection Transcript)",
+        "[Network Partition](#Network Partition)",
+        "[Identifying putative Critical Transition Signals (CTS) using the DNB Module](#Identifying putative Critical Transition Signals (CTS) using the DNB Module)",
+        "[Finding Tipping Point and Evaluating CTS](#Finding Tipping Point and Evaluating CTS)",
+        "[Advanced Estimation for Pearson Correlation Coefficient Matrix](#Advanced Estimation for Pearson Correlation Coefficient Matrix)",
+        "[Data Preprocessing with Trajectory Building Tools](#Data Preprocessing with Trajectory Building Tools)",
+        "[Predicting Tipping Point (Advanced Index of Critical Transition (IC*))](#Predicting Tipping Point (Advanced Index of Critical Transition (IC*)))",
+        "[Gene Pre-selection](#Gene Pre-selection)",
+        "[Network Partition](#Network Partition2)",
+        "[Inferring Tipping Point-Driven Transcription Factors](#Inferring Tipping Point-Driven Transcription Factors)",
+        "[Quick Start](#Quick Start)",
+        "[Genomic Data Source](#Genomic Data Source)",
+        "[Extracting Summary Data](#Extracting Summary Data)",
+        "[Loading Data](#Loading Data)",
+        "[Prepare GRanges Object](#Prepare GRanges Object)",
+        "An Identification of Critical Tipping Point using Bulk RNA-seq###",
+        "Applying to scRNA-seq Data",
+        "Transcript Annotation and Biotype",
+        "loading data from local drive",
+        "Processing Query",
+        "Classifying Biotypes",
+        "Extracting intron coordinates",
+        "Filtering coding transcripts",
+        "Finding overlapping transcripts"
+      ],
+      "created": "2019-08-19 18:47:40",
+      "modified": "2025-05-16 02:52:04",
+      "commits": 38
+    }
+  ],
+  "_score": 7.310140801796194,
+  "_indexed": false,
+  "_nocasepkg": "biotip",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/BioTIP",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:25:53.000Z",
+      "distro": "noble",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "dd24758972b72ea4e817db40a9f5db28cf6502382d4854aea7c3ecaab09a968f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:25:14.000Z",
+      "distro": "noble",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "0afd909bd7b8ca16aaab60d6b3656678936993fe6ab992e4f7784b11f3171926",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:24:17.000Z",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "541894a786732e5e036be1813e51ebf155680fde7f23bae90ab501bd2b36decd",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:23:58.000Z",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "9d993b443ab18117b265cff21388a28f7041debfe190a967201ce8a666c22a2e",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:24:52.000Z",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "32c455cd4139cb085704d860748c57a08c7c19d8a7b0a6566c27d08cdb2e93b6",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:23:42.000Z",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "4b11558db63caab292e2950b3058dbdf58c2c046d7bf54f361bf6e57c7c0e27f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:23:57.000Z",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "09c8547fd517795473a771ee7b7269b3f340dabaad154cc378f736f319ddd4ec",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.24.0",
+      "date": "2026-02-27T07:23:53.000Z",
+      "commit": "34f169dce17f56a085ad1303e3b9292d3514d339",
+      "fileid": "347aa1b84d60b4a410cd7bd10ed6f4c3ef58789d9f692c6ebe08be9fefcf78ad",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22476765169"
+    }
+  ]
+}

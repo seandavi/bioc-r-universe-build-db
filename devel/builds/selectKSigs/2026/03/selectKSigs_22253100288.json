@@ -1,0 +1,784 @@
+{
+  "Package": "selectKSigs",
+  "Type": "Package",
+  "Title": "Selecting the number of mutational signatures using a\nperplexity-based measure and cross-validation",
+  "Version": "1.23.0",
+  "Date": "2021-10-18",
+  "Authors@R": "c(person(\"Zhi\", \"Yang\", email = \"zyang895@gmail.com\", \nrole = c(\"aut\", \"cre\")),\nperson(\"Yuichi\", \"Shiraishi\", email = \"friend1ws@gmail.com\",\nrole = \"ctb\"))",
+  "Description": "A package to suggest the number of mutational signatures\nin a collection of somatic mutations using calculating the\ncross-validated perplexity score.",
+  "URL": "https://github.com/USCbiostats/selectKSigs",
+  "BugReports": "https://github.com/USCbiostats/HiLDA/selectKSigs",
+  "License": "GPL-3",
+  "biocViews": "Software, SomaticMutation, Sequencing, StatisticalMethod,\nClustering",
+  "RoxygenNote": "7.1.2",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "Config/pak/sysreqs": "make jags libbz2-dev libicu-dev liblzma-dev\nlibpng-dev libxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:55:55 UTC",
+  "RemoteUrl": "https://github.com/bioc/selectKSigs",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-02-21 07:57:18 UTC",
+    "User": "root"
+  },
+  "Author": "Zhi Yang [aut, cre],\nYuichi Shiraishi [ctb]",
+  "Maintainer": "Zhi Yang <zyang895@gmail.com>",
+  "MD5sum": "694d48a87e02a64dff4572c15a4c0ecb",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "selectKSigs_1.23.0.tar.gz",
+  "_fileid": "58539e64fc2f30dc0f845a86d44fa6c9dc25d0dfe7e7f7e08aafc99b486c97f7",
+  "_filesize": 216231,
+  "_sha256": "58539e64fc2f30dc0f845a86d44fa6c9dc25d0dfe7e7f7e08aafc99b486c97f7",
+  "_created": "2026-02-21T07:57:18.000Z",
+  "_published": "2026-02-21T08:04:35.261Z",
+  "_jobs": [
+    {
+      "job": 64380097618,
+      "time": 248,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5600323567"
+    },
+    {
+      "job": 64380097640,
+      "time": 272,
+      "config": "linux-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600325088"
+    },
+    {
+      "job": 64380097634,
+      "time": 312,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600327288"
+    },
+    {
+      "job": 64380097636,
+      "time": 260,
+      "config": "linux-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600324443"
+    },
+    {
+      "job": 64380097639,
+      "time": 343,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600328919"
+    },
+    {
+      "job": 64380097644,
+      "time": 199,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600320940"
+    },
+    {
+      "job": 64380097632,
+      "time": 390,
+      "config": "macos-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600331826"
+    },
+    {
+      "job": 64380097631,
+      "time": 174,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600319595"
+    },
+    {
+      "job": 64380097633,
+      "time": 363,
+      "config": "macos-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600330190"
+    },
+    {
+      "job": 64379910222,
+      "time": 376,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600310911"
+    },
+    {
+      "job": 64380097621,
+      "time": 213,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5600321651"
+    },
+    {
+      "job": 64380097637,
+      "time": 239,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5600323166"
+    },
+    {
+      "job": 64380097630,
+      "time": 258,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5600324173"
+    },
+    {
+      "job": 64380097628,
+      "time": 253,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5600323985"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/selectKSigs",
+  "_commit": {
+    "id": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761749755
+  },
+  "_maintainer": {
+    "name": "Zhi Yang",
+    "email": "zyang895@gmail.com",
+    "login": "zhiiiyang",
+    "twitter": "@zhiiiyang",
+    "uuid": 7269113
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.6",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "HiLDA",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "gtools",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyr",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.23.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.22.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "somaticmutation",
+    "sequencing",
+    "statisticalmethod",
+    "clustering",
+    "mutational-signatures",
+    "rjags",
+    "somatic-mutations",
+    "cpp",
+    "jags"
+  ],
+  "_stars": 3,
+  "_contributors": [
+    {
+      "user": "zhiiiyang",
+      "count": 40,
+      "uuid": 7269113
+    },
+    {
+      "user": "nturaga",
+      "count": 8,
+      "uuid": 2746443
+    },
+    {
+      "user": "gvegayon",
+      "count": 1,
+      "uuid": 893619
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 261,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/selectKSigs"
+  },
+  "_devurl": "https://github.com/uscbiostats/hilda",
+  "_searchresults": 1,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/selectKSigs.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "cv_PMSignature",
+    "splitG"
+  ],
+  "_help": [
+    {
+      "page": "calcPMSLikelihood",
+      "title": "A function for calculating the log-likelihood from the data and parameters",
+      "topics": [
+        "calcPMSLikelihood"
+      ]
+    },
+    {
+      "page": "Calculate_Likelihood_test",
+      "title": "Output the maximum potential scale reduction statistic of all parameters estimated",
+      "topics": [
+        "Calculate_Likelihood_test"
+      ]
+    },
+    {
+      "page": "convertFromTurbo_F",
+      "title": "Restore the converted parameter F for turboEM",
+      "topics": [
+        "convertFromTurbo_F"
+      ]
+    },
+    {
+      "page": "convertFromTurbo_Q",
+      "title": "Restore the converted parameter Q for turboEM",
+      "topics": [
+        "convertFromTurbo_Q"
+      ]
+    },
+    {
+      "page": "convertToTurbo_F",
+      "title": "Convert the parameter F so that turboEM can treat",
+      "topics": [
+        "convertToTurbo_F"
+      ]
+    },
+    {
+      "page": "convertToTurbo_Q",
+      "title": "Convert the parameter Q so that turboEM can treat",
+      "topics": [
+        "convertToTurbo_Q"
+      ]
+    },
+    {
+      "page": "cv_PMSignature",
+      "title": "Output the maximum potential scale reduction statistic of all parameters estimated",
+      "topics": [
+        "cv_PMSignature"
+      ]
+    },
+    {
+      "page": "getBG",
+      "title": "Get the statsus of using the background signature",
+      "topics": [
+        "getBG"
+      ]
+    },
+    {
+      "page": "getCounts",
+      "title": "Get the count data in a matrix",
+      "topics": [
+        "getCounts"
+      ]
+    },
+    {
+      "page": "getExposures",
+      "title": "Get a matrix of mutational exposures of signatures",
+      "topics": [
+        "getExposures"
+      ]
+    },
+    {
+      "page": "getFeatures",
+      "title": "Get a vector of possible features",
+      "topics": [
+        "getFeatures"
+      ]
+    },
+    {
+      "page": "getFeatureVec",
+      "title": "Get a matrix of feature vector list",
+      "topics": [
+        "getFeatureVec"
+      ]
+    },
+    {
+      "page": "getK",
+      "title": "Get the number of signatures",
+      "topics": [
+        "getK"
+      ]
+    },
+    {
+      "page": "getLL",
+      "title": "Get the values of loglikelihood",
+      "topics": [
+        "getLL"
+      ]
+    },
+    {
+      "page": "getLogLikelihoodC",
+      "title": "Calculate the value of the log-likelihood for given parameters",
+      "topics": [
+        "getLogLikelihoodC"
+      ]
+    },
+    {
+      "page": "getSamplelist",
+      "title": "Get the sample list",
+      "topics": [
+        "getSamplelist"
+      ]
+    },
+    {
+      "page": "getSamplelistG",
+      "title": "Get the sample list",
+      "topics": [
+        "getSamplelistG"
+      ]
+    },
+    {
+      "page": "getSignatures",
+      "title": "Get an array of signature feature distributions",
+      "topics": [
+        "getSignatures"
+      ]
+    },
+    {
+      "page": "getTranscription",
+      "title": "Get the statsus of specifying the transcription bias",
+      "topics": [
+        "getTranscription"
+      ]
+    },
+    {
+      "page": "select_kth_fold",
+      "title": "Output the training data or test data",
+      "topics": [
+        "select_kth_fold"
+      ]
+    },
+    {
+      "page": "splitG",
+      "title": "Output the maximum potential scale reduction statistic of all parameters estimated",
+      "topics": [
+        "splitG"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "boot",
+    "BSgenome",
+    "BSgenome.Hsapiens.UCSC.hg19",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "coda",
+    "codetools",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "forcats",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "gtools",
+    "HiLDA",
+    "httr",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "purrr",
+    "R2jags",
+    "R2WinBUGS",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjags",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    },
+    {
+      "shlib": "libjags",
+      "package": "jags",
+      "headers": "jags",
+      "source": "jags",
+      "version": "4.3.2-2.2404.0",
+      "name": "jags",
+      "description": "Just Another Gibbs Sampler for Bayesian MCMC - binary"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "14.2.0-4ubuntu2~24.04",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "selectKSigs.Rmd",
+      "filename": "selectKSigs.html",
+      "title": "selectKSigs: a package for selecting the number of mutational signatures",
+      "author": "Zhi Yang",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Paper",
+        "Installing and loading the package",
+        "Installation",
+        "Bioconductor",
+        "Input data",
+        "Mutation Position Format",
+        "Workflow",
+        "Get input data",
+        "Perform the selecting process",
+        "Visualizing the results",
+        "Session info"
+      ],
+      "created": "2019-09-16 00:30:44",
+      "modified": "2019-10-30 03:27:53",
+      "commits": 3
+    }
+  ],
+  "_score": 4.079181246047625,
+  "_indexed": true,
+  "_nocasepkg": "selectksigs",
+  "_universes": [
+    "bioc",
+    "zhiiiyang",
+    "uscbiostats"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:01:16.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "34825b3075c0b939cbb19002b131ee9b5e38b56f3beb508620cea9a047166629",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:01:40.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "251399888316ea5d1410233ad4e0a9d8a8ee874ebe6002eb24b855562d2051f8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:01:03.000Z",
+      "distro": "noble",
+      "arch": "aarch64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "6242aede391b65f520ab2b77c535207d37d0d7ee158b5575b3d3c713a7683494",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:02:10.000Z",
+      "distro": "noble",
+      "arch": "x86_64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "e4d0c8eef5711783e9e683164b32f33d310cbabf321cab11853ac415e3878144",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:00:03.000Z",
+      "arch": "aarch64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "3265478790047b6cf6c30be5374a2a4ebfbe49d2ff8df9e0ae7df70224fe6d57",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:02:10.000Z",
+      "arch": "x86_64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "76bd995c55b493fbeb916b628bf87180a08a3fd6a11e1bf8fb7314e345367829",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-21T07:59:44.000Z",
+      "arch": "aarch64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "2bab2a0f529606f897794d3a9fd23d43bfe0e1ed384280ba34c2a9d377e994ab",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:01:49.000Z",
+      "arch": "x86_64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "dbea44fdd76e964644c0b6f5418859b84732d3615587fb5e05bdae290dd823f2",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:01:11.000Z",
+      "arch": "emscripten",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "9076ca6c72c378c9f6428853a5d185d1ff4c28f415408537a1d6527bc807bbf4",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:00:02.000Z",
+      "arch": "x86_64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "b0b44c0b31dff32f659cc53e0b8f5743b24a352d27131bb6a5a5b1a45404201e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:00:13.000Z",
+      "arch": "x86_64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "91764cca2b989794e3752e860ee9663691003be2353b2bc91e2c2b9fb4ff6f13",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.23.0",
+      "date": "2026-02-21T08:00:04.000Z",
+      "arch": "x86_64",
+      "commit": "309854595697535d80aa9eb9c7e419fdb914d4b5",
+      "fileid": "d6d90a722af43125bf42b7e965c70e535d5a2db8bebb2528afa90c8b4ee0e650",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22253100288"
+    }
+  ]
+}

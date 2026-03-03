@@ -1,0 +1,820 @@
+{
+  "Package": "MGnifyR",
+  "Type": "Package",
+  "Version": "1.7.2",
+  "Authors@R": "c(person(given = \"Tuomas\", family = \"Borman\", role = c(\"aut\", \"cre\"),\nemail = \"tuomas.v.borman@utu.fi\",\ncomment = c(ORCID = \"0000-0002-8563-8884\")),\nperson(given = \"Ben\", family = \"Allen\", role = c(\"aut\"),\nemail = \"ben.allen@ncl.ac.uk\"),\nperson(given = \"Leo\", family = \"Lahti\", role = c(\"aut\"),\nemail = \"leo.lahti@iki.fi\",\ncomment = c(ORCID = \"0000-0001-5537-637X\")))",
+  "Title": "R interface to EBI MGnify metagenomics resource",
+  "Description": "Utility package to facilitate integration and analysis of\nEBI MGnify data in R. The package can be used to import\nmicrobial data for instance into TreeSummarizedExperiment\n(TreeSE). In TreeSE format, the data is directly compatible\nwith miaverse framework.",
+  "biocViews": "Infrastructure, DataImport, Metagenomics, Microbiome,\nMicrobiomeData",
+  "License": "Artistic-2.0 | file LICENSE",
+  "Encoding": "UTF-8",
+  "URL": "https://github.com/EBI-Metagenomics/MGnifyR",
+  "BugReports": "https://github.com/EBI-Metagenomics/MGnifyR/issues",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "7.3.3",
+  "Collate": "'utils.R' 'MgnifyClient.R' 'AllGenerics.R' 'AllClasses.R'\n'AllAccessors.R' 'MGnifyR.R' 'deprecate.R' 'doQuery.R'\n'getData.R' 'getFile.R' 'getMetadata.R' 'getResult.R'\n'searchAnalysis.R'",
+  "Config/pak/sysreqs": "libcairo2-dev libfontconfig1-dev libfreetype6-dev\nlibfribidi-dev libglpk-dev make libgsl0-dev libharfbuzz-dev\nlibicu-dev libjpeg-dev libpng-dev libtiff-dev libwebp-dev\nlibxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-02-13 16:16:26 UTC",
+  "RemoteUrl": "https://github.com/bioc/MGnifyR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-24 09:32:24 UTC",
+    "User": "root"
+  },
+  "Author": "Tuomas Borman [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-8563-8884>),\nBen Allen [aut],\nLeo Lahti [aut] (ORCID: <https://orcid.org/0000-0001-5537-637X>)",
+  "Maintainer": "Tuomas Borman <tuomas.v.borman@utu.fi>",
+  "MD5sum": "01ad9925aa00a5d4476292a1dc3548c3",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "MGnifyR_1.7.2.tar.gz",
+  "_fileid": "e7e2a0d913d186369a5a95c134065a630d6783e2eec7b2e2933e6221ed203f17",
+  "_filesize": 4016871,
+  "_sha256": "e7e2a0d913d186369a5a95c134065a630d6783e2eec7b2e2933e6221ed203f17",
+  "_created": "2026-02-24T09:32:24.000Z",
+  "_published": "2026-02-24T09:48:32.579Z",
+  "_jobs": [
+    {
+      "job": 64656814415,
+      "time": 231,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5632225628"
+    },
+    {
+      "job": 64656814396,
+      "time": 897,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5632384250"
+    },
+    {
+      "job": 64656814409,
+      "time": 904,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5632386110"
+    },
+    {
+      "job": 64656814407,
+      "time": 716,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5632342359"
+    },
+    {
+      "job": 64656814425,
+      "time": 772,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5632355570"
+    },
+    {
+      "job": 64656143927,
+      "time": 327,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5632168378"
+    },
+    {
+      "job": 64656814419,
+      "time": 163,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5632209673"
+    },
+    {
+      "job": 64656814536,
+      "time": 817,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5632366349"
+    },
+    {
+      "job": 64656814449,
+      "time": 849,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5632374012"
+    },
+    {
+      "job": 64656814422,
+      "time": 779,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5632357404"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 4,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/MGnifyR",
+  "_commit": {
+    "id": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+    "author": "Tuomas Borman <60338854+TuomasBorman@users.noreply.github.com>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Make it more clear what getResult fetches (#58)\n\n* up\n\n* up\n\n* up",
+    "time": 1770999386
+  },
+  "_maintainer": {
+    "name": "Tuomas Borman",
+    "email": "tuomas.v.borman@utu.fi",
+    "orcid": "0000-0002-8563-8884"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "TreeSummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Depends"
+    },
+    {
+      "package": "mia",
+      "role": "Imports"
+    },
+    {
+      "package": "ape",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "httr",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "urltools",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "biomformat",
+      "role": "Suggests"
+    },
+    {
+      "package": "broom",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "xml2",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "miaViz",
+      "role": "Suggests"
+    },
+    {
+      "package": "vegan",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "phyloseq",
+      "role": "Suggests"
+    },
+    {
+      "package": "magick",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-13",
+      "n": 1
+    },
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-42",
+      "n": 1
+    },
+    {
+      "week": "2026-02",
+      "n": 3
+    },
+    {
+      "week": "2026-07",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.2",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.1",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "dataimport",
+    "metagenomics",
+    "microbiome",
+    "microbiomedata"
+  ],
+  "_stars": 23,
+  "_contributors": [
+    {
+      "user": "tuomasborman",
+      "count": 61,
+      "uuid": 60338854
+    },
+    {
+      "user": "beadyallen",
+      "count": 43,
+      "uuid": 4439410
+    },
+    {
+      "user": "antagomir",
+      "count": 20,
+      "uuid": 1228382
+    },
+    {
+      "user": "jwokaty",
+      "count": 8,
+      "uuid": 1744257
+    },
+    {
+      "user": "artur-sannikov",
+      "count": 1,
+      "uuid": 40318410
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    },
+    {
+      "user": "0xmuluh",
+      "count": 1,
+      "uuid": 127390183
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 270,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MGnifyR"
+  },
+  "_devurl": "https://github.com/ebi-metagenomics/mgnifyr",
+  "_searchresults": 36,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/MGnifyR.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ebi-metagenomics/mgnifyr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "authTok",
+    "authTok<-",
+    "cacheDir",
+    "cacheDir<-",
+    "clearCache",
+    "clearCache<-",
+    "databaseUrl",
+    "databaseUrl<-",
+    "doQuery",
+    "getData",
+    "getFile",
+    "getMetadata",
+    "getResult",
+    "mgnify_analyses_from_samples",
+    "mgnify_analyses_from_studies",
+    "mgnify_client",
+    "mgnify_download",
+    "mgnify_get_analyses_metadata",
+    "mgnify_get_analyses_phyloseq",
+    "mgnify_get_analyses_results",
+    "mgnify_get_download_urls",
+    "mgnify_query",
+    "mgnify_retrieve_json",
+    "MgnifyClient",
+    "searchAnalysis",
+    "searchFile",
+    "showWarnings",
+    "showWarnings<-",
+    "useCache",
+    "useCache<-",
+    "verbose",
+    "verbose<-"
+  ],
+  "_help": [
+    {
+      "page": "MGnifyR-package",
+      "title": "'MGnifyR' Package.",
+      "topics": [
+        "MGnifyR-package",
+        "MGnifyR"
+      ]
+    },
+    {
+      "page": "MgnifyClient-accessors",
+      "title": "MgnifyClient accessors and mutators",
+      "topics": [
+        "authTok",
+        "authTok,MgnifyClient-method",
+        "authTok<-",
+        "authTok<-,MgnifyClient-method",
+        "cacheDir",
+        "cacheDir,MgnifyClient-method",
+        "cacheDir<-",
+        "cacheDir<-,MgnifyClient-method",
+        "clearCache",
+        "clearCache,MgnifyClient-method",
+        "clearCache<-",
+        "clearCache<-,MgnifyClient-method",
+        "databaseUrl",
+        "databaseUrl,MgnifyClient-method",
+        "databaseUrl<-",
+        "databaseUrl<-,MgnifyClient-method",
+        "MgnifyClient-accessors",
+        "showWarnings",
+        "showWarnings,MgnifyClient-method",
+        "showWarnings<-",
+        "showWarnings<-,MgnifyClient-method",
+        "useCache",
+        "useCache,MgnifyClient-method",
+        "useCache<-",
+        "useCache<-,MgnifyClient-method",
+        "verbose",
+        "verbose,MgnifyClient-method",
+        "verbose<-",
+        "verbose<-,MgnifyClient-method"
+      ]
+    },
+    {
+      "page": "deprecate",
+      "title": "These functions will be deprecated. Please use other functions instead.",
+      "topics": [
+        "deprecate",
+        "mgnify_analyses_from_samples",
+        "mgnify_analyses_from_studies",
+        "mgnify_client",
+        "mgnify_download",
+        "mgnify_get_analyses_metadata",
+        "mgnify_get_analyses_phyloseq",
+        "mgnify_get_analyses_results",
+        "mgnify_get_download_urls",
+        "mgnify_query",
+        "mgnify_retrieve_json"
+      ]
+    },
+    {
+      "page": "doQuery",
+      "title": "Search MGnify database for studies, samples, runs, analyses, biomes, assemblies, and genomes.",
+      "topics": [
+        "doQuery",
+        "doQuery,MgnifyClient-method"
+      ]
+    },
+    {
+      "page": "getData",
+      "title": "Versatile function to retrieve raw results",
+      "topics": [
+        "getData",
+        "getData,MgnifyClient-method"
+      ]
+    },
+    {
+      "page": "getFile",
+      "title": "Download any MGnify files, also including processed reads and identified protein sequences",
+      "topics": [
+        "getFile",
+        "getFile,MgnifyClient-method",
+        "searchFile",
+        "searchFile,MgnifyClient-method"
+      ]
+    },
+    {
+      "page": "getMetadata",
+      "title": "Get all study, sample and analysis metadata for the supplied analysis accessions",
+      "topics": [
+        "getMetadata",
+        "getMetadata,MgnifyClient-method"
+      ]
+    },
+    {
+      "page": "getResult",
+      "title": "Get microbial and/or functional profiling data for a list of accessions",
+      "topics": [
+        "getResult",
+        "getResult,MgnifyClient-method"
+      ]
+    },
+    {
+      "page": "MgnifyClient",
+      "title": "Constructor for creating a MgnifyClient object to allow the access to MGnify database.",
+      "topics": [
+        "MgnifyClient",
+        "MgnifyClient-class"
+      ]
+    },
+    {
+      "page": "searchAnalysis",
+      "title": "Look up analysis accession IDs for one or more study or sample accessions",
+      "topics": [
+        "searchAnalysis",
+        "searchAnalysis,MgnifyClient-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/MGnifyR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ape",
+    "askpass",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "Biostrings",
+    "bluster",
+    "Cairo",
+    "cli",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DECIPHER",
+    "decontam",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "digest",
+    "DirichletMultinomial",
+    "dplyr",
+    "dqrng",
+    "ecodive",
+    "farver",
+    "FNN",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggplot2",
+    "ggrastr",
+    "ggrepel",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "httr",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mgcv",
+    "mia",
+    "mime",
+    "MultiAssayExperiment",
+    "nlme",
+    "openssl",
+    "permute",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "purrr",
+    "R6",
+    "ragg",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "reshape2",
+    "rlang",
+    "RSpectra",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "sparseMatrixStats",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "textshaping",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "treeio",
+    "TreeSummarizedExperiment",
+    "triebeard",
+    "urltools",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vegan",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "XVector",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "MGnifyR.Rmd",
+      "filename": "MGnifyR.html",
+      "title": "MGnifyR",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Load MGnifyR package",
+        "Create a client",
+        "Functions for fetching the data",
+        "Search data",
+        "Find relevent analyses accessions",
+        "Fetch metadata",
+        "Fetch microbiome data",
+        "Fetch raw files",
+        "Fetch sequence files"
+      ],
+      "created": "2020-09-11 11:09:34",
+      "modified": "2024-09-25 17:22:53",
+      "commits": 16
+    },
+    {
+      "source": "MGnifyR_long.Rmd",
+      "filename": "MGnifyR_long.html",
+      "title": "MGnifyR, extended vignette",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Load MGnifyR package",
+        "Create a client",
+        "Functions for fetching the data",
+        "Search data",
+        "Find relevent analyses accessions",
+        "Fetch metadata",
+        "Fetch microbiome data",
+        "Amplicon sequencing",
+        "Metagenomics",
+        "Fetch raw files",
+        "Fetch sequence files"
+      ],
+      "created": "2023-10-30 13:05:00",
+      "modified": "2024-09-25 17:22:53",
+      "commits": 9
+    },
+    {
+      "source": "MGnify_course.Rmd",
+      "filename": "MGnify_course.html",
+      "title": "Metagenomics bioinformatics at MGnify",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Load packages",
+        "Data import",
+        "Preprocessing",
+        "Alpha diversity",
+        "Beta diversity",
+        "Differential abundance analysis (DAA)",
+        "Session info"
+      ],
+      "created": "2024-09-25 17:22:53",
+      "modified": "2024-09-26 07:55:17",
+      "commits": 2
+    }
+  ],
+  "_score": 7.571242850560224,
+  "_indexed": true,
+  "_nocasepkg": "mgnifyr",
+  "_universes": [
+    "bioc",
+    "ebi-metagenomics"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:36:39.000Z",
+      "distro": "noble",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "d261f4838b285e75a7ffb56d7879cef0c7fc3c2f0b2a36c696cb53bf6dae2783",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:36:50.000Z",
+      "distro": "noble",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "8c15dc7f0d5f4305c8113a57fa2d889c2ceecba0b369acf9d78b5ac942ad66e7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:34:44.000Z",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "a9341b77a7ecfaaedc4e31ac492d20d6432c7ce60c6f5fb365e8c029587ef9ed",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:35:16.000Z",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "102805dca021e06681e2fb6062096832b4dccb51c51ef494be9b2ce831f808e3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:35:48.000Z",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "f9470dbb65e8f41e2a7696c45fa28fb7159ef44ab66f4e3ed3e398f3711b6f88",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:35:04.000Z",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "02acb42726331cb3ae12273547be9736b7889c6c235abc68fb2f0d7eeded3c11",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:35:27.000Z",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "911a4872db4edc7d6e62949b584869b9d81b2202378d6e93fc9a3a3e90029508",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.7.2",
+      "date": "2026-02-24T09:34:36.000Z",
+      "commit": "5a30a78e5c7d4cdcb306991c1eaf809bddd65143",
+      "fileid": "22af17868b0a4c71ebbb3d1eb919061f9a28e5d57f25c91981d0c0daf53e9fef",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22344677496"
+    }
+  ]
+}

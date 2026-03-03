@@ -1,0 +1,788 @@
+{
+  "Package": "BaalChIP",
+  "Title": "BaalChIP: Bayesian analysis of allele-specific transcription\nfactor binding in cancer genomes",
+  "Description": "The package offers functions to process multiple ChIP-seq\nBAM files and detect allele-specific events. Computes allele\ncounts at individual variants (SNPs/SNVs), implements extensive\nQC steps to remove problematic variants, and utilizes a\nbayesian framework to identify statistically significant\nallele- specific events. BaalChIP is able to account for copy\nnumber differences between the two alleles, a known\nphenotypical feature of cancer samples.",
+  "Version": "1.37.0",
+  "Author": "Ines de Santiago, Wei Liu, Ke Yuan, Martin O'Reilly, Chandra SR\nChilamakuri, Bruce Ponder, Kerstin Meyer, Florian Markowetz",
+  "Maintainer": "Ines de Santiago <inesdesantiago@gmail.com>",
+  "VignetteBuilder": "knitr",
+  "License": "Artistic-2.0",
+  "LazyData": "true",
+  "RoxygenNote": "7.1.1",
+  "biocViews": "Software, ChIPSeq, Bayesian, Sequencing",
+  "Config/pak/sysreqs": "libbz2-dev libicu-dev liblzma-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2025-10-29 14:34:21 UTC",
+  "RemoteUrl": "https://github.com/bioc/BaalChIP",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-22 08:16:23 UTC",
+    "User": "root"
+  },
+  "MD5sum": "14063514677c234f747f697ed1041c6b",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "BaalChIP_1.37.0.tar.gz",
+  "_fileid": "9670c3d9e8b5d7a383cccbe174a7c0099adb77f842b6b0e0cafe7865b03434fc",
+  "_filesize": 47458083,
+  "_sha256": "9670c3d9e8b5d7a383cccbe174a7c0099adb77f842b6b0e0cafe7865b03434fc",
+  "_created": "2026-02-22T08:16:23.000Z",
+  "_published": "2026-02-22T08:29:22.072Z",
+  "_jobs": [
+    {
+      "job": 64431820265,
+      "time": 248,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5605981095"
+    },
+    {
+      "job": 64431820289,
+      "time": 563,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5606002022"
+    },
+    {
+      "job": 64431820283,
+      "time": 653,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5606007810"
+    },
+    {
+      "job": 64431820284,
+      "time": 357,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5605988317"
+    },
+    {
+      "job": 64431820269,
+      "time": 470,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5605996025"
+    },
+    {
+      "job": 64431588641,
+      "time": 385,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5605963341"
+    },
+    {
+      "job": 64431820272,
+      "time": 201,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5605978014"
+    },
+    {
+      "job": 64431820270,
+      "time": 599,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5606004344"
+    },
+    {
+      "job": 64431820281,
+      "time": 623,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5606005897"
+    },
+    {
+      "job": 64431820275,
+      "time": 595,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5606004138"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 16
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/BaalChIP",
+  "_commit": {
+    "id": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_22 branch\n",
+    "time": 1761748461
+  },
+  "_maintainer": {
+    "name": "Ines de Santiago",
+    "email": "inesdesantiago@gmail.com",
+    "login": "inesdesantiago",
+    "uuid": 6978631
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.3.1",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "IRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "doBy",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "coda",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.37.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.36.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "software",
+    "chipseq",
+    "bayesian",
+    "sequencing"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 431,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/BaalChIP"
+  },
+  "_mentions": 1,
+  "_searchresults": 8,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/BaalChIP.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "adjustmentBaalPlot",
+    "alleleCounts",
+    "BaalChIP",
+    "BaalChIP.get",
+    "BaalChIP.report",
+    "BaalChIP.run",
+    "filter1allele",
+    "filterIntbias",
+    "getASB",
+    "mergePerGroup",
+    "plotQC",
+    "plotSimul",
+    "QCfilter",
+    "summaryASB",
+    "summaryQC"
+  ],
+  "_datasets": [
+    {
+      "name": "BaalObject",
+      "title": "BaalObject example dataset",
+      "object": "baalObject",
+      "class": [
+        "BaalChIP"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "ENCODEexample",
+      "title": "ENCODEexample example dataset",
+      "object": "ENCODEexample",
+      "class": [
+        "BaalChIP"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "FAIREexample",
+      "title": "FAIREexample example dataset",
+      "object": "FAIREexample",
+      "class": [
+        "BaalChIP"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "UniqueMappability50bp_hg19",
+      "title": "Genomic regions of unique mappability",
+      "object": "UniqueMappability50bp_hg19",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "blacklist_hg19",
+      "title": "Blacklisted genomic regions",
+      "object": "blacklist_hg19",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "pickrell2011cov1_hg19",
+      "title": "Genomic regions of collapsed repeats",
+      "object": "pickrell2011cov1_hg19",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "adjustmentBaalPlot",
+      "title": "Method adjustmentBaalPlot",
+      "topics": [
+        "adjustmentBaalPlot",
+        "adjustmentBaalPlot,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "alleleCounts",
+      "title": "Method alleleCounts",
+      "topics": [
+        "alleleCounts",
+        "alleleCounts,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "BaalChIP",
+      "title": "BaalChIP-class",
+      "topics": [
+        "BaalChIP"
+      ]
+    },
+    {
+      "page": "BaalChIP.get",
+      "title": "Method BaalChIP.get",
+      "topics": [
+        "BaalChIP.get",
+        "BaalChIP.get,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "BaalChIP.report",
+      "title": "Method BaalChIP.report",
+      "topics": [
+        "BaalChIP.report",
+        "BaalChIP.report,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "BaalChIP.run",
+      "title": "Method BaalChIP.run",
+      "topics": [
+        "BaalChIP.run",
+        "BaalChIP.run,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "BaalObject",
+      "title": "BaalObject example dataset",
+      "topics": [
+        "BaalObject"
+      ]
+    },
+    {
+      "page": "blacklist_hg19",
+      "title": "Blacklisted genomic regions",
+      "topics": [
+        "blacklist_hg19"
+      ]
+    },
+    {
+      "page": "ENCODEexample",
+      "title": "ENCODEexample example dataset",
+      "topics": [
+        "ENCODEexample"
+      ]
+    },
+    {
+      "page": "FAIREexample",
+      "title": "FAIREexample example dataset",
+      "topics": [
+        "FAIREexample"
+      ]
+    },
+    {
+      "page": "filter1allele",
+      "title": "Method filter1allele",
+      "topics": [
+        "filter1allele",
+        "filter1allele,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "filterIntbias",
+      "title": "Method filterIntbias",
+      "topics": [
+        "filterIntbias",
+        "filterIntbias,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "getASB",
+      "title": "Method getASB",
+      "topics": [
+        "getASB",
+        "getASB,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "mergePerGroup",
+      "title": "Method mergePerGroup",
+      "topics": [
+        "mergePerGroup",
+        "mergePerGroup,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "pickrell2011cov1_hg19",
+      "title": "Genomic regions of collapsed repeats",
+      "topics": [
+        "pickrell2011cov1_hg19"
+      ]
+    },
+    {
+      "page": "plotQC",
+      "title": "Method plotQC",
+      "topics": [
+        "plotQC",
+        "plotQC,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "plotSimul",
+      "title": "Method plotSimul",
+      "topics": [
+        "plotSimul",
+        "plotSimul,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "QCfilter",
+      "title": "Method QCfilter",
+      "topics": [
+        "QCfilter",
+        "QCfilter,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "summaryASB",
+      "title": "Method summaryASB",
+      "topics": [
+        "summaryASB",
+        "summaryASB,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "summaryQC",
+      "title": "Method summaryQC",
+      "topics": [
+        "summaryQC",
+        "summaryQC,BaalChIP-method"
+      ]
+    },
+    {
+      "page": "UniqueMappability50bp_hg19",
+      "title": "Genomic regions of unique mappability",
+      "topics": [
+        "UniqueMappability50bp_hg19"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/BaalChIP/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "backports",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "boot",
+    "broom",
+    "cigarillo",
+    "cli",
+    "coda",
+    "codetools",
+    "colorspace",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DelayedArray",
+    "Deriv",
+    "doBy",
+    "doParallel",
+    "dplyr",
+    "farver",
+    "foreach",
+    "forecast",
+    "formatR",
+    "fracdiff",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "httr",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "microbenchmark",
+    "mime",
+    "modelr",
+    "nlme",
+    "nnet",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "purrr",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "reshape2",
+    "Rhtslib",
+    "rlang",
+    "Rsamtools",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "UCSC.utils",
+    "urca",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "BaalChIP.Rmd",
+      "filename": "BaalChIP.html",
+      "title": "BaalChIP: Bayesian analysis of allele-specific transcription factor binding in cancer genomes",
+      "author": " Ines de Santiago, Wei Liu, Ke Yuan, Florian Markowetz. University of Cambridge, Cancer Research UK Cambridge Institute",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Citation",
+        "Introduction",
+        "Standard workflow",
+        "Quick start: example 1 (with pre-computed RAF scores)",
+        "Quick start: example 1 with more control over the input options",
+        "Quick start: example 2 (with gDNA BAM files)",
+        "Input data",
+        "The sample sheet",
+        "The hets files",
+        "The gDNA BAM files",
+        "Constructing a BaalChIP object",
+        "Obtaining allele-specific counts for BAM files",
+        "QCfilter: A filter to exclude SNPs in regions of known problematic read alignment",
+        "filterIntbias: A simulation-based filtering to exclude SNPs with intrinsic bias",
+        "skipScriptRun",
+        "Merge allele counts per group",
+        "Removing possible homozygous SNPs",
+        "Identifying allele-specific binding events",
+        "The reference mapping (RM) bias",
+        "The relative allele frequency (RAF) bias",
+        "Exporting the results",
+        "BaalChIP.report",
+        "Sumarizing and plotting data",
+        "The ENCODE data set",
+        "The FAIREseq data set",
+        "summaryQC: summary of QC result.",
+        "plotQC: Plot filtering results",
+        "Plot simulation results",
+        "Exporting the table of assayed SNPs and their allelic counts",
+        "summaryASB function",
+        "Allelic ratios density plot",
+        "Retrieving the RM and RAF scores estimated by BaalChIP",
+        "Exporting the final ASB results with BaalChIP.report",
+        "Bugs/Feature requests",
+        "Session Information",
+        "References"
+      ],
+      "created": "2016-08-18 19:05:00",
+      "modified": "2021-03-01 13:29:20",
+      "commits": 13
+    }
+  ],
+  "_score": 4,
+  "_indexed": true,
+  "_nocasepkg": "baalchip",
+  "_universes": [
+    "bioc",
+    "inesdesantiago"
+  ],
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:20:40.000Z",
+      "distro": "noble",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "c6222f71ae242a7b5493c94c3a65cb272198680fe615d362c5776064a48166fd",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:21:18.000Z",
+      "distro": "noble",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "e4ce2d23ab91bc202c579fe900df1a5f281aedc06dc58ee75aa03d02e390d532",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:19:19.000Z",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "fed16bc5632ee8a2a065a936ec8d8bd79a266bc0bf71ed3315fa3b8be9c341d7",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:19:37.000Z",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "e6cc79319a73af3e1f3dda052dbc6d0d1292d404b1f9033247af1b1c328a8890",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:20:36.000Z",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "64f04d1816728c25d6bd71fc89ba0d693ce901ad9a74bbb7827f753ba090fd07",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:19:23.000Z",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "257c7d34255948860408da00b0c2aab0f9e445d6a79501a5f89b410aee810f6d",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:19:45.000Z",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "1c2a428c4973822d9c87f1263297e0cae3ae35472c836a4716029eea2fa246c4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-02-22T08:19:20.000Z",
+      "commit": "fd6bc03e1cdda4cdba08364a859c5ed627375685",
+      "fileid": "8edac350826f17178680de2b24cad2c6e6a8fca25ac9e814d523e6712547ac71",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/22273399359"
+    }
+  ]
+}

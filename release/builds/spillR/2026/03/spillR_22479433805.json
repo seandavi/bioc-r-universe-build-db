@@ -1,0 +1,633 @@
+{
+  "Package": "spillR",
+  "Type": "Package",
+  "Title": "Spillover Compensation in Mass Cytometry Data",
+  "Version": "1.6.0",
+  "Authors@R": "c(\nperson(\"Marco\", \"Guazzini\",\nemail= \"m.guazzini@student.maastrichtuniversity.nl\",\nrole = c(\"aut\", \"cre\"), comment = c(ORCID = \"0009-0007-8111-5772\")),\nperson(\"Alexander G.\", \"Reisach\" ,\nemail = \"alexander.reisach@u-paris.fr\",\nrole = \"aut\", comment = c(ORCID = \"0009-0003-5057-6278\")),\nperson(\"Sebastian\", \"Weichwald\",\nemail = \"sweichwald@math.ku.dk\",\nrole = \"aut\", comment = c(ORCID = \"0000-0003-0169-7244\")),\nperson(\"Christof\", \"Seiler\",\nemail = \"christof.seiler@maastrichtuniversity.nl\",\nrole = \"aut\", comment = c(ORCID = \"0000-0001-8802-3642\")))",
+  "Description": "Channel interference in mass cytometry can cause spillover\nand may result in miscounting of protein markers. We develop a\nnonparametric finite mixture model and use the mixture\ncomponents to estimate the probability of spillover. We\nimplement our method using expectation-maximization to fit the\nmixture model.",
+  "biocViews": "FlowCytometry, ImmunoOncology, MassSpectrometry,\nPreprocessing, SingleCell, Software, StatisticalMethod,\nVisualization, Regression",
+  "License": "LGPL-3",
+  "Encoding": "UTF-8",
+  "Config/testthat/edition": "3",
+  "RoxygenNote": "7.3.1",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libfribidi-dev libglpk-dev make\nlibharfbuzz-dev libicu-dev libjpeg-dev libpng-dev libtiff-dev\nlibwebp-dev libxml2-dev perl zlib1g-dev",
+  "Repository": "https://bioc-release.r-universe.dev",
+  "Date/Publication": "2025-10-29 15:27:04 UTC",
+  "RemoteUrl": "https://github.com/bioc/spillR",
+  "RemoteRef": "RELEASE_3_22",
+  "RemoteSha": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-27 08:58:07 UTC",
+    "User": "root"
+  },
+  "Author": "Marco Guazzini [aut, cre] (ORCID:\n<https://orcid.org/0009-0007-8111-5772>),\nAlexander G. Reisach [aut] (ORCID:\n<https://orcid.org/0009-0003-5057-6278>),\nSebastian Weichwald [aut] (ORCID:\n<https://orcid.org/0000-0003-0169-7244>),\nChristof Seiler [aut] (ORCID: <https://orcid.org/0000-0001-8802-3642>)",
+  "Maintainer": "Marco Guazzini <m.guazzini@student.maastrichtuniversity.nl>",
+  "MD5sum": "5f852d8b33d7180c470b9087ed9f19f0",
+  "_user": "bioc-release",
+  "_type": "src",
+  "_file": "spillR_1.6.0.tar.gz",
+  "_fileid": "5dc42056451dfb7c1c5ba22b32a528528cbc5f73416ecef512ee58a8c1fa8151",
+  "_filesize": 316281,
+  "_sha256": "5dc42056451dfb7c1c5ba22b32a528528cbc5f73416ecef512ee58a8c1fa8151",
+  "_created": "2026-02-27T08:58:07.000Z",
+  "_published": "2026-02-27T09:07:29.872Z",
+  "_jobs": [
+    {
+      "job": 65114363436,
+      "time": 214,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "NOTE",
+      "artifact": "5687307021"
+    },
+    {
+      "job": 65114363425,
+      "time": 487,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5687362817"
+    },
+    {
+      "job": 65114363450,
+      "time": 480,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687361092"
+    },
+    {
+      "job": 65114363454,
+      "time": 289,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5687322521"
+    },
+    {
+      "job": 65114363451,
+      "time": 229,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687310041"
+    },
+    {
+      "job": 65113749486,
+      "time": 379,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687262790"
+    },
+    {
+      "job": 65114363433,
+      "time": 199,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5687303938"
+    },
+    {
+      "job": 65114363452,
+      "time": 417,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "5687348087"
+    },
+    {
+      "job": 65114363473,
+      "time": 416,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "OK",
+      "artifact": "5687348188"
+    },
+    {
+      "job": 65114363456,
+      "time": 423,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5687349354"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/spillR",
+  "_commit": {
+    "id": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+    "author": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "committer": "A Wokaty <andres.wokaty@sph.cuny.edu>",
+    "message": "bump x.y.z version to even y prior to creation of RELEASE_3_22 branch\n",
+    "time": 1761751624
+  },
+  "_maintainer": {
+    "name": "Marco Guazzini",
+    "email": "m.guazzini@student.maastrichtuniversity.nl",
+    "login": "marcoguazzini",
+    "uuid": 79971842
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "CATALYST",
+      "role": "Depends"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "spatstat.univar",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "cowplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "hexbin",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": false,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.7.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.6.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "flowcytometry",
+    "immunooncology",
+    "massspectrometry",
+    "preprocessing",
+    "singlecell",
+    "software",
+    "statisticalmethod",
+    "visualization",
+    "regression"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 225,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/spillR"
+  },
+  "_searchresults": 3,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/spillR.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "compCytof",
+    "generate_bead",
+    "generate_real",
+    "plotDiagnostics"
+  ],
+  "_help": [
+    {
+      "page": "compCytof",
+      "title": "Compute spillover probability and correct for spillover",
+      "topics": [
+        "compCytof"
+      ]
+    },
+    {
+      "page": "compensate",
+      "title": "Compute spillover probability and correct for spillover",
+      "topics": [
+        "compensate"
+      ]
+    },
+    {
+      "page": "compensate_naive",
+      "title": "Compute spillover probability and correct for spillover from beads only",
+      "topics": [
+        "compensate_naive"
+      ]
+    },
+    {
+      "page": "generate_bead",
+      "title": "Generate dataset for vignettes and simulation studies",
+      "topics": [
+        "generate_bead"
+      ]
+    },
+    {
+      "page": "generate_real",
+      "title": "Generate dataset for vignettes and simulation studies",
+      "topics": [
+        "generate_real"
+      ]
+    },
+    {
+      "page": "plotDiagnostics",
+      "title": "Compute spillover probability and correct for spillover",
+      "topics": [
+        "plotDiagnostics"
+      ]
+    },
+    {
+      "page": "tfm",
+      "title": "Variance stabilizing transform of counts",
+      "topics": [
+        "tfm"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/spillR/raw/RELEASE_3_22/README.md",
+  "_rundeps": [
+    "abind",
+    "ALL",
+    "assorthead",
+    "backports",
+    "base64enc",
+    "beachmat",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "boot",
+    "broom",
+    "Cairo",
+    "car",
+    "carData",
+    "CATALYST",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorRamps",
+    "colorspace",
+    "ComplexHeatmap",
+    "ConsensusClusterPlus",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "cytolib",
+    "data.table",
+    "DelayedArray",
+    "Deriv",
+    "digest",
+    "doBy",
+    "doParallel",
+    "dplyr",
+    "dqrng",
+    "drc",
+    "farver",
+    "flowCore",
+    "FlowSOM",
+    "FNN",
+    "foreach",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggbeeswarm",
+    "ggforce",
+    "ggnewscale",
+    "ggplot2",
+    "ggpubr",
+    "ggrastr",
+    "ggrepel",
+    "ggridges",
+    "ggsci",
+    "ggsignif",
+    "GlobalOptions",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "mgcv",
+    "microbenchmark",
+    "minqa",
+    "modelr",
+    "multcomp",
+    "mvtnorm",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "nnls",
+    "numDeriv",
+    "pbkrtest",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plotrix",
+    "plyr",
+    "png",
+    "polyclip",
+    "polynom",
+    "purrr",
+    "quantreg",
+    "R6",
+    "ragg",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppML",
+    "RcppProgress",
+    "Rdpack",
+    "reformulas",
+    "reshape2",
+    "Rhdf5lib",
+    "rjson",
+    "rlang",
+    "RProtoBufLib",
+    "RSpectra",
+    "rstatix",
+    "rsvd",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sandwich",
+    "ScaledMatrix",
+    "scales",
+    "scater",
+    "scuttle",
+    "Seqinfo",
+    "shape",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "spatstat.univar",
+    "spatstat.utils",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "systemfonts",
+    "textshaping",
+    "TH.data",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "timeDate",
+    "tweenr",
+    "urca",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "vipor",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "XML",
+    "XVector",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "spillR-vignette.Rmd",
+      "filename": "spillR-vignette.html",
+      "title": "spillR Vignette",
+      "author": "Marco Guazzini, Alexander G. Reisach, Sebastian Weichwald, Christof Seiler",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Data",
+        "Compensation Workflow",
+        "Diagnostic Plot",
+        "Session Info",
+        "References"
+      ],
+      "created": "2023-06-15 13:28:22",
+      "modified": "2024-03-18 15:51:23",
+      "commits": 26
+    }
+  ],
+  "_score": 4,
+  "_indexed": false,
+  "_nocasepkg": "spillr",
+  "_universes": [
+    "bioc-release"
+  ],
+  "_indexurl": "https://bioc.r-universe.dev/spillR",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:02:32.000Z",
+      "distro": "noble",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "58c10c7d46dd7b97f593fc1d42f366afd067099d1b924c9ca4a397311446af3a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:02:46.000Z",
+      "distro": "noble",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "34ba678989189f9210568530478f189cb939fc0e8ff6d4dbcca5f725a26e4a47",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:00:33.000Z",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "e64a3d74f500e89610669a634aacf520faa44a4ff22682f32a9a8b8e5de3eadd",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:00:17.000Z",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "aca1ad35d1c05821dbdc7d1b1a48644cd7a4e6848c80de2107425609e5bea88f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:02:13.000Z",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "153004afd18a9933f282cf01015021223eb2dfa77e0a9a1cba385c0ad8b91c2d",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:00:40.000Z",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "f7681310587777160280c902353a972f796eea147ad950f1d6591621e4801dc6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:00:57.000Z",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "6ab1571769a51d6ece8ae80e2fc812baad3131491b1cb794875329a5a50a1cef",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.6.0",
+      "date": "2026-02-27T09:01:04.000Z",
+      "commit": "401c8dd218528a639d10e4c58fc996bfa63bf80a",
+      "fileid": "d994bcf56f25018d1ffa15b0a97f6e9d065fc035d72a5f414ded06218bf41d71",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc-release/actions/runs/22479433805"
+    }
+  ]
+}

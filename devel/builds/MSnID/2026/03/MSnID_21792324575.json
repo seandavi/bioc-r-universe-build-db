@@ -1,0 +1,836 @@
+{
+  "Package": "MSnID",
+  "Type": "Package",
+  "Title": "Utilities for Exploration and Assessment of Confidence of LC-MSn\nProteomics Identifications",
+  "Version": "1.45.2",
+  "Author": "Vlad Petyuk with contributions from Laurent Gatto",
+  "Maintainer": "Vlad Petyuk <petyuk@gmail.com>",
+  "Description": "Extracts MS/MS ID data from mzIdentML (leveraging mzID\npackage) or text files. After collating the search results from\nmultiple datasets it assesses their identification quality and\noptimize filtering criteria to achieve the maximum number of\nidentifications while not exceeding a specified false discovery\nrate. Also contains a number of utilities to explore the MS/MS\nresults and assess missed and irregular enzymatic cleavages,\nmass measurement accuracy, etc.",
+  "License": "Artistic-2.0",
+  "LazyData": "yes",
+  "biocViews": "Proteomics, MassSpectrometry, ImmunoOncology",
+  "Config/pak/sysreqs": "libglpk-dev make libicu-dev libpng-dev libxml2-dev\nlibnetcdf-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-02-08 04:16:09 UTC",
+  "RemoteUrl": "https://github.com/bioc/MSnID",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-02-08 05:29:34 UTC",
+    "User": "root"
+  },
+  "MD5sum": "d3391a207d6e45532671bb9f9b50a469",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "MSnID_1.45.2.tar.gz",
+  "_fileid": "62e99e87afdcd5bda3df700f3dfedce1d97fe2e7e45ee48f54c5bb9805d6e548",
+  "_filesize": 2866164,
+  "_sha256": "62e99e87afdcd5bda3df700f3dfedce1d97fe2e7e45ee48f54c5bb9805d6e548",
+  "_created": "2026-02-08T05:29:34.000Z",
+  "_published": "2026-02-08T05:40:09.810Z",
+  "_jobs": [
+    {
+      "job": 62875722072,
+      "time": 210,
+      "config": "bioc-checks",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5420860158"
+    },
+    {
+      "job": 62875722057,
+      "time": 528,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5420881608"
+    },
+    {
+      "job": 62875722062,
+      "time": 563,
+      "config": "linux-release-x86_64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5420883889"
+    },
+    {
+      "job": 62875722051,
+      "time": 478,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5420878016"
+    },
+    {
+      "job": 62875722066,
+      "time": 438,
+      "config": "macos-release-arm64",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5420875616"
+    },
+    {
+      "job": 62873823097,
+      "time": 3268,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "ERROR",
+      "artifact": "5420845794"
+    },
+    {
+      "job": 62875722046,
+      "time": 194,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5420859061"
+    },
+    {
+      "job": 62875722071,
+      "time": 460,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "WARNING",
+      "artifact": "5420877112"
+    },
+    {
+      "job": 62875722060,
+      "time": 435,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "WARNING",
+      "artifact": "5420875561"
+    },
+    {
+      "job": 62875722061,
+      "time": 448,
+      "config": "windows-release",
+      "r": "4.5.2",
+      "check": "WARNING",
+      "artifact": "5420876256"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 4,
+    "note": 15
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575",
+  "_status": "failure",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/MSnID",
+  "_commit": {
+    "id": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+    "author": "Vlad Petyuk <petyuk@gmai.com>",
+    "committer": "Vlad Petyuk <petyuk@gmai.com>",
+    "message": "simplified unit test\n",
+    "time": 1770524169
+  },
+  "_maintainer": {
+    "name": "Vlad Petyuk",
+    "email": "petyuk@gmail.com",
+    "login": "vladpetyuk",
+    "uuid": 4207635
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 2.10",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Depends"
+    },
+    {
+      "package": "MSnbase",
+      "version": ">= 1.12.1",
+      "role": "Imports"
+    },
+    {
+      "package": "mzID",
+      "version": ">= 1.3.5",
+      "role": "Imports"
+    },
+    {
+      "package": "R.cache",
+      "role": "Imports"
+    },
+    {
+      "package": "foreach",
+      "role": "Imports"
+    },
+    {
+      "package": "doParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "iterators",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "ProtGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "mzR",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Imports"
+    },
+    {
+      "package": "msmsTests",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "RUnit",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "xtable",
+      "role": "Imports"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-06",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.45.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.44.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "proteomics",
+    "massspectrometry",
+    "immunooncology"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 667,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MSnID"
+  },
+  "_mentions": 1,
+  "_searchresults": 72,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/MSnID.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "accessions",
+    "add_mod_symbol",
+    "apply_filter",
+    "assess_missed_cleavages",
+    "assess_termini",
+    "correct_peak_selection",
+    "evaluate_filter",
+    "fetch_conversion_table",
+    "id_quality",
+    "infer_parsimonious_accessions",
+    "map_mod_sites",
+    "mass_measurement_error",
+    "MSnID",
+    "MSnIDFilter",
+    "optimize_filter",
+    "peptides",
+    "proteins",
+    "psms",
+    "psms<-",
+    "read_mzIDs",
+    "recalibrate",
+    "remap_accessions",
+    "remap_fasta_entry_names",
+    "report_mods",
+    "show",
+    "update"
+  ],
+  "_datasets": [
+    {
+      "name": "msnidObj",
+      "title": "Example mzIdenML File and MSnID Object",
+      "object": "c_elegans",
+      "class": [
+        "MSnID"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "MSnID-package",
+      "title": "MSnID: Utilities for Handling MS/MS Identifications",
+      "topics": [
+        "MSnID-package"
+      ]
+    },
+    {
+      "page": "accessions",
+      "title": "Non-redundant list of accession (protein) identifiers",
+      "topics": [
+        "accessions",
+        "proteins"
+      ]
+    },
+    {
+      "page": "add_mod_symbol",
+      "title": "Annotates peptide sequences with modification symbols",
+      "topics": [
+        "add_mod_symbol",
+        "add_mod_symbol,MSnID-method"
+      ]
+    },
+    {
+      "page": "apply_filter",
+      "title": "Filters the MS/MS identifications",
+      "topics": [
+        "apply_filter",
+        "apply_filter,MSnID,character-method",
+        "apply_filter,MSnID,MSnIDFilter-method"
+      ]
+    },
+    {
+      "page": "assess_missed_cleavages",
+      "title": "Counts the missing cleavage sites within the peptides sequence",
+      "topics": [
+        "assess_missed_cleavages"
+      ]
+    },
+    {
+      "page": "assess_termini",
+      "title": "Checks if the peptide termini conforms with cleavage specificity",
+      "topics": [
+        "assess_termini"
+      ]
+    },
+    {
+      "page": "correct_peak_selection",
+      "title": "Corrects wrong selection of monoisotopic peak",
+      "topics": [
+        "correct_peak_selection"
+      ]
+    },
+    {
+      "page": "evaluate_filter",
+      "title": "Filters the MS/MS identifications",
+      "topics": [
+        "evaluate_filter"
+      ]
+    },
+    {
+      "page": "fetch_conversion_table",
+      "title": "Fetches conversion table form one type of identifiers to another",
+      "topics": [
+        "fetch_conversion_table"
+      ]
+    },
+    {
+      "page": "id_quality",
+      "title": "Identification quality",
+      "topics": [
+        "id_quality"
+      ]
+    },
+    {
+      "page": "infer_parsimonious_accessions",
+      "title": "Eliminates Redundancy in Peptide-to-Protein Mapping",
+      "topics": [
+        "infer_parsimonious_accessions",
+        "infer_parsimonious_accessions,MSnID-method"
+      ]
+    },
+    {
+      "page": "map_mod_sites",
+      "title": "Maps the modifications to protein sequence",
+      "topics": [
+        "map_mod_sites",
+        "map_mod_sites,MSnID-method"
+      ]
+    },
+    {
+      "page": "mass_measurement_error",
+      "title": "Computes error of the parent ion mass to charge measurement",
+      "topics": [
+        "mass_measurement_error"
+      ]
+    },
+    {
+      "page": "MSnID-class",
+      "title": "The \"MSnID\" Class for Mass Spectrometry Based Proteomics Identification Data",
+      "topics": [
+        "$,MSnID-method",
+        "$<-,MSnID-method",
+        "accessions,MSnID-method",
+        "assess_missed_cleavages,MSnID-method",
+        "assess_termini,MSnID-method",
+        "class:MSnID",
+        "coerce,MSnID,data.table-method",
+        "coerce,MSnID,MSnSet-method",
+        "correct_peak_selection,MSnID-method",
+        "dim,MSnID-method",
+        "evaluate_filter,MSnID-method",
+        "id_quality,MSnID-method",
+        "mass_measurement_error,MSnID-method",
+        "MSnID",
+        "MSnID-class",
+        "names,MSnID-method",
+        "peptides,MSnID-method",
+        "proteins,MSnID-method",
+        "psms,MSnID-method",
+        "psms<-,MSnID,data.frame-method",
+        "read_mzIDs,MSnID-method",
+        "recalibrate,MSnID-method",
+        "show,MSnID-method",
+        "[[,MSnID,ANY,ANY-method",
+        "[[,MSnID-method",
+        "[[<-,MSnID,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "MSnIDFilter-class",
+      "title": "The \"MSnIDFilter\" Class for Handling MS/MS Criteria, Relationships and Thresholds for Data Filtration.",
+      "topics": [
+        "$,MSnIDFilter-method",
+        "$<-,MSnIDFilter-method",
+        "as.numeric,MSnIDFilter-method",
+        "class:MSnIDFilter",
+        "length,MSnIDFilter-method",
+        "MSnIDFilter",
+        "MSnIDFilter-class",
+        "names,MSnIDFilter-method",
+        "show,MSnIDFilter-method",
+        "update,MSnIDFilter-method"
+      ]
+    },
+    {
+      "page": "data",
+      "title": "Example mzIdenML File and MSnID Object",
+      "topics": [
+        "c_elegans",
+        "msnidObj"
+      ]
+    },
+    {
+      "page": "optimize_filter",
+      "title": "Filter criteria optimization to maximize the number of identifications given the FDR upper threshold",
+      "topics": [
+        "optimize_filter",
+        "optimize_filter,MSnIDFilter,MSnID-method"
+      ]
+    },
+    {
+      "page": "peptides",
+      "title": "Non-redundant list of peptides",
+      "topics": [
+        "peptides"
+      ]
+    },
+    {
+      "page": "psms",
+      "title": "Peptide-to-spectrum matches",
+      "topics": [
+        "psms",
+        "psms<-"
+      ]
+    },
+    {
+      "page": "read_mzIDs",
+      "title": "Populates MS/MS results table from mzIdentML files",
+      "topics": [
+        "read_mzIDs"
+      ]
+    },
+    {
+      "page": "recalibrate",
+      "title": "Post-experimental recalibration of observed mass to charge ratios",
+      "topics": [
+        "recalibrate"
+      ]
+    },
+    {
+      "page": "remap_accessions-method",
+      "title": "Changes accessions from one protein id to another",
+      "topics": [
+        "remap_accessions",
+        "remap_accessions,MSnID-method"
+      ]
+    },
+    {
+      "page": "remap_fasta_entry_names",
+      "title": "Remapping entries in FASTA file",
+      "topics": [
+        "remap_fasta_entry_names"
+      ]
+    },
+    {
+      "page": "report_mods",
+      "title": "Lists modification masses in the MSnID object",
+      "topics": [
+        "report_mods",
+        "report_mods,MSnID-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/MSnID/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "affy",
+    "affyio",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "AnnotationHub",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocManager",
+    "BiocParallel",
+    "BiocStyle",
+    "BiocVersion",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bookdown",
+    "bslib",
+    "cachem",
+    "caTools",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "edgeR",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gplots",
+    "gtable",
+    "gtools",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "igraph",
+    "impute",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MALDIquant",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "MetaboCoreUtils",
+    "mime",
+    "MsCoreUtils",
+    "msmsEDA",
+    "msmsTests",
+    "MSnbase",
+    "MultiAssayExperiment",
+    "mzID",
+    "mzR",
+    "ncdf4",
+    "openssl",
+    "otel",
+    "pcaMethods",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "preprocessCore",
+    "promises",
+    "ProtGenerics",
+    "PSMatch",
+    "purrr",
+    "QFeatures",
+    "qvalue",
+    "R.cache",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "reshape2",
+    "Rhdf5lib",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "RUnit",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "Spectra",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vsn",
+    "withr",
+    "xfun",
+    "XML",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_score": 4.03342375548695,
+  "_indexed": true,
+  "_nocasepkg": "msnid",
+  "_universes": [
+    "bioc",
+    "vladpetyuk"
+  ],
+  "_previous": "1.45.1",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:33:49.000Z",
+      "distro": "noble",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "55d6b425ae0b3d91e7e6e9a91bfd01d64ede62e714838f307a45a36395dfe5f2",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    },
+    {
+      "r": "4.5.2",
+      "os": "linux",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:33:57.000Z",
+      "distro": "noble",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "bba1a1e27240712aa62656b372362a026095a6f2a8ee7bc2fe213aa4026aef3a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:32:08.000Z",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "abde05924ceb1a297c7ce69077bd8e9b11b8ddceb19d0e65e97b1b2e10fb132f",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    },
+    {
+      "r": "4.5.2",
+      "os": "mac",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:32:17.000Z",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "58c041d1a21110791a20a3c09f111ebca14c0abf0b2a05162746e830bde73773",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:33:30.000Z",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "45d3da9e2663abfeb9baca10296c483d48a4b5636dcbb9536b194c9ef89c89d2",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:32:11.000Z",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "dd00e118a08e702d48f95d16060e8c5494a69a07ff113c851e67ec800c7f9d12",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:32:02.000Z",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "82d4e52f9ca8c74b3a699211a2aff0a6b9d890a127bd74a1923b116f20e4ff89",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    },
+    {
+      "r": "4.5.2",
+      "os": "win",
+      "version": "1.45.2",
+      "date": "2026-02-08T05:31:55.000Z",
+      "commit": "f53fdc331129a9845c20d17a91d4048e09316fe5",
+      "fileid": "fed5846aa637cf858c9e86ab53fb72fb78419dd1a2fb602524c41158b420a3b3",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/21792324575"
+    }
+  ]
+}
