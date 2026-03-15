@@ -1,0 +1,637 @@
+{
+  "_id": "69b64e7c6ce5fc12f4b3d61a",
+  "Package": "biomformat",
+  "Version": "1.39.10",
+  "Date": "2026-03-14",
+  "Maintainer": "Paul J. McMurdie <mcmurdie@alumni.stanford.edu>",
+  "License": "GPL-2",
+  "Title": "An interface package for the BIOM file format",
+  "Type": "Package",
+  "Author": "Paul J. McMurdie <mcmurdie@alumni.stanford.edu> and Joseph N\nPaulson <jpaulson@jimmy.harvard.edu>",
+  "BugReports": "https://github.com/joey711/biomformat/issues",
+  "URL": "https://github.com/joey711/biomformat/, http://biom-format.org/",
+  "Description": "This is an R package for interfacing with the BIOM format.\nThis package includes basic tools for reading biom-format\nfiles, accessing and subsetting data tables from a biom object\n(which is more complex than a single table), as well as limited\nsupport for writing a biom-object back to a biom-format file.\nThe design of this API is intended to match the python API and\nother tools included with the biom-format project, but with a\ndecidedly \"R flavor\" that should be familiar to R users. This\nincludes S4 classes and methods, as well as extensions of\ncommon core functions/methods.",
+  "VignetteBuilder": "knitr",
+  "Collate": "'allClasses.R' 'allPackage.R' 'IO-methods.R' 'BIOM-class.R'\n'SE-methods.R' 'tidy-methods.R' 'validity-methods.R'",
+  "biocViews": "ImmunoOncology, DataImport, Metagenomics, Microbiome",
+  "Encoding": "UTF-8",
+  "NeedsCompilation": "no",
+  "RoxygenNote": "7.3.3",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-03-15 01:21:09 UTC",
+  "RemoteUrl": "https://github.com/bioc/biomformat",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+  "Packaged": {
+    "Date": "2026-03-15 06:10:39 UTC",
+    "User": "root"
+  },
+  "MD5sum": "8fdb032bf7e313171aa111c409880985",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "biomformat_1.39.10.tar.gz",
+  "_fileid": "c82bee5d4cd389d47870d67e5d7983df84977f896a78702bf9dedd54041d8dc1",
+  "_filesize": 321467,
+  "_sha256": "c82bee5d4cd389d47870d67e5d7983df84977f896a78702bf9dedd54041d8dc1",
+  "_created": "2026-03-15T06:10:39.000Z",
+  "_published": "2026-03-15T06:15:24.981Z",
+  "_jobs": [
+    {
+      "job": 67112034718,
+      "time": 169,
+      "config": "bioc-checks",
+      "r": "4.5.3",
+      "check": "ERROR",
+      "artifact": "5929659629"
+    },
+    {
+      "job": 67112034722,
+      "time": 212,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5929662929"
+    },
+    {
+      "job": 67112034716,
+      "time": 229,
+      "config": "linux-release-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "5929664121"
+    },
+    {
+      "job": 67112034692,
+      "time": 139,
+      "config": "macos-devel-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5929657210"
+    },
+    {
+      "job": 67112034688,
+      "time": 197,
+      "config": "macos-release-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "5929661765"
+    },
+    {
+      "job": 67111898563,
+      "time": 218,
+      "config": "source",
+      "r": "4.5.2",
+      "check": "OK",
+      "artifact": "5929645819"
+    },
+    {
+      "job": 67112034679,
+      "time": 118,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "5929655577"
+    },
+    {
+      "job": 67112034734,
+      "time": 205,
+      "config": "windows-devel",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "5929662361"
+    },
+    {
+      "job": 67112034729,
+      "time": 203,
+      "config": "windows-oldrel",
+      "r": "4.4.3",
+      "check": "NOTE",
+      "artifact": "5929662026"
+    },
+    {
+      "job": 67112034723,
+      "time": 171,
+      "config": "windows-release",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "5929659781"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 11
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/biomformat",
+  "_commit": {
+    "id": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+    "author": "Paul J. McMurdie <joey711@gmail.com>",
+    "committer": "Paul J. McMurdie <joey711@gmail.com>",
+    "message": "Milestone 6: updated vignette with HDF5, tidy, SE, purrr sections (v1.39.10)\n\nExtended the package vignette with four new sections, all guarded with\nrequireNamespace() so the vignette builds cleanly when optional Suggests\npackages are absent:\n\n* HDF5 (BIOM v2) I/O: read_biom() magic-byte routing, write_hdf5_biom()\n  round-trip, and JSON->HDF5 conversion example.\n* Tidy long-format: as.data.frame(biom) producing one row per\n  (feature x sample) pair with metadata joined; as_tibble.biom().\n* purrr-style workflows: per-sample total counts and Shannon diversity\n  using purrr::map_dbl + dplyr, with base-R tapply fallback.\n* SummarizedExperiment interop: biom_to_SummarizedExperiment() and\n  as(x, 'SummarizedExperiment'), showing assay/colData/rowData access.\n* Session info section.\n\nVignette renders cleanly (50 chunks, 0 errors) with all Suggests\npackages present. R CMD check: 0 ERRORs, 0 NOTEs, 2 pre-existing\nvignette WARNINGs (inst/doc absent; built by Bioconductor BBS).\n",
+    "time": 1773537669
+  },
+  "_maintainer": {
+    "name": "Paul J. McMurdie",
+    "email": "mcmurdie@alumni.stanford.edu",
+    "login": "joey711",
+    "orcid": "0000-0001-8879-3954",
+    "twitter": "@joey711",
+    "uuid": 841437
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "jsonlite",
+      "version": ">= 0.9.16",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "version": ">= 1.7-0",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 0.10",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.10",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "version": ">= 1.6",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "version": ">= 0.7",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Suggests"
+    },
+    {
+      "package": "tibble",
+      "role": "Suggests"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 45,
+  "_updates": [
+    {
+      "week": "2026-11",
+      "n": 10
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.39.0",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.38.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "immunooncology",
+    "dataimport",
+    "metagenomics",
+    "microbiome"
+  ],
+  "_stars": 8,
+  "_contributors": [
+    {
+      "user": "joey711",
+      "count": 24,
+      "uuid": 841437
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "dtenenba",
+      "count": 4,
+      "uuid": 2286826
+    },
+    {
+      "user": "smdabdoub",
+      "count": 4,
+      "uuid": 380806
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    },
+    {
+      "user": "kayla-morrell",
+      "count": 1,
+      "uuid": 32339524
+    },
+    {
+      "user": "link-ny",
+      "count": 1,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 9858,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/biomformat"
+  },
+  "_mentions": 18,
+  "_devurl": "https://github.com/joey711/biomformat",
+  "_searchresults": 536,
+  "_rbuild": "4.5.2",
+  "_assets": [
+    "extra/biomformat.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/joey711/biomformat",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "as_tibble.biom",
+    "biom",
+    "biom_data",
+    "biom_shape",
+    "biom_to_SummarizedExperiment",
+    "colnames",
+    "header",
+    "make_biom",
+    "matrix_element_type",
+    "ncol",
+    "nrow",
+    "observation_metadata",
+    "read_biom",
+    "read_hdf5_biom",
+    "rownames",
+    "sample_metadata",
+    "show",
+    "write_biom",
+    "write_hdf5_biom"
+  ],
+  "_help": [
+    {
+      "page": "biomformat-package",
+      "title": "biomformat: An R interface to the BIOM file format",
+      "topics": [
+        "biomformat-package",
+        "biomformat"
+      ]
+    },
+    {
+      "page": "as_tibble.biom",
+      "title": "Coerce a biom object to a tidy tibble",
+      "topics": [
+        "as_tibble.biom"
+      ]
+    },
+    {
+      "page": "as.data.frame.biom",
+      "title": "Coerce a biom object to a long-format tidy data frame",
+      "topics": [
+        "as.data.frame.biom"
+      ]
+    },
+    {
+      "page": "biom-methods",
+      "title": "Build and return an instance of the biom-class.",
+      "topics": [
+        "biom",
+        "biom,list-method"
+      ]
+    },
+    {
+      "page": "biom_data-methods",
+      "title": "Access main data observation matrix data from 'biom-class'.",
+      "topics": [
+        "biom_data",
+        "biom_data,biom,ANY,character-method",
+        "biom_data,biom,character,ANY-method",
+        "biom_data,biom,missing,missing-method",
+        "biom_data,biom,missing,numeric-method",
+        "biom_data,biom,numeric,missing-method",
+        "biom_data,biom,numeric,numeric-method"
+      ]
+    },
+    {
+      "page": "biom_shape-methods",
+      "title": "The matrix dimensions of a 'biom-class' object.",
+      "topics": [
+        "biom_shape",
+        "biom_shape,biom-method"
+      ]
+    },
+    {
+      "page": "biom_to_SummarizedExperiment",
+      "title": "Convert a biom object to a SummarizedExperiment",
+      "topics": [
+        "biom_to_SummarizedExperiment"
+      ]
+    },
+    {
+      "page": "biom-class",
+      "title": "The biom format data class.",
+      "topics": [
+        "biom-class"
+      ]
+    },
+    {
+      "page": "colnames-methods",
+      "title": "Method extensions to 'colnames' for 'biom-class' objects.",
+      "topics": [
+        "colnames,biom-method"
+      ]
+    },
+    {
+      "page": "header-methods",
+      "title": "Extract the header from a 'biom-class' object as a list.",
+      "topics": [
+        "header",
+        "header,biom-method"
+      ]
+    },
+    {
+      "page": "make_biom",
+      "title": "Create a 'biom-class' from 'matrix-class' or 'data.frame'.",
+      "topics": [
+        "make_biom"
+      ]
+    },
+    {
+      "page": "matrix_element_type-methods",
+      "title": "Access class of data in the matrix elements of a 'biom-class' object",
+      "topics": [
+        "matrix_element_type",
+        "matrix_element_type,biom-method"
+      ]
+    },
+    {
+      "page": "ncol-methods",
+      "title": "Method extensions to 'ncol' for 'biom-class' objects.",
+      "topics": [
+        "ncol,biom-method"
+      ]
+    },
+    {
+      "page": "nrow-methods",
+      "title": "Method extensions to 'nrow' for 'biom-class' objects.",
+      "topics": [
+        "nrow,biom-method"
+      ]
+    },
+    {
+      "page": "observation_metadata-methods",
+      "title": "Access observation (row) meta data from 'biom-class'.",
+      "topics": [
+        "observation_metadata",
+        "observation_metadata,biom,character-method",
+        "observation_metadata,biom,missing-method",
+        "observation_metadata,biom,numeric-method"
+      ]
+    },
+    {
+      "page": "read_biom",
+      "title": "Read a biom-format file, returning a 'biom-class'.",
+      "topics": [
+        "read_biom"
+      ]
+    },
+    {
+      "page": "read_hdf5_biom",
+      "title": "Read in a biom-format v2 (HDF5) file, returning a 'list'.",
+      "topics": [
+        "read_hdf5_biom"
+      ]
+    },
+    {
+      "page": "rownames-methods",
+      "title": "Method extensions to 'rownames' for 'biom-class' objects.",
+      "topics": [
+        "rownames,biom-method"
+      ]
+    },
+    {
+      "page": "sample_metadata-methods",
+      "title": "Access meta data from 'biom-class'.",
+      "topics": [
+        "sample_metadata",
+        "sample_metadata,biom,character-method",
+        "sample_metadata,biom,missing-method",
+        "sample_metadata,biom,numeric-method"
+      ]
+    },
+    {
+      "page": "show-methods",
+      "title": "Method extensions to show for biom objects.",
+      "topics": [
+        "show,biom-method"
+      ]
+    },
+    {
+      "page": "write_biom",
+      "title": "Write a biom-format v1 file, returning a 'biom-class'.",
+      "topics": [
+        "write_biom"
+      ]
+    },
+    {
+      "page": "write_hdf5_biom",
+      "title": "Write a biom object to an HDF5 (BIOM v2) file.",
+      "topics": [
+        "write_hdf5_biom"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/biomformat/raw/HEAD/README.md",
+  "_rundeps": [
+    "jsonlite",
+    "lattice",
+    "Matrix"
+  ],
+  "_vignettes": [
+    {
+      "source": "biomformat.Rmd",
+      "filename": "biomformat.html",
+      "title": "The biomformat package vignette",
+      "author": "Paul J. McMurdie",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Paul J. McMurdie & Joseph N. Paulson",
+        "phyloseq Home Page",
+        "Motivation for the biomformat package",
+        "Read BIOM format",
+        "Access BIOM data",
+        "Core observation data",
+        "Observation Metadata",
+        "Sample Metadata",
+        "Plots",
+        "Write BIOM format (JSON / v1)",
+        "HDF5 (BIOM v2) read and write",
+        "Tidy long-format output",
+        "purrr-style summarisation over samples",
+        "SummarizedExperiment interoperability",
+        "Session info"
+      ],
+      "created": "2015-12-01 22:52:06",
+      "modified": "2026-03-15 01:21:09",
+      "commits": 3
+    }
+  ],
+  "_score": 11.358437350326387,
+  "_indexed": true,
+  "_nocasepkg": "biomformat",
+  "_universes": [
+    "bioc",
+    "joey711"
+  ],
+  "_previous": "1.39.0",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:13:07.000Z",
+      "distro": "noble",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "8d24664d0f49a63f82c2e22d824e940f6aa0e3c15d9e58f94c6d80140c7ea689",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    },
+    {
+      "r": "4.5.3",
+      "os": "linux",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:13:27.000Z",
+      "distro": "noble",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "871531a5be21078a577495a39313bb9fd073654f9a60de030bf53b636c7638d6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:12:24.000Z",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "88a03b90e4b70730209c606e77ec1360a00778c6c52a50be6ebf303add9540d2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:12:47.000Z",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "ec52971c6b630e2510832a9e63bf16d22c7fa5031e4a8f3b4313ecd96f53290a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:13:11.000Z",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "6f85a9fbb213949eff29c3e40f276567381718650feb58361ebe6cfe3cec5558",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:12:33.000Z",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "f46e39dda78376b69f259ec48621eb7ae03580ce2d6f0187e632e013901b4104",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    },
+    {
+      "r": "4.4.3",
+      "os": "win",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:12:36.000Z",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "812cdba13d3b33e9d2d92d9953b0d7f7ade83b28dad747a9f4ffa5da39e3ead0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.39.10",
+      "date": "2026-03-15T06:12:09.000Z",
+      "commit": "4652383dd94fcb38e1543d41d2fc4d79d615c801",
+      "fileid": "796662b99a8f5a2fe257047f8ed2c5731d2f078781c9348407764a15da206a08",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23104702294"
+    }
+  ]
+}
