@@ -1,0 +1,882 @@
+{
+  "_id": "69cf4b480c54e422bf1bd236",
+  "Package": "CellMentor",
+  "Type": "Package",
+  "Title": "Supervised Non-negative Matrix Factorization for Dimensional\nReduction in Single-Cell Analysis",
+  "Version": "0.99.3",
+  "Authors@R": "person(\"Ekaterina\", \"Petrenko\", \nemail = \"petrenko.kate@icloud.com\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0003-3549-834X\"))",
+  "Description": "Implements supervised cell type-aware non-negative matrix\nfactorization (NMF) for dimensional reduction in single-cell\nRNA sequencing analysis. The package provides methods for\nincorporating cell type information into the dimensionality\nreduction process, enabling improved visualization and\ndownstream analysis of single-cell data while preserving\nbiological structure. CellMentor employs a unique loss function\nthat simultaneously minimizes variation within known cell\npopulations while maximizing distinctions between different\ncell types, enabling effective transfer of learned patterns\nfrom labeled reference datasets to new unlabeled data.",
+  "License": "Apache License (>= 2)",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Software, SingleCell, Transcriptomics, DimensionReduction",
+  "URL": "https://github.com/petrenkokate/CellMentor",
+  "BugReports": "https://github.com/petrenkokate/CellMentor/issues",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "cmake libglpk-dev make libicu-dev libpng-dev\nlibuv1-dev libxml2-dev libssl-dev python3 zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-04-02 11:33:07 UTC",
+  "RemoteUrl": "https://github.com/bioc/CellMentor",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "7660309498904e3743529843f8e68ea5c9d36853",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-04-03 04:38:15 UTC",
+    "User": "root"
+  },
+  "Author": "Ekaterina Petrenko [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-3549-834X>)",
+  "Maintainer": "Ekaterina Petrenko <petrenko.kate@icloud.com>",
+  "MD5sum": "579256e05f1409586f0a86a25b463d54",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "CellMentor_0.99.3.tar.gz",
+  "_fileid": "9bd2abe70f56b8c41eb8cae6531cc35e37e996bbf4d6c490252483404177f4c7",
+  "_filesize": 253658,
+  "_sha256": "9bd2abe70f56b8c41eb8cae6531cc35e37e996bbf4d6c490252483404177f4c7",
+  "_created": "2026-04-03T04:38:15.000Z",
+  "_published": "2026-04-03T05:08:24.679Z",
+  "_jobs": [
+    {
+      "job": 69806745695,
+      "time": 272,
+      "config": "bioc-checks",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "6255004583"
+    },
+    {
+      "job": 69806745742,
+      "time": 638,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "6255056979"
+    },
+    {
+      "job": 69806745739,
+      "time": 585,
+      "config": "linux-release-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "6255048778"
+    },
+    {
+      "job": 69806745679,
+      "time": 362,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "6255026719"
+    },
+    {
+      "job": 69806745662,
+      "time": 456,
+      "config": "macos-release-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "6255037600"
+    },
+    {
+      "job": 69806116314,
+      "time": 488,
+      "config": "source",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "6254968408"
+    },
+    {
+      "job": 69806745653,
+      "time": 253,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "6255002177"
+    },
+    {
+      "job": 69806745690,
+      "time": 1620,
+      "config": "windows-devel",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "6255190247"
+    },
+    {
+      "job": 69806745764,
+      "time": 1725,
+      "config": "windows-oldrel",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "6255203357"
+    },
+    {
+      "job": 69806745740,
+      "time": 1742,
+      "config": "windows-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "6255205588"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 10
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/CellMentor",
+  "_commit": {
+    "id": "7660309498904e3743529843f8e68ea5c9d36853",
+    "author": "Petrenko Kate <petrenko.kate@icloud.com>",
+    "committer": "Petrenko Kate <petrenko.kate@icloud.com>",
+    "message": "Move scRNAseq from Imports to Suggests to fix install error\n\nscRNAseq is only used in convenience dataset-loading functions,\nnot core algorithm. Using requireNamespace() checks instead of\nhard dependency. Bumps version to 0.99.3.\n",
+    "time": 1775129587
+  },
+  "_maintainer": {
+    "name": "Ekaterina Petrenko",
+    "email": "petrenko.kate@icloud.com",
+    "login": "petrenkokate",
+    "uuid": 82456110,
+    "orcid": "0000-0003-3549-834X"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleR",
+      "role": "Imports"
+    },
+    {
+      "package": "Seurat",
+      "version": ">= 4.0.0",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "parallel",
+      "role": "Imports"
+    },
+    {
+      "package": "progress",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "magrittr",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "RMTstat",
+      "role": "Imports"
+    },
+    {
+      "package": "sparsesvd",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "skmeans",
+      "role": "Imports"
+    },
+    {
+      "package": "MLmetrics",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "lsa",
+      "role": "Imports"
+    },
+    {
+      "package": "nnls",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "entropy",
+      "role": "Imports"
+    },
+    {
+      "package": "irlba",
+      "role": "Imports"
+    },
+    {
+      "package": "aricode",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "withr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "scRNAseq",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-14",
+      "n": 2
+    },
+    {
+      "week": "2025-30",
+      "n": 3
+    },
+    {
+      "week": "2025-36",
+      "n": 3
+    },
+    {
+      "week": "2025-38",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 1
+    },
+    {
+      "week": "2025-45",
+      "n": 1
+    },
+    {
+      "week": "2025-50",
+      "n": 2
+    },
+    {
+      "week": "2026-14",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "software",
+    "singlecell",
+    "transcriptomics",
+    "dimensionreduction"
+  ],
+  "_stars": 19,
+  "_contributors": [
+    {
+      "user": "petrenkokate",
+      "count": 43,
+      "uuid": 82456110
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 114,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/CellMentor"
+  },
+  "_devurl": "https://github.com/petrenkokate/cellmentor",
+  "_searchresults": 37,
+  "_rbuild": "4.5.3",
+  "_assets": [
+    "extra/CellMentor.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/petrenkokate/cellmentor",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "CellMentor",
+    "cm_annotation",
+    "cm_rank",
+    "CreateCSFNMFobject",
+    "data_matrix",
+    "H",
+    "h.baron_dataset",
+    "hBaronDataset",
+    "matrices",
+    "muraro_dataset",
+    "project_data",
+    "ref_matrix",
+    "W"
+  ],
+  "_datasets": [
+    {
+      "name": "obj_toy",
+      "title": "Tiny prebuilt CSFNMF object for accessors (optional)",
+      "object": "obj_toy",
+      "file": "obj_toy.rda",
+      "class": [
+        "csfnmf"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "qry_matrix_toy",
+      "title": "Tiny toy matrices and labels for runnable examples",
+      "object": "qry_matrix_toy",
+      "file": "qry_matrix_toy.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "qry_1",
+        "qry_2",
+        "qry_3",
+        "qry_4",
+        "qry_5",
+        "qry_6",
+        "qry_7",
+        "qry_8"
+      ],
+      "rows": 50,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "ref_celltype_toy",
+      "title": "Tiny toy matrices and labels for runnable examples",
+      "object": "ref_celltype_toy",
+      "file": "ref_celltype_toy.rda",
+      "class": [
+        "character"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "ref_matrix_toy",
+      "title": "Tiny toy matrices and labels for runnable examples",
+      "object": "ref_matrix_toy",
+      "file": "ref_matrix_toy.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "ref_1",
+        "ref_2",
+        "ref_3",
+        "ref_4",
+        "ref_5",
+        "ref_6",
+        "ref_7",
+        "ref_8",
+        "ref_9",
+        "ref_10",
+        "ref_11",
+        "ref_12"
+      ],
+      "rows": 50,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "CellMentor",
+      "title": "CellMentor: Cell-Type Aware Dimensionality Reduction for Single-Cell RNA-Seq",
+      "topics": [
+        "CellMentor-package",
+        "CellMentor"
+      ]
+    },
+    {
+      "page": "cm_annotation",
+      "title": "Access cell annotations from a CellMentor object",
+      "topics": [
+        "cm_annotation"
+      ]
+    },
+    {
+      "page": "cm_rank",
+      "title": "Access the rank of a CellMentor object",
+      "topics": [
+        "cm_rank"
+      ]
+    },
+    {
+      "page": "CreateCSFNMFobject",
+      "title": "Create CSFNMF Object for Cell Type Analysis",
+      "topics": [
+        "CreateCSFNMFobject"
+      ]
+    },
+    {
+      "page": "data_matrix",
+      "title": "Access the query (data) matrix from a RefDataList object",
+      "topics": [
+        "data_matrix"
+      ]
+    },
+    {
+      "page": "H",
+      "title": "Access the H matrix",
+      "topics": [
+        "H"
+      ]
+    },
+    {
+      "page": "hBaronDataset",
+      "title": "Load Baron Human Pancreas Dataset",
+      "topics": [
+        "hBaronDataset"
+      ]
+    },
+    {
+      "page": "matrices",
+      "title": "Access the RefDataList from a CSFNMF object",
+      "topics": [
+        "matrices"
+      ]
+    },
+    {
+      "page": "muraro_dataset",
+      "title": "Load Muraro Pancreas Dataset",
+      "topics": [
+        "muraro_dataset"
+      ]
+    },
+    {
+      "page": "obj_toy",
+      "title": "Tiny prebuilt CSFNMF object for accessors (optional)",
+      "topics": [
+        "obj_toy"
+      ]
+    },
+    {
+      "page": "project_data",
+      "title": "Project Data onto NMF Basis Matrix",
+      "topics": [
+        "project_data"
+      ]
+    },
+    {
+      "page": "ref_matrix",
+      "title": "Access the reference matrix from a RefDataList object",
+      "topics": [
+        "ref_matrix"
+      ]
+    },
+    {
+      "page": "ref_matrix_toy",
+      "title": "Tiny toy matrices and labels for runnable examples",
+      "topics": [
+        "qry_matrix_toy",
+        "ref_celltype_toy",
+        "ref_matrix_toy"
+      ]
+    },
+    {
+      "page": "W",
+      "title": "Access the W matrix",
+      "topics": [
+        "W"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/CellMentor/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "aricode",
+    "askpass",
+    "assorthead",
+    "base64enc",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "bitops",
+    "bslib",
+    "cachem",
+    "caTools",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "commonmark",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "deldir",
+    "digest",
+    "dotCall64",
+    "dplyr",
+    "dqrng",
+    "entropy",
+    "evaluate",
+    "farver",
+    "fastDummies",
+    "fastmap",
+    "fitdistrplus",
+    "FNN",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "ggrepel",
+    "ggridges",
+    "globals",
+    "glue",
+    "goftest",
+    "gplots",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "here",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "ica",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "listenv",
+    "lmtest",
+    "lsa",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "miniUI",
+    "MLmetrics",
+    "nlme",
+    "nnls",
+    "openssl",
+    "otel",
+    "parallelly",
+    "patchwork",
+    "pbapply",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "polyclip",
+    "prettyunits",
+    "progress",
+    "progressr",
+    "promises",
+    "purrr",
+    "R6",
+    "RANN",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppHNSW",
+    "RcppProgress",
+    "RcppTOML",
+    "reshape2",
+    "reticulate",
+    "rlang",
+    "rmarkdown",
+    "RMTstat",
+    "ROCR",
+    "rprojroot",
+    "RSpectra",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scattermore",
+    "sctransform",
+    "Seqinfo",
+    "Seurat",
+    "SeuratObject",
+    "shiny",
+    "SingleCellExperiment",
+    "SingleR",
+    "sitmo",
+    "skmeans",
+    "slam",
+    "snow",
+    "SnowballC",
+    "sourcetools",
+    "sp",
+    "spam",
+    "SparseArray",
+    "sparsesvd",
+    "spatstat.data",
+    "spatstat.explore",
+    "spatstat.geom",
+    "spatstat.random",
+    "spatstat.sparse",
+    "spatstat.univar",
+    "spatstat.utils",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tensor",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "CellMentor_vignette.Rmd",
+      "filename": "CellMentor_vignette.html",
+      "title": "Introduction to CellMentor",
+      "author": "Ekaterina Petrenko",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Key Features",
+        "Comparison to Existing Methods",
+        "Installation",
+        "Basic Usage",
+        "Load Required Packages",
+        "1. Load Example Data",
+        "(Optional) Create smaller subsets for faster demonstration",
+        "2. Create CSFNMF Object",
+        "3. Run CellMentor with Hyperparameter Optimization",
+        "4. Project Data",
+        "5. Integration with SingleCellExperiment",
+        "Running CellMentor on Your Own Data",
+        "Required Inputs",
+        "Workflow",
+        "Session Information",
+        "References"
+      ],
+      "created": "2025-10-27 19:17:30",
+      "modified": "2026-04-02 11:33:07",
+      "commits": 4
+    }
+  ],
+  "_score": 6.449015316347786,
+  "_indexed": true,
+  "_nocasepkg": "cellmentor",
+  "_universes": [
+    "bioc",
+    "petrenkokate"
+  ],
+  "_previous": "0.99.0",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "0.99.3",
+      "date": "2026-04-03T04:43:16.000Z",
+      "distro": "noble",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "6c6d93908c5149e2d2e89dfe41f9e3175bb478e1dfd27d8c3241ef917aee9807",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    },
+    {
+      "r": "4.5.3",
+      "os": "linux",
+      "version": "0.99.3",
+      "date": "2026-04-03T04:43:07.000Z",
+      "distro": "noble",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "2effb4bb6dc0566396ac030b59b8f58f4d2e4afacd5c36dfc7f00f35859a66e8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.3",
+      "date": "2026-04-03T04:41:54.000Z",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "0ab29944f670b8c39a1273c9bfe8ae036bf1a010100dde643322fb8d44c9cd63",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "0.99.3",
+      "date": "2026-04-03T04:41:49.000Z",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "8ca7f7fd47b13c1b07375954dda6edd8ca37f6a7d87ff519afd785455ecb51aa",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "0.99.3",
+      "date": "2026-04-03T04:43:07.000Z",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "c6dff2902bf1ff754d43a5ce898e1e1c66e52afbaa103bbd960b4a2bc280cc1a",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-04-03T04:59:34.000Z",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "6149787a483fccb1f03cd342a52b569ebaceb1c82ad85d1dab8db5b4d05b4ef0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-04-03T05:01:09.000Z",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "6b8e4c1dcb1d5e4a73989acd54514887fc7a21bfebb77acf9d7b154f605642bf",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-04-03T05:01:30.000Z",
+      "commit": "7660309498904e3743529843f8e68ea5c9d36853",
+      "fileid": "55897cb68dd80006c42d4b633bf4df1d97244a0b4cc8d722722a1cd027d502e6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/23933850718"
+    }
+  ]
+}
