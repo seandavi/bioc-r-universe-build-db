@@ -1,0 +1,541 @@
+{
+  "_id": "69d9e5eec5259ad4cd82f6e6",
+  "Package": "TileDBArray",
+  "Version": "1.21.2",
+  "Date": "2026-04-10",
+  "Title": "Using TileDB as a DelayedArray Backend",
+  "Description": "Implements a DelayedArray backend for reading and writing\ndense or sparse arrays in the TileDB format. The resulting\nTileDBArrays are compatible with all Bioconductor pipelines\nthat can accept DelayedArray instances.",
+  "Authors@R": "c(\nperson(\"Aaron\", \"Lun\", role=c(\"aut\", \"cre\"), email=\"infinite.monkeys.with.keyboards@gmail.com\"),\nperson(\"Genentech, Inc.\", role=\"cph\")\n)",
+  "License": "MIT + file LICENSE",
+  "biocViews": "DataRepresentation, Infrastructure, Software",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/LTLA/TileDBArray",
+  "URL": "https://github.com/LTLA/TileDBArray",
+  "RoxygenNote": "7.3.2",
+  "Encoding": "UTF-8",
+  "Config/pak/sysreqs": "cmake git libzstd-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-04-10 05:42:32 UTC",
+  "RemoteUrl": "https://github.com/bioc/TileDBArray",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-04-11 06:05:08 UTC",
+    "User": "root"
+  },
+  "Author": "Aaron Lun [aut, cre],\nGenentech, Inc. [cph]",
+  "Maintainer": "Aaron Lun <infinite.monkeys.with.keyboards@gmail.com>",
+  "MD5sum": "db127ebb9bc3ba2ba1ed20651f0fd46d",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "TileDBArray_1.21.2.tar.gz",
+  "_fileid": "f8f675438b1ba39eb845f95c30e9136195eb20cd2bda8ced7ad8aef7db321b45",
+  "_filesize": 123875,
+  "_sha256": "f8f675438b1ba39eb845f95c30e9136195eb20cd2bda8ced7ad8aef7db321b45",
+  "_created": "2026-04-11T06:05:08.000Z",
+  "_published": "2026-04-11T06:10:54.640Z",
+  "_jobs": [
+    {
+      "job": 70890726312,
+      "time": 191,
+      "config": "bioc-checks",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "6383871067"
+    },
+    {
+      "job": 70890726322,
+      "time": 304,
+      "config": "linux-devel-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "6383879915"
+    },
+    {
+      "job": 70890726323,
+      "time": 261,
+      "config": "linux-release-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "6383876471"
+    },
+    {
+      "job": 70890726311,
+      "time": 216,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "6383872952"
+    },
+    {
+      "job": 70890726318,
+      "time": 155,
+      "config": "macos-release-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "6383868113"
+    },
+    {
+      "job": 70890549849,
+      "time": 233,
+      "config": "source",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "6383855190"
+    },
+    {
+      "job": 70890726308,
+      "time": 137,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "6383866576"
+    },
+    {
+      "job": 70890726325,
+      "time": 235,
+      "config": "windows-devel",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "6383874441"
+    },
+    {
+      "job": 70890726327,
+      "time": 202,
+      "config": "windows-oldrel",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "6383871911"
+    },
+    {
+      "job": 70890726324,
+      "time": 190,
+      "config": "windows-release",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "6383870935"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/TileDBArray",
+  "_commit": {
+    "id": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+    "author": "LTLA <infinite.monkeys.with.keyboards@gmail.com>",
+    "committer": "LTLA <infinite.monkeys.with.keyboards@gmail.com>",
+    "message": "Yet more workarounds for writing to a subarray of the sink.\n\nThis partially reverts the change we made earlier to use selected_ranges(), as\nit appears that [<- doesn't even respect selected_ranges()<-.\n\nAlso added tests to check that partial array writes work correctly... though not\ntoo much, as [<- still doesn't work with single-column blocks!\n",
+    "time": 1775799752
+  },
+  "_maintainer": {
+    "name": "Aaron Lun",
+    "email": "infinite.monkeys.with.keyboards@gmail.com",
+    "login": "ltla",
+    "twitter": "@realAaronLun",
+    "uuid": 8166669
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "SparseArray",
+      "version": ">= 1.5.20",
+      "role": "Depends"
+    },
+    {
+      "package": "DelayedArray",
+      "version": ">= 0.31.7",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "tiledb",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "Matrix",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-16",
+      "n": 2
+    },
+    {
+      "week": "2025-25",
+      "n": 1
+    },
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-14",
+      "n": 1
+    },
+    {
+      "week": "2026-15",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.1",
+      "bioc": "3.23"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.22"
+    }
+  ],
+  "_topics": [
+    "datarepresentation",
+    "infrastructure",
+    "software"
+  ],
+  "_stars": 11,
+  "_contributors": [
+    {
+      "user": "ltla",
+      "count": 42,
+      "uuid": 8166669
+    },
+    {
+      "user": "eddelbuettel",
+      "count": 15,
+      "uuid": 673121
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 8,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 6,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 328,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/TileDBArray"
+  },
+  "_devurl": "https://github.com/ltla/tiledbarray",
+  "_searchresults": 26,
+  "_rbuild": "4.5.3",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/TileDBArray.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ltla/tiledbarray",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "chunkdim",
+    "DelayedArray",
+    "extract_array",
+    "extract_sparse_array",
+    "getTileDBAttr",
+    "getTileDBCapacity",
+    "getTileDBCellOrder",
+    "getTileDBContext",
+    "getTileDBDimType",
+    "getTileDBExtent",
+    "getTileDBPath",
+    "getTileDBTileOrder",
+    "is_sparse",
+    "matrixClass",
+    "path",
+    "setTileDBAttr",
+    "setTileDBCapacity",
+    "setTileDBCellOrder",
+    "setTileDBContext",
+    "setTileDBDimType",
+    "setTileDBExtent",
+    "setTileDBPath",
+    "setTileDBTileOrder",
+    "show",
+    "TileDBArray",
+    "TileDBArraySeed",
+    "TileDBRealizationSink",
+    "type",
+    "write_block",
+    "writeTileDBArray"
+  ],
+  "_help": [
+    {
+      "page": "TileDBArray",
+      "title": "Delayed TileDB arrays",
+      "topics": [
+        "chunkdim,TileDBArraySeed-method",
+        "DelayedArray,TileDBArraySeed-method",
+        "extract_array,TileDBArraySeed-method",
+        "extract_sparse_array,TileDBArraySeed-method",
+        "is_sparse,TileDBArraySeed-method",
+        "matrixClass,TileDBArray-method",
+        "path,TileDBArraySeed-method",
+        "show,TileDBArraySeed-method",
+        "TileDBArray",
+        "TileDBArray-class",
+        "TileDBArraySeed",
+        "TileDBArraySeed-class",
+        "TileDBMatrix",
+        "TileDBMatrix-class",
+        "type,TileDBArraySeed-method"
+      ]
+    },
+    {
+      "page": "TileDBArray-globals",
+      "title": "TileDBArray global options",
+      "topics": [
+        "getTileDBAttr",
+        "getTileDBCapacity",
+        "getTileDBCellOrder",
+        "getTileDBContext",
+        "getTileDBDimType",
+        "getTileDBExtent",
+        "getTileDBPath",
+        "getTileDBTileOrder",
+        "setTileDBAttr",
+        "setTileDBCapacity",
+        "setTileDBCellOrder",
+        "setTileDBContext",
+        "setTileDBDimType",
+        "setTileDBExtent",
+        "setTileDBPath",
+        "setTileDBTileOrder",
+        "TileDBArray-globals"
+      ]
+    },
+    {
+      "page": "TileDBArray-pkg",
+      "title": "The 'TileDBArray' package",
+      "topics": [
+        "TileDBArray-pkg"
+      ]
+    },
+    {
+      "page": "TileDBRealizationSink",
+      "title": "Write arrays to TileDB",
+      "topics": [
+        "coerce,ANY,TileDBArray-method",
+        "coerce,ANY,TileDBMatrix-method",
+        "coerce,ANY,TileDBRealizationSink-method",
+        "coerce,TileDBRealizationSink,DelayedArray-method",
+        "coerce,TileDBRealizationSink,TileDBArray-method",
+        "coerce,TileDBRealizationSink,TileDBMatrix-method",
+        "TileDBRealizationSink",
+        "TileDBRealizationSink-class",
+        "type,TileDBRealizationSink-method",
+        "writeTileDBArray",
+        "write_block,TileDBRealizationSink-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/TileDBArray/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "DelayedArray",
+    "generics",
+    "IRanges",
+    "lattice",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "nanoarrow",
+    "nanotime",
+    "Rcpp",
+    "RcppCCTZ",
+    "RcppDate",
+    "RcppInt64",
+    "RcppSpdlog",
+    "S4Arrays",
+    "S4Vectors",
+    "SparseArray",
+    "spdl",
+    "tiledb",
+    "XVector",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "userguide.Rmd",
+      "filename": "userguide.html",
+      "title": "A DelayedArray backend for TileDB",
+      "author": "Aaron Lun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Creating a TileDBArray",
+        "Manipulating TileDBArrays",
+        "Controlling backend creation",
+        "Session information"
+      ],
+      "created": "2020-05-14 23:35:57",
+      "modified": "2020-06-12 19:18:59",
+      "commits": 3
+    }
+  ],
+  "_score": 6.933487287848705,
+  "_indexed": true,
+  "_nocasepkg": "tiledbarray",
+  "_universes": [
+    "bioc",
+    "ltla"
+  ],
+  "_previous": "1.21.1",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:08:52.000Z",
+      "distro": "noble",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "5cee1c94d57b3bd4cc92940370f7dee6a983ef2e37ef41236caa9f86d17365d6",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    },
+    {
+      "r": "4.5.3",
+      "os": "linux",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:08:06.000Z",
+      "distro": "noble",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "78d92e246e28d036e27c7470f4bf5a37e4730bd93bae492b8c2c96cc89920163",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:07:30.000Z",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "e1e7c8695b4c60bdb0d1c031afa79e19eea3e866626fbaf8d0796db448fc140e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:06:58.000Z",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "01707a624c94afc96de25b9e9368a8225fb8bec2858ed41b930704f196d789fc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:07:52.000Z",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "bd9870337bdc4f541c3cee0884512e9efbbc8b9d0ca3ad311edf1be61eabe776",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:07:20.000Z",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "70fffccd83c069d62917ce43cf1e48931f6123450a663ed4e9559e7371841156",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:06:59.000Z",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "2853ba284f31dc721b4b93c4f3ec97cba65fb731ed91ad56dee8d1c875720987",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.21.2",
+      "date": "2026-04-11T06:06:49.000Z",
+      "commit": "8b172c8feaef44ca4619f3f0f5e601a87ab69076",
+      "fileid": "370e1f1e7d171ce9a8c4f1d16e8d20c9c5ef39c0e4bb9f15c848dc96d80111aa",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/24276224940"
+    }
+  ]
+}
