@@ -1,0 +1,886 @@
+{
+  "_id": "69fb28b915e4104bb12c4329",
+  "Package": "CSOA",
+  "Type": "Package",
+  "Title": "Calculate per-cell gene signature scores in scRNA-seq data using\ncell set overlaps",
+  "Version": "1.3.1",
+  "Authors@R": "person('Andrei-Florian', 'Stoica', \nemail='andreistoica@foxmail.com',\nrole=c('aut','cre'),\ncomment=c(ORCID='0000-0002-5253-0826'))",
+  "Description": "Cell Set Overlap Analysis (CSOA) is a tool for calculating\nper-cell gene signature scores in an scRNA-seq dataset. CSOA\nconstructs a set for each gene in the signature, consisting of\nthe cells that highly express the gene. Next, all overlaps of\npairs of cell sets are computed, ranked, filtered and scored.\nThe CSOA per-cell score is calculated by summing up all\nproducts of the overlap scores and the min-max-normalized\nexpression of the two involved genes. CSOA can run on a Seurat\nobject, a SingleCellExperiment object, a matrix and a\ndgCMatrix.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.3",
+  "biocViews": "Software, SingleCell, GeneSetEnrichment, GeneExpression",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/andrei-stoica26/CSOA",
+  "BugReports": "https://github.com/andrei-stoica26/CSOA/issues",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "cmake libfontconfig1-dev libfreetype6-dev\nlibglpk-dev make libicu-dev libpng-dev libuv1-dev libxml2-dev\nlibssl-dev python3 zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-05-06 06:48:28 UTC",
+  "RemoteUrl": "https://github.com/bioc/CSOA",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "959ac2950f251e44bab4c286a51195b086243236",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-05-06 11:09:38 UTC",
+    "User": "root"
+  },
+  "Author": "Andrei-Florian Stoica [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-5253-0826>)",
+  "Maintainer": "Andrei-Florian Stoica <andreistoica@foxmail.com>",
+  "MD5sum": "9093382b5884ee138e8ef3f59377cead",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "CSOA_1.3.1.tar.gz",
+  "_fileid": "d99f008261da2b63f06ed3837e47fd828b79e72d872a0702ba2fdb939d3e0f7c",
+  "_filesize": 2236086,
+  "_sha256": "d99f008261da2b63f06ed3837e47fd828b79e72d872a0702ba2fdb939d3e0f7c",
+  "_created": "2026-05-06T11:09:38.000Z",
+  "_published": "2026-05-06T11:40:41.332Z",
+  "_jobs": [
+    {
+      "job": 74599478197,
+      "time": 258,
+      "config": "bioc-checks",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "6828803504"
+    },
+    {
+      "job": 74599478209,
+      "time": 451,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "6828861268"
+    },
+    {
+      "job": 74599478203,
+      "time": 539,
+      "config": "linux-release-x86_64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "6828889720"
+    },
+    {
+      "job": 74599478239,
+      "time": 334,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "6828895262"
+    },
+    {
+      "job": 74599478228,
+      "time": 348,
+      "config": "macos-release-arm64",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "6828898425"
+    },
+    {
+      "job": 74598382890,
+      "time": 443,
+      "config": "source",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "6828722150"
+    },
+    {
+      "job": 74599478190,
+      "time": 1165,
+      "config": "wasm-release",
+      "r": "4.5.1",
+      "check": "OK",
+      "artifact": "6829082585"
+    },
+    {
+      "job": 74599478226,
+      "time": 1479,
+      "config": "windows-devel",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "6829176299"
+    },
+    {
+      "job": 74599478201,
+      "time": 1313,
+      "config": "windows-oldrel",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "6829125558"
+    },
+    {
+      "job": 74599478222,
+      "time": 1788,
+      "config": "windows-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "6829274071"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 5
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/CSOA",
+  "_commit": {
+    "id": "959ac2950f251e44bab4c286a51195b086243236",
+    "author": "andrei-stoica26 <andreistoica@foxmail.com>",
+    "committer": "andrei-stoica26 <andreistoica@foxmail.com>",
+    "message": "Bumped version\n",
+    "time": 1778050108
+  },
+  "_maintainer": {
+    "name": "Andrei-Florian Stoica",
+    "email": "andreistoica@foxmail.com",
+    "login": "andrei-stoica26",
+    "uuid": 44497020,
+    "orcid": "0000-0002-5253-0826"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "henna",
+      "role": "Imports"
+    },
+    {
+      "package": "kerntools",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "paletteer",
+      "role": "Imports"
+    },
+    {
+      "package": "qs2",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "Seurat",
+      "role": "Imports"
+    },
+    {
+      "package": "SeuratObject",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "spatstat.utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "textshape",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "patchwork",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "scRNAseq",
+      "role": "Suggests"
+    },
+    {
+      "package": "scuttle",
+      "role": "Suggests"
+    },
+    {
+      "package": "stringr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-22",
+      "n": 7
+    },
+    {
+      "week": "2025-23",
+      "n": 10
+    },
+    {
+      "week": "2025-24",
+      "n": 8
+    },
+    {
+      "week": "2025-25",
+      "n": 1
+    },
+    {
+      "week": "2025-26",
+      "n": 5
+    },
+    {
+      "week": "2025-28",
+      "n": 20
+    },
+    {
+      "week": "2025-33",
+      "n": 1
+    },
+    {
+      "week": "2025-38",
+      "n": 1
+    },
+    {
+      "week": "2025-43",
+      "n": 1
+    },
+    {
+      "week": "2025-49",
+      "n": 3
+    },
+    {
+      "week": "2026-11",
+      "n": 4
+    },
+    {
+      "week": "2026-12",
+      "n": 4
+    },
+    {
+      "week": "2026-15",
+      "n": 2
+    },
+    {
+      "week": "2026-16",
+      "n": 2
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-19",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "software",
+    "singlecell",
+    "genesetenrichment",
+    "geneexpression"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "andrei-stoica26",
+      "count": 71,
+      "uuid": 44497020
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 178,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/CSOA"
+  },
+  "_devurl": "https://github.com/andrei-stoica26/csoa",
+  "_searchresults": 5,
+  "_rbuild": "4.6.0",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/CSOA.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/andrei-stoica26/csoa",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "attachCellScores",
+    "basicHeatmap",
+    "breakWeakTies",
+    "cellDistribution",
+    "cellSetsOverlaps",
+    "expMat",
+    "featureWes",
+    "geneRadialPlot",
+    "generateOverlaps",
+    "getPairs",
+    "overlapCutoffPlot",
+    "overlapGenes",
+    "overlapNetworkPlot",
+    "overlapPairs",
+    "percentileSets",
+    "processOverlaps",
+    "qGrab",
+    "runCSOA",
+    "scoreCells",
+    "scoreModules"
+  ],
+  "_help": [
+    {
+      "page": "attachCellScores",
+      "title": "Attach CSOA scores to object",
+      "topics": [
+        "attachCellScores",
+        "attachCellScores.default",
+        "attachCellScores.dgCMatrix",
+        "attachCellScores.matrix",
+        "attachCellScores.Seurat",
+        "attachCellScores.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "basicHeatmap",
+      "title": "Plot a simple heatmap",
+      "topics": [
+        "basicHeatmap"
+      ]
+    },
+    {
+      "page": "breakWeakTies",
+      "title": "Remove overlap pairs with low Jaccard scores",
+      "topics": [
+        "breakWeakTies"
+      ]
+    },
+    {
+      "page": "cellDistribution",
+      "title": "Show the distribution of cell sets among cells",
+      "topics": [
+        "cellDistribution"
+      ]
+    },
+    {
+      "page": "cellSetsOverlaps",
+      "title": "Calculates the significance of overlaps of pairs of cells sets",
+      "topics": [
+        "cellSetsOverlaps"
+      ]
+    },
+    {
+      "page": "expMat",
+      "title": "Extracts the data expression matrix from object",
+      "topics": [
+        "expMat",
+        "expMat.default",
+        "expMat.dgCMatrix",
+        "expMat.matrix",
+        "expMat.Seurat",
+        "expMat.SingleCellExperiment"
+      ]
+    },
+    {
+      "page": "featureWes",
+      "title": "A feature plot with a more distinctive color scheme.",
+      "topics": [
+        "featureWes"
+      ]
+    },
+    {
+      "page": "geneRadialPlot",
+      "title": "Radial plot for an overlap data frame",
+      "topics": [
+        "geneRadialPlot"
+      ]
+    },
+    {
+      "page": "generateOverlaps",
+      "title": "Generate overlaps of cell sets for input genes",
+      "topics": [
+        "generateOverlaps"
+      ]
+    },
+    {
+      "page": "getPairs",
+      "title": "Get all unordered pairs of two elements from a vector",
+      "topics": [
+        "getPairs"
+      ]
+    },
+    {
+      "page": "overlapCutoffPlot",
+      "title": "Plot the selection of overlaps",
+      "topics": [
+        "overlapCutoffPlot"
+      ]
+    },
+    {
+      "page": "overlapGenes",
+      "title": "Get all genes from an overlap data frame",
+      "topics": [
+        "overlapGenes"
+      ]
+    },
+    {
+      "page": "overlapNetworkPlot",
+      "title": "Plot the overlaps as a network",
+      "topics": [
+        "overlapNetworkPlot"
+      ]
+    },
+    {
+      "page": "overlapPairs",
+      "title": "Extract gene pairs from overlap data frame",
+      "topics": [
+        "overlapPairs"
+      ]
+    },
+    {
+      "page": "percentileSets",
+      "title": "Generates cell expressing input genes at an input percentile",
+      "topics": [
+        "percentileSets"
+      ]
+    },
+    {
+      "page": "processOverlaps",
+      "title": "Process data frame of overlaps of cell sets",
+      "topics": [
+        "processOverlaps"
+      ]
+    },
+    {
+      "page": "qGrab",
+      "title": "Read and delete a .qs2 file",
+      "topics": [
+        "qGrab"
+      ]
+    },
+    {
+      "page": "runCSOA",
+      "title": "Run the CSOA pipeline",
+      "topics": [
+        "runCSOA"
+      ]
+    },
+    {
+      "page": "scoreCells",
+      "title": "Generate CSOA scores from overlap data frame and list of pairs",
+      "topics": [
+        "scoreCells"
+      ]
+    },
+    {
+      "page": "scoreModules",
+      "title": "Run CSOA separately on the connected components of the overlap graph",
+      "topics": [
+        "scoreModules"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/CSOA/raw/HEAD/README.md",
+  "_rundeps": [
+    "abdiv",
+    "abind",
+    "ape",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "bitops",
+    "bslib",
+    "cachem",
+    "caTools",
+    "class",
+    "cli",
+    "cluster",
+    "codetools",
+    "commonmark",
+    "cowplot",
+    "cpp11",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "deldir",
+    "digest",
+    "dotCall64",
+    "dplyr",
+    "dqrng",
+    "evaluate",
+    "farver",
+    "fastDummies",
+    "fastmap",
+    "fitdistrplus",
+    "FNN",
+    "fontawesome",
+    "fs",
+    "future",
+    "future.apply",
+    "generics",
+    "GenomicRanges",
+    "ggalluvial",
+    "ggeasy",
+    "ggforce",
+    "ggnewscale",
+    "ggplot2",
+    "ggraph",
+    "ggrepel",
+    "ggridges",
+    "globals",
+    "glue",
+    "goftest",
+    "gplots",
+    "graphlayouts",
+    "gridExtra",
+    "gtable",
+    "gtools",
+    "henna",
+    "here",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "ica",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "kernlab",
+    "KernSmooth",
+    "kerntools",
+    "knitr",
+    "labeling",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "listenv",
+    "liver",
+    "lmtest",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "miniUI",
+    "nlme",
+    "openssl",
+    "otel",
+    "paletteer",
+    "parallelly",
+    "patchwork",
+    "pbapply",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "polyclip",
+    "prismatic",
+    "progressr",
+    "promises",
+    "purrr",
+    "qs2",
+    "R6",
+    "RANN",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppAnnoy",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppHNSW",
+    "RcppParallel",
+    "RcppProgress",
+    "RcppTOML",
+    "rematch2",
+    "reshape2",
+    "reticulate",
+    "rlang",
+    "rmarkdown",
+    "ROCR",
+    "rprojroot",
+    "RSpectra",
+    "rstudioapi",
+    "Rtsne",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scattermore",
+    "sctransform",
+    "Seqinfo",
+    "Seurat",
+    "SeuratObject",
+    "shiny",
+    "sitmo",
+    "slam",
+    "sourcetools",
+    "sp",
+    "spam",
+    "SparseArray",
+    "spatstat.data",
+    "spatstat.explore",
+    "spatstat.geom",
+    "spatstat.random",
+    "spatstat.sparse",
+    "spatstat.univar",
+    "spatstat.utils",
+    "stringfish",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemfonts",
+    "tensor",
+    "textshape",
+    "tibble",
+    "tidygraph",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "tweenr",
+    "utf8",
+    "uwot",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "Advanced-CSOA.Rmd",
+      "filename": "Advanced-CSOA.html",
+      "title": "Advanced CSOA",
+      "author": "Andrei-Florian Stoica",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Prerequisites",
+        "Refining gene signatures: I",
+        "Refining gene signatures: II",
+        "Addressing noisy gene sets",
+        "Operating with gene sets that characterize multiple subpopulations",
+        "Visualizing gene participation in top overlaps",
+        "Session information"
+      ],
+      "created": "2025-08-13 14:54:36",
+      "modified": "2026-03-11 06:38:47",
+      "commits": 3
+    },
+    {
+      "source": "CSOA.Rmd",
+      "filename": "CSOA.html",
+      "title": "CSOA",
+      "author": "Andrei-Florian Stoica",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Prerequisites",
+        "Scoring gene sets",
+        "Session information"
+      ],
+      "created": "2025-06-06 15:15:22",
+      "modified": "2025-10-22 06:13:23",
+      "commits": 6
+    },
+    {
+      "source": "The-CSOA-algorithm.Rmd",
+      "filename": "The-CSOA-algorithm.html",
+      "title": "The CSOA algorithm",
+      "author": "Andrei-Florian Stoica",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Prerequisites",
+        "Constructing cell sets",
+        "Assessing overlaps of pairs of cell sets",
+        "Identifying and scoring top overlaps",
+        "Scoring the cells",
+        "The runCSOA wrapper",
+        "Session information"
+      ],
+      "created": "2025-08-13 14:54:36",
+      "modified": "2026-04-17 08:15:16",
+      "commits": 3
+    }
+  ],
+  "_score": 5.857332496431268,
+  "_indexed": true,
+  "_nocasepkg": "csoa",
+  "_universes": [
+    "bioc",
+    "andrei-stoica26"
+  ],
+  "_previous": "1.3.0",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:14:36.000Z",
+      "distro": "noble",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "492d5fdec548a93d2627de6c88a22a0e5ef1cdb628932bf240ac78189d858946",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:15:31.000Z",
+      "distro": "noble",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "338cb71fd5f7a5c669b44b7837afa54c7cfc4a0e4269c16b20da44a7a71cda69",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:16:19.000Z",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "38fc8d0b44d1e2c37782ee3bcce1f26be72803a985bfee169dcdf49e90b24167",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:16:47.000Z",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "4a89df63d31738de7d3aab4bbd2d1aa6bce9eaa73fd18b4206444d5ddf998254",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    },
+    {
+      "r": "4.5.1",
+      "os": "wasm",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:29:54.000Z",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "df2b7f231ec62ecad5b1c33730e2e87635d5015f03f093fd9e0e8f3746d28c47",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:31:29.000Z",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "523d66211c15ca6190a926a89b4820a51c885ec5acb7051134108a5d128cac14",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:28:46.000Z",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "f29a3cae64a2935272f2be815611123873254fb1940296c545ad58c82e3399fa",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.3.1",
+      "date": "2026-05-06T11:36:18.000Z",
+      "commit": "959ac2950f251e44bab4c286a51195b086243236",
+      "fileid": "19e3b4923f413b63f5f22915d2aee77a7cf0f1dde75e405875c2f9a2f476f4d4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/25431409427"
+    }
+  ]
+}
