@@ -1,0 +1,695 @@
+{
+  "_id": "6a1b03f11d7bb097a0a0209c",
+  "Package": "ImageArray",
+  "Type": "Package",
+  "Title": "A framework for on-disk and in-memory image arrays",
+  "Version": "1.1.2",
+  "Authors@R": "person(\"Art\u00fcr\", \"Manukyan\",\nrole=c(\"aut\", \"cre\", \"fnd\"),\nemail=\"artur-man@hotmail.com\",\ncomment=c(ORCID=\"0000-0002-0441-9517\"))",
+  "Description": "ImageArray provides a framework for on-disk and in-memory\nimage arrays, specifically for pyramidal images stored in HDF5,\nZarr and life sciences image file formats (OME Bio-Formats).",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "biocViews": "Software, Visualization",
+  "Config/testthat/edition": "3",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/BIMSBbioinfo/ImageArray",
+  "BugReports": "https://github.com/BIMSBbioinfo/ImageArray/issues",
+  "Config/roxygen2/version": "8.0.0",
+  "Config/pak/sysreqs": "libblosc-dev cmake libfftw3-dev make\nlibmagick++-dev gsfonts libjpeg-dev libpng-dev libtiff-dev\nlibuv1-dev libxml2-dev libzstd-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-05-30 07:55:36 UTC",
+  "RemoteUrl": "https://github.com/bioc/ImageArray",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-05-30 10:09:20 UTC",
+    "User": "root"
+  },
+  "Author": "Art\u00fcr Manukyan [aut, cre, fnd] (ORCID:\n<https://orcid.org/0000-0002-0441-9517>)",
+  "Maintainer": "Art\u00fcr Manukyan <artur-man@hotmail.com>",
+  "MD5sum": "1db600891e23bf20d04a7bf53bb6ea1b",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "ImageArray_1.1.2.tar.gz",
+  "_fileid": "7fb626603fd1ae74df5e1752c83eb634de72e7408b60cda438b0b411cec38e98",
+  "_filesize": 3546363,
+  "_sha256": "7fb626603fd1ae74df5e1752c83eb634de72e7408b60cda438b0b411cec38e98",
+  "_created": "2026-05-30T10:09:20.000Z",
+  "_published": "2026-05-30T15:36:17.335Z",
+  "_jobs": [
+    {
+      "job": 78641738144,
+      "time": 192,
+      "config": "bioc-checks",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "7307637101"
+    },
+    {
+      "job": 78641738151,
+      "time": 415,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "7307659106"
+    },
+    {
+      "job": 78641738146,
+      "time": 462,
+      "config": "linux-release-x86_64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "7307660784"
+    },
+    {
+      "job": 78641738162,
+      "time": 293,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "7309292389"
+    },
+    {
+      "job": 78641738173,
+      "time": 306,
+      "config": "macos-release-arm64",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "7309295935"
+    },
+    {
+      "job": 78640366922,
+      "time": 299,
+      "config": "source",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "7307416503"
+    },
+    {
+      "job": 78641738136,
+      "time": 133,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "7307628729"
+    },
+    {
+      "job": 78641738182,
+      "time": 311,
+      "config": "windows-devel",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "7307644455"
+    },
+    {
+      "job": 78641738171,
+      "time": 337,
+      "config": "windows-oldrel",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "7307647448"
+    },
+    {
+      "job": 78641738172,
+      "time": 323,
+      "config": "windows-release",
+      "r": "4.6.0",
+      "check": "NOTE",
+      "artifact": "7307645675"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 4
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_upstream": "https://github.com/bioc/ImageArray",
+  "_commit": {
+    "id": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+    "author": "Art\u00fcr Manukyan <artur-man@hotmail.com>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Include core dimensions (XYZCT)  (#46)\n\n* Update parameter name in rotate example from 'degrees' to 'angle'\n- fixes #36\n* update gha to r/bioc devel\n* Update .AXES to include additional dimensions 'z' and 't'\n* Update ImageArray creation to use dynamic axes based on image list shape\n* Enhance BFArray constructor to dynamically set image axes from metadata and adjust shape handling\n* make sure dim takes unnamed shape\n* Refactor BFArray tests to remove unnecessary dimensions in expectations\n* use invalid axes\n* remove spurious dimensions\n* Refactor BFArray indexing tests to remove unnecessary dimensions in expectations\n* enforce the correct shape\n* add 4D example to vignette\n* some small updates\n* add links and bump version\n* edit NEWS and bump version\n\n---------\n\nCo-authored-by: Alexander Blume <alex.gos90@gmail.com>",
+    "time": 1780127736
+  },
+  "_maintainer": {
+    "name": "Art\u00fcr Manukyan",
+    "email": "artur-man@hotmail.com",
+    "login": "artur-man",
+    "description": "Bioinformatics Scientist at MDC BIMSB\n",
+    "uuid": 39335576,
+    "orcid": "0000-0002-0441-9517"
+  },
+  "_distro": "noble",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "EBImage",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Arrays",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Imports"
+    },
+    {
+      "package": "rhdf5",
+      "role": "Imports"
+    },
+    {
+      "package": "HDF5Array",
+      "role": "Imports"
+    },
+    {
+      "package": "Rarr",
+      "role": "Imports"
+    },
+    {
+      "package": "ZarrArray",
+      "role": "Imports"
+    },
+    {
+      "package": "magick",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "shiny",
+      "role": "Suggests"
+    },
+    {
+      "package": "RBioFormats",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 2,
+  "_updates": [
+    {
+      "week": "2025-22",
+      "n": 2
+    },
+    {
+      "week": "2025-23",
+      "n": 1
+    },
+    {
+      "week": "2025-25",
+      "n": 1
+    },
+    {
+      "week": "2025-27",
+      "n": 2
+    },
+    {
+      "week": "2025-36",
+      "n": 1
+    },
+    {
+      "week": "2025-37",
+      "n": 1
+    },
+    {
+      "week": "2025-38",
+      "n": 2
+    },
+    {
+      "week": "2025-42",
+      "n": 14
+    },
+    {
+      "week": "2025-43",
+      "n": 2
+    },
+    {
+      "week": "2025-44",
+      "n": 6
+    },
+    {
+      "week": "2025-45",
+      "n": 14
+    },
+    {
+      "week": "2025-46",
+      "n": 12
+    },
+    {
+      "week": "2026-04",
+      "n": 4
+    },
+    {
+      "week": "2026-06",
+      "n": 6
+    },
+    {
+      "week": "2026-07",
+      "n": 2
+    },
+    {
+      "week": "2026-08",
+      "n": 5
+    },
+    {
+      "week": "2026-09",
+      "n": 13
+    },
+    {
+      "week": "2026-16",
+      "n": 4
+    },
+    {
+      "week": "2026-17",
+      "n": 7
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-22",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "software",
+    "visualization"
+  ],
+  "_stars": 6,
+  "_contributors": [
+    {
+      "user": "artur-man",
+      "count": 202,
+      "uuid": 39335576
+    },
+    {
+      "user": "bisaloo",
+      "count": 5,
+      "uuid": 10783929
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 251,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ImageArray"
+  },
+  "_devurl": "https://github.com/bimsbbioinfo/imagearray",
+  "_searchresults": 15,
+  "_rbuild": "4.6.0",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/ImageArray.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bimsbbioinfo/imagearray",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "aperm",
+    "axes",
+    "BFArray",
+    "create_zarr",
+    "create_zarr_group",
+    "createImageArray",
+    "crop",
+    "flip",
+    "flop",
+    "getImageInfo",
+    "ImageArray",
+    "meta",
+    "modulate",
+    "negate",
+    "path",
+    "path<-",
+    "realize",
+    "rotate",
+    "type",
+    "writeImageArray"
+  ],
+  "_help": [
+    {
+      "page": "BFArray-methods",
+      "title": "BFArray constructor method",
+      "topics": [
+        "BFArray",
+        "BFArray-methods",
+        "dim,BFArraySeed-method",
+        "type,BFArraySeed-method"
+      ]
+    },
+    {
+      "page": "create_zarr",
+      "title": "create_zarr",
+      "topics": [
+        "create_zarr"
+      ]
+    },
+    {
+      "page": "create_zarr_group",
+      "title": "create_zarr_group",
+      "topics": [
+        "create_zarr_group"
+      ]
+    },
+    {
+      "page": "createImageArray",
+      "title": "createImageArray",
+      "topics": [
+        "createImageArray"
+      ]
+    },
+    {
+      "page": "getImageInfo",
+      "title": "getImageInfo",
+      "topics": [
+        "getImageInfo"
+      ]
+    },
+    {
+      "page": "ImageArray-methods",
+      "title": "Methods for ImageArray",
+      "topics": [
+        "aperm,ImageArray-method",
+        "as.raster",
+        "as.raster,ImageArray-method",
+        "as.raster.ImageArray",
+        "axes",
+        "axes,ImageArray-method",
+        "crop",
+        "crop,ImageArray-method",
+        "dim,ImageArray-method",
+        "flip",
+        "flip,ImageArray-method",
+        "flop",
+        "flop,ImageArray-method",
+        "ImageArray",
+        "ImageArray-methods",
+        "length,ImageArray-method",
+        "meta",
+        "meta,ImageArray-method",
+        "modulate",
+        "modulate,ImageArray-method",
+        "negate",
+        "negate,ImageArray-method",
+        "path",
+        "path,ImageArray-method",
+        "path<-,ImageArray-method",
+        "realize",
+        "realize,ImageArray-method",
+        "rotate",
+        "rotate,ImageArray-method",
+        "type,ImageArray-method",
+        "[,ImageArray,ANY,ANY,ANY-method",
+        "[[,ImageArray,numeric-method",
+        "[[<-,ImageArray,numeric-method"
+      ]
+    },
+    {
+      "page": "writeImageArray",
+      "title": "writeImageArray",
+      "topics": [
+        "writeImageArray"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ImageArray/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "BiocGenerics",
+    "biocmake",
+    "bitops",
+    "bslib",
+    "cachem",
+    "cli",
+    "curl",
+    "DelayedArray",
+    "digest",
+    "dir.expiry",
+    "EBImage",
+    "evaluate",
+    "fastmap",
+    "fftwtools",
+    "filelock",
+    "fontawesome",
+    "fs",
+    "generics",
+    "glue",
+    "grumpy",
+    "h5mread",
+    "HDF5Array",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr2",
+    "IRanges",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "lattice",
+    "lifecycle",
+    "locfit",
+    "magick",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "paws.common",
+    "paws.storage",
+    "png",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "Rarr",
+    "Rcpp",
+    "RCurl",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "rlang",
+    "rmarkdown",
+    "S4Arrays",
+    "S4Vectors",
+    "sass",
+    "SparseArray",
+    "sys",
+    "tiff",
+    "tinytex",
+    "vctrs",
+    "withr",
+    "xfun",
+    "xml2",
+    "XVector",
+    "yaml",
+    "ZarrArray"
+  ],
+  "_vignettes": [
+    {
+      "source": "ImageArray.Rmd",
+      "filename": "ImageArray.html",
+      "title": "ImageArray",
+      "author": "Artur Manukyan",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Why pyramidal images?",
+        "Usage",
+        "EBImage",
+        "magick images",
+        "OME.TIFF (Bio-Formats) images",
+        "Use cases",
+        "Visualizing H&E images",
+        "Interactive Shiny Applications",
+        "Session info"
+      ],
+      "created": "2025-11-09 14:42:42",
+      "modified": "2026-05-30 07:55:36",
+      "commits": 14
+    }
+  ],
+  "_score": 7.054613054556888,
+  "_indexed": true,
+  "_nocasepkg": "imagearray",
+  "_universes": [
+    "bioc",
+    "artur-man",
+    "bimsbbioinfo"
+  ],
+  "_previous": "1.1.0",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.1.2",
+      "date": "2026-05-30T10:49:34.000Z",
+      "distro": "noble",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "20f300f033e8518f53ee5ce03dc4d66483a4e58bee793aba2e9da95057dde53a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    },
+    {
+      "r": "4.6.0",
+      "os": "linux",
+      "version": "1.1.2",
+      "date": "2026-05-30T10:49:38.000Z",
+      "distro": "noble",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "8ca344c8b579fd2167bb4e7c1b169af88fc9c9762678c9c58b7d1a627434aa99",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.1.2",
+      "date": "2026-05-30T15:31:53.000Z",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "9e74e0a58e2df7ecc9a8a64c46953fc3d66e6d0f798acbca2e76f9a9673dee52",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    },
+    {
+      "r": "4.6.0",
+      "os": "mac",
+      "version": "1.1.2",
+      "date": "2026-05-30T15:32:18.000Z",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "a2618eb3ed3b645bee16a517c1b08b9dcade66040e10d0fccbfad247a5088529",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.1.2",
+      "date": "2026-05-30T10:48:25.000Z",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "e36a013962db7bfbd129d6c4a9464ff3eb92391cca236b51718b2d447d82536c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.1.2",
+      "date": "2026-05-30T10:47:02.000Z",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "1ab9ed59f3f7371225627b788f6cb5f6fb3f187c6640bdaa6503500a3fbc499d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.1.2",
+      "date": "2026-05-30T10:47:17.000Z",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "503b4b66ccfa1f98fd478d84a85f11ce040eb8e1cc6358de71dee91cc46189b4",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    },
+    {
+      "r": "4.6.0",
+      "os": "win",
+      "version": "1.1.2",
+      "date": "2026-05-30T10:47:09.000Z",
+      "commit": "1dccd3a787b25ceff99068e3294277a3547fcd7a",
+      "fileid": "f51b078a8e4389614bca7e1eb9fa69d4a02a08323c50cb0ed8571355eb1f24da",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/26680191796"
+    }
+  ]
+}
