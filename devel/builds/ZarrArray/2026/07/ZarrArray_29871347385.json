@@ -1,0 +1,639 @@
+{
+  "_id": "6a5feb4d14e95619b75d79b4",
+  "Package": "ZarrArray",
+  "Title": "Bring Zarr datasets in R as DelayedArray objects",
+  "Description": "The ZarrArray package leverages the Rarr package to bring\nZarr datasets in R as DelayedArray objects. The main class in\nthe package is the ZarrArray class. A ZarrArray object is an\narray-like object that represents a Zarr dataset in R.\nZarrArray objects are DelayedArray derivatives and therefore\nsupport all operations (delayed or block-processed) supported\nby DelayedArray objects.",
+  "biocViews": "Infrastructure, DataRepresentation, DataImport",
+  "URL": "https://bioconductor.org/packages/ZarrArray",
+  "BugReports": "https://github.com/Bioconductor/ZarrArray/issues",
+  "Version": "1.1.3",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "Authors@R": "c(\nperson(\"Herv\u00e9\", \"Pag\u00e8s\", role=c(\"aut\", \"cre\"),\nemail=\"hpages.on.github@gmail.com\",\ncomment=c(ORCID=\"0009-0002-8272-4522\")),\nperson(\"Mike\", \"Smith\", role=\"aut\",\ncomment=c(ORCID=\"0000-0002-7800-3848\")),\nperson(\"Hugo\", \"Gruson\", role=\"aut\",\nemail=\"hugo.gruson@embl.de\",\ncomment=c(ORCID=\"0000-0002-4094-1476\")),\nperson(\"Art\u00fcr\", \"Manukyan\", role=\"aut\",\nemail=\"artur-man@hotmail.com\",\ncomment=c(ORCID=\"0000-0002-0441-9517\")),\nperson(\"Levi\", \"Waldron\", role=\"fnd\",\nemail=\"levi.waldron@sph.cuny.edu\",\ncomment=c(ORCID=\"0000-0003-2725-0694\")))",
+  "VignetteBuilder": "knitr",
+  "Collate": "utils.R options.R ZarrArraySeed-class.R ZarrArray-class.R\nwriteZarrArray-auto-args.R writeZarrArray.R\nZarrSparseMatrixSeed-class.R ZarrSparseMatrix-class.R zzz.R",
+  "Config/pak/sysreqs": "libblosc-dev libxml2-dev libzstd-dev libssl-dev\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-07-21 17:05:11 UTC",
+  "RemoteUrl": "https://github.com/bioc/ZarrArray",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-07-21 21:51:14 UTC",
+    "User": "root"
+  },
+  "Author": "Herv\u00e9 Pag\u00e8s [aut, cre] (ORCID: <https://orcid.org/0009-0002-8272-4522>),\nMike Smith [aut] (ORCID: <https://orcid.org/0000-0002-7800-3848>),\nHugo Gruson [aut] (ORCID: <https://orcid.org/0000-0002-4094-1476>),\nArt\u00fcr Manukyan [aut] (ORCID: <https://orcid.org/0000-0002-0441-9517>),\nLevi Waldron [fnd] (ORCID: <https://orcid.org/0000-0003-2725-0694>)",
+  "Maintainer": "Herv\u00e9 Pag\u00e8s <hpages.on.github@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "ZarrArray_1.1.3.tar.gz",
+  "_fileid": "https://r2.ropensci.org/5d318d7a2c54a67454012d31ef4f3704403f7906c7ff639086b39bfb1dbd434e",
+  "_filesize": 175310,
+  "_sha256": "5d318d7a2c54a67454012d31ef4f3704403f7906c7ff639086b39bfb1dbd434e",
+  "_expires": "2026-10-29T21:57:31.000Z",
+  "_created": "2026-07-21T21:51:14.000Z",
+  "_published": "2026-07-21T21:57:33.161Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 2,
+    "note": 5
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/ZarrArray",
+  "_commit": {
+    "id": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+    "author": "Hugo Gruson <git@hugogruson.fr>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Replace inefficient patterns (#10)\n\n* Use startsWith() instead of substr()\n\nmicrobenchmark::microbenchmark(file.path(\"a\", \"b\"), paste0(\"a\", \"/\", \"b\"), times = 1e4)\n#> Unit: nanoseconds\n#>                   expr min  lq     mean median   uq    max neval\n#>    file.path(\"a\", \"b\") 574 639 1022.293    677  763  84528 10000\n#>  paste0(\"a\", \"/\", \"b\") 848 943 1403.952   1009 1111 170456 10000\n\n* Use !nzchar() instead of == \"\"\n\nmicrobenchmark::microbenchmark(\"test/test/test/test\" == \"\", !nzchar(\"test/test/test/test\"), times = 1e4)\n#> Unit: nanoseconds\n#>                            expr min lq    mean median uq  max neval\n#>     \"test/test/test/test\" == \"\"  60 68 91.1651     74 79 5723 10000\n#>  !nzchar(\"test/test/test/test\")  51 58 80.0586     61 70 9719 10000\n\n* Use file.path() consistently\n\nmicrobenchmark::microbenchmark(paste0(\"group\", \"/data\"), paste0(\"group\", \"/\", \"data\"), file.path(\"group\", \"data\"), times = 1e5)\n#> Unit: nanoseconds\n#>                          expr min  lq      mean median   uq     max neval\n#>      paste0(\"group\", \"/data\") 786 874 1026.1339    902  957 2266881 1e+05\n#>  paste0(\"group\", \"/\", \"data\") 871 968 1151.3651   1000 1081 1589845 1e+05\n#>    file.path(\"group\", \"data\") 590 655  786.3354    678  734 1586759 1e+05\n\n* Use dim() <- NULL instead of as.vector()\n\nx <- sample(1:1e7, 1e7, replace = TRUE)\ndim(x) <- 1e7\n\nbench::mark(\n  as.vector(x),\n  as.integer(x),\n  # We assign to y here for benchmarking purposes. To avoid removing dim for our test object after the first iteration.\n  {\n    y <- x\n    dim(y) <- NULL\n    y\n  },\n  iterations = 1000\n)\n#> # A tibble: 3 \u00d7 6\n#>   expression                       min   median `\nitr/sec` mem_alloc\n`\ngc/sec`\n#>   <bch:expr>                  <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>\n#> 1 as.vector(x)                  11.5ms   12.3ms      81.3    38.1MB     25.3\n#> 2 as.integer(x)                 11.5ms   12.3ms      81.2    38.1MB     20.3\n#> 3 { y <- x dim(y) <- NULL y }    326ns    359ns 2545301.         0B ",
+    "time": 1784653511
+  },
+  "_maintainer": {
+    "name": "Herv\u00e9 Pag\u00e8s",
+    "email": "hpages.on.github@gmail.com",
+    "login": "hpages",
+    "linkedin": "in/herv\u00e9-pag\u00e8s-5038527",
+    "description": "",
+    "uuid": 8810451,
+    "orcid": "0009-0002-8272-4522"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 88772819868,
+      "time": 190,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8511434209"
+    },
+    {
+      "job": 88772819849,
+      "time": 258,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "8511464058"
+    },
+    {
+      "job": 88772819915,
+      "time": 310,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8511484588"
+    },
+    {
+      "job": 88772819935,
+      "time": 165,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "8511437078"
+    },
+    {
+      "job": 88772819958,
+      "time": 199,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8511441712"
+    },
+    {
+      "job": 88771990580,
+      "time": 243,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8511353799"
+    },
+    {
+      "job": 88772819855,
+      "time": 130,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "8511408838"
+    },
+    {
+      "job": 88772819929,
+      "time": 187,
+      "config": "windows-devel",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "8511433567"
+    },
+    {
+      "job": 88772819978,
+      "time": 199,
+      "config": "windows-oldrel",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "8511439917"
+    },
+    {
+      "job": 88772819876,
+      "time": 196,
+      "config": "windows-release",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8511437879"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.4",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "SparseArray",
+      "role": "Depends"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Arrays",
+      "role": "Imports"
+    },
+    {
+      "package": "Rarr",
+      "version": ">= 2.1.9",
+      "role": "Imports"
+    },
+    {
+      "package": "paws.storage",
+      "role": "Suggests"
+    },
+    {
+      "package": "HDF5Array",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "anndataR",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 5,
+  "_updates": [
+    {
+      "week": "2026-04",
+      "n": 1
+    },
+    {
+      "week": "2026-05",
+      "n": 8
+    },
+    {
+      "week": "2026-14",
+      "n": 4
+    },
+    {
+      "week": "2026-15",
+      "n": 1
+    },
+    {
+      "week": "2026-16",
+      "n": 1
+    },
+    {
+      "week": "2026-17",
+      "n": 1
+    },
+    {
+      "week": "2026-18",
+      "n": 3
+    },
+    {
+      "week": "2026-29",
+      "n": 3
+    },
+    {
+      "week": "2026-30",
+      "n": 4
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.2",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "datarepresentation",
+    "dataimport",
+    "bioconductor-package",
+    "core-package",
+    "u24ca289073"
+  ],
+  "_stars": 5,
+  "_contributors": [
+    {
+      "user": "hpages",
+      "count": 20,
+      "uuid": 8810451
+    },
+    {
+      "user": "bisaloo",
+      "count": 3,
+      "uuid": 10783929
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "artur-man",
+      "count": 2,
+      "uuid": 39335576
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 450,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 656,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/ZarrArray"
+  },
+  "_devurl": "https://github.com/bioconductor/zarrarray",
+  "_searchresults": 7,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/ZarrArray.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/bioconductor/zarrarray",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "chunkdim",
+    "coerce",
+    "DelayedArray",
+    "extract_array",
+    "extract_sparse_array",
+    "get_writeZarrArray_auto_chunkdim",
+    "get_writeZarrArray_auto_path",
+    "get_writeZarrArray_chunk_maxlen",
+    "get_writeZarrArray_chunk_shape",
+    "get_writeZarrArray_dump_dir",
+    "is_sparse",
+    "matrixClass",
+    "nzcount",
+    "path",
+    "set_writeZarrArray_chunk_maxlen",
+    "set_writeZarrArray_chunk_shape",
+    "set_writeZarrArray_dump_dir",
+    "show",
+    "t",
+    "t.CSC_ZarrSparseMatrixSeed",
+    "t.CSR_ZarrSparseMatrixSeed",
+    "type",
+    "write_block",
+    "writeZarrArray",
+    "ZarrArray",
+    "ZarrArraySeed",
+    "ZarrRealizationSink",
+    "ZarrSparseMatrix",
+    "ZarrSparseMatrixSeed"
+  ],
+  "_help": [
+    {
+      "page": "writeZarrArray",
+      "title": "Write an array-like object to disk in Zarr format",
+      "topics": [
+        "chunkdim,ZarrRealizationSink-method",
+        "class:ZarrRealizationSink",
+        "coerce,ANY,ZarrArray-method",
+        "coerce,DelayedArray,ZarrArray-method",
+        "coerce,DelayedMatrix,ZarrMatrix-method",
+        "coerce,ZarrRealizationSink,DelayedArray-method",
+        "coerce,ZarrRealizationSink,ZarrArray-method",
+        "coerce,ZarrRealizationSink,ZarrArraySeed-method",
+        "type,ZarrRealizationSink-method",
+        "writeZarrArray",
+        "write_block,ZarrRealizationSink-method",
+        "ZarrRealizationSink",
+        "ZarrRealizationSink-class"
+      ]
+    },
+    {
+      "page": "writeZarrArray-auto-args",
+      "title": "Control writeZarrArray's automatic argument values",
+      "topics": [
+        "get_writeZarrArray_auto_chunkdim",
+        "get_writeZarrArray_auto_path",
+        "get_writeZarrArray_chunk_maxlen",
+        "get_writeZarrArray_chunk_shape",
+        "get_writeZarrArray_dump_dir",
+        "set_writeZarrArray_chunk_maxlen",
+        "set_writeZarrArray_chunk_shape",
+        "set_writeZarrArray_dump_dir",
+        "writeZarrArray-auto-args",
+        "writeZarrArray_auto_args"
+      ]
+    },
+    {
+      "page": "ZarrArray-class",
+      "title": "Zarr datasets as DelayedArray objects",
+      "topics": [
+        "class:ZarrArray",
+        "class:ZarrMatrix",
+        "coerce,ZarrArray,ZarrMatrix-method",
+        "coerce,ZarrMatrix,ZarrArray-method",
+        "DelayedArray,ZarrArraySeed-method",
+        "matrixClass,ZarrArray-method",
+        "ZarrArray",
+        "ZarrArray-class",
+        "ZarrMatrix",
+        "ZarrMatrix-class"
+      ]
+    },
+    {
+      "page": "ZarrArraySeed-class",
+      "title": "ZarrArraySeed objects",
+      "topics": [
+        "chunkdim,ZarrArraySeed-method",
+        "class:ZarrArraySeed",
+        "dim,ZarrArraySeed-method",
+        "extract_array,ZarrArraySeed-method",
+        "path,ZarrArraySeed-method",
+        "show,ZarrArraySeed-method",
+        "type,ZarrArraySeed-method",
+        "ZarrArraySeed",
+        "ZarrArraySeed-class"
+      ]
+    },
+    {
+      "page": "ZarrSparseMatrix-class",
+      "title": "HDF5 sparse matrices as DelayedMatrix objects",
+      "topics": [
+        "class:ZarrSparseMatrix",
+        "DelayedArray,ZarrSparseMatrixSeed-method",
+        "nzcount,ZarrSparseMatrix-method",
+        "ZarrSparseMatrix",
+        "ZarrSparseMatrix-class"
+      ]
+    },
+    {
+      "page": "ZarrSparseMatrixSeed-class",
+      "title": "ZarrSparseMatrixSeed objects",
+      "topics": [
+        "chunkdim,CSC_ZarrSparseMatrixSeed-method",
+        "chunkdim,CSR_ZarrSparseMatrixSeed-method",
+        "class:CSC_ZarrSparseMatrixSeed",
+        "class:CSR_ZarrSparseMatrixSeed",
+        "class:ZarrSparseMatrixSeed",
+        "CSC_ZarrSparseMatrixSeed",
+        "CSC_ZarrSparseMatrixSeed-class",
+        "CSR_ZarrSparseMatrixSeed",
+        "CSR_ZarrSparseMatrixSeed-class",
+        "dim,ZarrSparseMatrixSeed-method",
+        "dimnames,ZarrSparseMatrixSeed-method",
+        "extract_array,ZarrSparseMatrixSeed-method",
+        "extract_sparse_array,CSC_ZarrSparseMatrixSeed-method",
+        "extract_sparse_array,CSR_ZarrSparseMatrixSeed-method",
+        "is_sparse,ZarrSparseMatrixSeed-method",
+        "nzcount,ZarrSparseMatrixSeed-method",
+        "path,ZarrSparseMatrixSeed-method",
+        "show,ZarrSparseMatrixSeed-method",
+        "t,CSC_ZarrSparseMatrixSeed-method",
+        "t,CSR_ZarrSparseMatrixSeed-method",
+        "t.CSC_ZarrSparseMatrixSeed",
+        "t.CSR_ZarrSparseMatrixSeed",
+        "ZarrSparseMatrixSeed",
+        "ZarrSparseMatrixSeed-class"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/ZarrArray/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "BiocGenerics",
+    "cli",
+    "curl",
+    "DelayedArray",
+    "digest",
+    "generics",
+    "glue",
+    "grumpy",
+    "httr2",
+    "IRanges",
+    "jsonlite",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "openssl",
+    "paws.common",
+    "paws.storage",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "Rarr",
+    "Rcpp",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "SparseArray",
+    "sys",
+    "vctrs",
+    "withr",
+    "xml2",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "ZarrArray_overview.Rmd",
+      "filename": "ZarrArray_overview.html",
+      "title": "ZarrArray overview",
+      "author": "Herv\u00e9 Pag\u00e8s",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Install and load the package",
+        "ZarrArray objects",
+        "Construction",
+        "Array and matrix operations",
+        "Other operations",
+        "Write an array-like object to disk in Zarr format",
+        "Session information"
+      ],
+      "created": "2026-01-28 21:06:31",
+      "modified": "2026-04-04 00:09:37",
+      "commits": 5
+    }
+  ],
+  "_score": 7.005395031886707,
+  "_indexed": true,
+  "_nocasepkg": "zarrarray",
+  "_universes": [
+    "bioc",
+    "hpages",
+    "bioconductor"
+  ],
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:54:15.000Z",
+      "distro": "resolute",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/b375c90d484d12105a8891eaf0ee6373c0619b3b3f135e9ae95304d4d4b47e39",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:55:14.000Z",
+      "distro": "resolute",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/351ba74e146a7b954c1d2308ab3ed4dd209cd085e42dd9fa3bb15ee008d948b4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:53:48.000Z",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/bd577f084433f446798ed8af51f2975110296ca38be62edf3970a250ed7c2fb1",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:53:44.000Z",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/5c364e6ed460a6d3f17cb9103cf775ac0b3a414beb28335d7a2580c087dff578",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:53:57.000Z",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/361b07c8981a4a87d868cd09ae93bcf197b5818256129a29884365126ac6b8a3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:52:44.000Z",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/a55a51c8aeefc6ae3f1ffe805be60380048c83200520828ac26a486b781a8451",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:53:12.000Z",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/fcbdc8e90ca5f7ebc422be5614f59d0262576d92afe14fe051c9b1f31200ed7b",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.1.3",
+      "date": "2026-07-21T21:52:57.000Z",
+      "commit": "092c417853c7cd2a8a171142e92c46a49b3a58c7",
+      "fileid": "https://r2.ropensci.org/f23eb92ad0ab4a273ee60e4c0280fd3e74c691accba4df2edd61af02606f72b1",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29871347385"
+    }
+  ]
+}
