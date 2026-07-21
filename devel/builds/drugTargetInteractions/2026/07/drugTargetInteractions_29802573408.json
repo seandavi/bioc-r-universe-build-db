@@ -1,0 +1,993 @@
+{
+  "_id": "6a5f009c9baadeef8ab5873a",
+  "Package": "drugTargetInteractions",
+  "Type": "Package",
+  "Title": "drugTargetInteractions: Mining the Druggable Genome",
+  "Version": "1.21.2",
+  "Date": "2026-07-13",
+  "Authors@R": "c(\nperson(\"Thomas\", \"Girke\", email=\"thomas.girke@ucr.edu\", role=c(\"cre\", \"aut\"), comment=c(ORCID=\"0000-0003-0710-3777\")),\nperson(\"Kevin\", \"Horan\", role=\"ctb\"))",
+  "Description": "Provides utilities for identifying drug-target\ninteractions for sets of small molecule or gene/protein\nidentifiers. The required drug-target interaction information\nis obained from a local SQLite instance of the ChEMBL database.\nChEMBL has been chosen for this purpose, because it provides\none of the most comprehensive and best annotatated knowledge\nresources for drug-target information available in the public\ndomain.",
+  "VignetteBuilder": "knitr",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "NeedsCompilation": "no",
+  "URL": "https://github.com/girke-lab/drugTargetInteractions",
+  "biocViews": "Cheminformatics, BiomedicalInformatics, Pharmacogenetics,\nPharmacogenomics, Proteomics, Metabolomics",
+  "Config/testthat/edition": "3",
+  "BugReports": "https://github.com/girke-lab/drugTargetInteractions",
+  "Config/roxygen2/version": "8.0.0",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-07-21 02:42:46 UTC",
+  "RemoteUrl": "https://github.com/bioc/drugTargetInteractions",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+  "Packaged": {
+    "Date": "2026-07-21 05:02:04 UTC",
+    "User": "root"
+  },
+  "Author": "Thomas Girke [cre, aut] (ORCID:\n<https://orcid.org/0000-0003-0710-3777>),\nKevin Horan [ctb]",
+  "Maintainer": "Thomas Girke <thomas.girke@ucr.edu>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "drugTargetInteractions_1.21.2.tar.gz",
+  "_fileid": "https://r2.ropensci.org/2c5fa0561e874fccb64085a2aa243376a0c2a9ea5b4d8827458f0437fc73da39",
+  "_filesize": 1012718,
+  "_sha256": "2c5fa0561e874fccb64085a2aa243376a0c2a9ea5b4d8827458f0437fc73da39",
+  "_expires": "2026-10-29T05:16:10.000Z",
+  "_created": "2026-07-21T05:02:04.000Z",
+  "_published": "2026-07-21T05:16:12.780Z",
+  "_bioccheck": {
+    "error": 1,
+    "warning": 2,
+    "note": 11
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408",
+  "_status": "failure",
+  "_upstream": "https://github.com/bioc/drugTargetInteractions",
+  "_commit": {
+    "id": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+    "author": "tgirke <tgirke@citrus.ucr.edu>",
+    "committer": "tgirke <tgirke@citrus.ucr.edu>",
+    "message": "Extend TTD parser with cross-reference, UniProt, indication and\nmolecule-type columns; fix cold-cache bugs; add fields= support\n\n- buildTtdDb()/ttdTargetAnnot(): add PubChem_CID/SID, CAS, ChEBI_ID\n  (TTD's cross-matching file); Uniprot_acc + uniprot_source (resolved\n  via the package's UniProt REST scaffold, keyed on GeneName, with\n  TTD_missing/unresolved/resolved/resolution_failed provenance);\n  molecule_type (TTD's own DRUGTYPE field primarily, SMILES/name\n  heuristic fallback for the ~30% of drugs without one); Indication\n  (per-drug, per-disease clinical status, packed from P1-05, richer\n  than the single Highest_status). Normalizes MOA's literal \".\"\n  sentinel to NA. Records each source file's own (version, date) in a\n  new ttd_release table, exposed as attr(result, \"ttd_release\").\n- .getCacheFile()/downloadTTD(): raise a clear error on a cold\n  BiocFileCache lookup instead of silently propagating NA into a\n  cryptic file() error downstream.\n- ttdTargetAnnot()/broadRepurposingHubAnnot()/gtoPdbTargetAnnot(): add\n  fields = \"core\"/\"all\"/<vector> support (mirroring the four\n  REST-backed sources) and register all three in\n  listDrugTargetFields(); queryDrugTargets() now forwards ... to them\n  too.\n- Vignette: fix rerun = FALSE -> TRUE on the first build for\n  TTD/Broad/GtoPdb (was a hard failure on a cold cache); update the\n  TTD section to demonstrate the new columns, fields=, and\n  attr(result, \"ttd_release\").\n",
+    "time": 1784601766
+  },
+  "_maintainer": {
+    "name": "Thomas Girke",
+    "email": "thomas.girke@ucr.edu",
+    "login": "tgirke",
+    "description": "",
+    "uuid": 1336916,
+    "orcid": "0000-0003-0710-3777"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 88547295474,
+      "time": 261,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "ERROR",
+      "artifact": "8484440586"
+    },
+    {
+      "job": 88547295487,
+      "time": 501,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "8484512968"
+    },
+    {
+      "job": 88547295546,
+      "time": 613,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8484546137"
+    },
+    {
+      "job": 88547295540,
+      "time": 425,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "8484589532"
+    },
+    {
+      "job": 88547295504,
+      "time": 364,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8484554010"
+    },
+    {
+      "job": 88546390262,
+      "time": 404,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "ERROR",
+      "artifact": "8484366717"
+    },
+    {
+      "job": 88547295522,
+      "time": 203,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "8484424596"
+    },
+    {
+      "job": 88547295519,
+      "time": 439,
+      "config": "windows-devel",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "8484494373"
+    },
+    {
+      "job": 88547295543,
+      "time": 425,
+      "config": "windows-oldrel",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "8484489481"
+    },
+    {
+      "job": 88547295518,
+      "time": 379,
+      "config": "windows-release",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8484475021"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.1",
+      "role": "Depends"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Imports"
+    },
+    {
+      "package": "UniProt.ws",
+      "role": "Imports"
+    },
+    {
+      "package": "biomaRt",
+      "role": "Imports"
+    },
+    {
+      "package": "ensembldb",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocFileCache",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "rappdirs",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationFilter",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "httr2",
+      "role": "Imports"
+    },
+    {
+      "package": "readxl",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "reshape2",
+      "role": "Suggests"
+    },
+    {
+      "package": "DT",
+      "role": "Suggests"
+    },
+    {
+      "package": "EnsDb.Hsapiens.v86",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-29",
+      "n": 29
+    },
+    {
+      "week": "2026-30",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.21.1",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.20.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "cheminformatics",
+    "biomedicalinformatics",
+    "pharmacogenetics",
+    "pharmacogenomics",
+    "proteomics",
+    "metabolomics"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "tgirke",
+      "count": 40,
+      "uuid": 1336916
+    },
+    {
+      "user": "khoran",
+      "count": 18,
+      "uuid": 1340344
+    },
+    {
+      "user": "jwokaty",
+      "count": 16,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 6,
+      "uuid": 2746443
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 450,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 366,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/drugTargetInteractions"
+  },
+  "_devurl": "https://github.com/girke-lab/drugtargetinteractions",
+  "_searchresults": 16,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/drugTargetInteractions.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/girke-lab/drugtargetinteractions",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "broadRepurposingHubAnnot",
+    "buildBroadRepurposingHubDb",
+    "buildGenomeWideDrugTargetTable",
+    "buildGtoPdbDb",
+    "buildHgncSymbolMap",
+    "buildTtdDb",
+    "buildUnichemDb",
+    "cmpIdMapping",
+    "combineDrugTargets",
+    "downloadBroadRepurposingHub",
+    "downloadChemblDb",
+    "downloadGtoPdb",
+    "downloadHgncTable",
+    "downloadTTD",
+    "downloadUniChem",
+    "downloadUnichemTables",
+    "drugTargetAnnot",
+    "drugTargetAnnotTable",
+    "drugTargetBioactivity",
+    "genConfig",
+    "getChemblBioactivities",
+    "getChemblBioassay",
+    "getChemblDrugTarget",
+    "getChemblMolecule",
+    "getChemblTarget",
+    "getDgidbDrugs",
+    "getDgidbDrugTarget",
+    "getDgidbTargets",
+    "getDrugTarget",
+    "getEnsemblOrthologs",
+    "getEnsemblParalogs",
+    "getHgncGeneTable",
+    "getOpenTargetsDrugIds",
+    "getOpenTargetsDrugs",
+    "getOpenTargetsDrugTarget",
+    "getOpenTargetsIds",
+    "getOpenTargetsTargets",
+    "getParalogs",
+    "getPubchemDrugs",
+    "getPubchemDrugTarget",
+    "getPubchemTargets",
+    "getSymEnsUp",
+    "getUnichemMapping",
+    "getUniprotIDs",
+    "getUniprotMapping",
+    "gtoPdbTargetAnnot",
+    "listBioassayFields",
+    "listDrugTargetFields",
+    "normalizeGeneSymbols",
+    "processDrugage",
+    "queryDrugTargets",
+    "runDrugTarget_Annot_Bioassay",
+    "transformTTD",
+    "ttdTargetAnnot"
+  ],
+  "_help": [
+    {
+      "page": "drugTargetInteraction-package",
+      "title": "drugTargetInteractions: Mining the Druggable Genome",
+      "topics": [
+        "drugTargetInteractions-package",
+        "drugTargetInteractions"
+      ]
+    },
+    {
+      "page": "broadRepurposingHubAnnot",
+      "title": "Query Broad Repurposing Hub drug-target annotations bidirectionally",
+      "topics": [
+        "broadRepurposingHubAnnot"
+      ]
+    },
+    {
+      "page": "buildBroadRepurposingHubDb",
+      "title": "Build (or fetch a cached) local SQLite database of Repurposing Hub drug-target annotations",
+      "topics": [
+        "buildBroadRepurposingHubDb"
+      ]
+    },
+    {
+      "page": "buildGenomeWideDrugTargetTable",
+      "title": "Genome-wide, checkpointed drug-target annotation build across the six annotation sources, anchored on an HGNC gene table",
+      "topics": [
+        "buildGenomeWideDrugTargetTable"
+      ]
+    },
+    {
+      "page": "buildGtoPdbDb",
+      "title": "Build (or fetch a cached) local SQLite database of GtoPdb drug-target interactions",
+      "topics": [
+        "buildGtoPdbDb"
+      ]
+    },
+    {
+      "page": "buildHgncSymbolMap",
+      "title": "Build a prev/alias-symbol -> current-symbol normalization map",
+      "topics": [
+        "buildHgncSymbolMap"
+      ]
+    },
+    {
+      "page": "buildTtdDb",
+      "title": "Build (or fetch a cached) local SQLite database of TTD interactions",
+      "topics": [
+        "buildTtdDb"
+      ]
+    },
+    {
+      "page": "buildUnichemDb",
+      "title": "Build (or fetch a cached) local SQLite of UniChem compound cross-references",
+      "topics": [
+        "buildUnichemDb"
+      ]
+    },
+    {
+      "page": "cmpIdMapping",
+      "title": "cmpIdMapping",
+      "topics": [
+        "cmpIdMapping"
+      ]
+    },
+    {
+      "page": "combineDrugTargets",
+      "title": "Combine 'queryDrugTargets' results into one table",
+      "topics": [
+        "combineDrugTargets"
+      ]
+    },
+    {
+      "page": "downloadBroadRepurposingHub",
+      "title": "Download the Broad Repurposing Hub drug/sample annotation flat files",
+      "topics": [
+        "downloadBroadRepurposingHub"
+      ]
+    },
+    {
+      "page": "downloadChemblDb",
+      "title": "downloadChemblDb",
+      "topics": [
+        "downloadChemblDb"
+      ]
+    },
+    {
+      "page": "downloadGtoPdb",
+      "title": "Download GtoPdb's bulk interactions (REST) and HGNC mapping (flat file) data",
+      "topics": [
+        "downloadGtoPdb"
+      ]
+    },
+    {
+      "page": "downloadHgncTable",
+      "title": "Download (and cache) an HGNC complete-gene-set TSV snapshot",
+      "topics": [
+        "downloadHgncTable"
+      ]
+    },
+    {
+      "page": "downloadTTD",
+      "title": "Download the TTD flat files needed for target-drug mapping",
+      "topics": [
+        "downloadTTD"
+      ]
+    },
+    {
+      "page": "downloadUniChem",
+      "title": "downloadUniChem",
+      "topics": [
+        "downloadUniChem"
+      ]
+    },
+    {
+      "page": "downloadUnichemTables",
+      "title": "Download the UniChem table dumps needed for compound cross-referencing",
+      "topics": [
+        "downloadUnichemTables"
+      ]
+    },
+    {
+      "page": "drugTargetAnnot",
+      "title": "drugTargetAnnot",
+      "topics": [
+        "drugTargetAnnot",
+        "queryBy"
+      ]
+    },
+    {
+      "page": "drugTargetAnnotTable",
+      "title": "drugTargetAnnotTable",
+      "topics": [
+        "drugTargetAnnotTable"
+      ]
+    },
+    {
+      "page": "drugTargetBioactivity",
+      "title": "drugTargetBioactivity",
+      "topics": [
+        "drugTargetBioactivity"
+      ]
+    },
+    {
+      "page": "genConfig",
+      "title": "genConfig",
+      "topics": [
+        "genConfig"
+      ]
+    },
+    {
+      "page": "getChemblBioactivities",
+      "title": "Retrieve bioactivity measurements from the ChEMBL REST API",
+      "topics": [
+        "getChemblBioactivities"
+      ]
+    },
+    {
+      "page": "getChemblBioassay",
+      "title": "Query raw ChEMBL bioassay measurements via the queryBy interface",
+      "topics": [
+        "getChemblBioassay"
+      ]
+    },
+    {
+      "page": "getChemblDrugTarget",
+      "title": "Query known drug-target annotations via the ChEMBL REST API",
+      "topics": [
+        "getChemblDrugTarget"
+      ]
+    },
+    {
+      "page": "getChemblMolecule",
+      "title": "Retrieve molecule records from the ChEMBL REST API",
+      "topics": [
+        "getChemblMolecule"
+      ]
+    },
+    {
+      "page": "getChemblTarget",
+      "title": "Search ChEMBL for a target by gene symbol or name",
+      "topics": [
+        "getChemblTarget"
+      ]
+    },
+    {
+      "page": "getDgidbDrugs",
+      "title": "Retrieve DGIdb drug interactions for one or more genes",
+      "topics": [
+        "getDgidbDrugs"
+      ]
+    },
+    {
+      "page": "getDgidbDrugTarget",
+      "title": "Query DGIdb interaction data via the uniform queryBy interface",
+      "topics": [
+        "getDgidbDrugTarget"
+      ]
+    },
+    {
+      "page": "getDgidbTargets",
+      "title": "Retrieve DGIdb target interactions for one or more drugs",
+      "topics": [
+        "getDgidbTargets"
+      ]
+    },
+    {
+      "page": "getDrugTarget",
+      "title": "getDrugTarget",
+      "topics": [
+        "getDrugTarget"
+      ]
+    },
+    {
+      "page": "getEnsemblOrthologs",
+      "title": "Retrieve cross-species orthologs for one or more genes from Ensembl",
+      "topics": [
+        "getEnsemblOrthologs"
+      ]
+    },
+    {
+      "page": "getEnsemblParalogs",
+      "title": "Retrieve within-species paralogs for one or more genes from Ensembl",
+      "topics": [
+        "getEnsemblParalogs"
+      ]
+    },
+    {
+      "page": "getHgncGeneTable",
+      "title": "Load the HGNC complete gene set as a gene-centric data.frame",
+      "topics": [
+        "getHgncGeneTable"
+      ]
+    },
+    {
+      "page": "getOpenTargetsDrugIds",
+      "title": "Resolve many drug names to ChEMBL IDs in batched GraphQL requests",
+      "topics": [
+        "getOpenTargetsDrugIds"
+      ]
+    },
+    {
+      "page": "getOpenTargetsDrugs",
+      "title": "Retrieve known drugs / clinical candidates for one or more targets from Open Targets (target -> drug)",
+      "topics": [
+        "getOpenTargetsDrugs"
+      ]
+    },
+    {
+      "page": "getOpenTargetsDrugTarget",
+      "title": "Query Open Targets drug/target data via the uniform queryBy interface",
+      "topics": [
+        "getOpenTargetsDrugTarget"
+      ]
+    },
+    {
+      "page": "getOpenTargetsIds",
+      "title": "Resolve many gene symbols to Ensembl IDs in batched GraphQL requests",
+      "topics": [
+        "getOpenTargetsIds"
+      ]
+    },
+    {
+      "page": "getOpenTargetsTargets",
+      "title": "Retrieve targets for one or more drugs from Open Targets (drug -> target)",
+      "topics": [
+        "getOpenTargetsTargets"
+      ]
+    },
+    {
+      "page": "getParalogs",
+      "title": "getParalogs",
+      "topics": [
+        "getParalogs"
+      ]
+    },
+    {
+      "page": "getPubchemDrugs",
+      "title": "Retrieve PubChem bioactivities for one or more genes (target -> drug)",
+      "topics": [
+        "getPubchemDrugs"
+      ]
+    },
+    {
+      "page": "getPubchemDrugTarget",
+      "title": "Query PubChem bioactivity data via the uniform queryBy interface",
+      "topics": [
+        "getPubchemDrugTarget"
+      ]
+    },
+    {
+      "page": "getPubchemTargets",
+      "title": "Retrieve PubChem bioactivities for one or more drugs (drug -> target)",
+      "topics": [
+        "getPubchemTargets"
+      ]
+    },
+    {
+      "page": "getSymEnsUp",
+      "title": "Gene to Protein ID Mappings",
+      "topics": [
+        "getSymEnsUp"
+      ]
+    },
+    {
+      "page": "getUnichemMapping",
+      "title": "Translate compound identifiers between databases via a local UniChem SQLite",
+      "topics": [
+        "getUnichemMapping"
+      ]
+    },
+    {
+      "page": "getUniprotIDs",
+      "title": "Retrieve UniProt IDs via ID and Cluster Mappings",
+      "topics": [
+        "getUniprotIDs"
+      ]
+    },
+    {
+      "page": "getUniprotMapping",
+      "title": "Map identifiers between databases via the UniProt REST ID Mapping API",
+      "topics": [
+        "getUniprotMapping"
+      ]
+    },
+    {
+      "page": "gtoPdbTargetAnnot",
+      "title": "Query GtoPdb drug-target interactions bidirectionally",
+      "topics": [
+        "gtoPdbTargetAnnot"
+      ]
+    },
+    {
+      "page": "listBioassayFields",
+      "title": "List the fields available from a bioassay source under 'fields = \"all\"'",
+      "topics": [
+        "listBioassayFields"
+      ]
+    },
+    {
+      "page": "listDrugTargetFields",
+      "title": "List the fields available from a drug-target source under 'fields = \"all\"'",
+      "topics": [
+        "listDrugTargetFields"
+      ]
+    },
+    {
+      "page": "normalizeGeneSymbols",
+      "title": "Normalize gene symbols to their current HGNC-approved form",
+      "topics": [
+        "normalizeGeneSymbols"
+      ]
+    },
+    {
+      "page": "processDrugage",
+      "title": "processDrugage",
+      "topics": [
+        "processDrugage"
+      ]
+    },
+    {
+      "page": "queryDrugTargets",
+      "title": "Query drug-target interactions across multiple sources from any recognised starting identifier",
+      "topics": [
+        "queryDrugTargets"
+      ]
+    },
+    {
+      "page": "runDrugTarget_Annot_Bioassay",
+      "title": "runDrugTarget_Annot_Bioassay",
+      "topics": [
+        "runDrugTarget_Annot_Bioassay"
+      ]
+    },
+    {
+      "page": "transformTTD",
+      "title": "transformTTD",
+      "topics": [
+        "transformTTD"
+      ]
+    },
+    {
+      "page": "ttdTargetAnnot",
+      "title": "Query TTD target-drug interactions bidirectionally",
+      "topics": [
+        "ttdTargetAnnot"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/drugTargetInteractions/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "cellranger",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dplyr",
+    "ensembldb",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "glue",
+    "hms",
+    "httr",
+    "httr2",
+    "IRanges",
+    "jsonlite",
+    "KEGGREST",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RCurl",
+    "readxl",
+    "rematch",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rjsoncons",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "UCSC.utils",
+    "UniProt.ws",
+    "utf8",
+    "vctrs",
+    "withr",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml"
+  ],
+  "_score": 3.9822712330395684,
+  "_indexed": true,
+  "_nocasepkg": "drugtargetinteractions",
+  "_universes": [
+    "bioc",
+    "tgirke",
+    "girke-lab"
+  ],
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:06:30.000Z",
+      "distro": "resolute",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/1e7bd8c94f231e1188b61af7b5984c3e6b80f4b4c15f7d096372d9a6cd03e593",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:08:09.000Z",
+      "distro": "resolute",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/816e5bef1137ebd37ac7993ded5eb571fede34166a2d333afd6c65fcc20e84fc",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:10:56.000Z",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/07e7cdfc14b15e561f34bc3a61a48abb72d4106696f0af4c55bb5b41e0926816",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:09:20.000Z",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/4a81989f0ec6d5cb5a1e93dd797782e906b42f5e1a666f3a8b8e9307b6d9ba2a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:06:14.000Z",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/d7fbd6944a97de7d5190169b3b90a5e9b8b8673b0e8e7dfa0f5d99ff7983d487",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:05:10.000Z",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/77e301661c9815fe461dfcacbd7c1c2567ed0860d6bf400be079e55b6e9c0b1a",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:05:06.000Z",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/c1686a4538f0b8d8460037a92a4051035245da68547a2aad5deca5982bfc148d",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.21.2",
+      "date": "2026-07-21T05:04:55.000Z",
+      "commit": "171c1a2cfbd1e679a6f5ded77a1747c3d525a743",
+      "fileid": "https://r2.ropensci.org/ef50db35fdd6aa08507f4c839b4b1000f265ef76d7c500281fc43dc312e8afb3",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/29802573408"
+    }
+  ]
+}
