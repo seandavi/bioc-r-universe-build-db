@@ -1,0 +1,1057 @@
+{
+  "_id": "6a628167d3420cf5dfdb3cf2",
+  "Package": "lcmsPlot",
+  "Type": "Package",
+  "Title": "Comprehensive Liquid Chromatography-Mass Spectrometry (LC-MS)\ndata visualisation package",
+  "Version": "1.1.5",
+  "Authors@R": "c(\nperson(\n\"Ossama\",\n\"Edbali\",\nrole=c(\"aut\",\"cre\"),\nemail=\"o.edbali@bham.ac.uk\",\ncomment = c(ORCID = \"0000-0003-0132-8668\")),\nperson(\nc(\"Ralf\",\"Johannes\", \"Maria\"),\n\"Weber\",\nrole=c(\"aut\"),\nemail=\"r.j.weber@bham.ac.uk\",\ncomment = c(ORCID = \"0000-0002-8796-4771\")))",
+  "Description": "lcmsPlot is an R package designed for visualising Liquid\nChromatography-Mass Spectrometry (LC-MS) data with\npublication-ready high-quality plots. The package enables users\nto generate and customise chromatograms, mass traces, spectra,\nand more with fine-tuned aesthetics and annotation options.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "Collate": "'lcmsPlot-package.R' 'zzz.R' 'helpers-data.R' 'helpers-s4.R'\n'raw-file-reader.R' 'xcms-raw-list.R' 'options.R'\n'processing-xcms.R' 'data-source.R'\n'data-source-compound-discoverer.R' 'data-source-mzmine.R'\n'data-source-ms-dial.R'\n'data-source-compound-discoverer-node.R' 'creators-purity.R'\n'constructors-chromatograms.R' 'constructors-spectra.R'\n'data-validation.R' 'data-adapters.R' 'plot-units.R'\n'plot-chromatogram.R' 'plot-mass-trace.R' 'plot-spectrum.R'\n'plot-total-ion-current.R' 'plot-intensity-map.R'\n'plot-peak-density.R' 'plot-rt-diff.R' 'plot-purity.R'\n'plot-variants.R' 'plot.R' 'lcmsPlotDataContainer-class.R'\n'creators-chromatograms.R' 'creators-intensity-map.R'\n'creators-peak-density.R' 'creators-rt-diff.R'\n'creators-spectra.R' 'creators-total-ion-current.R'\n'lcmsPlot-class.R' 'app-utils.R' 'app-options.R'\n'app-module-chromatogram.R' 'app-module-peak-density.R'\n'app-module-spectra.R' 'app-module-tic.R' 'app-interface.R'\n'app-launcher.R'",
+  "VignetteBuilder": "knitr",
+  "URL": "https://github.com/computational-metabolomics/lcmsPlot",
+  "Roxygen": "list(markdown = TRUE)",
+  "biocViews": "Metabolomics, MassSpectrometry",
+  "BugReports": "https://github.com/computational-metabolomics/lcmsPlot/issues",
+  "Config/testthat/edition": "3",
+  "Config/roxygen2/version": "8.0.0",
+  "Config/pak/sysreqs": "cmake libglpk-dev make libicu-dev libuv1-dev\nlibxml2-dev libnetcdf-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-07-23 15:31:58 UTC",
+  "RemoteUrl": "https://github.com/bioc/lcmsPlot",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-07-23 20:50:42 UTC",
+    "User": "root"
+  },
+  "Author": "Ossama Edbali [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-0132-8668>),\nRalf Johannes Maria Weber [aut] (ORCID:\n<https://orcid.org/0000-0002-8796-4771>)",
+  "Maintainer": "Ossama Edbali <o.edbali@bham.ac.uk>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "lcmsPlot_1.1.5.tar.gz",
+  "_fileid": "https://r2.ropensci.org/059eb1fa60603061d2b4d964718caf600fd8a34d0be90c9bca92151402a91c9a",
+  "_filesize": 4797554,
+  "_sha256": "059eb1fa60603061d2b4d964718caf600fd8a34d0be90c9bca92151402a91c9a",
+  "_expires": "2026-10-31T21:02:29.000Z",
+  "_created": "2026-07-23T20:50:42.000Z",
+  "_published": "2026-07-23T21:02:31.834Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 8
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/lcmsPlot",
+  "_commit": {
+    "id": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+    "author": "Ossama Edbali <ossedb@gmail.com>",
+    "committer": "Ossama Edbali <ossedb@gmail.com>",
+    "message": "feat: add Compound Discoverer node source and raw-file TIC support\n\nAdd CompoundDiscovererNodeSource(), a data source for running lcmsPlot\ninside a Compound Discoverer custom Scripting Node. It parses the\nnode_args.json file and the tab-delimited table exports it references,\nselects a representative ion per compound and study file, and builds a\nplottable source. Chromatograms are extracted from the raw mzML files\ngiven via sample_paths, matched to study files by basename with a\npositional fallback. Plotting reuses lp_compound_discoverer(). Adds\nget_metadata and get_detected_peaks S3 methods plus a create_chromatograms\nmethod for the new class.\n\nExtend lp_total_ion_current() to work when raw files are passed directly\nto lcmsPlot() as a character vector of .mzML/.mzXML/.CDF/.raw paths, in\naddition to XCMSnExp / MsExperiment objects, reading the per-scan TIC\nfrom raw-file headers.\n\nAdd a standalone worked example for large multi-sample studies using the\nbatching API with patchwork to build one composite figure per sample.\n\nBump version to 1.1.5 and add jsonlite to Imports.\n",
+    "time": 1784820718
+  },
+  "_maintainer": {
+    "name": "Ossama Edbali",
+    "email": "o.edbali@bham.ac.uk",
+    "login": "oss6",
+    "description": "Experimental Officer in Computational Metabolomics at Phenome Centre Birmingham (University of Birmingham)",
+    "uuid": 4907450,
+    "orcid": "0000-0003-0132-8668"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 89329960170,
+      "time": 266,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "8578402344"
+    },
+    {
+      "job": 89329960195,
+      "time": 505,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "8578507124"
+    },
+    {
+      "job": 89329960163,
+      "time": 547,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8578525984"
+    },
+    {
+      "job": 89329960217,
+      "time": 326,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "8578428890"
+    },
+    {
+      "job": 89329960174,
+      "time": 302,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8578417738"
+    },
+    {
+      "job": 89328191329,
+      "time": 462,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8578282373"
+    },
+    {
+      "job": 89329960172,
+      "time": 240,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "8578389115"
+    },
+    {
+      "job": 89329960248,
+      "time": 624,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "8578560506"
+    },
+    {
+      "job": 89329960181,
+      "time": 653,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "8578572967"
+    },
+    {
+      "job": 89329960194,
+      "time": 654,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8578574624"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "MSnbase",
+      "role": "Imports"
+    },
+    {
+      "package": "xcms",
+      "role": "Imports"
+    },
+    {
+      "package": "MsExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "mzR",
+      "role": "Imports"
+    },
+    {
+      "package": "Spectra",
+      "role": "Imports"
+    },
+    {
+      "package": "MsBackendMsp",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "RSQLite",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "openxlsx",
+      "role": "Suggests"
+    },
+    {
+      "package": "faahKO",
+      "role": "Suggests"
+    },
+    {
+      "package": "rawrr",
+      "role": "Suggests"
+    },
+    {
+      "package": "msPurity",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggnewscale",
+      "role": "Suggests"
+    },
+    {
+      "package": "htmltools",
+      "role": "Suggests"
+    },
+    {
+      "package": "shiny",
+      "role": "Suggests"
+    },
+    {
+      "package": "shinytoastr",
+      "role": "Suggests"
+    },
+    {
+      "package": "shinytest2",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-30",
+      "n": 1
+    },
+    {
+      "week": "2025-32",
+      "n": 1
+    },
+    {
+      "week": "2025-38",
+      "n": 1
+    },
+    {
+      "week": "2025-39",
+      "n": 8
+    },
+    {
+      "week": "2025-41",
+      "n": 8
+    },
+    {
+      "week": "2025-43",
+      "n": 1
+    },
+    {
+      "week": "2025-52",
+      "n": 3
+    },
+    {
+      "week": "2026-01",
+      "n": 5
+    },
+    {
+      "week": "2026-06",
+      "n": 2
+    },
+    {
+      "week": "2026-10",
+      "n": 1
+    },
+    {
+      "week": "2026-11",
+      "n": 2
+    },
+    {
+      "week": "2026-14",
+      "n": 4
+    },
+    {
+      "week": "2026-17",
+      "n": 1
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-21",
+      "n": 6
+    },
+    {
+      "week": "2026-23",
+      "n": 2
+    },
+    {
+      "week": "2026-30",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.3",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "metabolomics",
+    "massspectrometry"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "oss6",
+      "count": 65,
+      "uuid": 4907450
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "rjmw",
+      "count": 1,
+      "uuid": 7114586
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 451,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 167,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/lcmsPlot"
+  },
+  "_devurl": "https://github.com/computational-metabolomics/lcmsplot",
+  "_searchresults": 4,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/lcmsPlot.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/computational-metabolomics/lcmsplot",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "CompoundDiscovererNodeSource",
+    "create_data_container_from_obj",
+    "create_xcms_raw_list",
+    "get_XCMSnExp_object_example",
+    "iterate_plot_batches",
+    "lcmsPlot",
+    "lcmsPlotApp",
+    "lp_arrange",
+    "lp_chromatogram",
+    "lp_compound_discoverer",
+    "lp_facets",
+    "lp_get_plot",
+    "lp_grid",
+    "lp_intensity_map",
+    "lp_isolation_window",
+    "lp_labels",
+    "lp_layout",
+    "lp_legend",
+    "lp_mass_trace",
+    "lp_peak_density",
+    "lp_purity_distribution",
+    "lp_purity_overlay",
+    "lp_purity_timeline",
+    "lp_rt_diff_plot",
+    "lp_rt_line",
+    "lp_spectra",
+    "lp_total_ion_current",
+    "MsDialPeaksSource",
+    "MZmineFeatureListsSource",
+    "next_plot",
+    "show",
+    "XcmsRawList"
+  ],
+  "_help": [
+    {
+      "page": "lcmsPlot-package",
+      "title": "lcmsPlot: Comprehensive Liquid Chromatography-Mass Spectrometry (LC-MS) data visualisation package",
+      "topics": [
+        "lcmsPlot-package"
+      ]
+    },
+    {
+      "page": "plus-lcmsPlotClass-function-method",
+      "title": "Apply a function to an 'lcmsPlotClass' object using the infix '+' operator",
+      "topics": [
+        "+,lcmsPlotClass,function-method"
+      ]
+    },
+    {
+      "page": "CompoundDiscovererNodeSource",
+      "title": "Create a Compound Discoverer data source from a Scripting Node export",
+      "topics": [
+        "CompoundDiscovererNodeSource"
+      ]
+    },
+    {
+      "page": "CompoundDiscovererNodeSource-class",
+      "title": "Compound Discoverer scripting-node data source",
+      "topics": [
+        "CompoundDiscovererNodeSource-class"
+      ]
+    },
+    {
+      "page": "create_xcms_raw_list",
+      "title": "Create an 'XcmsRawList' from raw LC-MS files",
+      "topics": [
+        "create_xcms_raw_list"
+      ]
+    },
+    {
+      "page": "ExternalDataSource-class",
+      "title": "External data source wrapper",
+      "topics": [
+        "ExternalDataSource-class"
+      ]
+    },
+    {
+      "page": "get_XCMSnExp_object_example",
+      "title": "Get an 'XCMSnExp' example object from the 'faahKO' dataset",
+      "topics": [
+        "get_XCMSnExp_object_example"
+      ]
+    },
+    {
+      "page": "iterate_plot_batches",
+      "title": "Iterate on the batches of plots",
+      "topics": [
+        "iterate_plot_batches",
+        "iterate_plot_batches,lcmsPlotClass,function-method"
+      ]
+    },
+    {
+      "page": "lcmsPlot",
+      "title": "Create an 'lcmsPlotClass' object",
+      "topics": [
+        "lcmsPlot"
+      ]
+    },
+    {
+      "page": "lcmsPlotApp",
+      "title": "Launch the lcmsPlot interactive Shiny app",
+      "topics": [
+        "lcmsPlotApp"
+      ]
+    },
+    {
+      "page": "lcmsPlotClass-class",
+      "title": "Managing LC-MS data for visualisation",
+      "topics": [
+        "lcmsPlotClass-class"
+      ]
+    },
+    {
+      "page": "lcmsPlotDataContainer-class",
+      "title": "A unified storing mechanism for LC-MS data",
+      "topics": [
+        "lcmsPlotDataContainer-class"
+      ]
+    },
+    {
+      "page": "lp_arrange",
+      "title": "Define the arrangement of chromatograms",
+      "topics": [
+        "lp_arrange"
+      ]
+    },
+    {
+      "page": "lp_chromatogram",
+      "title": "Define the chromatograms to plot",
+      "topics": [
+        "lp_chromatogram"
+      ]
+    },
+    {
+      "page": "lp_compound_discoverer",
+      "title": "Define the options to use when plotting LC-MS data coming from Compound Discoverer results.",
+      "topics": [
+        "lp_compound_discoverer"
+      ]
+    },
+    {
+      "page": "lp_facets",
+      "title": "Define the plot's faceting",
+      "topics": [
+        "lp_facets"
+      ]
+    },
+    {
+      "page": "lp_get_plot",
+      "title": "Get the underlying plot object.",
+      "topics": [
+        "lp_get_plot"
+      ]
+    },
+    {
+      "page": "lp_grid",
+      "title": "Define a gridded plot",
+      "topics": [
+        "lp_grid"
+      ]
+    },
+    {
+      "page": "lp_intensity_map",
+      "title": "Define a 2D intensity map",
+      "topics": [
+        "lp_intensity_map"
+      ]
+    },
+    {
+      "page": "lp_isolation_window",
+      "title": "Visualise the isolation window for a precursor fragmentation event",
+      "topics": [
+        "lp_isolation_window"
+      ]
+    },
+    {
+      "page": "lp_labels",
+      "title": "Define the labels of the plot",
+      "topics": [
+        "lp_labels"
+      ]
+    },
+    {
+      "page": "lp_layout",
+      "title": "Define the plot layout",
+      "topics": [
+        "lp_layout"
+      ]
+    },
+    {
+      "page": "lp_legend",
+      "title": "Define the legend layout",
+      "topics": [
+        "lp_legend"
+      ]
+    },
+    {
+      "page": "lp_mass_trace",
+      "title": "Define the mass trace to plot",
+      "topics": [
+        "lp_mass_trace"
+      ]
+    },
+    {
+      "page": "lp_peak_density",
+      "title": "Plot the peak density for one or more m/z features",
+      "topics": [
+        "lp_peak_density"
+      ]
+    },
+    {
+      "page": "lp_purity_distribution",
+      "title": "Plot the distribution of precursor ion purity scores per sample",
+      "topics": [
+        "lp_purity_distribution"
+      ]
+    },
+    {
+      "page": "lp_purity_overlay",
+      "title": "Overlay precursor ion purity scores on a chromatogram",
+      "topics": [
+        "lp_purity_overlay"
+      ]
+    },
+    {
+      "page": "lp_purity_timeline",
+      "title": "Plot precursor ion purity scores as a timeline",
+      "topics": [
+        "lp_purity_timeline"
+      ]
+    },
+    {
+      "page": "lp_rt_diff_plot",
+      "title": "Generate the retention time difference plot between raw and adjusted datasets",
+      "topics": [
+        "lp_rt_diff_plot"
+      ]
+    },
+    {
+      "page": "lp_rt_line",
+      "title": "Define a vertical line on a retention time value",
+      "topics": [
+        "lp_rt_line"
+      ]
+    },
+    {
+      "page": "lp_spectra",
+      "title": "Define the spectra to plot",
+      "topics": [
+        "lp_spectra"
+      ]
+    },
+    {
+      "page": "lp_total_ion_current",
+      "title": "Define the total ion current (TIC)",
+      "topics": [
+        "lp_total_ion_current"
+      ]
+    },
+    {
+      "page": "MsDialPeaksSource",
+      "title": "Create an MS-DIAL data source from peak lists",
+      "topics": [
+        "MsDialPeaksSource"
+      ]
+    },
+    {
+      "page": "MZmineFeatureListsSource",
+      "title": "Create an MZmine data source from feature lists",
+      "topics": [
+        "MZmineFeatureListsSource"
+      ]
+    },
+    {
+      "page": "next_plot",
+      "title": "Move to the next plot object (batch-mode)",
+      "topics": [
+        "next_plot",
+        "next_plot,lcmsPlotClass-method"
+      ]
+    },
+    {
+      "page": "show-CompoundDiscovererNodeSource-method",
+      "title": "Show a summary of a 'CompoundDiscovererNodeSource' object",
+      "topics": [
+        "show,CompoundDiscovererNodeSource-method"
+      ]
+    },
+    {
+      "page": "show-ExternalDataSource-method",
+      "title": "Show a summary of an instance of class 'ExternalDataSource'",
+      "topics": [
+        "show,ExternalDataSource-method"
+      ]
+    },
+    {
+      "page": "show-lcmsPlotClass-method",
+      "title": "Plot the 'lcmsPlotClass' object",
+      "topics": [
+        "show,lcmsPlotClass-method"
+      ]
+    },
+    {
+      "page": "show-lcmsPlotDataContainer-method",
+      "title": "Show a summary of an instance of class 'lcmsPlotDataContainer'",
+      "topics": [
+        "show,lcmsPlotDataContainer-method"
+      ]
+    },
+    {
+      "page": "show-XcmsRawList-method",
+      "title": "Show a summary of an 'XcmsRawList' object",
+      "topics": [
+        "show,XcmsRawList-method"
+      ]
+    },
+    {
+      "page": "XcmsRawList",
+      "title": "Create an 'XcmsRawList' object",
+      "topics": [
+        "XcmsRawList"
+      ]
+    },
+    {
+      "page": "XcmsRawList-class",
+      "title": "A list of 'xcmsRaw' objects representing multiple samples",
+      "topics": [
+        "XcmsRawList-class"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/lcmsPlot/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "affy",
+    "affyio",
+    "AnnotationFilter",
+    "askpass",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "biocmake",
+    "BiocManager",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "blob",
+    "bslib",
+    "cachem",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "digest",
+    "dir.expiry",
+    "doParallel",
+    "dplyr",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "impute",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "magrittr",
+    "MALDIquant",
+    "MASS",
+    "MassSpecWavelet",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "MetaboCoreUtils",
+    "mime",
+    "MsBackendMsp",
+    "MsCoreUtils",
+    "MsExperiment",
+    "MsFeatures",
+    "MSnbase",
+    "MultiAssayExperiment",
+    "mzID",
+    "mzR",
+    "ncdf4",
+    "openssl",
+    "otel",
+    "patchwork",
+    "pcaMethods",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "preprocessCore",
+    "prettyunits",
+    "progress",
+    "promises",
+    "ProtGenerics",
+    "PSMatch",
+    "PTMods",
+    "purrr",
+    "QFeatures",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "reshape2",
+    "Rhdf5lib",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "Spectra",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vsn",
+    "withr",
+    "xcms",
+    "xfun",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "creating_publication_ready_plots.Rmd",
+      "filename": "creating_publication_ready_plots.html",
+      "title": "Creating publication-ready LC-MS data plots",
+      "author": "Ossama Edbali",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Load data",
+        "Overview of the data",
+        "Custom themes",
+        "Session Info"
+      ],
+      "created": "2025-09-26 10:58:49",
+      "modified": "2026-01-04 12:53:39",
+      "commits": 6
+    },
+    {
+      "source": "lcms_data_plotting.Rmd",
+      "filename": "lcms_data_plotting.html",
+      "title": "Easy-to-use, intuitive, and efficient LC-MS data plotting with lcmsPlot",
+      "author": "Ossama Edbali",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Objectives",
+        "Installation",
+        "Load data",
+        "Samples summary",
+        "The entry point to plot",
+        "Plot base peak chromatogram (BPC)",
+        "Plot total ion chromatogram (TIC)",
+        "Total ion current",
+        "Intensity maps",
+        "Plot chromatograms",
+        "Plot retention time alignment effect",
+        "Plot grouped peaks across samples (features)",
+        "Plot peak density alongside chromatograms",
+        "Plot chromatograms with mass traces",
+        "Plot chromatograms from raw files",
+        "Plot spectra",
+        "Select closest scan to a specified RT",
+        "Select scan closest to a detected peak apex",
+        "Select multiple scans across a detected peak",
+        "Plot standalone spectra",
+        "Interoperability",
+        "Compound Discoverer",
+        "Compound Discoverer scripting node",
+        "MZmine",
+        "MS-DIAL",
+        "Session Info"
+      ],
+      "created": "2025-07-03 11:35:34",
+      "modified": "2026-07-23 15:31:58",
+      "commits": 21
+    }
+  ],
+  "_score": 5.832508912706237,
+  "_indexed": true,
+  "_nocasepkg": "lcmsplot",
+  "_universes": [
+    "bioc",
+    "oss6",
+    "computational-metabolomics"
+  ],
+  "_previous": "1.1.3",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:56:15.000Z",
+      "distro": "resolute",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/880e40cc81be019b47902b01d9768196ce5c47e861dfce343d7b01a7c47dc937",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:56:41.000Z",
+      "distro": "resolute",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/25056424c64a0326e8966e1fe4ed9d25d8b58355171f2041b02d9daa0f870227",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:53:08.000Z",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/df7b9bbdafa201e31bccd81f229d90c050d2cf4502423450eb57c77339dc6bd6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:53:18.000Z",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/f49a8f97e1f9a688ecd99a6b2c696c0a0b546764adaff453378419f49f74c1c4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:55:09.000Z",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/b11c3a29c8fec36bc1dfe24c63cbb43d970cdaf56b95a06ae964771c5892d752",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:53:17.000Z",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/9bda2b509453c8a017e51d5709712147c7f6c92d149fda58e0e143cf6de919a8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:53:14.000Z",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/ac101eef24967199b64e43e67b905eb0f8b7905e1a7ff8eff4244e88338f4059",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.1.5",
+      "date": "2026-07-23T20:53:42.000Z",
+      "commit": "7f26155723c956fb0819ece3ded8d980f915e5a0",
+      "fileid": "https://r2.ropensci.org/62758f031ed01901027b233efe467b0b925e036101c47433f7361258826044d9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30043269211"
+    }
+  ]
+}
