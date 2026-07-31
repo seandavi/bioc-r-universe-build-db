@@ -1,0 +1,856 @@
+{
+  "_id": "6a6c8d1a3388593b7e8d0317",
+  "Package": "igvShiny",
+  "Title": "igvShiny: a wrapper of Integrative Genomics Viewer (IGV - an\ninteractive tool for visualization and exploration integrated\ngenomic data)",
+  "Version": "1.9.37",
+  "Date": "2026-07-29",
+  "Authors@R": "c(\nperson(\"Paul\",\"Shannon\", role = c(\"aut\"),\nemail = \"paul.thurmond.shannon@gmail.com\"),\nperson(\"Arkadiusz\", \"Gladki\", role=c(\"aut\", \"cre\"),\nemail=\"gladki.arkadiusz@gmail.com\", comment = c(ORCID = \"0000-0002-7059-6378\")),\nperson(\"Karolina\",\"Scigocka\", role = c(\"aut\"),\nemail = \"scigocka.karolina@gmail.com\"),\nperson(\"Carolina\", \"Heimann\", role = c(\"ctb\"),\nemail = \"carolina.heimann@gmail.com\"),\nperson(\"Steffen\", \"Klasberg\", role = c(\"ctb\"),\nemail = \"klasberg@dkms-lab.de\"),\nperson(\"Vincent\", \"Carey\", role = c(\"ctb\"),\nemail = \"stvjc@channing.harvard.edu\"),\nperson(\"Parv\", \"Sachdeva\", role = c(\"ctb\"),\nemail = \"parv.sachdeva@sonomabio.com\"),\nperson(\"Mateusz\", \"Gladki\", role = c(\"ctb\"),\nemail = \"gladkiimateusz@gmail.com\"),\nperson(\"R Consortium\", role = \"fnd\")\n)",
+  "Description": "This package is a wrapper of Integrative Genomics Viewer\n(IGV). It comprises an htmlwidget version of IGV. It can be\nused as a module in Shiny apps.",
+  "URL": "https://github.com/gladkia/igvShiny,\nhttps://gladkia.github.io/igvShiny/",
+  "BugReports": "https://github.com/gladkia/igvShiny/issues",
+  "biocViews": "Software, ShinyApps, Sequencing, Coverage",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "Collate": "'constants.R' 'genomeSpec.R' 'GWASTrack.R' 'igvShiny.R'\n'packages.R' 'utils.R' 'zzz.R'",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "cmake make libicu-dev libuv1-dev libssl-dev\nlibnode-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-07-31 05:54:08 UTC",
+  "RemoteUrl": "https://github.com/bioc/igvShiny",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "6325219436793351e32df0f85489af5a2a128360",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-07-31 11:18:39 UTC",
+    "User": "root"
+  },
+  "Author": "Paul Shannon [aut],\nArkadiusz Gladki [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-7059-6378>),\nKarolina Scigocka [aut],\nCarolina Heimann [ctb],\nSteffen Klasberg [ctb],\nVincent Carey [ctb],\nParv Sachdeva [ctb],\nMateusz Gladki [ctb],\nR Consortium [fnd]",
+  "Maintainer": "Arkadiusz Gladki <gladki.arkadiusz@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "igvShiny_1.9.37.tar.gz",
+  "_fileid": "https://r2.ropensci.org/ba807bdf865ec7553020866c4dedc5fa6d52c5daa20168187c19449fbca956d7",
+  "_filesize": 3333201,
+  "_sha256": "ba807bdf865ec7553020866c4dedc5fa6d52c5daa20168187c19449fbca956d7",
+  "_expires": "2026-11-08T11:55:03.000Z",
+  "_created": "2026-07-31T11:18:39.000Z",
+  "_published": "2026-07-31T11:55:06.298Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 4
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/igvShiny",
+  "_commit": {
+    "id": "6325219436793351e32df0f85489af5a2a128360",
+    "author": "Arek Gladki <41166437+gladkia@users.noreply.github.com>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "docs: add the Track options reference vignette (#160)\n\n* docs: add the Track options reference vignette (#159)\n\nReplace the overview vignette with a reference of every track type and the\noptions it takes. The overview held install, minimal-app and custom-genome\nsections that getting-started already covers better; its one unique piece,\nthe dataMode = \"http\" example, moves there.\n\nEvery option documented was checked against the unminified igv.js 3.8.4,\nthe build bundled in inst/htmlwidgets/lib. Names the library does not read\nare left out rather than described - they are collected in #159.\n\nFills the two dead references to a \"Track options reference\" vignette that\ngetting-started has carried since it was written.\n\n* docs: run the reference examples instead of showing them\n\nBiocCheck warns when at least half the vignette chunks across the package go\nunevaluated, and the overview vignette this PR removes was the one holding\nthat ratio down. Master sat at 41%; adding a reference of eval=FALSE loader\ncalls took it to 57%.\n\nPadding the count would have been the wrong fix. The loaders are one-way\nmessages to a browser, so a session that prints instead of sending makes every\nexample runnable - and the printed message is better documentation than the\ncall alone, since it shows the defaults the loader fills in and what igv.js\nactually receives. igvShiny() already builds outside a shiny session, so the\nallowlist example runs too and prints the real warning.\n\nCombined ratio is now 33%.\n\nAlso wraps the three table rows over 80 characters, moving the junction\nvocabularies into a list below the table, and builds the remote genome URLs\nwith paste0 rather than file.path, which is what the vignette this text came\nfrom did.\n\n* docs: wrap the one vignette line over 80 characters",
+    "time": 1785477248
+  },
+  "_maintainer": {
+    "name": "Arkadiusz Gladki",
+    "email": "gladki.arkadiusz@gmail.com",
+    "login": "gladkia",
+    "linkedin": "in/arkadiusz-gladki-55b94735",
+    "orcid": "0000-0002-7059-6378",
+    "twitter": "@biosmooth",
+    "description": "",
+    "uuid": 41166437
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 91143216872,
+      "time": 174,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "8791662748"
+    },
+    {
+      "job": 91143216769,
+      "time": 300,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "8791714005"
+    },
+    {
+      "job": 91143216882,
+      "time": 317,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8791718011"
+    },
+    {
+      "job": 91143216780,
+      "time": 137,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "8792414050"
+    },
+    {
+      "job": 91143216739,
+      "time": 165,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8792422140"
+    },
+    {
+      "job": 91142374563,
+      "time": 268,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8791594840"
+    },
+    {
+      "job": 91143216782,
+      "time": 171,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "8791664117"
+    },
+    {
+      "job": 91143216860,
+      "time": 173,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "8791663084"
+    },
+    {
+      "job": 91143216807,
+      "time": 161,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "8791659411"
+    },
+    {
+      "job": 91143216816,
+      "time": 177,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8791664298"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "shiny",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "checkmate",
+      "role": "Imports"
+    },
+    {
+      "package": "futile.logger",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDbData",
+      "role": "Imports"
+    },
+    {
+      "package": "htmlwidgets",
+      "role": "Imports"
+    },
+    {
+      "package": "httr",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "randomcoloR",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "bslib",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "shinytest2",
+      "role": "Suggests"
+    },
+    {
+      "package": "VariantAnnotation",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2025-36",
+      "n": 3
+    },
+    {
+      "week": "2026-18",
+      "n": 10
+    },
+    {
+      "week": "2026-27",
+      "n": 2
+    },
+    {
+      "week": "2026-28",
+      "n": 1
+    },
+    {
+      "week": "2026-29",
+      "n": 2
+    },
+    {
+      "week": "2026-30",
+      "n": 18
+    },
+    {
+      "week": "2026-31",
+      "n": 17
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.9.35",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.8.3",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "software",
+    "shinyapps",
+    "sequencing",
+    "coverage"
+  ],
+  "_stars": 38,
+  "_contributors": [
+    {
+      "user": "gladkia",
+      "count": 196,
+      "uuid": 41166437
+    },
+    {
+      "user": "paul-shannon",
+      "count": 141,
+      "uuid": 2480712
+    },
+    {
+      "user": "karollayna",
+      "count": 54,
+      "uuid": 79570027
+    },
+    {
+      "user": "heimannch",
+      "count": 15,
+      "uuid": 32350126
+    },
+    {
+      "user": "m4teuszzgl4dki",
+      "count": 11,
+      "uuid": 193699712
+    },
+    {
+      "user": "jwokaty",
+      "count": 10,
+      "uuid": 1744257
+    },
+    {
+      "user": "vjcitn",
+      "count": 4,
+      "uuid": 4624066
+    },
+    {
+      "user": "parv-sachdeva",
+      "count": 3,
+      "uuid": 125391847
+    },
+    {
+      "user": "federicomarini",
+      "count": 1,
+      "uuid": 7447478
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 454,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 390,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/igvShiny"
+  },
+  "_devurl": "https://github.com/gladkia/igvshiny",
+  "_pkgdown": "https://gladkia.github.io/igvShiny/",
+  "_searchresults": 147,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/igvShiny.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/gladkia/igvshiny",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "display",
+    "get_basic_genomes",
+    "get_cas_genomes",
+    "get_css_genomes",
+    "get_tracks_dir",
+    "getGenomicRegion",
+    "getUrl",
+    "GWASTrack",
+    "igvShiny",
+    "igvShinyOutput",
+    "loadBamTrackFromLocalData",
+    "loadBamTrackFromURL",
+    "loadBedGraphTrack",
+    "loadBedGraphTrackFromURL",
+    "loadBedTrack",
+    "loadCramTrackFromLocalData",
+    "loadCramTrackFromURL",
+    "loadGFF3TrackFromLocalData",
+    "loadGFF3TrackFromURL",
+    "loadGwasTrack",
+    "loadSegTrack",
+    "loadSpliceJunctionTrackFromURL",
+    "loadVcfTrack",
+    "parseAndValidateGenomeSpec",
+    "removeTracksByName",
+    "removeUserAddedTracks",
+    "renderIgvShiny",
+    "show",
+    "showGenomicRegion"
+  ],
+  "_help": [
+    {
+      "page": "dot-sanitizeAndMergeOptions",
+      "title": "Sanitize and merge track configuration options",
+      "topics": [
+        ".sanitizeAndMergeOptions"
+      ]
+    },
+    {
+      "page": "dot-sanitizeChromosomeColorMap",
+      "title": "Check a chromosome color map before it reaches igv.js",
+      "topics": [
+        ".sanitizeChromosomeColorMap"
+      ]
+    },
+    {
+      "page": "dot-sanitizeTracks",
+      "title": "Sanitize a list of startup track specifications",
+      "topics": [
+        ".sanitizeTracks"
+      ]
+    },
+    {
+      "page": "display",
+      "title": "display the already constructed and configured track",
+      "topics": [
+        "display",
+        "display,GWASTrack-method"
+      ]
+    },
+    {
+      "page": "get_basic_genomes",
+      "title": "get_basic_genomes",
+      "topics": [
+        "get_basic_genomes"
+      ]
+    },
+    {
+      "page": "get_cas_genomes",
+      "title": "get_cas_genomes",
+      "topics": [
+        "get_cas_genomes"
+      ]
+    },
+    {
+      "page": "get_css_genomes",
+      "title": "get_css_genomes",
+      "topics": [
+        "get_css_genomes"
+      ]
+    },
+    {
+      "page": "get_tracks_dir",
+      "title": "get_tracks_dir Get the directory where tracks are stored. The directory can be defined with environmental variable. If not defined the default is a directory called \"tracks\" in the temp directory. We need a local directory to write files - for instance, a vcf file representing a genomic region of interest. We then tell shiny about that directory, so that shiny's built-in http server can serve up files we write there, ultimately consumed by igv.js",
+      "topics": [
+        "get_tracks_dir"
+      ]
+    },
+    {
+      "page": "getUrl",
+      "title": "the url of the gwas table",
+      "topics": [
+        "getUrl",
+        "getUrl,GWASTrack-method"
+      ]
+    },
+    {
+      "page": "GWASTrack-class",
+      "title": "Constructor for GWASTrack",
+      "topics": [
+        ".GWASTrack",
+        "GWASTrack",
+        "GWASTrack-class"
+      ]
+    },
+    {
+      "page": "igvShiny",
+      "title": "Create an igvShiny instance",
+      "topics": [
+        "igvShiny"
+      ]
+    },
+    {
+      "page": "igvShinyOutput",
+      "title": "create the UI for the widget",
+      "topics": [
+        "igvShinyOutput"
+      ]
+    },
+    {
+      "page": "loadBamTrackFromLocalData",
+      "title": "load GenomicAlignments data as an igv.js alignment track",
+      "topics": [
+        "loadBamTrackFromLocalData"
+      ]
+    },
+    {
+      "page": "loadBamTrackFromURL",
+      "title": "load a bam track which, with index, is served up by http",
+      "topics": [
+        "loadBamTrackFromURL"
+      ]
+    },
+    {
+      "page": "loadGenomeAnnotationTrack",
+      "title": "load a scored genome annotation track provided as a data.frame",
+      "topics": [
+        "loadBedGraphTrack",
+        "loadGenomeAnnotationTrack"
+      ]
+    },
+    {
+      "page": "loadBedGraphTrackFromURL",
+      "title": "load a bedgraph track from a URL",
+      "topics": [
+        "loadBedGraphTrackFromURL"
+      ]
+    },
+    {
+      "page": "loadBedTrack",
+      "title": "load a bed track provided as a data.frame",
+      "topics": [
+        "loadBedTrack"
+      ]
+    },
+    {
+      "page": "loadCramTrackFromLocalData",
+      "title": "load a cram file sitting on the same machine as the shiny app",
+      "topics": [
+        "loadCramTrackFromLocalData"
+      ]
+    },
+    {
+      "page": "loadCramTrackFromURL",
+      "title": "load a cram track which, with index, is served up by http",
+      "topics": [
+        "loadCramTrackFromURL"
+      ]
+    },
+    {
+      "page": "loadGFF3TrackFromLocalData",
+      "title": "load a GFF3 track defined by local data",
+      "topics": [
+        "loadGFF3TrackFromLocalData"
+      ]
+    },
+    {
+      "page": "loadGFF3TrackFromURL",
+      "title": "load a GFF3 track which, with index, is served up by http",
+      "topics": [
+        "loadGFF3TrackFromURL"
+      ]
+    },
+    {
+      "page": "loadGwasTrack",
+      "title": "load a GWAS (genome-wide association study) track provided as a data.frame",
+      "topics": [
+        "loadGwasTrack"
+      ]
+    },
+    {
+      "page": "loadSEGTrack",
+      "title": "load a seg track provided as a data.frame",
+      "topics": [
+        "loadSEGTrack",
+        "loadSegTrack"
+      ]
+    },
+    {
+      "page": "loadSpliceJunctionTrackFromURL",
+      "title": "load a splice junction track served up by http",
+      "topics": [
+        "loadSpliceJunctionTrackFromURL"
+      ]
+    },
+    {
+      "page": "loadVcfTrack",
+      "title": "load a VCF (variant) track provided as a Bioconductor VariantAnnotation object",
+      "topics": [
+        "loadVcfTrack"
+      ]
+    },
+    {
+      "page": "parseAndValidateGenomeSpec",
+      "title": "parseAndValidateGenomeSpec",
+      "topics": [
+        "parseAndValidateGenomeSpec"
+      ]
+    },
+    {
+      "page": "removeTracksByName",
+      "title": "remove tracks from the browser",
+      "topics": [
+        "removeTracksByName"
+      ]
+    },
+    {
+      "page": "removeUserAddedTracks",
+      "title": "remove only those tracks explicitly added by your app",
+      "topics": [
+        "removeUserAddedTracks"
+      ]
+    },
+    {
+      "page": "renderIgvShiny",
+      "title": "draw the igv genome browser element",
+      "topics": [
+        "renderIgvShiny"
+      ]
+    },
+    {
+      "page": "show",
+      "title": "Display a short summary of a GWASTrack object",
+      "topics": [
+        "show,GWASTrack-method"
+      ]
+    },
+    {
+      "page": "showGenomicRegion",
+      "title": "focus igv on a region",
+      "topics": [
+        "getGenomicRegion",
+        "showGenomicRegion"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/igvShiny/raw/HEAD/README.md",
+  "_rundeps": [
+    "askpass",
+    "backports",
+    "base64enc",
+    "BiocGenerics",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cli",
+    "cluster",
+    "colorspace",
+    "commonmark",
+    "curl",
+    "digest",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDbData",
+    "GenomicRanges",
+    "glue",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "IRanges",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lifecycle",
+    "magrittr",
+    "memoise",
+    "mime",
+    "openssl",
+    "otel",
+    "promises",
+    "R6",
+    "randomcoloR",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "rlang",
+    "rmarkdown",
+    "Rtsne",
+    "S4Vectors",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "shiny",
+    "sourcetools",
+    "stringi",
+    "stringr",
+    "sys",
+    "tinytex",
+    "V8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "xtable",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "getting-started.Rmd",
+      "filename": "getting-started.html",
+      "title": "Getting started with igvShiny",
+      "author": "Arkadiusz Gladki",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Who this is for",
+        "Install",
+        "The three moving parts",
+        "A complete app",
+        "Loading a track from your own data",
+        "Loading tracks at startup",
+        "Moving around, and knowing where you are",
+        "Inside a Shiny module",
+        "Stock genomes",
+        "Custom genomes",
+        "When something does not show up",
+        "Where to go next",
+        "Session Info"
+      ],
+      "created": "2026-07-25 15:11:48",
+      "modified": "2026-07-31 05:54:08",
+      "commits": 4
+    },
+    {
+      "source": "track-options.Rmd",
+      "filename": "track-options.html",
+      "title": "Track options reference",
+      "author": "Arkadiusz Gladki",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "What this vignette is",
+        "How an option reaches the browser",
+        "Loaders",
+        "Options every track accepts",
+        "Numeric tracks: bedGraph, wig, bigWig",
+        "Annotation tracks: bed, gff3",
+        "Alignment tracks: bam, cram",
+        "Variant tracks: vcf",
+        "GWAS tracks",
+        "Splice junction tracks",
+        "Options on startup tracks",
+        "When an option seems to do nothing",
+        "Session Info"
+      ],
+      "created": "2026-07-31 05:54:08",
+      "modified": "2026-07-31 05:54:08",
+      "commits": 1
+    }
+  ],
+  "_score": 8.97241021309085,
+  "_indexed": true,
+  "_nocasepkg": "igvshiny",
+  "_universes": [
+    "bioc",
+    "gladkia"
+  ],
+  "_previous": "1.9.36",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:22:49.000Z",
+      "distro": "resolute",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/6fdb041910c50a9bc24c328184459ca66d3002a48a7e83231cb504df0f62f045",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:22:53.000Z",
+      "distro": "resolute",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/8ed30bbaa8d99313e55d53e5a6347a89d98ce3873b9d2aa78e88402b7850ec71",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:53:11.000Z",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/d34c1613f9e22d7f68cd87c17345bcb6a651f075c77954c715c9961b5438f855",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:53:27.000Z",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/c29c098b85e66eea0c48eab7cabfb1d28147a34c04becab9aab904d277127c22",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:22:00.000Z",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/481b77f7239ee05e0bf108e97fdd318bb283d4a0d7017fb699369d0aa5a93f68",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:20:16.000Z",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/13ce3e77bc17933a95a88efe888b48ee3bbcf225ca6d9dd0340661d647a37167",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:20:23.000Z",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/7940dbe092b93af59d36f2cdac9ca76b6001656c15aee1b844495d1af1f1b1d9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.9.37",
+      "date": "2026-07-31T11:20:28.000Z",
+      "commit": "6325219436793351e32df0f85489af5a2a128360",
+      "fileid": "https://r2.ropensci.org/84d219cb2638e02e12f449beda217c50f86073201d365dd4c1391c5e9938ec0d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/30626299351"
+    }
+  ]
+}
