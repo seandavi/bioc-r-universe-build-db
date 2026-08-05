@@ -1,0 +1,1657 @@
+{
+  "_id": "6a731eef8bc01965a9d22e6c",
+  "Package": "VISTA",
+  "Type": "Package",
+  "Title": "Visualization and Integrated System for Transcriptomic Analysis",
+  "Version": "1.1.3",
+  "Authors@R": "c(\nperson(given = \"Chirag\", family = \"Parsania\", email = \"chirag.parsania@gmail.com\",\nrole = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-4873-2385\"))\n)",
+  "Description": "The VISTA (Visualization and Integrated System for\nTranscriptomic Analysis) platform streamlines differential\nexpression workflows by wrapping DESeq2 and edgeR into a\nSummarizedExperiment-based container with consistent metadata.\nThe package includes visualization utilities, MSigDB enrichment\nhelpers, and optional deconvolution support to simplify\ninteractive exploration of RNA-seq experiments.",
+  "License": "GPL-3",
+  "Encoding": "UTF-8",
+  "URL": "https://github.com/cparsania/VISTA,\nhttps://cparsania.github.io/VISTA/",
+  "BugReports": "https://github.com/cparsania/VISTA/issues",
+  "biocViews": "RNASeq, DifferentialExpression, GeneExpression,\nTranscriptomics, Visualization",
+  "VignetteBuilder": "knitr",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "LazyData": "false",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libglpk-dev make libicu-dev libpng-dev\nlibuv1-dev libxml2-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-08-05 07:11:10 UTC",
+  "RemoteUrl": "https://github.com/bioc/VISTA",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-08-05 11:16:17 UTC",
+    "User": "root"
+  },
+  "Author": "Chirag Parsania [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-4873-2385>)",
+  "Maintainer": "Chirag Parsania <chirag.parsania@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "VISTA_1.1.3.tar.gz",
+  "_fileid": "https://r2.ropensci.org/828d0b4a7980ba8bfaeddae2824f4d4f11c0b0b6140ce6fbe2f4ea9b42c9e79d",
+  "_filesize": 13704945,
+  "_sha256": "828d0b4a7980ba8bfaeddae2824f4d4f11c0b0b6140ce6fbe2f4ea9b42c9e79d",
+  "_expires": "2026-11-13T11:30:52.000Z",
+  "_created": "2026-08-05T11:16:17.000Z",
+  "_published": "2026-08-05T11:30:55.777Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 11
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/VISTA",
+  "_commit": {
+    "id": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+    "author": "Chirag Parsania <chirag.parsania@gmail.com>",
+    "committer": "Chirag Parsania <chirag.parsania@gmail.com>",
+    "message": "Keep p-value annotations working under ggpubr 1.0.0\n\nggpubr 1.0.0 turns `label = \"p.format\"` into an expression calling its\npackage-internal create_p_label(). VISTA supplies its own aes(group = ),\nso the merged mapping carries VISTA's environment, where that internal is\nnot visible -- the plot constructed fine and then died when drawn with\n`could not find function \"create_p_label\"`. Nothing caught it because the\nfailure is in ggplot_build(), not in the call that adds the layer, so no\ntryCatch at construction could ever see it.\n\nName the statistic's own computed columns via after_stat() instead of\ndelegating label construction to ggpubr. Rendered text is identical on\n0.6.3 and 1.0.0, verified for p.format and p.signif. An unrecognised\np.label still falls through to ggpubr rather than dropping the annotation.\n\nSix call sites, not the three a truncated grep first showed:\nget_expression_boxplot/violinplot/barplot/raincloud and\nget_foldchange_boxplot/raincloud.\n\nThis is user-facing, not just a vignette failure: any caller using\nstats_group = TRUE with the default p.label hit it after upgrading ggpubr.\n\nVerified by rendering all seven articles against ggpubr 1.0.0, and by\nmutation -- restoring the old delegation reproduces the failure.\n\nVersion 1.1.3.\n",
+    "time": 1785913870
+  },
+  "_maintainer": {
+    "name": "Chirag Parsania",
+    "email": "chirag.parsania@gmail.com",
+    "login": "cparsania",
+    "twitter": "@ChiragParsania",
+    "description": "Bioinformatics. Postdoc at @centenary institute. ",
+    "uuid": 10338600,
+    "orcid": "0000-0003-4873-2385"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 92289093743,
+      "time": 380,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "8928342645"
+    },
+    {
+      "job": 92289093677,
+      "time": 637,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "8928464556"
+    },
+    {
+      "job": 92289093676,
+      "time": 780,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "8928532845"
+    },
+    {
+      "job": 92289093681,
+      "time": 477,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "8928489550"
+    },
+    {
+      "job": 92289093727,
+      "time": 438,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "8928484958"
+    },
+    {
+      "job": 92286615646,
+      "time": 667,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "8928163736"
+    },
+    {
+      "job": 92289093716,
+      "time": 350,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "8928327726"
+    },
+    {
+      "job": 92289093713,
+      "time": 570,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "8928432811"
+    },
+    {
+      "job": 92289093802,
+      "time": 538,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "8928417505"
+    },
+    {
+      "job": 92289093733,
+      "time": 531,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "8928413677"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "cli",
+      "role": "Imports"
+    },
+    {
+      "package": "clusterProfiler",
+      "role": "Imports"
+    },
+    {
+      "package": "colorspace",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "forcats",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "GGally",
+      "role": "Imports"
+    },
+    {
+      "package": "ggpubr",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "msigdbr",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyselect",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "airway",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "circlize",
+      "role": "Suggests"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Suggests"
+    },
+    {
+      "package": "DT",
+      "role": "Suggests"
+    },
+    {
+      "package": "EnhancedVolcano",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggpointdensity",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggridges",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggalluvial",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggcorrplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggrain",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggvenn",
+      "role": "Suggests"
+    },
+    {
+      "package": "enrichplot",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "magrittr",
+      "role": "Suggests"
+    },
+    {
+      "package": "patchwork",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "org.Mm.eg.db",
+      "role": "Suggests"
+    },
+    {
+      "package": "quarto",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "yaml",
+      "role": "Suggests"
+    },
+    {
+      "package": "writexl",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "uwot",
+      "role": "Suggests"
+    },
+    {
+      "package": "xCell2",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-08",
+      "n": 10
+    },
+    {
+      "week": "2026-09",
+      "n": 12
+    },
+    {
+      "week": "2026-10",
+      "n": 5
+    },
+    {
+      "week": "2026-11",
+      "n": 2
+    },
+    {
+      "week": "2026-12",
+      "n": 6
+    },
+    {
+      "week": "2026-13",
+      "n": 3
+    },
+    {
+      "week": "2026-14",
+      "n": 8
+    },
+    {
+      "week": "2026-15",
+      "n": 7
+    },
+    {
+      "week": "2026-16",
+      "n": 3
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-31",
+      "n": 1
+    },
+    {
+      "week": "2026-32",
+      "n": 6
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.1.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.0.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "rnaseq",
+    "differentialexpression",
+    "geneexpression",
+    "transcriptomics",
+    "visualization"
+  ],
+  "_stars": 9,
+  "_contributors": [
+    {
+      "user": "cparsania",
+      "count": 107,
+      "uuid": 10338600
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 458,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 229,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/VISTA"
+  },
+  "_devurl": "https://github.com/cparsania/vista",
+  "_pkgdown": "https://cparsania.github.io/VISTA/",
+  "_searchresults": 34,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/VISTA.html",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/cparsania/vista",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "as_deseq_dataset",
+    "as_vista",
+    "benchmark_vista_equivalence",
+    "comparisons",
+    "counts",
+    "create_vista",
+    "cutoffs",
+    "deg_summary",
+    "derive_vista_metadata",
+    "enrichMsigDB",
+    "example_vista",
+    "export_vista_assets",
+    "get_cell_fractions",
+    "get_celltype_barplot",
+    "get_celltype_group_dotplot",
+    "get_celltype_heatmap",
+    "get_corr_heatmap",
+    "get_deg_alluvial",
+    "get_deg_count_barplot",
+    "get_deg_count_donutplot",
+    "get_deg_count_pieplot",
+    "get_deg_venn_diagram",
+    "get_enrichment_chord",
+    "get_enrichment_plot",
+    "get_expression_barplot",
+    "get_expression_boxplot",
+    "get_expression_chromosome_plot",
+    "get_expression_density",
+    "get_expression_heatmap",
+    "get_expression_joyplot",
+    "get_expression_lineplot",
+    "get_expression_lollipop",
+    "get_expression_matrix",
+    "get_expression_raincloud",
+    "get_expression_scatter",
+    "get_expression_violinplot",
+    "get_foldchange_barplot",
+    "get_foldchange_boxplot",
+    "get_foldchange_chromosome_plot",
+    "get_foldchange_heatmap",
+    "get_foldchange_lineplot",
+    "get_foldchange_lollipop",
+    "get_foldchange_matrix",
+    "get_foldchange_raincloud",
+    "get_foldchange_scatter",
+    "get_genes_by_regulation",
+    "get_go_enrichment",
+    "get_gsea",
+    "get_kegg_enrichment",
+    "get_ma_plot",
+    "get_mds_plot",
+    "get_msigdb_enrichment",
+    "get_pairwise_corr_plot",
+    "get_pathway_genes",
+    "get_pathway_heatmap",
+    "get_pca_plot",
+    "get_umap_plot",
+    "get_volcano_plot",
+    "group_colors",
+    "group_palette",
+    "match_vista_inputs",
+    "norm_counts",
+    "read_vista_counts",
+    "read_vista_metadata",
+    "row_data",
+    "run_cell_deconvolution",
+    "run_deseq_analysis",
+    "run_edger_analysis",
+    "run_limma_analysis",
+    "run_vista_report",
+    "sample_info",
+    "save_vista_data",
+    "save_vista_plot",
+    "set_de_source",
+    "set_rowdata",
+    "set_vista_comparison_colors",
+    "set_vista_group_colors",
+    "show",
+    "updateObject",
+    "validate_vista",
+    "validate_vista_deep"
+  ],
+  "_datasets": [
+    {
+      "name": "count_data",
+      "title": "Example RNA-seq count matrix shipped with VISTA",
+      "object": "count_data",
+      "file": "count_data.rda",
+      "class": [
+        "tbl_df",
+        "tbl",
+        "data.frame"
+      ],
+      "fields": [
+        "gene_id",
+        "SRR1039508",
+        "SRR1039509",
+        "SRR1039512",
+        "SRR1039513",
+        "SRR1039516",
+        "SRR1039517",
+        "SRR1039520",
+        "SRR1039521"
+      ],
+      "rows": 63677,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "sample_metadata",
+      "title": "Sample metadata accompanying the VISTA airway example counts",
+      "object": "sample_metadata",
+      "file": "sample_metadata.rda",
+      "class": [
+        "tbl_df",
+        "tbl",
+        "data.frame"
+      ],
+      "fields": [
+        "SampleName",
+        "cell",
+        "dex",
+        "albut",
+        "Run",
+        "avgLength",
+        "Experiment",
+        "Sample",
+        "BioSample",
+        "sample_names",
+        "cond_long",
+        "cond_short",
+        "groups"
+      ],
+      "rows": 8,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "as_deseq_dataset",
+      "title": "Convert a VISTA object to a DESeqDataSet",
+      "topics": [
+        "as_deseq_dataset"
+      ]
+    },
+    {
+      "page": "as_vista",
+      "title": "Coerce SummarizedExperiment to VISTA",
+      "topics": [
+        "as_vista"
+      ]
+    },
+    {
+      "page": "benchmark_vista_equivalence",
+      "title": "Benchmark VISTA against standalone differential-expression backends",
+      "topics": [
+        "benchmark_vista_equivalence"
+      ]
+    },
+    {
+      "page": "count_data",
+      "title": "Example RNA-seq count matrix shipped with VISTA",
+      "topics": [
+        "count_data"
+      ]
+    },
+    {
+      "page": "counts",
+      "title": "Raw counts from a VISTA object",
+      "topics": [
+        "counts",
+        "counts,VISTA-method"
+      ]
+    },
+    {
+      "page": "create_vista",
+      "title": "Create a VISTA Object with Internal DE Analysis",
+      "topics": [
+        "create_vista"
+      ]
+    },
+    {
+      "page": "derive_vista_metadata",
+      "title": "Derive starter sample metadata from count sample names",
+      "topics": [
+        "derive_vista_metadata"
+      ]
+    },
+    {
+      "page": "enrichMsigDB",
+      "title": "Perform MSigDB over-representation analysis on a VISTA object",
+      "topics": [
+        "enrichMsigDB",
+        "enrichMsigDB,VISTA-method"
+      ]
+    },
+    {
+      "page": "example_vista",
+      "title": "Build a small example VISTA object",
+      "topics": [
+        "example_vista"
+      ]
+    },
+    {
+      "page": "export_vista_assets",
+      "title": "Export a complete VISTA asset bundle",
+      "topics": [
+        "export_vista_assets"
+      ]
+    },
+    {
+      "page": "get_cell_fractions",
+      "title": "Retrieve stored cell fraction estimates",
+      "topics": [
+        "get_cell_fractions"
+      ]
+    },
+    {
+      "page": "get_celltype_barplot",
+      "title": "Plot cell-type composition as stacked bars",
+      "topics": [
+        "get_celltype_barplot"
+      ]
+    },
+    {
+      "page": "get_celltype_group_dotplot",
+      "title": "Plot group-level deconvolution scores as dot plot",
+      "topics": [
+        "get_celltype_group_dotplot"
+      ]
+    },
+    {
+      "page": "get_celltype_heatmap",
+      "title": "Plot cell-type deconvolution heatmap",
+      "topics": [
+        "get_celltype_heatmap"
+      ]
+    },
+    {
+      "page": "get_corr_heatmap",
+      "title": "Draw a sample correlation heatmap",
+      "topics": [
+        "get_corr_heatmap"
+      ]
+    },
+    {
+      "page": "get_deg_alluvial",
+      "title": "Plot alluvial diagram showing gene regulation transitions across comparisons",
+      "topics": [
+        "get_deg_alluvial"
+      ]
+    },
+    {
+      "page": "get_deg_count_barplot",
+      "title": "Barplot of DEG counts (Up/Down) across comparisons",
+      "topics": [
+        "get_deg_count_barplot"
+      ]
+    },
+    {
+      "page": "get_deg_count_donutplot",
+      "title": "Donut chart of DEG counts (Up/Down) across comparisons",
+      "topics": [
+        "get_deg_count_donutplot"
+      ]
+    },
+    {
+      "page": "get_deg_count_pieplot",
+      "title": "Pie chart of DEG counts (Up/Down) across comparisons",
+      "topics": [
+        "get_deg_count_pieplot"
+      ]
+    },
+    {
+      "page": "get_deg_venn_diagram",
+      "title": "DEG Venn diagram",
+      "topics": [
+        "get_deg_venn_diagram"
+      ]
+    },
+    {
+      "page": "get_enrichment_chord",
+      "title": "Chord diagram of enrichment gene-pathway relationships",
+      "topics": [
+        "get_enrichment_chord"
+      ]
+    },
+    {
+      "page": "get_enrichment_plot",
+      "title": "Plot enrichment results using -log10(FDR)",
+      "topics": [
+        "get_enrichment_plot"
+      ]
+    },
+    {
+      "page": "get_expression_barplot",
+      "title": "Plot gene expression as barplots",
+      "topics": [
+        "get_expression_barplot"
+      ]
+    },
+    {
+      "page": "get_expression_boxplot",
+      "title": "Plot gene expression distributions as boxplots",
+      "topics": [
+        "get_expression_boxplot"
+      ]
+    },
+    {
+      "page": "get_expression_chromosome_plot",
+      "title": "Chromosome plot for expression",
+      "topics": [
+        "get_expression_chromosome_plot"
+      ]
+    },
+    {
+      "page": "get_expression_density",
+      "title": "Plot expression distributions as density curves",
+      "topics": [
+        "get_expression_density"
+      ]
+    },
+    {
+      "page": "get_expression_heatmap",
+      "title": "Expression heatmap",
+      "topics": [
+        "get_expression_heatmap"
+      ]
+    },
+    {
+      "page": "get_expression_joyplot",
+      "title": "Plot expression distributions as ridgelines",
+      "topics": [
+        "get_expression_joyplot"
+      ]
+    },
+    {
+      "page": "get_expression_lineplot",
+      "title": "Gene expression line plot",
+      "topics": [
+        "get_expression_lineplot"
+      ]
+    },
+    {
+      "page": "get_expression_lollipop",
+      "title": "Plot expression as a lollipop chart",
+      "topics": [
+        "get_expression_lollipop"
+      ]
+    },
+    {
+      "page": "get_expression_matrix",
+      "title": "Retrieve an expression matrix from a VISTA object",
+      "topics": [
+        "get_expression_matrix"
+      ]
+    },
+    {
+      "page": "get_expression_raincloud",
+      "title": "Raincloud plot of expression values",
+      "topics": [
+        "get_expression_raincloud"
+      ]
+    },
+    {
+      "page": "get_expression_scatter",
+      "title": "Compare normalized expression between two samples or groups",
+      "topics": [
+        "get_expression_scatter"
+      ]
+    },
+    {
+      "page": "get_expression_violinplot",
+      "title": "Violin plot of expression values",
+      "topics": [
+        "get_expression_violinplot"
+      ]
+    },
+    {
+      "page": "get_foldchange_barplot",
+      "title": "Plot fold-change barplots across comparisons for selected genes",
+      "topics": [
+        "get_foldchange_barplot"
+      ]
+    },
+    {
+      "page": "get_foldchange_boxplot",
+      "title": "Plot fold-change distributions across comparisons",
+      "topics": [
+        "get_foldchange_boxplot"
+      ]
+    },
+    {
+      "page": "get_foldchange_chromosome_plot",
+      "title": "Chromosome plot for fold change",
+      "topics": [
+        "get_foldchange_chromosome_plot"
+      ]
+    },
+    {
+      "page": "get_foldchange_heatmap",
+      "title": "Fold-change heatmap",
+      "topics": [
+        "get_foldchange_heatmap"
+      ]
+    },
+    {
+      "page": "get_foldchange_lineplot",
+      "title": "Fold-change line plot across comparisons",
+      "topics": [
+        "get_foldchange_lineplot"
+      ]
+    },
+    {
+      "page": "get_foldchange_lollipop",
+      "title": "Fold-change plotting helpers (overview)",
+      "topics": [
+        "get_foldchange_lollipop"
+      ]
+    },
+    {
+      "page": "get_foldchange_matrix",
+      "title": "Extract a log2 fold-change matrix",
+      "topics": [
+        "get_foldchange_matrix"
+      ]
+    },
+    {
+      "page": "get_foldchange_raincloud",
+      "title": "Raincloud plot of fold-change distributions across comparisons",
+      "topics": [
+        "get_foldchange_raincloud"
+      ]
+    },
+    {
+      "page": "get_foldchange_scatter",
+      "title": "Fold-change scatterplot between two comparisons",
+      "topics": [
+        "get_foldchange_scatter"
+      ]
+    },
+    {
+      "page": "get_genes_by_regulation",
+      "title": "Get Genes by Regulation",
+      "topics": [
+        "get_genes_by_regulation"
+      ]
+    },
+    {
+      "page": "get_go_enrichment",
+      "title": "Run GO enrichment directly from a VISTA comparison",
+      "topics": [
+        "get_go_enrichment"
+      ]
+    },
+    {
+      "page": "get_gsea",
+      "title": "Gene set enrichment analysis (GSEA) from a VISTA comparison",
+      "topics": [
+        "get_gsea"
+      ]
+    },
+    {
+      "page": "get_kegg_enrichment",
+      "title": "Run KEGG enrichment directly from a VISTA comparison",
+      "topics": [
+        "get_kegg_enrichment"
+      ]
+    },
+    {
+      "page": "get_ma_plot",
+      "title": "Generate MA plot from a VISTA object",
+      "topics": [
+        "get_ma_plot"
+      ]
+    },
+    {
+      "page": "get_mds_plot",
+      "title": "Generate an MDS plot for samples in a VISTA object",
+      "topics": [
+        "get_mds_plot"
+      ]
+    },
+    {
+      "page": "get_msigdb_enrichment",
+      "title": "Run MSigDB enrichment directly from a VISTA comparison",
+      "topics": [
+        "get_msigdb_enrichment"
+      ]
+    },
+    {
+      "page": "get_pairwise_corr_plot",
+      "title": "Plot pairwise correlations between samples",
+      "topics": [
+        "get_pairwise_corr_plot"
+      ]
+    },
+    {
+      "page": "get_pathway_genes",
+      "title": "Extract genes from enriched pathways",
+      "topics": [
+        "get_pathway_genes"
+      ]
+    },
+    {
+      "page": "get_pathway_heatmap",
+      "title": "Plot pathway-specific expression heatmaps from enrichment output",
+      "topics": [
+        "get_pathway_heatmap"
+      ]
+    },
+    {
+      "page": "get_pca_plot",
+      "title": "PCA plot",
+      "topics": [
+        "get_pca_plot"
+      ]
+    },
+    {
+      "page": "get_umap_plot",
+      "title": "Generate a UMAP plot for samples in a VISTA object",
+      "topics": [
+        "get_umap_plot"
+      ]
+    },
+    {
+      "page": "get_volcano_plot",
+      "title": "Generate a volcano plot for a comparison in a VISTA object",
+      "topics": [
+        "get_volcano_plot"
+      ]
+    },
+    {
+      "page": "match_vista_inputs",
+      "title": "Match count and metadata inputs for VISTA",
+      "topics": [
+        "match_vista_inputs"
+      ]
+    },
+    {
+      "page": "print.VISTA",
+      "title": "Print a VISTA object",
+      "topics": [
+        "print.VISTA"
+      ]
+    },
+    {
+      "page": "read_vista_counts",
+      "title": "Read and standardize count inputs for VISTA",
+      "topics": [
+        "read_vista_counts"
+      ]
+    },
+    {
+      "page": "read_vista_metadata",
+      "title": "Read and standardize sample metadata for VISTA",
+      "topics": [
+        "read_vista_metadata"
+      ]
+    },
+    {
+      "page": "run_cell_deconvolution",
+      "title": "Run Cell Deconvolution on Bulk RNA-seq from VISTA Object",
+      "topics": [
+        "run_cell_deconvolution"
+      ]
+    },
+    {
+      "page": "run_deseq_analysis",
+      "title": "Run Differential Expression Analysis with DESeq2, edgeR, or limma-voom",
+      "topics": [
+        "run_deseq_analysis",
+        "run_edger_analysis",
+        "run_limma_analysis"
+      ]
+    },
+    {
+      "page": "run_vista_report",
+      "title": "Generate a publication-ready VISTA workflow report",
+      "topics": [
+        "run_vista_report"
+      ]
+    },
+    {
+      "page": "sample_metadata",
+      "title": "Sample metadata accompanying the VISTA airway example counts",
+      "topics": [
+        "sample_metadata"
+      ]
+    },
+    {
+      "page": "save_vista_data",
+      "title": "Save VISTA tabular outputs to disk",
+      "topics": [
+        "save_vista_data"
+      ]
+    },
+    {
+      "page": "save_vista_plot",
+      "title": "Save a VISTA plot object to disk",
+      "topics": [
+        "save_vista_plot"
+      ]
+    },
+    {
+      "page": "set_de_source",
+      "title": "Set active DE source in a VISTA object",
+      "topics": [
+        "set_de_source"
+      ]
+    },
+    {
+      "page": "set_rowdata",
+      "title": "Set or append rowData annotations on a VISTA object",
+      "topics": [
+        "set_rowdata"
+      ]
+    },
+    {
+      "page": "set_vista_comparison_colors",
+      "title": "Set manual comparison colors in a VISTA object",
+      "topics": [
+        "set_vista_comparison_colors"
+      ]
+    },
+    {
+      "page": "set_vista_group_colors",
+      "title": "Set manual group colors in a VISTA object",
+      "topics": [
+        "set_vista_group_colors"
+      ]
+    },
+    {
+      "page": "updateObject-VISTA-method",
+      "title": "Update a VISTA object to the current metadata schema",
+      "topics": [
+        "updateObject,VISTA-method"
+      ]
+    },
+    {
+      "page": "validate_vista",
+      "title": "Validate a VISTA object",
+      "topics": [
+        "validate_vista"
+      ]
+    },
+    {
+      "page": "validate_vista_deep",
+      "title": "Deep validation of VISTA differential-expression fidelity",
+      "topics": [
+        "validate_vista_deep"
+      ]
+    },
+    {
+      "page": "VISTA-accessors",
+      "title": "Accessor Methods for VISTA Object",
+      "topics": [
+        "comparisons",
+        "comparisons,VISTA-method",
+        "cutoffs",
+        "cutoffs,VISTA-method",
+        "deg_summary",
+        "deg_summary,VISTA-method",
+        "group_colors",
+        "group_colors,VISTA-method",
+        "group_palette",
+        "group_palette,VISTA-method",
+        "norm_counts",
+        "norm_counts,VISTA-method",
+        "row_data",
+        "row_data,VISTA-method",
+        "sample_info",
+        "sample_info,VISTA-method",
+        "VISTA-accessors"
+      ]
+    },
+    {
+      "page": "VISTA-class",
+      "title": "VISTA S4 Class Definition",
+      "topics": [
+        "VISTA",
+        "VISTA-class"
+      ]
+    },
+    {
+      "page": "VISTA-deprecated",
+      "title": "Deprecated and defunct arguments in VISTA",
+      "topics": [
+        "VISTA-deprecated"
+      ]
+    },
+    {
+      "page": "VISTA-show",
+      "title": "Display a VISTA object",
+      "topics": [
+        "show,VISTA-method",
+        "VISTA-show"
+      ]
+    },
+    {
+      "page": "VISTA-subset",
+      "title": "Subset a VISTA object",
+      "topics": [
+        "VISTA-subset",
+        "[,VISTA,ANY,ANY,ANY-method",
+        "[,VISTA,ANY,ANY-method"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/VISTA/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/VISTA/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "aisdk",
+    "AnnotationDbi",
+    "ape",
+    "aplot",
+    "askpass",
+    "assertthat",
+    "babelgene",
+    "backports",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "boot",
+    "broom",
+    "bslib",
+    "cachem",
+    "callr",
+    "car",
+    "carData",
+    "cli",
+    "cluster",
+    "clusterProfiler",
+    "codetools",
+    "colorspace",
+    "corrplot",
+    "cowplot",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "Deriv",
+    "DESeq2",
+    "digest",
+    "doBy",
+    "DOSE",
+    "dplyr",
+    "edgeR",
+    "enrichit",
+    "enrichplot",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "forcats",
+    "forecast",
+    "formatR",
+    "Formula",
+    "fracdiff",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "gdtools",
+    "generics",
+    "GenomicRanges",
+    "GGally",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggpubr",
+    "ggrepel",
+    "ggsci",
+    "ggsignif",
+    "ggstats",
+    "ggtangle",
+    "ggtree",
+    "glue",
+    "GO.db",
+    "GOSemSim",
+    "gridExtra",
+    "gridGraphics",
+    "gson",
+    "gtable",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "lme4",
+    "lmtest",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "MatrixModels",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mime",
+    "minqa",
+    "modelr",
+    "msigdbr",
+    "nlme",
+    "nloptr",
+    "nnet",
+    "numDeriv",
+    "openssl",
+    "otel",
+    "patchwork",
+    "pbkrtest",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "polyclip",
+    "polynom",
+    "prettyunits",
+    "processx",
+    "progress",
+    "ps",
+    "purrr",
+    "quantreg",
+    "qvalue",
+    "R6",
+    "rappdirs",
+    "rbibutils",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "Rdpack",
+    "reformulas",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "rstatix",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scatterpie",
+    "Seqinfo",
+    "snow",
+    "SparseArray",
+    "SparseM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidydr",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "timeDate",
+    "tinytex",
+    "treeio",
+    "tweenr",
+    "urca",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml",
+    "yulab.utils",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "VISTA-airway.Rmd",
+      "filename": "VISTA-airway.html",
+      "title": "Complete RNA-seq Analysis Workflow with VISTA",
+      "author": "VISTA Development Team",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "What is VISTA?",
+        "Dataset Overview",
+        "Installation and Setup",
+        "Data Preparation",
+        "Load the airway dataset",
+        "Extract counts and metadata",
+        "Prepare data for VISTA",
+        "Create VISTA Object",
+        "Using DESeq2 backend",
+        "Validate object integrity",
+        "Alternative: Using edgeR backend",
+        "Alternative: Using limma-voom backend",
+        "Advanced: covariates, design formula, and consensus mode",
+        "Add gene annotations",
+        "Explore the Results",
+        "Access differential expression results",
+        "Count significant genes",
+        "Quality Control Visualizations",
+        "Sample Correlation Heatmap",
+        "Basic correlation heatmap",
+        "Customize color scheme",
+        "Show correlation values",
+        "Principal Component Analysis (PCA)",
+        "Basic PCA with labels",
+        "PCA colored by different metadata",
+        "PCA with top variable genes",
+        "PCA with custom circle size",
+        "PCA without labels",
+        "Multidimensional Scaling (MDS)",
+        "Basic MDS plot",
+        "MDS with top variable genes",
+        "MDS with custom shapes",
+        "Uniform Manifold Approximation and Projection (UMAP)",
+        "Basic UMAP plot",
+        "UMAP colored by a user-defined metadata column",
+        "Differential Expression Visualizations",
+        "DEG Count Summary",
+        "Basic count barplot",
+        "Faceted by regulation",
+        "Volcano Plot",
+        "Basic volcano plot",
+        "Customize cutoffs and labels",
+        "Custom colors",
+        "MA Plot",
+        "Basic MA plot",
+        "Label top genes",
+        "Custom cutoffs",
+        "Expression Pattern Analysis",
+        "Prepare gene sets",
+        "Expression Heatmaps",
+        "Basic heatmap",
+        "Heatmap with explicit gene set",
+        "Heatmap with k-means clustering",
+        "Heatmap with column annotations",
+        "Heatmap with multiple column annotations and cluster_by",
+        "Heatmap showing each replicate",
+        "Expression Barplots",
+        "Basic barplot",
+        "Log-transformed with statistics",
+        "Per-sample barplot for selected genes",
+        "Compare up and down regulated genes",
+        "Expression Boxplots",
+        "Basic boxplot",
+        "Boxplot without faceting",
+        "Boxplot with faceting by gene",
+        "Boxplot with gene facets AND statistics",
+        "Pooled genes with statistics",
+        "Log-transformed with p-values",
+        "Expression Violin Plots",
+        "Basic violin plot",
+        "Violin with log2 transformation",
+        "Violin with z-score transformation",
+        "Additional Expression Plots",
+        "Density plot",
+        "Scatter plot (sample vs sample)",
+        "Line plot (expression across samples)",
+        "Lollipop plot",
+        "Per-sample lollipop plot",
+        "Joyplot by treatment group",
+        "Joyplot by sample",
+        "Raincloud plot (expression)",
+        "Functional Enrichment Analysis",
+        "MSigDB Enrichment",
+        "Hallmark gene sets - Upregulated",
+        "Hallmark gene sets - Downregulated",
+        "Enrichment Visualizations",
+        "VISTA dotplot (default)",
+        "Barplot (clusterProfiler native)",
+        "Dotplot with customization",
+        "Network plot (clusterProfiler native)",
+        "Chord diagram (gene--pathway relationships)",
+        "Pathway-Specific Expression Heatmaps",
+        "Extract genes from top pathways",
+        "Heatmap of genes from top enriched pathways",
+        "GO Enrichment",
+        "Biological Process",
+        "GO Visualization",
+        "Gene Set Enrichment Analysis (GSEA)",
+        "GSEA with MSigDB Hallmark gene sets",
+        "GSEA with GO Biological Process",
+        "GSEA enrichment overview",
+        "GSEA plot for top pathway",
+        "GSEA plot for multiple pathways",
+        "GSEA with GO visualization",
+        "KEGG Pathway Enrichment",
+        "KEGG upregulated genes",
+        "KEGG downregulated genes",
+        "KEGG Visualization",
+        "Fold-Change Analysis",
+        "Fold-change Matrix",
+        "Fold-change Barplot and Lollipop",
+        "Per-gene fold-change barplot",
+        "Per-gene fold-change lollipop",
+        "Fold-change Raincloud",
+        "Fold-change Heatmap",
+        "Basic FC heatmap",
+        "FC heatmap for selected genes",
+        "FC heatmap with gene names",
+        "FC heatmap for specific gene set",
+        "Export Results",
+        "Export DE results to file",
+        "Save VISTA object",
+        "Summary",
+        "Workflow Completed",
+        "Key Features Demonstrated",
+        "Plotting Functions Used",
+        "QC Plots",
+        "DE Visualization",
+        "Expression Plots",
+        "Enrichment Plots",
+        "Fold-Change",
+        "Next Steps",
+        "Session Information",
+        "References"
+      ],
+      "created": "2026-02-17 02:51:38",
+      "modified": "2026-08-05 06:50:55",
+      "commits": 19
+    }
+  ],
+  "_score": 6.2638726768652235,
+  "_indexed": true,
+  "_nocasepkg": "vista",
+  "_universes": [
+    "bioc",
+    "cparsania"
+  ],
+  "_previous": "1.1.0",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:22:32.000Z",
+      "distro": "resolute",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/41c6ba37af399ee1d13f08bf5edfe645402b37045b1a9a89af44937ba0678ef3",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:22:43.000Z",
+      "distro": "resolute",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/25753e646d27011c00067780c77b74ddace69902571f06e4b4e28a320385c575",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:23:07.000Z",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/a00712153db774d052e158397e36299339b1ad47dfe01758e7913c7ce905954a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:23:19.000Z",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/ff4468e58cf9193d9ae03d1e40ffcf5f6bbc2a5c36a005112c63e642bbf0f0a7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:22:58.000Z",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/c3aa3a8abe8cdc90063257f63b5c861cc1e9ca9a1ef6e53e733b186f858703e3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:19:44.000Z",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/3bec2d8732df1036b68bce1fd2851620ac4e52db8fb8b05fb3a8339d8a001729",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:19:40.000Z",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/28fa4225a34283df36164f7226a4335f119f059b6802b1478f27088bbacf51e5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.1.3",
+      "date": "2026-08-05T11:19:52.000Z",
+      "commit": "9c2c7abf8ce8d544e508330ea55b893c9fd93242",
+      "fileid": "https://r2.ropensci.org/d32c6a32b997bad8b78ea522b8d7056459f70bf02372f1b89deda262b5d94ae2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31000067305"
+    }
+  ]
+}
