@@ -1,0 +1,1204 @@
+{
+  "_id": "6a7f7cd1dae7655aa97db497",
+  "Package": "methylumi",
+  "Type": "Package",
+  "Title": "Handle Illumina methylation data",
+  "Version": "2.59.3",
+  "Date": "2026-08-14",
+  "Author": "Sean Davis, Pan Du, Sven Bilke, Tim Triche, Jr., Moiz Bootwalla",
+  "biocViews": "DNAMethylation, TwoChannel, Preprocessing, QualityControl,\nCpGIsland",
+  "Maintainer": "Sean Davis <seandavi@gmail.com>",
+  "Description": "This package provides classes for holding and manipulating\nIllumina methylation data.  Based on eSet, it can contain MIAME\ninformation, sample information, feature information, and\nmultiple matrices of data.  An \"intelligent\" import function,\nmethylumiR can read the Illumina text files and create a\nMethyLumiSet. methylumIDAT can directly read raw IDAT files\nfrom HumanMethylation27 and HumanMethylation450 microarrays.\nNormalization, background correction, and quality control\nfeatures for GoldenGate, Infinium, and Infinium HD arrays are\nalso included.",
+  "Collate": "AllGenerics.R MethyLumiSet-class.R MethyLumiM-class.R\nMoreGenerics.R Methods.R bgcorr.R coercions.R data.R\ndetectionpval.R featureFilter.R mclapply_replace.R\nmethylData-class.R methylumIDAT.R methylumiCSV.R methylumiR.R\nnormalization.R plotNegOob.R qc.probe.plot.R readIDAT2.R\nstripMethyLumiSet.R utilities.R varFilter.R",
+  "VignetteBuilder": "quarto",
+  "URL": "https://seandavi.github.io/methylumi/,\nhttps://github.com/seandavi/methylumi",
+  "BugReports": "https://github.com/seandavi/methylumi/issues",
+  "License": "GPL-2",
+  "Encoding": "UTF-8",
+  "Config/testthat/edition": "3",
+  "Config/roxygen2/version": "8.1.0",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libpng-dev\nlibxml2-dev libssl-dev libx11-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-08-14 16:33:14 UTC",
+  "RemoteUrl": "https://github.com/bioc/methylumi",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-08-14 20:21:57 UTC",
+    "User": "root"
+  },
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "methylumi_2.59.3.tar.gz",
+  "_fileid": "https://r2.ropensci.org/38f6e0337bf46ab782164bdcefae12348daffb1c98339120ca3b99d65b963542",
+  "_filesize": 6741537,
+  "_sha256": "38f6e0337bf46ab782164bdcefae12348daffb1c98339120ca3b99d65b963542",
+  "_expires": "2026-11-22T20:38:39.000Z",
+  "_created": "2026-08-14T20:21:57.000Z",
+  "_published": "2026-08-14T20:38:41.513Z",
+  "_bioccheck": {
+    "error": 2,
+    "warning": 5,
+    "note": 14
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/methylumi",
+  "_commit": {
+    "id": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+    "author": "Sean Davis <seandavi@gmail.com>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Install methylumi into the real library before building the pkgdown site (#52)\n\npkgdown::build_site(install = TRUE) installs the package into a temporary\nlibrary that exists only on the calling R process's .libPaths(). The articles\nare .qmd, so pkgdown renders them by shelling out to the Quarto CLI, which\nstarts a fresh R session per file -- and that session inherits none of the\ntemporary library. library(methylumi) in the vignettes therefore resolved\nagainst the stale methylumi already in the container's site-library, and the\nbuild died with the long-fixed defunct import from #28:\n\n  ! package or namespace load failed for 'methylumi':\n   object 'parallel' is not exported by 'namespace:lattice'\n  Quitting from methylumi.qmd:83-93 [load]\n\nbuild_site() renders articles with quiet = TRUE, which is why the log showed\nonly 'Error returned by quarto CLI'.\n\nInstall into site-library ourselves and pass install = FALSE, so the child\nQuarto sessions see the package being documented.\n\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>",
+    "time": 1786725194
+  },
+  "_maintainer": {
+    "name": "Sean Davis",
+    "email": "seandavi@gmail.com",
+    "login": "seandavi",
+    "description": "Software developer, Pediatric oncologist, Cancer researcher, Data scientist and engineer, Community organizer",
+    "uuid": 92435
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 94887482425,
+      "time": 497,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "ERROR",
+      "artifact": "9233304848"
+    },
+    {
+      "job": 94887482504,
+      "time": 898,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "9233483522"
+    },
+    {
+      "job": 94887482496,
+      "time": 865,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "9233469411"
+    },
+    {
+      "job": 94887482498,
+      "time": 425,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "9233271999"
+    },
+    {
+      "job": 94887482531,
+      "time": 396,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "9233259048"
+    },
+    {
+      "job": 94884602511,
+      "time": 706,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9233076935"
+    },
+    {
+      "job": 94887482495,
+      "time": 423,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "9233271379"
+    },
+    {
+      "job": 94887482473,
+      "time": 755,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "9233420217"
+    },
+    {
+      "job": 94887482597,
+      "time": 712,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "9233401776"
+    },
+    {
+      "job": 94887482565,
+      "time": 754,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "9233420047"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "Biobase",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "scales",
+      "role": "Depends"
+    },
+    {
+      "package": "reshape2",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Depends"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Depends"
+    },
+    {
+      "package": "FDb.InfiniumMethylation.hg19",
+      "version": ">= 2.2.0",
+      "role": "Depends"
+    },
+    {
+      "package": "minfi",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "lattice",
+      "role": "Imports"
+    },
+    {
+      "package": "annotate",
+      "role": "Imports"
+    },
+    {
+      "package": "genefilter",
+      "role": "Imports"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Imports"
+    },
+    {
+      "package": "minfi",
+      "role": "Imports"
+    },
+    {
+      "package": "stats4",
+      "role": "Imports"
+    },
+    {
+      "package": "illuminaio",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "lumi",
+      "role": "Suggests"
+    },
+    {
+      "package": "limma",
+      "role": "Suggests"
+    },
+    {
+      "package": "SQN",
+      "role": "Suggests"
+    },
+    {
+      "package": "MASS",
+      "role": "Suggests"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Suggests"
+    },
+    {
+      "package": "quarto",
+      "role": "Suggests"
+    },
+    {
+      "package": "TCGAMethylation450k",
+      "role": "Suggests"
+    },
+    {
+      "package": "IlluminaHumanMethylation450kanno.ilmn12.hg19",
+      "role": "Suggests"
+    },
+    {
+      "package": "FDb.InfiniumMethylation.hg18",
+      "version": ">= 2.2.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "Homo.sapiens",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 17,
+  "_updates": [
+    {
+      "week": "2026-33",
+      "n": 15
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.59.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "2.58.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "dnamethylation",
+    "twochannel",
+    "preprocessing",
+    "qualitycontrol",
+    "cpgisland",
+    "quarto"
+  ],
+  "_stars": 9,
+  "_contributors": [
+    {
+      "user": "seandavi",
+      "count": 242,
+      "uuid": 92435
+    },
+    {
+      "user": "dtenenba",
+      "count": 50,
+      "uuid": 2286826
+    },
+    {
+      "user": "ttriche",
+      "count": 42,
+      "uuid": 4386
+    },
+    {
+      "user": "nturaga",
+      "count": 24,
+      "uuid": 2746443
+    },
+    {
+      "user": "jwokaty",
+      "count": 16,
+      "uuid": 1744257
+    },
+    {
+      "user": "vobencha",
+      "count": 4,
+      "uuid": 2466173
+    },
+    {
+      "user": "alanocallaghan",
+      "count": 2,
+      "uuid": 10779688
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "mbootwalla",
+      "count": 1,
+      "uuid": 851911
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 462,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 2550,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/methylumi"
+  },
+  "_mentions": 75,
+  "_devurl": "https://github.com/seandavi/methylumi",
+  "_searchresults": 114,
+  "_quarto": true,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/methylumi.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/seandavi/methylumi",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    ".mclapply",
+    "betas",
+    "betas<-",
+    "combine",
+    "combine27k450k",
+    "controlData",
+    "controlData<-",
+    "controlTypes",
+    "corplot",
+    "cy3",
+    "Cy3.N",
+    "Cy3<-",
+    "cy5",
+    "Cy5.N",
+    "Cy5<-",
+    "dataType",
+    "dataType<-",
+    "designIItoMandU",
+    "designItoMandU",
+    "detection",
+    "detection<-",
+    "diagnostics",
+    "estimateM",
+    "exprs",
+    "exprs<-",
+    "extractBarcodeAndPosition",
+    "featureFilter",
+    "getAssayDataNameSubstitutions",
+    "getBarcodes",
+    "getHistory",
+    "hist",
+    "IDATsToMatrices",
+    "IDATtoMatrix",
+    "intensities.IB",
+    "intensities.M",
+    "intensities.OOB",
+    "intensities.OOB.allelic",
+    "intensities.U",
+    "intensitiesByChannel",
+    "lumiCSV",
+    "lumIDAT",
+    "mergeProbeDesigns",
+    "methylated",
+    "methylated.N",
+    "methylated.N<-",
+    "methylated<-",
+    "methylumi.bgcorr",
+    "methylumi.diagnostics",
+    "methylumiCSV",
+    "methylumIDAT",
+    "methylumiR",
+    "NChannelSetToMethyLumiSet",
+    "negctls",
+    "negctls.stderr",
+    "negnorm",
+    "normalizeMethyLumiSet",
+    "normctls",
+    "pairs",
+    "plotNAs",
+    "plotNegOob",
+    "plotSampleIntensities",
+    "probeNAs",
+    "psummary",
+    "pval.detect",
+    "pval.detect<-",
+    "pvals",
+    "pvals<-",
+    "qc.probe.plot",
+    "QCdata",
+    "QCdata<-",
+    "qcplot",
+    "sampleNAs",
+    "show",
+    "stripBeadNs",
+    "stripBeadSDs",
+    "stripMethyLumiSet",
+    "stripOOB",
+    "summary",
+    "tcgaPipeline",
+    "total.intensity",
+    "unmethylated",
+    "unmethylated.N",
+    "unmethylated.N<-",
+    "unmethylated<-",
+    "varFilter"
+  ],
+  "_datasets": [
+    {
+      "name": "CpGs",
+      "title": "Data frame describing loci on the 27 and 450k arrays",
+      "object": "CpGs",
+      "file": "CpGs.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "CpGs",
+        "design.27k",
+        "design.450k",
+        "type",
+        "random"
+      ],
+      "rows": 487177,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "mldat",
+      "title": "Example SAM format Illumina methylation dataset",
+      "object": "mldat",
+      "file": "mldat.rda",
+      "class": [
+        "MethyLumiSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "methylumi-package",
+      "title": "Handle Illumina methylation data",
+      "topics": [
+        "methylumi-package",
+        "methylumi"
+      ]
+    },
+    {
+      "page": "CpGs",
+      "title": "Data frame describing loci on the 27 and 450k arrays",
+      "topics": [
+        "CpGs"
+      ]
+    },
+    {
+      "page": "estimateM",
+      "title": "Estimate methylation M-value matrix",
+      "topics": [
+        "estimateM"
+      ]
+    },
+    {
+      "page": "extractBarcodeAndPosition",
+      "title": "Extract the barcode and position information from a Sentrix ID",
+      "topics": [
+        "extractBarcodeAndPosition"
+      ]
+    },
+    {
+      "page": "featureFilter",
+      "title": "Annotation-based filtering of features (CpG sites) in a MethyLumiSet or MethyLumiM object",
+      "topics": [
+        "featureFilter",
+        "featureFilter,MethyLumiM-method",
+        "featureFilter,MethyLumiSet-method"
+      ]
+    },
+    {
+      "page": "getAssayDataNameSubstitutions",
+      "title": "Return a data.frame of AssayData name substitutions",
+      "topics": [
+        "getAssayDataNameSubstitutions"
+      ]
+    },
+    {
+      "page": "IDATsToMatrices",
+      "title": "convert multiple idats to matrices",
+      "topics": [
+        "IDATsToMatrices"
+      ]
+    },
+    {
+      "page": "IDATtoMatrix",
+      "title": "process a single IDAT (just the mean intensities)",
+      "topics": [
+        "IDATtoMatrix"
+      ]
+    },
+    {
+      "page": "methylData-class",
+      "title": "Class '\"methylData\"', superclass for MethyLumiSet and MethyLumiM",
+      "topics": [
+        "diagnostics,methylData-method",
+        "methylated.N,methylData-method",
+        "methylated.N<-,methylData,matrix-method",
+        "methylData-class",
+        "plotNAs,methylData-method",
+        "pval.detect,methylData-method",
+        "pval.detect<-,methylData,numeric-method",
+        "unmethylated.N,methylData-method",
+        "unmethylated.N<-,methylData,matrix-method"
+      ]
+    },
+    {
+      "page": "generics",
+      "title": "methylumi accessors",
+      "topics": [
+        "betas",
+        "betas<-",
+        "corplot",
+        "getHistory",
+        "methylated",
+        "methylated<-",
+        "pvals",
+        "pvals<-",
+        "QCdata",
+        "QCdata<-",
+        "unmethylated",
+        "unmethylated<-"
+      ]
+    },
+    {
+      "page": "MethyLumi-class",
+      "title": "The base class for storing Illumina Methylation data",
+      "topics": [
+        "methylated,MethyLumi-method",
+        "methylated<-,MethyLumi,matrix-method",
+        "MethyLumi-class",
+        "pvals,MethyLumi-method",
+        "pvals<-,MethyLumi,matrix-method",
+        "qcplot,Methylumi-method",
+        "summary,MethyLumi-method",
+        "unmethylated,MethyLumi-method",
+        "unmethylated<-,MethyLumi,matrix-method"
+      ]
+    },
+    {
+      "page": "MethyLumi-strippers",
+      "title": "Strip excessive probe-level data from MethyLumiSets",
+      "topics": [
+        "MethyLumi-strippers",
+        "stripBeadNs",
+        "stripBeadSDs",
+        "stripMethyLumiSet",
+        "stripOOB"
+      ]
+    },
+    {
+      "page": "methylumIDAT",
+      "title": "methylumIDAT",
+      "topics": [
+        "methylumIDAT"
+      ]
+    },
+    {
+      "page": "methylumiGenerics",
+      "title": "Generics defined in methylumi",
+      "topics": [
+        "betas,GenomicMethylSet-method",
+        "betas,MethylSet-method",
+        "betas,RangedSummarizedExperiment-method",
+        "combine27k450k",
+        "controlData",
+        "controlData<-",
+        "cy3",
+        "Cy3.N",
+        "Cy3<-",
+        "cy5",
+        "Cy5.N",
+        "Cy5<-",
+        "dataType",
+        "dataType<-",
+        "designIItoMandU",
+        "designItoMandU",
+        "detection",
+        "detection<-",
+        "diagnostics",
+        "getBarcodes",
+        "getProtocolData",
+        "IDATsToDFs",
+        "IDATtoDF",
+        "intensities.IB",
+        "intensities.M",
+        "intensities.OOB",
+        "intensities.OOB.allelic",
+        "intensities.U",
+        "intensitiesByChannel",
+        "lumiCSV",
+        "lumIDAT",
+        "mergeProbeDesigns",
+        "methylated,MethylSet-method",
+        "methylated.N",
+        "methylated.N<-",
+        "methylumi.bgcorr",
+        "methylumi.diagnostics",
+        "methylumiCSV",
+        "NChannelSetToMethyLumiSet",
+        "negctls",
+        "negctls.stderr",
+        "negnorm",
+        "normctls",
+        "plotNAs",
+        "plotNegOob",
+        "probeNAs",
+        "psummary",
+        "pval.detect",
+        "pval.detect<-",
+        "qc.probe.plot",
+        "sampleNAs",
+        "total.intensity",
+        "unmethylated,MethylSet-method",
+        "unmethylated.N",
+        "unmethylated.N<-"
+      ]
+    },
+    {
+      "page": "MethyLumiM-class",
+      "title": "Class \"MethyLumiM\": for Illumina Methylation microarray data using logRatios",
+      "topics": [
+        "betas,MethyLumiM-method",
+        "combine,MethyLumiM,MethyLumiM-method",
+        "controlData,MethyLumiM-method",
+        "controlData<-,MethyLumiM,ANY-method",
+        "controlTypes,MethyLumiM-method",
+        "dataType,MethyLumiM-method",
+        "dataType<-,MethyLumiM,ANY-method",
+        "dataType<-,MethyLumiM-method",
+        "detection,MethyLumiM-method",
+        "detection<-,MethyLumiM-method",
+        "getHistory,MethyLumiM-method",
+        "intensitiesByChannel,MethyLumiM-method",
+        "methylated,MethyLumiM-method",
+        "methylated.N,MethyLumiM-method",
+        "methylated.N<-,MethyLumiM,ANY-method",
+        "methylated<-,MethyLumiM,ANY-method",
+        "MethyLumiM",
+        "MethyLumiM-class",
+        "negctls,MethyLumiM,character-method",
+        "negctls,MethyLumiM,missing-method",
+        "negnorm,MethyLumiM,character-method",
+        "negnorm,MethyLumiM,missing-method",
+        "normctls,MethyLumiM-method",
+        "probeNAs,MethyLumiM-method",
+        "pvals,MethyLumiM-method",
+        "QCdata,MethyLumiM-method",
+        "sampleNAs,MethyLumiM-method",
+        "total.intensity,MethyLumiM-method",
+        "unmethylated,MethyLumiM-method",
+        "unmethylated.N,MethyLumiM-method",
+        "unmethylated.N<-,MethyLumiM,ANY-method",
+        "unmethylated<-,MethyLumiM,ANY-method",
+        "[,MethyLumiM,ANY,ANY,ANY-method",
+        "[,MethyLumiM,ANY-method"
+      ]
+    },
+    {
+      "page": "MethyLumiQC-class",
+      "title": "Class '\"MethyLumiQC\"' for holding Illumina methylation QC data",
+      "topics": [
+        "combine,MethyLumiQC,MethyLumiQC-method",
+        "controlData<-,MethyLumiSet,MethyLumiQC-method",
+        "controlTypes,MethyLumiQC-method",
+        "Cy3.N,MethyLumiQC-method",
+        "Cy3<-,MethyLumiQC,matrix-method",
+        "Cy5.N,MethyLumiQC-method",
+        "Cy5<-,MethyLumiQC,matrix-method",
+        "hist,MethyLumiQC-method",
+        "intensitiesByChannel,MethyLumiQC-method",
+        "methylated,MethyLumiQC-method",
+        "MethyLumiQC-class",
+        "negctls,MethyLumiQC,character-method",
+        "negctls,MethyLumiQC,missing-method",
+        "negctls.stderr,MethyLumiQC,character-method",
+        "negctls.stderr,MethyLumiQC,missing-method",
+        "negnorm,MethyLumiQC,character-method",
+        "negnorm,MethyLumiQC,missing-method",
+        "normctls,MethyLumiQC-method",
+        "QCdata<-,MethyLumiSet,MethyLumiQC-method",
+        "qcplot,MethyLumiQC-method",
+        "unmethylated,MethyLumiQC-method"
+      ]
+    },
+    {
+      "page": "methylumiR",
+      "title": "Load data from an Illumina methylation platform",
+      "topics": [
+        "methylumiR"
+      ]
+    },
+    {
+      "page": "MethyLumiSet-class",
+      "title": "Class '\"MethyLumiSet\"' for containing Illumina methylation data",
+      "topics": [
+        "betas,MethyLumiSet-method",
+        "betas<-,MethyLumiSet,matrix-method",
+        "boxplot,MethyLumiSet-method",
+        "combine,MethyLumiSet,MethyLumiSet-method",
+        "combine27k450k,MethyLumiSet,MethyLumiSet-method",
+        "controlData,MethyLumiSet-method",
+        "controlData<-,MethyLumiSet",
+        "controlTypes,MethyLumiSet-method",
+        "corplot,MethyLumiSet-method",
+        "Cy3.N,MethyLumiSet-method",
+        "Cy5.N,MethyLumiSet-method",
+        "exprs,MethyLumiSet-method",
+        "getHistory,MethyLumiSet-method",
+        "hist,MethyLumiSet-method",
+        "intensities.IB,MethyLumiSet,character-method",
+        "intensities.IB,MethyLumiSet,missing-method",
+        "intensities.M,MethyLumiSet,character-method",
+        "intensities.M,MethyLumiSet,missing-method",
+        "intensities.OOB,MethyLumiSet,character-method",
+        "intensities.OOB,MethyLumiSet,missing-method",
+        "intensities.OOB.allelic,MethyLumiSet,character,character-method",
+        "intensities.OOB.allelic,MethyLumiSet,missing,missing-method",
+        "intensities.U,MethyLumiSet,character-method",
+        "intensities.U,MethyLumiSet,missing-method",
+        "intensitiesByChannel,MethyLumiSet-method",
+        "methylated,MethyLumiSet-method",
+        "methylated<-,MethyLumiSet,matrix-method",
+        "MethyLumiSet-class",
+        "negctls,MethyLumiSet,character-method",
+        "negctls,MethyLumiSet,missing-method",
+        "negctls.stderr,MethyLumiSet,character-method",
+        "negctls.stderr,MethyLumiSet,missing-method",
+        "negnorm,MethyLumiSet,character-method",
+        "negnorm,MethyLumiSet,missing-method",
+        "normctls,MethyLumiSet-method",
+        "pairs,MethyLumiSet-method",
+        "plotSampleIntensities,MethyLumiSet-method",
+        "probeNAs,MethyLumiSet-method",
+        "QCdata,MethyLumiSet-method",
+        "QCdata<-,MethyLumiSet",
+        "qcplot,MethyLumiSet-method",
+        "sampleNAs,MethyLumiSet-method",
+        "show,MethyLumiSet-method",
+        "total.intensity,MethyLumiSet-method",
+        "unmethylated,MethyLumiSet-method",
+        "unmethylated<-,MethyLumiSet,matrix-method",
+        "[,MethyLumiSet,ANY,ANY,ANY-method",
+        "[,MethyLumiSet,ANY-method"
+      ]
+    },
+    {
+      "page": "mldat",
+      "title": "Example SAM format Illumina methylation dataset",
+      "topics": [
+        "mldat"
+      ]
+    },
+    {
+      "page": "normalizeMethyLumiSet",
+      "title": "Normalize a MethyLumiSet, accounting for dye bias",
+      "topics": [
+        "normalizeMethyLumiSet"
+      ]
+    },
+    {
+      "page": "plotSampleIntensities",
+      "title": "Plot the sample intensities",
+      "topics": [
+        "plotSampleIntensities"
+      ]
+    },
+    {
+      "page": "qcplot",
+      "title": "Methods for dealing with control data for Illumina methylation data",
+      "topics": [
+        "controlTypes",
+        "qcplot"
+      ]
+    },
+    {
+      "page": "tcgaPipeline",
+      "title": "Total convenience function for processing IDATs like tcga",
+      "topics": [
+        "tcgaPipeline"
+      ]
+    },
+    {
+      "page": "varFilter",
+      "title": "Variation-based filtering of features (CpG sites) in a MethyLumiSet or MethyLumiM object",
+      "topics": [
+        "varFilter",
+        "varFilter,MethyLumiM-method",
+        "varFilter,MethyLumiSet-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/methylumi/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "annotate",
+    "AnnotationDbi",
+    "askpass",
+    "base64",
+    "beanplot",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "biocmake",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bumphunter",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "clipr",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "DelayedMatrixStats",
+    "digest",
+    "dir.expiry",
+    "doRNG",
+    "dplyr",
+    "farver",
+    "fastmap",
+    "FDb.InfiniumMethylation.hg19",
+    "filelock",
+    "foreach",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "genefilter",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "GEOquery",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "h5mread",
+    "HDF5Array",
+    "hms",
+    "httr",
+    "httr2",
+    "illuminaio",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "mclust",
+    "memoise",
+    "mime",
+    "minfi",
+    "multtest",
+    "nlme",
+    "nor1mix",
+    "openssl",
+    "org.Hs.eg.db",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "preprocessCore",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "quadprog",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RCurl",
+    "readr",
+    "rentrez",
+    "reshape",
+    "reshape2",
+    "restfulr",
+    "rhdf5",
+    "rhdf5filters",
+    "Rhdf5lib",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rngtools",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "rvest",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "scrime",
+    "selectr",
+    "Seqinfo",
+    "siggenes",
+    "snow",
+    "SparseArray",
+    "sparseMatrixStats",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "tzdb",
+    "UCSC.utils",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "methylumi.qmd",
+      "filename": "methylumi.html",
+      "title": "An Introduction to the methylumi package",
+      "engine": "quarto::html",
+      "headings": [
+        "Introduction",
+        "Loading data",
+        "Quality control",
+        "Normalization",
+        "Example analysis",
+        "Session information"
+      ],
+      "created": "2026-08-14 10:54:19",
+      "modified": "2026-08-14 10:54:19",
+      "commits": 1
+    },
+    {
+      "source": "methylumi450k.qmd",
+      "filename": "methylumi450k.html",
+      "title": "Working with Illumina 450k Arrays using methylumi",
+      "engine": "quarto::html",
+      "headings": [
+        "Creating a MethyLumiSet object from IDATs",
+        "Negative and normalization controls",
+        "Preprocessing the raw data",
+        "Coercions to other data structures",
+        "Session information"
+      ],
+      "created": "2026-08-14 10:54:19",
+      "modified": "2026-08-14 10:54:19",
+      "commits": 1
+    }
+  ],
+  "_score": 10.028347704299634,
+  "_indexed": true,
+  "_nocasepkg": "methylumi",
+  "_universes": [
+    "bioc",
+    "seandavi"
+  ],
+  "_previous": "2.59.2",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:33:13.000Z",
+      "distro": "resolute",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/414e49ec0db8707a6a9691748ad680cd164335b0f3a01871df76b805c38db081",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:32:31.000Z",
+      "distro": "resolute",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/5f1025e540632f5771ee44375414f62c6433247981af4ea38e0e2af66224204d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:26:46.000Z",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/ebb61ab9dfaac802c7ba565c59183d5d36e7aa3e491c4c16bd563ccf420149a7",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:26:43.000Z",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/2f1a6aacb654ceadba02bd8b3ef0e9427140e4ee43c63df6b78ea5e38343359f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:30:06.000Z",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/11b009dbbd19276136e87089a2e321bcdd0fbdd02604c56510e2b9fa7c4a56e3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:29:57.000Z",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/2a948b5621fa72078e1dbbed6be5b507ab27c9f5b1585e4335e711df39c4fd2d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:29:40.000Z",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/91a5373543f9c2beda8f747183802f7765c5be00b93be3e9100c47ff468c6f98",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "2.59.3",
+      "date": "2026-08-14T20:30:36.000Z",
+      "commit": "4232eaf043694b8b8e2bfe1095f03185be39a8af",
+      "fileid": "https://r2.ropensci.org/523dfe0356d1b8ba73c93769a17f2a19a0e38b2459782aafeb92625c3d4dd527",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/31836720207"
+    }
+  ]
+}
