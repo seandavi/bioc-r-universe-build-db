@@ -1,0 +1,801 @@
+{
+  "_id": "6a836bf7517c2dabfe2c4356",
+  "Package": "vulcan",
+  "Type": "Package",
+  "Title": "VirtUaL ChIP-Seq data Analysis using Networks",
+  "Version": "1.35.1",
+  "Authors@R": "c(\nperson(\"Federico M.\", \"Giorgi\", role = c(\"aut\", \"cre\"),\nemail = \"federico.giorgi@gmail.com\"),\nperson(\"Andrew N.\", \"Holding\", role = \"aut\"),\nperson(\"Florian\", \"Markowetz\", role = \"aut\"))",
+  "Description": "Vulcan (VirtUaL ChIP-Seq Analysis through Networks) is a\npackage that interrogates gene regulatory networks to infer\ncofactors significantly enriched in a differential binding\nsignature coming from ChIP-Seq data. In order to do so, our\npackage combines strategies from different BioConductor\npackages: DESeq for data normalization, ChIPpeakAnno and\nDiffBind for annotation and definition of ChIP-Seq genomic\npeaks, csaw to define optimal peak width and viper for applying\na regulatory network over a differential binding signature.",
+  "License": "LGPL-3",
+  "biocViews": "SystemsBiology, NetworkEnrichment, GeneExpression, ChIPSeq",
+  "NeedsCompilation": "no",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.1.1",
+  "Config/pak/sysreqs": "cmake make libbz2-dev libicu-dev libjpeg-dev\nliblzma-dev libpng-dev libuv1-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-08-17 18:52:20 UTC",
+  "RemoteUrl": "https://github.com/bioc/vulcan",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+  "Packaged": {
+    "Date": "2026-08-17 20:04:20 UTC",
+    "User": "root"
+  },
+  "Author": "Federico M. Giorgi [aut, cre],\nAndrew N. Holding [aut],\nFlorian Markowetz [aut]",
+  "Maintainer": "Federico M. Giorgi <federico.giorgi@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "vulcan_1.35.1.tar.gz",
+  "_fileid": "https://r2.ropensci.org/c0d17fcc1d2299429d3302dc6ad3edd7b80e12b06e54a22e13f75ffc0b31b6b5",
+  "_filesize": 510202,
+  "_sha256": "c0d17fcc1d2299429d3302dc6ad3edd7b80e12b06e54a22e13f75ffc0b31b6b5",
+  "_expires": "2026-11-25T20:15:49.000Z",
+  "_created": "2026-08-17T20:04:20.000Z",
+  "_published": "2026-08-17T20:15:50.937Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 3,
+    "note": 16
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/vulcan",
+  "_commit": {
+    "id": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+    "author": "federicogiorgi <federico.giorgi@gmail.com>",
+    "committer": "federicogiorgi <federico.giorgi@gmail.com>",
+    "message": "Fix method dispatch, null distribution and numeric edge cases\n\nThree exported functions could not be called the way their own\ndocumentation describes them. gsea(), vulcan.annotate() and\nvulcan.pathways() never resolved 'method' with match.arg(), so calling\nthem without naming a method left the full default vector in place and\nthe later if() saw a condition of length greater than one, which R has\ntreated as an error since 4.2. Every example passes the argument\nexplicitly, which is why the build stayed green while the documented\ndefault was unusable.\n\nnull_gsea() failed whenever a permutation placed the whole set on\nelements of weight zero: the cumulative sum of hits ends at zero, the\nrunning score becomes undefined throughout, and the comparison that\npicks the enrichment score then errors. gsea() has guarded against this\nsince it was written; the null did not. With a set of five among\ntwenty-five elements of which twenty weigh zero it happens in 29% of\npermutations.\n\nThe branch in gsea() meant to accept a precomputed null keyed by set\nsize tested for a class name that nothing in the package ever assigns,\nso it could not be taken, and the test itself could error when handed a\nmatrix. It now accepts a named list and leaves plain vectors alone.\n\nAlso corrected: corr2p() returned exactly 0 for strong correlations by\nsubtracting a probability from one; kmgformat() prefixed zero with the\ncharacter \"0\", so it rendered \"00\" on any axis pretty() put a zero on;\nval2col() measured the colour scale before centring the data, which\ncollapsed shifted data to a single colour, failed outright on small\nranges, and left the smallest value with no colour at all; and\naverage_fragment_length() was one base long, correlateReads() counting\nits delays from zero.\n\nassay() is now imported from SummarizedExperiment instead of being\npicked up from whatever happened to be attached, and DESCRIPTION uses\nAuthors@R, which BiocCheck had begun reporting as an error.\n\nCo-Authored-By: Claude Opus 5 <nor",
+    "time": 1786992740
+  },
+  "_maintainer": {
+    "name": "Federico M. Giorgi",
+    "email": "federico.giorgi@gmail.com",
+    "login": "federicogiorgi",
+    "description": "",
+    "uuid": 1401900
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 95491298069,
+      "time": 292,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "9299291207"
+    },
+    {
+      "job": 95491298134,
+      "time": 600,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "9299463304"
+    },
+    {
+      "job": 95491298051,
+      "time": 576,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9299449818"
+    },
+    {
+      "job": 95491298050,
+      "time": 365,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "9299330232"
+    },
+    {
+      "job": 95491298036,
+      "time": 354,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9299325491"
+    },
+    {
+      "job": 95489305435,
+      "time": 410,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9299127124"
+    },
+    {
+      "job": 95491298479,
+      "time": 234,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "9299258486"
+    },
+    {
+      "job": 95491298220,
+      "time": 499,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "9299406928"
+    },
+    {
+      "job": 95491298182,
+      "time": 441,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "9299375164"
+    },
+    {
+      "job": 95491298121,
+      "time": 507,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9299412784"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "ChIPpeakAnno",
+      "role": "Depends"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg19.knownGene",
+      "role": "Depends"
+    },
+    {
+      "package": "zoo",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Depends"
+    },
+    {
+      "package": "viper",
+      "role": "Depends"
+    },
+    {
+      "package": "DiffBind",
+      "role": "Depends"
+    },
+    {
+      "package": "locfit",
+      "role": "Depends"
+    },
+    {
+      "package": "wordcloud",
+      "role": "Imports"
+    },
+    {
+      "package": "csaw",
+      "role": "Imports"
+    },
+    {
+      "package": "gplots",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "caTools",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "vulcandata",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-34",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.35.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.34.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "systemsbiology",
+    "networkenrichment",
+    "geneexpression",
+    "chipseq"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 463,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 394,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/vulcan"
+  },
+  "_searchresults": 17,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/vulcan.html",
+    "manual.pdf"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "average_fragment_length",
+    "corr2p",
+    "densityauc",
+    "dpareto",
+    "fisherp",
+    "gsea",
+    "kmgformat",
+    "null_gsea",
+    "p2corr",
+    "p2z",
+    "pareto.fit",
+    "plot_gsea",
+    "ppareto",
+    "rea",
+    "slice",
+    "stouffer",
+    "textplot2",
+    "val2col",
+    "vulcan",
+    "vulcan.annotate",
+    "vulcan.import",
+    "vulcan.normalize",
+    "vulcan.pathways",
+    "wstouffer",
+    "z2p"
+  ],
+  "_help": [
+    {
+      "page": "average_fragment_length",
+      "title": "Define the average fragment length",
+      "topics": [
+        "average_fragment_length"
+      ]
+    },
+    {
+      "page": "corr2p",
+      "title": "Convert correlation coefficient to p-value",
+      "topics": [
+        "corr2p"
+      ]
+    },
+    {
+      "page": "densityauc",
+      "title": "densityauc - Calculate the AUC of a density object",
+      "topics": [
+        "densityauc"
+      ]
+    },
+    {
+      "page": "dpareto",
+      "title": "Probability density of Pareto distributions",
+      "topics": [
+        "dpareto"
+      ]
+    },
+    {
+      "page": "fisherp",
+      "title": "Fisher integration of p-values",
+      "topics": [
+        "fisherp"
+      ]
+    },
+    {
+      "page": "gsea",
+      "title": "GSEA",
+      "topics": [
+        "gsea"
+      ]
+    },
+    {
+      "page": "kmgformat",
+      "title": "kmgformat - Nice Formatting of Numbers",
+      "topics": [
+        "kmgformat"
+      ]
+    },
+    {
+      "page": "null_gsea",
+      "title": "Calculate Null Distribution for GSEA",
+      "topics": [
+        "null_gsea"
+      ]
+    },
+    {
+      "page": "p2corr",
+      "title": "Convert p-value to correlation coefficient",
+      "topics": [
+        "p2corr"
+      ]
+    },
+    {
+      "page": "p2z",
+      "title": "p2z",
+      "topics": [
+        "p2z"
+      ]
+    },
+    {
+      "page": "pareto.fit",
+      "title": "Estimate parameters of Pareto distribution",
+      "topics": [
+        "pareto.fit"
+      ]
+    },
+    {
+      "page": "plot_gsea",
+      "title": "Plot GSEA results",
+      "topics": [
+        "plot_gsea"
+      ]
+    },
+    {
+      "page": "ppareto",
+      "title": "Cumulative distribution function of the Pareto distributions ' Gives NA on values < threshold",
+      "topics": [
+        "ppareto"
+      ]
+    },
+    {
+      "page": "rea",
+      "title": "REA: Rank EnrichmeNt Analysis",
+      "topics": [
+        "rea"
+      ]
+    },
+    {
+      "page": "slice",
+      "title": "Slice",
+      "topics": [
+        "slice"
+      ]
+    },
+    {
+      "page": "stouffer",
+      "title": "Stouffer integration of Z scores",
+      "topics": [
+        "stouffer"
+      ]
+    },
+    {
+      "page": "textplot2",
+      "title": "textplot2 - An x y plot of non-overlapping text",
+      "topics": [
+        "textplot2"
+      ]
+    },
+    {
+      "page": "val2col",
+      "title": "Convert a numeric vector into colors",
+      "topics": [
+        "val2col"
+      ]
+    },
+    {
+      "page": "vulcan",
+      "title": "VULCAN - VirtUaL Chipseq data Analysis using Networks",
+      "topics": [
+        "vulcan"
+      ]
+    },
+    {
+      "page": "vulcan.annotate",
+      "title": "Function to annotate peaks for VULCAN analysis",
+      "topics": [
+        "vulcan.annotate"
+      ]
+    },
+    {
+      "page": "vulcan.import",
+      "title": "Function to import BAM files",
+      "topics": [
+        "vulcan.import"
+      ]
+    },
+    {
+      "page": "vulcan.normalize",
+      "title": "Function to normalize promoter peak data",
+      "topics": [
+        "vulcan.normalize"
+      ]
+    },
+    {
+      "page": "vulcan.pathways",
+      "title": "Function to calculate pathway enrichment over a ChIP-Seq profile",
+      "topics": [
+        "vulcan.pathways"
+      ]
+    },
+    {
+      "page": "wstouffer",
+      "title": "Weighted Stouffer integration of Z scores",
+      "topics": [
+        "wstouffer"
+      ]
+    },
+    {
+      "page": "z2p",
+      "title": "z2p",
+      "topics": [
+        "z2p"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "abind",
+    "amap",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "apeglm",
+    "ashr",
+    "askpass",
+    "base64enc",
+    "bbmle",
+    "bdsmatrix",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "caTools",
+    "ChIPpeakAnno",
+    "cigarillo",
+    "class",
+    "cli",
+    "coda",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "csaw",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "DESeq2",
+    "DiffBind",
+    "digest",
+    "dplyr",
+    "e1071",
+    "edgeR",
+    "emdbook",
+    "ensembldb",
+    "etrunct",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggplot2",
+    "ggrepel",
+    "glue",
+    "gplots",
+    "graph",
+    "GreyListChIP",
+    "gtable",
+    "gtools",
+    "highr",
+    "hms",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "hwriter",
+    "InteractionSet",
+    "interp",
+    "invgamma",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "kernlab",
+    "KernSmooth",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "metapod",
+    "mime",
+    "mixsqp",
+    "mixtools",
+    "multtest",
+    "mvtnorm",
+    "nlme",
+    "numDeriv",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "prettyunits",
+    "progress",
+    "promises",
+    "ProtGenerics",
+    "proxy",
+    "purrr",
+    "pwalign",
+    "R6",
+    "rappdirs",
+    "RBGL",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppNumerical",
+    "RcppThread",
+    "RCurl",
+    "regioneR",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "segmented",
+    "Seqinfo",
+    "ShortRead",
+    "snow",
+    "SparseArray",
+    "SQUAREM",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sys",
+    "systemPipeR",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "truncnorm",
+    "TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "UCSC.utils",
+    "universalmotif",
+    "utf8",
+    "vctrs",
+    "VennDiagram",
+    "viper",
+    "viridisLite",
+    "withr",
+    "wordcloud",
+    "xfun",
+    "XML",
+    "xml2",
+    "XVector",
+    "yaml",
+    "zoo"
+  ],
+  "_vignettes": [
+    {
+      "source": "vulcan.Rnw",
+      "filename": "vulcan.pdf",
+      "title": "Vulcan: VirtUaL ChIP-Seq Analysis through Networks",
+      "engine": "utils::Sweave",
+      "headings": [
+        "Overview of VULCAN",
+        "Citation",
+        "Installation of vulcan package",
+        "Getting started",
+        "Running an example VULCAN pipeline",
+        "More convenience tools for ChIP-Seq functional data analysis"
+      ],
+      "created": "2017-05-26 14:16:15",
+      "modified": "2020-01-27 11:49:10",
+      "commits": 18
+    }
+  ],
+  "_score": 3.7075701760979367,
+  "_indexed": true,
+  "_nocasepkg": "vulcan",
+  "_universes": [
+    "bioc",
+    "federicogiorgi"
+  ],
+  "_previous": "1.35.0",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:09:37.000Z",
+      "distro": "resolute",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/2b5b768ae814d52d3bcf63e48b8194f022356c0257432f55230c94f547094b22",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:10:07.000Z",
+      "distro": "resolute",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/64e90e19412d9b8364e5ff526c3e65eab32d7e4b930b813d24faa7850eacd9b8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:07:07.000Z",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/69d336c8a83d97090d990ce62efe2c4a16d528c16ea9f21e6b6e7dcf7d7f36a0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:07:24.000Z",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/883942dc0b1666052ae21ee55f1f851e134d1e849702cda2ba6ec778adc18c6f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:09:09.000Z",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/c278c1a39e15ef13b7d3f876753dcc783fdede47ae02a27f31b5d377032c3384",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:07:47.000Z",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/32a72ec06017511e0a07fbe09a69800c1040465786206675cba3588070719c8b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:07:19.000Z",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/b8c95627d4d3924b606e200ec079a3409a86d7110e96a227bdf25b9704dc32b7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.35.1",
+      "date": "2026-08-17T20:08:57.000Z",
+      "commit": "5ba02723c2ffabdc100c27eafcedb2797ec8ea25",
+      "fileid": "https://r2.ropensci.org/f41cf16e889f43c2439e182813afe8dba8d6849981b6b16e45e15042d946c457",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32063263079"
+    }
+  ]
+}
