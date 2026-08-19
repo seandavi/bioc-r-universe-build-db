@@ -1,0 +1,1331 @@
+{
+  "_id": "6a85378f70de4fbf1b35cf8e",
+  "Package": "GSEAlens",
+  "Type": "Package",
+  "Title": "Gene Set Enrichment Analysis Interactive Explorer",
+  "Version": "0.99.34",
+  "Authors@R": "c(person(given = \"Dudali\", family = \"Lab\", role = \"aut\"), person(given = \"Dudali\", family = \"Lab\", role = \"cre\", email = \"sealgod@qq.com\", comment = c(ORCID = \"0000-0002-1825-0097\")))",
+  "Description": "GSEAlens provides an interactive exploration layer on top\nof standard Bioconductor RNA-seq workflows. It consumes fitted\nmodel objects from limma (MArrayLM) or DESeq2 (DESeqDataSet) as\ninput and accepts expression matrices and sample metadata as\nSummarizedExperiment objects, ensuring interoperability with\ncore Bioconductor data containers. For core computation,\nGSEAlens wraps clusterProfiler::GSEA() as its statistical\nengine (thereby inheriting the fgsea fast GSEA methodology) and\ndraws on MSigDB gene set collections via the msigdbr package\nfrom CRAN; multi-contrast parallel computation is handled by\nfuture (future::multisession). Visualization output relies on\nBioconductor graphics packages including enrichplot,\nComplexHeatmap, and circlize, producing figures suitable for\npublication pipelines. The package also includes a built-in\nShiny application for interactive exploration of enrichment\nresults after DEG analysis, with the ability to export\nself-contained reproducible R scripts.",
+  "License": "MIT + file LICENSE",
+  "URL": "https://github.com/DDL095/GSEAlens",
+  "BugReports": "https://github.com/DDL095/GSEAlens/issues",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "8.0.0",
+  "biocViews": "GeneSetEnrichment, Visualization, ShinyApps, Software",
+  "VignetteBuilder": "knitr",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev libglpk-dev make libicu-dev libpng-dev\nlibuv1-dev libxml2-dev libssl-dev perl libx11-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-08-18 19:52:12 UTC",
+  "RemoteUrl": "https://github.com/bioc/GSEAlens",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "76349a9899851653ba988d75d05041a343f3c853",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-08-19 03:37:27 UTC",
+    "User": "root"
+  },
+  "Author": "Dudali Lab [aut],\nDudali Lab [cre] (ORCID: <https://orcid.org/0000-0002-1825-0097>)",
+  "Maintainer": "Dudali Lab <sealgod@qq.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "GSEAlens_0.99.34.tar.gz",
+  "_fileid": "https://r2.ropensci.org/df4f2182e2e11e862ce627a686158fd2ba567b6276a08f0c1ba186dff3ecec73",
+  "_filesize": 10753331,
+  "_sha256": "df4f2182e2e11e862ce627a686158fd2ba567b6276a08f0c1ba186dff3ecec73",
+  "_expires": "2026-11-27T04:56:45.000Z",
+  "_created": "2026-08-19T03:37:27.000Z",
+  "_published": "2026-08-19T04:56:47.588Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 10
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/GSEAlens",
+  "_commit": {
+    "id": "76349a9899851653ba988d75d05041a343f3c853",
+    "author": "DDL095 <sealgod@qq.com>",
+    "committer": "DDL095 <sealgod@qq.com>",
+    "message": "v0.99.34: deterministic per-contrast GSEA seeding (upstream seed regression)\n\nclusterProfiler 4.19.3 switched GSEA() to the enrichit engine, and in\n4.20.0 (Bioconductor 3.23) the seed argument of GSEA() is silently\ndropped: it lands in ... and is never forwarded to\nenrichit::gsea_gson(), so the multilevel permutation engine draws a\nfresh seed from the worker R RNG on every call. Combined with\nfuture_lapply(future.seed = TRUE) deriving its worker seed stream from\nthe main-session RNG state at call time, re-running the same data could\nflip borderline pathways across the significance cutoff (observed\np-value drift up to +/-0.016), reproducing the publicly reported\n\"same code, different pathway counts\" issue.\n\nFix in R/04_calculation.R:\n- batch_calc_gsea() gains a seed argument (default 123; NULL restores\n  native engine sampling)\n- .derive_task_seed() maps (seed, alphabetical rank of contrast id) to\n  a per-contrast seed, so results are independent of workers/chunk_size\n- Seeds are derived in the main process and passed to future workers as\n  a plain named integer vector; workers apply withr::local_seed()\n  (restores RNG state on exit, per reviewer guidance against bare\n  set.seed()) and also forward the seed to GSEA(), which becomes\n  effective natively once clusterProfiler >= 4.21.1 restores it\n- The effective seed is recorded in metadata$parameters$seed\n\nTests: tests/testthat/test-batch-calc-gsea-seed.R pins cross-run\nreproducibility and worker-count independence (11 assertions).\n\nNEWS.md documents the fix and the one-time result shift vs pre-fix\ncapsules. Verified: R CMD check 0 ERROR / 0 WARNING; BiocCheck 0 ERRORS\n/ 0 WARNINGS.\n",
+    "time": 1787082732
+  },
+  "_maintainer": {
+    "name": "Dudali Lab",
+    "email": "sealgod@qq.com",
+    "login": "ddl095",
+    "description": "The Only Thing Necessary For The Triumph Of EvilIs For Good Men To Do Nothing.\n\n",
+    "uuid": 52679914,
+    "orcid": "0000-0002-1825-0097"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 95948809234,
+      "time": 255,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "9351418904"
+    },
+    {
+      "job": 95948809226,
+      "time": 714,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "9351567988"
+    },
+    {
+      "job": 95948809343,
+      "time": 731,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9351573400"
+    },
+    {
+      "job": 95948809262,
+      "time": 448,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "9352740099"
+    },
+    {
+      "job": 95948809372,
+      "time": 545,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9352834178"
+    },
+    {
+      "job": 95947666352,
+      "time": 410,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9351335181"
+    },
+    {
+      "job": 95948809217,
+      "time": 222,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "9351407955"
+    },
+    {
+      "job": 95948809353,
+      "time": 611,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "9351534224"
+    },
+    {
+      "job": 95948809261,
+      "time": 565,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "9351520157"
+    },
+    {
+      "job": 95948809266,
+      "time": 567,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9351519891"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "enrichplot",
+      "role": "Imports"
+    },
+    {
+      "package": "enrichit",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "shiny",
+      "role": "Imports"
+    },
+    {
+      "package": "shinycssloaders",
+      "role": "Imports"
+    },
+    {
+      "package": "DT",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "clusterProfiler",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "edgeR",
+      "role": "Imports"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "msigdbr",
+      "role": "Imports"
+    },
+    {
+      "package": "future",
+      "role": "Imports"
+    },
+    {
+      "package": "future.apply",
+      "role": "Imports"
+    },
+    {
+      "package": "htmltools",
+      "role": "Imports"
+    },
+    {
+      "package": "htmlwidgets",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "clipr",
+      "role": "Imports"
+    },
+    {
+      "package": "progressr",
+      "role": "Imports"
+    },
+    {
+      "package": "visNetwork",
+      "role": "Imports"
+    },
+    {
+      "package": "shinyjs",
+      "role": "Imports"
+    },
+    {
+      "package": "withr",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "airway",
+      "role": "Suggests"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-11",
+      "n": 15
+    },
+    {
+      "week": "2026-12",
+      "n": 11
+    },
+    {
+      "week": "2026-21",
+      "n": 19
+    },
+    {
+      "week": "2026-23",
+      "n": 1
+    },
+    {
+      "week": "2026-24",
+      "n": 3
+    },
+    {
+      "week": "2026-26",
+      "n": 6
+    },
+    {
+      "week": "2026-27",
+      "n": 23
+    },
+    {
+      "week": "2026-28",
+      "n": 39
+    },
+    {
+      "week": "2026-29",
+      "n": 13
+    },
+    {
+      "week": "2026-30",
+      "n": 1
+    },
+    {
+      "week": "2026-34",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.33",
+      "bioc": "3.24"
+    }
+  ],
+  "_topics": [
+    "genesetenrichment",
+    "visualization",
+    "shinyapps",
+    "software",
+    "gsea"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "ddl095",
+      "count": 240,
+      "uuid": 52679914
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 463,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 41,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/GSEAlens"
+  },
+  "_devurl": "https://github.com/ddl095/gsealens",
+  "_searchresults": 7,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/GSEAlens.html",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/ddl095/gsealens",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "batch_calc_gsea",
+    "build_edge_list_safely",
+    "build_gsea_pathways",
+    "build_hubgene_network",
+    "calculate_overlap_ratio",
+    "color_by_direction",
+    "creat_addition_data_rdsfile",
+    "create_addition_template",
+    "create_gsea_env",
+    "create_gsea_res",
+    "create_gsea_task",
+    "extract_gsea_task",
+    "extract_hub_genes",
+    "generate_boxplot_data_code",
+    "generate_boxplot_image_code",
+    "generate_combined_plot_code",
+    "generate_de_volcano_code",
+    "generate_dotplot_code",
+    "generate_gsea_html_report",
+    "generate_hubgene_code",
+    "generate_hubgene_hover_text",
+    "generate_joint_canvas_code",
+    "generate_network_code",
+    "generate_pathway_plot_code",
+    "generate_volcano_code",
+    "get_contrast_registry",
+    "get_core_genes_for_pathway",
+    "get_core_genes_list",
+    "get_de_table",
+    "get_expr_matrix",
+    "get_geneset_info",
+    "get_hubgene_legend",
+    "get_sample_meta",
+    "get_term_genes",
+    "import_gsea_capsule",
+    "inspect_gsea_env",
+    "inspect_gsea_res",
+    "launch_gsea_app",
+    "plot_directional_gsea",
+    "plot_gsea_memory",
+    "prepare_hubgene_nodes",
+    "read_addition_data",
+    "setup_gsea_env",
+    "validate_param"
+  ],
+  "_datasets": [
+    {
+      "name": "gsea_pathwaysets_toy",
+      "title": "Toy MSigDB pathway collection (Hallmark + KEGG_LEGACY)",
+      "object": "gsea_pathwaysets_toy",
+      "file": "gsea_pathwaysets_toy.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "gsea_pathwaysets_toy_hallmark",
+      "title": "Toy MSigDB pathway collection (Hallmark only)",
+      "object": "gsea_pathwaysets_toy_hallmark",
+      "file": "gsea_pathwaysets_toy_hallmark.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    },
+    {
+      "name": "precomputed_gseares",
+      "title": "Pre-computed GSEA results from the airway dataset",
+      "object": "precomputed_gseares",
+      "file": "precomputed_gseares.rda",
+      "class": [
+        "GseaRes"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "preprocessed_dds",
+      "title": "Pre-computed DESeq2 DESeqDataSet from the airway dataset",
+      "object": "preprocessed_dds",
+      "file": "preprocessed_dds.rda",
+      "class": [
+        "DESeqDataSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "preprocessed_dds_se",
+      "title": "Pre-computed DESeqDataSet (SummarizedExperiment form)",
+      "object": "preprocessed_dds_se",
+      "file": "preprocessed_dds_se.rda",
+      "class": [
+        "DESeqDataSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "preprocessed_limma",
+      "title": "Pre-computed limma-voom fit and DGEList from the airway dataset",
+      "object": "preprocessed_limma",
+      "file": "preprocessed_limma.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "GSEAlens-package",
+      "title": "GSEAlens: Gene Set Enrichment Analysis Interactive Explorer",
+      "topics": [
+        "GSEAlens-package",
+        "GSEAlens"
+      ]
+    },
+    {
+      "page": "batch_calc_gsea",
+      "title": "Batch Parallel GSEA Calculation",
+      "topics": [
+        "batch_calc_gsea"
+      ]
+    },
+    {
+      "page": "build_edge_list_safely",
+      "title": "Build Pathway Similarity Network Edges (Safe Version)",
+      "topics": [
+        "build_edge_list_safely"
+      ]
+    },
+    {
+      "page": "build_gsea_pathways",
+      "title": "Build GSEA Pathway Database with Interactive Selection",
+      "topics": [
+        "build_gsea_pathways"
+      ]
+    },
+    {
+      "page": "build_hubgene_network",
+      "title": "Build HubGene Network Data Structure (Enhanced with Leading Edge)",
+      "topics": [
+        "build_hubgene_network"
+      ]
+    },
+    {
+      "page": "calculate_overlap_ratio",
+      "title": "Calculate ORA Ratio (for DotPlot)",
+      "topics": [
+        "calculate_overlap_ratio"
+      ]
+    },
+    {
+      "page": "color_by_direction",
+      "title": "Color Nodes by Direction",
+      "topics": [
+        "color_by_direction"
+      ]
+    },
+    {
+      "page": "creat_addition_data_rdsfile",
+      "title": "Create Additional Data RDS File",
+      "topics": [
+        "creat_addition_data_rdsfile"
+      ]
+    },
+    {
+      "page": "create_addition_template",
+      "title": "Create Additional Data Template",
+      "topics": [
+        "create_addition_template"
+      ]
+    },
+    {
+      "page": "create_gsea_env",
+      "title": "Define GseaEnv Class",
+      "topics": [
+        "create_gsea_env"
+      ]
+    },
+    {
+      "page": "create_gsea_res",
+      "title": "Define GseaRes Class",
+      "topics": [
+        "create_gsea_res"
+      ]
+    },
+    {
+      "page": "create_gsea_task",
+      "title": "Define GseaTask Class",
+      "topics": [
+        "create_gsea_task"
+      ]
+    },
+    {
+      "page": "extract_gsea_task",
+      "title": "Extract GSEA Results for Specific Contrast",
+      "topics": [
+        "extract_gsea_task"
+      ]
+    },
+    {
+      "page": "extract_hub_genes",
+      "title": "Extract Hub Genes from Selected Pathways (Enhanced with Leading Edge)",
+      "topics": [
+        "extract_hub_genes"
+      ]
+    },
+    {
+      "page": "generate_boxplot_data_code",
+      "title": "Generate Boxplot Expression-Data Extraction Code",
+      "topics": [
+        "generate_boxplot_data_code"
+      ]
+    },
+    {
+      "page": "generate_boxplot_image_code",
+      "title": "Generate Publication Boxplot Image Code",
+      "topics": [
+        "generate_boxplot_image_code"
+      ]
+    },
+    {
+      "page": "generate_combined_plot_code",
+      "title": "Generate Combined Pathway Plotting Code",
+      "topics": [
+        "generate_combined_plot_code"
+      ]
+    },
+    {
+      "page": "generate_de_volcano_code",
+      "title": "Generate Publication DE Volcano Code",
+      "topics": [
+        "generate_de_volcano_code"
+      ]
+    },
+    {
+      "page": "generate_dotplot_code",
+      "title": "Generate Publication DotPlot Code",
+      "topics": [
+        "generate_dotplot_code"
+      ]
+    },
+    {
+      "page": "generate_gsea_html_report",
+      "title": "Generate GSEA HTML Report",
+      "topics": [
+        "generate_gsea_html_report"
+      ]
+    },
+    {
+      "page": "generate_hubgene_code",
+      "title": "Generate Publication HubGene Network Code",
+      "topics": [
+        "generate_hubgene_code"
+      ]
+    },
+    {
+      "page": "generate_hubgene_hover_text",
+      "title": "Generate HubGene Hover Text",
+      "topics": [
+        "generate_hubgene_hover_text"
+      ]
+    },
+    {
+      "page": "generate_joint_canvas_code",
+      "title": "Generate Joint Canvas Code",
+      "topics": [
+        "generate_joint_canvas_code"
+      ]
+    },
+    {
+      "page": "generate_network_code",
+      "title": "Generate Publication Pathway Network Code",
+      "topics": [
+        "generate_network_code"
+      ]
+    },
+    {
+      "page": "generate_pathway_plot_code",
+      "title": "Generate Pathway Plotting Code",
+      "topics": [
+        "generate_pathway_plot_code"
+      ]
+    },
+    {
+      "page": "generate_volcano_code",
+      "title": "Generate Publication Volcano Code",
+      "topics": [
+        "generate_volcano_code"
+      ]
+    },
+    {
+      "page": "get_contrast_registry",
+      "title": "Get Contrast Registry",
+      "topics": [
+        "get_contrast_registry"
+      ]
+    },
+    {
+      "page": "get_core_genes_for_pathway",
+      "title": "Extract Pathway Core Genes (Leading Edge)",
+      "topics": [
+        "get_core_genes_for_pathway"
+      ]
+    },
+    {
+      "page": "get_core_genes_list",
+      "title": "Batch Extract Core Genes for Multiple Pathways",
+      "topics": [
+        "get_core_genes_list"
+      ]
+    },
+    {
+      "page": "get_de_table",
+      "title": "Get Differential Expression Table",
+      "topics": [
+        "get_de_table"
+      ]
+    },
+    {
+      "page": "get_expr_matrix",
+      "title": "Get Expression Matrix",
+      "topics": [
+        "get_expr_matrix"
+      ]
+    },
+    {
+      "page": "get_geneset_info",
+      "title": "Get Gene Set Information",
+      "topics": [
+        "get_geneset_info"
+      ]
+    },
+    {
+      "page": "get_hubgene_legend",
+      "title": "Get Color Legend Configuration",
+      "topics": [
+        "get_hubgene_legend"
+      ]
+    },
+    {
+      "page": "get_sample_meta",
+      "title": "Get Sample Metadata",
+      "topics": [
+        "get_sample_meta"
+      ]
+    },
+    {
+      "page": "get_term_genes",
+      "title": "Get Full Pathway Gene Set (TERM2GENE)",
+      "topics": [
+        "get_term_genes"
+      ]
+    },
+    {
+      "page": "gsea_pathwaysets_toy",
+      "title": "Toy MSigDB pathway collection (Hallmark + KEGG_LEGACY)",
+      "topics": [
+        "gsea_pathwaysets_toy"
+      ]
+    },
+    {
+      "page": "gsea_pathwaysets_toy_hallmark",
+      "title": "Toy MSigDB pathway collection (Hallmark only)",
+      "topics": [
+        "gsea_pathwaysets_toy_hallmark"
+      ]
+    },
+    {
+      "page": "import_gsea_capsule",
+      "title": "Load and Smart-Relocate GSEA Computation Capsule",
+      "topics": [
+        "import_gsea_capsule"
+      ]
+    },
+    {
+      "page": "inspect_gsea_env",
+      "title": "View GSEA Environment Object Overview",
+      "topics": [
+        "inspect_gsea_env"
+      ]
+    },
+    {
+      "page": "inspect_gsea_res",
+      "title": "View GSEA Result Overview",
+      "topics": [
+        "inspect_gsea_res"
+      ]
+    },
+    {
+      "page": "launch_gsea_app",
+      "title": "GSEAlens Interactive Analysis Workstation",
+      "topics": [
+        "launch_gsea_app"
+      ]
+    },
+    {
+      "page": "mod_ai_abs_page_server",
+      "title": "AI Interpretation Page Server",
+      "topics": [
+        "mod_ai_abs_page_server"
+      ]
+    },
+    {
+      "page": "plot_directional_gsea",
+      "title": "Plot Directional GSEA",
+      "topics": [
+        "plot_directional_gsea"
+      ]
+    },
+    {
+      "page": "plot_gsea_memory",
+      "title": "Plot GSEA Benchmark Memory Curve",
+      "topics": [
+        "plot_gsea_memory"
+      ]
+    },
+    {
+      "page": "precomputed_gseares",
+      "title": "Pre-computed GSEA results from the airway dataset",
+      "topics": [
+        "precomputed_gseares"
+      ]
+    },
+    {
+      "page": "prepare_hubgene_nodes",
+      "title": "Prepare HubGene Nodes for Plotting",
+      "topics": [
+        "prepare_hubgene_nodes"
+      ]
+    },
+    {
+      "page": "preprocessed_dds",
+      "title": "Pre-computed DESeq2 DESeqDataSet from the airway dataset",
+      "topics": [
+        "preprocessed_dds"
+      ]
+    },
+    {
+      "page": "preprocessed_dds_se",
+      "title": "Pre-computed DESeqDataSet (SummarizedExperiment form)",
+      "topics": [
+        "preprocessed_dds_se"
+      ]
+    },
+    {
+      "page": "preprocessed_limma",
+      "title": "Pre-computed limma-voom fit and DGEList from the airway dataset",
+      "topics": [
+        "preprocessed_limma"
+      ]
+    },
+    {
+      "page": "read_addition_data",
+      "title": "Read Additional Data",
+      "topics": [
+        "read_addition_data"
+      ]
+    },
+    {
+      "page": "setup_gsea_env",
+      "title": "Initialize GSEA Environment Object",
+      "topics": [
+        "setup_gsea_env"
+      ]
+    },
+    {
+      "page": "validate_param",
+      "title": "Safe Parameter Validation with Fallback (Global Strategy)",
+      "topics": [
+        "validate_param"
+      ]
+    },
+    {
+      "page": "visualization",
+      "title": "GSEA Visualization and Report Generation",
+      "topics": [
+        "visualization"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/GSEAlens/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "aisdk",
+    "AnnotationDbi",
+    "ape",
+    "aplot",
+    "askpass",
+    "assertthat",
+    "babelgene",
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "blob",
+    "bslib",
+    "cachem",
+    "callr",
+    "circlize",
+    "cli",
+    "clipr",
+    "clue",
+    "cluster",
+    "clusterProfiler",
+    "codetools",
+    "colorspace",
+    "commonmark",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DBI",
+    "DelayedArray",
+    "DESeq2",
+    "digest",
+    "doParallel",
+    "DOSE",
+    "dplyr",
+    "DT",
+    "edgeR",
+    "enrichit",
+    "enrichplot",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "future",
+    "future.apply",
+    "gdtools",
+    "generics",
+    "GenomicRanges",
+    "GetoptLong",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggnewscale",
+    "ggplot2",
+    "ggplotify",
+    "ggrepel",
+    "ggtangle",
+    "ggtree",
+    "GlobalOptions",
+    "globals",
+    "glue",
+    "GO.db",
+    "GOSemSim",
+    "gridGraphics",
+    "gson",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "listenv",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "msigdbr",
+    "nlme",
+    "openssl",
+    "otel",
+    "parallelly",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "plyr",
+    "png",
+    "polyclip",
+    "processx",
+    "progressr",
+    "promises",
+    "ps",
+    "purrr",
+    "qvalue",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "reshape2",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "RSQLite",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "scatterpie",
+    "Seqinfo",
+    "shape",
+    "shiny",
+    "shinycssloaders",
+    "shinyjs",
+    "snow",
+    "sourcetools",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "systemfonts",
+    "tibble",
+    "tidydr",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tinytex",
+    "treeio",
+    "tweenr",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "visNetwork",
+    "withr",
+    "xfun",
+    "xtable",
+    "XVector",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_vignettes": [
+    {
+      "source": "GSEAlens.Rmd",
+      "filename": "GSEAlens.html",
+      "title": "GSEAlens: An Interactive Exploration Platform for Gene Set Enrichment Analysis",
+      "author": "Dudali",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Package Introduction",
+        "Integration with Bioconductor Workflows",
+        "Installation",
+        "Quick Start",
+        "GSEAlens Processing",
+        "Creating GSEA Pathway Object",
+        "Assembling Computation Object",
+        "Running Processing",
+        "Interactive Analysis and Viewing",
+        "Interactive Exploration with the Shiny Application",
+        "Launching the App",
+        "Application Layout",
+        "Sidebar -- Data Preprocessing",
+        "Tab 1 -- Main Workspace",
+        "Tab 2 -- Holographic Quadruple Linkage",
+        "Tab 3 -- Pathway Relationship Exploration",
+        "Tab 4 -- HubGene Network",
+        "Tab 5 -- AI Interpretation",
+        "Tab 6 -- Joint GSEA Canvas",
+        "Interpreting Outputs",
+        "Reproducible Code Export",
+        "Package Intermediate Object Descriptions",
+        "GseaEnv Object",
+        "GseaRes Object",
+        "GseaTask Object",
+        "Session Info",
+        "References"
+      ],
+      "created": "2026-06-26 15:37:59",
+      "modified": "2026-07-19 13:17:57",
+      "commits": 12
+    },
+    {
+      "source": "GSEAlens-preprocessing.Rmd",
+      "filename": "GSEAlens-preprocessing.html",
+      "title": "GSEAlens: Preparing Input Data from limma-voom and DESeq2 Workflows",
+      "author": "Dudali",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Introduction",
+        "Example Data",
+        "limma-voom Workflow",
+        "DESeq2 Workflow (SummarizedExperiment Input)",
+        "DESeq2 Workflow (Count Matrix Input)",
+        "Next Step"
+      ],
+      "created": "2026-06-26 15:37:59",
+      "modified": "2026-07-19 12:42:25",
+      "commits": 5
+    },
+    {
+      "source": "GSEAlens-preprocessing-zh.Rmd",
+      "filename": "GSEAlens-preprocessing-zh.html",
+      "title": "GSEAlens\uff1a\u4ece limma-voom \u548c DESeq2 \u6d41\u7a0b\u51c6\u5907\u8f93\u5165\u6570\u636e",
+      "author": "Dudali",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "\u5b89\u88c5",
+        "\u7b80\u4ecb",
+        "\u793a\u4f8b\u6570\u636e",
+        "limma-voom \u6d41\u7a0b",
+        "DESeq2 \u6d41\u7a0b\uff08SummarizedExperiment \u8f93\u5165\uff09",
+        "DESeq2 \u6d41\u7a0b\uff08Count Matrix \u8f93\u5165\uff09",
+        "\u4e0b\u4e00\u6b65"
+      ],
+      "created": "2026-06-26 15:37:59",
+      "modified": "2026-07-19 12:42:25",
+      "commits": 5
+    },
+    {
+      "source": "GSEAlens-vignette-zh.Rmd",
+      "filename": "GSEAlens-vignette-zh.html",
+      "title": "GSEAlens\uff1a\u57fa\u56e0\u96c6\u5bcc\u96c6\u5206\u6790\u7684\u4ea4\u4e92\u5f0f\u63a2\u7d22\u5e73\u53f0",
+      "author": "Dudali",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "\u5305\u7b80\u4ecb",
+        "\u4e0e Bioconductor \u5de5\u4f5c\u6d41\u7684\u6574\u5408",
+        "\u5b89\u88c5",
+        "\u5feb\u901f\u5f00\u59cb",
+        "GSEAlens\u5904\u7406",
+        "\u521b\u5efaGSEA\u57fa\u56e0\u96c6\u5bf9\u8c61",
+        "\u7ec4\u88c5\u8fd0\u7b97\u5bf9\u8c61",
+        "\u8fd0\u884c\u5904\u7406",
+        "\u4ea4\u4e92\u5f0f\u5206\u6790\u4e0e\u67e5\u770b",
+        "\u4f7f\u7528 Shiny \u5e94\u7528\u8fdb\u884c\u4ea4\u4e92\u5f0f\u63a2\u7d22",
+        "\u542f\u52a8\u5e94\u7528",
+        "\u5e94\u7528\u5e03\u5c40",
+        "\u4fa7\u8fb9\u680f -- \u6570\u636e\u9884\u5904\u7406",
+        "Tab 1 -- \u4e3b\u5de5\u4f5c\u533a\uff08Main Workspace\uff09",
+        "Tab 2 -- \u5168\u606f\u56db\u8c61\u9650\u8054\u52a8\uff08Holographic Quadruple Linkage\uff09",
+        "Tab 3 -- \u901a\u8def\u5173\u7cfb\u63a2\u7d22\uff08Pathway Relationship Exploration\uff09",
+        "Tab 4 -- HubGene \u7f51\u7edc\uff08HubGene Network\uff09",
+        "Tab 5 -- AI \u89e3\u8bfb\uff08AI Interpretation\uff09",
+        "Tab 6 -- \u8054\u5408 GSEA \u753b\u5e03\uff08Joint GSEA Canvas\uff09",
+        "\u8f93\u51fa\u89e3\u8bfb\u6307\u5357",
+        "\u53ef\u91cd\u73b0\u4ee3\u7801\u5bfc\u51fa",
+        "R\u5305\u4e2d\u95f4\u5bf9\u8c61\u8bf4\u660e",
+        "GseaEnv \u5bf9\u8c61",
+        "GseaRes \u5bf9\u8c61",
+        "GseaTask \u5bf9\u8c61",
+        "Session info",
+        "References"
+      ],
+      "created": "2026-05-18 21:45:27",
+      "modified": "2026-07-19 13:17:57",
+      "commits": 16
+    }
+  ],
+  "_score": 5.342422680822207,
+  "_indexed": true,
+  "_nocasepkg": "gsealens",
+  "_universes": [
+    "bioc",
+    "ddl095"
+  ],
+  "_previous": "0.99.33",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.34",
+      "date": "2026-08-19T03:42:19.000Z",
+      "distro": "resolute",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/49a7e389a6a9203b58ff821d5d3e39edcb0d693d0495ccf87f22dd27228c9018",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "0.99.34",
+      "date": "2026-08-19T03:42:48.000Z",
+      "distro": "resolute",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/9a74f1e95136f5fa5f8a2e1253959de61aeaaa8b3b5ad11cebfd76fcaf5dc101",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.34",
+      "date": "2026-08-19T04:45:02.000Z",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/7c3b92613809b8d93e95b2c88e9e99d851538e07a4e9ee27b7ca686c816c0c2e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "0.99.34",
+      "date": "2026-08-19T04:49:08.000Z",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/061897b2105fd0f6232a835b696a45b825c6d3a7aa3888e97a2e17bd8648a9cd",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.34",
+      "date": "2026-08-19T03:41:59.000Z",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/dc76bd425eb5a0f2bb41b1260724cc2a607dadd61e02a2092c9c4781ff04ba55",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.34",
+      "date": "2026-08-19T03:39:58.000Z",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/2f70f46e691e503527f9b4f622766ae6ad32085270ccefcbabfcc24d21a6d041",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.34",
+      "date": "2026-08-19T03:40:18.000Z",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/e57ebb3122c6414b90fd4876d2e269746c0f644376297058042dd495beefe295",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "0.99.34",
+      "date": "2026-08-19T03:41:24.000Z",
+      "commit": "76349a9899851653ba988d75d05041a343f3c853",
+      "fileid": "https://r2.ropensci.org/348241fc86109bc8a07fd17006453583f9d2179c27fd6d0cdb5bda9022c24384",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/32212435770"
+    }
+  ]
+}
