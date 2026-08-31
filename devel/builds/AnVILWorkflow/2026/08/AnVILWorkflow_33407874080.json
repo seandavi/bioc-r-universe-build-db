@@ -1,0 +1,711 @@
+{
+  "_id": "6a959e0a7b325a6d97b7b8d4",
+  "Package": "AnVILWorkflow",
+  "Title": "Run workflows implemented in Terra/AnVIL workspace",
+  "Version": "1.13.1",
+  "Date": "2023-4-23",
+  "Authors@R": "c(person(given = \"Sehyun\",\nfamily = \"Oh\",\nrole = c(\"aut\", \"cre\"),\nemail = \"shbrief@gmail.com\",\ncomment = c(ORCID = \"0000-0002-9490-3061\")),\nperson(\"Marcel\", \"Ramos\", , \"marcel.ramos@sph.cuny.edu\", \"ctb\", c(ORCID = \"0000-0002-3242-0582\")),\nperson(\"Kai\", \"Gravel-Pucillo\", role = \"aut\"))",
+  "Description": "The AnVIL is a cloud computing resource developed in part\nby the National Human Genome Research Institute. The main\ncloud-based genomics platform deported by the AnVIL project is\nTerra. The AnVILWorkflow package allows remote access to Terra\nimplemented workflows, enabling end-user to utilize Terra/\nAnVIL provided resources - such as data, workflows, and\nflexible/scalble computing resources - through the conventional\nR functions.",
+  "License": "Artistic-2.0",
+  "biocViews": "Infrastructure, Software",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.3",
+  "URL": "https://github.com/shbrief/AnVILWorkflow",
+  "BugReports": "https://github.com/shbrief/AnVILWorkflow/issues",
+  "Config/pak/sysreqs": "cmake make libicu-dev libsecret-1-dev libuv1-dev\nlibssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-08-31 10:44:40 UTC",
+  "RemoteUrl": "https://github.com/bioc/AnVILWorkflow",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "769f4de98ff2535707b1a62ef3fad02600787007",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-08-31 15:24:38 UTC",
+    "User": "root"
+  },
+  "Author": "Sehyun Oh [aut, cre] (ORCID: <https://orcid.org/0000-0002-9490-3061>),\nMarcel Ramos [ctb] (ORCID: <https://orcid.org/0000-0002-3242-0582>),\nKai Gravel-Pucillo [aut]",
+  "Maintainer": "Sehyun Oh <shbrief@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "AnVILWorkflow_1.13.1.tar.gz",
+  "_fileid": "https://r2.ropensci.org/50dbb024e760f9a93501a83a87c106375d6b97334782fef4b8eabfa0a1598c61",
+  "_filesize": 1197806,
+  "_sha256": "50dbb024e760f9a93501a83a87c106375d6b97334782fef4b8eabfa0a1598c61",
+  "_expires": "2026-12-09T15:30:15.000Z",
+  "_created": "2026-08-31T15:24:38.000Z",
+  "_published": "2026-08-31T15:30:18.563Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 11
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/AnVILWorkflow",
+  "_commit": {
+    "id": "769f4de98ff2535707b1a62ef3fad02600787007",
+    "author": "Sehyun Oh <shbrief@gmail.com>",
+    "committer": "Sehyun Oh <shbrief@gmail.com>",
+    "message": "Migrate gcloud/gsutil calls to GCPtools for Bioc 3.23\n\nAnVILGCP 1.7.x removed the gcloud_* functions (fully migrated to\nGCPtools) and marked the gsutil_* functions defunct; gsutil_cp was\ndropped in favour of the avcopy generic. AnVIL no longer exports any\nof them. This caused 1 ERROR and 2 WARNINGs on the devel builder.\n\n* setCloudEnv(), cloneWorkspace(): call GCPtools::gcloud_exists(),\n  gcloud_account() and gcloud_project() explicitly. Qualifying rather\n  than importing avoids \"replacing previous import\" warnings on the\n  release branch, where AnVILGCP still exports the deprecated shims.\n* .biobakery_currentInput(): AnVIL::gsutil_cat() -> GCPtools::gsutil_cat().\n  AnVILGCP's copy is defunct and raises an error.\n* getOutput(): replace gsutil_cp with the avcopy generic.\n* .nonMetadataOutputs(): fix Rd cross-reference to avworkflow_files,\n  which lives in AnVILGCP rather than AnVIL.\n* getAllDataTables(): use the has_avworkspace() example guard used\n  elsewhere in the package; the previous guard called the now-removed\n  AnVILGCP::gcloud_exists().\n* Add R/globals.R declaring the NSE column names used by dplyr verbs\n  and the magrittr placeholder, clearing the \"no visible binding for\n  global variable\" NOTE.\n* DESCRIPTION: add GCPtools to Imports and rmarkdown to Suggests.\n\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\n",
+    "time": 1788173080
+  },
+  "_maintainer": {
+    "name": "Sehyun Oh",
+    "email": "shbrief@gmail.com",
+    "login": "shbrief",
+    "linkedin": "in/sehyunoh",
+    "twitter": "@drsehyun",
+    "description": "Molecular Biologist & Bioinformatician",
+    "uuid": 15724490,
+    "orcid": "0000-0002-9490-3061"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 99541317105,
+      "time": 165,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "9764155046"
+    },
+    {
+      "job": 99541317134,
+      "time": 214,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "9764187140"
+    },
+    {
+      "job": 99541317296,
+      "time": 290,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9764234728"
+    },
+    {
+      "job": 99541317283,
+      "time": 100,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "9764187787"
+    },
+    {
+      "job": 99541317074,
+      "time": 106,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9764189982"
+    },
+    {
+      "job": 99539953675,
+      "time": 256,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9764046014"
+    },
+    {
+      "job": 99541317160,
+      "time": 130,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "9764131424"
+    },
+    {
+      "job": 99541317303,
+      "time": 92,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "9764108541"
+    },
+    {
+      "job": 99541317264,
+      "time": 96,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "9764109950"
+    },
+    {
+      "job": 99541317208,
+      "time": 102,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "9764114236"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.4.0",
+      "role": "Depends"
+    },
+    {
+      "package": "AnVILGCP",
+      "role": "Depends"
+    },
+    {
+      "package": "AnVILBase",
+      "role": "Depends"
+    },
+    {
+      "package": "httr",
+      "role": "Depends"
+    },
+    {
+      "package": "AnVIL",
+      "role": "Imports"
+    },
+    {
+      "package": "GCPtools",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "stringr",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-44",
+      "n": 1
+    },
+    {
+      "week": "2026-11",
+      "n": 3
+    },
+    {
+      "week": "2026-17",
+      "n": 2
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-36",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.13.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.11.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "software",
+    "anvil",
+    "gcp",
+    "terra",
+    "u24hg010263",
+    "workflows"
+  ],
+  "_stars": 7,
+  "_contributors": [
+    {
+      "user": "shbrief",
+      "count": 100,
+      "uuid": 15724490
+    },
+    {
+      "user": "jwokaty",
+      "count": 14,
+      "uuid": 1744257
+    },
+    {
+      "user": "kaigp",
+      "count": 10,
+      "uuid": 113969950
+    },
+    {
+      "user": "link-ny",
+      "count": 7,
+      "uuid": 4392950
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 465,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 242,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/AnVILWorkflow"
+  },
+  "_devurl": "https://github.com/shbrief/anvilworkflow",
+  "_searchresults": 7,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/AnVILWorkflow.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/sehyunohlab/anvilworkflow",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "AnVILBrowse",
+    "availableAnalysis",
+    "cloneWorkspace",
+    "currentInput",
+    "findInputName",
+    "getAllDataTables",
+    "getAllWorkflows",
+    "getDashboard",
+    "getData",
+    "getOutput",
+    "getWorkflowConfig",
+    "getWorkflows",
+    "getWorkspaces",
+    "monitorWorkflow",
+    "runWorkflow",
+    "setCloudEnv",
+    "stopWorkflow",
+    "updateInput"
+  ],
+  "_help": [
+    {
+      "page": "dot-getAgeMinMax",
+      "title": "Apply to the returned value from '.avSampleData' function",
+      "topics": [
+        ".getAgeMinMax"
+      ]
+    },
+    {
+      "page": "dot-search_keyword",
+      "title": "Search keywords in a given metadata table",
+      "topics": [
+        ".search_keyword"
+      ]
+    },
+    {
+      "page": "dot-tableToString",
+      "title": "Summary table into a single string where the column name and the value is separated by 'sep' and columns are separated by 'delim'",
+      "topics": [
+        ".tableToString"
+      ]
+    },
+    {
+      "page": "AnVILBrowse",
+      "title": "Search AnVIL workspaces using keywords",
+      "topics": [
+        "AnVILBrowse"
+      ]
+    },
+    {
+      "page": "availableAnalysis",
+      "title": "Find the available analysis",
+      "topics": [
+        "availableAnalysis"
+      ]
+    },
+    {
+      "page": "cloneWorkspace",
+      "title": "Clone template workspace",
+      "topics": [
+        "cloneWorkspace"
+      ]
+    },
+    {
+      "page": "currentInput",
+      "title": "Check the current input arguments",
+      "topics": [
+        "currentInput"
+      ]
+    },
+    {
+      "page": "findInputName",
+      "title": "Find the root entity name",
+      "topics": [
+        "findInputName"
+      ]
+    },
+    {
+      "page": "getAllDataTables",
+      "title": "Get all the data tables",
+      "topics": [
+        "getAllDataTables"
+      ]
+    },
+    {
+      "page": "getAllWorkflows",
+      "title": "Collect workflows from all workspaces a user has access to",
+      "topics": [
+        "getAllWorkflows"
+      ]
+    },
+    {
+      "page": "getAllWorkspaces",
+      "title": "Get AnVIL workspaces",
+      "topics": [
+        "getAllWorkspaces"
+      ]
+    },
+    {
+      "page": "getDashboard",
+      "title": "Print out Dashboard contents",
+      "topics": [
+        "getDashboard"
+      ]
+    },
+    {
+      "page": "getData",
+      "title": "Creates a metadata table of data from all workspaces provided",
+      "topics": [
+        "getData"
+      ]
+    },
+    {
+      "page": "getOutput",
+      "title": "Download output files from Terra",
+      "topics": [
+        "getOutput"
+      ]
+    },
+    {
+      "page": "getWorkflowConfig",
+      "title": "Check the workflow configuration",
+      "topics": [
+        "getWorkflowConfig"
+      ]
+    },
+    {
+      "page": "getWorkflows",
+      "title": "Creates a metadata table of workflows from all workspaces provided",
+      "topics": [
+        "getWorkflows"
+      ]
+    },
+    {
+      "page": "getWorkspaces",
+      "title": "Creates a metadata table of all workspaces",
+      "topics": [
+        "getWorkspaces"
+      ]
+    },
+    {
+      "page": "monitorWorkflow",
+      "title": "Check the status of submitted jobs",
+      "topics": [
+        "monitorWorkflow"
+      ]
+    },
+    {
+      "page": "runWorkflow",
+      "title": "Launch Terra workflow",
+      "topics": [
+        "runWorkflow"
+      ]
+    },
+    {
+      "page": "setCloudEnv",
+      "title": "Setup Google Cloud Account and Project",
+      "topics": [
+        "setCloudEnv"
+      ]
+    },
+    {
+      "page": "stopWorkflow",
+      "title": "Abort submitted job",
+      "topics": [
+        "stopWorkflow"
+      ]
+    },
+    {
+      "page": "updateInput",
+      "title": "Update the input",
+      "topics": [
+        "updateInput"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/AnVILWorkflow/raw/HEAD/README.md",
+  "_rundeps": [
+    "AnVIL",
+    "AnVILBase",
+    "AnVILGCP",
+    "askpass",
+    "base64enc",
+    "BiocBaseUtils",
+    "bslib",
+    "cachem",
+    "cli",
+    "commonmark",
+    "cpp11",
+    "crosstalk",
+    "curl",
+    "digest",
+    "dplyr",
+    "DT",
+    "evaluate",
+    "fastmap",
+    "filelock",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "GCPtools",
+    "generics",
+    "glue",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httpuv",
+    "httr",
+    "httr2",
+    "jquerylib",
+    "jsonlite",
+    "keyring",
+    "knitr",
+    "lambda.r",
+    "later",
+    "lazyeval",
+    "lifecycle",
+    "magrittr",
+    "memoise",
+    "mime",
+    "miniUI",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "promises",
+    "purrr",
+    "R6",
+    "rapiclient",
+    "rappdirs",
+    "Rcpp",
+    "rlang",
+    "rmarkdown",
+    "sass",
+    "shiny",
+    "sourcetools",
+    "stringi",
+    "stringr",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "withr",
+    "xfun",
+    "xtable",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "salmon.Rmd",
+      "filename": "salmon.html",
+      "title": "AnVILWorkflow: Run batch analysis workflows including non-R tools leveraing Cloud resources",
+      "author": "Sehyun Oh",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Citing AnVILWorkflow",
+        "Install and load package",
+        "Google Cloud SDK",
+        "Create Terra account",
+        "Major steps",
+        "Example in this vignette: bulk RNAseq analysis",
+        "Browse AnVIL resources",
+        "Setup",
+        "Clone workspace",
+        "Curated by this package",
+        "Any workspace you have access to",
+        "Prepare input",
+        "Current input",
+        "Update input",
+        "Run workflow",
+        "Monitor progress",
+        "Abort submission",
+        "Result",
+        "Session Info"
+      ],
+      "created": "2022-10-08 02:12:28",
+      "modified": "2026-08-31 10:44:40",
+      "commits": 15
+    }
+  ],
+  "_score": 5.720159303405957,
+  "_indexed": true,
+  "_nocasepkg": "anvilworkflow",
+  "_universes": [
+    "bioc",
+    "shbrief"
+  ],
+  "_previous": "1.13.0",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:28:13.000Z",
+      "distro": "resolute",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/4cded6929585b38e4594778a1466de5331f73d4c3971e0ae1396af48c1d58a27",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:29:26.000Z",
+      "distro": "resolute",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/7531ad51e3516cfde446b222ba0e6b47d0df58dcb7cef8bd429fec6db0b0c55e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:28:17.000Z",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/b2b0bd59ee06dd5956b5103be73f6d9aa034e8c9e18aa27788bb178a29127fc6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:28:16.000Z",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/4c5ccea720ba5e8501dd5620c3b15878fd19e6b71030a2c23971d9484fdc2d6e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:27:12.000Z",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/1e943aaaaee0d1e2b49d573f8e7d092ab550553fe7b3e309b887184315e0c26a",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:26:04.000Z",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/c7d8d4472a50640b751ed6e6191afb9eeb51408bad7e6ace009d9d5d808261a9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:26:04.000Z",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/52eed8ac38556aeb726f3cf6788702e877f9d9995b0fd0a4dcedc7fc3f42aa60",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.13.1",
+      "date": "2026-08-31T15:26:12.000Z",
+      "commit": "769f4de98ff2535707b1a62ef3fad02600787007",
+      "fileid": "https://r2.ropensci.org/4c792abdbc851195db9bbccc2d931a657152fe4ef7b800660d7cde117c4af946",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33407874080"
+    }
+  ]
+}
