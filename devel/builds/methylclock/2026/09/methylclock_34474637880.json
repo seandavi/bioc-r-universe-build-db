@@ -1,0 +1,1483 @@
+{
+  "_id": "6aa2a795089bafb098cde907",
+  "Package": "methylclock",
+  "Type": "Package",
+  "Title": "Chronological, Gestational and Biological DNAm Age Estimation\nwith Methylation-Based Clocks",
+  "Version": "1.99.1",
+  "Date": "2026-09-10",
+  "Authors@R": "c(\nperson(\"Dolors\", \"Pelegri-Siso\", email = \"dolors.pelegri@isglobal.org\",\nrole = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-5993-3003\")),\nperson(\"Juan R.\", \"Gonzalez\", email = \"juanr.gonzalez@isglobal.org\",\nrole = \"aut\", comment = c(ORCID = \"0000-0003-3267-2146\")),\nperson(\"Carlos\", \"Ruiz-Arenas\", email = \"carlos.ruiz@isglobal.org\", role = \"aut\"))",
+  "Description": "Estimates chronological, gestational and biological DNA\nmethylation (DNAm) age, trait scores and epigenetic age\nacceleration from methylation beta values. Implements 44\npublished clocks, selectable by name, family or array platform:\nchronological (Horvath, Hannum, BNN, skin+blood, PedBE, Wu,\nAltumAge and others, including the cross-platform Garma clock\nnative to EPICv2), gestational (Knight, Bohlin, Mayne, Lee,\nNEOage), phenotypic and pace-of-aging (Levine, DunedinPACE),\ntelomere length, mitotic counters (epiTOC1/epiTOC2, HypoClock,\nstemTOC, RepliTali), causal (CausAge, DamAge, AdaptAge) and\ntrait EpiScores. Accepts matrices, data frames, Bioconductor\ncontainers or HDF5 files, computing block-wise out-of-core\nthrough BigDataStatMeth when the data exceed memory. Provides\nconfigurable missing-value imputation (mean, reference or KNN),\ncell-type deconvolution, intrinsic and extrinsic epigenetic age\nacceleration (IEAA, EEAA), quality-control reports and plotting\nfunctions.",
+  "biocViews": "DNAMethylation, BiologicalQuestion, Preprocessing,\nStatisticalMethod, Normalization",
+  "License": "MIT + file LICENSE",
+  "SystemRequirements": "GNU make, C++17",
+  "Encoding": "UTF-8",
+  "URL": "https://github.com/isglobal-brge/methylclock",
+  "BugReports": "https://github.com/isglobal-brge/methylclock/issues",
+  "RoxygenNote": "7.3.3",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "make libicu-dev libpng-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-09-10 11:16:10 UTC",
+  "RemoteUrl": "https://github.com/bioc/methylclock",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-09-10 12:25:31 UTC",
+    "User": "root"
+  },
+  "Author": "Dolors Pelegri-Siso [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-5993-3003>),\nJuan R. Gonzalez [aut] (ORCID: <https://orcid.org/0000-0003-3267-2146>),\nCarlos Ruiz-Arenas [aut]",
+  "Maintainer": "Dolors Pelegri-Siso <dolors.pelegri@isglobal.org>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "methylclock_1.99.1.tar.gz",
+  "_fileid": "https://r2.ropensci.org/595c2ad907d52b9c60c2f9bc1c30d01fa5e844a22cc0721db4c44b2728fda501",
+  "_filesize": 3377138,
+  "_sha256": "595c2ad907d52b9c60c2f9bc1c30d01fa5e844a22cc0721db4c44b2728fda501",
+  "_expires": "2026-12-19T12:50:26.000Z",
+  "_created": "2026-09-10T12:25:31.000Z",
+  "_published": "2026-09-10T12:50:29.287Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 9
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/methylclock",
+  "_commit": {
+    "id": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+    "author": "dpelegri <43083225+dpelegri@users.noreply.github.com>",
+    "committer": "dpelegri <43083225+dpelegri@users.noreply.github.com>",
+    "message": "Resolve data resources without the local mirror, version 1.99.1\n\nR CMD build failed on any machine without the development data mirror (r-universe, the Bioconductor builders): the resource resolver stopped\nat the first coefficient load because the manifest only existed in the mirror and the local backend aborted instead of falling through.\n\nThe manifest now ships with the package in inst/extdata (a configured mirror still takes precedence), the local backend declines instead of\nstopping so the chain reaches ExperimentHub, cell-type reference panels fall back to their ExperimentHub copy (EH6083), and file resources such as the AltumAge HDF5 bundle gain an ExperimentHub backend (EH10476).\nExperimentHub moves from Suggests to Imports accordingly.\n",
+    "time": 1789038970
+  },
+  "_maintainer": {
+    "name": "Dolors Pelegri-Siso",
+    "email": "dolors.pelegri@isglobal.org",
+    "login": "isglobal-exposomehub",
+    "description": "",
+    "uuid": 79249071,
+    "orcid": "0000-0002-5993-3003"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 102869322014,
+      "time": 1221,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10152599031"
+    },
+    {
+      "job": 102869322313,
+      "time": 316,
+      "config": "linux-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10152010803"
+    },
+    {
+      "job": 102869322196,
+      "time": 296,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10151996419"
+    },
+    {
+      "job": 102869322198,
+      "time": 1329,
+      "config": "linux-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10152676146"
+    },
+    {
+      "job": 102869322494,
+      "time": 1366,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10152713353"
+    },
+    {
+      "job": 102869322356,
+      "time": 140,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10151896126"
+    },
+    {
+      "job": 102869322146,
+      "time": 443,
+      "config": "macos-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10152090261"
+    },
+    {
+      "job": 102869322225,
+      "time": 195,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10151932182"
+    },
+    {
+      "job": 102869322562,
+      "time": 369,
+      "config": "macos-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10152044872"
+    },
+    {
+      "job": 102862472537,
+      "time": 1342,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10151796985"
+    },
+    {
+      "job": 102869322124,
+      "time": 1210,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 102869322259,
+      "time": 416,
+      "config": "windows-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10152073716"
+    },
+    {
+      "job": 102869322155,
+      "time": 415,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10152073836"
+    },
+    {
+      "job": 102869322174,
+      "time": 408,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10152068282"
+    },
+    {
+      "job": 102869322340,
+      "time": 406,
+      "config": "windows-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10152067145"
+    },
+    {
+      "job": 102869322156,
+      "time": 427,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10152080886"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppEigen",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rhdf5lib",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "BigDataStatMeth",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "BH",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "preprocessCore",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "BigDataStatMeth",
+      "role": "Imports"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "rlang",
+      "role": "Imports"
+    },
+    {
+      "package": "quadprog",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "digest",
+      "role": "Suggests"
+    },
+    {
+      "package": "impute",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "kableExtra",
+      "role": "Suggests"
+    },
+    {
+      "package": "minfi",
+      "role": "Suggests"
+    },
+    {
+      "package": "Biobase",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-37",
+      "n": 3
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.19.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.18.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "dnamethylation",
+    "biologicalquestion",
+    "preprocessing",
+    "statisticalmethod",
+    "normalization",
+    "openblas",
+    "curl",
+    "openssl",
+    "cpp",
+    "openmp"
+  ],
+  "_stars": 55,
+  "_contributors": [
+    {
+      "user": "dpelegri",
+      "count": 83,
+      "uuid": 43083225
+    },
+    {
+      "user": "isglobal-brge",
+      "count": 37,
+      "uuid": 22591681
+    },
+    {
+      "user": "jwokaty",
+      "count": 16,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 4,
+      "uuid": 2746443
+    },
+    {
+      "user": "ning-l",
+      "count": 1,
+      "uuid": 31008500
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 467,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 786,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/methylclock"
+  },
+  "_devurl": "https://github.com/isglobal-brge/methylclock",
+  "_searchresults": 83,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/methylclock.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/isglobal-brge/methylclock",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "ageAcceleration",
+    "ageAccelerationChen",
+    "altumage_forward",
+    "anti_trafo",
+    "cellCounts",
+    "clock_info",
+    "clock_list",
+    "clock_predictors",
+    "clock_register",
+    "clock_registry",
+    "clock_reset",
+    "clock_statuses",
+    "clock_targets",
+    "clockAccuracy",
+    "clockCoverage",
+    "clockTrajectories",
+    "compute_clocks",
+    "DNAmAge",
+    "DNAmGA",
+    "EEAA",
+    "IEAA",
+    "imputeKNN",
+    "listCellReferences",
+    "mc_to_hdf5",
+    "mcd_backends",
+    "mcd_cache_clear",
+    "mcd_manifest",
+    "mcd_resource",
+    "mcd_resource_file",
+    "methylclock",
+    "new_methylclock",
+    "normalize_coef",
+    "persist",
+    "plotAccelerationByGroup",
+    "plotAgeAcceleration",
+    "plotBlandAltman",
+    "plotClockCorrelation",
+    "plotClockDensities",
+    "plotClockDistributions",
+    "plotDNAmAge",
+    "plotGroupDifference",
+    "plotReferenceRange",
+    "plotSampleDiscordance",
+    "plotSamplePCA",
+    "plotTrajectories",
+    "qcReport",
+    "sampleQC",
+    "theme_methylclock",
+    "trajectoryRates"
+  ],
+  "_datasets": [
+    {
+      "name": "clock_catalog",
+      "title": "Catalogue of the clocks in the package",
+      "object": "clock_catalog",
+      "file": "clock_catalog.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "clock",
+        "estimates",
+        "tissue",
+        "arrays",
+        "n_cpgs",
+        "generation",
+        "target",
+        "citation",
+        "reference"
+      ],
+      "rows": 44,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "methylclock_betas",
+      "title": "Example methylation beta matrix",
+      "object": "methylclock_betas",
+      "file": "methylclock_betas.rda",
+      "class": [
+        "matrix",
+        "array"
+      ],
+      "fields": [
+        "GSM946048",
+        "GSM946049",
+        "GSM946052",
+        "GSM946054",
+        "GSM946055",
+        "GSM946056",
+        "GSM946059",
+        "GSM946062",
+        "GSM946064",
+        "GSM946065",
+        "GSM946066",
+        "GSM946067",
+        "GSM946073",
+        "GSM946074",
+        "GSM946075",
+        "GSM946076"
+      ],
+      "rows": 919,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "methylclock_cells",
+      "title": "Clock estimates with blood cell proportions",
+      "object": "methylclock_cells",
+      "file": "methylclock_cells.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "id",
+        "age",
+        "sex",
+        "Horvath",
+        "Hannum",
+        "Levine",
+        "skinHorvath",
+        "EN",
+        "Bcell",
+        "CD4T",
+        "CD8T",
+        "Eos",
+        "Mono",
+        "Neu",
+        "NK"
+      ],
+      "rows": 795,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "methylclock_demo",
+      "title": "Example clock estimates for a public blood cohort",
+      "object": "methylclock_demo",
+      "file": "methylclock_demo.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "id",
+        "age",
+        "sex",
+        "ethnicity",
+        "Horvath",
+        "Hannum",
+        "Levine",
+        "skinHorvath",
+        "BLUP",
+        "EN",
+        "BNN",
+        "AltumAge",
+        "Lin",
+        "VidalBralo",
+        "PedBE",
+        "Wu",
+        "TL"
+      ],
+      "rows": 656,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "methylclock_longitudinal",
+      "title": "A longitudinal example: children sampled repeatedly from birth to age 3",
+      "object": "methylclock_longitudinal",
+      "file": "methylclock_longitudinal.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "id",
+        "subject",
+        "age",
+        "sex",
+        "replicate",
+        "AdaptAge",
+        "AltumAge",
+        "BLUP",
+        "BNN",
+        "Bohlin",
+        "CausAge",
+        "DamAge",
+        "DunedinPACE",
+        "EN",
+        "EPIC",
+        "epiTOC1",
+        "epiTOC2",
+        "Hannum",
+        "Horvath",
+        "HypoClock",
+        "Knight",
+        "Lee.CPC",
+        "Lee.refRPC",
+        "Lee.RPC",
+        "Levine",
+        "Lin",
+        "Mayne",
+        "NEOaPMA450K",
+        "NEOaPMAEPIC",
+        "NEOaPNA450K",
+        "NEOaPNAEPIC",
+        "PedBE",
+        "RepliTali",
+        "skinHorvath",
+        "stemTOC",
+        "TL",
+        "VidalBralo",
+        "Weidner",
+        "Wu"
+      ],
+      "rows": 164,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "methylclock_references",
+      "title": "Clock estimates on the shipped reference cohorts",
+      "object": "methylclock_references",
+      "file": "methylclock_references.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "cohort",
+        "id",
+        "age",
+        "sex",
+        "AdaptAge",
+        "AltumAge",
+        "BLUP",
+        "BNN",
+        "Bohlin",
+        "CausAge",
+        "DamAge",
+        "DunedinPACE",
+        "EN",
+        "EPIC",
+        "epiTOC1",
+        "epiTOC2",
+        "Hannum",
+        "Horvath",
+        "HypoClock",
+        "Knight",
+        "Lee.CPC",
+        "Lee.refRPC",
+        "Lee.RPC",
+        "Levine",
+        "Lin",
+        "Mayne",
+        "NEOaPMA450K",
+        "NEOaPMAEPIC",
+        "NEOaPNA450K",
+        "NEOaPNAEPIC",
+        "PedBE",
+        "RepliTali",
+        "skinHorvath",
+        "stemTOC",
+        "TL",
+        "VidalBralo",
+        "Weidner",
+        "Wu"
+      ],
+      "rows": 2299,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "methylclock_smoking",
+      "title": "Smoking predictor scores with smoking status",
+      "object": "methylclock_smoking",
+      "file": "methylclock_smoking.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "id",
+        "smoking",
+        "age",
+        "sex",
+        "McCartney.Smoking",
+        "Horvath",
+        "Hannum"
+      ],
+      "rows": 464,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "methylclock_validation",
+      "title": "Clock estimates on two independent validation cohorts",
+      "object": "methylclock_validation",
+      "file": "methylclock_validation.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "cohort",
+        "id",
+        "age",
+        "sex",
+        "Horvath",
+        "Hannum",
+        "Levine",
+        "skinHorvath",
+        "BLUP",
+        "EN",
+        "AltumAge",
+        "Lin",
+        "PedBE",
+        "Wu"
+      ],
+      "rows": 929,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "ageAcceleration",
+      "title": "Epigenetic age acceleration, intrinsic and extrinsic",
+      "topics": [
+        "ageAcceleration"
+      ]
+    },
+    {
+      "page": "ageAccelerationChen",
+      "title": "Chen-style extrinsic age acceleration with data-driven weights",
+      "topics": [
+        "ageAccelerationChen"
+      ]
+    },
+    {
+      "page": "anti_trafo",
+      "title": "Horvath age transformation (inverse)",
+      "topics": [
+        "anti_trafo"
+      ]
+    },
+    {
+      "page": "as.data.frame.methylclock",
+      "title": "Coerce a methylclock result to a data frame",
+      "topics": [
+        "as.data.frame.methylclock"
+      ]
+    },
+    {
+      "page": "cellCounts",
+      "title": "Estimate blood cell-type proportions from methylation",
+      "topics": [
+        "cellCounts"
+      ]
+    },
+    {
+      "page": "clock_catalog",
+      "title": "Catalogue of the clocks in the package",
+      "topics": [
+        "clock_catalog"
+      ]
+    },
+    {
+      "page": "clock_info",
+      "title": "Look up one clock's registry entry",
+      "topics": [
+        "clock_info"
+      ]
+    },
+    {
+      "page": "clock_list",
+      "title": "List and filter registered clocks",
+      "topics": [
+        "clock_list"
+      ]
+    },
+    {
+      "page": "clock_predictors",
+      "title": "Supported prediction engines",
+      "topics": [
+        "clock_predictors"
+      ]
+    },
+    {
+      "page": "clock_register",
+      "title": "Register a clock",
+      "topics": [
+        "clock_register"
+      ]
+    },
+    {
+      "page": "clock_registry",
+      "title": "The clock registry",
+      "topics": [
+        "clock_registry"
+      ]
+    },
+    {
+      "page": "clock_reset",
+      "title": "Clear the clock registry",
+      "topics": [
+        "clock_reset"
+      ]
+    },
+    {
+      "page": "clock_statuses",
+      "title": "Availability status labels",
+      "topics": [
+        "clock_statuses"
+      ]
+    },
+    {
+      "page": "clock_targets",
+      "title": "Supported biological targets",
+      "topics": [
+        "clock_targets"
+      ]
+    },
+    {
+      "page": "clockAccuracy",
+      "title": "How well each clock tracks chronological age",
+      "topics": [
+        "clockAccuracy"
+      ]
+    },
+    {
+      "page": "clockCoverage",
+      "title": "CpG coverage of each clock in a dataset",
+      "topics": [
+        "clockCoverage"
+      ]
+    },
+    {
+      "page": "clockTrajectories",
+      "title": "Arrange repeated samples into per-subject clock trajectories",
+      "topics": [
+        "clockTrajectories"
+      ]
+    },
+    {
+      "page": "compute_clocks",
+      "title": "Estimate clocks from a methylation matrix",
+      "topics": [
+        "compute_clocks"
+      ]
+    },
+    {
+      "page": "DNAmAge",
+      "title": "Estimate chronological and biological DNAm age",
+      "topics": [
+        "DNAmAge"
+      ]
+    },
+    {
+      "page": "DNAmGA",
+      "title": "Estimate gestational DNAm age",
+      "topics": [
+        "DNAmGA"
+      ]
+    },
+    {
+      "page": "EEAA",
+      "title": "Extrinsic epigenetic age acceleration (canonical EEAA)",
+      "topics": [
+        "EEAA"
+      ]
+    },
+    {
+      "page": "IEAA",
+      "title": "Intrinsic epigenetic age acceleration (canonical IEAA)",
+      "topics": [
+        "IEAA"
+      ]
+    },
+    {
+      "page": "imputeKNN",
+      "title": "KNN-impute a methylation matrix",
+      "topics": [
+        "imputeKNN"
+      ]
+    },
+    {
+      "page": "listCellReferences",
+      "title": "Cell-type reference panels available for deconvolution",
+      "topics": [
+        "listCellReferences"
+      ]
+    },
+    {
+      "page": "mc_to_hdf5",
+      "title": "Store a methylation matrix on disk as HDF5",
+      "topics": [
+        "mc_to_hdf5"
+      ]
+    },
+    {
+      "page": "mcd_backends",
+      "title": "Configure the resource backend chain",
+      "topics": [
+        "mcd_backends"
+      ]
+    },
+    {
+      "page": "mcd_cache_clear",
+      "title": "Clear the resource cache",
+      "topics": [
+        "mcd_cache_clear"
+      ]
+    },
+    {
+      "page": "mcd_manifest",
+      "title": "The resource manifest",
+      "topics": [
+        "mcd_manifest"
+      ]
+    },
+    {
+      "page": "mcd_resource",
+      "title": "Resolve a clock resource by identifier",
+      "topics": [
+        "mcd_resource"
+      ]
+    },
+    {
+      "page": "mcd_resource_file",
+      "title": "Resolve a file resource to a local path",
+      "topics": [
+        "mcd_resource_file"
+      ]
+    },
+    {
+      "page": "methylclock",
+      "title": "Estimate DNA methylation clocks",
+      "topics": [
+        "methylclock"
+      ]
+    },
+    {
+      "page": "methylclock_betas",
+      "title": "Example methylation beta matrix",
+      "topics": [
+        "methylclock_betas"
+      ]
+    },
+    {
+      "page": "methylclock_cells",
+      "title": "Clock estimates with blood cell proportions",
+      "topics": [
+        "methylclock_cells"
+      ]
+    },
+    {
+      "page": "methylclock_demo",
+      "title": "Example clock estimates for a public blood cohort",
+      "topics": [
+        "methylclock_demo"
+      ]
+    },
+    {
+      "page": "methylclock_longitudinal",
+      "title": "A longitudinal example: children sampled repeatedly from birth to age 3",
+      "topics": [
+        "methylclock_longitudinal"
+      ]
+    },
+    {
+      "page": "methylclock_references",
+      "title": "Clock estimates on the shipped reference cohorts",
+      "topics": [
+        "methylclock_references"
+      ]
+    },
+    {
+      "page": "methylclock_smoking",
+      "title": "Smoking predictor scores with smoking status",
+      "topics": [
+        "methylclock_smoking"
+      ]
+    },
+    {
+      "page": "methylclock_validation",
+      "title": "Clock estimates on two independent validation cohorts",
+      "topics": [
+        "methylclock_validation"
+      ]
+    },
+    {
+      "page": "new_methylclock",
+      "title": "Construct a methylclock result",
+      "topics": [
+        "new_methylclock"
+      ]
+    },
+    {
+      "page": "normalize_coef",
+      "title": "Normalize a coefficient resource to canonical form",
+      "topics": [
+        "normalize_coef"
+      ]
+    },
+    {
+      "page": "persist",
+      "title": "Persist a result to a file",
+      "topics": [
+        "persist",
+        "persist.methylclock"
+      ]
+    },
+    {
+      "page": "plotAccelerationByGroup",
+      "title": "Plot epigenetic age acceleration by a sample group",
+      "topics": [
+        "plotAccelerationByGroup"
+      ]
+    },
+    {
+      "page": "plotAgeAcceleration",
+      "title": "Plot epigenetic age acceleration",
+      "topics": [
+        "plotAgeAcceleration"
+      ]
+    },
+    {
+      "page": "plotBlandAltman",
+      "title": "Bland-Altman plot of predicted vs. chronological age",
+      "topics": [
+        "plotBlandAltman"
+      ]
+    },
+    {
+      "page": "plotClockCorrelation",
+      "title": "Heatmap of the correlation between clocks",
+      "topics": [
+        "plotClockCorrelation"
+      ]
+    },
+    {
+      "page": "plotClockDensities",
+      "title": "Plot the density of each clock's estimates, optionally split by a group",
+      "topics": [
+        "plotClockDensities"
+      ]
+    },
+    {
+      "page": "plotClockDistributions",
+      "title": "Plot the distribution of each clock's estimates",
+      "topics": [
+        "plotClockDistributions"
+      ]
+    },
+    {
+      "page": "plotDNAmAge",
+      "title": "Plot predicted epigenetic age against chronological age",
+      "topics": [
+        "plotDNAmAge"
+      ]
+    },
+    {
+      "page": "plotGroupDifference",
+      "title": "Plot the per-clock difference between two groups as a forest plot",
+      "topics": [
+        "plotGroupDifference"
+      ]
+    },
+    {
+      "page": "plotReferenceRange",
+      "title": "Plot samples against the percentile bands of a reference cohort",
+      "topics": [
+        "plotReferenceRange"
+      ]
+    },
+    {
+      "page": "plotSampleDiscordance",
+      "title": "Plot how much the clocks agree on each sample",
+      "topics": [
+        "plotSampleDiscordance"
+      ]
+    },
+    {
+      "page": "plotSamplePCA",
+      "title": "PCA of samples in clock space",
+      "topics": [
+        "plotSamplePCA"
+      ]
+    },
+    {
+      "page": "plotTrajectories",
+      "title": "Plot each subject's clock trajectory over age",
+      "topics": [
+        "plotTrajectories"
+      ]
+    },
+    {
+      "page": "qcReport",
+      "title": "Quality-control report for clock estimates",
+      "topics": [
+        "qcReport"
+      ]
+    },
+    {
+      "page": "sampleQC",
+      "title": "Per-sample quality control",
+      "topics": [
+        "sampleQC"
+      ]
+    },
+    {
+      "page": "theme_methylclock",
+      "title": "A clean theme for methylclock plots",
+      "topics": [
+        "theme_methylclock"
+      ]
+    },
+    {
+      "page": "trajectoryRates",
+      "title": "Each subject's rate of epigenetic aging, clock by clock",
+      "topics": [
+        "trajectoryRates"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/methylclock/raw/HEAD/README.md",
+  "_rundeps": [
+    "AnnotationDbi",
+    "AnnotationHub",
+    "askpass",
+    "BH",
+    "BigDataStatMeth",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "biocmake",
+    "BiocManager",
+    "BiocVersion",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "cli",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "dir.expiry",
+    "dplyr",
+    "ExperimentHub",
+    "farver",
+    "fastmap",
+    "filelock",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "httr",
+    "httr2",
+    "IRanges",
+    "isoband",
+    "jsonlite",
+    "KEGGREST",
+    "labeling",
+    "lifecycle",
+    "magrittr",
+    "memoise",
+    "mime",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "preprocessCore",
+    "purrr",
+    "quadprog",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RCurl",
+    "Rhdf5lib",
+    "rlang",
+    "RSQLite",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "Seqinfo",
+    "stringi",
+    "stringr",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "liblapack",
+      "package": "libopenblas0-pthread",
+      "source": "openblas",
+      "version": "0.3.32+ds-5",
+      "name": "openblas",
+      "homepage": "https://www.openblas.net/",
+      "description": "Optimized BLAS (linear algebra) library (shared lib, pthread)"
+    },
+    {
+      "shlib": "libcurl",
+      "package": "libcurl4t64",
+      "headers": "libcurl4-openssl-dev",
+      "source": "curl",
+      "version": "8.18.0-1ubuntu2.3",
+      "name": "curl",
+      "homepage": "https://curl.se/",
+      "description": "easy-to-use client-side URL transfer library (OpenSSL flavour)"
+    },
+    {
+      "shlib": "libcrypto",
+      "package": "libssl3t64",
+      "headers": "libssl-dev",
+      "source": "openssl",
+      "version": "3.5.5-1ubuntu3.5",
+      "name": "openssl",
+      "homepage": "https://openssl-library.org",
+      "description": "Secure Sockets Layer toolkit - shared libraries"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "16-20260322-1ubuntu1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    },
+    {
+      "shlib": "libgomp",
+      "package": "libgomp1",
+      "source": "gcc",
+      "version": "16-20260322-1ubuntu1",
+      "name": "openmp",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GCC OpenMP (GOMP) support library"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "methylclock.Rmd",
+      "filename": "methylclock.html",
+      "title": "Estimating DNA methylation age with methylclock",
+      "author": "Dolors Pelegri and Juan R Gonzalez Institute for Global Health (ISGlobal), Barcelona, Spain Bioinformatics Research Group in Epidemiology (BRGE) http://brge.isglobal.org",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Quick start",
+        "Which clocks are available, and what they are for",
+        "Chronological-age clocks",
+        "Biological-age clocks",
+        "Gestational-age clocks",
+        "Mitotic (cell-division) clocks",
+        "Pace of ageing, and other measures",
+        "Trait and exposure predictors",
+        "Getting started",
+        "What data to provide",
+        "Missing values and imputation",
+        "Running the clocks and reading the output",
+        "Seeing and interpreting the results",
+        "Predicted versus real age",
+        "Do the clocks agree with each other?",
+        "How the estimates are distributed",
+        "Age acceleration",
+        "Cell composition and immune-aware acceleration",
+        "Comparing groups",
+        "Shapes: densities by group",
+        "Trends: fitted lines by group",
+        "Summary: the difference, clock by clock",
+        "Quality control: does a clock fit your data?",
+        "Reference ranges: your samples against a named cohort",
+        "Choosing the right clock for your data",
+        "Longitudinal data: trajectories and slopes",
+        "Beyond age: a trait predictor",
+        "EPICv2 arrays",
+        "Session info",
+        "References"
+      ],
+      "created": "2019-03-15 08:20:49",
+      "modified": "2026-09-09 07:25:15",
+      "commits": 42
+    }
+  ],
+  "_score": 7.437592032253962,
+  "_indexed": true,
+  "_nocasepkg": "methylclock",
+  "_universes": [
+    "bioc",
+    "isglobal-exposomehub",
+    "isglobal-brge"
+  ],
+  "_previous": "1.99.0",
+  "_binaries": [
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.19.0",
+      "date": "2026-09-02T10:42:54.000Z",
+      "arch": "emscripten",
+      "commit": "0fec6e84d9329add19d98d402a6384e5df51c17d",
+      "fileid": "https://r2.ropensci.org/1101e3fe8b94470705a45ee746865952360fed222cfdf5c01b7323cc1e6eaaf9",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/33619764328"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:30:10.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/ca8ffc1324d161d9f60b72a98d69d74249120a810b459e892a9386a51b99540b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:29:57.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/be852705e942913268804b669b48bb7d78a4fbfec46d3d812085c6dd167853a6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:47:05.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/5553f6048d38ae694cf03dde41ec1f430b56fb29026d452e2b286d21d0c96dba",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:47:35.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/6079e2878c082f4abc017ff8ad20ba6c7edccc5647de2b7b967659f788df6f2c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:27:57.000Z",
+      "arch": "aarch64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/af26ef9897221313abb2bae861acedc0352efed0ab34ad0bda91903155304745",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:30:39.000Z",
+      "arch": "x86_64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/ba7caecfe2b79300867f7cbedb965239c88a06434a3d2e80c8c9155d1cc076d8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:28:28.000Z",
+      "arch": "aarch64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/19a983160235b10eba65c74f0ef6fd8bc4bd9c26bc7e7d54128503b255afbc5e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:29:55.000Z",
+      "arch": "x86_64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/8488880e77cdb680cc3c3d92010032974010894f7b3e1c5270f052e0d3ea92b0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:30:29.000Z",
+      "arch": "aarch64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/9f07edfd3d07e9cf9ec672c03f917cfb13f33dfab26132ead74940b3b0a4913d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:28:40.000Z",
+      "arch": "x86_64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/345f88e5cf55193fe2a6ef6eede46b231de00f888eb9ec744560a4fea34839a3",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:28:14.000Z",
+      "arch": "x86_64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/a6d8cded36427cd520f700f1d8b84ea611ccb8cf1aebd61ac7d3e875a887da88",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:30:57.000Z",
+      "arch": "aarch64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/6280f2589f4a8485f6ab40fc21849cf030090c5e57c22c0fb95a303f88460a9e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.99.1",
+      "date": "2026-09-10T12:28:18.000Z",
+      "arch": "x86_64",
+      "commit": "cb06285e79b2f88aac92d7ddb3aabeb5c2fca8d9",
+      "fileid": "https://r2.ropensci.org/19ebd9d660951ff80fc0cbc95734af632baae09a9e08c80a5b69d75760a38862",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34474637880"
+    }
+  ]
+}
