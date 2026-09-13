@@ -1,0 +1,790 @@
+{
+  "_id": "6aa6bba7089bafb098cef7c0",
+  "Package": "barmixR",
+  "Type": "Package",
+  "Title": "Bayesian Modeling of Barcoded Tumor Mixtures for Quantitative\nTreatment Resistance Analysis",
+  "Version": "0.99.3",
+  "Authors@R": "c(\nperson(given = \"Mohammad\", family = \"Darbalaei\",\nemail = \"mohammad.darbalaei@uni-due.de\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0009-0003-4561-0048\")),\nperson(given = \"Daniel\", family = \"Hoffmann\",\nrole = \"aut\",\ncomment = c(ORCID = \"0000-0003-2973-7869\")),\nperson(given = \"Barbara M.\", family = \"Gr\u00fcner\",\nrole = \"ctb\"),\nperson(given = \"Thomas\", family = \"M\u00fchlenberg\",\nrole = \"ctb\"),\nperson(given = \"Julia\", family = \"Zummack\",\nrole = \"ctb\")\n)",
+  "Description": "Implements the Bayesian modeling framework underlying the\nbarmixR (BARcode MIXture analysis) platform for high-throughput\nquantitative analysis of genotype-specific treatment responses\nin pooled cancer cell populations. The package integrates\nbarcode sequencing count data with volumetric measurements such\nas tumor volume (in vivo) or cellular confluency (in vitro)\nusing hierarchical probabilistic models. Barcode counts are\nmodeled with a Dirichlet\u2013multinomial distribution to account\nfor compositional sequencing data, while volumetric\nmeasurements are modeled using log-normal (tumor volume) or\nbeta (confluency) likelihoods. Posterior inference is performed\nusing Hamiltonian Monte Carlo through 'rstan'. The resulting\nposterior distributions enable estimation of clone-specific\nquantitative treatment resistance (QTR) together with\nuncertainty propagation from both sequencing and volumetric\ndata. Additional functions provide posterior predictive checks,\nestimation of resistance ratios, treatment ranking, and\nvisualization of resistance landscapes using violin plots and\nbubble heatmaps. The methods are designed for multiplexed\nlineage-tracing experiments in cancer research and were\ndeveloped to analyze treatment resistance in gastrointestinal\nstromal tumors (GIST), but are broadly applicable to\nbarcoding-based studies of treatment response and clonal\ndynamics across diverse cancer types.",
+  "License": "GPL-3 + file LICENSE",
+  "URL": "https://github.com/MohammadDarbalaei/barmixR",
+  "BugReports": "https://github.com/MohammadDarbalaei/barmixR/issues",
+  "Encoding": "UTF-8",
+  "Config/testthat/edition": "3",
+  "VignetteBuilder": "knitr",
+  "Roxygen": "list(markdown = TRUE)",
+  "biocViews": "Software, Bayesian, Sequencing, Visualization",
+  "Config/roxygen2/version": "8.0.0",
+  "Biarch": "true",
+  "SystemRequirements": "GNU make, C++17, StanHeaders",
+  "Config/pak/sysreqs": "cmake make",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-09-12 23:19:43 UTC",
+  "RemoteUrl": "https://github.com/bioc/barmixR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-09-13 14:39:44 UTC",
+    "User": "root"
+  },
+  "Author": "Mohammad Darbalaei [aut, cre] (ORCID:\n<https://orcid.org/0009-0003-4561-0048>),\nDaniel Hoffmann [aut] (ORCID: <https://orcid.org/0000-0003-2973-7869>),\nBarbara M. Gr\u00fcner [ctb],\nThomas M\u00fchlenberg [ctb],\nJulia Zummack [ctb]",
+  "Maintainer": "Mohammad Darbalaei <mohammad.darbalaei@uni-due.de>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "barmixR_0.99.3.tar.gz",
+  "_fileid": "https://r2.ropensci.org/0a4a900cb199e7bd8418e73c38364e2b2466ef27f9d1d62005b26ff94173c0ec",
+  "_filesize": 2824970,
+  "_sha256": "0a4a900cb199e7bd8418e73c38364e2b2466ef27f9d1d62005b26ff94173c0ec",
+  "_expires": "2026-12-22T15:05:08.000Z",
+  "_created": "2026-09-13T14:39:44.000Z",
+  "_published": "2026-09-13T15:05:10.938Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 5
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/barmixR",
+  "_commit": {
+    "id": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+    "author": "Mohammad Darbalaei <mohammad.darbalaei@uni-due.de>",
+    "committer": "Mohammad Darbalaei <mohammad.darbalaei@uni-due.de>",
+    "message": "Fix Stan models for Stan >= 2.33; bump version to 0.99.3\n\n- Use new array syntax (array[] int etc.); old syntax was removed in\n  Stan 2.33 and broke R CMD build/INSTALL on BioC 3.24.\n- Rename internal dirichlet_multinomial_lpmf/_rng to barmix_dm_lpmf/_rng\n  to avoid clashing with the built-in added in Stan 2.34.\n\nCo-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>\n",
+    "time": 1789255183
+  },
+  "_maintainer": {
+    "name": "Mohammad Darbalaei",
+    "email": "mohammad.darbalaei@uni-due.de",
+    "login": "mdarbalaei",
+    "description": "",
+    "uuid": 144675907,
+    "orcid": "0009-0003-4561-0048"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 103740140941,
+      "time": 278,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "10319852960"
+    },
+    {
+      "job": 103740141067,
+      "time": 340,
+      "config": "linux-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10319997042"
+    },
+    {
+      "job": 103740141015,
+      "time": 430,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10319384353"
+    },
+    {
+      "job": 103740141020,
+      "time": 327,
+      "config": "linux-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10319628252"
+    },
+    {
+      "job": 103740141017,
+      "time": 418,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10319064292"
+    },
+    {
+      "job": 103740141019,
+      "time": 301,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10319614404"
+    },
+    {
+      "job": 103740141050,
+      "time": 551,
+      "config": "macos-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10319189711"
+    },
+    {
+      "job": 103740141008,
+      "time": 279,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10320180186"
+    },
+    {
+      "job": 103740141018,
+      "time": 450,
+      "config": "macos-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10319034777"
+    },
+    {
+      "job": 103738990450,
+      "time": 548,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10319797611"
+    },
+    {
+      "job": 103740140987,
+      "time": 221,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "10319773067"
+    },
+    {
+      "job": 103740141033,
+      "time": 431,
+      "config": "windows-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10319228654"
+    },
+    {
+      "job": 103740141012,
+      "time": 495,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10319753541"
+    },
+    {
+      "job": 103740141065,
+      "time": 478,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10319853185"
+    },
+    {
+      "job": 103740141013,
+      "time": 410,
+      "config": "windows-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10319134031"
+    },
+    {
+      "job": 103740141027,
+      "time": 472,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10319344496"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BH",
+      "version": ">= 1.66.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppEigen",
+      "version": ">= 0.3.3.3.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppParallel",
+      "version": ">= 5.0.1",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "rstan",
+      "version": ">= 2.18.1",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "StanHeaders",
+      "version": ">= 2.18.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "forcats",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.0",
+      "role": "Imports"
+    },
+    {
+      "package": "RcppParallel",
+      "version": ">= 5.0.1",
+      "role": "Imports"
+    },
+    {
+      "package": "rstan",
+      "version": ">= 2.18.1",
+      "role": "Imports"
+    },
+    {
+      "package": "rstantools",
+      "version": ">= 2.4.0",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "MGLM",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "tidyverse",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-12",
+      "n": 3
+    },
+    {
+      "week": "2026-13",
+      "n": 3
+    },
+    {
+      "week": "2026-15",
+      "n": 1
+    },
+    {
+      "week": "2026-21",
+      "n": 1
+    },
+    {
+      "week": "2026-26",
+      "n": 2
+    },
+    {
+      "week": "2026-37",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.2",
+      "bioc": "3.24"
+    }
+  ],
+  "_topics": [
+    "software",
+    "bayesian",
+    "sequencing",
+    "visualization",
+    "bayesian-modeling",
+    "bioinformatics",
+    "cancer",
+    "dna-barcoding",
+    "drug-response",
+    "gastrointestinal-stromal-tumor",
+    "high-throughput-sequencing",
+    "lineage-tracing",
+    "multiplexed-screening",
+    "treatment-resistance",
+    "tumor-heterogeneity",
+    "onetbb",
+    "cpp"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "mohammaddarbalaei",
+      "count": 14,
+      "uuid": 125902532
+    },
+    {
+      "user": "mdarbalaei",
+      "count": 1,
+      "uuid": 144675907
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 467,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 507,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/barmixR"
+  },
+  "_devurl": "https://github.com/mohammaddarbalaei/barmixr",
+  "_searchresults": 0,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/barmixR.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE",
+    "manual.pdf"
+  ],
+  "_homeurl": "https://github.com/mohammaddarbalaei/barmixr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "barmixRQTR",
+    "fractionRatio",
+    "populationRatio",
+    "ppcBarcodes",
+    "ppcPopulation",
+    "QTRDecision",
+    "QTRheatmap",
+    "QTRresistance"
+  ],
+  "_help": [
+    {
+      "page": "barmixR_fit",
+      "title": "Class barmixR_fit",
+      "topics": [
+        "barmixR_fit"
+      ]
+    },
+    {
+      "page": "barmixRQTR",
+      "title": "Fit the barmixR model for quantitative treatment resistance (QTR)",
+      "topics": [
+        "barmixRQTR"
+      ]
+    },
+    {
+      "page": "fractionRatio",
+      "title": "Compute ratios of relative barcode abundance between treatments",
+      "topics": [
+        "fractionRatio"
+      ]
+    },
+    {
+      "page": "populationRatio",
+      "title": "Compute ratios of population size between treatments",
+      "topics": [
+        "populationRatio"
+      ]
+    },
+    {
+      "page": "ppcBarcodes",
+      "title": "Posterior predictive checks for barcode composition",
+      "topics": [
+        "ppcBarcodes"
+      ]
+    },
+    {
+      "page": "ppcPopulation",
+      "title": "Posterior predictive checks for population size",
+      "topics": [
+        "ppcPopulation"
+      ]
+    },
+    {
+      "page": "QTRDecision",
+      "title": "Rank treatments within each cell line using QTR boxplot summaries",
+      "topics": [
+        "QTRDecision"
+      ]
+    },
+    {
+      "page": "QTRheatmap",
+      "title": "Visualize quantitative treatment resistance (QTR) using bubble heatmaps",
+      "topics": [
+        "QTRheatmap"
+      ]
+    },
+    {
+      "page": "QTRresistance",
+      "title": "Estimate quantitative treatment resistance (QTR)",
+      "topics": [
+        "QTRresistance"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/barmixR/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "backports",
+    "BH",
+    "BiocParallel",
+    "callr",
+    "checkmate",
+    "cli",
+    "codetools",
+    "cpp11",
+    "desc",
+    "distributional",
+    "dplyr",
+    "farver",
+    "forcats",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "inline",
+    "isoband",
+    "labeling",
+    "lambda.r",
+    "lifecycle",
+    "loo",
+    "magrittr",
+    "matrixStats",
+    "numDeriv",
+    "otel",
+    "patchwork",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "posterior",
+    "processx",
+    "ps",
+    "QuickJSR",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RcppParallel",
+    "rlang",
+    "rstan",
+    "rstantools",
+    "S7",
+    "scales",
+    "snow",
+    "StanHeaders",
+    "tensorA",
+    "tibble",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libtbb",
+      "package": "libtbb12",
+      "headers": "libtbb-dev",
+      "source": "onetbb",
+      "version": "2022.3.0-2",
+      "name": "onetbb",
+      "homepage": "https://uxlfoundation.github.io/oneTBB/",
+      "description": "parallelism library for C++ - runtime files"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "16-20260322-1ubuntu1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "barmixR-workflow.Rmd",
+      "filename": "barmixR-workflow.html",
+      "title": "barmixR: Bayesian Modeling of Barcoded Tumor Mixtures for Quantitative Treatment Resistance Analysis",
+      "author": "Mohammad Darbalaei, Daniel Hoffmann",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Multiplexed experiments with DNA barcoding",
+        "The compositional data challenge",
+        "Integrating population size information",
+        "The barmixR framework",
+        "Scope and applications",
+        "Installation",
+        "Relationship to related approaches and packages",
+        "Simulation of Barcode Counts and Population Size",
+        "Barcode counts",
+        "Population size",
+        "Integration",
+        "Structure of the Simulated Barcode Data",
+        "Population Size Simulation",
+        "Constructing the barmixR Input Object",
+        "Bayesian Model Fitting",
+        "Posterior Predictive Checks for Barcode Counts",
+        "Estimating Ratios of Relative Barcode Abundance",
+        "Posterior Predictive Check for Population Size",
+        "Estimating Ratios of Population Size",
+        "Estimation of Quantitative Treatment Resistance",
+        "Interpretation",
+        "Visualization of the Resistance Landscape",
+        "Decision Support for Treatment Prioritization"
+      ],
+      "created": "2026-03-22 20:58:02",
+      "modified": "2026-06-27 19:51:10",
+      "commits": 4
+    }
+  ],
+  "_score": 4.477121254719663,
+  "_indexed": true,
+  "_nocasepkg": "barmixr",
+  "_universes": [
+    "bioc",
+    "mdarbalaei",
+    "mohammaddarbalaei"
+  ],
+  "_previous": "0.99.2",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:45:04.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/678815ed645537f0f7aec706f259794e191052b8d6a9883f3a810a9624241158",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:47:54.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/14f8682c683dbac9b2906b75e628660047f9153a90c23fa49c306314ac896566",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:44:56.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/36820de399a8b3bee88eb940cde22f744942bcbcc8e519e0cd48bb05a14f1868",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:47:39.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/1b7ed155800e699d33bdf1a11bac1670101962ba1a4809766d87d1eded18755d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:59:48.000Z",
+      "arch": "aarch64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/f1fb82cdc279fbcb993f7501a429ddf7f6d30377037dc277fd7d2fe20ee65492",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:58:00.000Z",
+      "arch": "x86_64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/e946781c44a59c3bb7fd51f75ad72e8eea50cb562cf5dde4b2d8881ed1d98d8f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "0.99.3",
+      "date": "2026-09-13T15:01:22.000Z",
+      "arch": "aarch64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/b66ba5e81916b40d7001b72c0e47d95e995c8a04a29ed8bb74cba5a002114e71",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:55:59.000Z",
+      "arch": "x86_64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/97816e94df1d23e144db714e488ffb53cd02d87033886c47a151feccfbef0920",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:47:23.000Z",
+      "arch": "emscripten",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/964b93e365184469542df6c6591b8cd875bc4411bf48cc08879cd92f95637942",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:46:02.000Z",
+      "arch": "aarch64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/d43e40fb2f32f62665d4d654fac5f9eb40b88ba876b832ea93be7be701c6bd42",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:45:48.000Z",
+      "arch": "x86_64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/f8632673cb376c6b5397b45a398f27fdfb2e83d440ba4cad057eecac85076e88",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:46:01.000Z",
+      "arch": "x86_64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/36cdb52b6f942297f8707f24d49bf426318dbc8cf704943a590672d6dad165d0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:45:44.000Z",
+      "arch": "aarch64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/9b3e5c97f98ca7a139c392757460941c9bdae224e98fbc5d254efdaf66f1a448",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "0.99.3",
+      "date": "2026-09-13T14:45:35.000Z",
+      "arch": "x86_64",
+      "commit": "1d3b628a2dfcb6999d105892202dfd18c318381d",
+      "fileid": "https://r2.ropensci.org/100935ebe1c5be4b2c335564fa08ca6431fa558d245c11eb0b35265af32eaf0d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/34762990586"
+    }
+  ]
+}
