@@ -1,0 +1,982 @@
+{
+  "_id": "6ab969ca99f7aa8c6aa3aa77",
+  "Package": "raer",
+  "Type": "Package",
+  "Title": "RNA editing tools in R",
+  "Version": "1.11.2",
+  "Authors@R": "c(\nperson(\"Kent\", \"Riemondy\", , \"kent.riemondy@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0003-0750-1273\")),\nperson(\"Kristen\", \"Wells-Wrasman\", , \"kristen.wells-wrasman@cuanschutz.edu\", role = \"aut\",\ncomment = c(ORCID = \"0000-0002-7466-8164\")),\nperson(\"Ryan\", \"Sheridan\", , \"ryan.sheridan@cuanschutz.edu\", role = \"ctb\",\ncomment = c(ORCID = \"0000-0003-4012-3147\")),\nperson(\"Jay\", \"Hesselberth\", , \"jay.hesselberth@gmail.com\", role = \"ctb\",\ncomment = c(ORCID = \"0000-0002-6299-179X\")),\nperson(\"RNA Bioscience Initiative\", role = c(\"cph\", \"fnd\"))\n)",
+  "Description": "Toolkit for identification and statistical testing of RNA\nediting signals from within R. Provides support for identifying\nsites from bulk-RNA and single cell RNA-seq datasets, and\ngeneral methods for extraction of allelic read counts from\nalignment files. Facilitates annotation and exploratory\nanalysis of editing signals using Bioconductor packages and\nresources.",
+  "License": "MIT + file LICENSE",
+  "SystemRequirements": "GNU make",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "RoxygenNote": "7.3.2",
+  "URL": "https://rnabioco.github.io/raer, https://github.com/rnabioco/raer",
+  "BugReports": "https://github.com/rnabioco/raer/issues",
+  "biocViews": "MultipleComparison, RNASeq, SingleCell, Sequencing,\nCoverage, Epitranscriptomics, FeatureExtraction, Annotation,\nAlignment",
+  "Config/Needs/website": "pkgdown, rnabioco/rbitemplate",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "make libbz2-dev liblzma-dev libpng-dev libxml2-dev\nlibssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-09-27 15:54:31 UTC",
+  "RemoteUrl": "https://github.com/bioc/raer",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "78892116634f98834593b49985c2d2a94d5179ac",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-09-27 18:46:31 UTC",
+    "User": "root"
+  },
+  "Author": "Kent Riemondy [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-0750-1273>),\nKristen Wells-Wrasman [aut] (ORCID:\n<https://orcid.org/0000-0002-7466-8164>),\nRyan Sheridan [ctb] (ORCID: <https://orcid.org/0000-0003-4012-3147>),\nJay Hesselberth [ctb] (ORCID: <https://orcid.org/0000-0002-6299-179X>),\nRNA Bioscience Initiative [cph, fnd]",
+  "Maintainer": "Kent Riemondy <kent.riemondy@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "raer_1.11.2.tar.gz",
+  "_fileid": "https://r2.ropensci.org/c443b568b36d9f8519d7a24cca2b19d9d5b2932f225eae1d36dfafe8dac42d10",
+  "_filesize": 2405643,
+  "_sha256": "c443b568b36d9f8519d7a24cca2b19d9d5b2932f225eae1d36dfafe8dac42d10",
+  "_expires": "2027-01-05T19:08:56.000Z",
+  "_created": "2026-09-27T18:46:31.000Z",
+  "_published": "2026-09-27T19:08:58.509Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 4
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/raer",
+  "_commit": {
+    "id": "78892116634f98834593b49985c2d2a94d5179ac",
+    "author": "Kent Riemondy <kent.riemondy@gmail.com>",
+    "committer": "GitHub <noreply@github.com>",
+    "message": "Fix R CMD check WARNING and NOTE f (#126)\n\n* Fix R CMD check WARNING and NOTE from deprecated scuttle functions and Rd link anchors\n\nscuttle::normalizeCounts()/summarizeAssayByGroup() used in find_scde_sites()\nare deprecated as of scuttle 1.22 (Bioc 3.24 devel) in favor of\nscrapper::normalizeRnaCounts.se()/aggregateAcrossCells.se(), which raised\n\"Found the following significant warnings\" during R CMD check. Migrate to\nscrapper, matching the \"sum\" statistic and group-labeled columns of the old\noutput (verified numerically identical against scuttle via the shared\nunderlying primitives). Add a find_scde_sites() test, since none existed.\n\nAlso add explicit package anchors (e.g. [GRanges][GenomicRanges::GRanges])\nto roxygen \\link{} targets flagged by \"Rd \\link{} targets missing package\nanchors\" across annot_snps.Rd, calc_AEI.Rd, calc_edit_frequency.Rd,\nfind_de_sites.Rd, find_scde_sites.Rd, make_de_object.Rd, pileup_cells.Rd,\nand pileup_sites.Rd.\n\nThe remaining compiled-code NOTE (assert/stderr/stdout/abort/exit symbols\nin raer.so) originates from the statically linked Rhtslib/htslib archive,\nnot raer's own C sources, and isn't addressable here.\n\n* Fix test failure from defunct cigarRangesAlongReferenceSpace() (#125)\n\nGenomicAlignments >= 1.49.1 (Bioc 3.24 devel) made\ncigarRangesAlongReferenceSpace() defunct in favor of\ncigars_as_ranges_along_ref() from the new cigarillo package, which\nbroke the \"filtering for indel events works\" test on the Bioc devel\nbuild. Switch the test to use cigarillo directly and add it as a\nSuggests dependency.\n\n* Fix find_scde_sites test for scran::combineMarkers() returning a List\n\nscran::combineMarkers() now returns an S4Vectors List rather than a\nbase list, so is.list() returns FALSE and for() cannot iterate over\nit directly, breaking the \"find_scde_sites works\" test.\n\nCo-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>\n\n* Rename combineMarkers() summary.dEF column to dEF in find_scde_sites()\n\nscran::combineMarkers() prefixes the aggregat",
+    "time": 1790524471
+  },
+  "_maintainer": {
+    "name": "Kent Riemondy",
+    "email": "kent.riemondy@gmail.com",
+    "login": "kriemo",
+    "description": "",
+    "uuid": 13697621,
+    "orcid": "0000-0003-0750-1273"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 108683662435,
+      "time": 389,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "10939501019"
+    },
+    {
+      "job": 108683662520,
+      "time": 518,
+      "config": "linux-devel-arm64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "10940020170"
+    },
+    {
+      "job": 108683662426,
+      "time": 713,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "10938929661"
+    },
+    {
+      "job": 108683662538,
+      "time": 504,
+      "config": "linux-release-arm64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10939426457"
+    },
+    {
+      "job": 108683662525,
+      "time": 687,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10939044152"
+    },
+    {
+      "job": 108683662473,
+      "time": 490,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "10939168233"
+    },
+    {
+      "job": 108683662483,
+      "time": 814,
+      "config": "macos-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "10939377368"
+    },
+    {
+      "job": 108683662495,
+      "time": 453,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10939990747"
+    },
+    {
+      "job": 108683662484,
+      "time": 827,
+      "config": "macos-release-x86_64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10939701229"
+    },
+    {
+      "job": 108681379293,
+      "time": 782,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10939581089"
+    },
+    {
+      "job": 108683662412,
+      "time": 366,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "FAIL",
+      "artifact": ""
+    },
+    {
+      "job": 108683662514,
+      "time": 629,
+      "config": "windows-devel-arm64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "10939995371"
+    },
+    {
+      "job": 108683662466,
+      "time": 638,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "10938989350"
+    },
+    {
+      "job": 108683662544,
+      "time": 559,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "10939965390"
+    },
+    {
+      "job": 108683662489,
+      "time": 596,
+      "config": "windows-release-arm64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10939316715"
+    },
+    {
+      "job": 108683662486,
+      "time": 625,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10939935609"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "Rhtslib",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "Rsamtools",
+      "role": "Imports"
+    },
+    {
+      "package": "BSgenome",
+      "role": "Imports"
+    },
+    {
+      "package": "Biostrings",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomeInfoDb",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicAlignments",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicFeatures",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "rtracklayer",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "cli",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Suggests"
+    },
+    {
+      "package": "edgeR",
+      "role": "Suggests"
+    },
+    {
+      "package": "limma",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "role": "Suggests"
+    },
+    {
+      "package": "TxDb.Hsapiens.UCSC.hg38.knownGene",
+      "role": "Suggests"
+    },
+    {
+      "package": "SNPlocs.Hsapiens.dbSNP144.GRCh38",
+      "role": "Suggests"
+    },
+    {
+      "package": "BSgenome.Hsapiens.NCBI.GRCh38",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "scran",
+      "role": "Suggests"
+    },
+    {
+      "package": "scrapper",
+      "role": "Suggests"
+    },
+    {
+      "package": "AnnotationHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "covr",
+      "role": "Suggests"
+    },
+    {
+      "package": "raerdata",
+      "role": "Suggests"
+    },
+    {
+      "package": "txdbmaker",
+      "role": "Suggests"
+    },
+    {
+      "package": "cigarillo",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-28",
+      "n": 1
+    },
+    {
+      "week": "2026-38",
+      "n": 1
+    },
+    {
+      "week": "2026-39",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.11.1",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.10.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "multiplecomparison",
+    "rnaseq",
+    "singlecell",
+    "sequencing",
+    "coverage",
+    "epitranscriptomics",
+    "featureextraction",
+    "annotation",
+    "alignment",
+    "bioconductor-package",
+    "rna-seq-analysis",
+    "single-cell-analysis",
+    "single-cell-rna-seq",
+    "curl",
+    "bzip2",
+    "xz-utils",
+    "zlib"
+  ],
+  "_stars": 11,
+  "_contributors": [
+    {
+      "user": "kriemo",
+      "count": 251,
+      "uuid": 13697621
+    },
+    {
+      "user": "jayhesselberth",
+      "count": 65,
+      "uuid": 355367
+    },
+    {
+      "user": "kwells4",
+      "count": 21,
+      "uuid": 14188899
+    },
+    {
+      "user": "jwokaty",
+      "count": 12,
+      "uuid": 1744257
+    },
+    {
+      "user": "hpages",
+      "count": 1,
+      "uuid": 8810451
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 468,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 428,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/raer"
+  },
+  "_devurl": "https://github.com/rnabioco/raer",
+  "_pkgdown": "https://rnabioco.github.io/raer",
+  "_searchresults": 11,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/raer.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE"
+  ],
+  "_homeurl": "https://github.com/rnabioco/raer",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annot_from_gr",
+    "annot_snps",
+    "calc_AEI",
+    "calc_confidence",
+    "calc_edit_frequency",
+    "calc_scAEI",
+    "correct_strand",
+    "filter_clustered_variants",
+    "filter_multiallelic",
+    "filter_splice_variants",
+    "FilterParam",
+    "find_de_sites",
+    "find_mispriming_sites",
+    "find_scde_sites",
+    "get_overlapping_snps",
+    "get_scAEI_sites",
+    "get_splice_sites",
+    "make_de_object",
+    "mock_rse",
+    "pileup_cells",
+    "pileup_sites",
+    "raer_example",
+    "read_sparray"
+  ],
+  "_help": [
+    {
+      "page": "annot_from_gr",
+      "title": "Annotate sites using GRanges object",
+      "topics": [
+        "annot_from_gr"
+      ]
+    },
+    {
+      "page": "annot_snps",
+      "title": "Annotate known SNP positions",
+      "topics": [
+        "annot_snps",
+        "annot_snps.GRanges",
+        "annot_snps.SummarizedExperiment"
+      ]
+    },
+    {
+      "page": "calc_AEI",
+      "title": "Calculate the Adenosine Editing Index (AEI)",
+      "topics": [
+        "calc_AEI"
+      ]
+    },
+    {
+      "page": "calc_confidence",
+      "title": "Calculate confidence score for observing editing",
+      "topics": [
+        "calc_confidence"
+      ]
+    },
+    {
+      "page": "calc_edit_frequency",
+      "title": "Adds editing frequencies",
+      "topics": [
+        "calc_edit_frequency"
+      ]
+    },
+    {
+      "page": "calc_scAEI",
+      "title": "Calculate the Adenosine Editing Index (AEI) in single cells",
+      "topics": [
+        "calc_scAEI",
+        "get_scAEI_sites"
+      ]
+    },
+    {
+      "page": "correct_strand",
+      "title": "Apply strand correction using gene annotations",
+      "topics": [
+        "correct_strand"
+      ]
+    },
+    {
+      "page": "filter_clustered_variants",
+      "title": "Filter out clustered sequence variants",
+      "concept": [
+        "se-filters"
+      ],
+      "topics": [
+        "filter_clustered_variants"
+      ]
+    },
+    {
+      "page": "filter_multiallelic",
+      "title": "Filter out multi-allelic sites",
+      "concept": [
+        "se-filters"
+      ],
+      "topics": [
+        "filter_multiallelic"
+      ]
+    },
+    {
+      "page": "filter_splice_variants",
+      "title": "Filter out sites near splice sites",
+      "concept": [
+        "se-filters"
+      ],
+      "topics": [
+        "filter_splice_variants"
+      ]
+    },
+    {
+      "page": "find_de_sites",
+      "title": "Perform differential editing",
+      "topics": [
+        "find_de_sites"
+      ]
+    },
+    {
+      "page": "find_mispriming_sites",
+      "title": "Find regions with oligodT mispriming",
+      "topics": [
+        "find_mispriming_sites"
+      ]
+    },
+    {
+      "page": "find_scde_sites",
+      "title": "Identify sites with differential editing between cells in single cell datasets",
+      "topics": [
+        "find_scde_sites"
+      ]
+    },
+    {
+      "page": "get_overlapping_snps",
+      "title": "Retrieve SNPs overlapping intervals",
+      "topics": [
+        "get_overlapping_snps"
+      ]
+    },
+    {
+      "page": "get_splice_sites",
+      "title": "Extract regions surrounding splice sites",
+      "topics": [
+        "get_splice_sites"
+      ]
+    },
+    {
+      "page": "make_de_object",
+      "title": "Make summarized experiment object for differential editing analysis",
+      "topics": [
+        "make_de_object"
+      ]
+    },
+    {
+      "page": "mock_rse",
+      "title": "Generate a small RangedSummarizedExperiment object for tests and examples",
+      "topics": [
+        "mock_rse"
+      ]
+    },
+    {
+      "page": "pileup_cells",
+      "title": "Generate base counts per cell",
+      "concept": [
+        "pileup"
+      ],
+      "topics": [
+        "pileup_cells"
+      ]
+    },
+    {
+      "page": "pileup_sites",
+      "title": "Generate base counts using pileup",
+      "concept": [
+        "pileup"
+      ],
+      "topics": [
+        "FilterParam",
+        "pileup_sites"
+      ]
+    },
+    {
+      "page": "raer_example",
+      "title": "Provide working directory for raer example files.",
+      "topics": [
+        "raer_example"
+      ]
+    },
+    {
+      "page": "read_sparray",
+      "title": "Read sparseMatrix produced by pileup_cells()",
+      "topics": [
+        "read_sparray"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/raer/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/raer/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "AnnotationDbi",
+    "askpass",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "BSgenome",
+    "cachem",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "curl",
+    "DBI",
+    "DelayedArray",
+    "fastmap",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "glue",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "KEGGREST",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "openssl",
+    "pkgconfig",
+    "png",
+    "R6",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "RSQLite",
+    "rtracklayer",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "SingleCellExperiment",
+    "snow",
+    "SparseArray",
+    "SummarizedExperiment",
+    "sys",
+    "UCSC.utils",
+    "vctrs",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libcurl",
+      "package": "libcurl4t64",
+      "headers": "libcurl4-openssl-dev",
+      "source": "curl",
+      "version": "8.18.0-1ubuntu2.5",
+      "name": "curl",
+      "homepage": "https://curl.se/",
+      "description": "easy-to-use client-side URL transfer library (OpenSSL flavour)"
+    },
+    {
+      "shlib": "libbz2",
+      "package": "libbz2-1.0",
+      "headers": "libbz2-dev",
+      "source": "bzip2",
+      "version": "1.0.8-6ubuntu0.1",
+      "name": "bzip2",
+      "homepage": "https://sourceware.org/bzip2/",
+      "description": "high-quality block-sorting file compressor library - runtime"
+    },
+    {
+      "shlib": "liblzma",
+      "package": "liblzma5",
+      "headers": "liblzma-dev",
+      "source": "xz-utils",
+      "version": "5.8.3-1",
+      "name": "xz-utils",
+      "homepage": "https://tukaani.org/xz/",
+      "description": "XZ-format compression library"
+    },
+    {
+      "shlib": "libz",
+      "package": "zlib1g",
+      "headers": "zlib1g-dev",
+      "source": "zlib",
+      "version": "1:1.3.dfsg+really1.3.1-1ubuntu3.1",
+      "name": "zlib",
+      "homepage": "http://zlib.net/",
+      "description": "compression library - runtime"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "raer.Rmd",
+      "filename": "raer.html",
+      "title": "Introducing the raer package",
+      "author": "Kent Riemondy, Kristen Wells-Wrasman, Jay Hesselberth",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Characterizing RNA editing sites in scRNA-seq data",
+        "Specifying sites to quantify",
+        "Quantifying sites in single cells using pileup_cells",
+        "Quantifying sites in Smart-seq2 libaries",
+        "Quantifying RNA editing sites in bulk RNA-Seq",
+        "Generate editing site read counts using pileup_sites",
+        "Prepare for differential editing",
+        "Run differential editing",
+        "Examine overall editing activites using the Alu Editing Index",
+        "Novel RNA editing site detection",
+        "R session information"
+      ],
+      "created": "2022-05-02 16:39:18",
+      "modified": "2025-07-14 17:51:03",
+      "commits": 29
+    }
+  ],
+  "_score": 6.08278537031645,
+  "_indexed": true,
+  "_nocasepkg": "raer",
+  "_universes": [
+    "bioc",
+    "kriemo",
+    "rnabioco"
+  ],
+  "_previous": "1.11.1",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:52:12.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/e05047ad2b3b624401e4d954f2e9877a0383b932fd70fe862ac9cd432e9ca3a3",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:53:59.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/5d1ad5655ff19ce40419c4325bdd8ffd3a3c24e0249e316a4af51aebb9a99478",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:52:06.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/4bb3123f4b8471e1064bf2cc7caf93eafb02d8db63e4845a7f35b8713bf2e41b",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:53:52.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/74074991b119c26e152f4c3c5efcce941d15ca28c040db9be35cd97276897052",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:53:57.000Z",
+      "arch": "aarch64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/cce6bc8c87802725d2d9445dfea403272f98c51fdf25ebad2784d86ebbfbecfb",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.11.2",
+      "date": "2026-09-27T19:01:04.000Z",
+      "arch": "x86_64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/4ceb948bc492dd5205a573ed0e203ce0d49d5748727d86e9fd32b62b0d329461",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:57:00.000Z",
+      "arch": "aarch64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/cbd0a70b49373542b7eb1dfc095eb48c20e4b4cb197f0e99baf2b690000c07c7",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:55:13.000Z",
+      "arch": "x86_64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/c9878ce07fa13c3847f4c552846dfcb726fa15563ab109080e0efa071d75eaf3",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:52:54.000Z",
+      "arch": "aarch64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/2045c666a68721364b88b323502c93d614772fa3e9b66e9aff8037daebdfb3a9",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:50:42.000Z",
+      "arch": "x86_64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/d99c79fcb022917bb18a43669772aa5489faeb22ab0c80e715739164ec1de141",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:50:28.000Z",
+      "arch": "x86_64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/7b26a6dd31577d56d3dcfee9d95d64221aa71fd713f1f8739dd680aff4a1e1b2",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:52:06.000Z",
+      "arch": "aarch64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/2c5a6400e8733aabc774458a7624b312ddbb58bc14b70e4b78ed499aaad097d1",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.11.2",
+      "date": "2026-09-27T18:51:03.000Z",
+      "arch": "x86_64",
+      "commit": "78892116634f98834593b49985c2d2a94d5179ac",
+      "fileid": "https://r2.ropensci.org/12d7dc16a5a8f0ae6248fc57f6c211211de9dc9ae82b1ae4f10ec8abce15f0c6",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36341137293"
+    }
+  ]
+}
