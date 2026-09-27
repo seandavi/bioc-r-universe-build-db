@@ -1,0 +1,798 @@
+{
+  "_id": "6ab926b199f7aa8c6aa3a0b7",
+  "Package": "phenomis",
+  "Type": "Package",
+  "Title": "Postprocessing and univariate analysis of omics data",
+  "Version": "1.15.6",
+  "Date": "2026-09-27",
+  "Authors@R": "c(\nperson(given = \"Etienne A.\", family = \"Thevenot\",\nemail = \"etienne.thevenot@cea.fr\",\nrole = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0003-1019-4577\")),\nperson(given = \"Natacha\", family = \"Lenuzza\",\nemail = \"n.lenuzza@gmail.com\",\nrole = \"ctb\"),\nperson(given = \"Marie\", family = \"Tremblay-Franco\",\nemail = \"marie.tremblay-franco@inrae.fr\",\nrole = \"ctb\"),\nperson(given = \"Alyssa\", family = \"Imbert\",\nemail = \"alyssa.imbert@gmail.com\",\nrole = \"ctb\"),\nperson(given = \"Pierrick\", family = \"Roger\",\nemail = \"pierrick.roger@cea.fr\",\nrole = \"ctb\"),\nperson(given = \"Eric\", family = \"Venot\",\nemail = \"eric.venot@cea.fr\",\nrole = \"ctb\"),\nperson(given = \"Sylvain\", family = \"Dechaumet\",\nemail = \"sylvain.dechaumet@cea.fr\",\nrole = \"ctb\")\n)",
+  "Description": "The 'phenomis' package provides methods to perform\npost-processing (i.e. quality control and normalization) as\nwell as univariate statistical analysis of single and\nmulti-omics data sets. These methods include quality control\nmetrics, signal drift and batch effect correction, intensity\ntransformation, univariate hypothesis testing, but also\nclustering (as well as annotation of metabolomics data). The\ndata are handled in the standard Bioconductor formats (i.e.\nSummarizedExperiment and MultiAssayExperiment for single and\nmulti-omics datasets, respectively; the alternative\nExpressionSet and MultiDataSet formats are also supported for\nconvenience). As a result, all methods can be readily chained\nas workflows. The pipeline can be further enriched by\nmultivariate analysis and feature selection, by using the\n'ropls' and 'biosigner' packages, which support the same\nformats. Data can be conveniently imported from and exported to\ntext files. Although the methods were initially targeted to\nmetabolomics data, most of the methods can be applied to other\ntypes of omics data (e.g., transcriptomics, proteomics).",
+  "biocViews": "BatchEffect, Clustering, Coverage, KEGG, MassSpectrometry,\nMetabolomics, Normalization, Proteomics, QualityControl,\nSequencing, StatisticalMethod, Transcriptomics",
+  "VignetteBuilder": "knitr",
+  "License": "CeCILL",
+  "Encoding": "UTF-8",
+  "LazyLoad": "yes",
+  "URL": "https://doi.org/10.1038/s41597-021-01095-3",
+  "RoxygenNote": "7.3.3",
+  "Config/pak/sysreqs": "cmake libglpk-dev libgmp3-dev make libicu-dev\nlibuv1-dev libxml2-dev libmpfr-dev libssl-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-09-27 07:29:31 UTC",
+  "RemoteUrl": "https://github.com/bioc/phenomis",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-09-27 14:12:59 UTC",
+    "User": "root"
+  },
+  "Author": "Etienne A. Thevenot [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-1019-4577>),\nNatacha Lenuzza [ctb],\nMarie Tremblay-Franco [ctb],\nAlyssa Imbert [ctb],\nPierrick Roger [ctb],\nEric Venot [ctb],\nSylvain Dechaumet [ctb]",
+  "Maintainer": "Etienne A. Thevenot <etienne.thevenot@cea.fr>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "phenomis_1.15.6.tar.gz",
+  "_fileid": "https://r2.ropensci.org/ba7e50be8b433815122259f7fa6ed0b2d2b25adb653a89ffd5e38d84aea908dc",
+  "_filesize": 4319951,
+  "_sha256": "ba7e50be8b433815122259f7fa6ed0b2d2b25adb653a89ffd5e38d84aea908dc",
+  "_expires": "2027-01-05T14:22:39.000Z",
+  "_created": "2026-09-27T14:12:59.000Z",
+  "_published": "2026-09-27T14:22:41.752Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 7
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/phenomis",
+  "_commit": {
+    "id": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+    "author": "Etienne Thevenot <etienne.thevenot@cea.fr>",
+    "committer": "Etienne Thevenot <etienne.thevenot@cea.fr>",
+    "message": "v1.15.6: minor corrections\n",
+    "time": 1790494171
+  },
+  "_maintainer": {
+    "name": "Etienne A. Thevenot",
+    "email": "etienne.thevenot@cea.fr",
+    "login": "ethevenot",
+    "description": "Leader of the Metabolomics Data Sciences for Health team (Odisc\u00e9)",
+    "uuid": 19306842,
+    "orcid": "0000-0003-1019-4577"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 108636390568,
+      "time": 233,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "10933702540"
+    },
+    {
+      "job": 108636390615,
+      "time": 513,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10934325053"
+    },
+    {
+      "job": 108636390609,
+      "time": 473,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10933274975"
+    },
+    {
+      "job": 108636390622,
+      "time": 354,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10932929038"
+    },
+    {
+      "job": 108636390666,
+      "time": 245,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10933443151"
+    },
+    {
+      "job": 108635417976,
+      "time": 337,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10933683366"
+    },
+    {
+      "job": 108636390577,
+      "time": 151,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "10933238111"
+    },
+    {
+      "job": 108636390612,
+      "time": 369,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "10933543058"
+    },
+    {
+      "job": 108636390618,
+      "time": 351,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "10934115804"
+    },
+    {
+      "job": 108636390582,
+      "time": 430,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "10934180501"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "SummarizedExperiment",
+      "role": "Depends"
+    },
+    {
+      "package": "Biobase",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "futile.logger",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggrepel",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "htmlwidgets",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "limma",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiDataSet",
+      "role": "Imports"
+    },
+    {
+      "package": "PMCMRplus",
+      "role": "Imports"
+    },
+    {
+      "package": "plotly",
+      "role": "Imports"
+    },
+    {
+      "package": "ranger",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "ropls",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "VennDiagram",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "biosigner",
+      "role": "Suggests"
+    },
+    {
+      "package": "CLL",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "omicade4",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-44",
+      "n": 2
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-38",
+      "n": 1
+    },
+    {
+      "week": "2026-39",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.15.0",
+      "bioc": "3.24"
+    },
+    {
+      "branch": "release",
+      "version": "1.14.0",
+      "bioc": "3.23"
+    }
+  ],
+  "_topics": [
+    "batcheffect",
+    "clustering",
+    "coverage",
+    "kegg",
+    "massspectrometry",
+    "metabolomics",
+    "normalization",
+    "proteomics",
+    "qualitycontrol",
+    "sequencing",
+    "statisticalmethod",
+    "transcriptomics"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 468,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 299,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/phenomis"
+  },
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/phenomis.html",
+    "extra/readme.html",
+    "extra/readme.md"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "clustering",
+    "correcting",
+    "filtering",
+    "gg_barplot",
+    "gg_boxplot",
+    "gg_corplot",
+    "gg_pie",
+    "gg_volcanoplot",
+    "hypotesting",
+    "inspecting",
+    "normalizing",
+    "plot_hypotesting",
+    "reading",
+    "reducing",
+    "transforming",
+    "vennplot",
+    "writing"
+  ],
+  "_help": [
+    {
+      "page": "phenomis-package",
+      "title": "Postprocessing and univariate analysis of omics data",
+      "topics": [
+        "phenomis-package",
+        "phenomis"
+      ]
+    },
+    {
+      "page": "clustering",
+      "title": "clustering",
+      "topics": [
+        "clustering",
+        "clustering,ExpressionSet-method",
+        "clustering,MultiAssayExperiment-method",
+        "clustering,MultiDataSet-method",
+        "clustering,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "correcting",
+      "title": "correcting",
+      "topics": [
+        "correcting",
+        "correcting,ExpressionSet-method",
+        "correcting,MultiAssayExperiment-method",
+        "correcting,MultiDataSet-method",
+        "correcting,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "filtering",
+      "title": "Filtering of the features (and/or samples) with a high proportion of NAs or a low variance",
+      "topics": [
+        "filtering",
+        "filtering,ExpressionSet-method",
+        "filtering,MultiAssayExperiment-method",
+        "filtering,MultiDataSet-method",
+        "filtering,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "gg_barplot",
+      "title": "Barplot with ggplot2",
+      "topics": [
+        "gg_barplot"
+      ]
+    },
+    {
+      "page": "gg_boxplot",
+      "title": "Boxplot with ggplot2",
+      "topics": [
+        "gg_boxplot"
+      ]
+    },
+    {
+      "page": "gg_corplot",
+      "title": "Regression plot with ggplot2",
+      "topics": [
+        "gg_corplot"
+      ]
+    },
+    {
+      "page": "gg_pie",
+      "title": "Pie with ggplot2",
+      "topics": [
+        "gg_pie"
+      ]
+    },
+    {
+      "page": "gg_volcanoplot",
+      "title": "Volcano plot with ggplot2",
+      "topics": [
+        "gg_volcanoplot"
+      ]
+    },
+    {
+      "page": "hypotesting",
+      "title": "Univariate hypothesis testing",
+      "topics": [
+        "hypotesting",
+        "hypotesting,MultiAssayExperiment-method",
+        "hypotesting,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "inspecting",
+      "title": "Inspecting",
+      "topics": [
+        "inspecting",
+        "inspecting,ExpressionSet-method",
+        "inspecting,MultiAssayExperiment-method",
+        "inspecting,MultiDataSet-method",
+        "inspecting,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "normalizing",
+      "title": "Normalization of the data matrix intensities",
+      "topics": [
+        "normalizing",
+        "normalizing,ExpressionSet-method",
+        "normalizing,MultiAssayExperiment-method",
+        "normalizing,MultiDataSet-method",
+        "normalizing,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "plot_hypotesting",
+      "title": "Displays the volcano plot and the individual box plots (respectively, dot plots) after a two group statistical test (respectively, a correlation test) has been performed on a 'SummarizedExperiment' object.",
+      "topics": [
+        "plot_hypotesting",
+        "plot_hypotesting,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "reading",
+      "title": "reading",
+      "topics": [
+        "reading"
+      ]
+    },
+    {
+      "page": "reducing",
+      "title": "Grouping chemically redundant MS1 features",
+      "topics": [
+        "reducing",
+        "reducing,ExpressionSet-method",
+        "reducing,MultiAssayExperiment-method",
+        "reducing,MultiDataSet-method",
+        "reducing,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "transforming",
+      "title": "Transformation of the data matrix intensities",
+      "topics": [
+        "transforming",
+        "transforming,ExpressionSet-method",
+        "transforming,MultiAssayExperiment-method",
+        "transforming,MultiDataSet-method",
+        "transforming,SummarizedExperiment-method"
+      ]
+    },
+    {
+      "page": "vennplot",
+      "title": "Venn diagram with VennDiagram",
+      "topics": [
+        "vennplot"
+      ]
+    },
+    {
+      "page": "writing",
+      "title": "Exporting a SummarizedExperiment (or MultiAssayExperiment) instance into (subfolders with) the 3 tabulated files 'dataMatrix.tsv', sampleMetadata.tsv', 'variableMetadata.tsv'",
+      "topics": [
+        "writing",
+        "writing,ExpressionSet-method",
+        "writing,MultiAssayExperiment-method",
+        "writing,MultiDataSet-method",
+        "writing,SummarizedExperiment-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/phenomis/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "askpass",
+    "base64enc",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "bslib",
+    "BWStest",
+    "cachem",
+    "calibrate",
+    "cli",
+    "cpp11",
+    "crosstalk",
+    "curl",
+    "data.table",
+    "DelayedArray",
+    "digest",
+    "dplyr",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "ggplot2",
+    "ggrepel",
+    "glue",
+    "gmp",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "igraph",
+    "IRanges",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "kSamples",
+    "labeling",
+    "lambda.r",
+    "later",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "multcompView",
+    "MultiAssayExperiment",
+    "MultiDataSet",
+    "mvtnorm",
+    "openssl",
+    "otel",
+    "pillar",
+    "pkgconfig",
+    "plotly",
+    "PMCMRplus",
+    "promises",
+    "purrr",
+    "qqman",
+    "R6",
+    "ranger",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "rlang",
+    "rmarkdown",
+    "Rmpfr",
+    "ropls",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "SuppDists",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "VennDiagram",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "phenomis-vignette.Rmd",
+      "filename": "phenomis-vignette.html",
+      "title": "phenomis: Postprocessing and univariate statistical analysis of omics data",
+      "author": "Etienne A. Thevenot",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Context",
+        "Methods",
+        "Formats",
+        "Managing data and metadata: the SummarizedExperiment and MultiAssayExperiment formats",
+        "Importing from/exporting to tabular files",
+        "Text and graphical outputs",
+        "Hands-on",
+        "The sacurine cohort study",
+        "reading: reading the data",
+        "inspecting: looking at the data",
+        "Post-processing",
+        "correcting: Correcting signal drift and batch effect",
+        "Variable filtering",
+        "Normalization",
+        "transforming: transforming the data intensities",
+        "Sample filtering",
+        "hypotesting: univariate hypothesis testing",
+        "Unsupervised analysis",
+        "Principal component analysis: PCA",
+        "clustering: hierarchical clustering",
+        "Supervised modeling",
+        "Partial Least Squares modeling: (O)PLS(-DA)",
+        "Feature selection",
+        "annotating: MS annotation",
+        "writing: Exporting the results",
+        "Graphical User Interface",
+        "Working with multi-omics datasets",
+        "Appendix",
+        "Additional examples of application to single and multiple omics data sets",
+        "NCI60_4arrays data set",
+        "Cheat sheets for Bioconductor (multi)omics containers",
+        "SummarizedExperiment",
+        "MultiAssayExperiment",
+        "Restoring the annotating method in the phenomis package",
+        "Session info",
+        "References"
+      ],
+      "created": "2022-06-19 21:44:05",
+      "modified": "2026-09-25 13:49:39",
+      "commits": 9
+    }
+  ],
+  "_score": 4.301029995663981,
+  "_indexed": true,
+  "_nocasepkg": "phenomis",
+  "_universes": [
+    "bioc",
+    "ethevenot"
+  ],
+  "_previous": "1.15.4",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:18:27.000Z",
+      "distro": "resolute",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/b3dd812b475996cb7407e1657d8c6fc213fc3a64749d5700a5654a2c8b92c5f9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:17:54.000Z",
+      "distro": "resolute",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/78170feac52e7af0f8b72cdd43eebf56520abe7fc394256b2fabb615ab016925",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:16:58.000Z",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/49b9bae07b8b0425cafbe83ab0464f3c4b1b9b2cf74728b2a89521b22598a2ae",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:18:14.000Z",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/2fad9b3fe46299c01dbe0fae2c84b51e43b55beeb38016b672d424f495bd502b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:16:09.000Z",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/5817c30d09bcf4a5f662f223b43045d880511012d572717b89bacc8c7d09e91c",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:15:33.000Z",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/81a3cbebbe3bf287e3cb56e318ecc556307121922afe5cf795ef00e053cc8716",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:15:21.000Z",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/dcca3b0219e49c5a90e9ef6332f600dd7cde7c0eb4ff24322ad42daf330d4308",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.15.6",
+      "date": "2026-09-27T14:16:02.000Z",
+      "commit": "a69b54c26dc929efe3a2fdb4b4ef741d80ef29e2",
+      "fileid": "https://r2.ropensci.org/1c615adac268725cb2ec3aee93540fd284ee1b4ba4aeb30b6e8d14a12391564e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36324799474"
+    }
+  ]
+}
