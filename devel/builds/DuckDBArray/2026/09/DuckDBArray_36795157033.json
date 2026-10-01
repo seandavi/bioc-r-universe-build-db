@@ -1,0 +1,906 @@
+{
+  "_id": "6abdaad999f7aa8c6aa50c74",
+  "Package": "DuckDBArray",
+  "Version": "0.99.10",
+  "Date": "2026-09-30",
+  "Title": "DuckDB-Backed DelayedArray Implementation",
+  "Description": "Provides DuckDB-backed implementations of DelayedArray and\nDelayedMatrix classes for efficient, out-of-memory operations\non large array and matrix datasets. The package includes\nDuckDBArray, DuckDBArraySeed, and DuckDBMatrix classes with\noptimized matrixStats methods. Supports sparse arrays, grid\npartitioning, and parallel processing for scalable genomic data\nanalysis.",
+  "Authors@R": "c(\nperson(\"Patrick\", \"Aboyoun\", role=c(\"aut\", \"cre\"), email=\"aboyounp@gene.com\"),\nperson(\"Genentech, Inc.\", role=\"cph\")\n)",
+  "License": "MIT + file LICENSE",
+  "URL": "https://github.com/Genentech/DuckDBArray",
+  "BugReports": "https://github.com/Genentech/DuckDBArray/issues",
+  "biocViews": "DataImport, DataRepresentation, Infrastructure, Software",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "Collate": "'DuckDBArraySeed-class.R' 'DuckDBArraySeed-utils.R'\n'DuckDBArray-class.R' 'DuckDBTable-matrixStats.R'\n'DuckDBArraySeed-matrixStats.R' 'DuckDBArray-matrixStats.R'\n'DuckDBArray-package.R' 'DuckDBArray-utils.R'\n'DuckDBMatrix-class.R' 'DuckDBMatrix-utils.R'\n'createDimTables.R' 'rowDeviances.R' 'rowNnzs.R'\n'scanKeycols.R' 'writeCoordArray-duckdb.R'\n'writeCoordArray-generic.R' 'writeCoordArray-methods.R'\n'writeCoordArray-types.R'",
+  "Config/roxygen2/version": "8.1.0",
+  "Config/pak/sysreqs": "cmake libicu-dev libssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-09-30 22:02:38 UTC",
+  "RemoteUrl": "https://github.com/bioc/DuckDBArray",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-10-01 00:19:24 UTC",
+    "User": "root"
+  },
+  "Author": "Patrick Aboyoun [aut, cre],\nGenentech, Inc. [cph]",
+  "Maintainer": "Patrick Aboyoun <aboyounp@gene.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "DuckDBArray_0.99.10.tar.gz",
+  "_fileid": "https://r2.ropensci.org/0b18be1d7f1f2323d268b2df77ebdaec50a4b84e2bae4092a285240e7a645815",
+  "_filesize": 331360,
+  "_sha256": "0b18be1d7f1f2323d268b2df77ebdaec50a4b84e2bae4092a285240e7a645815",
+  "_expires": "2027-01-09T00:35:34.000Z",
+  "_created": "2026-10-01T00:19:24.000Z",
+  "_published": "2026-10-01T00:35:36.849Z",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 5
+  },
+  "_host": "GitHub-Actions",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033",
+  "_status": "success",
+  "_upstream": "https://github.com/bioc/DuckDBArray",
+  "_commit": {
+    "id": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+    "author": "Patrick Aboyoun <aboyoun.patrick@gene.com>",
+    "committer": "Patrick Aboyoun <aboyoun.patrick@gene.com>",
+    "message": "docs: Document partition sizing for large or sparse writeCoordArray writes\n\nThe grid = NULL default (defaultAutoGrid(COO_SparseArray(dim(x)))) budgets\npartitions from dim(x) alone, with no sparsity awareness, and setAutoBlockShape()\nonly redistributes that budget across axes rather than correcting it. Document\nthe density correction via setAutoBlockSize()/setAutoBlockShape(\"scale\"), and\nthe hard ceiling on block.length (.Machine$integer.max) beyond which no such\ntuning can reach a given partition-count target. createDimTables() cross-\nreferences the same section instead of duplicating it. Adds a matching\nvignette section with a worked example.\n",
+    "time": 1790805758
+  },
+  "_maintainer": {
+    "name": "Patrick Aboyoun",
+    "email": "aboyounp@gene.com"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 110158396083,
+      "time": 221,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "11134130435"
+    },
+    {
+      "job": 110158396096,
+      "time": 502,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "11132689997"
+    },
+    {
+      "job": 110158396050,
+      "time": 493,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "11132914666"
+    },
+    {
+      "job": 110158396073,
+      "time": 282,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "11134091805"
+    },
+    {
+      "job": 110158396156,
+      "time": 313,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "11133947979"
+    },
+    {
+      "job": 110156910562,
+      "time": 326,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "11133063672"
+    },
+    {
+      "job": 110158396061,
+      "time": 287,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "11133662297"
+    },
+    {
+      "job": 110158396195,
+      "time": 366,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "11133916850"
+    },
+    {
+      "job": 110158396179,
+      "time": 352,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "11132979401"
+    },
+    {
+      "job": 110158396066,
+      "time": 233,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "11133363757"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Depends"
+    },
+    {
+      "package": "DuckDBDataFrame",
+      "role": "Depends"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Depends"
+    },
+    {
+      "package": "SparseArray",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Arrays",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "dbplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "arrow",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "microbenchmark",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Suggests"
+    },
+    {
+      "package": "DelayedMatrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "HDF5Array",
+      "role": "Suggests"
+    },
+    {
+      "package": "sparseMatrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "TileDBArray",
+      "role": "Suggests"
+    },
+    {
+      "package": "airway",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2026-04",
+      "n": 2
+    },
+    {
+      "week": "2026-06",
+      "n": 2
+    },
+    {
+      "week": "2026-09",
+      "n": 1
+    },
+    {
+      "week": "2026-10",
+      "n": 2
+    },
+    {
+      "week": "2026-12",
+      "n": 3
+    },
+    {
+      "week": "2026-15",
+      "n": 1
+    },
+    {
+      "week": "2026-16",
+      "n": 5
+    },
+    {
+      "week": "2026-17",
+      "n": 1
+    },
+    {
+      "week": "2026-18",
+      "n": 1
+    },
+    {
+      "week": "2026-19",
+      "n": 1
+    },
+    {
+      "week": "2026-21",
+      "n": 2
+    },
+    {
+      "week": "2026-22",
+      "n": 1
+    },
+    {
+      "week": "2026-24",
+      "n": 2
+    },
+    {
+      "week": "2026-25",
+      "n": 1
+    },
+    {
+      "week": "2026-27",
+      "n": 1
+    },
+    {
+      "week": "2026-28",
+      "n": 1
+    },
+    {
+      "week": "2026-29",
+      "n": 6
+    },
+    {
+      "week": "2026-30",
+      "n": 6
+    },
+    {
+      "week": "2026-31",
+      "n": 2
+    },
+    {
+      "week": "2026-32",
+      "n": 3
+    },
+    {
+      "week": "2026-33",
+      "n": 1
+    },
+    {
+      "week": "2026-35",
+      "n": 1
+    },
+    {
+      "week": "2026-37",
+      "n": 1
+    },
+    {
+      "week": "2026-40",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.9",
+      "bioc": "3.24"
+    }
+  ],
+  "_topics": [
+    "dataimport",
+    "datarepresentation",
+    "infrastructure",
+    "software"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "aboyounp-gne",
+      "count": 54,
+      "uuid": 171627243
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 471,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 306,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/DuckDBArray"
+  },
+  "_devurl": "https://github.com/genentech/duckdbarray",
+  "_searchresults": 18,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/DuckDBArray.html",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE"
+  ],
+  "_homeurl": "https://github.com/genentech/duckdbarray",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "aperm",
+    "coerce",
+    "colCounts",
+    "colMaxs",
+    "colMeans",
+    "colMins",
+    "colNnzs",
+    "colSds",
+    "colSums",
+    "colVars",
+    "createDimTables",
+    "dbconn",
+    "DelayedArray",
+    "dimtbls",
+    "dimtbls<-",
+    "DuckDBArray",
+    "DuckDBArraySeed",
+    "DuckDBMatrix",
+    "extract_array",
+    "extract_sparse_array",
+    "is_nonzero",
+    "is_sparse",
+    "Math",
+    "matrixClass",
+    "nzcount",
+    "nzvals",
+    "Ops",
+    "rowCounts",
+    "rowDeviances",
+    "rowMaxs",
+    "rowMeans",
+    "rowMins",
+    "rowNnzs",
+    "rowSds",
+    "rowSums",
+    "rowVars",
+    "scanKeycols",
+    "show",
+    "sweep",
+    "t",
+    "tblconn",
+    "type",
+    "type<-",
+    "writeCoordArray"
+  ],
+  "_help": [
+    {
+      "page": "createDimTables",
+      "title": "Create Dimension Lookup Tables",
+      "topics": [
+        "createDimTables"
+      ]
+    },
+    {
+      "page": "DuckDBArray-class",
+      "title": "DuckDBArray objects",
+      "topics": [
+        "aperm,DuckDBArray-method",
+        "coerce,DuckDBArray,COO_SparseArray-method",
+        "coerce,DuckDBArray,COO_SparseMatrix-method",
+        "coerce,DuckDBArray,dgCMatrix-method",
+        "dbconn,DuckDBArray-method",
+        "dimnames<-,DuckDBArray,ANY-method",
+        "dimtbls,DuckDBArray-method",
+        "dimtbls<-,DuckDBArray-method",
+        "DuckDBArray",
+        "DuckDBArray-class",
+        "t,DuckDBArray-method",
+        "tblconn,DuckDBArray-method",
+        "type,DuckDBArray-method",
+        "type<-,DuckDBArray-method",
+        "[,DuckDBArray,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "DuckDBArray-matrixStats",
+      "title": "DuckDBArray row / column summarization methods",
+      "topics": [
+        "colCounts,DuckDBArray-method",
+        "colMaxs,DuckDBArray-method",
+        "colMeans,DuckDBArray-method",
+        "colMins,DuckDBArray-method",
+        "colSds,DuckDBArray-method",
+        "colSums,DuckDBArray-method",
+        "colVars,DuckDBArray-method",
+        "DuckDBArray-matrixStats",
+        "rowCounts,DuckDBArray-method",
+        "rowMaxs,DuckDBArray-method",
+        "rowMeans,DuckDBArray-method",
+        "rowMins,DuckDBArray-method",
+        "rowSds,DuckDBArray-method",
+        "rowSums,DuckDBArray-method",
+        "rowVars,DuckDBArray-method"
+      ]
+    },
+    {
+      "page": "DuckDBArray-utils",
+      "title": "Common operations on DuckDBArray objects",
+      "topics": [
+        "!,DuckDBArray-method",
+        "DuckDBArray-utils",
+        "is.finite,DuckDBArray-method",
+        "is.infinite,DuckDBArray-method",
+        "is.nan,DuckDBArray-method",
+        "is_nonzero,DuckDBArray-method",
+        "Math,DuckDBArray-method",
+        "nzcount,DuckDBArray-method",
+        "nzvals,DuckDBArray-method",
+        "Ops,atomic,DuckDBArray-method",
+        "Ops,DuckDBArray,atomic-method",
+        "Ops,DuckDBArray,DuckDBArray-method",
+        "Ops,DuckDBArray,missing-method",
+        "sweep,DuckDBArray-method"
+      ]
+    },
+    {
+      "page": "DuckDBArraySeed-class",
+      "title": "DuckDBArraySeed objects",
+      "topics": [
+        "aperm,DuckDBArraySeed-method",
+        "dbconn,DuckDBArraySeed-method",
+        "DelayedArray,DuckDBArraySeed-method",
+        "dim,DuckDBArraySeed-method",
+        "dimnames,DuckDBArraySeed-method",
+        "dimnames<-,DuckDBArraySeed,ANY-method",
+        "dimtbls,DuckDBArraySeed-method",
+        "dimtbls<-,DuckDBArraySeed-method",
+        "DuckDBArraySeed",
+        "DuckDBArraySeed-class",
+        "extract_array,DuckDBArraySeed-method",
+        "extract_sparse_array,DuckDBArraySeed-method",
+        "show,DuckDBArraySeed-method",
+        "t,DuckDBArraySeed-method",
+        "tblconn,DuckDBArraySeed-method",
+        "type,DuckDBArraySeed-method",
+        "type<-,DuckDBArraySeed-method",
+        "[,DuckDBArraySeed,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "DuckDBArraySeed-matrixStats",
+      "title": "DuckDBArraySeed row / column summarization methods",
+      "topics": [
+        "colCounts,DuckDBArraySeed-method",
+        "colMaxs,DuckDBArraySeed-method",
+        "colMeans,DuckDBArraySeed-method",
+        "colMins,DuckDBArraySeed-method",
+        "colSds,DuckDBArraySeed-method",
+        "colSums,DuckDBArraySeed-method",
+        "colVars,DuckDBArraySeed-method",
+        "DuckDBArraySeed-matrixStats",
+        "rowCounts,DuckDBArraySeed-method",
+        "rowMaxs,DuckDBArraySeed-method",
+        "rowMeans,DuckDBArraySeed-method",
+        "rowMins,DuckDBArraySeed-method",
+        "rowSds,DuckDBArraySeed-method",
+        "rowSums,DuckDBArraySeed-method",
+        "rowVars,DuckDBArraySeed-method"
+      ]
+    },
+    {
+      "page": "DuckDBArraySeed-utils",
+      "title": "Common operations on DuckDBArraySeed objects",
+      "topics": [
+        "!,DuckDBArraySeed-method",
+        "DuckDBArraySeed-utils",
+        "is.finite,DuckDBArraySeed-method",
+        "is.infinite,DuckDBArraySeed-method",
+        "is.nan,DuckDBArraySeed-method",
+        "is_nonzero,DuckDBArraySeed-method",
+        "is_sparse,DuckDBArraySeed-method",
+        "Math,DuckDBArraySeed-method",
+        "nzcount,DuckDBArraySeed-method",
+        "Ops,atomic,DuckDBArraySeed-method",
+        "Ops,DuckDBArraySeed,atomic-method",
+        "Ops,DuckDBArraySeed,DuckDBArraySeed-method",
+        "Ops,DuckDBArraySeed,missing-method",
+        "sweep,DuckDBArraySeed-method"
+      ]
+    },
+    {
+      "page": "DuckDBMatrix-class",
+      "title": "DuckDBMatrix objects",
+      "topics": [
+        "DuckDBMatrix",
+        "DuckDBMatrix-class",
+        "matrixClass,DuckDBArray-method",
+        "[,DuckDBMatrix,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "DuckDBMatrix-utils",
+      "title": "DuckDBMatrix utility methods",
+      "topics": [
+        "%*%,DuckDBMatrix,numeric-method",
+        "%*%,numeric,DuckDBMatrix-method",
+        "crossprod,DuckDBMatrix,missing-method",
+        "crossprod,DuckDBMatrix,numeric-method",
+        "crossprod,numeric,DuckDBMatrix-method",
+        "DuckDBMatrix-utils",
+        "tcrossprod,DuckDBMatrix,missing-method",
+        "tcrossprod,DuckDBMatrix,numeric-method",
+        "tcrossprod,numeric,DuckDBMatrix-method"
+      ]
+    },
+    {
+      "page": "DuckDBTable-matrixStats",
+      "title": "DuckDBTable row / column summarization methods",
+      "topics": [
+        "colCounts,DuckDBTable-method",
+        "colMaxs,DuckDBTable-method",
+        "colMeans,DuckDBTable-method",
+        "colMins,DuckDBTable-method",
+        "colSds,DuckDBTable-method",
+        "colSums,DuckDBTable-method",
+        "colVars,DuckDBTable-method",
+        "DuckDBTable-matrixStats",
+        "rowCounts,DuckDBTable-method",
+        "rowMaxs,DuckDBTable-method",
+        "rowMeans,DuckDBTable-method",
+        "rowMins,DuckDBTable-method",
+        "rowSds,DuckDBTable-method",
+        "rowSums,DuckDBTable-method",
+        "rowVars,DuckDBTable-method",
+        "sweep,DuckDBTable-method"
+      ]
+    },
+    {
+      "page": "rowDeviances",
+      "title": "Row-wise Deviance Statistics",
+      "topics": [
+        "rowDeviances",
+        "rowDeviances,DelayedMatrix-method",
+        "rowDeviances,dgCMatrix-method",
+        "rowDeviances,DuckDBMatrix-method",
+        "rowDeviances,matrix-method"
+      ]
+    },
+    {
+      "page": "rowNnzs",
+      "title": "Row and Column Non-Zero Counts",
+      "topics": [
+        "colNnzs",
+        "colNnzs,ANY-method",
+        "colNnzs,DuckDBArray-method",
+        "rowNnzs",
+        "rowNnzs,ANY-method",
+        "rowNnzs,DuckDBArray-method"
+      ]
+    },
+    {
+      "page": "scanKeycols",
+      "title": "Scan a Coordinate Parquet File for keycols",
+      "topics": [
+        "scanKeycols"
+      ]
+    },
+    {
+      "page": "writeCoordArray",
+      "title": "Write an Array-Like Object in Coordinate Format",
+      "topics": [
+        "writeCoordArray",
+        "writeCoordArray,ANY-method",
+        "writeCoordArray,DuckDBArray-method"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/DuckDBArray/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "arrow",
+    "assertthat",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "blob",
+    "cli",
+    "cpp11",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dplyr",
+    "duckdb",
+    "DuckDBDataFrame",
+    "generics",
+    "glue",
+    "IRanges",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "R6",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "DuckDBArray.Rmd",
+      "filename": "DuckDBArray.html",
+      "title": "Introduction to DuckDBArray",
+      "author": "Patrick Aboyoun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Quick start",
+        "Working with a DuckDBMatrix",
+        "Writing a matrix to the DuckDB backend",
+        "Sizing partitions for large or sparse writes",
+        "Subsetting",
+        "Matrix statistics",
+        "Sparse data",
+        "Lazy evaluation",
+        "Realizing large results in blocks",
+        "N-dimensional arrays",
+        "Introspecting a Parquet file you did not write",
+        "When to use DuckDBArray",
+        "Session information"
+      ],
+      "created": "2026-07-06 20:24:12",
+      "modified": "2026-09-30 22:02:38",
+      "commits": 7
+    },
+    {
+      "source": "DuckDBArray-comparison.Rmd",
+      "filename": "DuckDBArray-comparison.html",
+      "title": "Benchmarking DuckDBArray",
+      "author": "Patrick Aboyoun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "What DuckDBArray optimizes",
+        "A small, live comparison",
+        "Benchmark setup",
+        "Giving every backend its best effort",
+        "Results",
+        "Main takeaways",
+        "Backend comparison",
+        "When to use each",
+        "Running your own benchmarks",
+        "Session information"
+      ],
+      "created": "2026-01-24 01:59:42",
+      "modified": "2026-08-08 21:16:47",
+      "commits": 6
+    },
+    {
+      "source": "DuckDBArray-backend.Rmd",
+      "filename": "DuckDBArray-backend.html",
+      "title": "Implementing the DuckDBArray backend",
+      "author": "Patrick Aboyoun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Scope",
+        "Architecture",
+        "The seed contract",
+        "Shape: dim() and dimnames()",
+        "Dense blocks: extract_array()",
+        "Sparse blocks: extract_sparse_array()",
+        "Wrapping the seed",
+        "From array operations to SQL",
+        "Grid partitioning",
+        "Realization and interoperability",
+        "Session information"
+      ],
+      "created": "2026-07-06 20:24:12",
+      "modified": "2026-08-05 15:58:22",
+      "commits": 3
+    }
+  ],
+  "_score": 6.288696260590255,
+  "_indexed": true,
+  "_nocasepkg": "duckdbarray",
+  "_universes": [
+    "bioc",
+    "genentech"
+  ],
+  "_previous": "0.99.9",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:24:40.000Z",
+      "distro": "resolute",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/40686fa30b33664053bbc1f3e556e70d908cf0241912fae9db95661166f643c2",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:25:13.000Z",
+      "distro": "resolute",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/5fc713bf9547d3a7d63661ff48e5c7e0dba2619e22d830c4510a89831343c111",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:28:21.000Z",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/2d1646dfce81b4e79191cc83a8fa0095bf17b2c3b3844641da96b8df33f70fb8",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:31:32.000Z",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/8d1cc8628ef424695dfd209d10d7c52ad51307340cb494f4f0eb083aab9efbe1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:24:54.000Z",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/efba0f60edc1099087af2fd05748b79ec97fbcf1f1275a2be661e4dfc33366dc",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:21:40.000Z",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/d1ad8c609debfc75687a054c4673604f70a16a836198383b435c80c77b3f40bd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:21:41.000Z",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/8f39b38391691f91f34066ea58740ee805ca0c6b8fdc19c720c372eb0a14dc62",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "0.99.10",
+      "date": "2026-10-01T00:21:18.000Z",
+      "commit": "8c837cdc4217c70437ec1cd9bf3faf4b351ebd37",
+      "fileid": "https://r2.ropensci.org/928b312820fda0a2755cd25247ad9b3f98bfbadb638bb65436020a1718a0e62b",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/36795157033"
+    }
+  ]
+}
