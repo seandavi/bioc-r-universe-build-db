@@ -1,0 +1,1078 @@
+{
+  "_id": "6ad13ddf0edca5be25021afd",
+  "Package": "quantMSImageR",
+  "Title": "Processing and Quantification of Targeted Mass Spectrometry\nImaging Data",
+  "Version": "0.99.10",
+  "Authors@R": "person(c(\"Matthew\", \"J.\"), \"Smith\", , \"mattyjsmith123@gmail.com\", role = c(\"aut\", \"cre\"),\ncomment = c(ORCID = \"0000-0002-7357-2670\"))",
+  "Description": "Implements tools for processing and quantifying targeted\nDESI-MRM mass spectrometry imaging (MSI) datasets, extending\nthe Cardinal package. Includes signal-to-noise filtering\nagainst background pixels, tissue/background separation,\nper-feature ion images, quantile heatmaps, quantification\nagainst on-slide or on-tissue calibration standards, and batch\nexport of per-feature text images for external viewers.",
+  "License": "MIT + file LICENSE",
+  "URL": "https://mjs-708.github.io/quantMSImageR,\nhttps://github.com/MJS-708/quantMSImageR",
+  "BugReports": "https://github.com/MJS-708/quantMSImageR/issues",
+  "biocViews": "Software, MassSpectrometry, ImagingMassSpectrometry,\nMetabolomics, Lipidomics, QualityControl, Normalization,\nVisualization",
+  "Encoding": "UTF-8",
+  "Roxygen": "list(markdown = TRUE)",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Collate": "'setClasses.R' 'accessors.R' 'alignFeatures.R' 'applySNR.R'\n'back2NA.R' 'bindPanels.R' 'blockCentre.R' 'buildFeatureMeta.R'\n'combineMSIs.R' 'contributionHm.R' 'createCalCurve.R'\n'createMSIDataMatrix.R' 'generateTxtImages.R' 'imageR.R'\n'int2SNR.R' 'int2conc.R' 'int2response.R' 'join_ion_library.R'\n'labelROIs.R' 'palettes.R' 'plotCalCoverage.R'\n'quantMSImageR-package.R' 'quantileHm.R' 'readMRM.R'\n'removeBlankMzs.R' 'runExample.R' 'runStudy.R'\n'selectTissuePixels.R' 'stitchAcquisitions.R'\n'summariseCalLevels.R' 'trimMSI.R' 'validate.R' 'zero2NA.R'",
+  "Config/roxygen2/version": "8.0.0",
+  "Config/pak/sysreqs": "cmake make libicu-dev libpng-dev libuv1-dev perl",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-10-15 17:12:57 UTC",
+  "RemoteUrl": "https://github.com/bioc/quantMSImageR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-10-15 20:39:23 UTC",
+    "User": "root"
+  },
+  "Author": "Matthew J. Smith [aut, cre] (ORCID:\n<https://orcid.org/0000-0002-7357-2670>)",
+  "Maintainer": "Matthew J. Smith <mattyjsmith123@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "quantMSImageR_0.99.10.tar.gz",
+  "_fileid": "https://r2.ropensci.org/49ea743728da3dd3e2c7c381821deefa09284d89b4f86fa1f053e092059a95b2",
+  "_filesize": 1991907,
+  "_sha256": "49ea743728da3dd3e2c7c381821deefa09284d89b4f86fa1f053e092059a95b2",
+  "_expires": "2027-01-23T20:55:56.000Z",
+  "_created": "2026-10-15T20:39:23.000Z",
+  "_published": "2026-10-15T20:55:59.750Z",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 13
+  },
+  "_upstream": "https://github.com/bioc/quantMSImageR",
+  "_commit": {
+    "id": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+    "author": "Matthew Smith <matthew.smith@ki.se>",
+    "committer": "Matthew Smith <matthew.smith@ki.se>",
+    "message": "Version 0.99.10: blocking, per-block ion images, stitch overlap\n\nCorrect a study for a factor that is not the comparison -- the patient a\npaired set of treatments came from, the sex of an animal, the slide an\nacquisition sat on.\n\n* `block:` names that factor per sample, beside the `group:` being compared.\n  `parameters: block_centre:` decides what to do about it: `center` divides\n  each feature by the block's own geometric mean, `baseline` by its\n  `baseline_group` arm so a value reads as a fold change against its own\n  control. `off` is the default, so declaring a block changes no number on\n  its own. The correction is multiplicative, so a block's gain goes and the\n  size of its response stays. It reaches the heatmaps and the comparison\n  plots; the ion images stay uncorrected, because an image should show the\n  intensity that was measured. A corrected report says so and gains\n  `blocked` in its filename. `blockCentre()` is exported.\n\n* `output: ion_images:` collects the display settings every image in the\n  report shares. `percentile:` is the cap -- previously the animation was\n  fixed at 95, the dropdown computed its own, and the concentration images\n  silently took 99. `scale_within:` gives each block its own colour scale,\n  drawn as one column per block with its groups as rows and replicates\n  across, each column stating the value it is capped at.\n\n* `stitchAcquisitions(overlap = )` and `parameters: stitch_overlap:` for\n  pieces of one tissue that share a strip. `error` stays the default.\n\n* `fData()` carries `collision_eV` and `cone_V`, so the feature table tells\n  two transitions apart without a trip to the raw data.\n\n* A sample's group is given by `group:` rather than `label:`, and\n  `baseline_label:` by `baseline_group:`. Both old names keep working and\n  `validateConfig()` says how many samples still use them.\n\n* `heatmap_style: auto` no longer picks the contribution heatmap when the\n  z-score behind it cannot resolve anything: that score is taken within a",
+    "time": 1792084377
+  },
+  "_maintainer": {
+    "name": "Matthew J. Smith",
+    "email": "mattyjsmith123@gmail.com",
+    "login": "mjs-708",
+    "orcid": "0000-0002-7357-2670",
+    "description": "",
+    "uuid": 35523649
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 116659303748,
+      "time": 180,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12004549968"
+    },
+    {
+      "job": 116659303731,
+      "time": 338,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12006255631"
+    },
+    {
+      "job": 116659303489,
+      "time": 614,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12005463180"
+    },
+    {
+      "job": 116659303468,
+      "time": 184,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "12006636455"
+    },
+    {
+      "job": 116659303601,
+      "time": 202,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12006362054"
+    },
+    {
+      "job": 116656677957,
+      "time": 342,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12004329875"
+    },
+    {
+      "job": 116659303475,
+      "time": 146,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "12004844437"
+    },
+    {
+      "job": 116659303371,
+      "time": 200,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12006135227"
+    },
+    {
+      "job": 116659303404,
+      "time": 251,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "12006215488"
+    },
+    {
+      "job": 116659303451,
+      "time": 229,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12006200271"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Cardinal",
+      "version": ">= 3.6.2",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "chemCal",
+      "version": ">= 0.2.3",
+      "role": "Imports"
+    },
+    {
+      "package": "viridis",
+      "version": ">= 0.6.5",
+      "role": "Imports"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "version": ">= 2.20.0",
+      "role": "Imports"
+    },
+    {
+      "package": "circlize",
+      "version": ">= 0.4.15",
+      "role": "Imports"
+    },
+    {
+      "package": "pracma",
+      "version": ">= 2.4.0",
+      "role": "Imports"
+    },
+    {
+      "package": "rmarkdown",
+      "version": ">= 2.20",
+      "role": "Imports"
+    },
+    {
+      "package": "purrr",
+      "version": ">= 1.0.0",
+      "role": "Imports"
+    },
+    {
+      "package": "CardinalIO",
+      "version": ">= 1.0.0",
+      "role": "Imports"
+    },
+    {
+      "package": "ProtGenerics",
+      "version": ">= 1.34.0",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "version": ">= 1.1.4",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "version": ">= 4.0.0",
+      "role": "Imports"
+    },
+    {
+      "package": "tibble",
+      "version": ">= 3.2.1",
+      "role": "Imports"
+    },
+    {
+      "package": "tidyr",
+      "version": ">= 1.3.1",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "version": ">= 1.2.0",
+      "role": "Imports"
+    },
+    {
+      "package": "yaml",
+      "version": ">= 2.3.0",
+      "role": "Imports"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "version": ">= 1.40",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "version": ">= 2.28.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "rstudioapi",
+      "version": ">= 0.15.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "DT",
+      "version": ">= 0.33",
+      "role": "Suggests"
+    },
+    {
+      "package": "htmltools",
+      "version": ">= 0.5.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "magick",
+      "version": ">= 2.8.4",
+      "role": "Suggests"
+    },
+    {
+      "package": "openxlsx",
+      "version": ">= 4.2.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "matter",
+      "version": ">= 2.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-19",
+      "n": 1
+    },
+    {
+      "week": "2026-20",
+      "n": 1
+    },
+    {
+      "week": "2026-23",
+      "n": 2
+    },
+    {
+      "week": "2026-28",
+      "n": 1
+    },
+    {
+      "week": "2026-30",
+      "n": 39
+    },
+    {
+      "week": "2026-31",
+      "n": 3
+    },
+    {
+      "week": "2026-34",
+      "n": 7
+    },
+    {
+      "week": "2026-39",
+      "n": 12
+    },
+    {
+      "week": "2026-42",
+      "n": 1
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.9",
+      "bioc": "3.24",
+      "repository": "bioc"
+    }
+  ],
+  "_topics": [
+    "software",
+    "massspectrometry",
+    "imagingmassspectrometry",
+    "metabolomics",
+    "lipidomics",
+    "qualitycontrol",
+    "normalization",
+    "visualization"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "mjs-708",
+      "count": 1,
+      "uuid": 35523649
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 477,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 188,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/quantMSImageR"
+  },
+  "_devurl": "https://github.com/mjs-708/quantmsimager",
+  "_searchresults": 0,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/quantMSImageR.html",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE"
+  ],
+  "_homeurl": "https://github.com/mjs-708/quantmsimager",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "alignFeatures",
+    "applySNR",
+    "back2NA",
+    "bindPanels",
+    "blockCentre",
+    "buildFeatureMeta",
+    "calibrationData",
+    "calibrationData<-",
+    "calibrationDiagnostics",
+    "calibrationInfo",
+    "calibrationLevels",
+    "calibrationMetadata",
+    "calibrationModels",
+    "calibrationModels<-",
+    "calibrationR2",
+    "combineMSIs",
+    "contributionHm",
+    "createCalCurve",
+    "createMSIDataMatrix",
+    "generateTxtImages",
+    "imageR",
+    "int2conc",
+    "int2response",
+    "int2SNR",
+    "labelROIs",
+    "plotCalCoverage",
+    "quant_MSImagingExperiment",
+    "quantileHm",
+    "quantPalettes",
+    "readMRM",
+    "removeBlankMzs",
+    "runExample",
+    "runStudy",
+    "selectTissuePixels",
+    "show",
+    "stitchAcquisitions",
+    "summariseCalLevels",
+    "tissueData",
+    "tissueInfo",
+    "tissueMatrix",
+    "trimMSI",
+    "validateConfig",
+    "zero2NA"
+  ],
+  "_help": [
+    {
+      "page": "alignFeatures",
+      "title": "Align two MSI objects to their common features",
+      "concept": [
+        "combining acquisitions"
+      ],
+      "topics": [
+        "alignFeatures"
+      ]
+    },
+    {
+      "page": "applySNR-quant_MSImagingExperiment-method",
+      "title": "Apply SNR mask to intensity values",
+      "concept": [
+        "filtering"
+      ],
+      "topics": [
+        "applySNR",
+        "applySNR,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "back2NA-quant_MSImagingExperiment-method",
+      "title": "Set background pixel intensities to NA",
+      "concept": [
+        "filtering"
+      ],
+      "topics": [
+        "back2NA",
+        "back2NA,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "bindPanels",
+      "title": "Merge two MSI objects of the same tissue by coordinate-matched rbind",
+      "concept": [
+        "combining acquisitions"
+      ],
+      "topics": [
+        "bindPanels"
+      ]
+    },
+    {
+      "page": "blockCentre",
+      "title": "Remove a blocking factor's offset from an MSI object",
+      "concept": [
+        "workflow"
+      ],
+      "topics": [
+        "blockCentre"
+      ]
+    },
+    {
+      "page": "buildFeatureMeta",
+      "title": "Build per-feature metadata by joining an ion library on m/z",
+      "topics": [
+        "buildFeatureMeta"
+      ]
+    },
+    {
+      "page": "calibrationInfo-class",
+      "title": "Calibration metadata for an imaging experiment",
+      "concept": [
+        "calibration"
+      ],
+      "topics": [
+        "calibrationInfo",
+        "calibrationInfo-class",
+        "show,calibrationInfo-method"
+      ]
+    },
+    {
+      "page": "combineMSIs-MSImagingExperiment-method",
+      "title": "Combine MSI experiments across acquisitions",
+      "concept": [
+        "combining acquisitions"
+      ],
+      "topics": [
+        "combineMSIs",
+        "combineMSIs,MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "contributionHm",
+      "title": "Group-mean heatmap with per-sample contribution as opacity",
+      "concept": [
+        "visualisation"
+      ],
+      "topics": [
+        "contributionHm"
+      ]
+    },
+    {
+      "page": "createCalCurve-quant_MSImagingExperiment-method",
+      "title": "Fit per-analyte calibration models",
+      "concept": [
+        "calibration"
+      ],
+      "topics": [
+        "createCalCurve",
+        "createCalCurve,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "createMSIDataMatrix-quant_MSImagingExperiment-method",
+      "title": "Create a feature-by-sample MSI data matrix",
+      "topics": [
+        "createMSIDataMatrix",
+        "createMSIDataMatrix,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "generateTxtImages",
+      "title": "Load, process and optionally export per-feature text-image matrices",
+      "concept": [
+        "workflow"
+      ],
+      "topics": [
+        "generateTxtImages"
+      ]
+    },
+    {
+      "page": "imageR-quant_MSImagingExperiment-method",
+      "title": "Draw an ion image for one feature",
+      "concept": [
+        "visualisation"
+      ],
+      "topics": [
+        "imageR",
+        "imageR,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "int2conc-quant_MSImagingExperiment-method",
+      "title": "Convert response to calibrated amount estimates",
+      "concept": [
+        "calibration"
+      ],
+      "topics": [
+        "int2conc",
+        "int2conc,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "int2response-quant_MSImagingExperiment-method",
+      "title": "Normalise pixel intensities to internal-standard response",
+      "concept": [
+        "filtering"
+      ],
+      "topics": [
+        "int2response",
+        "int2response,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "int2SNR-quant_MSImagingExperiment-method",
+      "title": "Calculate background-referenced signal-to-noise ratios",
+      "concept": [
+        "filtering"
+      ],
+      "topics": [
+        "int2SNR",
+        "int2SNR,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "labelROIs",
+      "title": "Label regions of interest within the tissue of an acquisition",
+      "concept": [
+        "acquisition"
+      ],
+      "topics": [
+        "labelROIs"
+      ]
+    },
+    {
+      "page": "plotCalCoverage-quant_MSImagingExperiment-method",
+      "title": "Check that measured pixels fall within the calibrated range",
+      "concept": [
+        "calibration"
+      ],
+      "topics": [
+        "plotCalCoverage",
+        "plotCalCoverage,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "print.quantValidation",
+      "title": "Print a validation result",
+      "concept": [
+        "workflow"
+      ],
+      "topics": [
+        "print.quantValidation"
+      ]
+    },
+    {
+      "page": "quant_MSImagingExperiment",
+      "title": "Quantifiable MS imaging experiment",
+      "topics": [
+        "quant_MSImagingExperiment",
+        "quant_MSImagingExperiment-class"
+      ]
+    },
+    {
+      "page": "quantileHm",
+      "title": "Quantile heatmap of MSI features across samples",
+      "concept": [
+        "visualisation"
+      ],
+      "topics": [
+        "quantileHm"
+      ]
+    },
+    {
+      "page": "quantMSImageR-accessors",
+      "title": "Accessors for calibration and tissue metadata",
+      "concept": [
+        "accessors"
+      ],
+      "topics": [
+        "calibrationData",
+        "calibrationData,quant_MSImagingExperiment-method",
+        "calibrationData<-",
+        "calibrationData<-,quant_MSImagingExperiment-method",
+        "calibrationDiagnostics",
+        "calibrationDiagnostics,quant_MSImagingExperiment-method",
+        "calibrationLevels",
+        "calibrationLevels,quant_MSImagingExperiment-method",
+        "calibrationMetadata",
+        "calibrationMetadata,quant_MSImagingExperiment-method",
+        "calibrationModels",
+        "calibrationModels,quant_MSImagingExperiment-method",
+        "calibrationModels<-",
+        "calibrationModels<-,quant_MSImagingExperiment-method",
+        "calibrationR2",
+        "calibrationR2,quant_MSImagingExperiment-method",
+        "quantMSImageR-accessors",
+        "tissueData",
+        "tissueData,quant_MSImagingExperiment-method",
+        "tissueMatrix",
+        "tissueMatrix,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "quantPalettes",
+      "title": "Colour palettes used by quantMSImageR",
+      "concept": [
+        "visualisation"
+      ],
+      "topics": [
+        "quantPalettes"
+      ]
+    },
+    {
+      "page": "readMRM",
+      "title": "Read a Waters DESI-MRM acquisition into an MSImagingExperiment",
+      "concept": [
+        "acquisition"
+      ],
+      "topics": [
+        "readMRM"
+      ]
+    },
+    {
+      "page": "removeBlankMzs-quant_MSImagingExperiment-method",
+      "title": "Remove features without observed signal",
+      "concept": [
+        "acquisition"
+      ],
+      "topics": [
+        "removeBlankMzs",
+        "removeBlankMzs,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "runExample",
+      "title": "Run the quantMSImageR example study",
+      "concept": [
+        "workflow"
+      ],
+      "topics": [
+        "runExample"
+      ]
+    },
+    {
+      "page": "runStudy",
+      "title": "Run a full DESI-MRM study from a YAML configuration",
+      "concept": [
+        "workflow"
+      ],
+      "topics": [
+        "runStudy"
+      ]
+    },
+    {
+      "page": "selectTissuePixels",
+      "title": "Interactively select tissue pixels for an acquisition",
+      "concept": [
+        "acquisition"
+      ],
+      "topics": [
+        "selectTissuePixels"
+      ]
+    },
+    {
+      "page": "stitchAcquisitions",
+      "title": "Stitch acquisitions that are pieces of one tissue into a single sample",
+      "concept": [
+        "combining acquisitions"
+      ],
+      "topics": [
+        "stitchAcquisitions"
+      ]
+    },
+    {
+      "page": "summariseCalLevels-quant_MSImagingExperiment-method",
+      "title": "Summarise the response at each calibration level",
+      "concept": [
+        "calibration"
+      ],
+      "topics": [
+        "summariseCalLevels",
+        "summariseCalLevels,quant_MSImagingExperiment-method"
+      ]
+    },
+    {
+      "page": "tissueInfo-class",
+      "title": "Tissue-level summaries for an imaging experiment",
+      "topics": [
+        "show,tissueInfo-method",
+        "tissueInfo",
+        "tissueInfo-class"
+      ]
+    },
+    {
+      "page": "trimMSI",
+      "title": "Remove pure-background border rows and columns from an MSI object",
+      "concept": [
+        "acquisition"
+      ],
+      "topics": [
+        "trimMSI"
+      ]
+    },
+    {
+      "page": "validateConfig",
+      "title": "Validate a study YAML configuration",
+      "concept": [
+        "workflow"
+      ],
+      "topics": [
+        "validateConfig"
+      ]
+    },
+    {
+      "page": "zero2NA-quant_MSImagingExperiment-method",
+      "title": "Replace zero intensities with NA",
+      "concept": [
+        "filtering"
+      ],
+      "topics": [
+        "zero2NA",
+        "zero2NA,quant_MSImagingExperiment-method"
+      ]
+    }
+  ],
+  "_pkglogo": "https://github.com/bioc/quantMSImageR/raw/HEAD/man/figures/logo.png",
+  "_readme": "https://github.com/bioc/quantMSImageR/raw/HEAD/README.md",
+  "_rundeps": [
+    "base64enc",
+    "BH",
+    "Biobase",
+    "BiocGenerics",
+    "BiocParallel",
+    "bslib",
+    "cachem",
+    "Cardinal",
+    "CardinalIO",
+    "chemCal",
+    "circlize",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "colorspace",
+    "ComplexHeatmap",
+    "cpp11",
+    "crayon",
+    "digest",
+    "doParallel",
+    "dplyr",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "foreach",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GetoptLong",
+    "ggplot2",
+    "GlobalOptions",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "highr",
+    "htmltools",
+    "IRanges",
+    "irlba",
+    "isoband",
+    "iterators",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "matrixStats",
+    "matter",
+    "memoise",
+    "mime",
+    "nlme",
+    "ontologyIndex",
+    "patchwork",
+    "pillar",
+    "pkgconfig",
+    "png",
+    "pracma",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "shape",
+    "snow",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "utf8",
+    "vctrs",
+    "viridis",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "quantMSImageR.Rmd",
+      "filename": "quantMSImageR.html",
+      "title": "Introduction to quantMSImageR",
+      "author": "Matthew J. Smith",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "What this package does",
+        "Scope",
+        "The workflow",
+        "Installation",
+        "Quick start",
+        "The data model",
+        "Reading your own data",
+        "Loading the acquisitions",
+        "Pieces of one tissue",
+        "Selecting tissue pixels",
+        "Labelling regions of interest",
+        "What the labels look like downstream",
+        "Ion images",
+        "Colour-scale treatment",
+        "Quantile heatmaps across samples",
+        "Seeing which sample carried a group effect",
+        "Signal-to-noise filtering",
+        "Running a full study from a YAML config",
+        "Samples made of several acquisitions",
+        "Comparing regions of interest",
+        "A second factor: blocking",
+        "What correcting does",
+        "Ion images scaled within a block",
+        "Pieces that overlap",
+        "The configuration as a record of the analysis",
+        "References",
+        "Session information"
+      ],
+      "created": "2026-07-20 14:02:25",
+      "modified": "2026-10-15 17:12:57",
+      "commits": 24
+    },
+    {
+      "source": "quantification.Rmd",
+      "filename": "quantification.html",
+      "title": "Quantification with calibration standards",
+      "author": "Matthew J. Smith",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "On-slide versus on-tissue calibration",
+        "Scope and assumptions",
+        "Installation",
+        "Calibration workflow overview",
+        "The bundled calibration dataset",
+        "Fitting and diagnosing calibration models",
+        "Applying the models to a study section",
+        "Checking calibration coverage",
+        "Handling out-of-range pixels",
+        "Driving calibration from a study YAML",
+        "Interpretation and limitations",
+        "References",
+        "Session information"
+      ],
+      "created": "2026-07-20 16:40:26",
+      "modified": "2026-08-20 16:00:06",
+      "commits": 14
+    }
+  ],
+  "_score": 5,
+  "_indexed": true,
+  "_nocasepkg": "quantmsimager",
+  "_universes": [
+    "bioc",
+    "mjs-708"
+  ],
+  "_previous": "0.99.9",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:43:20.000Z",
+      "distro": "resolute",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/6cace9e278f40d1d8cb3a228766b2614a179a48a3c9261de6701f6a893532870",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:48:21.000Z",
+      "distro": "resolute",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/cc8e8588f8134fc444d477aa585e91b1f88082d26565956539c21d749533713c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:52:43.000Z",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/159ebfefc99a2801246f53f7b6c11cccba5df0f4ad89397c47fe760c3ce6dcdc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:53:41.000Z",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/b6b2071cb7423f7b522b54a57b2916830a4e8317343a4c20bcfa8e93ae73378f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:42:24.000Z",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/8b6621aaada3ca4810999f510b368aa2f0bd8da79a4cfacf17c7f9fcdcf96413",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:41:05.000Z",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/b2ecd3c862914b1ee88ce6be6ffa6acc4f68f5944e89ceb731ae1b799eef2448",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:41:53.000Z",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/cb636f6f4e123d67ec2fbab8060e17a075137c843a164d6e1466c30fa668e51a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "0.99.10",
+      "date": "2026-10-15T20:41:16.000Z",
+      "commit": "d1987f264383c7995d80b8a3679670ddb1d9e366",
+      "fileid": "https://r2.ropensci.org/a9813e77c418cb22786b035c9ebd850e07cbcdd50e27117c4415b7ed3e04b52d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38802985245"
+    }
+  ]
+}
