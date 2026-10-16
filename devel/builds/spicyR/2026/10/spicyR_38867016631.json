@@ -1,0 +1,930 @@
+{
+  "_id": "6ad1dd2ba6a61792ed76bbc6",
+  "Package": "spicyR",
+  "Type": "Package",
+  "Title": "Test Changes in the Co-Localisation of Cell Types Between Groups\nof Patients",
+  "Version": "1.99.24",
+  "Authors@R": "c(\nperson(\"Nicolas\", \"Canete\", , \"nicolas.canete@sydney.edu.au\", role = \"aut\"),\nperson(\"Ellis\", \"Patrick\", , \"ellis.patrick@sydney.edu.au\", role = c(\"aut\", \"cre\")),\nperson(\"Sadiq\", \"Dohadwalla\", role = \"aut\"),\nperson(\"Elijah\", \"Willie\", , \"ewillie0004@gmail.com\", role = \"aut\"),\nperson(\"Nicholas\", \"Robertson\", , \"nicholas.robertson@sydney.edu.au\", role = \"ctb\"),\nperson(\"Alex\", \"Qin\", , \"alex.qin@sydney.edu.au\", role = \"ctb\"),\nperson(\"Farhan\", \"Ameen\", ,\"farhan.ameen@sydney.edu.au\", role = \"ctb\"),\nperson(\"Shreya\", \"Rao\", ,\"shreya.rajeshrao@sydney.edu.au\", role = \"ctb\")\n)",
+  "Description": "spicyR tests whether the spatial co-localisation of pairs\nof cell types differs between groups of patients, or is\nassociated with patient outcome, in cell-resolution spatial\nomics data (imaging mass cytometry, CODEX, MIBI, Xenium, CosMx\nand others). Its default method, spicyR Cell, counts the cells\nof one type within a radius of each cell of another and\ncompares the count with its exact expectation under random\nlabelling of the observed cells. Images are combined within\npatients by a frailty generalised estimating equation, and\ndifferences are tested with a small-sample cluster-robust (CR2)\nvariance with patients as the units. Covariates, several\nconditions, several radii and survival outcomes are supported,\nand the original image-level test is kept as an option. The\ncomputations run in a C++ core shared with the Python package\nspicyr.",
+  "License": "GPL (>=2)",
+  "Copyright": "The C++ port of concaveman in src/concaveman.cpp: see\ninst/COPYRIGHTS.",
+  "LazyData": "false",
+  "biocViews": "SingleCell, CellBasedAssays, Spatial, Survival",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "BugReports": "https://github.com/SydneyBioX/spicyR/issues",
+  "URL": "https://sydneybiox.github.io/spicyR/,\nhttps://github.com/SydneyBioX/spicyR",
+  "SystemRequirements": "C++17",
+  "Config/testthat/edition": "3",
+  "Config/roxygen2/version": "8.1.0",
+  "Roxygen": "list(markdown = TRUE)",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-10-16 03:37:08 UTC",
+  "RemoteUrl": "https://github.com/bioc/spicyR",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "9c6becb2ca04ce8627648066c619346cec02616e",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-10-16 07:31:45 UTC",
+    "User": "root"
+  },
+  "Author": "Nicolas Canete [aut],\nEllis Patrick [aut, cre],\nSadiq Dohadwalla [aut],\nElijah Willie [aut],\nNicholas Robertson [ctb],\nAlex Qin [ctb],\nFarhan Ameen [ctb],\nShreya Rao [ctb]",
+  "Maintainer": "Ellis Patrick <ellis.patrick@sydney.edu.au>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "spicyR_1.99.24.tar.gz",
+  "_fileid": "https://r2.ropensci.org/2ffa618d087e854b77552ebcdec4f8f9f289c615b2976fc22bce36cd1c5c3651",
+  "_filesize": 3172068,
+  "_sha256": "2ffa618d087e854b77552ebcdec4f8f9f289c615b2976fc22bce36cd1c5c3651",
+  "_expires": "2027-01-24T08:15:36.000Z",
+  "_created": "2026-10-16T07:31:45.000Z",
+  "_published": "2026-10-16T08:15:38.933Z",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 1,
+    "note": 11
+  },
+  "_upstream": "https://github.com/bioc/spicyR",
+  "_commit": {
+    "id": "9c6becb2ca04ce8627648066c619346cec02616e",
+    "author": "EllisPatrick <ellis.patrick@sydney.edu.au>",
+    "committer": "EllisPatrick <ellis.patrick@sydney.edu.au>",
+    "message": "1.99.24: every pair at every radius in one core call (pair_tests); writeCellStore() region key categorical\n\nspicy() (cell method, two conditions) runs the image rows, the image random effect, the frailty test, the adjusted\ndesign and the multi-radius combination for all pairs and radii in src/core/src/pairs.cpp (pair_tests,\npair_design_test), bound as stats_pair_tests(); R builds each table column-wise. Results identical() to 1.99.23\n(26 reference cases, memref 8/8). Omnibus (25 radii, davies) at 80 types: 263 s -> 8.6 s; single radius at 80\ntypes 10.9 s -> 0.6 s; 10M cells unchanged. Rows bindings return data.frames without as.data.frame().\n\nwriteCellStore(): the image column always categorical, instance IDs at least uint16, and the \"array\" encoding on\nnullable values and masks, so Python's spatialdata and anndata read R stores cleanly.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01TfsjwkbDbHkX4kJZNe4ER4\n",
+    "time": 1792121828
+  },
+  "_maintainer": {
+    "name": "Ellis Patrick",
+    "email": "ellis.patrick@sydney.edu.au",
+    "login": "ellispatrick",
+    "twitter": "@TheEllisPatrick",
+    "description": "",
+    "uuid": 8390021
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 116864980326,
+      "time": 251,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "WARNING",
+      "artifact": "12031988336"
+    },
+    {
+      "job": 116864980260,
+      "time": 318,
+      "config": "linux-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12032018226"
+    },
+    {
+      "job": 116864980311,
+      "time": 457,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12031884731"
+    },
+    {
+      "job": 116864980442,
+      "time": 339,
+      "config": "linux-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12031549150"
+    },
+    {
+      "job": 116864980437,
+      "time": 441,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12031964088"
+    },
+    {
+      "job": 116864980416,
+      "time": 346,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "12033736138"
+    },
+    {
+      "job": 116864980401,
+      "time": 773,
+      "config": "macos-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "12033970675"
+    },
+    {
+      "job": 116864980322,
+      "time": 438,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12034030721"
+    },
+    {
+      "job": 116864980350,
+      "time": 551,
+      "config": "macos-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12033775115"
+    },
+    {
+      "job": 116862155248,
+      "time": 501,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12031588116"
+    },
+    {
+      "job": 116864980490,
+      "time": 168,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "12031978250"
+    },
+    {
+      "job": 116864980316,
+      "time": 559,
+      "config": "windows-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12032218134"
+    },
+    {
+      "job": 116864980313,
+      "time": 545,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12032392496"
+    },
+    {
+      "job": 116864980488,
+      "time": 500,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "12032665210"
+    },
+    {
+      "job": 116864980339,
+      "time": 421,
+      "config": "windows-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12032495206"
+    },
+    {
+      "job": 116864980283,
+      "time": 511,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12032203197"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppEigen",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "grid",
+      "role": "Imports"
+    },
+    {
+      "package": "splines",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "RhpcBLASctl",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "survival",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "plotly",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "lmerTest",
+      "role": "Suggests"
+    },
+    {
+      "package": "lme4",
+      "role": "Suggests"
+    },
+    {
+      "package": "Rarr",
+      "role": "Suggests"
+    },
+    {
+      "package": "spatialdataR",
+      "role": "Suggests"
+    },
+    {
+      "package": "scam",
+      "role": "Suggests"
+    },
+    {
+      "package": "coxme",
+      "role": "Suggests"
+    },
+    {
+      "package": "spatstat.geom",
+      "role": "Suggests"
+    },
+    {
+      "package": "spatstat.explore",
+      "role": "Suggests"
+    },
+    {
+      "package": "SpatialDatasets",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 2,
+  "_updates": [
+    {
+      "week": "2026-09",
+      "n": 1
+    },
+    {
+      "week": "2026-39",
+      "n": 8
+    },
+    {
+      "week": "2026-40",
+      "n": 45
+    },
+    {
+      "week": "2026-41",
+      "n": 6
+    },
+    {
+      "week": "2026-42",
+      "n": 24
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.99.11",
+      "bioc": "3.24",
+      "repository": "bioc"
+    },
+    {
+      "branch": "release",
+      "version": "1.24.0",
+      "bioc": "3.23",
+      "repository": "bioc"
+    }
+  ],
+  "_topics": [
+    "singlecell",
+    "cellbasedassays",
+    "spatial",
+    "survival",
+    "cpp"
+  ],
+  "_stars": 12,
+  "_contributors": [
+    {
+      "user": "ellispatrick",
+      "count": 350,
+      "uuid": 8390021
+    },
+    {
+      "user": "nick-robo",
+      "count": 128,
+      "uuid": 17681331
+    },
+    {
+      "user": "nickcee",
+      "count": 39,
+      "uuid": 22989881
+    },
+    {
+      "user": "shreyarajeshrao",
+      "count": 35,
+      "uuid": 99242186
+    },
+    {
+      "user": "alexrunqin",
+      "count": 32,
+      "uuid": 68905097
+    },
+    {
+      "user": "fame2827",
+      "count": 23,
+      "uuid": 87054828
+    },
+    {
+      "user": "jwokaty",
+      "count": 16,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 10,
+      "uuid": 2746443
+    },
+    {
+      "user": "ecool50",
+      "count": 6,
+      "uuid": 8261982
+    },
+    {
+      "user": "sadiqdohad",
+      "count": 4,
+      "uuid": 90368265
+    },
+    {
+      "user": "hpages",
+      "count": 2,
+      "uuid": 8810451
+    },
+    {
+      "user": "rubak",
+      "count": 1,
+      "uuid": 6704085
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 477,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 711,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/spicyR"
+  },
+  "_devurl": "https://github.com/sydneybiox/spicyr",
+  "_pkgdown": "https://sydneybiox.github.io/spicyR/",
+  "_searchresults": 73,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/spicyR.html"
+  ],
+  "_homeurl": "https://github.com/sydneybiox/spicyr",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "bind",
+    "buildKnnGraph",
+    "colTest",
+    "convPairs",
+    "getPairwise",
+    "getPairwiseProp",
+    "getProp",
+    "imageCrossPlot",
+    "kontextualEngine",
+    "plotImage",
+    "signifPlot",
+    "spicy",
+    "spicyBoxPlot",
+    "topPairs",
+    "writeCellStore"
+  ],
+  "_datasets": [
+    {
+      "name": "diabetesData",
+      "title": "Imaging mass cytometry of human pancreas in type 1 diabetes (Damond et al. 2019)",
+      "object": "diabetesData",
+      "file": "diabetesData.rda",
+      "class": [
+        "SingleCellExperiment"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "spicyTest",
+      "title": "Results of the image-level test on diabetesData",
+      "object": "spicyTest",
+      "file": "spicyTest.rda",
+      "class": [
+        "SpicyResults"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "bind",
+      "title": "The per-image values of every pair, as a data frame",
+      "topics": [
+        "bind"
+      ]
+    },
+    {
+      "page": "buildKnnGraph",
+      "title": "Build a k-nearest-neighbour graph between cells",
+      "topics": [
+        "buildKnnGraph"
+      ]
+    },
+    {
+      "page": "colTest",
+      "title": "Perform a simple wilcoxon-rank-sum test or t-test on the columns of a data frame",
+      "topics": [
+        "colTest"
+      ]
+    },
+    {
+      "page": "convPairs",
+      "title": "Converts colPairs object into an abundance matrix based on number of nearby interactions for every cell type.",
+      "topics": [
+        "convPairs"
+      ]
+    },
+    {
+      "page": "diabetesData",
+      "title": "Imaging mass cytometry of human pancreas in type 1 diabetes (Damond et al. 2019)",
+      "topics": [
+        "diabetesData"
+      ]
+    },
+    {
+      "page": "getPairwise",
+      "title": "Get statistic from pairwise L curve of a single image.",
+      "topics": [
+        "getPairwise"
+      ]
+    },
+    {
+      "page": "getPairwiseProp",
+      "title": "Observed/expected proportion ratio for a fixed-k neighbourhood",
+      "topics": [
+        "getPairwiseProp"
+      ]
+    },
+    {
+      "page": "getProp",
+      "title": "Get proportions from a SummarizedExperiment.",
+      "topics": [
+        "getProp"
+      ]
+    },
+    {
+      "page": "imageCrossPlot",
+      "title": "Pairwise cross-plot of spatial associations",
+      "topics": [
+        "imageCrossPlot"
+      ]
+    },
+    {
+      "page": "plotImage",
+      "title": "Plot one image, showing the 'from' and 'to' cells of a pair",
+      "topics": [
+        "plotImage"
+      ]
+    },
+    {
+      "page": "signifPlot",
+      "title": "Plots result of signifPlot.",
+      "topics": [
+        "signifPlot"
+      ]
+    },
+    {
+      "page": "spicy",
+      "title": "Test for changes in the co-localisation of cell types between conditions",
+      "topics": [
+        "spicy"
+      ]
+    },
+    {
+      "page": "spicyBoxPlot",
+      "title": "Box plot of one pair, with a point per image",
+      "topics": [
+        "spicyBoxPlot"
+      ]
+    },
+    {
+      "page": "SpicyResults-class",
+      "title": "The results of spicy()",
+      "topics": [
+        "SpicyResults",
+        "SpicyResults-class"
+      ]
+    },
+    {
+      "page": "spicyTest",
+      "title": "Results of the image-level test on diabetesData",
+      "topics": [
+        "spicyTest"
+      ]
+    },
+    {
+      "page": "topPairs",
+      "title": "A table of the significant results from spicy tests",
+      "topics": [
+        "topPairs",
+        "topPairs,SpicyResults-method"
+      ]
+    },
+    {
+      "page": "writeCellStore",
+      "title": "Write cells as a SpatialData Zarr store",
+      "topics": [
+        "writeCellStore"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/spicyR/raw/HEAD/README.md",
+  "_rundeps": [
+    "BH",
+    "BiocGenerics",
+    "BiocParallel",
+    "cli",
+    "codetools",
+    "cpp11",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "isoband",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "Matrix",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RhpcBLASctl",
+    "rlang",
+    "S4Vectors",
+    "S7",
+    "scales",
+    "snow",
+    "survival",
+    "vctrs",
+    "viridisLite",
+    "withr"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "16-20260322-1ubuntu1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "spicyR.Rmd",
+      "filename": "spicyR.html",
+      "title": "Introduction to spicyR",
+      "author": "Ellis Patrick, Sadiq Dohadwalla, Elijah Willie, Nicolas Canete",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "The data",
+        "Testing every pair of cell types",
+        "Seeing every pair at once",
+        "Looking at one pair",
+        "Looking at the images",
+        "Tissue compartments",
+        "Allocation or count?",
+        "Patients with several images",
+        "Adjusting for clinical covariates",
+        "Which radius?",
+        "Is co-localisation associated with survival?",
+        "A check you can run",
+        "How it works",
+        "Small studies",
+        "Reporting results",
+        "Coming from spicyR 1.x",
+        "Python",
+        "Very large data sets: SpatialData stores",
+        "Session information",
+        "References"
+      ],
+      "created": "2022-11-10 03:36:41",
+      "modified": "2026-10-15 14:20:56",
+      "commits": 47
+    },
+    {
+      "source": "image_method.Rmd",
+      "filename": "image_method.html",
+      "title": "The original image-level test in spicyR",
+      "author": "Nicolas Canete, Ellis Patrick, Alex Qin, Shreya Rao",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Installation",
+        "Overview",
+        "Example data",
+        "Linear modelling",
+        "Test for change in localisation for a specific pair of cells",
+        "Test for change in localisation for all pairwise cell combinations",
+        "Linear modelling for custom metrics",
+        "Performing survival analysis",
+        "Accounting for tissue inhomogeneity",
+        "Mixed effects modelling",
+        "Session information",
+        "References"
+      ],
+      "created": "2026-10-02 07:28:01",
+      "modified": "2026-10-10 01:15:31",
+      "commits": 5
+    }
+  ],
+  "_score": 8.461018046045968,
+  "_indexed": true,
+  "_nocasepkg": "spicyr",
+  "_universes": [
+    "bioc",
+    "ellispatrick",
+    "sydneybiox"
+  ],
+  "_previous": "1.99.21",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:35:22.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/1c1e1fad6bb6a358530e60fa7f2df5e3dd9c84dfac57a96511425a54fbf4e543",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:37:35.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/2a15f111c84f575e14a6d2a501e767f666b1140f2a9518ffc3f6e4d4dd0cc4e0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:35:36.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/22d18f65d0e2736affe872aaa412f4ca31946e7886b52faf7e07e37709eb50cc",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:37:22.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/885852572abdf45bdad888a20f57778ce18aa066840bef81c8ab75da5065cbbb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.99.24",
+      "date": "2026-10-16T08:10:04.000Z",
+      "arch": "aarch64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/be68e6cfc9f571c269e8af6afe449603c9d99c66a826464a5f688f7b8714c074",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.99.24",
+      "date": "2026-10-16T08:06:09.000Z",
+      "arch": "x86_64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/5d466c0813f7e482d3c8b979f29b8d6a0ab28c72a9bca4571ac8963707eb8f2f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.99.24",
+      "date": "2026-10-16T08:10:34.000Z",
+      "arch": "aarch64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/268167008a6c4f14992bf8b78480fe36414f00fe608251fd7151c58f56012d0b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.99.24",
+      "date": "2026-10-16T08:05:20.000Z",
+      "arch": "x86_64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/0e8c995071fb4756f4fb4de6ca144bf33259f17ce21fdc8aa42873bb3883cccf",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:36:08.000Z",
+      "arch": "emscripten",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/904ea1058e3f1f6819e4da9dbda8f779da6a9628c7b144609bebcf4380f2acc6",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:38:31.000Z",
+      "arch": "aarch64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/25e39f4b064dbe3ce8c5a3318db1fdf8deaed6f8c8537aaa79b637efe5eaa585",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:37:53.000Z",
+      "arch": "x86_64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/b7f5dcabbf9a2cc1a126ffe88570a0c1e254483013e128ea2b176a7833fbdb9a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:37:56.000Z",
+      "arch": "x86_64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/6519ce1400bef571b6f04beca0defacc1b2e2ff99071c5c137ef2375385b50d5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:36:39.000Z",
+      "arch": "aarch64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/f82119cd53c1b44d5ec71f2e1b43722c50c01d43d83e14b82780749056c9731e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.99.24",
+      "date": "2026-10-16T07:37:57.000Z",
+      "arch": "x86_64",
+      "commit": "9c6becb2ca04ce8627648066c619346cec02616e",
+      "fileid": "https://r2.ropensci.org/c8cddbf0da02e97688cf470e6b3b706d3d3bf51b7c456d614b3e1ec4c9d2b9fb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38867016631"
+    }
+  ]
+}
