@@ -1,0 +1,1115 @@
+{
+  "_id": "6ad1631cd3c80a766859bbb8",
+  "Package": "BiocDuckDB",
+  "Version": "0.99.26",
+  "Date": "2026-10-15",
+  "Title": "Bioconductor DuckDB Integration and High-Level I/O",
+  "Description": "Integration package providing high-level Parquet I/O\nfunctions and optimized methods for single-cell analysis\nworkflows using DuckDB-backed data structures. Includes\nreadParquet and writeParquet functions for seamless\nserialization of SummarizedExperiment, SingleCellExperiment,\nMultiAssayExperiment, and MultiAssaySpatialExperiment objects,\nplus SQL-optimized implementations of scran and scuttle methods\nfor variance modeling, marker detection, QC metrics, and\nnormalization. This package brings together DuckDBDataFrame,\nDuckDBArray, DuckDBGRanges, and DuckDBSpatial (optional) for\ncomplete Bioconductor integration.",
+  "Authors@R": "c(\nperson(\"Patrick\", \"Aboyoun\", role=c(\"aut\", \"cre\"), email=\"aboyounp@gene.com\"),\nperson(\"Genentech, Inc.\", role=\"cph\")\n)",
+  "License": "MIT + file LICENSE",
+  "URL": "https://github.com/Genentech/BiocDuckDB",
+  "BugReports": "https://github.com/Genentech/BiocDuckDB/issues",
+  "Copyright": "See the file inst/COPYRIGHTS for third-party schema\ncomponents bundled in inst/schema/ (Frictionless Data Package\nspecifications, in the public domain under The Unlicense).",
+  "biocViews": "DataImport, DataRepresentation, Infrastructure, RNASeq,\nSequencing, SingleCell, Software",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "Collate": "'BiocDuckDB-package.R'\n'MultiAssaySpatialExperiments-internals.R'\n'DuckDBDataFrame-spatial.R' 'DuckDBDualSubset-class.R'\n'initializeOptions.R' 'initializeCpp.R' 'DuckDBIrlbaParam.R'\n'DuckDBMatrix-scran.R' 'DuckDBMatrix-scuttle.R'\n'MultiAssaySpatialExperiment-query.R'\n'MultiAssaySpatialExperiment-spatial.R'\n'SingleCellExperiments-internals.R'\n'SingleCellExperiment-colTables.R'\n'SingleCellExperiment-loadings.R'\n'SingleCellExperiment-pairs.R'\n'SingleCellExperiment-rowTables.R' 'fieldtypes.R'\n'loadIntoMemory.R' 'readParquet.R' 'writeDatapackage.R'\n'writeParquet.R' 'writeStreamingResource.R'",
+  "Config/roxygen2/version": "8.1.1",
+  "Config/pak/sysreqs": "libabsl-dev cmake libgdal-dev gdal-bin libgeos-dev\nlibglpk-dev libmagick++-dev gsfonts libicu-dev libxml2-dev\nlibssl-dev libproj-dev libsqlite3-dev libudunits2-dev xz-utils\nzlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-10-15 20:53:25 UTC",
+  "RemoteUrl": "https://github.com/bioc/BiocDuckDB",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-10-15 23:17:14 UTC",
+    "User": "root"
+  },
+  "Author": "Patrick Aboyoun [aut, cre],\nGenentech, Inc. [cph]",
+  "Maintainer": "Patrick Aboyoun <aboyounp@gene.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "BiocDuckDB_0.99.26.tar.gz",
+  "_fileid": "https://r2.ropensci.org/a2aacf43ba4474a6d5ff1d9950c62a78ef78283e2467b2f8229848bc6afd9c83",
+  "_filesize": 603730,
+  "_sha256": "a2aacf43ba4474a6d5ff1d9950c62a78ef78283e2467b2f8229848bc6afd9c83",
+  "_expires": "2027-01-23T23:34:50.000Z",
+  "_created": "2026-10-15T23:17:14.000Z",
+  "_published": "2026-10-15T23:34:52.820Z",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_upstream": "https://github.com/bioc/BiocDuckDB",
+  "_commit": {
+    "id": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+    "author": "Patrick Aboyoun <aboyoun.patrick@gene.com>",
+    "committer": "Patrick Aboyoun <aboyoun.patrick@gene.com>",
+    "message": "fix: preserve a matrix label's true extent past an all-zero trailing row/column (0.99.26)\n\nwriteParquet,ANY only attaches index->label categories (the metadata a\nreader uses to recover the true axis size) when the array already has\ndimnames at the point it captures them, before it assigns synthetic\nseq_len() dimnames for the physical write. A spatialLabels() matrix is\nnormally dimname-less, so no categories were ever recorded for the\nspatial_label_coord path added above, and .readParquetArray() fell back\nto inferring the shape from the sparse COO data alone -- undercounting\nwhenever the dropped (all-zero) entries included a whole trailing row or\ncolumn.\n\nFixed by synthesizing dimnames on the label matrix (the same seq_len()\nvalues ANY would assign internally anyway) before writing it, so\ncategories are always attached regardless of what the input happened to\nhave. Added a regression test using a label whose only nonzero entry is\nat row 1/col 1; the existing round-trip test has a nonzero in both the\nlast row and last column, which masked this gap.\n",
+    "time": 1792097605
+  },
+  "_maintainer": {
+    "name": "Patrick Aboyoun",
+    "email": "aboyounp@gene.com"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 116723082465,
+      "time": 225,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12014013016"
+    },
+    {
+      "job": 116723082397,
+      "time": 521,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "12013714008"
+    },
+    {
+      "job": 116723082387,
+      "time": 656,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12013224515"
+    },
+    {
+      "job": 116723082343,
+      "time": 628,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "12012794697"
+    },
+    {
+      "job": 116723082537,
+      "time": 670,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12014151392"
+    },
+    {
+      "job": 116720684771,
+      "time": 422,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12013448459"
+    },
+    {
+      "job": 116723082290,
+      "time": 207,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "12013019701"
+    },
+    {
+      "job": 116723082426,
+      "time": 946,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "12014720769"
+    },
+    {
+      "job": 116723082371,
+      "time": 937,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "12014211981"
+    },
+    {
+      "job": 116723082428,
+      "time": 961,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12013954529"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "stats",
+      "role": "Depends"
+    },
+    {
+      "package": "DuckDBDataFrame",
+      "role": "Depends"
+    },
+    {
+      "package": "DuckDBArray",
+      "role": "Depends"
+    },
+    {
+      "package": "DuckDBGRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "SparseArray",
+      "role": "Imports"
+    },
+    {
+      "package": "DelayedArray",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "SingleCellExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiAssaySpatialExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "metapod",
+      "role": "Imports"
+    },
+    {
+      "package": "beachmat",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocSingular",
+      "role": "Imports"
+    },
+    {
+      "package": "scran",
+      "role": "Imports"
+    },
+    {
+      "package": "scuttle",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "dbplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "duckdb",
+      "role": "Imports"
+    },
+    {
+      "package": "arrow",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "jsonvalidate",
+      "role": "Suggests"
+    },
+    {
+      "package": "grDevices",
+      "role": "Suggests"
+    },
+    {
+      "package": "matrixStats",
+      "role": "Suggests"
+    },
+    {
+      "package": "nanoparquet",
+      "role": "Suggests"
+    },
+    {
+      "package": "png",
+      "role": "Suggests"
+    },
+    {
+      "package": "sf",
+      "role": "Suggests"
+    },
+    {
+      "package": "sfarrow",
+      "role": "Suggests"
+    },
+    {
+      "package": "S4Arrays",
+      "role": "Suggests"
+    },
+    {
+      "package": "SpatialExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "DuckDBSpatial",
+      "role": "Suggests"
+    },
+    {
+      "package": "ExperimentHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "HDF5Array",
+      "role": "Suggests"
+    },
+    {
+      "package": "ZarrArray",
+      "role": "Suggests"
+    },
+    {
+      "package": "irlba",
+      "role": "Suggests"
+    },
+    {
+      "package": "scater",
+      "role": "Suggests"
+    },
+    {
+      "package": "airway",
+      "role": "Suggests"
+    },
+    {
+      "package": "scRNAseq",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-04",
+      "n": 2
+    },
+    {
+      "week": "2026-05",
+      "n": 3
+    },
+    {
+      "week": "2026-10",
+      "n": 1
+    },
+    {
+      "week": "2026-11",
+      "n": 3
+    },
+    {
+      "week": "2026-12",
+      "n": 3
+    },
+    {
+      "week": "2026-13",
+      "n": 4
+    },
+    {
+      "week": "2026-15",
+      "n": 1
+    },
+    {
+      "week": "2026-17",
+      "n": 3
+    },
+    {
+      "week": "2026-18",
+      "n": 1
+    },
+    {
+      "week": "2026-19",
+      "n": 2
+    },
+    {
+      "week": "2026-20",
+      "n": 1
+    },
+    {
+      "week": "2026-21",
+      "n": 2
+    },
+    {
+      "week": "2026-23",
+      "n": 3
+    },
+    {
+      "week": "2026-24",
+      "n": 2
+    },
+    {
+      "week": "2026-25",
+      "n": 1
+    },
+    {
+      "week": "2026-26",
+      "n": 2
+    },
+    {
+      "week": "2026-27",
+      "n": 1
+    },
+    {
+      "week": "2026-28",
+      "n": 3
+    },
+    {
+      "week": "2026-29",
+      "n": 7
+    },
+    {
+      "week": "2026-30",
+      "n": 16
+    },
+    {
+      "week": "2026-31",
+      "n": 6
+    },
+    {
+      "week": "2026-32",
+      "n": 4
+    },
+    {
+      "week": "2026-35",
+      "n": 7
+    },
+    {
+      "week": "2026-36",
+      "n": 3
+    },
+    {
+      "week": "2026-37",
+      "n": 1
+    },
+    {
+      "week": "2026-38",
+      "n": 1
+    },
+    {
+      "week": "2026-40",
+      "n": 3
+    },
+    {
+      "week": "2026-42",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.25",
+      "bioc": "3.24",
+      "repository": "bioc"
+    }
+  ],
+  "_topics": [
+    "dataimport",
+    "datarepresentation",
+    "infrastructure",
+    "rnaseq",
+    "sequencing",
+    "singlecell",
+    "software"
+  ],
+  "_stars": 5,
+  "_contributors": [
+    {
+      "user": "aboyounp-gne",
+      "count": 99,
+      "uuid": 171627243
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 477,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 131,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/BiocDuckDB"
+  },
+  "_devurl": "https://github.com/genentech/biocduckdb",
+  "_searchresults": 37,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/BiocDuckDB.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE"
+  ],
+  "_homeurl": "https://github.com/genentech/biocduckdb",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "annotateWithRegions",
+    "calculateAverage",
+    "calculateCPM",
+    "calculateTPM",
+    "colPair<-",
+    "colPairs<-",
+    "colTable",
+    "colTable<-",
+    "colTableNames",
+    "colTableNames<-",
+    "colTables",
+    "colTables<-",
+    "correlatePairs",
+    "DuckDBIrlbaParam",
+    "findMarkers",
+    "geometricSizeFactors",
+    "initializeCpp",
+    "initializeOptions",
+    "librarySizeFactors",
+    "linkSpatialMap",
+    "loadIntoMemory",
+    "modelGeneCV2",
+    "modelGeneVar",
+    "modelGeneVarByPoisson",
+    "normalizeCounts",
+    "numDetectedAcrossFeatures",
+    "pairwiseBinom",
+    "pairwiseTTests",
+    "perCellQCMetrics",
+    "perFeatureQCMetrics",
+    "readGeoParquetForMASE",
+    "readParquet",
+    "readParquetForMASE",
+    "rowLoading",
+    "rowLoading<-",
+    "rowLoadingNames",
+    "rowLoadingNames<-",
+    "rowLoadings",
+    "rowLoadings<-",
+    "rowPair<-",
+    "rowPairs<-",
+    "rowTable",
+    "rowTable<-",
+    "rowTableNames",
+    "rowTableNames<-",
+    "rowTables",
+    "rowTables<-",
+    "runSVD",
+    "scoreMarkers",
+    "spatialCoordinateSystems",
+    "spatialElementJoin",
+    "spatialJoin",
+    "spatialMatch",
+    "spatialOverlaps",
+    "spatialViews",
+    "subsetByBoundingBox",
+    "subsetByPolygon",
+    "sumCountsAcrossFeatures",
+    "summarizeAssayByGroup",
+    "summaryMarkerStats",
+    "validateSpatialMap",
+    "writeDatapackage",
+    "writeParquet",
+    "writeStreamingResource"
+  ],
+  "_help": [
+    {
+      "page": "DuckDBDataFrame-spatial",
+      "title": "DuckDBDataFrame spatial methods",
+      "topics": [
+        "DuckDBDataFrame-spatial",
+        "spatialJoin,DuckDBDataFrame,DuckDBDataFrame-method",
+        "spatialMatch,DuckDBDataFrame,DataFrame-method",
+        "spatialMatch,DuckDBDataFrame,DuckDBDataFrame-method",
+        "spatialOverlaps,DuckDBDataFrame-method"
+      ]
+    },
+    {
+      "page": "DuckDBDualSubset-class",
+      "title": "DuckDBDualSubset objects",
+      "topics": [
+        "c,DuckDBDualSubset-method",
+        "DuckDBDualSubset-class",
+        "length,DuckDBDualSubset-method",
+        "[,DuckDBDualSubset,ANY,ANY,ANY-method",
+        "[<-,DuckDBDualSubset,ANY,ANY,ANY-method"
+      ]
+    },
+    {
+      "page": "DuckDBIrlbaParam",
+      "title": "A fast SVD path for DuckDB-backed matrices",
+      "topics": [
+        "DuckDBIrlbaParam",
+        "DuckDBIrlbaParam-class",
+        "runSVD,DuckDBIrlbaParam-method"
+      ]
+    },
+    {
+      "page": "DuckDBMatrix-scran",
+      "title": "DuckDBMatrix scran methods",
+      "topics": [
+        "correlatePairs,DuckDBMatrix-method",
+        "DuckDBMatrix-scran",
+        "findMarkers,DuckDBMatrix-method",
+        "modelGeneCV2,DuckDBMatrix-method",
+        "modelGeneVar,DuckDBMatrix-method",
+        "modelGeneVarByPoisson,DuckDBMatrix-method",
+        "pairwiseBinom,DuckDBMatrix-method",
+        "pairwiseTTests,DuckDBMatrix-method",
+        "scoreMarkers,DuckDBMatrix-method",
+        "summaryMarkerStats,DuckDBMatrix-method"
+      ]
+    },
+    {
+      "page": "DuckDBMatrix-scuttle",
+      "title": "DuckDBMatrix scuttle methods",
+      "topics": [
+        "calculateAverage,DuckDBMatrix-method",
+        "calculateCPM,DuckDBMatrix-method",
+        "calculateTPM,DuckDBMatrix-method",
+        "DuckDBMatrix-scuttle",
+        "geometricSizeFactors,DuckDBMatrix-method",
+        "librarySizeFactors,DuckDBMatrix-method",
+        "normalizeCounts,DuckDBMatrix-method",
+        "numDetectedAcrossFeatures,DuckDBMatrix-method",
+        "perCellQCMetrics,DuckDBMatrix-method",
+        "perFeatureQCMetrics,DuckDBMatrix-method",
+        "sumCountsAcrossFeatures,DuckDBMatrix-method",
+        "summarizeAssayByGroup,DuckDBMatrix-method"
+      ]
+    },
+    {
+      "page": "initializeCpp",
+      "title": "Initialize DuckDB-backed matrices for beachmat",
+      "topics": [
+        "initializeCpp",
+        "initializeCpp,DuckDBArraySeed-method"
+      ]
+    },
+    {
+      "page": "initializeOptions",
+      "title": "Options for DuckDB-backed matrices",
+      "topics": [
+        "initializeOptions"
+      ]
+    },
+    {
+      "page": "linkSpatialMap",
+      "title": "Link assay observations to their spatial layer rows",
+      "topics": [
+        "linkSpatialMap"
+      ]
+    },
+    {
+      "page": "loadIntoMemory",
+      "title": "Load a DuckDB-backed matrix into memory",
+      "topics": [
+        "loadIntoMemory"
+      ]
+    },
+    {
+      "page": "MultiAssaySpatialExperiment-spatial",
+      "title": "MultiAssaySpatialExperiment lazy spatial methods",
+      "topics": [
+        "annotateWithRegions,MultiAssaySpatialExperiment-method",
+        "MultiAssaySpatialExperiment-spatial",
+        "readGeoParquetForMASE,character-method",
+        "readParquetForMASE,character-method",
+        "subsetByBoundingBox,MultiAssaySpatialExperiment-method",
+        "subsetByPolygon,MultiAssaySpatialExperiment-method"
+      ]
+    },
+    {
+      "page": "readParquet",
+      "title": "Read Parquet Representation of a Bioconductor Object",
+      "topics": [
+        "readParquet"
+      ]
+    },
+    {
+      "page": "SingleCellExperiment-colTables",
+      "title": "Sample table methods",
+      "topics": [
+        "colTable",
+        "colTable,SingleCellExperiment,character-method",
+        "colTable,SingleCellExperiment,missing-method",
+        "colTable,SingleCellExperiment,numeric-method",
+        "colTable<-",
+        "colTable<-,SingleCellExperiment,character-method",
+        "colTable<-,SingleCellExperiment,missing-method",
+        "colTable<-,SingleCellExperiment,numeric-method",
+        "colTableNames",
+        "colTableNames,SingleCellExperiment-method",
+        "colTableNames<-",
+        "colTableNames<-,SingleCellExperiment,character-method",
+        "colTables",
+        "colTables,SingleCellExperiment-method",
+        "colTables<-",
+        "colTables<-,SingleCellExperiment-method",
+        "SingleCellExperiment-colTables"
+      ]
+    },
+    {
+      "page": "SingleCellExperiment-loadings",
+      "title": "Feature loading methods",
+      "topics": [
+        "rowLoading",
+        "rowLoading,SingleCellExperiment,character-method",
+        "rowLoading,SingleCellExperiment,missing-method",
+        "rowLoading,SingleCellExperiment,numeric-method",
+        "rowLoading<-",
+        "rowLoading<-,SingleCellExperiment,character-method",
+        "rowLoading<-,SingleCellExperiment,missing-method",
+        "rowLoading<-,SingleCellExperiment,numeric-method",
+        "rowLoadingNames",
+        "rowLoadingNames,SingleCellExperiment-method",
+        "rowLoadingNames<-",
+        "rowLoadingNames<-,SingleCellExperiment,character-method",
+        "rowLoadings",
+        "rowLoadings,SingleCellExperiment-method",
+        "rowLoadings<-",
+        "rowLoadings<-,SingleCellExperiment-method",
+        "SingleCellExperiment-loadings"
+      ]
+    },
+    {
+      "page": "SingleCellExperiment-pairs",
+      "title": "colPairs/rowPairs setters for DuckDBSelfHits",
+      "topics": [
+        "colPair<-,SingleCellExperiment,character,DuckDBSelfHits-method",
+        "colPair<-,SingleCellExperiment,missing,DuckDBSelfHits-method",
+        "colPair<-,SingleCellExperiment,numeric,DuckDBSelfHits-method",
+        "colPairs<-,SingleCellExperiment,DuckDBSelfHits-method",
+        "rowPair<-,SingleCellExperiment,character,DuckDBSelfHits-method",
+        "rowPair<-,SingleCellExperiment,missing,DuckDBSelfHits-method",
+        "rowPair<-,SingleCellExperiment,numeric,DuckDBSelfHits-method",
+        "rowPairs<-,SingleCellExperiment,DuckDBSelfHits-method",
+        "SingleCellExperiment-pairs"
+      ]
+    },
+    {
+      "page": "SingleCellExperiment-rowTables",
+      "title": "Feature table methods",
+      "topics": [
+        "rowTable",
+        "rowTable,SingleCellExperiment,character-method",
+        "rowTable,SingleCellExperiment,missing-method",
+        "rowTable,SingleCellExperiment,numeric-method",
+        "rowTable<-",
+        "rowTable<-,SingleCellExperiment,character-method",
+        "rowTable<-,SingleCellExperiment,missing-method",
+        "rowTable<-,SingleCellExperiment,numeric-method",
+        "rowTableNames",
+        "rowTableNames,SingleCellExperiment-method",
+        "rowTableNames<-",
+        "rowTableNames<-,SingleCellExperiment,character-method",
+        "rowTables",
+        "rowTables,SingleCellExperiment-method",
+        "rowTables<-",
+        "rowTables<-,SingleCellExperiment-method",
+        "SingleCellExperiment-rowTables"
+      ]
+    },
+    {
+      "page": "spatialCoordinateSystems",
+      "title": "Coordinate systems of a MultiAssaySpatialExperiment",
+      "topics": [
+        "spatialCoordinateSystems"
+      ]
+    },
+    {
+      "page": "spatialElementJoin",
+      "title": "Spatial join between a points element and a shapes element of a MASE",
+      "topics": [
+        "spatialElementJoin"
+      ]
+    },
+    {
+      "page": "spatialViews",
+      "title": "On-the-fly DuckDB views over a MASE's spatial elements",
+      "topics": [
+        "spatialViews"
+      ]
+    },
+    {
+      "page": "validateSpatialMap",
+      "title": "Validate a MASE's spatialMap referential integrity",
+      "topics": [
+        "validateSpatialMap"
+      ]
+    },
+    {
+      "page": "writeDatapackage",
+      "title": "Write a Frictionless datapackage.json envelope",
+      "topics": [
+        "writeDatapackage"
+      ]
+    },
+    {
+      "page": "writeParquet",
+      "title": "Write Parquet Representation of a Bioconductor Object",
+      "topics": [
+        "writeParquet",
+        "writeParquet,ANY-method",
+        "writeParquet,Assays-method",
+        "writeParquet,data.frame-method",
+        "writeParquet,DataFrame-method",
+        "writeParquet,DuckDBDataFrame-method",
+        "writeParquet,DuckDBGRanges-method",
+        "writeParquet,DuckDBGRangesList-method",
+        "writeParquet,DuckDBSelfHits-method",
+        "writeParquet,DuckDBTable-method",
+        "writeParquet,DuckDBTransposedDataFrame-method",
+        "writeParquet,ExperimentList-method",
+        "writeParquet,GenomicRanges-method",
+        "writeParquet,GenomicRangesList-method",
+        "writeParquet,List-method",
+        "writeParquet,list-method",
+        "writeParquet,MultiAssayExperiment-method",
+        "writeParquet,MultiAssaySpatialExperiment-method",
+        "writeParquet,PointsLayerList-method",
+        "writeParquet,SelfHits-method",
+        "writeParquet,ShapesLayerList-method",
+        "writeParquet,SingleCellExperiment-method",
+        "writeParquet,SummarizedExperiment-method",
+        "writeParquet,TransposedDataFrame-method"
+      ]
+    },
+    {
+      "page": "writeStreamingResource",
+      "title": "Stream a large table to a single multi-part Parquet resource",
+      "topics": [
+        "writeStreamingResource"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/BiocDuckDB/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "arrow",
+    "askpass",
+    "assertthat",
+    "assorthead",
+    "beachmat",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocNeighbors",
+    "BiocParallel",
+    "BiocSingular",
+    "bit",
+    "bit64",
+    "blob",
+    "bluster",
+    "cachem",
+    "class",
+    "classInt",
+    "cli",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "curl",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dplyr",
+    "dqrng",
+    "duckdb",
+    "DuckDBArray",
+    "DuckDBDataFrame",
+    "DuckDBGRanges",
+    "e1071",
+    "edgeR",
+    "fastmap",
+    "filelock",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "httr2",
+    "igraph",
+    "IRanges",
+    "irlba",
+    "jsonlite",
+    "KernSmooth",
+    "lambda.r",
+    "lattice",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magick",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "metapod",
+    "MultiAssayExperiment",
+    "MultiAssaySpatialExperiment",
+    "openssl",
+    "pillar",
+    "pkgconfig",
+    "proxy",
+    "purrr",
+    "R6",
+    "Rcpp",
+    "rjson",
+    "rlang",
+    "RSQLite",
+    "rsvd",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "ScaledMatrix",
+    "scran",
+    "scuttle",
+    "Seqinfo",
+    "sf",
+    "SingleCellExperiment",
+    "sitmo",
+    "snow",
+    "SparseArray",
+    "SpatialExperiment",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "units",
+    "utf8",
+    "vctrs",
+    "withr",
+    "wk",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "BiocDuckDB.Rmd",
+      "filename": "BiocDuckDB.html",
+      "title": "Introduction to BiocDuckDB",
+      "author": "Patrick Aboyoun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "The round-trip",
+        "The storage layout",
+        "Advanced: writing and attaching resources directly",
+        "Streaming a flat resource from a cursor",
+        "Operations run as SQL",
+        "Genomic coordinates are preserved",
+        "Single-cell data",
+        "The filter, realize, analyze pattern",
+        "Multi-omics",
+        "When to use BiocDuckDB",
+        "Session information"
+      ],
+      "created": "2026-07-07 01:44:45",
+      "modified": "2026-09-30 22:22:23",
+      "commits": 9
+    },
+    {
+      "source": "BiocDuckDB-benchmark.Rmd",
+      "filename": "BiocDuckDB-benchmark.html",
+      "title": "Benchmarking BiocDuckDB",
+      "author": "Patrick Aboyoun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "What BiocDuckDB optimizes",
+        "A small, live comparison",
+        "Benchmark setup",
+        "Results",
+        "Summary",
+        "When this matters",
+        "Running your own benchmarks",
+        "Session information"
+      ],
+      "created": "2026-07-07 01:44:45",
+      "modified": "2026-09-11 00:05:07",
+      "commits": 7
+    }
+  ],
+  "_score": 6.714329759745233,
+  "_indexed": true,
+  "_nocasepkg": "biocduckdb",
+  "_universes": [
+    "bioc",
+    "genentech"
+  ],
+  "_previous": "0.99.25",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:21:59.000Z",
+      "distro": "resolute",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/6b2e1710f7aaef72bf77903f42b65643c3bf1f52fc7b7157724b8231a2721758",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:22:03.000Z",
+      "distro": "resolute",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/b19d7481b99b23655903ae5c16a8d5fa2220040e4bcb957239f6be0b5958f383",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:21:26.000Z",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/11a84898eeca655c3facfc5690adcbd459bec38a6712e669663f6e55f60d4370",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:20:59.000Z",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/21328857bf59ade63cb74264ad1a6a4e5031a62fb9d63c5f381368e3e9a8051f",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:21:42.000Z",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/d54f079acaa5052980b365e5c7ba66959e61498c95d51ec6828682684127e997",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:25:55.000Z",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/bacd8b21e8aeab42ef7c6c12bfd00e49f16ef86aa94b85af96328aa56a73591d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:25:33.000Z",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/c82f64c6adc44f2982ae17791af774919d2fc8f8877c4a4a729c74b8d4210483",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "0.99.26",
+      "date": "2026-10-15T23:25:35.000Z",
+      "commit": "8b91a688644e71eafdf979ebecb214d7ad1e9c86",
+      "fileid": "https://r2.ropensci.org/ccbbe7f8c6218ab0f33f4293a3545f85e5d0d70aadb1cbba16a4de97b04f8890",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38822010684"
+    }
+  ]
+}
