@@ -1,0 +1,955 @@
+{
+  "_id": "6ad4e4fcd423e4b0c576be84",
+  "Package": "cellmig",
+  "Type": "Package",
+  "Title": "Uncertainty-aware quantitative analysis of high-throughput live\ncell migration data",
+  "Version": "1.3.11",
+  "Authors@R": "c(\nperson(\"Simo\", \"Kitanovski\", email = \"simokitanovski@gmail.com\",\nrole = c(\"aut\", \"cre\"), comment=c(ORCID=\"0000-0003-2909-5376\")))",
+  "Description": "High-throughput cell imaging facilitates the analysis of\ncell migration across many wells treated under different\nbiological conditions. These workflows generate considerable\ntechnical noise and biological variability, and therefore\ntechnical and biological replicates are necessary, leading to\nlarge, hierarchically structured datasets, i.e., cells are\nnested within technical replicates that are nested within\nbiological replicates. Current statistical analyses of such\ndata usually ignore the hierarchical structure of the data and\nfail to explicitly quantify uncertainty arising from technical\nor biological variability. To address this gap, we present\ncellmig, an R package implementing Bayesian hierarchical models\nfor migration analysis. cellmig quantifies condition- specific\nvelocity changes (e.g., drug effects) while modeling nested\ndata structures and technical artifacts. It further enables\nsynthetic data generation for experimental design optimization.",
+  "License": "GPL-3 + file LICENSE",
+  "Encoding": "UTF-8",
+  "NeedsCompilation": "yes",
+  "biocViews": "SingleCell, CellBiology, Bayesian, ExperimentalDesign,\nSoftware, BatchEffect, Regression, Clustering",
+  "BugReports": "https://github.com/snaketron/cellmig/issues",
+  "URL": "https://github.com/snaketron/cellmig",
+  "VignetteBuilder": "knitr",
+  "Biarch": "true",
+  "SystemRequirements": "GNU make",
+  "Config/roxygen2/version": "8.0.0",
+  "Config/pak/sysreqs": "libcairo2-dev cmake libfontconfig1-dev\nlibfreetype6-dev make libicu-dev libpng-dev libuv1-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-10-18 11:32:55 UTC",
+  "RemoteUrl": "https://github.com/bioc/cellmig",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+  "Packaged": {
+    "Date": "2026-10-18 14:57:28 UTC",
+    "User": "root"
+  },
+  "Author": "Simo Kitanovski [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-2909-5376>)",
+  "Maintainer": "Simo Kitanovski <simokitanovski@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "cellmig_1.3.11.tar.gz",
+  "_fileid": "https://r2.ropensci.org/1a6777d5d885a493e245add3fe95d1dfefdd80d00b3db55e58a461bbe02350c8",
+  "_filesize": 9774565,
+  "_sha256": "1a6777d5d885a493e245add3fe95d1dfefdd80d00b3db55e58a461bbe02350c8",
+  "_expires": "2027-01-26T15:25:46.000Z",
+  "_created": "2026-10-18T14:57:28.000Z",
+  "_published": "2026-10-18T15:25:48.616Z",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_upstream": "https://github.com/bioc/cellmig",
+  "_commit": {
+    "id": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+    "author": "snaketron <simo.kitanovski@proton.me>",
+    "committer": "snaketron <simo.kitanovski@proton.me>",
+    "message": "merge\n",
+    "time": 1792323175
+  },
+  "_maintainer": {
+    "name": "Simo Kitanovski",
+    "email": "simokitanovski@gmail.com",
+    "orcid": "0000-0003-2909-5376"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 117707675000,
+      "time": 271,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12140966586"
+    },
+    {
+      "job": 117707675058,
+      "time": 529,
+      "config": "linux-devel-arm64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "12141220781"
+    },
+    {
+      "job": 117707674978,
+      "time": 665,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "12141246081"
+    },
+    {
+      "job": 117707674986,
+      "time": 548,
+      "config": "linux-release-arm64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12139879649"
+    },
+    {
+      "job": 117707674992,
+      "time": 736,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12140896902"
+    },
+    {
+      "job": 117707675040,
+      "time": 509,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "12141340679"
+    },
+    {
+      "job": 117707674975,
+      "time": 1130,
+      "config": "macos-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "12141526295"
+    },
+    {
+      "job": 117707675452,
+      "time": 496,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12140254560"
+    },
+    {
+      "job": 117707674988,
+      "time": 1120,
+      "config": "macos-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12141198063"
+    },
+    {
+      "job": 117704727306,
+      "time": 820,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12140194648"
+    },
+    {
+      "job": 117707674979,
+      "time": 210,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "12140678041"
+    },
+    {
+      "job": 117707674983,
+      "time": 646,
+      "config": "windows-devel-arm64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "12141201215"
+    },
+    {
+      "job": 117707675025,
+      "time": 813,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "NOTE",
+      "artifact": "12141221391"
+    },
+    {
+      "job": 117707675042,
+      "time": 671,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "NOTE",
+      "artifact": "12141256038"
+    },
+    {
+      "job": 117707674990,
+      "time": 665,
+      "config": "windows-release-arm64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12141056907"
+    },
+    {
+      "job": 117707675051,
+      "time": 681,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12140763727"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BH",
+      "version": ">= 1.66.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppEigen",
+      "version": ">= 0.3.3.3.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "RcppParallel",
+      "version": ">= 5.0.1",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "rstan",
+      "version": ">= 2.18.1",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "StanHeaders",
+      "version": ">= 2.18.0",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "base",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Imports"
+    },
+    {
+      "package": "ggforce",
+      "role": "Imports"
+    },
+    {
+      "package": "ggtree",
+      "role": "Imports"
+    },
+    {
+      "package": "patchwork",
+      "role": "Imports"
+    },
+    {
+      "package": "ape",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.0",
+      "role": "Imports"
+    },
+    {
+      "package": "RcppParallel",
+      "version": ">= 5.0.1",
+      "role": "Imports"
+    },
+    {
+      "package": "reshape2",
+      "role": "Imports"
+    },
+    {
+      "package": "rstan",
+      "version": ">= 2.18.1",
+      "role": "Imports"
+    },
+    {
+      "package": "rstantools",
+      "version": ">= 2.4.0",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "scales",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2025-50",
+      "n": 1
+    },
+    {
+      "week": "2026-05",
+      "n": 4
+    },
+    {
+      "week": "2026-06",
+      "n": 2
+    },
+    {
+      "week": "2026-14",
+      "n": 3
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-19",
+      "n": 1
+    },
+    {
+      "week": "2026-20",
+      "n": 1
+    },
+    {
+      "week": "2026-21",
+      "n": 3
+    },
+    {
+      "week": "2026-36",
+      "n": 2
+    },
+    {
+      "week": "2026-42",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.3.9",
+      "bioc": "3.24",
+      "repository": "bioc"
+    },
+    {
+      "branch": "release",
+      "version": "1.2.0",
+      "bioc": "3.23",
+      "repository": "bioc"
+    }
+  ],
+  "_topics": [
+    "singlecell",
+    "cellbiology",
+    "bayesian",
+    "experimentaldesign",
+    "software",
+    "batcheffect",
+    "regression",
+    "clustering",
+    "onetbb",
+    "cpp"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "snaketron",
+      "count": 162,
+      "uuid": 5060977
+    },
+    {
+      "user": "jwokaty",
+      "count": 4,
+      "uuid": 1744257
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 478,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 286,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/cellmig"
+  },
+  "_devurl": "https://github.com/snaketron/cellmig",
+  "_searchresults": 19,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/cellmig.html",
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE"
+  ],
+  "_homeurl": "https://github.com/snaketron/cellmig",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "cellmig",
+    "gen_full",
+    "gen_partial",
+    "get_dose_response_profile",
+    "get_groups",
+    "get_pairs",
+    "get_ppc_means",
+    "get_ppc_violins",
+    "get_violins"
+  ],
+  "_datasets": [
+    {
+      "name": "d",
+      "title": "Example dataset 'd'",
+      "object": "d",
+      "file": "d.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "well",
+        "plate",
+        "compound",
+        "dose",
+        "v",
+        "offset"
+      ],
+      "rows": 7560,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "d_mini",
+      "title": "Example dataset 'd'",
+      "object": "d_mini",
+      "file": "d_mini.RData",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "well",
+        "plate",
+        "compound",
+        "dose",
+        "v",
+        "offset"
+      ],
+      "rows": 2160,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "cellmig-package",
+      "title": "cellmig: quantifying cell migration soeed with hierarchical Bayesian models",
+      "topics": [
+        "cellmig-package"
+      ]
+    },
+    {
+      "page": "cellmig",
+      "title": "Model-based quantification of cell migration speed",
+      "topics": [
+        "cellmig"
+      ]
+    },
+    {
+      "page": "d",
+      "title": "Example dataset 'd'",
+      "topics": [
+        "d",
+        "d_mini"
+      ]
+    },
+    {
+      "page": "sim_full",
+      "title": "Simulate data from a fully generative hierarchical Bayesian model",
+      "topics": [
+        "gen_full"
+      ]
+    },
+    {
+      "page": "sim_partial",
+      "title": "Simulate data from a partially generative hierarchical Bayesian model",
+      "topics": [
+        "gen_partial"
+      ]
+    },
+    {
+      "page": "get_dose_response_profile",
+      "title": "Visualization of dose-response profiles",
+      "topics": [
+        "get_dose_response_profile"
+      ]
+    },
+    {
+      "page": "get_groups",
+      "title": "Extract group labels",
+      "topics": [
+        "get_groups"
+      ]
+    },
+    {
+      "page": "get_pairs",
+      "title": "Quantitative and visual comparison of overall treatment effects",
+      "topics": [
+        "get_pairs"
+      ]
+    },
+    {
+      "page": "ppc_means",
+      "title": "Observed vs. predicted cell migration means in each well",
+      "topics": [
+        "get_ppc_means"
+      ]
+    },
+    {
+      "page": "ppc_violin",
+      "title": "Posterior Predictive Checks (PPC) Visualization",
+      "topics": [
+        "get_ppc_violins"
+      ]
+    },
+    {
+      "page": "get_violins",
+      "title": "Generate violin plots for treatment group comparisons",
+      "topics": [
+        "get_violins"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/cellmig/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "ape",
+    "aplot",
+    "backports",
+    "base64enc",
+    "BH",
+    "bslib",
+    "cachem",
+    "callr",
+    "checkmate",
+    "cli",
+    "cpp11",
+    "desc",
+    "digest",
+    "distributional",
+    "dplyr",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "fontawesome",
+    "fontBitstreamVera",
+    "fontLiberation",
+    "fontquiver",
+    "fs",
+    "gdtools",
+    "generics",
+    "ggforce",
+    "ggfun",
+    "ggiraph",
+    "ggplot2",
+    "ggplotify",
+    "ggtree",
+    "glue",
+    "gridExtra",
+    "gridGraphics",
+    "gtable",
+    "highr",
+    "htmltools",
+    "htmlwidgets",
+    "inline",
+    "isoband",
+    "jquerylib",
+    "jsonlite",
+    "knitr",
+    "labeling",
+    "lattice",
+    "lazyeval",
+    "lifecycle",
+    "loo",
+    "magrittr",
+    "MASS",
+    "matrixStats",
+    "memoise",
+    "mime",
+    "nlme",
+    "numDeriv",
+    "otel",
+    "patchwork",
+    "pillar",
+    "pkgbuild",
+    "pkgconfig",
+    "plyr",
+    "polyclip",
+    "posterior",
+    "processx",
+    "ps",
+    "purrr",
+    "QuickJSR",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "RcppParallel",
+    "reshape2",
+    "rlang",
+    "rmarkdown",
+    "rstan",
+    "rstantools",
+    "S7",
+    "sass",
+    "scales",
+    "StanHeaders",
+    "stringi",
+    "stringr",
+    "systemfonts",
+    "tensorA",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidytree",
+    "tinytex",
+    "treeio",
+    "tweenr",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "withr",
+    "xfun",
+    "yaml",
+    "yulab.utils"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libtbb",
+      "package": "libtbb12",
+      "headers": "libtbb-dev",
+      "source": "onetbb",
+      "version": "2022.3.0-2",
+      "name": "onetbb",
+      "homepage": "https://uxlfoundation.github.io/oneTBB/",
+      "description": "parallelism library for C++ - runtime files"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "16-20260322-1ubuntu1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "User_manual_analysis.Rmd",
+      "filename": "User_manual_analysis.html",
+      "title": "cellmig: Quantifying Cell Migration Velocity with Hierarchical Bayesian Models",
+      "author": "Simo Kitanovski (simo.kitanovski@uni-due.de)",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Data Structure",
+        "Required Columns",
+        "Important: The offset Column",
+        "Example Data",
+        "Exploratory Data Analysis",
+        "Raw Cell Velocities",
+        "Mean Velocity per Well",
+        "Model Fitting",
+        "Control Parameters",
+        "Interpreting Results",
+        "Overall Treatment Effects ($\\delta_t$)",
+        "Visualizing Effects",
+        "From Log-Fold-Change to Fold-Change",
+        "Pairwise Comparisons",
+        "Comparison Matrix",
+        "Visualize $\\rho$",
+        "Visualize $\\pi$",
+        "Visualize $\\rho$ vs. $\\pi$ with a volcano plot",
+        "Violin Plots for Specific Comparisons",
+        "Model Diagnostics and Calibration",
+        "Posterior Predictive Checks (PPC)",
+        "Cell-Level Check",
+        "Well-Level Check",
+        "Leave-One-Out (LOO) diagnostics",
+        "MCMC diagnostics",
+        "Check $\\hat{R}$ and ESS",
+        "Check for divergent transitions and other issues",
+        "Variance Components",
+        "Advanced: Dose-Response Profiles",
+        "Session Info"
+      ],
+      "created": "2025-08-12 16:55:40",
+      "modified": "2026-05-18 16:56:47",
+      "commits": 13
+    },
+    {
+      "source": "User_manual_artifacts.Rmd",
+      "filename": "User_manual_artifacts.html",
+      "title": "Quantifying velocity from noisy data with cellmig",
+      "author": "Simo Kitanovski (simo.kitanovski@uni-due.de)",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Create experimental ``artifact'' -> merge C2 and C6 to create a bimodal velocity distribution",
+        "Session Info"
+      ],
+      "created": "2026-09-02 16:24:46",
+      "modified": "2026-09-02 16:24:46",
+      "commits": 1
+    },
+    {
+      "source": "User_manual_simulation.Rmd",
+      "filename": "User_manual_simulation.html",
+      "title": "Simulating Data with cellmig",
+      "author": "Simo Kitanovski (simo.kitanovski@uni-due.de)",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Partially Generative Simulation",
+        "Experimental Design",
+        "Model Parameters",
+        "Plate Effects ($\\alpha_p$)",
+        "Control Treatment (Offset)",
+        "Cell Velocity Distribution ($\\kappa_w$)",
+        "Generating the Data",
+        "Inspecting the Simulated Data",
+        "Visualizing Simulated Data",
+        "Analyzing Simulated Data",
+        "Validation: Truth vs. Inference",
+        "Treatment Effects ($\\delta_t$)",
+        "Variability Parameters",
+        "Fully Generative Simulation",
+        "Model Specification",
+        "Generate Data",
+        "Comparing Simulation Modes",
+        "Power Analysis",
+        "Simulation Loop",
+        "Interpreting Results",
+        "Session Info"
+      ],
+      "created": "2025-08-12 16:55:40",
+      "modified": "2026-05-10 17:08:15",
+      "commits": 9
+    }
+  ],
+  "_score": 5.7558748556724915,
+  "_indexed": true,
+  "_nocasepkg": "cellmig",
+  "_universes": [
+    "bioc",
+    "snaketron"
+  ],
+  "_previous": "1.3.9",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:01:28.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/8a823ec87d424e8f13ccdee1363fcb0f6d8d4a77c91eea0b37e9e48d27547499",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:02:39.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/9822bfcc6e901b617ff02094e35b0bee65ff3a53c529a8113321c363b6c090cc",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:01:36.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/fd3c8617e42c0913c2b4a7c8dd580f9f6433284df7d80cf6bc1391480f7884ba",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:03:39.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/c36fcab6e2df096c6fc7e9480fb2be161f324c3d6b6c0e55728b2fad8255582e",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:09:50.000Z",
+      "arch": "aarch64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/a92d5e3caaf614c400fe1ce42ace6918b51c8e0987ddb0fd266120faff77e9b1",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:06:32.000Z",
+      "arch": "x86_64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/faec460d60d751cd5c6342ad429282f6dc67d8c0645ef997822a77f5e6ea20dd",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:12:04.000Z",
+      "arch": "aarch64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/69fa11dbe0e417d58c35fcfefaa255834af3b1d83837f22ee76d4722ee1e476d",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:10:28.000Z",
+      "arch": "x86_64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/7775f65f4b1add2d83052e0d403106154d957ef86d99f8190384223a4059fe83",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:01:45.000Z",
+      "arch": "emscripten",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/69adfc9c044d35131e859399cc46bf04aae634cad7b7a966996db13b296b59d3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:02:46.000Z",
+      "arch": "aarch64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/723ae314c5a88d61e9eafad6160e34590b5c08a9946419fc7275903e8ce28824",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:00:48.000Z",
+      "arch": "x86_64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/1a8222b21c9bd0816f2e882869b775bb7d323f6a9d2f285b68ee135132b37c60",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:01:02.000Z",
+      "arch": "x86_64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/951973da7904a085f0c1eb25f7b351ab03dcda379c38dfdf1ea8d4742fb3acf9",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:03:09.000Z",
+      "arch": "aarch64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/e7e7f6588449c2a47de0e7d256c715fd2611f0a6335d2b83a5cdeb507c14b9f5",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.3.11",
+      "date": "2026-10-18T15:00:52.000Z",
+      "arch": "x86_64",
+      "commit": "dcece92c0ed7f3e0f89250b6e20ce9f8a5b87771",
+      "fileid": "https://r2.ropensci.org/a4afa4c909378df7fb6c1958c621f85ce08c20aa43901b459fc063856d78d385",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39137423653"
+    }
+  ]
+}
