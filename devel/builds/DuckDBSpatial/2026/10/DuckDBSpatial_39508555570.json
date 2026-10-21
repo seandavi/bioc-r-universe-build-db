@@ -1,0 +1,983 @@
+{
+  "_id": "6ad7ee9b4b18b9008999a33c",
+  "Package": "DuckDBSpatial",
+  "Version": "0.99.8",
+  "Date": "2026-10-20",
+  "Title": "DuckDB-Backed Spatial Data Structures",
+  "Description": "Provides DuckDB-backed implementations of spatial data\nstructures for efficient out-of-memory operations on large\nspatial datasets. The package includes 68 sf-compatible spatial\nmethods (st_intersects, st_contains, st_within, etc.) and\nGeoParquet 1.0 I/O support via writeGeoParquet(). Ideal for\nspatial analysis, genomic interval analysis, and integration\nwith BiocDuckDB for MultiAssaySpatialExperiment workflows\nrequiring memory-efficient operations on large datasets.",
+  "Authors@R": "c(\nperson(\"Patrick\", \"Aboyoun\", role=c(\"aut\", \"cre\"), email=\"aboyounp@gene.com\"),\nperson(\"Genentech, Inc.\", role=\"cph\")\n)",
+  "License": "MIT + file LICENSE",
+  "URL": "https://github.com/Genentech/DuckDBSpatial",
+  "BugReports": "https://github.com/Genentech/DuckDBSpatial/issues",
+  "biocViews": "DataImport, DataRepresentation, Infrastructure, Software",
+  "VignetteBuilder": "knitr",
+  "Encoding": "UTF-8",
+  "Collate": "'DuckDBTable-spatial.R' 'DuckDBColumn-spatial.R'\n'DuckDBDataFrame-spatial.R' 'DuckDBSpatial-package.R'\n'coordinate-transform-graph.R' 'coordinate-transforms.R'\n'geoparquet-io.R' 'points-coord-index.R' 'writeGeoParquet.R'\n'zzz.R'",
+  "Config/roxygen2/version": "8.1.1",
+  "Config/pak/sysreqs": "libabsl-dev cmake libgdal-dev gdal-bin libgeos-dev\nlibicu-dev libssl-dev libproj-dev libsqlite3-dev\nlibudunits2-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-10-20 18:04:21 UTC",
+  "RemoteUrl": "https://github.com/bioc/DuckDBSpatial",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-10-20 22:36:17 UTC",
+    "User": "root"
+  },
+  "Author": "Patrick Aboyoun [aut, cre],\nGenentech, Inc. [cph]",
+  "Maintainer": "Patrick Aboyoun <aboyounp@gene.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "DuckDBSpatial_0.99.8.tar.gz",
+  "_fileid": "https://r2.ropensci.org/04c8bc71c7e3986ec573f50c2abdd0ace87b49de7cfccf3894b142fe5c5eccb1",
+  "_filesize": 324003,
+  "_sha256": "04c8bc71c7e3986ec573f50c2abdd0ace87b49de7cfccf3894b142fe5c5eccb1",
+  "_expires": "2027-01-28T22:43:37.000Z",
+  "_created": "2026-10-20T22:36:17.000Z",
+  "_published": "2026-10-20T22:43:39.752Z",
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570",
+  "_status": "success",
+  "_host": "GitHub-Actions",
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_upstream": "https://github.com/bioc/DuckDBSpatial",
+  "_commit": {
+    "id": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+    "author": "Patrick Aboyoun <aboyoun.patrick@gene.com>",
+    "committer": "Patrick Aboyoun <aboyoun.patrick@gene.com>",
+    "message": "feat: accept in-memory sf objects in st_join/st_join_table (0.99.8)\n\nst_join.DuckDBTable/st_join_table only accepted lazy DuckDBTable/\nDuckDBDataFrame objects for x/y. Closes a real gap flagged by a user\ncomparing against duckspatial::ddbs_intersects(), which accepts sf\nobjects on either side.\n\nNew internal .as_duckdb_table() materializes an in-memory sf object (or\na data.frame with an sfc or raw-WKB-list geometry column -- the latter\nmatching the shape as.data.frame() on a DuckDBDataFrame's own geometry\ncolumn produces) by converting its geometry to WKT (the same idiom\n.geom_to_sql() already uses for a single geometry), copying it into a\ntemp DuckDB table via copy_to(), then casting back to native GEOMETRY\nwith ST_GeomFromText(). Temp-table naming reuses DuckDBArray's\nPID+counter convention to avoid the dbplyr::unique_table_name()\nglobal-RNG collision class fixed there in 0.99.9. Chosen over\nwriteGeoParquet()+tempfile since that would pull in nanoparquet as a\nhard dependency and add disk I/O for what's typically the small side of\na join.\n\nThree independent review passes (two rounds, four reviewer agents total)\ncaught and fixed real problems before this shipped:\n- The redirect errors added to .geom_to_sql() pointed at spatialMatch()/\n  spatialJoin(), which don't exist in this package (those are\n  BiocDuckDB-level MultiAssaySpatialExperiment methods) -- corrected to\n  layerSpatialMatch(), st_join(), and st_join_table().\n- .as_duckdb_table()'s raw-WKB branch crashed on any NULL entry (the\n  common case of a DuckDBDataFrame's own geometry column, which\n  represents missing geometries as NULL), since sf::st_as_sfc.WKB()\n  asserts every element is raw with no NULL tolerance. Fixed by\n  substituting an empty geometry per NULL entry, wrapped in the same\n  tryCatch-to-friendly-error pattern writeGeoParquet() already uses.\n- Hardened the generated ST_GeomFromText(\"<col>\") SQL against a geometry\n  column name containing a literal double quote.\n\nAlso removed .spatialMatch_sql(",
+    "time": 1792519461
+  },
+  "_maintainer": {
+    "name": "Patrick Aboyoun",
+    "email": "aboyounp@gene.com"
+  },
+  "_distro": "resolute",
+  "_jobs": [
+    {
+      "job": 118926373222,
+      "time": 172,
+      "config": "bioc-checks",
+      "r": "4.6.1",
+      "check": "NOTE",
+      "artifact": "12305985088"
+    },
+    {
+      "job": 118926373234,
+      "time": 379,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12305581075"
+    },
+    {
+      "job": 118926373340,
+      "time": 312,
+      "config": "linux-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12304713758"
+    },
+    {
+      "job": 118926373182,
+      "time": 163,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "12304768415"
+    },
+    {
+      "job": 118926373210,
+      "time": 250,
+      "config": "macos-release-arm64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12304523678"
+    },
+    {
+      "job": 118923674146,
+      "time": 399,
+      "config": "source",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12305255427"
+    },
+    {
+      "job": 118926373120,
+      "time": 121,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "12305355729"
+    },
+    {
+      "job": 118926373267,
+      "time": 268,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "12305980421"
+    },
+    {
+      "job": 118926373465,
+      "time": 236,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "12305775468"
+    },
+    {
+      "job": 118926373250,
+      "time": 248,
+      "config": "windows-release-x86_64",
+      "r": "4.6.1",
+      "check": "OK",
+      "artifact": "12304903507"
+    }
+  ],
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "methods",
+      "role": "Depends"
+    },
+    {
+      "package": "DuckDBDataFrame",
+      "role": "Depends"
+    },
+    {
+      "package": "sf",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "dbplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "dplyr",
+      "role": "Imports"
+    },
+    {
+      "package": "wk",
+      "role": "Imports"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "role": "Suggests"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Suggests"
+    },
+    {
+      "package": "lwgeom",
+      "role": "Suggests"
+    },
+    {
+      "package": "nanoparquet",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-09",
+      "n": 1
+    },
+    {
+      "week": "2026-10",
+      "n": 4
+    },
+    {
+      "week": "2026-11",
+      "n": 1
+    },
+    {
+      "week": "2026-19",
+      "n": 1
+    },
+    {
+      "week": "2026-23",
+      "n": 1
+    },
+    {
+      "week": "2026-24",
+      "n": 2
+    },
+    {
+      "week": "2026-25",
+      "n": 1
+    },
+    {
+      "week": "2026-27",
+      "n": 1
+    },
+    {
+      "week": "2026-28",
+      "n": 2
+    },
+    {
+      "week": "2026-29",
+      "n": 7
+    },
+    {
+      "week": "2026-30",
+      "n": 5
+    },
+    {
+      "week": "2026-31",
+      "n": 2
+    },
+    {
+      "week": "2026-32",
+      "n": 3
+    },
+    {
+      "week": "2026-34",
+      "n": 2
+    },
+    {
+      "week": "2026-37",
+      "n": 1
+    },
+    {
+      "week": "2026-43",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.7",
+      "bioc": "3.24",
+      "repository": "bioc"
+    }
+  ],
+  "_topics": [
+    "dataimport",
+    "datarepresentation",
+    "infrastructure",
+    "software"
+  ],
+  "_stars": 2,
+  "_contributors": [
+    {
+      "user": "aboyounp-gne",
+      "count": 38,
+      "uuid": 171627243
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 479,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 225,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/DuckDBSpatial"
+  },
+  "_devurl": "https://github.com/genentech/duckdbspatial",
+  "_searchresults": 9,
+  "_rbuild": "4.6.1",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/DuckDBSpatial.html",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "LICENSE"
+  ],
+  "_homeurl": "https://github.com/genentech/duckdbspatial",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "asCoordinateTransform",
+    "coordinateSystem",
+    "ctAffine",
+    "ctAffineMatrix",
+    "ctApply",
+    "ctBetween",
+    "ctBijection",
+    "ctByDimension",
+    "ctGraph",
+    "ctIdentity",
+    "ctInvert",
+    "ctMapAxis",
+    "ctPath",
+    "ctRotation",
+    "ctScale",
+    "ctSequence",
+    "ctTranslation",
+    "enableGeoParquetConversion",
+    "layerBboxRange",
+    "layerSpatialMatch",
+    "layerSpatialOverlaps",
+    "layerSubsetByBbox",
+    "layerSubsetByGeometry",
+    "readGeoParquet",
+    "spatialSortPoints",
+    "st_affine",
+    "st_build_area",
+    "st_collect",
+    "st_collect_agg",
+    "st_contains",
+    "st_contains_properly",
+    "st_covered_by",
+    "st_covers",
+    "st_crosses",
+    "st_dimension",
+    "st_disjoint",
+    "st_distance",
+    "st_end_point",
+    "st_envelope",
+    "st_envelope_agg",
+    "st_equals",
+    "st_flip_coordinates",
+    "st_geometry_type",
+    "st_geomfromtext_sql",
+    "st_inscribed_circle",
+    "st_intersects_table",
+    "st_is_closed",
+    "st_is_empty",
+    "st_is_ring",
+    "st_is_simple",
+    "st_is_within_distance",
+    "st_join_table",
+    "st_length",
+    "st_line_interpolate",
+    "st_line_project",
+    "st_line_substring",
+    "st_make_envelope_sql",
+    "st_num_geometries",
+    "st_num_interior_rings",
+    "st_num_points",
+    "st_overlaps",
+    "st_perimeter",
+    "st_point_sql",
+    "st_reduce_precision",
+    "st_remove_repeated_points",
+    "st_start_point",
+    "st_touches",
+    "st_union_agg",
+    "st_within",
+    "st_within_properly",
+    "transformLayer",
+    "writeGeoParquet",
+    "writeSpatialPointsParquet"
+  ],
+  "_help": [
+    {
+      "page": "asCoordinateTransform",
+      "title": "Coerce a transform dict into a CoordinateTransform",
+      "topics": [
+        "asCoordinateTransform"
+      ]
+    },
+    {
+      "page": "coordinate-transforms",
+      "title": "Coordinate-transform constructors (OME-NGFF RFC-5)",
+      "topics": [
+        "coordinate-transforms",
+        "ctAffine",
+        "ctBijection",
+        "ctByDimension",
+        "ctIdentity",
+        "ctMapAxis",
+        "ctRotation",
+        "ctScale",
+        "ctSequence",
+        "ctTranslation"
+      ]
+    },
+    {
+      "page": "coordinateSystem",
+      "title": "Define a named coordinate system",
+      "topics": [
+        "coordinateSystem"
+      ]
+    },
+    {
+      "page": "ctAffineMatrix",
+      "title": "Lower a coordinate transform to a homogeneous affine matrix",
+      "topics": [
+        "ctAffineMatrix"
+      ]
+    },
+    {
+      "page": "ctApply",
+      "title": "Apply a coordinate transform to a matrix of points",
+      "topics": [
+        "ctApply"
+      ]
+    },
+    {
+      "page": "ctBetween",
+      "title": "Transform points between two coordinate systems",
+      "topics": [
+        "ctBetween"
+      ]
+    },
+    {
+      "page": "ctGraph",
+      "title": "Build a coordinate-transform graph",
+      "topics": [
+        "ctGraph"
+      ]
+    },
+    {
+      "page": "ctInvert",
+      "title": "Invert a coordinate transform",
+      "topics": [
+        "ctInvert"
+      ]
+    },
+    {
+      "page": "ctPath",
+      "title": "Resolve the transform between two coordinate systems",
+      "topics": [
+        "ctPath"
+      ]
+    },
+    {
+      "page": "DuckDBColumn-spatial",
+      "title": "Spatial operations on DuckDBColumn objects",
+      "topics": [
+        "DuckDBColumn-spatial",
+        "st_area.DuckDBColumn",
+        "st_as_binary.DuckDBColumn",
+        "st_as_sfc.DuckDBColumn",
+        "st_as_text.DuckDBColumn",
+        "st_bbox.DuckDBColumn",
+        "st_boundary.DuckDBColumn",
+        "st_buffer.DuckDBColumn",
+        "st_build_area.DuckDBColumn",
+        "st_centroid.DuckDBColumn",
+        "st_collect.DuckDBColumn",
+        "st_collection_extract.DuckDBColumn",
+        "st_concave_hull.DuckDBColumn",
+        "st_contains.DuckDBColumn",
+        "st_contains_properly.DuckDBColumn",
+        "st_convex_hull.DuckDBColumn",
+        "st_coordinates.DuckDBColumn",
+        "st_covered_by.DuckDBColumn",
+        "st_covers.DuckDBColumn",
+        "st_crosses.DuckDBColumn",
+        "st_difference.DuckDBColumn",
+        "st_dimension.DuckDBColumn",
+        "st_disjoint.DuckDBColumn",
+        "st_distance.DuckDBColumn",
+        "st_end_point.DuckDBColumn",
+        "st_envelope.DuckDBColumn",
+        "st_equals.DuckDBColumn",
+        "st_exterior_ring.DuckDBColumn",
+        "st_flip_coordinates.DuckDBColumn",
+        "st_geometry_type.DuckDBColumn",
+        "st_inscribed_circle.DuckDBColumn",
+        "st_intersection.DuckDBColumn",
+        "st_intersects.DuckDBColumn",
+        "st_is_closed.DuckDBColumn",
+        "st_is_empty.DuckDBColumn",
+        "st_is_ring.DuckDBColumn",
+        "st_is_simple.DuckDBColumn",
+        "st_is_valid.DuckDBColumn",
+        "st_is_within_distance.DuckDBColumn",
+        "st_length.DuckDBColumn",
+        "st_line_interpolate.DuckDBColumn",
+        "st_line_merge.DuckDBColumn",
+        "st_line_project.DuckDBColumn",
+        "st_line_substring.DuckDBColumn",
+        "st_make_valid.DuckDBColumn",
+        "st_minimum_rotated_rectangle.DuckDBColumn",
+        "st_nearest_points.DuckDBColumn",
+        "st_node.DuckDBColumn",
+        "st_normalize.DuckDBColumn",
+        "st_num_geometries.DuckDBColumn",
+        "st_num_interior_rings.DuckDBColumn",
+        "st_num_points.DuckDBColumn",
+        "st_overlaps.DuckDBColumn",
+        "st_perimeter.DuckDBColumn",
+        "st_point_on_surface.DuckDBColumn",
+        "st_reduce_precision.DuckDBColumn",
+        "st_remove_repeated_points.DuckDBColumn",
+        "st_reverse.DuckDBColumn",
+        "st_simplify.DuckDBColumn",
+        "st_start_point.DuckDBColumn",
+        "st_touches.DuckDBColumn",
+        "st_union.DuckDBColumn",
+        "st_voronoi.DuckDBColumn",
+        "st_within.DuckDBColumn",
+        "st_within_properly.DuckDBColumn"
+      ]
+    },
+    {
+      "page": "DuckDBTable-spatial",
+      "title": "Spatial operations on DuckDBTable objects",
+      "topics": [
+        "DuckDBTable-spatial",
+        "st_area.DuckDBTable",
+        "st_as_binary.DuckDBTable",
+        "st_as_sfc.DuckDBTable",
+        "st_as_text.DuckDBTable",
+        "st_boundary.DuckDBTable",
+        "st_buffer.DuckDBTable",
+        "st_build_area",
+        "st_build_area.default",
+        "st_build_area.DuckDBTable",
+        "st_centroid.DuckDBTable",
+        "st_collect",
+        "st_collect.default",
+        "st_collection_extract.DuckDBTable",
+        "st_collect_agg",
+        "st_concave_hull.DuckDBTable",
+        "st_contains",
+        "st_contains.default",
+        "st_contains.DuckDBTable",
+        "st_contains_properly",
+        "st_contains_properly.default",
+        "st_contains_properly.DuckDBTable",
+        "st_convex_hull.DuckDBTable",
+        "st_covered_by",
+        "st_covered_by.default",
+        "st_covered_by.DuckDBTable",
+        "st_covers",
+        "st_covers.default",
+        "st_covers.DuckDBTable",
+        "st_crosses",
+        "st_crosses.default",
+        "st_crosses.DuckDBTable",
+        "st_difference.DuckDBTable",
+        "st_dimension",
+        "st_dimension.default",
+        "st_dimension.DuckDBTable",
+        "st_disjoint",
+        "st_disjoint.default",
+        "st_disjoint.DuckDBTable",
+        "st_distance",
+        "st_distance.default",
+        "st_distance.DuckDBTable",
+        "st_end_point",
+        "st_end_point.default",
+        "st_end_point.DuckDBTable",
+        "st_envelope",
+        "st_envelope.DuckDBTable",
+        "st_envelope_agg",
+        "st_equals",
+        "st_equals.default",
+        "st_equals.DuckDBTable",
+        "st_exterior_ring.DuckDBTable",
+        "st_filter.DuckDBTable",
+        "st_flip_coordinates",
+        "st_flip_coordinates.default",
+        "st_flip_coordinates.DuckDBTable",
+        "st_geometry_type",
+        "st_geometry_type.default",
+        "st_geometry_type.DuckDBTable",
+        "st_geomfromtext_sql",
+        "st_inscribed_circle",
+        "st_inscribed_circle.default",
+        "st_inscribed_circle.DuckDBTable",
+        "st_intersection.DuckDBTable",
+        "st_intersects.DuckDBTable",
+        "st_intersects_table",
+        "st_is_closed",
+        "st_is_closed.default",
+        "st_is_closed.DuckDBTable",
+        "st_is_empty",
+        "st_is_empty.default",
+        "st_is_empty.DuckDBTable",
+        "st_is_ring",
+        "st_is_ring.default",
+        "st_is_ring.DuckDBTable",
+        "st_is_simple",
+        "st_is_simple.default",
+        "st_is_simple.DuckDBTable",
+        "st_is_valid.DuckDBTable",
+        "st_is_within_distance",
+        "st_is_within_distance.default",
+        "st_is_within_distance.DuckDBTable",
+        "st_join.DuckDBTable",
+        "st_join_table",
+        "st_length",
+        "st_length.default",
+        "st_length.DuckDBTable",
+        "st_line_interpolate",
+        "st_line_interpolate.default",
+        "st_line_interpolate.DuckDBTable",
+        "st_line_merge.DuckDBTable",
+        "st_line_project",
+        "st_line_project.default",
+        "st_line_project.DuckDBTable",
+        "st_line_substring",
+        "st_line_substring.default",
+        "st_line_substring.DuckDBTable",
+        "st_make_envelope_sql",
+        "st_make_valid.DuckDBTable",
+        "st_minimum_rotated_rectangle.DuckDBTable",
+        "st_nearest_points.DuckDBTable",
+        "st_node.DuckDBTable",
+        "st_normalize.DuckDBTable",
+        "st_num_geometries",
+        "st_num_geometries.default",
+        "st_num_geometries.DuckDBTable",
+        "st_num_interior_rings",
+        "st_num_interior_rings.default",
+        "st_num_interior_rings.DuckDBTable",
+        "st_num_points",
+        "st_num_points.default",
+        "st_num_points.DuckDBTable",
+        "st_overlaps",
+        "st_overlaps.default",
+        "st_overlaps.DuckDBTable",
+        "st_perimeter",
+        "st_perimeter.default",
+        "st_perimeter.DuckDBTable",
+        "st_point_on_surface.DuckDBTable",
+        "st_point_sql",
+        "st_reduce_precision",
+        "st_reduce_precision.default",
+        "st_reduce_precision.DuckDBTable",
+        "st_remove_repeated_points",
+        "st_remove_repeated_points.default",
+        "st_remove_repeated_points.DuckDBTable",
+        "st_reverse.DuckDBTable",
+        "st_simplify.DuckDBTable",
+        "st_start_point",
+        "st_start_point.default",
+        "st_start_point.DuckDBTable",
+        "st_touches",
+        "st_touches.default",
+        "st_touches.DuckDBTable",
+        "st_union.DuckDBTable",
+        "st_union_agg",
+        "st_voronoi.DuckDBTable",
+        "st_within",
+        "st_within.default",
+        "st_within.DuckDBTable",
+        "st_within_properly",
+        "st_within_properly.default",
+        "st_within_properly.DuckDBTable"
+      ]
+    },
+    {
+      "page": "enableGeoParquetConversion",
+      "title": "Enable DuckDB GeoParquet conversion on a connection",
+      "topics": [
+        "enableGeoParquetConversion"
+      ]
+    },
+    {
+      "page": "layerBboxRange",
+      "title": "Subset a points layer to a bounding box with a prunable range predicate",
+      "topics": [
+        "layerBboxRange"
+      ]
+    },
+    {
+      "page": "layerSpatialMatch",
+      "title": "Match points in a lazy table layer to a geometry table",
+      "topics": [
+        "layerSpatialMatch"
+      ]
+    },
+    {
+      "page": "layerSpatialOverlaps",
+      "title": "Test spatial intersection for a lazy table layer",
+      "topics": [
+        "layerSpatialOverlaps"
+      ]
+    },
+    {
+      "page": "layerSubsetByBbox",
+      "title": "Row indices of a layer inside a bounding box",
+      "topics": [
+        "layerSubsetByBbox"
+      ]
+    },
+    {
+      "page": "layerSubsetByGeometry",
+      "title": "Row indices of a layer intersecting a geometry",
+      "topics": [
+        "layerSubsetByGeometry"
+      ]
+    },
+    {
+      "page": "readGeoParquet",
+      "title": "Read a GeoParquet file as a lazy 'DuckDBDataFrame'",
+      "topics": [
+        "readGeoParquet"
+      ]
+    },
+    {
+      "page": "spatialSortPoints",
+      "title": "Reorder a points table by a Morton (Z-order) spatial key",
+      "topics": [
+        "spatialSortPoints"
+      ]
+    },
+    {
+      "page": "st_affine",
+      "title": "Apply a 2-D affine coordinate transform to geometries",
+      "topics": [
+        "st_affine"
+      ]
+    },
+    {
+      "page": "transformLayer",
+      "title": "Apply a coordinate transform to a spatial layer",
+      "topics": [
+        "transformLayer"
+      ]
+    },
+    {
+      "page": "writeGeoParquet",
+      "title": "Write spatial data as GeoParquet",
+      "topics": [
+        "writeGeoParquet"
+      ]
+    },
+    {
+      "page": "writeSpatialPointsParquet",
+      "title": "Write a coord-indexed (Morton-sorted) points Parquet",
+      "topics": [
+        "writeSpatialPointsParquet"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/DuckDBSpatial/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "arrow",
+    "assertthat",
+    "BiocGenerics",
+    "bit",
+    "bit64",
+    "blob",
+    "class",
+    "classInt",
+    "cli",
+    "cpp11",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "dplyr",
+    "duckdb",
+    "DuckDBDataFrame",
+    "e1071",
+    "generics",
+    "glue",
+    "IRanges",
+    "KernSmooth",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "pillar",
+    "pkgconfig",
+    "proxy",
+    "purrr",
+    "R6",
+    "Rcpp",
+    "rlang",
+    "s2",
+    "S4Arrays",
+    "S4Vectors",
+    "sf",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "units",
+    "utf8",
+    "vctrs",
+    "withr",
+    "wk",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "DuckDBSpatial.Rmd",
+      "filename": "DuckDBSpatial.html",
+      "title": "Introduction to DuckDBSpatial",
+      "author": "Patrick Aboyoun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Installation",
+        "Lazy spatial columns",
+        "Spatial predicates and filtering",
+        "Layer-level engines for coordinate columns",
+        "GeoParquet I/O",
+        "When to use DuckDBSpatial",
+        "Session information"
+      ],
+      "created": "2026-07-06 22:44:21",
+      "modified": "2026-09-12 14:56:56",
+      "commits": 8
+    },
+    {
+      "source": "DuckDBSpatial-design.Rmd",
+      "filename": "DuckDBSpatial-design.html",
+      "title": "Design and extension of DuckDBSpatial",
+      "author": "Patrick Aboyoun",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Scope",
+        "Architecture",
+        "From sf generics to spatial SQL",
+        "Two dispatch paths",
+        "GeoParquet I/O",
+        "Extending, and the BiocDuckDB integration",
+        "Session information"
+      ],
+      "created": "2026-07-06 22:44:21",
+      "modified": "2026-09-12 14:56:56",
+      "commits": 8
+    }
+  ],
+  "_score": 5.505149978319906,
+  "_indexed": true,
+  "_nocasepkg": "duckdbspatial",
+  "_universes": [
+    "bioc",
+    "genentech"
+  ],
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:40:29.000Z",
+      "distro": "resolute",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/8a1c5d0b0303fcf4ff7f945795bc7f35f48635492f5b64e2f21e07dd46534371",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    },
+    {
+      "r": "4.6.1",
+      "os": "linux",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:39:26.000Z",
+      "distro": "resolute",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/c95d16b92bfabc4f3c2f78c8b7668fd128a0b210ea1730ffe858c454a1829ff4",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:38:08.000Z",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/ec4304625e132f7a0d300d5edda5b0ca027a43e625ab3dfe9d330aa90d42d167",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:38:37.000Z",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/d21dcb6ffd7b53b1c94dac64d3e4aeafbf169e7b302fc87ba65ee33dc44b7992",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:38:52.000Z",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/01cdca00b3833c79e958e1cb9f6e678ae2552e0148a526c5b0d2d8a3cca08920",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:37:59.000Z",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/25551361e63f8fff978cf55987bb3238dbec9f63ea33b4acd8e3f9d9ab722911",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:37:59.000Z",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/03be312b2f1788465cb415b874eac731a7d9855e40737729d3b9ba7f5af0ed55",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "0.99.8",
+      "date": "2026-10-20T22:37:57.000Z",
+      "commit": "036c2d9d7462258dcb129e64a45dbecb312c22ef",
+      "fileid": "https://r2.ropensci.org/8bd291ba394d5d02a8f10819359c783c43b76c7a30d2d243e14303c52ba318e9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/39508555570"
+    }
+  ]
+}
