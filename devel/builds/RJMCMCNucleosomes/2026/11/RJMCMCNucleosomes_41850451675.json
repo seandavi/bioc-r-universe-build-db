@@ -1,0 +1,863 @@
+{
+  "_id": "6aeb47831e2c7b3a4f5351cc",
+  "Package": "RJMCMCNucleosomes",
+  "Version": "1.37.1",
+  "Date": "2025-07-28",
+  "Title": "Bayesian hierarchical model for genome-wide nucleosome\npositioning with high-throughput short-read data (MNase-Seq)",
+  "Description": "This package detects nucleosome positions genome-wide from\npaired-end or single-end MNase-Seq reads using a Bayesian\nhierarchical model. Read positions are modelled as a mixture of\nStudent's t-distributions with an informative\nMultinomial-Dirichlet prior on nucleosome locations, and the\nnumber of nucleosomes is estimated with a reversible jump\nMarkov chain Monte Carlo (RJMCMC) algorithm. Functions are\nprovided to split chromosomes into segments for parallel\nanalysis, merge and post-process the predictions, and plot\nnucleosome positions alongside read coverage. This package\nimplements the method described in Samb et al. 2015\n(DOI:10.1515/sagmb-2014-0098).",
+  "Authors@R": "c(person(\"Pascal\", \"Belleau\",\nemail=\"pascal_belleau@hotmail.com\", role=c(\"aut\"),\ncomment=c(ORCID=\"0000-0002-0802-1071\")),\nperson(\"Rawane\", \"Samb\",\nemail=\"rawane.samb.1@ulaval.ca\", role=c(\"aut\")),\nperson(\"Astrid\", \"Desch\u00eanes\",\nemail=\"adeschen@hotmail.com\",\nrole=c(\"cre\",\"aut\"), comment=c(ORCID=\"0000-0001-7846-6749\")),\nperson(\"Khader\", \"Khadraoui\",\nemail=\"Khader.Khadraoui@mat.ulaval.ca\", role=c(\"aut\")),\nperson(\"Lajmi\", \"Lakhal-Chaieb\",\nemail=\"Lajmi.Lakhal@mat.ulaval.ca;\", role=c(\"aut\")),\nperson(\"Arnaud\", \"Droit\",\nemail=\"arnaud.droit@crchuq.ulaval.ca\", role=c(\"aut\")))",
+  "SystemRequirements": "Rcpp",
+  "Encoding": "UTF-8",
+  "License": "Artistic-2.0",
+  "URL": "https://github.com/adeschen/RJMCMCNucleosomes",
+  "BugReports": "https://github.com/adeschen/RJMCMCNucleosomes/issues",
+  "VignetteBuilder": "knitr",
+  "biocViews": "BiologicalQuestion, ChIPSeq, NucleosomePositioning,\nSoftware, StatisticalMethod, Bayesian, Sequencing, Coverage",
+  "Config/roxygen2/version": "8.1.0",
+  "Config/pak/sysreqs": "make libbz2-dev libicu-dev liblzma-dev libxml2-dev\nlibssl-dev xz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-11-03 22:51:23 UTC",
+  "RemoteUrl": "https://github.com/bioc/RJMCMCNucleosomes",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "519915a51411de71c30a6b2a85fff63e1afdd203",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-11-04 14:47:44 UTC",
+    "User": "root"
+  },
+  "Author": "Pascal Belleau [aut] (ORCID: <https://orcid.org/0000-0002-0802-1071>),\nRawane Samb [aut],\nAstrid Desch\u00eanes [cre, aut] (ORCID:\n<https://orcid.org/0000-0001-7846-6749>),\nKhader Khadraoui [aut],\nLajmi Lakhal-Chaieb [aut],\nArnaud Droit [aut]",
+  "Maintainer": "Astrid Desch\u00eanes <adeschen@hotmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "RJMCMCNucleosomes_1.37.1.tar.gz",
+  "_fileid": "https://r2.ropensci.org/a3b7ada508ad1ba15887b636c9db285b102779b9beac65ae09ae3ba36d636ddd",
+  "_filesize": 509280,
+  "_sha256": "a3b7ada508ad1ba15887b636c9db285b102779b9beac65ae09ae3ba36d636ddd",
+  "_expires": "2027-02-12T14:56:01.000Z",
+  "_created": "2026-11-04T14:47:44.000Z",
+  "_published": "2026-11-04T14:56:03.735Z",
+  "_upstream": "https://github.com/bioc/RJMCMCNucleosomes",
+  "_status": "success",
+  "_maintainer": {
+    "name": "Astrid Desch\u00eanes",
+    "email": "adeschen@hotmail.com",
+    "login": "adeschen",
+    "orcid": "0000-0001-7846-6749",
+    "description": "Computational Science Analyst at Cold Spring Harbor Laboratory",
+    "uuid": 7254636
+  },
+  "_jobs": [
+    {
+      "job": 126647813848,
+      "time": 167,
+      "config": "bioc-checks",
+      "r": "4.6.2",
+      "check": "NOTE",
+      "artifact": "13334762931"
+    },
+    {
+      "job": 126647814678,
+      "time": 212,
+      "config": "linux-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "13335641696"
+    },
+    {
+      "job": 126647814177,
+      "time": 302,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "13335326809"
+    },
+    {
+      "job": 126647814409,
+      "time": 201,
+      "config": "linux-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13336106613"
+    },
+    {
+      "job": 126647814360,
+      "time": 323,
+      "config": "linux-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13336056987"
+    },
+    {
+      "job": 126647814266,
+      "time": 189,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "13334423286"
+    },
+    {
+      "job": 126647814094,
+      "time": 435,
+      "config": "macos-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "13335622287"
+    },
+    {
+      "job": 126647813952,
+      "time": 219,
+      "config": "macos-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13335801815"
+    },
+    {
+      "job": 126647813983,
+      "time": 380,
+      "config": "macos-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13334903502"
+    },
+    {
+      "job": 126645231234,
+      "time": 259,
+      "config": "source",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13335735993"
+    },
+    {
+      "job": 126647814003,
+      "time": 142,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "13335881138"
+    },
+    {
+      "job": 126647814140,
+      "time": 345,
+      "config": "windows-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "13335612040"
+    },
+    {
+      "job": 126647814008,
+      "time": 297,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "13336231659"
+    },
+    {
+      "job": 126647813980,
+      "time": 236,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "13336565995"
+    },
+    {
+      "job": 126647814115,
+      "time": 374,
+      "config": "windows-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13335922061"
+    },
+    {
+      "job": 126647814579,
+      "time": 177,
+      "config": "windows-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13335821631"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 8
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/41850451675",
+  "_commit": {
+    "id": "519915a51411de71c30a6b2a85fff63e1afdd203",
+    "author": "adeschen <adeschen@hotmail.com>",
+    "committer": "adeschen <adeschen@hotmail.com>",
+    "message": "Add NEWS.md and bump version to 1.37.1\n\nReplace the empty inst/NEWS file with a NEWS.md describing the\nchanges in this version.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n",
+    "time": 1793746283
+  },
+  "_distro": "resolute",
+  "_host": "GitHub-Actions",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "IRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Depends"
+    },
+    {
+      "package": "Rcpp",
+      "role": "LinkingTo"
+    },
+    {
+      "package": "Rcpp",
+      "version": ">= 0.12.5",
+      "role": "Imports"
+    },
+    {
+      "package": "consensusSeekeR",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "Seqinfo",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "version": ">= 0.23.10",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "nucleoSim",
+      "role": "Suggests"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-45",
+      "n": 88
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.37.0",
+      "bioc": "3.24",
+      "repository": "bioc"
+    },
+    {
+      "branch": "release",
+      "version": "1.36.0",
+      "bioc": "3.23",
+      "repository": "bioc"
+    }
+  ],
+  "_topics": [
+    "biologicalquestion",
+    "chipseq",
+    "nucleosomepositioning",
+    "software",
+    "statisticalmethod",
+    "bayesian",
+    "sequencing",
+    "coverage",
+    "bioconductor",
+    "mcmc-methods",
+    "nucleosome-positioning",
+    "gsl",
+    "cpp"
+  ],
+  "_stars": 0,
+  "_contributors": [
+    {
+      "user": "adeschen",
+      "count": 90,
+      "uuid": 7254636
+    },
+    {
+      "user": "jwokaty",
+      "count": 16,
+      "uuid": 1744257
+    },
+    {
+      "user": "nturaga",
+      "count": 14,
+      "uuid": 2746443
+    },
+    {
+      "user": "hpages",
+      "count": 7,
+      "uuid": 8810451
+    },
+    {
+      "user": "vobencha",
+      "count": 2,
+      "uuid": 2466173
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 484,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 636,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/RJMCMCNucleosomes"
+  },
+  "_devurl": "https://github.com/adeschen/rjmcmcnucleosomes",
+  "_searchresults": 1,
+  "_abi": {
+    "exports": [],
+    "imports": [
+      {
+        "key": "Rcpp::Rcpp_precious_preserve()",
+        "hash": "33a97ea62b293da6"
+      },
+      {
+        "key": "Rcpp::Rcpp_precious_remove()",
+        "hash": "63d26947ba7e1377"
+      },
+      {
+        "key": "Rcpp::dataptr()",
+        "hash": "54e69ad2e6668c83"
+      },
+      {
+        "key": "Rcpp::demangle()",
+        "hash": "b0cfd6754c5ebc4e"
+      },
+      {
+        "key": "Rcpp::enterRNGScope()",
+        "hash": "a04a299137cef947"
+      },
+      {
+        "key": "Rcpp::exitRNGScope()",
+        "hash": "a04a299137cef947"
+      },
+      {
+        "key": "Rcpp::rcpp_get_stack_trace()",
+        "hash": "c684a9bbe15cdc52"
+      },
+      {
+        "key": "Rcpp::rcpp_set_stack_trace()",
+        "hash": "33a97ea62b293da6"
+      }
+    ]
+  },
+  "_rbuild": "4.6.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/RJMCMCNucleosomes.html"
+  ],
+  "_homeurl": "https://github.com/arnauddroitlab/rjmcmcnucleosomes",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "mergeAllRDSFilesFromDirectory",
+    "mergeRDSFiles",
+    "plotNucleosomes",
+    "postTreatment",
+    "rjmcmc",
+    "rjmcmcCHR",
+    "segmentation"
+  ],
+  "_datasets": [
+    {
+      "name": "reads_demo_01",
+      "title": "Forward reads and reverse reads in 'GRanges' format (for demo purpose).",
+      "object": "reads_demo_01",
+      "file": "reads_demo_01.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "reads_demo_02",
+      "title": "Forward reads and reverse reads in 'GRanges' format (for demo purpose).",
+      "object": "reads_demo_02",
+      "file": "reads_demo_02.RData",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "RJMCMC_result",
+      "title": "Nucleosomes detected by running RJMCMC function using reads from reads_demo_02 dataset (for demo purpose).",
+      "object": "RJMCMC_result",
+      "file": "RJMCMC_result.RData",
+      "class": [
+        "rjmcmcNucleosomes"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "syntheticNucleosomeReads",
+      "title": "Simulated dataset of reads generated by 'nucleoSim' package (for demo purpose).",
+      "object": "syntheticNucleosomeReads",
+      "file": "syntheticNucleosomeReads.RData",
+      "class": [
+        "syntheticNucReads"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "RJMCMCNucleosomes-package",
+      "title": "RJMCMCNucleosomes: Bayesian hierarchical model for genome-wide nucleosome positioning with high-throughput short-read data (MNase-Seq)",
+      "topics": [
+        "RJMCMCNucleosomes-package",
+        "RJMCMCNucleosomes"
+      ]
+    },
+    {
+      "page": "mergeAllRDSFilesFromDirectory",
+      "title": "Merge nucleosome information from all RDS files present in a same directory. Beware that only nucleosome information from same chromosome should be merged together.",
+      "topics": [
+        "mergeAllRDSFilesFromDirectory"
+      ]
+    },
+    {
+      "page": "mergeRDSFiles",
+      "title": "Merge nucleosome information from selected RDS files.",
+      "topics": [
+        "mergeRDSFiles"
+      ]
+    },
+    {
+      "page": "plotNucleosomes",
+      "title": "Generate a graph of nucleosome positions with read coverage",
+      "topics": [
+        "plotNucleosomes"
+      ]
+    },
+    {
+      "page": "postTreatment",
+      "title": "A post-treatment function to merge closely positioned nucleosomes, from the same chromosome, identified by the 'rjmcmc' function.",
+      "topics": [
+        "postTreatment"
+      ]
+    },
+    {
+      "page": "print.rjmcmcNucleosomes",
+      "title": "Formatted output of predicted nucleosomes",
+      "topics": [
+        "print.rjmcmcNucleosomes"
+      ]
+    },
+    {
+      "page": "print.rjmcmcNucleosomesBeforeAndAfterPostTreatment",
+      "title": "Formatted output of predicted nucleosomes",
+      "topics": [
+        "print.rjmcmcNucleosomesBeforeAndAfterPostTreatment"
+      ]
+    },
+    {
+      "page": "print.rjmcmcNucleosomesMerge",
+      "title": "Formatted output of predicted nucleosomes",
+      "topics": [
+        "print.rjmcmcNucleosomesMerge"
+      ]
+    },
+    {
+      "page": "reads_demo_01",
+      "title": "Forward reads and reverse reads in 'GRanges' format (for demo purpose).",
+      "topics": [
+        "reads_demo_01"
+      ]
+    },
+    {
+      "page": "reads_demo_02",
+      "title": "Forward reads and reverse reads in 'GRanges' format (for demo purpose).",
+      "topics": [
+        "reads_demo_02"
+      ]
+    },
+    {
+      "page": "rjmcmc",
+      "title": "Nucleosome positioning mapping on a segment",
+      "topics": [
+        "rjmcmc"
+      ]
+    },
+    {
+      "page": "RJMCMC_result",
+      "title": "Nucleosomes detected by running RJMCMC function using reads from reads_demo_02 dataset (for demo purpose).",
+      "topics": [
+        "RJMCMC_result"
+      ]
+    },
+    {
+      "page": "rjmcmcCHR",
+      "title": "Nucleosome positioning mapping on a large segment, up to a chromosome",
+      "topics": [
+        "rjmcmcCHR"
+      ]
+    },
+    {
+      "page": "segmentation",
+      "title": "Split a 'GRanges' containing reads in a list of smaller segments for the 'rjmcmc' function.",
+      "topics": [
+        "segmentation"
+      ]
+    },
+    {
+      "page": "syntheticNucleosomeReads",
+      "title": "Simulated dataset of reads generated by 'nucleoSim' package (for demo purpose).",
+      "topics": [
+        "syntheticNucleosomeReads"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/RJMCMCNucleosomes/raw/HEAD/README.md",
+  "_rundeps": [
+    "askpass",
+    "BH",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocParallel",
+    "Biostrings",
+    "bitops",
+    "cigarillo",
+    "cli",
+    "codetools",
+    "consensusSeekeR",
+    "cpp11",
+    "crayon",
+    "curl",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicAlignments",
+    "GenomicRanges",
+    "glue",
+    "httr",
+    "IRanges",
+    "jsonlite",
+    "lambda.r",
+    "lifecycle",
+    "magrittr",
+    "mime",
+    "openssl",
+    "R6",
+    "Rcpp",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "Rsamtools",
+    "rtracklayer",
+    "S4Vectors",
+    "Seqinfo",
+    "snow",
+    "stringi",
+    "stringr",
+    "sys",
+    "vctrs",
+    "XML",
+    "XVector",
+    "yaml"
+  ],
+  "_sysdeps": [
+    {
+      "shlib": "libgsl",
+      "package": "libgsl28",
+      "headers": "libgsl-dev",
+      "source": "gsl",
+      "version": "2.8+dfsg-6",
+      "name": "gsl",
+      "homepage": "https://www.gnu.org/software/gsl",
+      "description": "GNU Scientific Library (GSL) -- library package"
+    },
+    {
+      "shlib": "libstdc++",
+      "package": "libstdc++6",
+      "source": "gcc",
+      "version": "16-20260322-1ubuntu1",
+      "name": "c++",
+      "homepage": "http://gcc.gnu.org/",
+      "description": "GNU Standard C++ Library v3"
+    }
+  ],
+  "_vignettes": [
+    {
+      "source": "RJMCMCNucleosomes.Rmd",
+      "filename": "RJMCMCNucleosomes.html",
+      "title": "Nucleosome Positioning",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Licensing and citing",
+        "Introduction",
+        "Installation",
+        "Loading the RJMCMCNucleosomes package",
+        "RJMCMCNucleosomes analysis",
+        "RJMCMCNucleosomes analysis step by step",
+        "Split the analyzed region into segments",
+        "Run RJMCMCNucleosomes for nucleosome predictions",
+        "Regroup all regions",
+        "Post-process predictions",
+        "Visualization of the predicted nucleosomes",
+        "RJMCMCNucleosomes analysis of one chromosome in one step",
+        "Acknowledgements",
+        "Session info",
+        "References"
+      ],
+      "created": "2016-12-19 23:27:58",
+      "modified": "2026-11-03 22:42:51",
+      "commits": 45
+    }
+  ],
+  "_score": 4.6020599913279625,
+  "_indexed": true,
+  "_nocasepkg": "rjmcmcnucleosomes",
+  "_universes": [
+    "bioc",
+    "adeschen"
+  ],
+  "_previous": "1.37.0",
+  "_binaries": [
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:38:42.000Z",
+      "arch": "aarch64",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/39f2f71de6c5be4b8ac3afeb786edac69ba4c19111ddd34f3a8208b222cc26f0",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.6.1",
+      "os": "mac",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:30:12.000Z",
+      "arch": "x86_64",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/4bfe74b5f43745a0ce436561a49d2138295c1402d38af4893894bbd1e845230c",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:26:25.000Z",
+      "arch": "emscripten",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/ab6202e8ce2e6d15c9c8c6f9b2889bf84ac3b91dfd4e05c052e1a02502ba48fb",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:27:26.000Z",
+      "arch": "aarch64",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/f67cb5e9e36a6c17fe754fda04b7174cc6e3d152192a30c8494f003976824b11",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:25:49.000Z",
+      "arch": "x86_64",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/97bd6453a9873d42003b7d739da1724ba15b6947c8a8ba28e13e5a98420394ca",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:26:05.000Z",
+      "arch": "x86_64",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/763b8004368a6e0d7220c9fbee2676ed1beac278450bdbd2405e49ef5d40b41a",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:28:50.000Z",
+      "arch": "aarch64",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/9cd5a4c786bd82eebbdc2b7f54dab6d81da602c092aade99e86998c92ce13096",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.6.1",
+      "os": "win",
+      "version": "1.37.0",
+      "date": "2026-10-14T07:25:47.000Z",
+      "arch": "x86_64",
+      "commit": "510ac6e62b2118b5d60fe7730dbbc46590ddccfe",
+      "fileid": "https://r2.ropensci.org/722eede6e7c3f444e704ddd15bf3ff81f8bf4553b158fc75913fe9fc531e0b63",
+      "status": "success",
+      "check": "NOTE",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/38527618451"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.37.1",
+      "date": "2026-11-04T14:50:19.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "519915a51411de71c30a6b2a85fff63e1afdd203",
+      "fileid": "https://r2.ropensci.org/d5df818456cb38e791bfae7a377354180409593bde57aba2076bb2f017b2e0ae",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41850451675"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.37.1",
+      "date": "2026-11-04T14:51:57.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "519915a51411de71c30a6b2a85fff63e1afdd203",
+      "fileid": "https://r2.ropensci.org/4ce08323171b0e26081dc701427333bce31001094263c90fc27be81274a125b9",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41850451675"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "1.37.1",
+      "date": "2026-11-04T14:50:17.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "519915a51411de71c30a6b2a85fff63e1afdd203",
+      "fileid": "https://r2.ropensci.org/338bec010bff21beab155b86da7af940c8f277673497e9c8b7d593885d2678ba",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41850451675"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "1.37.1",
+      "date": "2026-11-04T14:51:40.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "519915a51411de71c30a6b2a85fff63e1afdd203",
+      "fileid": "https://r2.ropensci.org/bd9801b955bccd16f4bc6f03a5977de457aa653ebb640a012846f04893cee9c1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41850451675"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.37.1",
+      "date": "2026-11-04T14:49:54.000Z",
+      "arch": "aarch64",
+      "commit": "519915a51411de71c30a6b2a85fff63e1afdd203",
+      "fileid": "https://r2.ropensci.org/6f82663b7bce063320076f3d9066202746d60a87165d9aa3c990457815eb7d93",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41850451675"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.37.1",
+      "date": "2026-11-04T14:51:57.000Z",
+      "arch": "x86_64",
+      "commit": "519915a51411de71c30a6b2a85fff63e1afdd203",
+      "fileid": "https://r2.ropensci.org/89a1a891e2ccf47430c6bf3a55903d8a03e64a808c2ef7e54cec3d3c38dbe4e8",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41850451675"
+    }
+  ]
+}
