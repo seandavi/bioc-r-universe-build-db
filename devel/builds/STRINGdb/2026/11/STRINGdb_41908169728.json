@@ -1,0 +1,764 @@
+{
+  "_id": "6aeb9a152e87f76f20ad2a5e",
+  "Package": "STRINGdb",
+  "Type": "Package",
+  "Title": "STRINGdb - Protein-Protein Interaction Networks and Functional\nEnrichment Analysis",
+  "Version": "2.25.3",
+  "Date": "2026-11-04",
+  "Author": "Andrea Franceschini <andrea.franceschini@isb-sib.ch>",
+  "Maintainer": "Damian Szklarczyk <damian.szklarczyk@imls.uzh.ch>",
+  "Description": "The STRINGdb package provides an R interface to STRING, a\nprotein-protein interaction database and functional enrichment\nanalysis tool (https://string-db.org).",
+  "License": "GPL-2",
+  "biocViews": "Network",
+  "Config/pak/sysreqs": "libglpk-dev libpng-dev libxml2-dev libssl-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-11-04 14:15:04 UTC",
+  "RemoteUrl": "https://github.com/bioc/STRINGdb",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "88df545b77084805644c43a3e42ef29e626dd786",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-11-04 20:40:41 UTC",
+    "User": "root"
+  },
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "STRINGdb_2.25.3.tar.gz",
+  "_fileid": "https://r2.ropensci.org/edcb8c267f19d799aed5da9d79447d85e5dd2917fb759a865c6d39e1c3a84851",
+  "_filesize": 4348670,
+  "_sha256": "edcb8c267f19d799aed5da9d79447d85e5dd2917fb759a865c6d39e1c3a84851",
+  "_expires": "2027-02-12T20:48:19.000Z",
+  "_created": "2026-11-04T20:40:41.000Z",
+  "_published": "2026-11-04T20:48:21.067Z",
+  "_upstream": "https://github.com/bioc/STRINGdb",
+  "_status": "success",
+  "_maintainer": {
+    "name": "Damian Szklarczyk",
+    "email": "damian.szklarczyk@imls.uzh.ch",
+    "login": "damianimls",
+    "description": "",
+    "uuid": 55656176
+  },
+  "_jobs": [
+    {
+      "job": 126850955055,
+      "time": 122,
+      "config": "bioc-checks",
+      "r": "4.6.2",
+      "check": "ERROR",
+      "artifact": "13360754086"
+    },
+    {
+      "job": 126850955369,
+      "time": 363,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "13362855113"
+    },
+    {
+      "job": 126850955203,
+      "time": 412,
+      "config": "linux-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13362416490"
+    },
+    {
+      "job": 126850955165,
+      "time": 216,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "13361707562"
+    },
+    {
+      "job": 126850955040,
+      "time": 340,
+      "config": "macos-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13361848368"
+    },
+    {
+      "job": 126848477005,
+      "time": 270,
+      "config": "source",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13362410517"
+    },
+    {
+      "job": 126850955376,
+      "time": 112,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "13360489662"
+    },
+    {
+      "job": 126850955118,
+      "time": 202,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "13361527891"
+    },
+    {
+      "job": 126850955124,
+      "time": 244,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "13361697661"
+    },
+    {
+      "job": 126850955277,
+      "time": 228,
+      "config": "windows-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "13362545546"
+    }
+  ],
+  "_bioccheck": {
+    "error": 2,
+    "warning": 8,
+    "note": 14
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728",
+  "_commit": {
+    "id": "88df545b77084805644c43a3e42ef29e626dd786",
+    "author": "Damian <damian.szk@gmail.com>",
+    "committer": "Damian <damian.szk@gmail.com>",
+    "message": "Fix wrong map() results, get_summary() default and payload images\n\nmap() gave wrong results without a warning in three cases:\n- Missing (NA) or empty identifiers were mapped to a real protein. The\n  normalization of the aliases (iconv from Windows-1252) turned aliases\n  with bytes that Windows-1252 does not define, such as the hyphen U+2010\n  in \"spine-associated RapGAP 3\", into NA, and merge() matched them to\n  every NA identifier: for human, every row without a gene name got\n  9606.ENSP00000222345, and removeUnmappedRows = TRUE kept those rows.\n- With several identifier columns, the identifiers were written back by\n  position after the rows had been reordered, so they no longer matched\n  the rest of their rows.\n- With takeFirst = FALSE, the identifiers came back upper-cased.\n\nNow an NA or empty identifier is never mapped, every row keeps its own\nidentifiers as given, and the rows keep the order of the input. The\nundefined bytes are kept as byte codes, so those aliases can be mapped, and\nget_aliases() contains no NA aliases. The columns, their order and the\norder of the repeated rows of takeFirst = FALSE are unchanged; for the\nvignette's example and the human aliases of STRING 12.5 the output is\nidentical to before.\n\nget_summary() gets the default required_score = NULL (the score_threshold\nof the object), so get_summary(string_ids) works as documented.\npost_payload() sends logo_imgF and legend_imgF with httr's upload_file\ninstead of RCurl's fileUpload, which the package no longer imports. New\noffline unit tests; the help of map, multi_map_df and get_summary describes\nthe behaviour.\n",
+    "time": 1793801704
+  },
+  "_distro": "resolute",
+  "_host": "GitHub-Actions",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 2.14.0",
+      "role": "Depends"
+    },
+    {
+      "package": "png",
+      "role": "Imports"
+    },
+    {
+      "package": "sqldf",
+      "role": "Imports"
+    },
+    {
+      "package": "plyr",
+      "role": "Imports"
+    },
+    {
+      "package": "igraph",
+      "role": "Imports"
+    },
+    {
+      "package": "httr",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "gplots",
+      "role": "Imports"
+    },
+    {
+      "package": "hash",
+      "role": "Imports"
+    },
+    {
+      "package": "plotrix",
+      "role": "Imports"
+    },
+    {
+      "package": "RUnit",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocGenerics",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 10,
+  "_updates": [
+    {
+      "week": "2026-15",
+      "n": 5
+    },
+    {
+      "week": "2026-16",
+      "n": 1
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-40",
+      "n": 4
+    },
+    {
+      "week": "2026-44",
+      "n": 2
+    },
+    {
+      "week": "2026-45",
+      "n": 3
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "2.25.2",
+      "bioc": "3.24",
+      "repository": "bioc",
+      "r": "4.6.0"
+    },
+    {
+      "branch": "release",
+      "version": "2.24.2",
+      "bioc": "3.23",
+      "repository": "bioc",
+      "r": "4.6.0"
+    }
+  ],
+  "_topics": [
+    "network"
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 484,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 6232,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/STRINGdb"
+  },
+  "_mentions": 82,
+  "_searchresults": 861,
+  "_abi": {
+    "exports": [
+      {
+        "key": "STRINGdb::STRINGdb",
+        "hash": "8e7f6e3962b66c5c"
+      },
+      {
+        "key": "STRINGdb::igraph",
+        "hash": "c187417c40576831"
+      }
+    ],
+    "imports": []
+  },
+  "_rbuild": "4.6.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/STRINGdb.html"
+  ],
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "delColDf",
+    "downloadAbsentFile",
+    "downloadAbsentFileSTRING",
+    "multi_map_df",
+    "renameColDf",
+    "STRINGdb"
+  ],
+  "_datasets": [
+    {
+      "name": "diff_exp_example1",
+      "title": "example of microarray data (data processed from GEO GSE9008)",
+      "object": "diff_exp_example1",
+      "file": "diff_exp_example1.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "pvalue",
+        "logFC",
+        "gene"
+      ],
+      "rows": 20861,
+      "table": true,
+      "tojson": true
+    },
+    {
+      "name": "interactions_example",
+      "title": "example of a protein-protein interactions sorted data frame",
+      "object": "interactions_example",
+      "file": "interactions_example.rda",
+      "class": [
+        "data.frame"
+      ],
+      "fields": [
+        "proteinA",
+        "proteinB",
+        "score"
+      ],
+      "rows": 70000,
+      "table": true,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "add_diff_exp_color",
+      "title": "add_diff_exp_color",
+      "topics": [
+        "\\S4method{add_diff_exp_color}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "add_proteins_description",
+      "title": "add_proteins_description",
+      "topics": [
+        "\\S4method{add_proteins_description}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "coeffOfvar",
+      "title": "coeffOfvar",
+      "topics": [
+        "coeffOfvar"
+      ]
+    },
+    {
+      "page": "delColDf",
+      "title": "delColDf",
+      "topics": [
+        "delColDf"
+      ]
+    },
+    {
+      "page": "diff_exp_example1",
+      "title": "example of microarray data (data processed from GEO GSE9008)",
+      "topics": [
+        "diff_exp_example1"
+      ]
+    },
+    {
+      "page": "downloadAbsentFile",
+      "title": "downloadAbsentFile",
+      "topics": [
+        "downloadAbsentFile"
+      ]
+    },
+    {
+      "page": "downloadAbsentFileSTRING",
+      "title": "downloadAbsentFileSTRING",
+      "topics": [
+        "downloadAbsentFileSTRING"
+      ]
+    },
+    {
+      "page": "get_aliases",
+      "title": "get_aliases",
+      "topics": [
+        "\\S4method{get_aliases}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_annotations",
+      "title": "get_annotations",
+      "topics": [
+        "\\S4method{get_annotations}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_annotations_desc",
+      "title": "get_annotations_desc",
+      "topics": [
+        "\\S4method{get_annotations_desc}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_bioc_graph",
+      "title": "get_bioc_graph",
+      "topics": [
+        "\\S4method{get_bioc_graph}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_clusters",
+      "title": "get_clusters",
+      "topics": [
+        "\\S4method{get_clusters}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_enrichment",
+      "title": "get_enrichment",
+      "topics": [
+        "\\S4method{get_enrichment}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_enrichment_figure",
+      "title": "get_enrichment_figure",
+      "topics": [
+        "\\S4method{get_enrichment_figure}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_geneset_description",
+      "title": "get_geneset_description",
+      "topics": [
+        "\\S4method{get_geneset_description}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_graph",
+      "title": "get_graph",
+      "topics": [
+        "\\S4method{get_graph}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_homologs_besthits",
+      "title": "get_homologs_besthits",
+      "topics": [
+        "\\S4method{get_homologs_besthits}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_interaction_partners",
+      "title": "get_interaction_partners",
+      "topics": [
+        "\\S4method{get_interaction_partners}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_interactions",
+      "title": "get_interactions",
+      "topics": [
+        "\\S4method{get_interactions}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_link",
+      "title": "get_link",
+      "topics": [
+        "\\S4method{get_link}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_neighbors",
+      "title": "get_neighbors",
+      "topics": [
+        "\\S4method{get_neighbors}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_paralogs",
+      "title": "get_paralogs",
+      "topics": [
+        "\\S4method{get_paralogs}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_png",
+      "title": "get_png",
+      "topics": [
+        "\\S4method{get_png}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_ppi_enrichment",
+      "title": "get_ppi_enrichment",
+      "topics": [
+        "\\S4method{get_ppi_enrichment}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_proteins",
+      "title": "get_proteins",
+      "topics": [
+        "\\S4method{get_proteins}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_subnetwork",
+      "title": "get_subnetwork",
+      "topics": [
+        "\\S4method{get_subnetwork}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_summary",
+      "title": "get_summary",
+      "topics": [
+        "\\S4method{get_summary}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "get_term_proteins",
+      "title": "get_term_proteins",
+      "topics": [
+        "\\S4method{get_term_proteins}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "interactions",
+      "title": "example of a protein-protein interactions sorted data frame",
+      "topics": [
+        "interactions_example"
+      ]
+    },
+    {
+      "page": "load",
+      "title": "load",
+      "topics": [
+        "\\S4method{load}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "load_all",
+      "title": "load_all",
+      "topics": [
+        "\\S4method{load_all}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "map",
+      "title": "map",
+      "topics": [
+        "\\S4method{map}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "mp",
+      "title": "mp",
+      "topics": [
+        "\\S4method{mp}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "multi_map_df",
+      "title": "multi_map_df",
+      "topics": [
+        "multi_map_df"
+      ]
+    },
+    {
+      "page": "plot_network",
+      "title": "plot_network",
+      "topics": [
+        "\\S4method{plot_network}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "post_payload",
+      "title": "post_payload",
+      "topics": [
+        "\\S4method{post_payload}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "remove_homologous_interactions",
+      "title": "remove_homologous_interactions",
+      "topics": [
+        "\\S4method{remove_homologous_interactions}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "renameColDf",
+      "title": "renameColDf",
+      "topics": [
+        "renameColDf"
+      ]
+    },
+    {
+      "page": "set_background",
+      "title": "set_background",
+      "topics": [
+        "\\S4method{set_background}{STRINGdb}"
+      ]
+    },
+    {
+      "page": "STRINGdb-class",
+      "title": "Class '\"STRINGdb\"'",
+      "topics": [
+        "STRINGdb",
+        "STRINGdb-class"
+      ]
+    }
+  ],
+  "_rundeps": [
+    "askpass",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "cachem",
+    "caTools",
+    "chron",
+    "cli",
+    "cpp11",
+    "curl",
+    "DBI",
+    "fastmap",
+    "glue",
+    "gplots",
+    "gsubfn",
+    "gtools",
+    "hash",
+    "httr",
+    "igraph",
+    "jsonlite",
+    "KernSmooth",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "memoise",
+    "mime",
+    "openssl",
+    "pkgconfig",
+    "plotrix",
+    "plyr",
+    "png",
+    "proto",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rlang",
+    "RSQLite",
+    "sqldf",
+    "sys",
+    "vctrs"
+  ],
+  "_vignettes": [
+    {
+      "source": "STRINGdb.Rnw",
+      "filename": "STRINGdb.pdf",
+      "title": "STRINGdb Vignette",
+      "engine": "utils::Sweave",
+      "headings": [],
+      "created": "2013-11-01 20:32:25",
+      "modified": "2026-09-29 10:44:06",
+      "commits": 22
+    }
+  ],
+  "_score": 8.98490310122147,
+  "_indexed": true,
+  "_nocasepkg": "stringdb",
+  "_universes": [
+    "bioc",
+    "damianimls"
+  ],
+  "_previous": "2.25.2",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:43:58.000Z",
+      "distro": "resolute",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/61ef139ffe3d2b7ddd0d4d6a16e19509ffe15b7dfdeb7a24e0a7cef15382e952",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:44:40.000Z",
+      "distro": "resolute",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/57ec47e0d1128b7ef7e1419c07e424d8bc3dd0337a458fae96ca8ff5f3ea11fb",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:42:03.000Z",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/3fb4681eed619beab8bea8e3282a352618826108edfbbcb275b0dedd2a76d355",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    },
+    {
+      "r": "4.6.2",
+      "os": "mac",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:42:31.000Z",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/7fbccd0d8cce6d25624d3a00cf4716575fb6453bad08c801cdf0e80300aa489c",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:42:49.000Z",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/653f56a47285d8c79949f9e3eb2592f96f0356b8a0de5bc2e20f359b851f7503",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:41:50.000Z",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/f0653d7370b0240de902f9332908996cab59a70ebd39350f1eab8bb7d3e5a2d0",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:41:58.000Z",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/bfeeede71015d789c24700b6b1eb11c3c3cb7293429dca6edd1746a3c86749cf",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    },
+    {
+      "r": "4.6.2",
+      "os": "win",
+      "version": "2.25.3",
+      "date": "2026-11-04T20:41:49.000Z",
+      "commit": "88df545b77084805644c43a3e42ef29e626dd786",
+      "fileid": "https://r2.ropensci.org/6bfe0266110dd4eb19e252dfe2df44bafe549c8e7bb00a6737035caef0db7125",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/41908169728"
+    }
+  ]
+}
