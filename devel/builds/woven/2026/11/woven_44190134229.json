@@ -1,0 +1,760 @@
+{
+  "_id": "6afcdd5fef1f2edb4068544b",
+  "Package": "woven",
+  "Title": "Weighted Omics View Embedding via Nystrom for Incomplete\nMulti-Omics Data",
+  "Version": "0.99.6",
+  "Authors@R": "c(\nperson(\"Nathan\", \"Bresette\",\nrole = c(\"aut\", \"cre\"),\nemail = \"nathanbresette04@gmail.com\",\ncomment = c(ORCID = \"0009-0003-1554-6006\")),\nperson(\"Ai-Ling\", \"Lin\",\nrole = \"aut\"),\nperson(\"Jianlin\", \"Cheng\",\nrole = \"aut\"),\nperson(\"National Institutes of Health / National Institute on Aging\",\nrole = \"fnd\",\ncomment = \"R56AG079586\")\n)",
+  "Description": "Supervised multi-omics integration for block-missing\n(\"ragged\") data, where some subjects lack one or more whole\nomics modalities (assay blocks) rather than scattered\nindividual values. WOVEN fits a shared latent space with SUMCOR\n(sum of correlations) multi-set canonical correlation analysis,\na criterion that maximizes the summed pairwise correlation\nbetween modalities' latent scores, using only the anchor\nsubjects observed in every modality; class labels enter through\na label-augmented cross-covariance, and per-modality graph\nLaplacians regularize the fit. Every other subject is then\nscored from the modalities it has by a Nystrom extension, a way\nto place new points in an already fitted embedding (for WOVEN's\nlinear embedding, multiplying the observed features by the\nlearned projection matrices), so no missing block is imputed.\nThe effective sample size (ESS) retention, the fraction of\nsubjects a method can score, is therefore the fraction with at\nleast one observed modality, rather than the complete-case\nfraction. woven_tune() chooses the regularization settings by\ncross-validated balanced error rate, and the fitted model is\nsummarized by plots and a table of the top features per\nmodality.",
+  "License": "MIT + file LICENSE",
+  "Encoding": "UTF-8",
+  "RoxygenNote": "7.3.3",
+  "URL": "https://github.com/NathanBresette/woven",
+  "BugReports": "https://github.com/NathanBresette/woven/issues",
+  "biocViews": "Software, StatisticalMethod, DimensionReduction,\nClassification, Clustering, GeneExpression, Transcriptomics,\nProteomics, Metabolomics",
+  "VignetteBuilder": "knitr",
+  "Config/testthat/edition": "3",
+  "Config/pak/sysreqs": "libicu-dev zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-11-17 19:58:45 UTC",
+  "RemoteUrl": "https://github.com/bioc/woven",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "220139a1eaaa821e13917162827dbd2977e9e80b",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-11-17 22:30:25 UTC",
+    "User": "root"
+  },
+  "Author": "Nathan Bresette [aut, cre] (ORCID:\n<https://orcid.org/0009-0003-1554-6006>),\nAi-Ling Lin [aut],\nJianlin Cheng [aut],\nNational Institutes of Health / National Institute on Aging [fnd]\n(R56AG079586)",
+  "Maintainer": "Nathan Bresette <nathanbresette04@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "woven_0.99.6.tar.gz",
+  "_fileid": "https://r2.ropensci.org/9a15a8a3ce960bc6d07163e98ff9c1693efab0b94d792954d2df210f597447f2",
+  "_filesize": 1159612,
+  "_sha256": "9a15a8a3ce960bc6d07163e98ff9c1693efab0b94d792954d2df210f597447f2",
+  "_expires": "2027-02-25T23:03:57.000Z",
+  "_created": "2026-11-17T22:30:25.000Z",
+  "_published": "2026-11-17T23:03:59.191Z",
+  "_upstream": "https://github.com/bioc/woven",
+  "_status": "success",
+  "_maintainer": {
+    "name": "Nathan Bresette",
+    "email": "nathanbresette04@gmail.com",
+    "login": "nathanbresette",
+    "description": "",
+    "uuid": 148147840,
+    "orcid": "0009-0003-1554-6006"
+  },
+  "_jobs": [
+    {
+      "job": 134419275982,
+      "time": 152,
+      "config": "bioc-checks",
+      "r": "4.6.2",
+      "check": "NOTE",
+      "artifact": "14376896486"
+    },
+    {
+      "job": 134419275946,
+      "time": 236,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "14376836794"
+    },
+    {
+      "job": 134419275880,
+      "time": 221,
+      "config": "linux-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14375569698"
+    },
+    {
+      "job": 134419275985,
+      "time": 193,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "14377719826"
+    },
+    {
+      "job": 134419275926,
+      "time": 112,
+      "config": "macos-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14378721129"
+    },
+    {
+      "job": 134417160271,
+      "time": 222,
+      "config": "source",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14376925789"
+    },
+    {
+      "job": 134419275960,
+      "time": 119,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "14377090944"
+    },
+    {
+      "job": 134419275938,
+      "time": 118,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "14376128149"
+    },
+    {
+      "job": 134419275930,
+      "time": 126,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "14375669392"
+    },
+    {
+      "job": 134419275921,
+      "time": 131,
+      "config": "windows-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14376891247"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 2
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229",
+  "_commit": {
+    "id": "220139a1eaaa821e13917162827dbd2977e9e80b",
+    "author": "Nathan Bresette <nathanbresette04@gmail.com>",
+    "committer": "Nathan Bresette <nathanbresette04@gmail.com>",
+    "message": "woven 0.99.6: document woven_tune() in README, DESCRIPTION and vignette; note screen_top effect on VIP scale\n",
+    "time": 1794945525
+  },
+  "_distro": "resolute",
+  "_host": "GitHub-Actions",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Matrix",
+      "role": "Imports"
+    },
+    {
+      "package": "MatrixGenerics",
+      "role": "Imports"
+    },
+    {
+      "package": "MultiAssayExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "RANN",
+      "role": "Imports"
+    },
+    {
+      "package": "cluster",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "SummarizedExperiment",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-25",
+      "n": 11
+    },
+    {
+      "week": "2026-26",
+      "n": 10
+    },
+    {
+      "week": "2026-28",
+      "n": 2
+    },
+    {
+      "week": "2026-36",
+      "n": 2
+    },
+    {
+      "week": "2026-38",
+      "n": 3
+    },
+    {
+      "week": "2026-46",
+      "n": 1
+    },
+    {
+      "week": "2026-47",
+      "n": 3
+    }
+  ],
+  "_tags": [],
+  "_topics": [
+    "software",
+    "statisticalmethod",
+    "dimensionreduction",
+    "classification",
+    "clustering",
+    "geneexpression",
+    "transcriptomics",
+    "proteomics",
+    "metabolomics"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "nathanbresette",
+      "count": 32,
+      "uuid": 148147840
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 486,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_devurl": "https://github.com/nathanbresette/woven",
+  "_abi": {
+    "exports": [
+      {
+        "key": "woven::generic:anchor_indices",
+        "hash": "0cf068c925aa129f"
+      },
+      {
+        "key": "woven::generic:latent_scores",
+        "hash": "1d4d2cc963270a6c"
+      },
+      {
+        "key": "woven::generic:projection_matrices",
+        "hash": "fffb849e5ac0318b"
+      },
+      {
+        "key": "woven::generic:singular_values",
+        "hash": "e06563beee687ca9"
+      },
+      {
+        "key": "woven::woven",
+        "hash": "aed48011d7d44562"
+      },
+      {
+        "key": "woven::wovenSummary",
+        "hash": "f4b07a49743d10fe"
+      },
+      {
+        "key": "woven::wovenTune",
+        "hash": "7f01ab1d55b88b18"
+      }
+    ],
+    "imports": []
+  },
+  "_rbuild": "4.6.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md",
+    "extra/woven.html",
+    "LICENSE"
+  ],
+  "_cranurl": false,
+  "_exports": [
+    "anchor_indices",
+    "latent_scores",
+    "plot",
+    "projection_matrices",
+    "show",
+    "singular_values",
+    "summary",
+    "woven",
+    "woven_davies_bouldin",
+    "woven_effect_bias",
+    "woven_ess_retention",
+    "woven_mcca_dual",
+    "woven_metrics",
+    "woven_nmi",
+    "woven_nystrom_error",
+    "woven_plot_coverage",
+    "woven_plot_loadings",
+    "woven_plot_variance",
+    "woven_plot_vip",
+    "woven_precompute",
+    "woven_predict",
+    "woven_rv",
+    "woven_scores",
+    "woven_silhouette",
+    "woven_top_features",
+    "woven_tune"
+  ],
+  "_datasets": [
+    {
+      "name": "woven_example",
+      "title": "Simulated three-modality example dataset",
+      "object": "woven_example",
+      "file": "woven_example.rda",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": true
+    }
+  ],
+  "_help": [
+    {
+      "page": "woven-package",
+      "title": "woven: supervised multi-omics integration for block-missing data",
+      "topics": [
+        "woven-package"
+      ]
+    },
+    {
+      "page": "cash-wovenTune-method",
+      "title": "Access parts of a woven_tune() result",
+      "topics": [
+        "$,wovenTune-method"
+      ]
+    },
+    {
+      "page": "plot-woven-missing-method",
+      "title": "Plot a WOVEN fit",
+      "topics": [
+        "plot,woven,missing-method"
+      ]
+    },
+    {
+      "page": "plot-wovenTune-missing-method",
+      "title": "Plot woven_tune() results",
+      "topics": [
+        "plot,wovenTune,missing-method"
+      ]
+    },
+    {
+      "page": "show-woven-method",
+      "title": "Show method for WOVEN fit",
+      "topics": [
+        "show,woven-method"
+      ]
+    },
+    {
+      "page": "show-wovenTune-method",
+      "title": "Show a woven_tune() result",
+      "topics": [
+        "show,wovenTune-method"
+      ]
+    },
+    {
+      "page": "summary-woven-method",
+      "title": "Summarise a WOVEN fit",
+      "topics": [
+        "summary,woven-method"
+      ]
+    },
+    {
+      "page": "woven",
+      "title": "Fit a supervised WOVEN model",
+      "topics": [
+        "woven"
+      ]
+    },
+    {
+      "page": "woven_davies_bouldin",
+      "title": "Davies-Bouldin index",
+      "topics": [
+        "woven_davies_bouldin"
+      ]
+    },
+    {
+      "page": "woven_effect_bias",
+      "title": "Subgroup treatment-effect estimate bias",
+      "topics": [
+        "woven_effect_bias"
+      ]
+    },
+    {
+      "page": "woven_ess_retention",
+      "title": "Effective sample size (ESS) retention",
+      "topics": [
+        "woven_ess_retention"
+      ]
+    },
+    {
+      "page": "woven_example",
+      "title": "Simulated three-modality example dataset",
+      "topics": [
+        "woven_example"
+      ]
+    },
+    {
+      "page": "woven_mcca_dual",
+      "title": "Closed-form dual SUMCOR MCCA solver (low-level)",
+      "topics": [
+        "woven_mcca_dual"
+      ]
+    },
+    {
+      "page": "woven_metrics",
+      "title": "Convenience wrapper: compute core metrics directly from a woven fit",
+      "topics": [
+        "woven_metrics"
+      ]
+    },
+    {
+      "page": "woven_nmi",
+      "title": "Normalized mutual information between cluster assignments and true labels",
+      "topics": [
+        "woven_nmi"
+      ]
+    },
+    {
+      "page": "woven_nystrom_error",
+      "title": "Leave-anchor-out Nystrom projection error",
+      "topics": [
+        "woven_nystrom_error"
+      ]
+    },
+    {
+      "page": "woven_plot_coverage",
+      "title": "Plot which subjects have which modalities",
+      "topics": [
+        "woven_plot_coverage"
+      ]
+    },
+    {
+      "page": "woven_plot_loadings",
+      "title": "Plot feature loadings for one WOVEN latent dimension",
+      "topics": [
+        "woven_plot_loadings"
+      ]
+    },
+    {
+      "page": "woven_plot_variance",
+      "title": "Plot the strength of each WOVEN latent dimension",
+      "topics": [
+        "woven_plot_variance"
+      ]
+    },
+    {
+      "page": "woven_plot_vip",
+      "title": "Plot the top features of a WOVEN fit by VIP score",
+      "topics": [
+        "woven_plot_vip"
+      ]
+    },
+    {
+      "page": "woven_precompute",
+      "title": "Pre-compute Laplacian graphs for reuse across multiple woven() calls",
+      "topics": [
+        "woven_precompute"
+      ]
+    },
+    {
+      "page": "woven_predict",
+      "title": "Predict class probabilities for new subjects",
+      "topics": [
+        "woven_predict"
+      ]
+    },
+    {
+      "page": "woven_rv",
+      "title": "RV coefficient between latent scores and ground-truth factor matrix",
+      "topics": [
+        "woven_rv"
+      ]
+    },
+    {
+      "page": "woven_scores",
+      "title": "Extract latent scores for new subjects",
+      "topics": [
+        "woven_scores"
+      ]
+    },
+    {
+      "page": "woven_silhouette",
+      "title": "Average silhouette width",
+      "topics": [
+        "woven_silhouette"
+      ]
+    },
+    {
+      "page": "woven_top_features",
+      "title": "Top features of a WOVEN fit",
+      "topics": [
+        "woven_top_features"
+      ]
+    },
+    {
+      "page": "woven_tune",
+      "title": "Tune woven() by cross-validation",
+      "topics": [
+        "woven_tune"
+      ]
+    },
+    {
+      "page": "woven-accessors",
+      "title": "Accessors for a fitted WOVEN model",
+      "topics": [
+        "anchor_indices",
+        "anchor_indices,woven-method",
+        "latent_scores",
+        "latent_scores,woven-method",
+        "projection_matrices",
+        "projection_matrices,woven-method",
+        "singular_values",
+        "singular_values,woven-method",
+        "woven-accessors"
+      ]
+    },
+    {
+      "page": "woven-class",
+      "title": "S4 class for a fitted WOVEN model",
+      "topics": [
+        "woven-class"
+      ]
+    },
+    {
+      "page": "wovenTune-class",
+      "title": "S4 class for a woven_tune() result",
+      "topics": [
+        "wovenTune-class"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/woven/raw/HEAD/README.md",
+  "_rundeps": [
+    "abind",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocGenerics",
+    "cli",
+    "cluster",
+    "cpp11",
+    "DelayedArray",
+    "dplyr",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "IRanges",
+    "lattice",
+    "lifecycle",
+    "magrittr",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "MultiAssayExperiment",
+    "pillar",
+    "pkgconfig",
+    "purrr",
+    "R6",
+    "RANN",
+    "rlang",
+    "S4Arrays",
+    "S4Vectors",
+    "Seqinfo",
+    "SparseArray",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "utf8",
+    "vctrs",
+    "withr",
+    "XVector"
+  ],
+  "_vignettes": [
+    {
+      "source": "woven-intro.Rmd",
+      "filename": "woven-intro.html",
+      "title": "Supervised integration of block-missing multi-omics data with woven",
+      "author": "Nathan Bresette, Ai-Ling Lin, Jianlin Cheng",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Overview",
+        "Glossary",
+        "Installation",
+        "Quick start",
+        "A real block-missing example: adrenocortical carcinoma",
+        "Fit",
+        "Scores map back to colData",
+        "Coverage",
+        "Held-out prediction",
+        "Features",
+        "Input as separate tables",
+        "Pre-processing",
+        "Diagnostics",
+        "Tuning",
+        "Refitting the same subjects",
+        "Limitations",
+        "Accessing results",
+        "References",
+        "Session information"
+      ],
+      "created": "2026-06-16 13:50:42",
+      "modified": "2026-11-17 19:58:45",
+      "commits": 11
+    }
+  ],
+  "_score": 3.5440680443502757,
+  "_indexed": true,
+  "_nocasepkg": "woven",
+  "_universes": [
+    "bioc",
+    "nathanbresette"
+  ],
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.6",
+      "date": "2026-11-17T22:33:54.000Z",
+      "distro": "resolute",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/512ba17c3cfcb27f87be785ff561b2f7475f473e8bcc96612cf9a893cde17431",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "0.99.6",
+      "date": "2026-11-17T22:33:38.000Z",
+      "distro": "resolute",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/6ecb9e45ceb31901f10130333d70642c27638705152025a0470f6ae96d81974e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.6",
+      "date": "2026-11-17T23:02:30.000Z",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/2a712d4e6dace0b48aa8326f33741c9af8f3346f19a50b8147b2113b064bb8c7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    },
+    {
+      "r": "4.6.2",
+      "os": "mac",
+      "version": "0.99.6",
+      "date": "2026-11-17T22:56:43.000Z",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/f4db62bd64d6beda6195bc8d6c7319637a4bbbdf329ce4cff1a178beddddc4b7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.6",
+      "date": "2026-11-17T22:32:47.000Z",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/cf9c3e3f81f4c6ddb1967d38d184ffa3814a84118bc44fd5c91f3b456e75c056",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.6",
+      "date": "2026-11-17T22:31:45.000Z",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/34afaff25de5ba75609bee7d90a1b63b651953c806a49a4b0c53369a6107c99e",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.6",
+      "date": "2026-11-17T22:31:56.000Z",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/d5330b86afa2fcbc3d0342dd40c4a6b12945c3b29b57c9cf311e9cedee845bf5",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    },
+    {
+      "r": "4.6.2",
+      "os": "win",
+      "version": "0.99.6",
+      "date": "2026-11-17T22:31:56.000Z",
+      "commit": "220139a1eaaa821e13917162827dbd2977e9e80b",
+      "fileid": "https://r2.ropensci.org/67a927f6b8812b22c7896c7a3c6a37df5c6a27e887d3113be4aba589d96ba96f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44190134229"
+    }
+  ]
+}
