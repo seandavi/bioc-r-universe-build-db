@@ -1,0 +1,960 @@
+{
+  "_id": "6afe268fb0151ec0d657efdd",
+  "Package": "MsBackendParquet",
+  "Title": "Apache Parquet-based Mass Spectrometry Data Backend",
+  "Version": "0.99.12",
+  "Authors@R": "c(\nperson(\n\"Ossama\",\n\"Edbali\",\nrole=c(\"aut\",\"cre\"),\nemail=\"o.edbali@bham.ac.uk\",\ncomment = c(ORCID = \"0000-0003-0132-8668\")),\nperson(\nc(\"Ralf\",\"Johannes\", \"Maria\"),\n\"Weber\",\nrole=c(\"aut\"),\nemail=\"r.j.weber@bham.ac.uk\",\ncomment = c(ORCID = \"0000-0002-8796-4771\")),\nperson(\n\"Johannes\",\n\"Rainer\",\nrole=c(\"ctb\"),\nemail=\"Johannes.Rainer@eurac.edu\",\ncomment = c(ORCID = \"0000-0002-6977-7147\")),\nperson(\n\"BioFAIR UK\",\nrole=\"fnd\",\ncomment=\"BioFAIR Pathfinder Project\"))",
+  "Description": "Mass spectrometry (MS) data backend for the Spectra\nBioconductor package that stores and retrieves spectra and peak\ndata from on-disk Apache Parquet datasets. Spectra metadata\ntogether with m/z and intensity values are stored in a columnar\nParquet format that supports compression, dictionary encoding\nand Hive-style partitioning. Datasets are written with the\nApache Arrow R bindings and queried with DuckDB. Spectra\nvariables are held in a bounded in-memory index so that\nfiltering and metadata access are fast while peak data remains\non disk.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "URL": "https://github.com/computational-metabolomics/MsBackendParquet",
+  "BugReports": "https://github.com/computational-metabolomics/MsBackendParquet/issues",
+  "biocViews": "Infrastructure, MassSpectrometry, Metabolomics, Proteomics,\nDataImport",
+  "VignetteBuilder": "knitr",
+  "Roxygen": "list(markdown = TRUE)",
+  "Collate": "'MsBackendParquet-functions.R' 'MsBackendParquet.R'\n'MsBackendParquet-creators.R' 'column-map.R' 'conditions.R'\n'duckdb-connection.R' 'ingest.R' 'metadata-cache.R'\n'mzml-activation.R' 'mzpeak-archive.R' 'mzstack-manifest.R'\n'projections.R' 'sample-data.R' 'zzz.R'",
+  "Config/testthat/edition": "3",
+  "Config/roxygen2/version": "8.1.1",
+  "Config/pak/sysreqs": "cmake make libuv1-dev libxml2-dev libssl-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-11-18 11:49:06 UTC",
+  "RemoteUrl": "https://github.com/bioc/MsBackendParquet",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+  "NeedsCompilation": "yes",
+  "Packaged": {
+    "Date": "2026-11-18 21:30:38 UTC",
+    "User": "root"
+  },
+  "Author": "Ossama Edbali [aut, cre] (ORCID:\n<https://orcid.org/0000-0003-0132-8668>),\nRalf Johannes Maria Weber [aut] (ORCID:\n<https://orcid.org/0000-0002-8796-4771>),\nJohannes Rainer [ctb] (ORCID: <https://orcid.org/0000-0002-6977-7147>),\nBioFAIR UK [fnd] (BioFAIR Pathfinder Project)",
+  "Maintainer": "Ossama Edbali <o.edbali@bham.ac.uk>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "MsBackendParquet_0.99.12.tar.gz",
+  "_fileid": "https://r2.ropensci.org/3780c942403a7d1cc0d179a772a1e01c4c2c666c3580fca2b4701a8a4944fbe1",
+  "_filesize": 590667,
+  "_sha256": "3780c942403a7d1cc0d179a772a1e01c4c2c666c3580fca2b4701a8a4944fbe1",
+  "_expires": "2027-02-26T22:28:29.000Z",
+  "_created": "2026-11-18T21:30:38.000Z",
+  "_published": "2026-11-18T22:28:31.118Z",
+  "_upstream": "https://github.com/bioc/MsBackendParquet",
+  "_status": "success",
+  "_maintainer": {
+    "name": "Ossama Edbali",
+    "email": "o.edbali@bham.ac.uk",
+    "login": "oss6",
+    "orcid": "0000-0003-0132-8668",
+    "description": "Experimental Officer in Computational Metabolomics at Phenome Centre Birmingham (University of Birmingham)",
+    "uuid": 4907450
+  },
+  "_jobs": [
+    {
+      "job": 135148353285,
+      "time": 190,
+      "config": "bioc-checks",
+      "r": "4.6.2",
+      "check": "NOTE",
+      "artifact": "14474641160"
+    },
+    {
+      "job": 135148353683,
+      "time": 341,
+      "config": "linux-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "14474276724"
+    },
+    {
+      "job": 135148353561,
+      "time": 374,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "ERROR",
+      "artifact": "14472737583"
+    },
+    {
+      "job": 135148353553,
+      "time": 345,
+      "config": "linux-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14474262199"
+    },
+    {
+      "job": 135148354662,
+      "time": 437,
+      "config": "linux-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14472817600"
+    },
+    {
+      "job": 135148353755,
+      "time": 2486,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "14477381948"
+    },
+    {
+      "job": 135148353524,
+      "time": 664,
+      "config": "macos-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "14476680034"
+    },
+    {
+      "job": 135148353700,
+      "time": 260,
+      "config": "macos-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14472684641"
+    },
+    {
+      "job": 135148353600,
+      "time": 828,
+      "config": "macos-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14476215633"
+    },
+    {
+      "job": 135143965124,
+      "time": 429,
+      "config": "source",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14472596743"
+    },
+    {
+      "job": 135148353562,
+      "time": 139,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "14472582550"
+    },
+    {
+      "job": 135148353763,
+      "time": 690,
+      "config": "windows-devel-arm64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "14473477832"
+    },
+    {
+      "job": 135148353682,
+      "time": 1070,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "14474528395"
+    },
+    {
+      "job": 135148353605,
+      "time": 999,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "14474223464"
+    },
+    {
+      "job": 135148354025,
+      "time": 647,
+      "config": "windows-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14473013062"
+    },
+    {
+      "job": 135148353632,
+      "time": 303,
+      "config": "windows-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14473457015"
+    }
+  ],
+  "_bioccheck": {
+    "error": 0,
+    "warning": 0,
+    "note": 6
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161",
+  "_commit": {
+    "id": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+    "author": "Ossama Edbali <ossedb@gmail.com>",
+    "committer": "Ossama Edbali <ossedb@gmail.com>",
+    "message": "fix: convert MSn mzML alike with both engines and store the activation type (#11)\n\n- mzMLToParquet() accepts .mzML.gz and .mzXML.gz; run ids drop the\n  compression suffix.\n- engine = \"mzr\" applies MsBackendMzR's renames, so scanIndex is the\n  position, acquisitionNum the scan number and precScanNum resolves to\n  the parent; peaksCount and empty header fields are kept.\n- The first precursor's dissociation method is read from the mzML\n  <activation> elements by both engines into activationType, stored as\n  activation_type.\n- Add msn.mzML.gz, an MS1-MS4 acquisition with non-contiguous scan\n  numbers, and engine-equivalence tests against MsBackendMzR.\n- Version 0.99.12.\n",
+    "time": 1795002546
+  },
+  "_distro": "resolute",
+  "_host": "GitHub-Actions",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 4.5.0",
+      "role": "Depends"
+    },
+    {
+      "package": "Spectra",
+      "version": ">= 1.16.0",
+      "role": "Depends"
+    },
+    {
+      "package": "arrow",
+      "version": ">= 14.0.0",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "DBI",
+      "role": "Imports"
+    },
+    {
+      "package": "duckdb",
+      "version": ">= 1.2.0",
+      "role": "Imports"
+    },
+    {
+      "package": "IRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "jsonlite",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "MsCoreUtils",
+      "role": "Imports"
+    },
+    {
+      "package": "ProtGenerics",
+      "version": ">= 1.36.0",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "tools",
+      "role": "Imports"
+    },
+    {
+      "package": "utils",
+      "role": "Imports"
+    },
+    {
+      "package": "progress",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "bench",
+      "role": "Suggests"
+    },
+    {
+      "package": "dplyr",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "MsDataHub",
+      "role": "Suggests"
+    },
+    {
+      "package": "MsExperiment",
+      "role": "Suggests"
+    },
+    {
+      "package": "mzR",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    },
+    {
+      "package": "SpectraQL",
+      "role": "Suggests"
+    },
+    {
+      "package": "testthat",
+      "version": ">= 3.0.0",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 1,
+  "_updates": [
+    {
+      "week": "2026-21",
+      "n": 2
+    },
+    {
+      "week": "2026-30",
+      "n": 4
+    },
+    {
+      "week": "2026-35",
+      "n": 1
+    },
+    {
+      "week": "2026-37",
+      "n": 1
+    },
+    {
+      "week": "2026-38",
+      "n": 7
+    },
+    {
+      "week": "2026-39",
+      "n": 3
+    },
+    {
+      "week": "2026-42",
+      "n": 2
+    },
+    {
+      "week": "2026-46",
+      "n": 1
+    },
+    {
+      "week": "2026-47",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "0.99.10",
+      "bioc": "3.24",
+      "repository": "bioc",
+      "r": "4.6.0"
+    }
+  ],
+  "_topics": [
+    "infrastructure",
+    "massspectrometry",
+    "metabolomics",
+    "proteomics",
+    "dataimport"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "oss6",
+      "count": 24,
+      "uuid": 4907450
+    },
+    {
+      "user": "jorainer",
+      "count": 3,
+      "uuid": 5506112
+    },
+    {
+      "user": "rjmw",
+      "count": 1,
+      "uuid": 7114586
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 487,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 115,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/MsBackendParquet"
+  },
+  "_devurl": "https://github.com/computational-metabolomics/msbackendparquet",
+  "_abi": {
+    "exports": [
+      {
+        "key": "MsBackendParquet::MsBackendParquet",
+        "hash": "b890e70392f78b59"
+      }
+    ],
+    "imports": [
+      {
+        "key": "ProtGenerics::generic:backendBpparam",
+        "hash": "42e79fb5d98efa40"
+      },
+      {
+        "key": "ProtGenerics::generic:backendInitialize",
+        "hash": "bfc89c8a6990d0ce"
+      },
+      {
+        "key": "ProtGenerics::generic:backendMerge",
+        "hash": "9b20d104bd93dd10"
+      },
+      {
+        "key": "ProtGenerics::generic:centroided",
+        "hash": "79b9a0ecc40b23f4"
+      },
+      {
+        "key": "ProtGenerics::generic:dataStorage",
+        "hash": "e0f310d99253bf4a"
+      },
+      {
+        "key": "ProtGenerics::generic:extractByIndex",
+        "hash": "4a6240668bd8e916"
+      },
+      {
+        "key": "ProtGenerics::generic:filterDataOrigin",
+        "hash": "2d927fe15f62893c"
+      },
+      {
+        "key": "ProtGenerics::generic:filterMsLevel",
+        "hash": "4410856c23dbeebe"
+      },
+      {
+        "key": "ProtGenerics::generic:filterPrecursorMzRange",
+        "hash": "1e9d7d9d671f3d12"
+      },
+      {
+        "key": "ProtGenerics::generic:filterPrecursorMzValues",
+        "hash": "43ac596172b08239"
+      },
+      {
+        "key": "ProtGenerics::generic:filterRt",
+        "hash": "603144ddd4ccf402"
+      },
+      {
+        "key": "ProtGenerics::generic:intensity",
+        "hash": "5490d2abccdf9667"
+      },
+      {
+        "key": "ProtGenerics::generic:intensity<-",
+        "hash": "a9f9f16ede19ff8c"
+      },
+      {
+        "key": "ProtGenerics::generic:mz",
+        "hash": "f925d5e4c0c571d3"
+      },
+      {
+        "key": "ProtGenerics::generic:mz<-",
+        "hash": "9d17a2894d528a92"
+      },
+      {
+        "key": "ProtGenerics::generic:peaksData",
+        "hash": "e49026384cce82a1"
+      },
+      {
+        "key": "ProtGenerics::generic:peaksVariables",
+        "hash": "fa8a37a534eac553"
+      },
+      {
+        "key": "ProtGenerics::generic:precScanNum",
+        "hash": "cbbcda6646054469"
+      },
+      {
+        "key": "ProtGenerics::generic:setBackend",
+        "hash": "d76b08666632924b"
+      },
+      {
+        "key": "ProtGenerics::generic:smoothed",
+        "hash": "75b29ef25b9cf515"
+      },
+      {
+        "key": "ProtGenerics::generic:spectraData",
+        "hash": "9309e875845317bf"
+      },
+      {
+        "key": "ProtGenerics::generic:spectraNames",
+        "hash": "88f2b2fdf194b967"
+      },
+      {
+        "key": "ProtGenerics::generic:spectraNames<-",
+        "hash": "8567acfcabfa13de"
+      },
+      {
+        "key": "ProtGenerics::generic:supportsSetBackend",
+        "hash": "9773c362aac0070c"
+      },
+      {
+        "key": "ProtGenerics::generic:tic",
+        "hash": "7e0ee9e3414c182d"
+      },
+      {
+        "key": "ProtGenerics::generic:uniqueMsLevels",
+        "hash": "7d6eb4823a51123f"
+      },
+      {
+        "key": "Spectra::MsBackend",
+        "hash": "f0934da3d81a3802"
+      },
+      {
+        "key": "Spectra::MsBackendCached",
+        "hash": "6ec80a5eba03c577"
+      },
+      {
+        "key": "Spectra::generic:reset",
+        "hash": "e436f5bf29f95a59"
+      }
+    ]
+  },
+  "_rbuild": "4.6.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/MsBackendParquet.html",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md"
+  ],
+  "_homeurl": "https://github.com/computational-metabolomics/msbackendparquet",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_exports": [
+    "addMzPeakArchives",
+    "backendInitialize",
+    "backendMerge",
+    "buildProjection",
+    "centroided",
+    "createMsBackendParquetDataset",
+    "createMzPeakDataset",
+    "dataStorage",
+    "dropProjection",
+    "extractByIndex",
+    "filterContainsMz",
+    "filterDataOrigin",
+    "filterMsLevel",
+    "filterPrecursorMzRange",
+    "filterPrecursorMzValues",
+    "filterRt",
+    "filterSampleData",
+    "intensity",
+    "intensity<-",
+    "invalidateDatasetCache",
+    "manifestRuns",
+    "MsBackendParquet",
+    "mz",
+    "mz<-",
+    "mzMLToParquet",
+    "mzstackCondition",
+    "mzstackError",
+    "newManifest",
+    "peaksData",
+    "peaksVariables",
+    "precScanNum",
+    "readManifest",
+    "reset",
+    "runData",
+    "runData<-",
+    "runVariables",
+    "show",
+    "smoothed",
+    "spectraData",
+    "spectraNames",
+    "spectraNames<-",
+    "supportsSetBackend",
+    "tic",
+    "uniqueMsLevels",
+    "writeManifest"
+  ],
+  "_help": [
+    {
+      "page": "buildProjection",
+      "title": "Build or drop signal projections",
+      "topics": [
+        "buildProjection",
+        "dropProjection"
+      ]
+    },
+    {
+      "page": "createMsBackendParquetDataset",
+      "title": "Create a Parquet dataset from raw MS data or a 'Spectra' object",
+      "topics": [
+        "createMsBackendParquetDataset"
+      ]
+    },
+    {
+      "page": "createMzPeakDataset",
+      "title": "Build a queryable dataset from mzPeak archives",
+      "topics": [
+        "addMzPeakArchives",
+        "createMzPeakDataset"
+      ]
+    },
+    {
+      "page": "filterContainsMz",
+      "title": "Select spectra containing a peak at a given m/z",
+      "topics": [
+        "filterContainsMz"
+      ]
+    },
+    {
+      "page": "filterSampleData",
+      "title": "Select spectra by their run's sample metadata",
+      "topics": [
+        "filterSampleData"
+      ]
+    },
+    {
+      "page": "MsBackendParquet",
+      "title": "Apache Parquet-based MS data backend",
+      "topics": [
+        "MsBackendParquet-package",
+        "$<-,MsBackendParquet-method",
+        "backendBpparam,MsBackendParquet-method",
+        "backendInitialize,MsBackendParquet-method",
+        "backendMerge,MsBackendParquet-method",
+        "centroided,MsBackendParquet-method",
+        "dataStorage,MsBackendParquet-method",
+        "extractByIndex,MsBackendParquet,ANY-method",
+        "filterDataOrigin,MsBackendParquet-method",
+        "filterMsLevel,MsBackendParquet-method",
+        "filterPrecursorMzRange,MsBackendParquet-method",
+        "filterPrecursorMzValues,MsBackendParquet-method",
+        "filterRt,MsBackendParquet-method",
+        "intensity,MsBackendParquet-method",
+        "intensity<-,MsBackendParquet-method",
+        "MsBackendParquet",
+        "MsBackendParquet-class",
+        "mz,MsBackendParquet-method",
+        "mz<-,MsBackendParquet-method",
+        "peaksData,MsBackendParquet-method",
+        "peaksVariables,MsBackendParquet-method",
+        "precScanNum,MsBackendParquet-method",
+        "reset,MsBackendParquet-method",
+        "show,MsBackendParquet-method",
+        "smoothed,MsBackendParquet-method",
+        "spectraData,MsBackendParquet-method",
+        "spectraNames,MsBackendParquet-method",
+        "spectraNames<-,MsBackendParquet-method",
+        "supportsSetBackend,MsBackendParquet-method",
+        "tic,MsBackendParquet-method",
+        "uniqueMsLevels,MsBackendParquet-method",
+        "[,MsBackendParquet-method"
+      ]
+    },
+    {
+      "page": "mzMLToParquet",
+      "title": "Convert mzML (or related) files into a Parquet dataset",
+      "topics": [
+        "mzMLToParquet"
+      ]
+    },
+    {
+      "page": "mzstack-conditions",
+      "title": "Typed mzStack error conditions",
+      "topics": [
+        "mzstack-conditions",
+        "mzstackCondition",
+        "mzstackError"
+      ]
+    },
+    {
+      "page": "mzstack-manifest",
+      "title": "Read and write an mzStack manifest",
+      "topics": [
+        "invalidateDatasetCache",
+        "manifestRuns",
+        "mzstack-manifest",
+        "newManifest",
+        "readManifest",
+        "writeManifest"
+      ]
+    },
+    {
+      "page": "runData",
+      "title": "Per-run sample metadata",
+      "topics": [
+        "runData",
+        "runData<-",
+        "runVariables"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/MsBackendParquet/raw/HEAD/README.md",
+  "_rundeps": [
+    "arrow",
+    "assertthat",
+    "BH",
+    "BiocGenerics",
+    "BiocParallel",
+    "bit",
+    "bit64",
+    "cli",
+    "clue",
+    "cluster",
+    "codetools",
+    "cpp11",
+    "crayon",
+    "data.table",
+    "DBI",
+    "duckdb",
+    "formatR",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "glue",
+    "hms",
+    "IRanges",
+    "jsonlite",
+    "lambda.r",
+    "lifecycle",
+    "magrittr",
+    "MASS",
+    "MetaboCoreUtils",
+    "MsCoreUtils",
+    "pkgconfig",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "purrr",
+    "R6",
+    "Rcpp",
+    "rlang",
+    "S4Vectors",
+    "snow",
+    "Spectra",
+    "tidyselect",
+    "vctrs",
+    "withr"
+  ],
+  "_vignettes": [
+    {
+      "source": "MsBackendParquet.Rmd",
+      "filename": "MsBackendParquet.html",
+      "title": "Apache Parquet-based Mass Spectrometry Data Backend",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Relation to other Spectra backends",
+        "Installation",
+        "Creating a Parquet dataset",
+        "Accessing data",
+        "Filtering",
+        "Working with peaks",
+        "Controlling the dataset layout",
+        "Querying collections of mzPeak archives",
+        "How the dataset interfaces with mzPeak's model",
+        "Searching for peaks across runs",
+        "Sample metadata",
+        "The in-memory metadata cache",
+        "Streaming large mzML files",
+        "Performance",
+        "Saving and reloading the backend",
+        "Session information"
+      ],
+      "created": "2026-05-18 09:53:46",
+      "modified": "2026-11-18 11:49:06",
+      "commits": 9
+    }
+  ],
+  "_score": 5.431363764158988,
+  "_indexed": true,
+  "_nocasepkg": "msbackendparquet",
+  "_universes": [
+    "bioc",
+    "oss6",
+    "computational-metabolomics"
+  ],
+  "_previous": "0.99.10",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:33:44.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/616824aacae5f0ef0ab0818c43de73bc2b905746d585e28fc2ff57b001387b3a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:35:24.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/b78c4479e283ee0d037313bb54b0ebb1c77031781dea83d4608ccc4da85c1930",
+      "status": "failure",
+      "check": "ERROR",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:33:52.000Z",
+      "distro": "resolute",
+      "arch": "aarch64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/91409558cfe8a8a68e80b4c2143c8f2e1c8629ef60d24548ee99a2aa872b432d",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:34:33.000Z",
+      "distro": "resolute",
+      "arch": "x86_64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/1daec22e3caeba05284603276a7efdd1cdc73e15636ee4590b5f355f49621593",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.12",
+      "date": "2026-11-18T22:24:57.000Z",
+      "arch": "aarch64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/f3b568bd08a7343ad35541159d60231c6040358f9ce1195460cfc3555a7dfeb1",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:50:39.000Z",
+      "arch": "x86_64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/5da3ce5a3915cf83f116754ce6084dd25ec1efda2a86ae6f7badc13215e59030",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.6.2",
+      "os": "mac",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:48:40.000Z",
+      "arch": "aarch64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/0aa50504c1601ffef5be473539a7fb5992507cc6d2daaafacbdddf88af348184",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.6.2",
+      "os": "mac",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:53:41.000Z",
+      "arch": "x86_64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/82c1699dacd3f8d181cdf25231cf30413f8c3550ef0efef1c3016a833e0c0b0a",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:33:32.000Z",
+      "arch": "emscripten",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/641dcabc4bd00502d14f89f9b38f50bfa8e2509c8ba7bb499c7b696c76548125",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:38:19.000Z",
+      "arch": "aarch64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/4faed82d4b6bc619b08bef5c752963eef2d0c5e289dc6af53e20d13aa97fc67b",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:43:55.000Z",
+      "arch": "x86_64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/2b8e3407a5dc62dcdcd584a122e8c5f4ce3e7826e6acdff4ec0d7c9a815c7419",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:43:25.000Z",
+      "arch": "x86_64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/a90a842d626785c8da9e16423dcb1551ca4e4603812277488c0bbf3dff0a9380",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.6.2",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:37:34.000Z",
+      "arch": "aarch64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/4ffa261e8c5557778c144cb3344c182e933c322f55ff63564359b4dc10f4c969",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    },
+    {
+      "r": "4.6.2",
+      "os": "win",
+      "version": "0.99.12",
+      "date": "2026-11-18T21:32:29.000Z",
+      "arch": "x86_64",
+      "commit": "88c23e809db6903adaf3ec4f2a80834ba75d88ca",
+      "fileid": "https://r2.ropensci.org/2fe15094c80abc1c096939cda852f022bf06a720f7e1ab2a4e86413f9f1f1236",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/44401044161"
+    }
+  ]
+}
