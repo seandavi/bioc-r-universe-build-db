@@ -1,0 +1,728 @@
+{
+  "_id": "6b0502c37510c4b9d7d9231a",
+  "Package": "loci2path",
+  "Type": "Package",
+  "Title": "Loci2path: regulatory annotation of genomic intervals based on\ntissue-specific expression QTLs",
+  "Version": "1.35.0",
+  "Author": "Tianlei Xu",
+  "Maintainer": "Tianlei Xu <tianlei.xu@emory.edu>",
+  "Description": "loci2path performs statistics-rigorous enrichment analysis\nof eQTLs in genomic regions of interest. Using eQTL collections\nprovided by the Genotype-Tissue Expression (GTEx) project and\npathway collections from MSigDB.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "LazyData": "true",
+  "VignetteBuilder": "knitr",
+  "RoxygenNote": "6.0.1",
+  "biocViews": "FunctionalGenomics, Genetics, GeneSetEnrichment, Software,\nGeneExpression, Sequencing, Coverage, BioCarta",
+  "URL": "https://github.com/StanleyXu/loci2path",
+  "BugReports": "https://github.com/StanleyXu/loci2path/issues",
+  "Collate": "'allClasses.R' 'allGenerics.R' 'allAccessor.R'\n'check.geneid.R' 'loci2path.demo-data.R'\n'loci2pathResult-methods.R' 'query-methods.R' 'show-methods.R'",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-11-23 22:40:06 UTC",
+  "RemoteUrl": "https://github.com/bioc/loci2path",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "23ea903108d004242a407fb7ff1703638d4b64d7",
+  "NeedsCompilation": "no",
+  "Packaged": {
+    "Date": "2026-11-24 03:14:14 UTC",
+    "User": "root"
+  },
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "loci2path_1.35.0.tar.gz",
+  "_fileid": "https://r2.ropensci.org/b5051d778a9612cf9c402de20961bf7412924de7cabbf61eb6bb60c3e46d1f90",
+  "_filesize": 538384,
+  "_sha256": "b5051d778a9612cf9c402de20961bf7412924de7cabbf61eb6bb60c3e46d1f90",
+  "_expires": "2027-03-04T03:21:37.000Z",
+  "_created": "2026-11-24T03:14:14.000Z",
+  "_published": "2026-11-24T03:21:39.202Z",
+  "_upstream": "https://github.com/bioc/loci2path",
+  "_status": "success",
+  "_maintainer": {
+    "name": "Tianlei Xu",
+    "email": "tianlei.xu@emory.edu"
+  },
+  "_jobs": [
+    {
+      "job": 138189819033,
+      "time": 143,
+      "config": "bioc-checks",
+      "r": "4.6.2",
+      "check": "ERROR",
+      "artifact": "14886477178"
+    },
+    {
+      "job": 138189819065,
+      "time": 227,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "14886772071"
+    },
+    {
+      "job": 138189819135,
+      "time": 252,
+      "config": "linux-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14886602406"
+    },
+    {
+      "job": 138189819054,
+      "time": 87,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "14885794009"
+    },
+    {
+      "job": 138189819041,
+      "time": 143,
+      "config": "macos-release-arm64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14886602836"
+    },
+    {
+      "job": 138188328878,
+      "time": 229,
+      "config": "source",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14886941160"
+    },
+    {
+      "job": 138189819102,
+      "time": 116,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "14885479608"
+    },
+    {
+      "job": 138189819020,
+      "time": 131,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "OK",
+      "artifact": "14886246825"
+    },
+    {
+      "job": 138189819066,
+      "time": 129,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "OK",
+      "artifact": "14886751779"
+    },
+    {
+      "job": 138189819165,
+      "time": 141,
+      "config": "windows-release-x86_64",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14885464642"
+    }
+  ],
+  "_bioccheck": {
+    "error": 1,
+    "warning": 0,
+    "note": 9
+  },
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278",
+  "_commit": {
+    "id": "23ea903108d004242a407fb7ff1703638d4b64d7",
+    "author": "A Wokaty <jwokaty@users.noreply.github.com>",
+    "committer": "A Wokaty <jwokaty@users.noreply.github.com>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_24 branch\n",
+    "time": 1795473606
+  },
+  "_distro": "resolute",
+  "_host": "GitHub-Actions",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.5",
+      "role": "Depends"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Imports"
+    },
+    {
+      "package": "wordcloud",
+      "role": "Imports"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Imports"
+    },
+    {
+      "package": "data.table",
+      "role": "Imports"
+    },
+    {
+      "package": "methods",
+      "role": "Imports"
+    },
+    {
+      "package": "grDevices",
+      "role": "Imports"
+    },
+    {
+      "package": "stats",
+      "role": "Imports"
+    },
+    {
+      "package": "graphics",
+      "role": "Imports"
+    },
+    {
+      "package": "GenomicRanges",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocParallel",
+      "role": "Imports"
+    },
+    {
+      "package": "S4Vectors",
+      "role": "Imports"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Suggests"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-48",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.33.0",
+      "bioc": "3.24",
+      "repository": "bioc",
+      "r": "4.6.0"
+    },
+    {
+      "branch": "release",
+      "version": "1.32.0",
+      "bioc": "3.23",
+      "repository": "bioc",
+      "r": "4.6.0"
+    }
+  ],
+  "_topics": [
+    "functionalgenomics",
+    "genetics",
+    "genesetenrichment",
+    "software",
+    "geneexpression",
+    "sequencing",
+    "coverage",
+    "biocarta"
+  ],
+  "_stars": 1,
+  "_contributors": [
+    {
+      "user": "stanleyxu",
+      "count": 80,
+      "uuid": 3265926
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 487,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_downloads": {
+    "count": 556,
+    "source": "https://www.bioconductor.org/packages/stats/bioc/loci2path"
+  },
+  "_mentions": 2,
+  "_devurl": "https://github.com/stanleyxu/loci2path",
+  "_searchresults": 2,
+  "_abi": {
+    "exports": [
+      {
+        "key": "loci2path::eqtlSet",
+        "hash": "103497cbbece60a3"
+      },
+      {
+        "key": "loci2path::geneSet",
+        "hash": "bd64335e17fc6c7c"
+      },
+      {
+        "key": "loci2path::generic:coveredGene",
+        "hash": "e8fa891756ea16d6"
+      },
+      {
+        "key": "loci2path::generic:description",
+        "hash": "f891e1d54be9dd1b"
+      },
+      {
+        "key": "loci2path::generic:eqtlGene",
+        "hash": "514bac26ad46b882"
+      },
+      {
+        "key": "loci2path::generic:eqtlId",
+        "hash": "75142ab4d13b2725"
+      },
+      {
+        "key": "loci2path::generic:eqtlRange",
+        "hash": "3f52ee40e7841cdc"
+      },
+      {
+        "key": "loci2path::generic:geneSetList",
+        "hash": "3585c7b94ebd6658"
+      },
+      {
+        "key": "loci2path::generic:getHeatmap",
+        "hash": "ef5c8d8f9b6b8b14"
+      },
+      {
+        "key": "loci2path::generic:getMat",
+        "hash": "26c44763a77e6b9e"
+      },
+      {
+        "key": "loci2path::generic:getPathDescription",
+        "hash": "8f49442a0c6c1a78"
+      },
+      {
+        "key": "loci2path::generic:getPval",
+        "hash": "50a83b51ac274ad7"
+      },
+      {
+        "key": "loci2path::generic:getTissueDegree",
+        "hash": "14e74537e4d15849"
+      },
+      {
+        "key": "loci2path::generic:getWordcloud",
+        "hash": "74e0e41870c621ec"
+      },
+      {
+        "key": "loci2path::generic:numGene",
+        "hash": "0cfff696b47903a9"
+      },
+      {
+        "key": "loci2path::generic:query",
+        "hash": "10d0f3f43ade4889"
+      },
+      {
+        "key": "loci2path::generic:resultTable",
+        "hash": "a6575aa1e130372e"
+      },
+      {
+        "key": "loci2path::generic:tissue",
+        "hash": "1153aaaaafcd9940"
+      },
+      {
+        "key": "loci2path::loci2pathResult",
+        "hash": "74aa5a153cdfe2f8"
+      }
+    ],
+    "imports": []
+  },
+  "_rbuild": "4.6.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/loci2path.html",
+    "extra/manual.pdf",
+    "extra/NEWS.html",
+    "extra/NEWS.txt",
+    "extra/readme.html",
+    "extra/readme.md"
+  ],
+  "_homeurl": "https://github.com/stanleyxu/loci2path",
+  "_realowner": "bioc",
+  "_cranurl": false,
+  "_authors": [
+    {
+      "name": "Tianlei Xu",
+      "email": "tianlei.xu@emory.edu",
+      "role": [
+        "cre"
+      ]
+    }
+  ],
+  "_exports": [
+    "check.geneid",
+    "coveredGene",
+    "description",
+    "eqtlGene",
+    "eqtlId",
+    "eqtlRange",
+    "eqtlSet",
+    "geneSet",
+    "geneSetList",
+    "getHeatmap",
+    "getMat",
+    "getPathDescription",
+    "getPval",
+    "getTissueDegree",
+    "getWordcloud",
+    "loci2pathResult",
+    "numGene",
+    "query",
+    "resultTable",
+    "tissue"
+  ],
+  "_datasets": [
+    {
+      "name": "biocarta",
+      "title": "eQTL geneset enrichment query demo data",
+      "object": "loci2path.demo",
+      "class": [
+        "geneSet"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "eset.list",
+      "title": "eQTL geneset enrichment query demo data",
+      "object": "loci2path.demo",
+      "class": [
+        "list"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    },
+    {
+      "name": "query.gr",
+      "title": "eQTL geneset enrichment query demo data",
+      "object": "loci2path.demo",
+      "class": [
+        "GRanges"
+      ],
+      "fields": [],
+      "table": false,
+      "tojson": false
+    }
+  ],
+  "_help": [
+    {
+      "page": "biocarta",
+      "title": "eQTL geneset enrichment query demo data",
+      "topics": [
+        "biocarta"
+      ]
+    },
+    {
+      "page": "check.geneid",
+      "title": "check compatibility of gene identifiers between eQTL set and gene set",
+      "topics": [
+        "check.geneid"
+      ]
+    },
+    {
+      "page": "eqtlSet-class",
+      "title": "eqtlSet Class",
+      "topics": [
+        "eqtlGene",
+        "eqtlGene,eqtlSet-method",
+        "eqtlId",
+        "eqtlId,eqtlSet-method",
+        "eqtlRange",
+        "eqtlRange,eqtlSet-method",
+        "eqtlSet",
+        "eqtlSet-class",
+        "tissue",
+        "tissue,eqtlSet-method"
+      ]
+    },
+    {
+      "page": "eset.list",
+      "title": "eQTL geneset enrichment query demo data",
+      "topics": [
+        "eset.list"
+      ]
+    },
+    {
+      "page": "geneSet-class",
+      "title": "geneSet Class",
+      "topics": [
+        "description",
+        "description,geneSet-method",
+        "geneSet",
+        "geneSet-class",
+        "geneSetList",
+        "geneSetList,geneSet-method",
+        "numGene",
+        "numGene,geneSet-method"
+      ]
+    },
+    {
+      "page": "getHeatmap-methods",
+      "title": "Generate heatmap of enrichment matrix from query result",
+      "topics": [
+        "getHeatmap",
+        "getHeatmap,loci2pathResult-method"
+      ]
+    },
+    {
+      "page": "getMat-methods",
+      "title": "Extract tissue/geneset enrichment matrix from query result",
+      "topics": [
+        "getMat",
+        "getMat,loci2pathResult-method"
+      ]
+    },
+    {
+      "page": "getPathDescription-methods",
+      "title": "Extract description for enriched pathways from query result and geneSet object",
+      "topics": [
+        "getPathDescription",
+        "getPathDescription,loci2pathResult-method"
+      ]
+    },
+    {
+      "page": "getPval-methods",
+      "title": "Extract tissue/geneset enrichment p-value distribution from query result",
+      "topics": [
+        "getPval",
+        "getPval,loci2pathResult-method"
+      ]
+    },
+    {
+      "page": "getTissueDegree-methods",
+      "title": "Extract tissue degree from query result",
+      "topics": [
+        "getTissueDegree",
+        "getTissueDegree,loci2pathResult-method"
+      ]
+    },
+    {
+      "page": "getWordcloud-methods",
+      "title": "Plot word cloud using frequent terms of pathways and genes",
+      "topics": [
+        "getWordcloud",
+        "getWordcloud,loci2pathResult-method"
+      ]
+    },
+    {
+      "page": "loci2pathResult-class",
+      "title": "loci2pathResult Class",
+      "topics": [
+        "coveredGene",
+        "coveredGene,loci2pathResult-method",
+        "loci2pathResult",
+        "loci2pathResult-class",
+        "resultTable",
+        "resultTable,loci2pathResult-method"
+      ]
+    },
+    {
+      "page": "query-methods",
+      "title": "Query enrichment in geneset through multiple eQTL sets.",
+      "topics": [
+        "query",
+        "query,eqtlSet,geneSet-method",
+        "query,GenomicRanges,eqtlSet,geneSet-method",
+        "query,GenomicRanges,list,ANY-method",
+        "query,GenomicRanges,list,geneSet-method",
+        "query,list,geneSet-method",
+        "query,list-method"
+      ]
+    },
+    {
+      "page": "query.gr",
+      "title": "eQTL geneset enrichment query demo data",
+      "topics": [
+        "query.gr"
+      ]
+    }
+  ],
+  "_readme": "https://github.com/bioc/loci2path/raw/HEAD/README.md",
+  "_rundeps": [
+    "BH",
+    "BiocGenerics",
+    "BiocParallel",
+    "cli",
+    "codetools",
+    "cpp11",
+    "data.table",
+    "farver",
+    "formatR",
+    "futile.logger",
+    "futile.options",
+    "generics",
+    "GenomicRanges",
+    "glue",
+    "gtable",
+    "IRanges",
+    "labeling",
+    "lambda.r",
+    "lifecycle",
+    "pheatmap",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "rlang",
+    "S4Vectors",
+    "scales",
+    "Seqinfo",
+    "snow",
+    "viridisLite",
+    "wordcloud"
+  ],
+  "_vignettes": [
+    {
+      "source": "loci2path-vignette.Rmd",
+      "filename": "loci2path-vignette.html",
+      "title": "Loci2path: regulatory annotation of genomic intervals based on tissue-specific expression QTLs",
+      "author": "Tianlei Xu",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Prepare input dataset for query",
+        "Query regions",
+        "Prepare eQTL sets.",
+        "construct eQTL set",
+        "construct eQTL set list",
+        "Prepare gene set collection",
+        "Perform query",
+        "peroform query from one eQTL set",
+        "peroform query from multiple eQTL sets",
+        "parallel query from multiple eQTL sets",
+        "explore query result",
+        "obtain eQTL gene list",
+        "obtain average tissue degree for each pathway",
+        "obtain tissue enrichment for query regions",
+        "extract tissue-pathway heatmap",
+        "extract word cloud from result",
+        "Session info",
+        "References"
+      ],
+      "created": "2017-08-19 20:14:24",
+      "modified": "2018-01-22 03:23:54",
+      "commits": 12
+    }
+  ],
+  "_score": 4.301029995663981,
+  "_indexed": true,
+  "_nocasepkg": "loci2path",
+  "_universes": [
+    "bioc",
+    "stanleyxu"
+  ],
+  "_previous": "1.33.0",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:17:35.000Z",
+      "distro": "resolute",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/d6cf292bc6a9fc75640ba3b622b7d756ad298c0cf191656d7bc034eb90ac5f3f",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:17:52.000Z",
+      "distro": "resolute",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/9f8807e1f0b51b0f0bd33194f0e6284b9000a16bdbb2f5e50e3c683abff4eaa7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:19:56.000Z",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/e3fc05603bf7656e0fd53df530f3627bccd53f31eda0f8331923735072a7c776",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    },
+    {
+      "r": "4.6.2",
+      "os": "mac",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:20:32.000Z",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/a664f80e866a7abd9f15f679741782605642e3136b757ba297dc39fb3fdcd4c7",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:16:31.000Z",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/2a4b78df752d4d241b66296f1744ccc5ce06a518b7f90b79ac8f49b62132fbe3",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:15:45.000Z",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/fab11968a34d872b1a20ed53b6f4964fb270ccb700e858500766cf73226920df",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:15:46.000Z",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/58a4c501bd7b88e92f362197fc13f2b57095563a2139eb8422bccf90b4de2cf2",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    },
+    {
+      "r": "4.6.2",
+      "os": "win",
+      "version": "1.35.0",
+      "date": "2026-11-24T03:15:51.000Z",
+      "commit": "23ea903108d004242a407fb7ff1703638d4b64d7",
+      "fileid": "https://r2.ropensci.org/1a47dc351088ae860d4efabacbf10867782d38b34c6e1253c3e2f7d5e26fd6d6",
+      "status": "success",
+      "check": "OK",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45317643278"
+    }
+  ]
+}

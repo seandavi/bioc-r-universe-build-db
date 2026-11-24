@@ -1,0 +1,723 @@
+{
+  "_id": "6b05191b75ab5e50c767b222",
+  "Package": "rnaseqGene",
+  "Title": "RNA-seq workflow: gene-level exploratory analysis and\ndifferential expression",
+  "Version": "1.39.0",
+  "Date": "2026-04-13",
+  "Authors@R": "c(person(role=c(\"aut\", \"cre\"), \"Michael\", \"Love\", email = \"michaelisaiahlove@gmail.com\"))",
+  "Description": "Here we walk through an end-to-end gene-level RNA-seq\ndifferential expression workflow using Bioconductor packages.\nWe will start from the FASTQ files, show how these were aligned\nto the reference genome, and prepare a count matrix which\ntallies the number of RNA-seq reads/fragments within each gene\nfor each sample.  We will perform exploratory data analysis\n(EDA) for quality assessment and to explore the relationship\nbetween samples, perform differential gene expression analysis,\nand visually explore the results.",
+  "License": "Artistic-2.0",
+  "Encoding": "UTF-8",
+  "VignetteBuilder": "knitr",
+  "biocViews": "Workflow, GeneExpressionWorkflow, ImmunoOncologyWorkflow",
+  "NeedsCompilation": "no",
+  "URL": "https://github.com/thelovelab/rnaseqGene/",
+  "Config/pak/sysreqs": "cmake make libbz2-dev libicu-dev libjpeg-dev\nliblzma-dev libpng-dev libuv1-dev libxml2-dev libssl-dev\nxz-utils zlib1g-dev",
+  "Repository": "https://bioc.r-universe.dev",
+  "Date/Publication": "2026-11-23 22:38:34 UTC",
+  "RemoteUrl": "https://github.com/bioc/rnaseqGene",
+  "RemoteRef": "HEAD",
+  "RemoteSha": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+  "Packaged": {
+    "Date": "2026-11-24 04:34:17 UTC",
+    "User": "root"
+  },
+  "Author": "Michael Love [aut, cre]",
+  "Maintainer": "Michael Love <michaelisaiahlove@gmail.com>",
+  "_user": "bioc",
+  "_type": "src",
+  "_file": "rnaseqGene_1.39.0.tar.gz",
+  "_fileid": "https://r2.ropensci.org/6598c4a1cfd730376585c4281ba709431e11f57c8d032633b4d0ca4094a8d3b0",
+  "_filesize": 1501675,
+  "_sha256": "6598c4a1cfd730376585c4281ba709431e11f57c8d032633b4d0ca4094a8d3b0",
+  "_expires": "2027-03-04T04:56:57.000Z",
+  "_created": "2026-11-24T04:34:17.000Z",
+  "_published": "2026-11-24T04:56:58.964Z",
+  "_upstream": "https://github.com/bioc/rnaseqGene",
+  "_status": "success",
+  "_maintainer": {
+    "name": "Michael Love",
+    "email": "michaelisaiahlove@gmail.com",
+    "login": "mikelove",
+    "mastodon": "@mikelove@genomic.social",
+    "description": "Genetics & Biostatistics at UNC-Chapel Hill. R/Bioconductor developer",
+    "uuid": 69203
+  },
+  "_jobs": [
+    {
+      "job": 138220206308,
+      "time": 268,
+      "config": "bioc-checks",
+      "r": "4.6.2",
+      "check": "FAILURE",
+      "artifact": ""
+    },
+    {
+      "job": 138220206273,
+      "time": 417,
+      "config": "linux-devel-x86_64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "14890088609"
+    },
+    {
+      "job": 138220206243,
+      "time": 447,
+      "config": "linux-release-x86_64",
+      "r": "4.6.2",
+      "check": "WARNING",
+      "artifact": "14890702019"
+    },
+    {
+      "job": 138220206299,
+      "time": 316,
+      "config": "macos-oldrel-arm64",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "14891401379"
+    },
+    {
+      "job": 138220206269,
+      "time": 253,
+      "config": "macos-release-arm64",
+      "r": "4.6.2",
+      "check": "WARNING",
+      "artifact": "14891760540"
+    },
+    {
+      "job": 138217784738,
+      "time": 386,
+      "config": "source",
+      "r": "4.6.2",
+      "check": "OK",
+      "artifact": "14889489781"
+    },
+    {
+      "job": 138220206139,
+      "time": 190,
+      "config": "wasm-release",
+      "r": "4.6.0",
+      "check": "OK",
+      "artifact": "14889668983"
+    },
+    {
+      "job": 138220206341,
+      "time": 264,
+      "config": "windows-devel-x86_64",
+      "r": "4.7.0",
+      "check": "WARNING",
+      "artifact": "14889444482"
+    },
+    {
+      "job": 138220206380,
+      "time": 247,
+      "config": "windows-oldrel-x86_64",
+      "r": "4.5.3",
+      "check": "WARNING",
+      "artifact": "14889939787"
+    },
+    {
+      "job": 138220206302,
+      "time": 267,
+      "config": "windows-release-x86_64",
+      "r": "4.6.2",
+      "check": "WARNING",
+      "artifact": "14891030304"
+    }
+  ],
+  "_buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607",
+  "_commit": {
+    "id": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+    "author": "lshep <lori.shepherd@roswellpark.org>",
+    "committer": "lshep <lori.shepherd@roswellpark.org>",
+    "message": "bump x.y.z version to odd y following creation of RELEASE_3_24 branch\n",
+    "time": 1795473514
+  },
+  "_distro": "resolute",
+  "_host": "GitHub-Actions",
+  "_registered": true,
+  "_dependencies": [
+    {
+      "package": "R",
+      "version": ">= 3.3.0",
+      "role": "Depends"
+    },
+    {
+      "package": "BiocStyle",
+      "role": "Depends"
+    },
+    {
+      "package": "airway",
+      "version": ">= 1.5.3",
+      "role": "Depends"
+    },
+    {
+      "package": "tximeta",
+      "role": "Depends"
+    },
+    {
+      "package": "magrittr",
+      "role": "Depends"
+    },
+    {
+      "package": "DESeq2",
+      "role": "Depends"
+    },
+    {
+      "package": "apeglm",
+      "role": "Depends"
+    },
+    {
+      "package": "vsn",
+      "role": "Depends"
+    },
+    {
+      "package": "dplyr",
+      "role": "Depends"
+    },
+    {
+      "package": "ggplot2",
+      "role": "Depends"
+    },
+    {
+      "package": "hexbin",
+      "role": "Depends"
+    },
+    {
+      "package": "pheatmap",
+      "role": "Depends"
+    },
+    {
+      "package": "RColorBrewer",
+      "role": "Depends"
+    },
+    {
+      "package": "PoiClaClu",
+      "role": "Depends"
+    },
+    {
+      "package": "glmpca",
+      "role": "Depends"
+    },
+    {
+      "package": "ggbeeswarm",
+      "role": "Depends"
+    },
+    {
+      "package": "genefilter",
+      "role": "Depends"
+    },
+    {
+      "package": "AnnotationDbi",
+      "role": "Depends"
+    },
+    {
+      "package": "org.Hs.eg.db",
+      "role": "Depends"
+    },
+    {
+      "package": "Gviz",
+      "role": "Depends"
+    },
+    {
+      "package": "sva",
+      "role": "Depends"
+    },
+    {
+      "package": "RUVSeq",
+      "role": "Depends"
+    },
+    {
+      "package": "fission",
+      "role": "Depends"
+    },
+    {
+      "package": "knitr",
+      "role": "Suggests"
+    },
+    {
+      "package": "rmarkdown",
+      "role": "Suggests"
+    }
+  ],
+  "_owner": "bioc",
+  "_selfowned": true,
+  "_usedby": 0,
+  "_updates": [
+    {
+      "week": "2026-14",
+      "n": 1
+    },
+    {
+      "week": "2026-16",
+      "n": 3
+    },
+    {
+      "week": "2026-18",
+      "n": 2
+    },
+    {
+      "week": "2026-48",
+      "n": 2
+    }
+  ],
+  "_tags": [],
+  "_bioc": [
+    {
+      "branch": "devel",
+      "version": "1.37.0",
+      "bioc": "3.24",
+      "repository": "workflows",
+      "r": "4.6.0"
+    },
+    {
+      "branch": "release",
+      "version": "1.36.0",
+      "bioc": "3.23",
+      "repository": "workflows",
+      "r": "4.6.0"
+    }
+  ],
+  "_topics": [
+    "workflow",
+    "geneexpressionworkflow",
+    "immunooncologyworkflow"
+  ],
+  "_stars": 81,
+  "_contributors": [
+    {
+      "user": "mikelove",
+      "count": 129,
+      "uuid": 69203
+    },
+    {
+      "user": "hpages",
+      "count": 19,
+      "uuid": 8810451
+    },
+    {
+      "user": "nturaga",
+      "count": 10,
+      "uuid": 2746443
+    },
+    {
+      "user": "dtenenba",
+      "count": 9,
+      "uuid": 2286826
+    },
+    {
+      "user": "lshep",
+      "count": 9,
+      "uuid": 18724380
+    },
+    {
+      "user": "aoles",
+      "count": 6,
+      "uuid": 6545356
+    },
+    {
+      "user": "vjcitn",
+      "count": 3,
+      "uuid": 4624066
+    },
+    {
+      "user": "jwokaty",
+      "count": 2,
+      "uuid": 1744257
+    },
+    {
+      "user": "federicomarini",
+      "count": 1,
+      "uuid": 7447478
+    }
+  ],
+  "_userbio": {
+    "uuid": 2286807,
+    "type": "organization",
+    "name": "Bioconductor",
+    "followers": 487,
+    "description": "Software for the analysis and comprehension of high-throughput genomic data"
+  },
+  "_devurl": "https://github.com/thelovelab/rnaseqgene",
+  "_searchresults": 31,
+  "_rbuild": "4.6.2",
+  "_assets": [
+    "extra/citation.cff",
+    "extra/citation.html",
+    "extra/citation.json",
+    "extra/citation.txt",
+    "extra/contents.json",
+    "extra/manual.pdf",
+    "extra/rnaseqGene.html"
+  ],
+  "_cranurl": false,
+  "_authors": [
+    {
+      "name": "Michael Love",
+      "email": "michaelisaiahlove@gmail.com",
+      "role": [
+        "aut",
+        "cre"
+      ]
+    }
+  ],
+  "_exports": [],
+  "_help": [],
+  "_rundeps": [
+    "abind",
+    "affy",
+    "affyio",
+    "airway",
+    "annotate",
+    "AnnotationDbi",
+    "AnnotationFilter",
+    "AnnotationHub",
+    "apeglm",
+    "aroma.light",
+    "askpass",
+    "backports",
+    "base64enc",
+    "bbmle",
+    "bdsmatrix",
+    "beeswarm",
+    "BH",
+    "Biobase",
+    "BiocBaseUtils",
+    "BiocFileCache",
+    "BiocGenerics",
+    "BiocIO",
+    "BiocManager",
+    "BiocParallel",
+    "BiocStyle",
+    "BiocVersion",
+    "biomaRt",
+    "Biostrings",
+    "biovizBase",
+    "bit",
+    "bit64",
+    "bitops",
+    "blob",
+    "bookdown",
+    "BSgenome",
+    "bslib",
+    "cachem",
+    "checkmate",
+    "cigarillo",
+    "cli",
+    "cluster",
+    "coda",
+    "codetools",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "curl",
+    "data.table",
+    "DBI",
+    "dbplyr",
+    "DelayedArray",
+    "deldir",
+    "DESeq2",
+    "dichromat",
+    "digest",
+    "dplyr",
+    "EDASeq",
+    "edgeR",
+    "emdbook",
+    "ensembldb",
+    "evaluate",
+    "farver",
+    "fastmap",
+    "filelock",
+    "fission",
+    "fontawesome",
+    "foreign",
+    "formatR",
+    "Formula",
+    "fs",
+    "futile.logger",
+    "futile.options",
+    "genefilter",
+    "generics",
+    "GenomeInfoDb",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "GenomicRanges",
+    "ggbeeswarm",
+    "ggplot2",
+    "glmpca",
+    "glue",
+    "gridExtra",
+    "gtable",
+    "Gviz",
+    "hexbin",
+    "highr",
+    "Hmisc",
+    "hms",
+    "htmlTable",
+    "htmltools",
+    "htmlwidgets",
+    "httr",
+    "httr2",
+    "hwriter",
+    "interp",
+    "IRanges",
+    "isoband",
+    "jpeg",
+    "jquerylib",
+    "jsonlite",
+    "KEGGREST",
+    "knitr",
+    "labeling",
+    "lambda.r",
+    "lattice",
+    "latticeExtra",
+    "lazyeval",
+    "lifecycle",
+    "limma",
+    "locfit",
+    "magrittr",
+    "MASS",
+    "Matrix",
+    "MatrixGenerics",
+    "matrixStats",
+    "memoise",
+    "mgcv",
+    "mime",
+    "mvtnorm",
+    "nlme",
+    "nnet",
+    "numDeriv",
+    "openssl",
+    "org.Hs.eg.db",
+    "pheatmap",
+    "pillar",
+    "pkgconfig",
+    "plyr",
+    "png",
+    "PoiClaClu",
+    "preprocessCore",
+    "prettyunits",
+    "progress",
+    "ProtGenerics",
+    "purrr",
+    "pwalign",
+    "R.methodsS3",
+    "R.oo",
+    "R.utils",
+    "R6",
+    "rappdirs",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppEigen",
+    "RcppNumerical",
+    "RCurl",
+    "restfulr",
+    "Rhtslib",
+    "rjson",
+    "rlang",
+    "rmarkdown",
+    "rpart",
+    "Rsamtools",
+    "RSQLite",
+    "rstudioapi",
+    "rtracklayer",
+    "RUVSeq",
+    "S4Arrays",
+    "S4Vectors",
+    "S7",
+    "sass",
+    "scales",
+    "Seqinfo",
+    "ShortRead",
+    "snow",
+    "SparseArray",
+    "statmod",
+    "stringi",
+    "stringr",
+    "SummarizedExperiment",
+    "survival",
+    "sva",
+    "sys",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tinytex",
+    "txdbmaker",
+    "tximeta",
+    "tximport",
+    "UCSC.utils",
+    "utf8",
+    "VariantAnnotation",
+    "vctrs",
+    "vipor",
+    "viridisLite",
+    "vsn",
+    "withr",
+    "xfun",
+    "XML",
+    "xml2",
+    "xtable",
+    "XVector",
+    "yaml"
+  ],
+  "_vignettes": [
+    {
+      "source": "rnaseqGene.Rmd",
+      "filename": "rnaseqGene.html",
+      "title": "RNA-seq workflow: gene-level exploratory analysis and differential expression",
+      "author": "Michael I. Love, Simon Anders, Vladislav Kim, Wolfgang Huber",
+      "engine": "knitr::rmarkdown",
+      "headings": [
+        "Introduction",
+        "Experimental data",
+        "Preparing quantification input to DESeq2",
+        "Transcript quantification and tximport / tximeta",
+        "Quantifying with Salmon",
+        "Reading in data with tximeta",
+        "DESeq2 import functions",
+        "SummarizedExperiment",
+        "Branching point",
+        "The DESeqDataSet object, sample information and the design formula",
+        "Starting from SummarizedExperiment",
+        "Starting from count matrices",
+        "Exploratory analysis and visualization",
+        "Pre-filtering the dataset",
+        "The variance stabilizing transformation and the rlog",
+        "Sample distances",
+        "PCA plot",
+        "PCA plot using Generalized PCA",
+        "MDS plot",
+        "Differential expression analysis",
+        "Running the differential expression pipeline",
+        "Building the results table",
+        "Other comparisons",
+        "Multiple testing",
+        "Plotting results",
+        "Counts plot",
+        "MA-plot",
+        "Gene clustering",
+        "Independent filtering",
+        "Independent Hypothesis Weighting",
+        "Annotating and exporting results",
+        "Exporting results",
+        "Plotting fold changes in genomic space",
+        "Removing hidden batch effects",
+        "Using SVA with DESeq2",
+        "Using RUV with DESeq2",
+        "Time course experiments",
+        "Appendix",
+        "Updated details on quantification",
+        "Downloading FASTQ files",
+        "Building the salmon index",
+        "Quantifying abundance with salmon",
+        "Producing a RangedSummarizedExperiment with tximeta",
+        "Session information",
+        "References"
+      ],
+      "created": "2017-09-15 20:25:24",
+      "modified": "2026-04-14 19:28:39",
+      "commits": 34
+    }
+  ],
+  "_score": 6.904996691032828,
+  "_indexed": true,
+  "_nocasepkg": "rnaseqgene",
+  "_universes": [
+    "bioc",
+    "mikelove",
+    "thelovelab"
+  ],
+  "_previous": "1.37.0",
+  "_binaries": [
+    {
+      "r": "4.7.0",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:39:43.000Z",
+      "distro": "resolute",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/1d02a99892247e037e47a12388e4b5f2fc1f915fc41c4718c029eaa9b452a64c",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    },
+    {
+      "r": "4.6.2",
+      "os": "linux",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:40:22.000Z",
+      "distro": "resolute",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/b2f807480ac1b6157aa5658f4922b950f923db916208489564b3255bdb228a33",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    },
+    {
+      "r": "4.5.3",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:53:58.000Z",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/11b2c410e75d83c0f0c9566d540ee7484d73d7ec9c9caabde0066d8f1c93c6b1",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    },
+    {
+      "r": "4.6.2",
+      "os": "mac",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:53:19.000Z",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/2cc31e1630af613a401377c0ab5d1ebe7950c9a6cb73db2ebd2f3849a9e51dea",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    },
+    {
+      "r": "4.6.0",
+      "os": "wasm",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:38:13.000Z",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/e5eacf2acf100153fbd1b8ad7eaa864b2bdf36dffebd97237007ec2408af5201",
+      "status": "success",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    },
+    {
+      "r": "4.7.0",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:37:11.000Z",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/525244b5cbcde97658efe314b4edf069607282e677a2a34b0831293e4d933f44",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    },
+    {
+      "r": "4.5.3",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:36:56.000Z",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/739151a34ceff4915926ffd62223cc17947305ef269c65b8ca9fd192819abfb2",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    },
+    {
+      "r": "4.6.2",
+      "os": "win",
+      "version": "1.39.0",
+      "date": "2026-11-24T04:37:11.000Z",
+      "commit": "587b06114b46ed4ef757046ddd5fe2be1269d65e",
+      "fileid": "https://r2.ropensci.org/3ab694c81a9aaab8fb6ccb7b5eaec7bf9e5a87c610d4a1c30a6ebdada97a7ea4",
+      "status": "success",
+      "check": "WARNING",
+      "buildurl": "https://github.com/r-universe/bioc/actions/runs/45326614607"
+    }
+  ]
+}
